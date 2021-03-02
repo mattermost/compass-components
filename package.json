@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "build-storybook": "build-storybook",
-    "build": "node -v && rimraf ./lib && npm run build:declareTS && npm run build:copy-files",
-    "build:declareTS": "tsc --extendedDiagnostics -p \"./tsconfig.build.json\"",
+    "build": "node -v && rimraf ./lib && npm run build:compile && npm run build:copy-files",
+    "build:compile": "tsc --extendedDiagnostics -p \"./tsconfig.build.json\"",
     "build:copy-files": "node ./scripts/copy-files.js",
     "lint": "eslint ./src",
     "lint:fix": "eslint --fix ./src",

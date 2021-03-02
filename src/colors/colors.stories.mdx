@@ -2,8 +2,9 @@ import { Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
 import styled from 'styled-components';
 
 import GlobalStyle from '../global-styles/globalStyles';
-import indigo from './indigo';
 import Shape from '../shape';
+
+import { createColorShades } from '../utils/colorUtils';
 
 <Meta title="Foundations/Palette" />
 
@@ -34,7 +35,7 @@ export const Template = args => (
         <Col>
             <Row>
                 {Object.keys(args.background).map(shade => {
-                    return <Shape {...args} background={args.background[shade]}/>;
+                    return <Shape {...args} background={args.background[shade]} />;
                 })}
             </Row>
         </Col>
@@ -43,11 +44,21 @@ export const Template = args => (
 
 <Canvas>
     <Story
-        name="IndigoColor"
+        name="Blue"
         argTypes={{}}
         args={{
             ...defaultArgs,
-            background: indigo,
+            background: createColorShades('#1C58D9'),
+        }}
+    >
+        {Template.bind({})}
+    </Story>
+    <Story
+        name="Yellow"
+        argTypes={{}}
+        args={{
+            ...defaultArgs,
+            background: createColorShades('#7A5600'),
         }}
     >
         {Template.bind({})}
