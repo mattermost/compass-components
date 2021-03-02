@@ -1,0 +1,83 @@
+import { Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
+
+import GlobalStyle from '../global-styles/globalStyles';
+import Shape from './index';
+
+<Meta component={Shape} title="Foundations/Shape" />
+
+export const Template = args => (
+    <>
+        <GlobalStyle />
+        <Shape {...args} />
+    </>
+);
+
+export const argTypes = {
+    borderRadius: {
+        control: {
+            type: 'select',
+            options: ['none', 'xxs', 'xs', 's', 'm', 'l', 'xl', 'circle', 'pill'],
+        },
+    },
+    elevation: {
+        control: {
+            type: 'select',
+            options: [0, 1, 2, 3, 4, 5, 6],
+        },
+    }
+};
+
+<Canvas>
+    <Story
+        name="Rectangle"
+        argTypes={argTypes}
+        args={{
+            borderRadius: 'none',
+            elevation: 0,
+            component: 'section',
+            width: 300,
+            height: 300,
+        }}
+    >
+        {Template.bind({})}
+    </Story>
+    <Story
+        name="Rounded Rectangle"
+        argTypes={argTypes}
+        args={{
+            borderRadius: 'm',
+            elevation: 1,
+            component: 'section',
+            width: 300,
+            height: 300,
+        }}
+    >
+        {Template.bind({})}
+    </Story>
+    <Story
+        name="Pill"
+        argTypes={argTypes}
+        args={{
+            borderRadius: 'pill',
+            elevation: 2,
+            component: 'section',
+            width: 300,
+            height: 100,
+        }}
+    >
+        {Template.bind({})}
+    </Story>
+    <Story
+        name="Circle"
+        argTypes={argTypes}
+        args={{
+            borderRadius: 'circle',
+            elevation: 3,
+            component: 'section',
+            width: 300,
+            height: 100,
+        }}
+    >
+        {Template.bind({})}
+    </Story>
+</Canvas>

@@ -1,0 +1,55 @@
+import { Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
+import styled from 'styled-components';
+
+import GlobalStyle from '../global-styles/globalStyles';
+import indigo from './indigo';
+import Shape from '../shape';
+
+<Meta title="Foundations/Palette" />
+
+export const Row = styled.section`
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+    padding: 12px;
+`;
+
+export const Col = styled.section`
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+`;
+
+export const defaultArgs = {
+    borderRadius: 'none',
+    elevation: 0,
+    component: 'div',
+    width: 128,
+    height: 128,
+};
+
+export const Template = args => (
+    <>
+        <GlobalStyle />
+        <Col>
+            <Row>
+                {Object.keys(args.background).map(shade => {
+                    return <Shape {...args} background={args.background[shade]}/>;
+                })}
+            </Row>
+        </Col>
+    </>
+);
+
+<Canvas>
+    <Story
+        name="IndigoColor"
+        argTypes={{}}
+        args={{
+            ...defaultArgs,
+            background: indigo,
+        }}
+    >
+        {Template.bind({})}
+    </Story>
+</Canvas>
