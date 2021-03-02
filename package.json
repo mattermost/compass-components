@@ -4,9 +4,13 @@
   "description": "components aligning to the compass design system",
   "main": "index.js",
   "scripts": {
-    "test": "test",
-    "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "build": "node -v && rimraf ./lib && npm run build:declareTS && npm run build:copy-files",
+    "build:declareTS": "tsc --extendedDiagnostics -p \"./tsconfig.build.json\"",
+    "build:copy-files": "node ./scripts/copy-files.js",
+    "lint": "eslint ./src",
+    "lint:fix": "eslint --fix ./src",
+    "storybook": "start-storybook -p 6006"
   },
   "repository": {
     "type": "git",
@@ -35,6 +39,15 @@
     "@storybook/addon-links": "^6.1.20",
     "@storybook/react": "^6.1.20",
     "@types/styled-components": "^5.1.7",
-    "babel-loader": "^8.2.2"
+    "@typescript-eslint/eslint-plugin": "^4.16.1",
+    "@typescript-eslint/parser": "^4.16.1",
+    "babel-loader": "^8.2.2",
+    "eslint": "^7.21.0",
+    "eslint-config-prettier": "^8.1.0",
+    "eslint-plugin-implicit-dependencies": "^1.0.4",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^3.3.1",
+    "eslint-plugin-react-hooks": "^4.2.0"
   }
 }
