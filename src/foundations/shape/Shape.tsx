@@ -2,7 +2,7 @@ import React from 'react';
 
 import { SShape } from './Shape.styles';
 import { TBorderRadiusSizes, TElevationLevel } from './Shape.types';
-import { isColor } from '../utils/utils';
+import { isColor } from '../../utils/utils';
 
 export type PShape = {
     /** The border-radius */

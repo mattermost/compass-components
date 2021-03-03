@@ -1,5 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
-import { TBorderRadiusSizes, TElevationLevel } from '../shape/Shape.types';
+import { TBorderRadiusSizes, TElevationLevel } from '../foundations/shape/Shape.types';
 
 const GlobalStyle = createGlobalStyle`
   :root {

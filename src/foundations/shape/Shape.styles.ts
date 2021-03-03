@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { PShape } from './Shape';
-import { borderRadius, elevation } from '../global-styles/globalStyles';
+import { borderRadius, elevation } from '../../global-styles/globalStyles';
 
 export const SShape = styled.div<PShape>`
     display: flex;
