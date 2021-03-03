@@ -2,6 +2,7 @@ import { ArgsTable, Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
 
 import GlobalStyle from '../../global-styles/globalStyles';
 import Shape from './index';
+import Grid from '../layout/Grid';
 
 export const Template = args => (
     <>
@@ -51,25 +52,28 @@ export const argTypes = {
 
 There are 4 core shapes used throughout the Mattermost interface:
 
-### Rectangle
-
-<Shape {...defaultArgs} borderRadius={0} />
-
-### Rounded Rectangle
-
-<Shape {...defaultArgs} borderRadius={12} />
-
-### Pill Shape
-
-<Shape {...defaultArgs} borderRadius={'pill'} />
-
-### Circle
-
-<Shape {...defaultArgs} borderRadius={'circle'} />
+<Grid justify={'stretch'}>
+    <Grid row padding={[12, 6]} alignment={'center'}>
+        <Grid justify={'center'}>
+            <Shape {...defaultArgs} borderRadius={0} />
+        </Grid>
+        <Grid justify={'center'}>
+            <Shape {...defaultArgs} borderRadius={12} />
+        </Grid>
+    </Grid>
+    <Grid row padding={[12, 6]} alignment={'center'}>
+        <Grid justify={'center'}>
+            <Shape {...defaultArgs} borderRadius={'pill'} />
+        </Grid>
+        <Grid justify={'center'}>
+            <Shape {...defaultArgs} borderRadius={'circle'} />
+        </Grid>
+    </Grid>
+</Grid>
 
 <ArgsTable of={Shape} />
 
-<Canvas>
+<Canvas hidden>
     <Story
         name="Rectangle"
         argTypes={argTypes}
