@@ -21,24 +21,27 @@ export const Col = styled.section`
     flex: 1;
 `;
 
+export const argTypes = {
+    colors: {
+        control: null,
+    },
+};
+
 export const defaultArgs = {
     borderRadius: 'none',
     elevation: 0,
     component: 'div',
     width: 128,
-    height: 128,
+    height: 64,
 };
 
 export const Template = args => (
     <>
         <GlobalStyle />
-        <Col>
-            <Row>
-                {Object.keys(args.background).map(shade => {
-                    return <Shape {...args} background={args.background[shade]} />;
-                })}
-            </Row>
-        </Col>
+        {args.colors &&
+            Object.keys(args.colors).map(shade => {
+                return <Shape {...defaultArgs} background={args.colors[shade]} />;
+            })}
     </>
 );
 
@@ -47,8 +50,7 @@ export const Template = args => (
         name="Blue"
         argTypes={{}}
         args={{
-            ...defaultArgs,
-            background: createColorShades('#1C58D9'),
+            colors: createColorShades('#1C58D9'),
         }}
     >
         {Template.bind({})}
@@ -57,8 +59,7 @@ export const Template = args => (
         name="Yellow"
         argTypes={{}}
         args={{
-            ...defaultArgs,
-            background: createColorShades('#7A5600'),
+            colors: createColorShades('#7A5600'),
         }}
     >
         {Template.bind({})}
