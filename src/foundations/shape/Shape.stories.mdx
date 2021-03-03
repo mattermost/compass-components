@@ -12,11 +12,12 @@ export const Template = args => (
 );
 
 export const defaultArgs = {
+    border: true,
     borderRadius: 4,
     elevation: 1,
     component: 'section',
-    width: 200,
-    height: 100,
+    width: 150,
+    height: 50,
     background: '#FFF',
 };
 
@@ -46,7 +47,8 @@ export const argTypes = {
 
 ---
 
-#### Shape is another important aspect of the visual style. When shapes are applied consistently, a sense of familiarity, trust, and reliability is reinforced.
+> Shape is another important aspect of the visual style.
+> When shapes are applied consistently, a sense of familiarity, trust, and reliability is reinforced.
 
 ### Core Shapes
 
@@ -60,8 +62,6 @@ There are 4 core shapes used throughout the Mattermost interface:
         <Grid justify={'center'}>
             <Shape {...defaultArgs} borderRadius={12} />
         </Grid>
-    </Grid>
-    <Grid row padding={[12, 6]} alignment={'center'}>
         <Grid justify={'center'}>
             <Shape {...defaultArgs} borderRadius={'pill'} />
         </Grid>
@@ -72,6 +72,78 @@ There are 4 core shapes used throughout the Mattermost interface:
 </Grid>
 
 <ArgsTable of={Shape} />
+
+## Rectangle
+
+This is often used for larger, more global containers that extend to the edges of the app window.
+
+## Rounded Rectangle
+
+The rounded rectangle is the most widely used shape for elements like Buttons, Modals, or Popover Menus.
+
+### Default Corner Radius
+
+The default corner radius for a container is 4px.
+This is used by Buttons, Icon Buttons, Popover Menus, and many other interface elements throughout the product.
+
+<Grid justify={'stretch'}>
+    <Grid row padding={0} alignment={'center'}>
+        <Grid justify={'center'} flex={0}>
+            <Shape borderRadius={0} background={'#F7F7F7'} padding={24}>
+                <Shape {...defaultArgs} width={156} height={156} borderRadius={4} />
+            </Shape>
+            <strong>4px</strong>
+        </Grid>
+    </Grid>
+</Grid>
+
+### Other Corner Radiuses
+
+<Grid justify={'stretch'}>
+    <Grid row padding={0} alignment={'center'}>
+        <Grid justify={'center'} flex={0}>
+            <Shape borderRadius={0} background={'#F7F7F7'} padding={24}>
+                <Shape {...defaultArgs} width={156} height={156} borderRadius={8} />
+            </Shape>
+            <strong>8px</strong>
+        </Grid>
+        <Grid justify={'center'} flex={0}>
+            <Shape borderRadius={0} background={'#F7F7F7'} padding={24}>
+                <Shape {...defaultArgs} width={156} height={156} borderRadius={12} />
+            </Shape>
+            <strong>12px</strong>
+        </Grid>
+        <Grid justify={'center'} flex={0}>
+            <Shape borderRadius={0} background={'#F7F7F7'} padding={24}>
+                <Shape {...defaultArgs} width={156} height={156} borderRadius={16} />
+            </Shape>
+            <strong>16px</strong>
+        </Grid>
+        <Grid justify={'center'} flex={0}>
+            <Shape borderRadius={0} background={'#F7F7F7'} padding={24}>
+                <Shape {...defaultArgs} width={156} height={156} borderRadius={20} />
+            </Shape>
+            <strong>20px</strong>
+        </Grid>
+        <Grid justify={'center'} flex={0}>
+            <Shape borderRadius={0} background={'#F7F7F7'} padding={24}>
+                <Shape {...defaultArgs} width={156} height={156} borderRadius={24} />
+            </Shape>
+            <strong>24px</strong>
+        </Grid>
+    </Grid>
+</Grid>
+
+## Pill Shape
+
+The pill shape is essentially a Rounded Rectangle with the radius set to half the height of the container.
+This shape is used in a few select places—namely the Mention Badge.
+
+## Circle
+
+The circle shape is mostly reserved for the Avatar component.
+This helps distinguish users from other UI elements throughout the product.
+There are a few other elements that use the circle shape, like the Unread Badge or the Status Badge.
 
 <Canvas hidden>
     <Story

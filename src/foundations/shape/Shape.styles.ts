@@ -6,13 +6,13 @@ import { PShape } from './Shape';
 
 const SShape = styled.div<PShape>`
     display: flex;
-    width: var(--panel-width, auto);
-    height: var(--panel-height, auto);
-    background-color: var(--panel-background, white);
-    padding: calc(var(--gutter-default) * 4);
+    width: var(--shape-width, auto);
+    height: var(--shape-height, auto);
+    background-color: var(--shape-background, white);
+    padding: var(--shape-padding, calc(var(--gutter-default, 0) * 3));
     border-radius: ${props => borderRadius(props.borderRadius)};
     box-shadow: ${props => elevation(props.elevation)};
-    border: var(--border-default);
+    border: ${props => (props.border ? 'var(--border-default)' : 'none')};
 `;
 
 export default SShape;

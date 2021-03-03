@@ -40,7 +40,7 @@ const Grid = ({ row = false, component = 'div', children, ...rest }: PGrid) => {
             }
         }
 
-        if (rest.flex) {
+        if (rest.flex || rest.flex === 0) {
             style['--grid-flex'] = `${rest.flex}`;
         }
 
