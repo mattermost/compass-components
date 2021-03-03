@@ -1,5 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
-import { TBorderRadiusSizes, TElevationLevel } from '../foundations/shape/Shape.types';
+
+import { TBorderRadiusSizes, TElevationLevel } from '../foundations/shape';
 
 const GlobalStyle = createGlobalStyle`
   :root {
@@ -27,11 +28,17 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
-export const elevation = (elevationLevel: TElevationLevel = 0): string => {
-    if (elevationLevel >= 0 && elevationLevel <= 6) return `var(--elevation-shadow-${elevationLevel})`;
+function elevation(elevationLevel: TElevationLevel = 0): string {
+    if (elevationLevel >= 0 && elevationLevel <= 6) {
+        return `var(--elevation-shadow-${elevationLevel})`;
+    }
+
     return 'var(--elevation-shadow-0)';
-};
+}
 
-export const borderRadius = (size: TBorderRadiusSizes = 0): string => `var(--border-radius-${size})`;
+function borderRadius(size: TBorderRadiusSizes = 0): string {
+    return `var(--border-radius-${size})`;
+}
 
+export { elevation, borderRadius };
 export default GlobalStyle;

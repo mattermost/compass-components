@@ -1,4 +1,4 @@
-export type TColorDefinition = {
+type TColorDefinition = {
     type: string;
     values: number[];
 };
@@ -11,11 +11,9 @@ export type TColorDefinition = {
  * @returns {number} A number in the range [min, max]
  */
 function clamp(value: number, min = 0, max = 1) {
-    if (process.env.NODE_ENV !== 'production') {
-        if (value < min || value > max) {
-            // eslint-disable-next-line no-console
-            console.error(`Compass Components: The value provided ${value} is out of range [${min}, ${max}].`);
-        }
+    if (process.env.NODE_ENV !== 'production' && (value < min || value > max)) {
+        // eslint-disable-next-line no-console
+        console.error(`Compass Components: The value provided ${value} is out of range [${min}, ${max}].`);
     }
 
     return Math.min(Math.max(min, value), max);
@@ -26,10 +24,11 @@ function clamp(value: number, min = 0, max = 1) {
  * @param {string} color - Hex color, i.e. #nnn or #nnnnnn
  * @returns {string} A CSS rgb color string
  */
-export function hexToRgb(color: string): string {
-    const colorValues = color.substr(1);
+function hexToRgb(color: string): string {
+    const colorValues = color.slice(1);
 
-    const re = new RegExp(`.{1,${colorValues.length >= 6 ? 2 : 1}}`, 'g');
+    const re = new RegExp(`.{1,${colorValues.length >= 6 ? 2 : 1}}`, 'gu');
+
     let colors = colorValues.match(re);
 
     if (colors && colors[0].length === 1) {
@@ -38,15 +37,16 @@ export function hexToRgb(color: string): string {
 
     return colors
         ? `rgb${colors.length === 4 ? 'a' : ''}(${colors
-              .map((n, index) => {
-                  return index < 3 ? parseInt(n, 16) : Math.round((parseInt(n, 16) / 255) * 1000) / 1000;
-              })
+              .map((n, index) =>
+                  index < 3 ? Number.parseInt(n, 16) : Math.round((Number.parseInt(n, 16) / 255) * 1000) / 1000
+              )
               .join(', ')})`
         : '';
 }
 
 function intToHex(int: number): string {
     const hex = int.toString(16);
+
     return hex.length === 1 ? `0${hex}` : hex;
 }
 
@@ -55,13 +55,14 @@ function intToHex(int: number): string {
  * @param {string} color - RGB color, i.e. rgb(n, n, n)
  * @returns {string} A CSS rgb color string, i.e. #nnnnnn
  */
-export function rgbToHex(color: string): string {
+function rgbToHex(color: string): string {
     // Idempotent
     if (color.indexOf('#') === 0) {
         return color;
     }
 
     const { values } = decomposeColor(color);
+
     return `#${values.map(n => intToHex(n)).join('')}`;
 }
 
@@ -70,16 +71,17 @@ export function rgbToHex(color: string): string {
  * @param {string} color - HSL color values
  * @returns {string} rgb color values
  */
-export function hslToRgb(color: string): string {
+function hslToRgb(color: string): string {
     const decomposedColor = decomposeColor(color);
     const { values } = decomposedColor;
-    const h = values[0];
+    const [h] = values;
     const s = values[1] / 100;
     const l = values[2] / 100;
     const a = s * Math.min(l, 1 - l);
     const f = (n: number, k = (n + h / 30) % 12): number => l - a * Math.max(Math.min(k - 3, 9 - k, 1), -1);
 
     let type = 'rgb';
+
     const rgb = [Math.round(f(0) * 255), Math.round(f(8) * 255), Math.round(f(4) * 255)];
 
     if (decomposedColor.type === 'hsla') {
@@ -97,23 +99,23 @@ export function hslToRgb(color: string): string {
  * @param {string} color - CSS color, i.e. one of: #nnn, #nnnnnn, rgb(), rgba(), hsl(), hsla()
  * @returns {object} - A MUI color object: {type: string, values: number[]}
  */
-export function decomposeColor(color: string): TColorDefinition {
+function decomposeColor(color: string): TColorDefinition {
     if (color.charAt(0) === '#') {
         return decomposeColor(hexToRgb(color));
     }
 
     const marker = color.indexOf('(');
-    const type = color.substring(0, marker);
+    const type = color.slice(0, Math.max(0, marker));
 
-    if (['rgb', 'rgba', 'hsl', 'hsla'].indexOf(type) === -1) {
+    if (!['rgb', 'rgba', 'hsl', 'hsla'].includes(type)) {
         throw new Error(
             'Compass Components: Unsupported `%s` color.\n' +
                 'The following formats are supported: #nnn, #nnnnnn, rgb(), rgba(), hsl(), hsla().'
         );
     }
 
-    const valueString = color.substring(marker + 1, color.length - 1);
-    const values = valueString.split(',').map(value => parseFloat(value));
+    const valueString = color.slice(marker + 1, -1);
+    const values = valueString.split(',').map(value => Number.parseFloat(value));
 
     return { type, values };
 }
@@ -125,14 +127,15 @@ export function decomposeColor(color: string): TColorDefinition {
  * @param {array} color.values - [n,n,n] or [n,n,n,n]
  * @returns {string} A CSS color string
  */
-export function recomposeColor(color: TColorDefinition): string {
+function recomposeColor(color: TColorDefinition): string {
     const { type, values } = color;
+
     let newValues: string[] | number[] = [];
 
-    if (type.indexOf('rgb') !== -1) {
+    if (type.includes('rgb')) {
         // Only convert the first 3 values to int (i.e. not alpha)
-        newValues = values.map((n, i) => (i < 3 ? parseInt(n.toString(), 10) : n));
-    } else if (type.indexOf('hsl') !== -1) {
+        newValues = values.map((n, index) => (index < 3 ? Number.parseInt(n.toString(), 10) : n));
+    } else if (type.includes('hsl')) {
         newValues[1] = `${values[1]}%`;
         newValues[2] = `${values[2]}%`;
     }
@@ -159,13 +162,16 @@ const shadeValues: Record<string, number> = {
  * @param {number} shade - 100 | 200 | ... | 800
  * @returns {string} A CSS color string
  */
-export function recomposeWithShade(color: TColorDefinition, shade: string): string {
+function recomposeColorWithShade(color: TColorDefinition, shade: string): string {
     const { values, type } = color;
-    const hslValues = [...values];
-    hslValues[0] = values[0];
+    const hslValues = Array.from(values);
+
+    [hslValues[0]] = values;
     hslValues[1] = values[1] / 100;
     hslValues[2] = shadeValues[shade];
-    const hslString = `${type}(${hslValues.join(', ')})`
+
+    const hslString = `${type}(${hslValues.join(', ')})`;
+
     return hslToRgb(hslString);
 }
 
@@ -176,50 +182,49 @@ export function recomposeWithShade(color: TColorDefinition, shade: string): stri
  * @param {number} value - value to set the alpha channel to in the range 0 - 1
  * @returns {string} A CSS color string. Hex input values are returned as rgb
  */
-export function alpha(color: string, value: number) {
+function alpha(color: string, value: number) {
     const decomposedColor = decomposeColor(color);
-    value = clamp(value);
+
+    const clampedValue = clamp(value);
 
     if (decomposedColor.type === 'rgb' || decomposedColor.type === 'hsl') {
         decomposedColor.type += 'a';
     }
 
-    decomposedColor.values[3] = value;
+    decomposedColor.values[3] = clampedValue;
 
     return recomposeColor(decomposedColor);
 }
 
-function rgbToHsl(rgbArr: number[]) {
-    const r = rgbArr[0] / 255;
-    const g = rgbArr[1] / 255;
-    const b = rgbArr[2] / 255;
+function rgbToHsl(rgbArray: number[]) {
+    const r = rgbArray[0] / 255;
+    const g = rgbArray[1] / 255;
+    const b = rgbArray[2] / 255;
 
     const max = Math.max(r, g, b);
     const min = Math.min(r, g, b);
 
-    //Calculate L:
+    // Calculate L:
     let h = 0;
     let s = 0;
     let l = (max + min) / 2;
 
     if (max !== min) {
-        //Calculate S:
-        if (l < 0.5) {
-            s = (max - min) / (max + min);
-        } else {
-            s = (max - min) / (2.0 - max - min);
-        }
+        // Calculate S:
+        s = l < 0.5 ? (max - min) / (max + min) : (max - min) / (2 - max - min);
 
-        //Calculate H:
+        // Calculate H:
         switch (true) {
             case r === max:
                 h = (g - b) / (max - min);
                 break;
             case g === max:
-                h = 2.0 + (b - r) / (max - min);
+                h = 2 + (b - r) / (max - min);
                 break;
             case b === max:
-                h = 4.0 + (r - g) / (max - min);
+                h = 4 + (r - g) / (max - min);
+                break;
+            default:
                 break;
         }
     }
@@ -235,16 +240,29 @@ function rgbToHsl(rgbArr: number[]) {
     return [h, s, l];
 }
 
-export function createColorShades(color: string) {
+function createColorShades(color: string) {
     const decomposedColor = decomposeColor(color);
     const colorShadeMap: Record<string, string> = {};
 
-    if (decomposedColor.type.indexOf('hsl') < 0) {
+    if (!decomposedColor.type.includes('hsl')) {
         decomposedColor.type = `hsl${decomposedColor.values.length > 3 ? 'a' : ''}`;
         decomposedColor.values = rgbToHsl(decomposedColor.values);
     }
 
-    Object.keys(shadeValues).forEach(key => (colorShadeMap[key] = recomposeWithShade(decomposedColor, key)));
+    for (const key of Object.keys(shadeValues)) {
+        colorShadeMap[key] = recomposeColorWithShade(decomposedColor, key);
+    }
 
     return colorShadeMap;
 }
+
+export {
+    alpha,
+    decomposeColor,
+    recomposeColor,
+    recomposeColorWithShade,
+    hexToRgb,
+    hslToRgb,
+    rgbToHex,
+    createColorShades,
+};

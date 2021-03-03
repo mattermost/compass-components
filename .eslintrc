@@ -1,5 +1,5 @@
 {
-    "extends": ["eslint:recommended", "plugin:node/recommended", "plugin:react-hooks/recommended", "prettier"],
+    "extends": ["./.eslint.base.json", "eslint:recommended", "plugin:node/recommended", "plugin:react-hooks/recommended", "prettier"],
     "plugins": ["node", "react-hooks", "prettier", "implicit-dependencies", "import"],
     "rules": {
         "import/no-extraneous-dependencies": "error",
@@ -14,7 +14,6 @@
         "no-unused-vars": "warn",
         "no-use-before-define": "off",
         "@typescript-eslint/no-use-before-define": ["error"],
-        "quotes": ["warn", "single", { "avoidEscape": true }],
         "no-restricted-properties": [
             "error",
             {
@@ -26,9 +25,31 @@
                 "property": "only"
             }
         ],
+
         "react-hooks/exhaustive-deps": "error",
         "react-hooks/rules-of-hooks": "error",
-        "no-console": "error"
+        "no-console": "error",
+        "arrow-body-style": "error",
+        "no-tabs": "error",
+        "curly": "error",
+
+        "max-len": [
+            "error",
+            {
+                "code": 120,
+                "comments": 120,
+                "ignorePattern": "// eslint-disable-next-line",
+                "ignoreUrls": true,
+                "ignoreStrings": true,
+                "ignoreTemplateLiterals": true,
+                "ignoreRegExpLiterals": true
+            }
+        ],
+        "quotes": [
+            "error",
+            "single",
+            { "avoidEscape": true, "allowTemplateLiterals": false }
+        ]
     },
     "overrides": [
         {
