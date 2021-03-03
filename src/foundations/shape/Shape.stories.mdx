@@ -54,7 +54,7 @@ export const argTypes = {
 
 There are 4 core shapes used throughout the Mattermost interface:
 
-<Grid justify={'stretch'}>
+<Grid padding={[24, 0]} justify={'stretch'}>
     <Grid row padding={[12, 6]} alignment={'center'}>
         <Grid justify={'center'}>
             <Shape {...defaultArgs} borderRadius={0} />
@@ -86,49 +86,64 @@ The rounded rectangle is the most widely used shape for elements like Buttons, M
 The default corner radius for a container is 4px.
 This is used by Buttons, Icon Buttons, Popover Menus, and many other interface elements throughout the product.
 
-<Grid justify={'stretch'}>
+<Grid padding={[24, 0]} justify={'stretch'}>
     <Grid row padding={0} alignment={'center'}>
         <Grid justify={'center'} flex={0}>
             <Shape borderRadius={0} background={'#F7F7F7'} padding={24}>
                 <Shape {...defaultArgs} width={156} height={156} borderRadius={4} />
             </Shape>
+            <br />
             <strong>4px</strong>
         </Grid>
     </Grid>
 </Grid>
 
-### Other Corner Radiuses
+###### Other Corner Radiuses
 
-<Grid justify={'stretch'}>
-    <Grid row padding={0} alignment={'center'}>
+---
+
+export const radiusExampleArgs = {
+    ...defaultArgs,
+    elevation: 2,
+    width: 120,
+    height: 120,
+};
+
+<Grid padding={[24, 0]} justify={'stretch'}>
+    <Grid row padding={0} justify={'space-between'}>
         <Grid justify={'center'} flex={0}>
             <Shape borderRadius={0} background={'#F7F7F7'} padding={24}>
-                <Shape {...defaultArgs} width={156} height={156} borderRadius={8} />
+                <Shape {...radiusExampleArgs} borderRadius={8} />
             </Shape>
+            <br />
             <strong>8px</strong>
         </Grid>
         <Grid justify={'center'} flex={0}>
             <Shape borderRadius={0} background={'#F7F7F7'} padding={24}>
-                <Shape {...defaultArgs} width={156} height={156} borderRadius={12} />
+                <Shape {...radiusExampleArgs} borderRadius={12} />
             </Shape>
+            <br />
             <strong>12px</strong>
         </Grid>
         <Grid justify={'center'} flex={0}>
             <Shape borderRadius={0} background={'#F7F7F7'} padding={24}>
-                <Shape {...defaultArgs} width={156} height={156} borderRadius={16} />
+                <Shape {...radiusExampleArgs} borderRadius={16} />
             </Shape>
+            <br />
             <strong>16px</strong>
         </Grid>
         <Grid justify={'center'} flex={0}>
             <Shape borderRadius={0} background={'#F7F7F7'} padding={24}>
-                <Shape {...defaultArgs} width={156} height={156} borderRadius={20} />
+                <Shape {...radiusExampleArgs} borderRadius={20} />
             </Shape>
+            <br />
             <strong>20px</strong>
         </Grid>
         <Grid justify={'center'} flex={0}>
             <Shape borderRadius={0} background={'#F7F7F7'} padding={24}>
-                <Shape {...defaultArgs} width={156} height={156} borderRadius={24} />
+                <Shape {...radiusExampleArgs} borderRadius={24} />
             </Shape>
+            <br />
             <strong>24px</strong>
         </Grid>
     </Grid>
