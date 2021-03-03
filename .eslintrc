@@ -1,5 +1,12 @@
 {
-    "extends": ["./.eslint.base.json", "eslint:recommended", "plugin:node/recommended", "plugin:react-hooks/recommended", "prettier"],
+    "extends": [
+        "./.eslint.base.json",
+        "eslint:recommended",
+        "plugin:node/recommended",
+        "plugin:react-hooks/recommended",
+        "prettier",
+        "plugin:mdx/recommended"
+    ],
     "plugins": ["node", "react-hooks", "prettier", "implicit-dependencies", "import"],
     "rules": {
         "import/no-extraneous-dependencies": "error",
@@ -45,11 +52,7 @@
                 "ignoreRegExpLiterals": true
             }
         ],
-        "quotes": [
-            "error",
-            "single",
-            { "avoidEscape": true, "allowTemplateLiterals": false }
-        ]
+        "quotes": ["error", "single", { "avoidEscape": true, "allowTemplateLiterals": false }]
     },
     "overrides": [
         {
