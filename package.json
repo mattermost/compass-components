@@ -9,7 +9,7 @@
     "build:compile": "tsc --extendedDiagnostics -p \"./tsconfig.build.json\"",
     "build:copy-files": "node ./scripts/copy-files.js",
     "lint": "eslint ./src",
-    "lint:fix": "eslint --fix ./src",
+    "lint:fix": "eslint --fix --cache ./src",
     "storybook": "start-storybook -p 6006"
   },
   "repository": {

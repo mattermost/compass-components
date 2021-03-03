@@ -16,7 +16,7 @@ export const argTypes = {
     borderRadius: {
         control: {
             type: 'select',
-            options: ['none', 'xxs', 'xs', 's', 'm', 'l', 'xl', 'circle', 'pill'],
+            options: [0, 4, 8, 12, 16, 20, 24, 'circle', 'pill'],
         },
     },
     elevation: {
@@ -32,7 +32,7 @@ export const argTypes = {
         name="Rectangle"
         argTypes={argTypes}
         args={{
-            borderRadius: 'none',
+            borderRadius: 0,
             elevation: 0,
             component: 'section',
             width: 300,
@@ -45,7 +45,7 @@ export const argTypes = {
         name="Rounded Rectangle"
         argTypes={argTypes}
         args={{
-            borderRadius: 'm',
+            borderRadius: 16,
             elevation: 1,
             component: 'section',
             width: 300,
