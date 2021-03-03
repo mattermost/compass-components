@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { isColor } from '../../utils/utils';
+import { Utils } from '../../utils';
 
 import SShape from './Shape.styles';
 import { TBorderRadiusSizes, TElevationLevel } from './Shape.types';
@@ -42,7 +42,7 @@ const Shape = ({ borderRadius = 0, component = 'div', elevation = 0, children, .
             style['--panel-height'] = `${rest.width}px`;
         }
 
-        if (rest.background && isColor(rest.background)) {
+        if (rest.background && Utils.isColor(rest.background)) {
             style['--panel-background'] = rest.background;
         }
 

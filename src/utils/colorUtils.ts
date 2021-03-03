@@ -164,11 +164,11 @@ const shadeValues: Record<string, number> = {
  */
 function recomposeColorWithShade(color: TColorDefinition, shade: string): string {
     const { values, type } = color;
-    const hslValues = Array.from(values);
+    const hslValues: string[] = [];
 
-    [hslValues[0]] = values;
-    hslValues[1] = values[1] / 100;
-    hslValues[2] = shadeValues[shade];
+    hslValues[0] = `${values[0]}`;
+    hslValues[1] = `${values[1]}%`;
+    hslValues[2] = `${shadeValues[shade] * 100}%`;
 
     const hslString = `${type}(${hslValues.join(', ')})`;
 
@@ -247,6 +247,8 @@ function createColorShades(color: string) {
     if (!decomposedColor.type.includes('hsl')) {
         decomposedColor.type = `hsl${decomposedColor.values.length > 3 ? 'a' : ''}`;
         decomposedColor.values = rgbToHsl(decomposedColor.values);
+        // eslint-disable-next-line no-console
+        console.log('#### decomposedColor:', decomposedColor);
     }
 
     for (const key of Object.keys(shadeValues)) {
