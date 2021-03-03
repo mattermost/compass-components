@@ -1,9 +1,7 @@
-import { Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
+import { ArgsTable, Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
 
 import GlobalStyle from '../../global-styles/globalStyles';
 import Shape from './index';
-
-<Meta component={Shape} title="Foundations/Shape" />
 
 export const Template = args => (
     <>
@@ -11,6 +9,15 @@ export const Template = args => (
         <Shape {...args} />
     </>
 );
+
+export const defaultArgs = {
+    borderRadius: 4,
+    elevation: 1,
+    component: 'section',
+    width: 200,
+    height: 100,
+    background: '#FFF',
+};
 
 export const argTypes = {
     borderRadius: {
@@ -25,18 +32,51 @@ export const argTypes = {
             options: [0, 1, 2, 3, 4, 5, 6],
         },
     },
+    background: {
+        control: 'color',
+    },
 };
+
+<Meta component={Shape} title="Foundations/Shape" />
+
+<GlobalStyle />
+
+# Shape
+
+---
+
+#### Shape is another important aspect of the visual style. When shapes are applied consistently, a sense of familiarity, trust, and reliability is reinforced.
+
+### Core Shapes
+
+There are 4 core shapes used throughout the Mattermost interface:
+
+### Rectangle
+
+<Shape {...defaultArgs} borderRadius={0} />
+
+### Rounded Rectangle
+
+<Shape {...defaultArgs} borderRadius={12} />
+
+### Pill Shape
+
+<Shape {...defaultArgs} borderRadius={'pill'} />
+
+### Circle
+
+<Shape {...defaultArgs} borderRadius={'circle'} />
+
+<ArgsTable of={Shape} />
 
 <Canvas>
     <Story
         name="Rectangle"
         argTypes={argTypes}
         args={{
+            ...defaultArgs,
             borderRadius: 0,
             elevation: 0,
-            component: 'section',
-            width: 300,
-            height: 300,
         }}
     >
         {Template.bind({})}
@@ -45,11 +85,8 @@ export const argTypes = {
         name="Rounded Rectangle"
         argTypes={argTypes}
         args={{
+            ...defaultArgs,
             borderRadius: 16,
-            elevation: 1,
-            component: 'section',
-            width: 300,
-            height: 300,
         }}
     >
         {Template.bind({})}
@@ -58,11 +95,9 @@ export const argTypes = {
         name="Pill"
         argTypes={argTypes}
         args={{
+            ...defaultArgs,
             borderRadius: 'pill',
             elevation: 2,
-            component: 'section',
-            width: 300,
-            height: 100,
         }}
     >
         {Template.bind({})}

@@ -3,6 +3,8 @@ type TColorDefinition = {
     values: number[];
 };
 
+const supportedColorTypes = ['rgb', 'rgba', 'hsl', 'hsla'];
+
 /**
  * Returns a number whose value is limited to the given range.
  * @param {number} value The value to be clamped
@@ -107,7 +109,7 @@ function decomposeColor(color: string): TColorDefinition {
     const marker = color.indexOf('(');
     const type = color.slice(0, Math.max(0, marker));
 
-    if (!['rgb', 'rgba', 'hsl', 'hsla'].includes(type)) {
+    if (!supportedColorTypes.includes(type)) {
         throw new Error(
             'Compass Components: Unsupported `%s` color.\n' +
                 'The following formats are supported: #nnn, #nnnnnn, rgb(), rgba(), hsl(), hsla().'
@@ -247,8 +249,6 @@ function createColorShades(color: string) {
     if (!decomposedColor.type.includes('hsl')) {
         decomposedColor.type = `hsl${decomposedColor.values.length > 3 ? 'a' : ''}`;
         decomposedColor.values = rgbToHsl(decomposedColor.values);
-        // eslint-disable-next-line no-console
-        console.log('#### decomposedColor:', decomposedColor);
     }
 
     for (const key of Object.keys(shadeValues)) {
@@ -256,6 +256,12 @@ function createColorShades(color: string) {
     }
 
     return colorShadeMap;
+}
+
+function isValidColor(color: string): boolean {
+    const { type } = decomposeColor(color);
+
+    return supportedColorTypes.includes(type);
 }
 
 export {
@@ -267,4 +273,5 @@ export {
     hslToRgb,
     rgbToHex,
     createColorShades,
+    isValidColor,
 };
