@@ -1,6 +1,7 @@
 import Shape from '../shape';
 import Grid from '../layout/Grid';
 import { convertToRgb, rgbToHex, rgbToHsl } from '../../utils';
+import Typography from '../typography/Typography';
 
 type PSwatch = {
     color: string;
@@ -15,9 +16,9 @@ const Swatch = ({ color }: PSwatch) => {
         <Grid row padding={12}>
             <Shape borderRadius={12} width={100} height={80} background={hexString} />
             <div>
-                <p>{hexString}</p>
-                <p>{rgbString}</p>
-                <p>{hslString}</p>
+                <Typography variant={'subtitle'}>{hexString}</Typography>
+                <Typography variant={'subtitle'}>{rgbString}</Typography>
+                <Typography variant={'subtitle'}>{hslString}</Typography>
             </div>
         </Grid>
     );

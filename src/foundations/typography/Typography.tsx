@@ -1,53 +1,95 @@
 import React from 'react';
 
-import { TTypographyVariant } from './Typography.types';
+import TTypographyVariant from './Typography.types';
 import STypography from './Typography.styles';
 
 type PTypography = {
     variant: TTypographyVariant;
     color?: 'primary' | 'secondary';
     size?: number;
-    heading?: boolean;
-    component?: 'p';
-    children?: React.ReactNode;
+    useRegular?: boolean;
+    gutter?: 'none' | 'top' | 'bottom' | 'both';
+    children?: React.ReactNode | React.ReactNode[];
 };
 
-const headingSizeMapping = {
-    25: 'h6',
-    50: 'h6',
-    75: 'h6',
-    100: 'h6',
-    200: 'h6',
-    300: 'h5',
-    400: 'h5',
-    500: 'h4',
-    600: 'h3',
-    700: 'h2',
-    1000: 'h1',
+const headingTypes: Record<string, number> = {
+    h1: 700,
+    h2: 600,
+    h3: 500,
+    h4: 500,
+    h5: 500,
+    h6: 400,
+    subtitle: 300,
 };
 
-const Typography = ({ children, component = 'p', color = 'primary', size = 100, heading = false }: PTypography) => {
-    const isHeading = heading || size > 300;
-    const fontType = isHeading ? 'heading' : 'body';
-    const fontSize = !isHeading && size > 300 ? 300 : size;
+const fontSizeMapping: Record<string, number> = {
+    ...headingTypes,
+    body: 300,
+};
+
+const Typography = ({
+    children,
+    variant = 'body',
+    color = 'primary',
+    size = 300,
+    useRegular = false,
+    gutter = 'both',
+}: PTypography) => {
+    const isHeading = Object.keys(headingTypes).includes(variant);
+    const fontType = isHeading && size >= 300 ? 'heading' : 'body';
+    const fontSize = !size || (!isHeading && size > 300) ? fontSizeMapping[variant] : size;
+    const fontWeight = !useRegular && isHeading ? 600 : 400;
+
+    const getComponent = () => {
+        switch (true) {
+            case variant === 'subtitle':
+                return 'h6';
+            case isHeading:
+                return variant;
+            case variant === 'inline':
+                return 'span';
+            case variant === 'body':
+            default:
+                return 'p';
+        }
+    };
 
     const getStyle = () => {
         const style = {
             '--typography-font-family': `var(--${fontType}-font-family)`,
             '--typography-font-size': `var(--${fontType}-font-size-${fontSize})`,
+            '--typography-font-weight': fontWeight,
             '--typography-line-height': `var(--${fontType}-line-height-${fontSize})`,
             '--typography-color': `var(--${color}-text-color)`,
+            '--typography-margin': '8px 0',
         };
 
-        if (isHeading && size > 300) {
+        if (isHeading && size >= 300) {
             style['--typography-font-family'] = 'var(--heading-font-family)';
+        }
+
+        if (gutter) {
+            switch (true) {
+                case gutter === 'none':
+                    style['--typography-margin'] = '0';
+                    break;
+                case gutter === 'top':
+                    style['--typography-margin'] = '8px 0 0';
+                    break;
+                case gutter === 'bottom':
+                    style['--typography-margin'] = '0 0 8px';
+                    break;
+                case gutter === 'both':
+                default:
+                    style['--typography-margin'] = '8px 0';
+            }
         }
 
         return style as React.CSSProperties;
     };
 
     return (
-        <STypography as={component} style={getStyle()}>
+        <STypography as={getComponent()} style={getStyle()}>
             {children}
         </STypography>
     );

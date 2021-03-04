@@ -2,6 +2,7 @@ import { Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
 
 import GlobalStyle from '../../global-styles/globalStyles';
 import Typography from './Typography';
+import Grid from '../layout/Grid';
 
 export const Template = args => {
     const { text } = args;
@@ -15,7 +16,144 @@ export const Template = args => {
 
 <Meta component={Typography} title="Foundations/Typography" />
 
-## Typography component
+<GlobalStyle />
+
+# Typography
+
+---
+
+> Text an integral part of any user interface, so it’s important that all typographic elements are designed
+> for legibility and consistency. This section defines the typographic style and usage guidelines.
+
+## Typefaces
+
+Compass uses Metropolis and Open Sans as the primary typefaces. Metropolis is a modern, geometric typeface that is
+open-sourced, and openly available. It has been designed for optimal readability at small point sizes while remaining
+beautiful at large point sizes.
+
+**Metropolis is used for headings 300-700. See below for more details.**
+
+Open Sans is another modern sans-serif typeface that is incredibly legible and offers an excellent reading experience.
+It was developed to have high performance as a web font and is considered to be a font that combines all of the
+strongest attributes of the top sans serif fonts. Open Sans is available to be used freely in products or projects.
+
+**Open Sans is used for all body copy and headings 50-200. See below for more details.**
+
+## Type Scale
+
+### Scale Ratio
+
+A type scale has been chosen to ensure that different sizes of text can work together harmoniously. Font sizes have a
+scale of 1.125. This means that each size is multiplied or divided by 1.125 from the previous size, starting with the
+base size, and then rounded.
+
+## Base Font Size
+
+The base font size for the Mattermost Web App is 14px—also known as the base size '100' in our typographic scale.
+
+### Line Heights
+
+Body copy line heights generally use a multiplier of 1.5 based on the font size, but some adjustmentshave been made
+in order for the baselines to fall on the 4px grid.
+
+Heading line heights generally use a multiplier of 1.3 based on the font size, but some adjustments have been made in
+order for the baselines to fall on the 4px grid. Smaller headings also use the 1.5 multiplier.
+
+## Headings
+
+### Font Weights
+
+Headings are generally used in the semibold font-weight, but can also be used in regular or light weights in special
+cases where the typographic contrast is needed.
+
+### Heading Sizes
+
+The chart below shows all the heading sizes from Heading 100 to Heading 700, where 100 is the base font size as
+described above.
+
+<Grid justify={'stretch'}>
+    <Grid row>
+        <Typography variant={'h4'}>Heading 25</Typography>
+    </Grid>
+    <Grid row>
+        <Grid flex={2}>
+            <Typography variant={'body'} color={'secondary'} size={50} gutter={'none'}>
+                Family
+            </Typography>
+            <Typography variant={'body'} size={100} gutter={'bottom'}>
+                OpenSans (600)
+            </Typography>
+        </Grid>
+        <Grid flex={1}>
+            <Typography variant={'body'} color={'secondary'} size={50} gutter={'none'}>
+                Size
+            </Typography>
+            <Typography variant={'body'} size={100} gutter={'bottom'}>
+                10px
+            </Typography>
+        </Grid>
+        <Grid flex={1}>
+            <Typography variant={'body'} color={'secondary'} size={50} gutter={'none'}>
+                Line Height
+            </Typography>
+            <Typography variant={'body'} size={100} gutter={'bottom'}>
+                16px
+            </Typography>
+        </Grid>
+        <Grid flex={1}>
+            <Typography variant={'body'} color={'secondary'} size={50} gutter={'none'}>
+                Example
+            </Typography>
+            <Typography variant={'body'} size={25} gutter={'bottom'}>
+                The quick brown fox jumps over the lazy dog
+            </Typography>
+        </Grid>
+    </Grid>
+</Grid>
+
+---
+
+<Grid justify={'stretch'}>
+    <Grid row>
+        <Typography variant={'h4'}>Heading 50</Typography>
+    </Grid>
+    <Grid row>
+        <Grid flex={2}>
+            <Typography variant={'body'} color={'secondary'} size={50} gutter={'none'}>
+                Family
+            </Typography>
+            <Typography variant={'body'} size={100} gutter={'bottom'}>
+                OpenSans (600)
+            </Typography>
+        </Grid>
+        <Grid flex={1}>
+            <Typography variant={'body'} color={'secondary'} size={50} gutter={'none'}>
+                Size
+            </Typography>
+            <Typography variant={'body'} size={100} gutter={'bottom'}>
+                11px
+            </Typography>
+        </Grid>
+        <Grid flex={1}>
+            <Typography variant={'body'} color={'secondary'} size={50} gutter={'none'}>
+                Line Height
+            </Typography>
+            <Typography variant={'body'} size={100} gutter={'bottom'}>
+                18px
+            </Typography>
+        </Grid>
+        <Grid flex={1}>
+            <Typography variant={'body'} color={'secondary'} size={50} gutter={'none'}>
+                Example
+            </Typography>
+            <Typography variant={'body'} size={50} gutter={'bottom'}>
+                The quick brown fox jumps over the lazy dog
+            </Typography>
+        </Grid>
+    </Grid>
+</Grid>
+
+---
 
 <Canvas hidden>
     <Story
@@ -24,7 +162,7 @@ export const Template = args => {
             variant: 'h1',
             color: 'primary',
             size: 700,
-            heading: false,
+            useRegular: false,
             text: 'Lorem ipsum dolor sit amet consetetur ...',
         }}
     >

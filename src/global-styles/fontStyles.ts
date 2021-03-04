@@ -44,6 +44,9 @@ const GlobalFontStyles = css`
     --heading-line-height-600: calc(var(--base-line-height, 20px) * 1.5);
     --heading-line-height-700: calc(var(--base-line-height, 20px) * 2);
     --heading-line-height-1000: calc(var(--base-line-height, 20px) * 2.4);
+
+    --primary-text-color: #333;
+    --secondary-text-color: #787878;
 `;
 
 export default GlobalFontStyles;

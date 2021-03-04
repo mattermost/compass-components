@@ -21,9 +21,6 @@ const GlobalStyle = createGlobalStyle`
         --border-radius-24: calc(var(--gutter-default) * 3);
         --border-radius-circle: 50%;
 
-        --primary-text-color: #000;
-        --secondary-text-color: #222;
-
         // setting a big value renders a pill-shape border-radius
         --border-radius-pill: 10000px;
         

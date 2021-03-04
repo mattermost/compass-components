@@ -1,5 +1,3 @@
-type TTypographyVariant = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'subtitle' | 'body' | 'inherit';
+type TTypographyVariant = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'subtitle' | 'body' | 'inline';
 
-type TTypographyComponent = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'span';
-
-export type { TTypographyVariant, TTypographyComponent };
+export default TTypographyVariant;
