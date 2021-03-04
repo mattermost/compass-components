@@ -151,7 +151,7 @@
     "no-unsafe-finally": "error",
     "no-useless-computed-key": "error",
     "no-useless-rename": "error",
-    "max-lines": "error",
+    "max-lines": ["error", 500],
     "no-template-curly-in-string": "error",
     "symbol-description": "error",
     "class-methods-use-this": "error",

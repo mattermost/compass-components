@@ -3,7 +3,25 @@ type TColorDefinition = {
     values: number[];
 };
 
+/**
+ * We only support those values as valid color inputs
+ */
 const supportedColorTypes = ['rgb', 'rgba', 'hsl', 'hsla'];
+
+/**
+ * The property name (100 | 200 | ... | 800) describes the swatch shade.
+ * Values stored for each shade are the luminance values for HSL
+ */
+const shadeValues: Record<string, number> = {
+    100: 0.8,
+    200: 0.72,
+    300: 0.64,
+    400: 0.56,
+    500: 0.48,
+    600: 0.4,
+    700: 0.32,
+    800: 0.24,
+};
 
 /**
  * Returns a number whose value is limited to the given range.
@@ -66,6 +84,73 @@ function rgbToHex(color: string): string {
     const { values } = decomposeColor(color);
 
     return `#${values.map(n => intToHex(n)).join('')}`;
+}
+
+/**
+ * Converts a color from CSS rgb format to CSS hsl format.
+ * @param {string} color - RGB color, i.e. rgb(n, n, n)
+ * @returns {string} A CSS rgb color string, i.e. #nnnnnn
+ */
+function rgbToHsl(color: string): string {
+    const { values } = decomposeColor(color);
+
+    const hslValues = rgbToHslValues(values);
+    const type = `hsl${values.length > 3 ? 'a' : ''}`;
+
+    return recomposeColor({ type, values: hslValues });
+}
+
+/**
+ * Converts an array of rgb values to hsl values
+ * @param {number[]} rgbArray - RGB color-array
+ * @returns {number[]} array that holds hsl values
+ */
+function rgbToHslValues(rgbArray: number[]): number[] {
+    const r = rgbArray[0] / 255;
+    const g = rgbArray[1] / 255;
+    const b = rgbArray[2] / 255;
+
+    const max = Math.max(r, g, b);
+    const min = Math.min(r, g, b);
+
+    // Calculate L:
+    let h = 0;
+    let s = 0;
+    let l = (max + min) / 2;
+
+    if (max !== min) {
+        // Calculate S:
+        s = l < 0.5 ? (max - min) / (max + min) : (max - min) / (2 - max - min);
+
+        // Calculate H:
+        switch (true) {
+            case r === max:
+                h = (g - b) / (max - min);
+                break;
+            case g === max:
+                h = 2 + (b - r) / (max - min);
+                break;
+            case b === max:
+                h = 4 + (r - g) / (max - min);
+                break;
+            default:
+                break;
+        }
+    }
+
+    h = Math.round(h * 60);
+    s = Math.round(s * 100);
+    l = Math.round(l * 100);
+
+    if (h < 0) {
+        h += 360;
+    }
+
+    if (rgbArray[3] || rgbArray[3] === 0) {
+        return [h, s, l, clamp(rgbArray[3])];
+    }
+
+    return [h, s, l];
 }
 
 /**
@@ -132,7 +217,7 @@ function decomposeColor(color: string): TColorDefinition {
 function recomposeColor(color: TColorDefinition): string {
     const { type, values } = color;
 
-    let newValues: string[] | number[] = [];
+    let newValues: (string | number)[] = values;
 
     if (type.includes('rgb')) {
         // Only convert the first 3 values to int (i.e. not alpha)
@@ -144,17 +229,6 @@ function recomposeColor(color: TColorDefinition): string {
 
     return `${type}(${newValues.join(', ')})`;
 }
-
-const shadeValues: Record<string, number> = {
-    100: 0.8,
-    200: 0.72,
-    300: 0.64,
-    400: 0.56,
-    500: 0.48,
-    600: 0.4,
-    700: 0.32,
-    800: 0.24,
-};
 
 /**
  * Converts a color object with type and values to a string.
@@ -184,7 +258,7 @@ function recomposeColorWithShade(color: TColorDefinition, shade: string): string
  * @param {number} value - value to set the alpha channel to in the range 0 - 1
  * @returns {string} A CSS color string. Hex input values are returned as rgb
  */
-function alpha(color: string, value: number) {
+function alpha(color: string, value: number): string {
     const decomposedColor = decomposeColor(color);
 
     const clampedValue = clamp(value);
@@ -198,57 +272,13 @@ function alpha(color: string, value: number) {
     return recomposeColor(decomposedColor);
 }
 
-function rgbToHsl(rgbArray: number[]) {
-    const r = rgbArray[0] / 255;
-    const g = rgbArray[1] / 255;
-    const b = rgbArray[2] / 255;
-
-    const max = Math.max(r, g, b);
-    const min = Math.min(r, g, b);
-
-    // Calculate L:
-    let h = 0;
-    let s = 0;
-    let l = (max + min) / 2;
-
-    if (max !== min) {
-        // Calculate S:
-        s = l < 0.5 ? (max - min) / (max + min) : (max - min) / (2 - max - min);
-
-        // Calculate H:
-        switch (true) {
-            case r === max:
-                h = (g - b) / (max - min);
-                break;
-            case g === max:
-                h = 2 + (b - r) / (max - min);
-                break;
-            case b === max:
-                h = 4 + (r - g) / (max - min);
-                break;
-            default:
-                break;
-        }
-    }
-
-    h *= 60;
-    s *= 100;
-    l *= 100;
-
-    if (h < 0) {
-        h += 360;
-    }
-
-    return [h, s, l];
-}
-
-function createColorShades(color: string) {
+function createColorShades(color: string): Record<string, string> {
     const decomposedColor = decomposeColor(color);
     const colorShadeMap: Record<string, string> = {};
 
     if (!decomposedColor.type.includes('hsl')) {
-        decomposedColor.type = `hsl${decomposedColor.values.length > 3 ? 'a' : ''}`;
-        decomposedColor.values = rgbToHsl(decomposedColor.values);
+        decomposedColor.type = 'hsl';
+        decomposedColor.values = rgbToHslValues(decomposedColor.values);
     }
 
     for (const key of Object.keys(shadeValues)) {
@@ -258,6 +288,22 @@ function createColorShades(color: string) {
     return colorShadeMap;
 }
 
+/**
+ * Converts any given valid and supported color string to rgb
+ * @param {string} color - color string
+ * @returns {string} rgb color string
+ */
+function convertToRgb(color: string): string {
+    const decomposedColor = decomposeColor(color);
+
+    return decomposedColor.type.includes('rgb') ? color : recomposeColor(decomposedColor);
+}
+
+/**
+ * Checks if a given string is a valid color string
+ * @param {string} color - color string
+ * @returns {boolean}
+ */
 function isValidColor(color: string): boolean {
     const { type } = decomposeColor(color);
 
@@ -266,12 +312,14 @@ function isValidColor(color: string): boolean {
 
 export {
     alpha,
+    convertToRgb,
     decomposeColor,
     recomposeColor,
     recomposeColorWithShade,
     hexToRgb,
     hslToRgb,
     rgbToHex,
+    rgbToHsl,
     createColorShades,
     isValidColor,
 };

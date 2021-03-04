@@ -3,23 +3,12 @@ import styled from 'styled-components';
 
 import GlobalStyle from '../../global-styles/globalStyles';
 import Shape from '../shape';
+import Grid from '../layout/Grid';
 
 import { createColorShades } from '../../utils';
+import Swatch from './Swatch';
 
 <Meta title="Foundations/Palette" />
-
-export const Grid = styled.section`
-    display: flex;
-    flex-direction: row;
-    flex: 1;
-    padding: 12px;
-`;
-
-export const Col = styled.section`
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-`;
 
 export const argTypes = {
     colors: {
@@ -35,22 +24,47 @@ export const defaultArgs = {
     height: 64,
 };
 
-export const Template = args => (
-    <>
-        <GlobalStyle />
-        {args.colors &&
-            Object.keys(args.colors).map(shade => {
-                return <Shape {...defaultArgs} background={args.colors[shade]} />;
-            })}
-    </>
-);
+export const Template = args => {
+    const colors1 = createColorShades(args.color1);
+    const colors2 = args.color2 ? createColorShades(args.color2) : null;
+    return (
+        <>
+            <GlobalStyle />
+            <Grid row>
+                <Grid>
+                    {colors1 &&
+                        Object.keys(colors1).map(shade => <Swatch key={`color1_${shade}`} color={colors1[shade]} />)}
+                    )}
+                </Grid>
+                <Grid>
+                    {colors2 &&
+                        Object.keys(colors2).map(shade => <Swatch key={`color1_${shade}`} color={colors2[shade]} />)}
+                    )}
+                </Grid>
+            </Grid>
+        </>
+    );
+};
 
 <Canvas>
+    <Story
+        name="Custom Color"
+        argTypes={{
+            color1: { control: 'color' },
+            color2: { control: 'color' },
+        }}
+        args={{
+            color1: '#1C58D9',
+            color2: '#7A5600',
+        }}
+    >
+        {Template.bind({})}
+    </Story>
     <Story
         name="Blue"
         argTypes={argTypes}
         args={{
-            colors: createColorShades('#1C58D9'),
+            color1: '#1C58D9',
         }}
     >
         {Template.bind({})}
@@ -59,7 +73,7 @@ export const Template = args => (
         name="Yellow"
         argTypes={argTypes}
         args={{
-            colors: createColorShades('#7A5600'),
+            color1: '#7A5600',
         }}
     >
         {Template.bind({})}

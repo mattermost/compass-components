@@ -160,12 +160,18 @@ The circle shape is mostly reserved for the Avatar component.
 This helps distinguish users from other UI elements throughout the product.
 There are a few other elements that use the circle shape, like the Unread Badge or the Status Badge.
 
+export const canvasExampleArgs = {
+    ...defaultArgs,
+    width: 400,
+    height: 150,
+};
+
 <Canvas hidden>
     <Story
         name="Rectangle"
         argTypes={argTypes}
         args={{
-            ...defaultArgs,
+            ...canvasExampleArgs,
             borderRadius: 0,
             elevation: 0,
         }}
@@ -176,7 +182,7 @@ There are a few other elements that use the circle shape, like the Unread Badge 
         name="Rounded Rectangle"
         argTypes={argTypes}
         args={{
-            ...defaultArgs,
+            ...canvasExampleArgs,
             borderRadius: 16,
         }}
     >
@@ -186,7 +192,7 @@ There are a few other elements that use the circle shape, like the Unread Badge 
         name="Pill"
         argTypes={argTypes}
         args={{
-            ...defaultArgs,
+            ...canvasExampleArgs,
             borderRadius: 'pill',
             elevation: 2,
         }}
@@ -197,7 +203,7 @@ There are a few other elements that use the circle shape, like the Unread Badge 
         name="Circle"
         argTypes={argTypes}
         args={{
-            ...defaultArgs,
+            ...canvasExampleArgs,
             borderRadius: 'circle',
             elevation: 3,
             component: 'section',
