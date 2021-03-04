@@ -71,89 +71,132 @@ cases where the typographic contrast is needed.
 The chart below shows all the heading sizes from Heading 100 to Heading 700, where 100 is the base font size as
 described above.
 
-<Grid justify={'stretch'}>
-    <Grid row>
-        <Typography variant={'h4'}>Heading 25</Typography>
-    </Grid>
-    <Grid row>
-        <Grid flex={3}>
-            <Typography variant={'body'} color={'secondary'} size={50} gutter={'none'}>
-                Family
-            </Typography>
-            <Typography variant={'body'} size={100} gutter={'bottom'}>
-                OpenSans (600)
-            </Typography>
-        </Grid>
-        <Grid flex={2}>
-            <Typography variant={'body'} color={'secondary'} size={50} gutter={'none'}>
-                Size
-            </Typography>
-            <Typography variant={'body'} size={100} gutter={'bottom'}>
-                10px
-            </Typography>
-        </Grid>
-        <Grid flex={2}>
-            <Typography variant={'body'} color={'secondary'} size={50} gutter={'none'}>
-                Line Height
-            </Typography>
-            <Typography variant={'body'} size={100} gutter={'bottom'}>
-                16px
-            </Typography>
-        </Grid>
-        <Grid flex={6}>
-            <Typography variant={'body'} color={'secondary'} size={50} gutter={'none'}>
-                Example
-            </Typography>
-            <Typography variant={'body'} size={25} gutter={'bottom'}>
-                The quick brown fox jumps over the lazy dog
-            </Typography>
-        </Grid>
-    </Grid>
-</Grid>
+export const smallSizes = [
+    { size: 25, fontSize: 10, lineHeight: 16 },
+    { size: 50, fontSize: 11, lineHeight: 16 },
+    { size: 75, fontSize: 12, lineHeight: 16 },
+    { size: 100, fontSize: 14, lineHeight: 20 },
+    { size: 200, fontSize: 16, lineHeight: 24 },
+];
+export const headingSizes = [
+    ...smallSizes,
+    { size: 300, fontSize: 18, lineHeight: 24 },
+    { size: 400, fontSize: 20, lineHeight: 28 },
+    { size: 500, fontSize: 22, lineHeight: 28 },
+    { size: 600, fontSize: 25, lineHeight: 30 },
+    { size: 700, fontSize: 32, lineHeight: 40 },
+    { size: 1000, fontSize: 40, lineHeight: 48 },
+];
 
----
+export const bodySizes = [...smallSizes, { size: 300, fontSize: 18, lineHeight: 28 }];
 
-<Grid justify={'stretch'}>
-    <Grid row>
-        <Typography variant={'h4'}>Heading 50</Typography>
-    </Grid>
-    <Grid row>
-        <Grid flex={3}>
-            <Typography variant={'body'} color={'secondary'} size={50} gutter={'none'}>
-                Family
-            </Typography>
-            <Typography variant={'body'} size={100} gutter={'bottom'}>
-                OpenSans (600)
-            </Typography>
-        </Grid>
-        <Grid flex={2}>
-            <Typography variant={'body'} color={'secondary'} size={50} gutter={'none'}>
-                Size
-            </Typography>
-            <Typography variant={'body'} size={100} gutter={'bottom'}>
-                11px
-            </Typography>
-        </Grid>
-        <Grid flex={2}>
-            <Typography variant={'body'} color={'secondary'} size={50} gutter={'none'}>
-                Line Height
-            </Typography>
-            <Typography variant={'body'} size={100} gutter={'bottom'}>
-                18px
-            </Typography>
-        </Grid>
-        <Grid flex={6}>
-            <Typography variant={'body'} color={'secondary'} size={50} gutter={'none'}>
-                Example
-            </Typography>
-            <Typography variant={'body'} size={50} gutter={'bottom'}>
-                The quick brown fox jumps over the lazy dog
-            </Typography>
-        </Grid>
-    </Grid>
-</Grid>
+<>
+    {headingSizes.map(heading => (
+        <>
+            <hr />
+            <Grid justify={'stretch'}>
+                <Grid row>
+                    <Typography variant={'h3'}>{`Heading ${heading.size}${
+                        heading.size === 100 ? ' (Base size)' : ''
+                    }`}</Typography>
+                </Grid>
+                <Grid row>
+                    <Grid flex={3}>
+                        <Typography variant={'body'} color={'secondary'} size={50} gutter={'none'}>
+                            Family
+                        </Typography>
+                        <Typography variant={'body'} size={200} gutter={'bottom'}>
+                            {heading.size > 300 ? 'Metropolis (600)' : 'OpenSans (600)'}
+                        </Typography>
+                    </Grid>
+                    <Grid flex={2}>
+                        <Typography variant={'body'} color={'secondary'} size={50} gutter={'none'}>
+                            Size
+                        </Typography>
+                        <Typography variant={'body'} size={200} gutter={'bottom'}>
+                            {`${heading.fontSize}px`}
+                        </Typography>
+                    </Grid>
+                    <Grid flex={2}>
+                        <Typography variant={'body'} color={'secondary'} size={50} gutter={'none'}>
+                            Line Height
+                        </Typography>
+                        <Typography variant={'body'} size={200} gutter={'bottom'}>
+                            {`${heading.lineHeight}px`}
+                        </Typography>
+                    </Grid>
+                    <Grid flex={6}>
+                        <Typography variant={'body'} color={'secondary'} size={50} gutter={'none'}>
+                            Example
+                        </Typography>
+                        <Typography variant={'h1'} size={heading.size} gutter={'bottom'}>
+                            The quick brown fox jumps over the lazy dog
+                        </Typography>
+                    </Grid>
+                </Grid>
+            </Grid>
+        </>
+    ))}
+</>
 
----
+## Body
+
+### Font Weights
+
+Body always uses the regular font-weight, but where emphasis is needed, the semi-bold weight can be used.
+
+### Body Sizes
+
+The chart below shows all the body copy sizes where Body 100 is the base font size.
+
+<>
+    {bodySizes.map(body => (
+        <>
+            <hr />
+            <Grid justify={'stretch'}>
+                <Grid row>
+                    <Typography variant={'h3'}>{`Body ${body.size}${
+                        body.size === 100 ? ' (Base size)' : ''
+                    }`}</Typography>
+                </Grid>
+                <Grid row>
+                    <Grid flex={3}>
+                        <Typography variant={'body'} color={'secondary'} size={50} gutter={'none'}>
+                            Family
+                        </Typography>
+                        <Typography variant={'body'} size={200} gutter={'bottom'}>
+                            OpenSans (400)
+                        </Typography>
+                    </Grid>
+                    <Grid flex={2}>
+                        <Typography variant={'body'} color={'secondary'} size={50} gutter={'none'}>
+                            Size
+                        </Typography>
+                        <Typography variant={'body'} size={200} gutter={'bottom'}>
+                            {`${body.fontSize}px`}
+                        </Typography>
+                    </Grid>
+                    <Grid flex={2}>
+                        <Typography variant={'body'} color={'secondary'} size={50} gutter={'none'}>
+                            Line Height
+                        </Typography>
+                        <Typography variant={'body'} size={200} gutter={'bottom'}>
+                            {`${body.lineHeight}px`}
+                        </Typography>
+                    </Grid>
+                    <Grid flex={6}>
+                        <Typography variant={'body'} color={'secondary'} size={50} gutter={'none'}>
+                            Example
+                        </Typography>
+                        <Typography variant={'body'} size={body.size} gutter={'bottom'}>
+                            The quick brown fox jumps over the lazy dog
+                        </Typography>
+                    </Grid>
+                </Grid>
+            </Grid>
+        </>
+    ))}
+</>
 
 <Canvas hidden>
     <Story
