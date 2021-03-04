@@ -1,4 +1,5 @@
 import { ArgsTable, Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
+import { DependenciesTable } from 'storybook-addon-deps/blocks';
 
 import GlobalStyle from '../../global-styles/globalStyles';
 import Shape from './index';
@@ -165,6 +166,10 @@ export const canvasExampleArgs = {
     width: 400,
     height: 150,
 };
+
+## 1. DependenciesTable - combined dependencies and dependents into one
+
+<DependenciesTable titleDependencies="Dependencies" titleDependents="Dependents" of={Shape} />
 
 <Canvas hidden>
     <Story
