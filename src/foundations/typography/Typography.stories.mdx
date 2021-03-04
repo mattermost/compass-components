@@ -1,0 +1,33 @@
+import { Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
+
+import GlobalStyle from '../../global-styles/globalStyles';
+import Typography from './Typography';
+
+export const Template = args => {
+    const { text } = args;
+    return (
+        <>
+            <GlobalStyle />
+            <Typography {...args}>{text}</Typography>
+        </>
+    );
+};
+
+<Meta component={Typography} title="Foundations/Typography" />
+
+## Typography component
+
+<Canvas hidden>
+    <Story
+        name="Headings"
+        args={{
+            variant: 'h1',
+            color: 'primary',
+            size: 700,
+            heading: false,
+            text: 'Lorem ipsum dolor sit amet consetetur ...',
+        }}
+    >
+        {Template.bind({})}
+    </Story>
+</Canvas>
