@@ -61,7 +61,7 @@ const Typography = ({
             '--typography-font-weight': fontWeight,
             '--typography-line-height': `var(--${fontType}-line-height-${fontSize})`,
             '--typography-color': `var(--${color}-text-color)`,
-            '--typography-margin': '8px 0',
+            '--typography-margin': `var(--${fontType}-margin-top-${fontSize}) 0 var(--${fontType}-margin-bottom-${fontSize})`,
         };
 
         if (isHeading && size >= 300) {
@@ -74,14 +74,16 @@ const Typography = ({
                     style['--typography-margin'] = '0';
                     break;
                 case gutter === 'top':
-                    style['--typography-margin'] = '8px 0 0';
+                    style['--typography-margin'] = `var(--${fontType}-margin-top-${fontSize}) 0 0`;
                     break;
                 case gutter === 'bottom':
-                    style['--typography-margin'] = '0 0 8px';
+                    style['--typography-margin'] = `0 0 var(--${fontType}-margin-bottom-${fontSize})`;
                     break;
                 case gutter === 'both':
                 default:
-                    style['--typography-margin'] = '8px 0';
+                    style[
+                        '--typography-margin'
+                    ] = `var(--${fontType}-margin-top-${fontSize}) 0 var(--${fontType}-margin-bottom-${fontSize})`;
             }
         }
 
