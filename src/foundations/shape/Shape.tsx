@@ -33,7 +33,7 @@ type PShape = {
     children?: React.ReactNode;
 };
 
-const Shape = ({
+const Shape: React.FC<PShape> = ({
     border = false,
     borderRadius = 0,
     component = 'div',
@@ -43,7 +43,7 @@ const Shape = ({
     height = 'auto',
     padding = 0,
     children,
-}: PShape) => {
+}: PShape): JSX.Element => {
     const getStyle = (): React.CSSProperties => {
         const style = {
             '--shape-width': 'auto',

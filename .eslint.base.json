@@ -115,7 +115,7 @@
     "no-useless-concat": "error",
     "no-void": "error",
     "no-var": "error",
-    "no-warning-comments": "error",
+    "no-warning-comments": "off",
     "no-with": "error",
     "block-scoped-var": "error",
     "camelcase": "error",

@@ -1,3 +1,5 @@
+import React from 'react';
+
 import Shape from '../shape';
 import Grid from '../layout/Grid';
 import { convertToRgb, rgbToHex, rgbToHsl } from '../../utils';
@@ -10,7 +12,7 @@ type PSwatch = {
     variant?: 'noText' | 'bottom' | 'right';
 };
 
-const Swatch = ({ color, shade, colorName, variant = 'right' }: PSwatch) => {
+const Swatch: React.FC<PSwatch> = ({ color, shade, colorName, variant = 'right' }: PSwatch): JSX.Element => {
     const rgbString = convertToRgb(color);
     const hexString = rgbToHex(rgbString);
     const hslString = rgbToHsl(rgbString);

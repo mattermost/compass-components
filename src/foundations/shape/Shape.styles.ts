@@ -10,9 +10,9 @@ const SShape = styled.div<PShape>`
     height: var(--shape-height, auto);
     background-color: var(--shape-background, white);
     padding: var(--shape-padding, calc(var(--gutter-default, 0) * 3));
-    border-radius: ${props => borderRadius(props.borderRadius)};
-    box-shadow: ${props => elevation(props.elevation)};
-    border: ${props => (props.border ? 'var(--border-default)' : 'none')};
+    border-radius: ${(props): string => borderRadius(props.borderRadius)};
+    box-shadow: ${(props): string => elevation(props.elevation)};
+    border: ${(props): string => (props.border ? 'var(--border-default)' : 'none')};
 `;
 
 export default SShape;

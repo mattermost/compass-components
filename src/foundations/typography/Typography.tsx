@@ -27,20 +27,20 @@ const fontSizeMapping: Record<string, number> = {
     body: 300,
 };
 
-const Typography = ({
+const Typography: React.FC<PTypography> = ({
     children,
     variant = 'body',
     color = 'primary',
     size = 300,
     useRegular = false,
     gutter = 'both',
-}: PTypography) => {
+}: PTypography): JSX.Element => {
     const isHeading = Object.keys(headingTypes).includes(variant);
     const fontType = isHeading && size >= 300 ? 'heading' : 'body';
     const fontSize = !size || (!isHeading && size > 300) ? fontSizeMapping[variant] : size;
     const fontWeight = !useRegular && isHeading ? 600 : 400;
 
-    const getComponent = () => {
+    const getComponent = (): string => {
         switch (true) {
             case variant === 'subtitle':
                 return 'h6';
@@ -54,7 +54,7 @@ const Typography = ({
         }
     };
 
-    const getStyle = () => {
+    const getStyle = (): React.CSSProperties => {
         const style = {
             '--typography-font-family': `var(--${fontType}-font-family)`,
             '--typography-font-size': `var(--${fontType}-font-size-${fontSize})`,
@@ -90,8 +90,9 @@ const Typography = ({
         return style as React.CSSProperties;
     };
 
+    // TODO: find a better way to pass a computed component to the `as` property
     return (
-        <STypography as={getComponent()} style={getStyle()}>
+        <STypography as={getComponent() as never} style={getStyle()}>
             {children}
         </STypography>
     );

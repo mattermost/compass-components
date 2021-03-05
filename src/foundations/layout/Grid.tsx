@@ -12,7 +12,7 @@ type PGrid = {
     children?: React.ReactNode;
 };
 
-const Grid = ({ row = false, component = 'div', children, ...rest }: PGrid) => {
+const Grid: React.FC<PGrid> = ({ row = false, component = 'div', children, ...rest }: PGrid): JSX.Element => {
     const getStyle = (): React.CSSProperties => {
         const style = {
             '--grid-flex': '1',
