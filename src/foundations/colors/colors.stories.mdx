@@ -182,7 +182,14 @@ export const yellowColors = createColorShades('#F5AB00');
 
 export const argTypes = {
     color: {
-        control: null,
+        table: {
+            disable: true,
+        },
+    },
+    name: {
+        table: {
+            disable: true,
+        },
     },
 };
 
@@ -226,6 +233,76 @@ export const Template = args => {
         args={{
             name: 'Blue',
             color: '#1C58D9',
+        }}
+    >
+        {Template.bind({})}
+    </Story>
+    <Story
+        name="Cyan"
+        argTypes={argTypes}
+        args={{
+            name: 'Cyan',
+            color: '#1592E0',
+        }}
+    >
+        {Template.bind({})}
+    </Story>
+    <Story
+        name="Indigo"
+        argTypes={argTypes}
+        args={{
+            name: 'Indigo',
+            color: '#1E325C',
+        }}
+    >
+        {Template.bind({})}
+    </Story>
+    <Story
+        name="Purple"
+        argTypes={argTypes}
+        args={{
+            name: 'Purple',
+            color: '#484FAD',
+        }}
+    >
+        {Template.bind({})}
+    </Story>
+    <Story
+        name="Teal"
+        argTypes={argTypes}
+        args={{
+            name: 'Teal',
+            color: '#1ADBDB',
+        }}
+    >
+        {Template.bind({})}
+    </Story>
+    <Story
+        name="Green"
+        argTypes={argTypes}
+        args={{
+            name: 'Green',
+            color: '#3DB887',
+        }}
+    >
+        {Template.bind({})}
+    </Story>
+    <Story
+        name="Red"
+        argTypes={argTypes}
+        args={{
+            name: 'Red',
+            color: '#C43133',
+        }}
+    >
+        {Template.bind({})}
+    </Story>
+    <Story
+        name="Orange"
+        argTypes={argTypes}
+        args={{
+            name: 'Orange',
+            color: '#E07315',
         }}
     >
         {Template.bind({})}
