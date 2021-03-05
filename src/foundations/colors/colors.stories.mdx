@@ -1,8 +1,6 @@
 import { Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
-import styled from 'styled-components';
 
 import GlobalStyle from '../../global-styles/globalStyles';
-import Shape from '../shape';
 import Grid from '../layout/Grid';
 
 import { createColorShades } from '../../utils';
@@ -10,50 +8,214 @@ import Swatch from './Swatch';
 
 <Meta title="Foundations/Palette" />
 
+# Color
+
+> Color is a fundamental building block of any interface and is an integral part of how a product feels.
+> Consistent application of color also helps users learn an interface.
+
+## Palettes
+
+### Primary Palette
+
+Our Primary Palette is comprised of blue, indigo, and neutral tones to bring trust and boldness to our brand. We use
+these colors in logical ways to guide the eye and highlight important information.
+
+<Grid row justify={'start'}>
+    <Swatch color={'#1C58D9'} colorName={'Blue'} shade={500} variant={'bottom'} />
+    <Swatch color={'#1E325C'} colorName={'Indigo'} shade={500} variant={'bottom'} />
+    <Swatch color={'#121317'} colorName={'Neutral'} shade={650} variant={'bottom'} />
+    <Swatch color={'#FFFFFF'} colorName={'Neutral'} shade={0} variant={'bottom'} />
+</Grid>
+
+### Secondary Palette
+
+Our secondary palette has a variety of colors to keep things fresh and interesting. We add warmer colors throughout to
+soften the experience and to impart confidence and optimism.
+
+<Grid row justify={'start'}>
+    <Swatch color={'#32A4EC'} colorName={'Cyan'} shade={400} variant={'bottom'} />
+    <Swatch color={'#6167BD'} colorName={'Purple'} shade={400} variant={'bottom'} />
+    <Swatch color={'#36E7E7'} colorName={'Teal'} shade={400} variant={'bottom'} />
+    <Swatch color={'#3DB887'} colorName={'Green'} shade={500} variant={'bottom'} />
+    <Swatch color={'#EC8832'} colorName={'Orange'} shade={400} variant={'bottom'} />
+    <Swatch color={'#FFBC1F'} colorName={'Yellow'} shade={400} variant={'bottom'} />
+    <Swatch color={'#D24B4E'} colorName={'Red'} shade={400} variant={'bottom'} />
+</Grid>
+
+## Semantic Colors
+
+Semantic colors help users identify status, see actions, locate help, and understand the next steps they need to take.
+The consistent use of color keeps the cognitive load low and makes for a unified and engaging user experience.
+
+> **NOTE:** These colors are shades of the corresponding Secondary Palette above.
+
+<Grid justify={'start'}>
+    <Swatch color={'#C43133'} colorName={'Alert: Red'} shade={500} />
+    <Swatch color={'#E07315'} colorName={'Warning: Orange'} shade={500} />
+    <Swatch color={'#339970'} colorName={'Success: Green'} shade={600} />
+    <Swatch color={'#3C64B9'} colorName={'Info: Purple'} shade={600} />
+</Grid>
+
+## Shades
+
+Each of the Primary and Secondary colors have shades ranging from 100-800 with the exception of Neutrals which have a
+wider range of shades. See below for details.
+
+### Neutral Colors
+
+Neutral colors have an increased level of variance to be used for text, elevations, and subtle backgrounds. We also use
+neutrals when we don't want to draw too much attention to a particular touchpoint or convey information such as a
+disabled option.
+
+export const neutralColors = {
+    0: 'hsl(0, 0%, 100%)',
+    50: 'hsl(240, 20%, 98%)',
+    75: 'hsl(220, 23%, 95%)',
+    100: 'hsl(225, 10%, 92%)',
+    150: 'hsl(220, 11%, 89%)',
+    200: 'hsl(225, 12%, 87%)',
+    300: 'hsl(226, 12%, 64%)',
+    350: 'hsl(226, 12%, 57%)',
+    400: 'hsl(226, 12%, 50%)',
+    500: 'hsl(226, 12%, 35%)',
+    550: 'hsl(225, 13%, 25%)',
+    600: 'hsl(228, 12%, 16%)',
+    650: 'hsl(228, 12%, 8%)',
+    700: 'hsl(210, 10%, 4%)',
+};
+
+<Grid justify={'start'}>
+    {Object.keys(neutralColors).map(shade => (
+        <Swatch key={`neutralColor_${shade}`} color={neutralColors[shade]} colorName={'Neutral'} shade={shade} />
+    ))}
+</Grid>
+
+### Blue
+
+export const blueColors = createColorShades('#1C58D9');
+
+<Grid justify={'start'}>
+    {Object.keys(blueColors).map(shade => (
+        <Swatch key={`blue_${shade}`} color={blueColors[shade]} colorName={'Blue'} shade={shade} />
+    ))}
+</Grid>
+
+### Cyan
+
+export const cyanColors = createColorShades('#1592E0');
+
+<Grid justify={'start'}>
+    {Object.keys(cyanColors).map(shade => (
+        <Swatch key={`blue_${shade}`} color={cyanColors[shade]} colorName={'Cyan'} shade={shade} />
+    ))}
+</Grid>
+
+### Indigo
+
+export const indigoColors = createColorShades('#1E325C');
+
+<Grid justify={'start'}>
+    {Object.keys(indigoColors).map(shade => (
+        <Swatch key={`blue_${shade}`} color={indigoColors[shade]} colorName={'Indigo'} shade={shade} />
+    ))}
+</Grid>
+
+### Purple
+
+export const purpleColors = createColorShades('#484FAD');
+
+<Grid justify={'start'}>
+    {Object.keys(purpleColors).map(shade => (
+        <Swatch key={`blue_${shade}`} color={purpleColors[shade]} colorName={'Purple'} shade={shade} />
+    ))}
+</Grid>
+
+### Teal
+
+export const tealColors = createColorShades('#1ADBDB');
+
+<Grid justify={'start'}>
+    {Object.keys(tealColors).map(shade => (
+        <Swatch key={`blue_${shade}`} color={tealColors[shade]} colorName={'Teal'} shade={shade} />
+    ))}
+</Grid>
+
+### Green
+
+export const greenColors = createColorShades('#3DB887');
+
+<Grid justify={'start'}>
+    {Object.keys(greenColors).map(shade => (
+        <Swatch key={`blue_${shade}`} color={greenColors[shade]} colorName={'Green'} shade={shade} />
+    ))}
+</Grid>
+
+### Red
+
+export const redColors = createColorShades('#C43133');
+
+<Grid justify={'start'}>
+    {Object.keys(redColors).map(shade => (
+        <Swatch key={`blue_${shade}`} color={redColors[shade]} colorName={'Red'} shade={shade} />
+    ))}
+</Grid>
+
+### Orange
+
+export const orangeColors = createColorShades('#E07315');
+
+<Grid justify={'start'}>
+    {Object.keys(orangeColors).map(shade => (
+        <Swatch key={`blue_${shade}`} color={orangeColors[shade]} colorName={'Orange'} shade={shade} />
+    ))}
+</Grid>
+
+### Yellow
+
+export const yellowColors = createColorShades('#F5AB00');
+
+<Grid justify={'start'}>
+    {Object.keys(yellowColors).map(shade => (
+        <Swatch key={`blue_${shade}`} color={yellowColors[shade]} colorName={'Yellow'} shade={shade} />
+    ))}
+</Grid>
+
 export const argTypes = {
-    colors: {
+    color: {
         control: null,
     },
 };
 
-export const defaultArgs = {
-    borderRadius: 'none',
-    elevation: 0,
-    component: 'div',
-    width: 128,
-    height: 64,
-};
-
 export const Template = args => {
-    const colors1 = createColorShades(args.color1);
-    const colors2 = args.color2 ? createColorShades(args.color2) : null;
+    const colors = createColorShades(args.color);
     return (
         <>
             <GlobalStyle />
             <Grid row>
                 <Grid>
-                    {colors1 &&
-                        Object.keys(colors1).map(shade => <Swatch key={`color1_${shade}`} color={colors1[shade]} />)}
-                </Grid>
-                <Grid>
-                    {colors2 &&
-                        Object.keys(colors2).map(shade => <Swatch key={`color1_${shade}`} color={colors2[shade]} />)}
+                    {colors &&
+                        Object.keys(colors).map(shade => (
+                            <Swatch
+                                key={`color_${shade}`}
+                                color={colors[shade]}
+                                colorName={args.name || ''}
+                                shade={shade}
+                            />
+                        ))}
                 </Grid>
             </Grid>
         </>
     );
 };
 
-<Canvas>
+<Canvas hidden>
     <Story
         name="Custom Color"
         argTypes={{
-            color1: { control: 'color' },
-            color2: { control: 'color' },
+            color: { control: 'color' },
         }}
         args={{
-            color1: '#1C58D9',
-            color2: '#7A5600',
+            color: '#14E7D1',
         }}
     >
         {Template.bind({})}
@@ -62,7 +224,8 @@ export const Template = args => {
         name="Blue"
         argTypes={argTypes}
         args={{
-            color1: '#1C58D9',
+            name: 'Blue',
+            color: '#1C58D9',
         }}
     >
         {Template.bind({})}
@@ -71,7 +234,8 @@ export const Template = args => {
         name="Yellow"
         argTypes={argTypes}
         args={{
-            color1: '#7A5600',
+            name: 'Yellow',
+            color: '#7A5600',
         }}
     >
         {Template.bind({})}

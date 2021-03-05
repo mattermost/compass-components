@@ -24,6 +24,29 @@ const shadeValues: Record<string, number> = {
 };
 
 /**
+ * The property name (100 | 200 | ... | 800) describes the swatch shade.
+ * Values stored for each shade are the luminance values for HSL
+ */
+const neutralShadeValues: Record<string, number> = {
+    0: 1,
+    50: 0.98,
+    75: 0.95,
+    100: 0.92,
+    150: 0.89,
+    200: 0.86,
+    250: 0.83,
+    300: 0.56,
+    350: 0.48,
+    400: 0.4,
+    450: 0.32,
+    500: 0.24,
+    550: 0.24,
+    600: 0.24,
+    650: 0.24,
+    700: 0.04,
+};
+
+/**
  * Returns a number whose value is limited to the given range.
  * @param {number} value The value to be clamped
  * @param {number} min The lower boundary of the output range
@@ -294,9 +317,10 @@ function createColorShades(color: string): Record<string, string> {
  * @returns {string} rgb color string
  */
 function convertToRgb(color: string): string {
-    const decomposedColor = decomposeColor(color);
+    const colorString = color.startsWith('hsl') ? hslToRgb(color) : color;
+    const decomposedColor = decomposeColor(colorString);
 
-    return decomposedColor.type.includes('rgb') ? color : recomposeColor(decomposedColor);
+    return recomposeColor(decomposedColor);
 }
 
 /**
