@@ -6,6 +6,7 @@ import { PShape } from './Shape';
 
 const SShape = styled.div<PShape>`
     display: flex;
+    flex-direction: column;
     width: var(--shape-width, auto);
     height: var(--shape-height, auto);
     background-color: var(--shape-background, white);

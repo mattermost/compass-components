@@ -3,16 +3,7 @@ import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
 import GlobalStyle from '../../global-styles/globalStyles';
 import Typography from './Typography';
 import Grid from '../layout/Grid';
-
-export const Template = args => {
-    const { text } = args;
-    return (
-        <>
-            <GlobalStyle />
-            <Typography {...args}>{text}</Typography>
-        </>
-    );
-};
+import Shape from '../shape';
 
 <Meta component={Typography} title="Foundations/Typography" />
 
@@ -24,8 +15,6 @@ export const Template = args => {
 
 > Text an integral part of any user interface, so it’s important that all typographic elements are designed
 > for legibility and consistency. This section defines the typographic style and usage guidelines.
-
-<ArgsTable of={Typography} />
 
 ## Typefaces
 
@@ -40,6 +29,8 @@ It was developed to have high performance as a web font and is considered to be 
 strongest attributes of the top sans serif fonts. Open Sans is available to be used freely in products or projects.
 
 **Open Sans is used for all body copy and headings 50-200. See below for more details.**
+
+<ArgsTable of={Typography} />
 
 ## Type Scale
 
@@ -210,6 +201,73 @@ font-family: Metropolis, sans-serif;
 font-family: “Open Sans”, sans-serif;
 ```
 
+export const Template = args => {
+    const { text } = args;
+    return (
+        <>
+            <GlobalStyle />
+            <Typography {...args}>{text}</Typography>
+        </>
+    );
+};
+
+export const ParagraphTemplate = args => (
+    <>
+        <GlobalStyle />
+        <Shape width={400}>
+            <Typography
+                size={args.headingSize}
+                gutter={args.headingGutter}
+                variant={args.headingVariant}
+                useRegular={args.headingUseRegular}
+                color={args.headingColor}
+            >
+                {args.heading}
+            </Typography>
+            <Typography
+                size={args.subtitleSize}
+                gutter={args.subtitleGutter}
+                variant={args.subtitleVariant}
+                color={args.subtitleColor}
+            >
+                {args.subtitle}
+            </Typography>
+            <Typography
+                size={args.paragraphSize}
+                gutter={args.paragraphGutter}
+                variant={args.paragraphVariant}
+                color={args.paragraphColor}
+            >
+                {args.paragraph}
+            </Typography>
+            <Typography
+                size={args.subtitleSize}
+                gutter={args.subtitleGutter}
+                variant={args.subtitleVariant}
+                color={args.subtitleColor}
+            >
+                {args.subtitle}
+            </Typography>
+            <Typography
+                size={args.paragraphSize}
+                gutter={args.paragraphGutter}
+                variant={args.paragraphVariant}
+                color={args.paragraphColor}
+            >
+                {args.paragraph}
+            </Typography>
+            <Typography
+                size={args.paragraphSize}
+                gutter={args.paragraphGutter}
+                variant={args.paragraphVariant}
+                color={args.paragraphColor}
+            >
+                {args.paragraph}
+            </Typography>
+        </Shape>
+    </>
+);
+
 <Canvas hidden>
     <Story
         name="Headings"
@@ -234,5 +292,71 @@ font-family: “Open Sans”, sans-serif;
         }}
     >
         {Template.bind({})}
+    </Story>
+    <Story
+        name="Text-Section"
+        argTypes={{
+            heading: {
+                table: {
+                    disable: true,
+                },
+            },
+            headingSize: {
+                control: { type: 'select', options: [25, 50, 75, 100, 200, 300, 400, 500, 600, 700, 1000] },
+            },
+            headingVariant: { control: { type: 'select', options: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'] } },
+            headingGutter: { control: { type: 'radio', options: ['none', 'both', 'top', 'bottom'] } },
+            headingColor: { control: { type: 'radio', options: ['primary', 'secondary'] } },
+            subtitle: {
+                table: {
+                    disable: true,
+                },
+            },
+            subtitleSize: {
+                control: { type: 'select', options: [25, 50, 75, 100, 200, 300, 400, 500, 600, 700, 1000] },
+            },
+            subtitleVariant: {
+                table: {
+                    disable: true,
+                },
+            },
+            subtitleGutter: { control: { type: 'radio', options: ['none', 'both', 'top', 'bottom'] } },
+            subtitleColor: { control: { type: 'radio', options: ['primary', 'secondary'] } },
+            paragraph: {
+                table: {
+                    disable: true,
+                },
+            },
+            paragraphSize: { control: { type: 'select', options: [25, 50, 75, 100, 200, 300] } },
+            paragraphVariant: {
+                table: {
+                    disable: true,
+                },
+            },
+            paragraphGutter: { control: { type: 'radio', options: ['none', 'both', 'top', 'bottom'] } },
+            paragraphColor: { control: { type: 'radio', options: ['primary', 'secondary'] } },
+        }}
+        args={{
+            heading: 'Lorem ipsum dolor sit amet',
+            headingSize: 500,
+            headingVariant: 'h2',
+            headingUseRegular: false,
+            headingGutter: 'both',
+            headingColor: 'primary',
+            subtitle:
+                'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.',
+            subtitleSize: 300,
+            subtitleVariant: 'subtitle',
+            subtitleGutter: 'both',
+            subtitleColor: 'primary',
+            paragraph:
+                'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.',
+            paragraphSize: 100,
+            paragraphVariant: 'body',
+            paragraphGutter: 'both',
+            paragraphColor: 'primary',
+        }}
+    >
+        {ParagraphTemplate.bind({})}
     </Story>
 </Canvas>
