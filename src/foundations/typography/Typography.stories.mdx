@@ -296,43 +296,29 @@ export const ParagraphTemplate = args => (
     <Story
         name="Text-Section"
         argTypes={{
-            heading: {
-                table: {
-                    disable: true,
-                },
-            },
+            heading: { table: { disable: true } },
             headingSize: {
-                control: { type: 'select', options: [25, 50, 75, 100, 200, 300, 400, 500, 600, 700, 1000] },
+                control: {
+                    type: 'select',
+                    options: [25, 50, 75, 100, 200, 300, 400, 500, 600, 700, 1000],
+                },
             },
             headingVariant: { control: { type: 'select', options: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'] } },
             headingGutter: { control: { type: 'radio', options: ['none', 'both', 'top', 'bottom'] } },
             headingColor: { control: { type: 'radio', options: ['primary', 'secondary'] } },
-            subtitle: {
-                table: {
-                    disable: true,
-                },
-            },
+            subtitle: { table: { disable: true } },
             subtitleSize: {
-                control: { type: 'select', options: [25, 50, 75, 100, 200, 300, 400, 500, 600, 700, 1000] },
-            },
-            subtitleVariant: {
-                table: {
-                    disable: true,
+                control: {
+                    type: 'select',
+                    options: [25, 50, 75, 100, 200, 300, 400, 500, 600, 700, 1000],
                 },
             },
+            subtitleVariant: { table: { disable: true } },
             subtitleGutter: { control: { type: 'radio', options: ['none', 'both', 'top', 'bottom'] } },
             subtitleColor: { control: { type: 'radio', options: ['primary', 'secondary'] } },
-            paragraph: {
-                table: {
-                    disable: true,
-                },
-            },
+            paragraph: { table: { disable: true } },
             paragraphSize: { control: { type: 'select', options: [25, 50, 75, 100, 200, 300] } },
-            paragraphVariant: {
-                table: {
-                    disable: true,
-                },
-            },
+            paragraphVariant: { table: { disable: true } },
             paragraphGutter: { control: { type: 'radio', options: ['none', 'both', 'top', 'bottom'] } },
             paragraphColor: { control: { type: 'radio', options: ['primary', 'secondary'] } },
         }}
