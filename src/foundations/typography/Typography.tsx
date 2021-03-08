@@ -1,7 +1,8 @@
 import React from 'react';
 
-import TTypographyVariant from './Typography.types';
+import { TTypographyVariant } from './Typography.types';
 import STypography from './Typography.styles';
+import { FONT_SIZE_MAPPING, HEADING_VARIANTS } from './Typography.constants';
 
 type PTypography = {
     variant: TTypographyVariant;
@@ -12,21 +13,6 @@ type PTypography = {
     children?: React.ReactNode | React.ReactNode[];
 };
 
-const headingTypes: Record<string, number> = {
-    h1: 700,
-    h2: 600,
-    h3: 500,
-    h4: 500,
-    h5: 500,
-    h6: 400,
-    subtitle: 300,
-};
-
-const fontSizeMapping: Record<string, number> = {
-    ...headingTypes,
-    body: 300,
-};
-
 const Typography: React.FC<PTypography> = ({
     children,
     variant = 'body',
@@ -35,9 +21,9 @@ const Typography: React.FC<PTypography> = ({
     useRegular = false,
     gutter = 'both',
 }: PTypography): JSX.Element => {
-    const isHeading = Object.keys(headingTypes).includes(variant);
+    const isHeading = Object.keys(HEADING_VARIANTS).includes(variant);
     const fontType = isHeading && size >= 300 ? 'heading' : 'body';
-    const fontSize = !size || (!isHeading && size > 300) ? fontSizeMapping[variant] : size;
+    const fontSize = !size || (!isHeading && size > 300) ? FONT_SIZE_MAPPING[variant] : size;
     const fontWeight = !useRegular && isHeading ? 600 : 400;
 
     const getComponent = (): string => {
