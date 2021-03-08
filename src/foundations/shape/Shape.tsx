@@ -2,7 +2,7 @@ import React from 'react';
 
 import { isValidColor } from '../../utils';
 
-import SShape from './Shape.styles';
+import StyledShape, { PStyledShape } from './Shape.styles';
 import { TBorderRadiusSizes, TElevationLevel } from './Shape.types';
 
 type PShape = {
@@ -44,48 +44,48 @@ const Shape: React.FC<PShape> = ({
     padding = 0,
     children,
 }: PShape): JSX.Element => {
-    const getStyle = (): React.CSSProperties => {
-        const style = {
-            '--shape-width': 'auto',
-            '--shape-height': 'auto',
-            '--shape-padding': '0',
-            '--shape-background': '#FFF',
-        };
+    const styledShapeProperties: PStyledShape = {
+        border,
+        borderRadius,
+        elevation,
+        scWidth: 'auto',
+        scHeight: 'auto',
+        scPadding: 'initial',
+        scBackground: 'white',
+    };
 
+    if (borderRadius === 'circle' && width) {
+        styledShapeProperties.scWidth = typeof width === 'number' ? `${width}px` : width;
+        styledShapeProperties.scHeight = typeof width === 'number' ? `${width}px` : width;
+    } else {
         if (width) {
-            style['--shape-width'] = typeof width === 'number' ? `${width}px` : width;
+            styledShapeProperties.scWidth = typeof width === 'number' ? `${width}px` : width;
         }
 
         if (height) {
-            style['--shape-height'] = typeof height === 'number' ? `${height}px` : height;
+            styledShapeProperties.scHeight = typeof height === 'number' ? `${height}px` : height;
         }
+    }
 
-        if (borderRadius === 'circle') {
-            style['--shape-height'] = style['--shape-width'];
+    if (padding) {
+        if (Array.isArray(padding)) {
+            styledShapeProperties.scPadding = padding
+                .slice(0, 4)
+                .map(s => `${s}px`)
+                .join(' ');
+        } else {
+            styledShapeProperties.scPadding = `${padding}px`;
         }
+    }
 
-        if (padding) {
-            if (Array.isArray(padding)) {
-                style['--shape-padding'] = padding
-                    .slice(0, 4)
-                    .map(s => `${s}px`)
-                    .join(' ');
-            } else {
-                style['--shape-padding'] = `${padding}px`;
-            }
-        }
-
-        if (background && isValidColor(background)) {
-            style['--shape-background'] = background;
-        }
-
-        return style as React.CSSProperties;
-    };
+    if (background && isValidColor(background)) {
+        styledShapeProperties.scBackground = background;
+    }
 
     return (
-        <SShape as={component} borderRadius={borderRadius} elevation={elevation} border={border} style={getStyle()}>
+        <StyledShape as={component} {...styledShapeProperties}>
             {children}
-        </SShape>
+        </StyledShape>
     );
 };
 

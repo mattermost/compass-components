@@ -3,7 +3,7 @@ import { Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
 import GlobalStyle from '../../global-styles/globalStyles';
 import Grid from '../layout/Grid';
 
-import { createColorShades } from '../../utils';
+import { createColorShades, isValidColor } from '../../utils';
 import Swatch from './Swatch';
 import neutralColors from './default-theme/neutral';
 import blueColors from './default-theme/blue';
@@ -169,7 +169,10 @@ export const argTypes = {
 };
 
 export const Template = args => {
-    const colors = createColorShades(args.color);
+    let colors = args.color;
+    if (typeof args.color === 'string') {
+        colors = createColorShades(args.color);
+    }
     return (
         <>
             <GlobalStyle />
@@ -207,7 +210,7 @@ export const Template = args => {
         argTypes={argTypes}
         args={{
             name: 'Blue',
-            color: '#1C58D9',
+            color: blueColors,
         }}
     >
         {Template.bind({})}
@@ -217,7 +220,7 @@ export const Template = args => {
         argTypes={argTypes}
         args={{
             name: 'Cyan',
-            color: '#1592E0',
+            color: cyanColors,
         }}
     >
         {Template.bind({})}
@@ -227,7 +230,7 @@ export const Template = args => {
         argTypes={argTypes}
         args={{
             name: 'Indigo',
-            color: '#1E325C',
+            color: indigoColors,
         }}
     >
         {Template.bind({})}
@@ -237,7 +240,7 @@ export const Template = args => {
         argTypes={argTypes}
         args={{
             name: 'Purple',
-            color: '#484FAD',
+            color: purpleColors,
         }}
     >
         {Template.bind({})}
@@ -247,7 +250,7 @@ export const Template = args => {
         argTypes={argTypes}
         args={{
             name: 'Teal',
-            color: '#1ADBDB',
+            color: tealColors,
         }}
     >
         {Template.bind({})}
@@ -257,7 +260,7 @@ export const Template = args => {
         argTypes={argTypes}
         args={{
             name: 'Green',
-            color: '#3DB887',
+            color: greenColors,
         }}
     >
         {Template.bind({})}
@@ -267,7 +270,7 @@ export const Template = args => {
         argTypes={argTypes}
         args={{
             name: 'Red',
-            color: '#C43133',
+            color: redColors,
         }}
     >
         {Template.bind({})}
@@ -277,7 +280,7 @@ export const Template = args => {
         argTypes={argTypes}
         args={{
             name: 'Orange',
-            color: '#E07315',
+            color: orangeColors,
         }}
     >
         {Template.bind({})}
@@ -287,7 +290,7 @@ export const Template = args => {
         argTypes={argTypes}
         args={{
             name: 'Yellow',
-            color: '#7A5600',
+            color: yellowColors,
         }}
     >
         {Template.bind({})}
