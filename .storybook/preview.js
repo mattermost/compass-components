@@ -13,4 +13,11 @@ addParameters({
     actions: { argTypesRegex: '^on[A-Z].*' },
     layout: 'centered',
     controls: { hideNoControlsWarning: true },
+    options: {
+        storySort: (a, b) => {
+            if (a[0].toLocaleLowerCase().includes('overview')) return -1;
+            if (b[0].toLocaleLowerCase().includes('overview')) return 1;
+            return 0;
+        },
+    },
 });
