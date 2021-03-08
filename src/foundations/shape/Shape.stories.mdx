@@ -16,6 +16,7 @@ export const defaultArgs = {
     border: true,
     borderRadius: 4,
     elevation: 1,
+    elevationOnHover: 2,
     component: 'section',
     width: 150,
     height: 50,
@@ -30,6 +31,12 @@ export const argTypes = {
         },
     },
     elevation: {
+        control: {
+            type: 'select',
+            options: [0, 1, 2, 3, 4, 5, 6],
+        },
+    },
+    elevationOnHover: {
         control: {
             type: 'select',
             options: [0, 1, 2, 3, 4, 5, 6],

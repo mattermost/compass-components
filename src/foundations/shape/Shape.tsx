@@ -17,6 +17,8 @@ type PShape = {
      * In total, there are 6 Elevation levels, not including the base level 0.
      * */
     elevation?: TElevationLevel;
+    /** If a hover-state should require a higher (or lower) elevation */
+    elevationOnHover: TElevationLevel;
     /** Which component should be used for rendering the Shape */
     component?: 'div' | 'span' | 'section' | 'aside';
     /** set a custom width */
@@ -30,7 +32,7 @@ type PShape = {
     padding?: number | number[];
     /** set a custom background color */
     background?: string;
-    children?: React.ReactNode;
+    children?: React.ReactNode | React.ReactNode[];
 };
 
 const Shape: React.FC<PShape> = ({
@@ -38,6 +40,7 @@ const Shape: React.FC<PShape> = ({
     borderRadius = 0,
     component = 'div',
     elevation = 0,
+    elevationOnHover = elevation,
     background = '#FFF',
     width = 'auto',
     height = 'auto',
@@ -48,38 +51,39 @@ const Shape: React.FC<PShape> = ({
         border,
         borderRadius,
         elevation,
-        scWidth: 'auto',
-        scHeight: 'auto',
-        scPadding: 'initial',
-        scBackground: 'white',
+        elevationOnHover,
+        width: 'auto',
+        height: 'auto',
+        padding: 'initial',
+        background: 'white',
     };
 
     if (borderRadius === 'circle' && width) {
-        styledShapeProperties.scWidth = typeof width === 'number' ? `${width}px` : width;
-        styledShapeProperties.scHeight = typeof width === 'number' ? `${width}px` : width;
+        styledShapeProperties.width = typeof width === 'number' ? `${width}px` : width;
+        styledShapeProperties.height = typeof width === 'number' ? `${width}px` : width;
     } else {
         if (width) {
-            styledShapeProperties.scWidth = typeof width === 'number' ? `${width}px` : width;
+            styledShapeProperties.width = typeof width === 'number' ? `${width}px` : width;
         }
 
         if (height) {
-            styledShapeProperties.scHeight = typeof height === 'number' ? `${height}px` : height;
+            styledShapeProperties.height = typeof height === 'number' ? `${height}px` : height;
         }
     }
 
     if (padding) {
         if (Array.isArray(padding)) {
-            styledShapeProperties.scPadding = padding
+            styledShapeProperties.padding = padding
                 .slice(0, 4)
                 .map(s => `${s}px`)
                 .join(' ');
         } else {
-            styledShapeProperties.scPadding = `${padding}px`;
+            styledShapeProperties.padding = `${padding}px`;
         }
     }
 
     if (background && isValidColor(background)) {
-        styledShapeProperties.scBackground = background;
+        styledShapeProperties.background = background;
     }
 
     return (
