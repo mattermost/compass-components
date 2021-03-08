@@ -7,7 +7,7 @@ type PGrid = {
     flex?: number;
     component?: 'div' | 'span' | 'section' | 'aside';
     alignment?: 'start' | 'center' | 'end' | 'stretch';
-    justify?: 'start' | 'center' | 'end' | 'stretch';
+    justify?: 'start' | 'center' | 'end' | 'stretch' | 'space-between' | 'space-evenly';
     padding?: number | number[];
     children?: React.ReactNode;
 };

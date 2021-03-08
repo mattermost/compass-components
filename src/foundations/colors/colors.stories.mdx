@@ -195,12 +195,11 @@ export const Template = args => {
 
 <Canvas hidden>
     <Story
-        name="Custom Color"
-        argTypes={{
-            color: { control: 'color' },
-        }}
+        name="Neutral"
+        argTypes={argTypes}
         args={{
-            color: '#14E7D1',
+            name: 'Neutral',
+            color: neutralColors,
         }}
     >
         {Template.bind({})}
@@ -291,6 +290,17 @@ export const Template = args => {
         args={{
             name: 'Yellow',
             color: yellowColors,
+        }}
+    >
+        {Template.bind({})}
+    </Story>
+    <Story
+        name="Custom Color"
+        argTypes={{
+            color: { control: 'color' },
+        }}
+        args={{
+            color: '#14E7D1',
         }}
     >
         {Template.bind({})}
