@@ -20,4 +20,11 @@ addParameters({
             return 0;
         },
     },
+    backgrounds: {
+        grid: {
+            cellSize: 4,
+            opacity: 0.2,
+            cellAmount: 16,
+        },
+    },
 });

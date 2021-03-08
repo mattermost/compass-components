@@ -21,7 +21,7 @@ const Typography: React.FC<PTypography> = ({
     useRegular = false,
     gutter = 'both',
 }: PTypography): JSX.Element => {
-    const isHeading = Object.keys(HEADING_VARIANTS).includes(variant);
+    const isHeading = HEADING_VARIANTS.includes(variant);
     const fontType = isHeading && size >= 300 ? 'heading' : 'body';
     const fontSize = !size || (!isHeading && size > 300) ? FONT_SIZE_MAPPING[variant] : size;
     const fontWeight = !useRegular && isHeading ? 600 : 400;

@@ -1,6 +1,6 @@
-import { TTypographyHeadingVariant, TTypographySizes } from './Typography.types';
+import { TTypographySizes } from './Typography.types';
 
-const HEADING_VARIANTS: TTypographyHeadingVariant[] = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'subtitle'];
+const HEADING_VARIANTS: string[] = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'subtitle'];
 
 const FONT_SIZE_MAPPING: Record<string, TTypographySizes> = {
     h1: 700,

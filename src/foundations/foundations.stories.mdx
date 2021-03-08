@@ -1,3 +1,91 @@
-import { Meta } from '@storybook/addon-docs/blocks';
+import { Description, Meta, Subtitle, Title } from '@storybook/addon-docs/blocks';
+
+import colorStoryParams from './colors/colors.stories.mdx';
+import typographyStoryParams from './typography/Typography.stories.mdx';
+import shapeStoryParams from './shape/Shape.stories.mdx';
+
+import { Utils } from '../utils';
+import Shape from './shape';
+import Typography from './typography';
+import Grid from './layout/Grid';
+import GlobalStyle from '../../lib/global-styles/globalStyles';
 
 <Meta title="Foundations/Overview" />
+
+<GlobalStyle />
+
+<Title>Foundations</Title>
+<Subtitle>
+    Foundations are the most basic building blocks of the system. <br />
+    Every interface element uses these foundations in some form or another.
+</Subtitle>
+
+![](https://zeroheight-user-uploads.s3-eu-west-1.amazonaws.com/images/nIUhFigrgzIIdDthoYyoQA.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJXTVUC4XZENV3LPQ%2F20210308%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20210308T103216Z&X-Amz-Expires=86400&X-Amz-SignedHeaders=host&X-Amz-Signature=5d769bf7f42437dc9dddd215a8e8e685a1bbc6b520492396f4403fa121f7b1c8)
+
+<Description>
+    Think of foundations as a base layer of style definition for the system. Foundations include things like Color,
+    Typography, and Iconography.
+</Description>
+
+<Grid row>
+    <Grid padding={[12, 12, 12, 0]}>
+        <a href={Utils.getStoryDocumentationUrl(colorStoryParams)} target={'_self'}>
+            <Shape border borderRadius={8} elevation={2}>
+                <img src="https://zeroheight-user-uploads.s3-eu-west-1.amazonaws.com/images/Rp1KUV8Ff8rfmn-9pwo1_Q.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJXTVUC4XZENV3LPQ%2F20210308%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20210308T133956Z&X-Amz-Expires=86400&X-Amz-SignedHeaders=host&X-Amz-Signature=2a1191ef822d6633f64bef1f34fc79d1705055698a40025241b8df4896020f7d" />
+                <Grid padding={[8, 16]}>
+                    <Typography variant={'h3'} size={600}>
+                        Color
+                    </Typography>
+                    <Typography variant={'body'} size={300}>
+                        Discover the various palettes and shades.
+                    </Typography>
+                </Grid>
+            </Shape>
+        </a>
+    </Grid>
+    <Grid padding={12}>
+        <a href={Utils.getStoryDocumentationUrl(typographyStoryParams)} target={'_self'}>
+            <Shape border borderRadius={8} elevation={2}>
+                <img src="https://zeroheight-user-uploads.s3-eu-west-1.amazonaws.com/images/gMHyA2LbezsHcSytrmQHEA.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJXTVUC4XZENV3LPQ%2F20210308%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20210308T135028Z&X-Amz-Expires=86400&X-Amz-SignedHeaders=host&X-Amz-Signature=a0796639cf799a7abeb27fc764d42948c8d4b719b521f5f40d6bf209d63c13fe" />
+                <Grid padding={[8, 16]}>
+                    <Typography variant={'h3'} size={600}>
+                        Typography
+                    </Typography>
+                    <Typography variant={'body'} size={300}>
+                        Guidelines on typefaces, scales, weights and more.
+                    </Typography>
+                </Grid>
+            </Shape>
+        </a>
+    </Grid>
+    <Grid padding={12}>
+        <a href={Utils.getStoryDocumentationUrl(shapeStoryParams)} target={'_self'}>
+            <Shape border borderRadius={8} elevation={2}>
+                <img src="https://zeroheight-user-uploads.s3-eu-west-1.amazonaws.com/images/714uqmHoOkEZhuShXlw0eg.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJXTVUC4XZENV3LPQ%2F20210308%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20210308T135054Z&X-Amz-Expires=86400&X-Amz-SignedHeaders=host&X-Amz-Signature=0e171e7695d450cad3c146ed3fae1768edd546ecf4ce378f7b068abfa39cbac0" />
+                <Grid padding={[8, 16]}>
+                    <Typography variant={'h3'} size={600}>
+                        Shape
+                    </Typography>
+                    <Typography variant={'body'} size={300}>
+                        How shape is used in Mattermost interfaces
+                    </Typography>
+                </Grid>
+            </Shape>
+        </a>
+    </Grid>
+    <Grid padding={[12, 0, 12, 12]}>
+        <a href={Utils.getStoryDocumentationUrl(colorStoryParams)} target={'_self'}>
+            <Shape border borderRadius={8} elevation={2}>
+                <img src="https://zeroheight-user-uploads.s3-eu-west-1.amazonaws.com/images/CA7ZCnFnWLXvcMHlX0gb7w.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJXTVUC4XZENV3LPQ%2F20210308%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20210308T135140Z&X-Amz-Expires=86400&X-Amz-SignedHeaders=host&X-Amz-Signature=f5d0e490fbd504cfab92e1aa59fbc64f34dc154e4c5a94ca56402bc89bbdd156" />
+                <Grid padding={[8, 16]}>
+                    <Typography variant={'h3'} size={600}>
+                        Iconography
+                    </Typography>
+                    <Typography variant={'body'} size={300}>
+                        Simple visual aids used to guide our users
+                    </Typography>
+                </Grid>
+            </Shape>
+        </a>
+    </Grid>
+</Grid>
