@@ -55,7 +55,7 @@ const Shape: React.FC<PShape> = ({
         width: 'auto',
         height: 'auto',
         padding: 'initial',
-        background: 'white',
+        background: 'none',
     };
 
     if (borderRadius === 'circle' && width) {
