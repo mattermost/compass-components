@@ -1,4 +1,6 @@
-import { addParameters } from '@storybook/react';
+import { addParameters, addDecorator } from '@storybook/react';
+import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport';
+import { withA11y } from '@storybook/addon-a11y';
 
 addParameters({
     dependencies: {
@@ -13,4 +15,9 @@ addParameters({
     actions: { argTypesRegex: '^on[A-Z].*' },
     layout: 'centered',
     controls: { hideNoControlsWarning: true },
+    viewport: {
+        viewports: INITIAL_VIEWPORTS,
+    },
 });
+
+addDecorator(withA11y);
