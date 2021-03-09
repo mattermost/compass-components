@@ -236,15 +236,36 @@ function recomposeColor(color: TColorDefinition): string {
  * @param {string} color.type - One of: 'rgb', 'rgba', 'hsl', 'hsla'
  * @param {array} color.values - [n,n,n] or [n,n,n,n]
  * @param {number} shade - 100 | 200 | ... | 800
+ * @param {boolean} darker - some colors are best converted to darker shades (starting luminance -16%)
  * @returns {string} A CSS color string
  */
-function recomposeColorWithShade(color: TColorDefinition, shade: string): string {
+function recomposeColorWithShade(color: TColorDefinition, shade: string, darker: boolean): string {
     const { values, type } = color;
     const hslValues: string[] = [];
+    const shadeInt = Number.parseInt(shade, 10);
+
+    let luminanceCorrection = 0;
+
+    switch (true) {
+        case darker && shadeInt <= 100:
+            luminanceCorrection -= 0.16;
+            break;
+        case darker && shadeInt > 100 && shadeInt <= 600:
+            luminanceCorrection -= 0.24;
+            break;
+        case darker && shadeInt > 600 && shadeInt <= 700:
+            luminanceCorrection -= 0.2;
+            break;
+        case darker && shadeInt > 700:
+            luminanceCorrection -= 0.16;
+            break;
+        default:
+            break;
+    }
 
     hslValues[0] = `${values[0]}`;
     hslValues[1] = `${values[1]}%`;
-    hslValues[2] = `${shadeValues[shade] * 100}%`;
+    hslValues[2] = `${(shadeValues[shade] + luminanceCorrection) * 100}%`;
 
     const hslString = `${type}(${hslValues.join(', ')})`;
 
@@ -272,7 +293,7 @@ function alpha(color: string, value: number): string {
     return recomposeColor(decomposedColor);
 }
 
-function createColorShades(color: string): Record<string, string> {
+function createColorShades(color: string, darker = false): Record<string, string> {
     const decomposedColor = decomposeColor(color);
     const colorShadeMap: Record<string, string> = {};
 
@@ -282,7 +303,7 @@ function createColorShades(color: string): Record<string, string> {
     }
 
     for (const key of Object.keys(shadeValues)) {
-        colorShadeMap[key] = recomposeColorWithShade(decomposedColor, key);
+        colorShadeMap[key] = recomposeColorWithShade(decomposedColor, key, darker);
     }
 
     return colorShadeMap;

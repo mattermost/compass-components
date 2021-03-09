@@ -1,4 +1,4 @@
-import { ArgsTable, Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
+import { ArgsTable, Meta, Story, Canvas, Title, Subtitle } from '@storybook/addon-docs/blocks';
 import { DependenciesTable } from 'storybook-addon-deps/blocks';
 
 import GlobalStyle from '../../global-styles/globalStyles';
@@ -16,6 +16,7 @@ export const defaultArgs = {
     border: true,
     borderRadius: 4,
     elevation: 1,
+    elevationOnHover: 2,
     component: 'section',
     width: 150,
     height: 50,
@@ -35,6 +36,12 @@ export const argTypes = {
             options: [0, 1, 2, 3, 4, 5, 6],
         },
     },
+    elevationOnHover: {
+        control: {
+            type: 'select',
+            options: [0, 1, 2, 3, 4, 5, 6],
+        },
+    },
     background: {
         control: 'color',
     },
@@ -44,12 +51,12 @@ export const argTypes = {
 
 <GlobalStyle />
 
-# Shape
+<Title>Shape</Title>
 
----
-
-> Shape is another important aspect of the visual style.
-> When shapes are applied consistently, a sense of familiarity, trust, and reliability is reinforced.
+<Subtitle>
+    Shape is another important aspect of the visual style. When shapes are applied consistently, a sense of familiarity,
+    trust, and reliability is reinforced.
+</Subtitle>
 
 ### Core Shapes
 

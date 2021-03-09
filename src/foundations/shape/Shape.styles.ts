@@ -2,18 +2,24 @@ import styled from 'styled-components';
 
 import { borderRadius, elevation } from '../../global-styles/globalStyles';
 
-import { PShape } from './Shape';
+import { PStyledShape } from './Shape.props';
 
-const SShape = styled.div<PShape>`
+const StyledShape = styled.div<PStyledShape>`
     display: flex;
     flex-direction: column;
-    width: var(--shape-width, auto);
-    height: var(--shape-height, auto);
-    background-color: var(--shape-background, white);
-    padding: var(--shape-padding, calc(var(--gutter-default, 0) * 3));
+    width: ${(props): string => props.width};
+    height: ${(props): string => props.height};
+    background-color: ${(props): string => props.background};
+    padding: ${(props): string => props.padding};
     border-radius: ${(props): string => borderRadius(props.borderRadius)};
     box-shadow: ${(props): string => elevation(props.elevation)};
+    z-index: ${(props): number => props.elevation || 0};
     border: ${(props): string => (props.border ? 'var(--border-default)' : 'none')};
+    transition: box-shadow 500ms ease-in-out;
+
+    &:hover {
+        box-shadow: ${(props): string => elevation(props.elevationOnHover)};
+    }
 `;
 
-export default SShape;
+export default StyledShape;

@@ -1,31 +1,8 @@
 import React from 'react';
 
-import TTypographyVariant from './Typography.types';
-import STypography from './Typography.styles';
-
-type PTypography = {
-    variant: TTypographyVariant;
-    color?: 'primary' | 'secondary';
-    size?: number;
-    useRegular?: boolean;
-    gutter?: 'none' | 'top' | 'bottom' | 'both';
-    children?: React.ReactNode | React.ReactNode[];
-};
-
-const headingTypes: Record<string, number> = {
-    h1: 700,
-    h2: 600,
-    h3: 500,
-    h4: 500,
-    h5: 500,
-    h6: 400,
-    subtitle: 300,
-};
-
-const fontSizeMapping: Record<string, number> = {
-    ...headingTypes,
-    body: 300,
-};
+import StyledTypography from './Typography.styles';
+import { PStyledTypography, PTypography } from './Typography.props';
+import { FONT_SIZE_MAPPING, HEADING_VARIANTS } from './Typography.constants';
 
 const Typography: React.FC<PTypography> = ({
     children,
@@ -35,9 +12,9 @@ const Typography: React.FC<PTypography> = ({
     useRegular = false,
     gutter = 'both',
 }: PTypography): JSX.Element => {
-    const isHeading = Object.keys(headingTypes).includes(variant);
+    const isHeading = HEADING_VARIANTS.includes(variant);
     const fontType = isHeading && size >= 300 ? 'heading' : 'body';
-    const fontSize = !size || (!isHeading && size > 300) ? fontSizeMapping[variant] : size;
+    const fontSize = !size || (!isHeading && size > 300) ? FONT_SIZE_MAPPING[variant] : size;
     const fontWeight = !useRegular && isHeading ? 600 : 400;
 
     const getComponent = (): string => {
@@ -54,50 +31,20 @@ const Typography: React.FC<PTypography> = ({
         }
     };
 
-    const getStyle = (): React.CSSProperties => {
-        const style = {
-            '--typography-font-family': `var(--${fontType}-font-family)`,
-            '--typography-font-size': `var(--${fontType}-font-size-${fontSize})`,
-            '--typography-font-weight': fontWeight,
-            '--typography-line-height': `var(--${fontType}-line-height-${fontSize})`,
-            '--typography-color': `var(--${color}-text-color)`,
-            '--typography-margin': `var(--${fontType}-margin-top-${fontSize}) 0 var(--${fontType}-margin-bottom-${fontSize})`,
-        };
-
-        if (isHeading && size >= 300) {
-            style['--typography-font-family'] = 'var(--heading-font-family)';
-        }
-
-        if (gutter) {
-            switch (true) {
-                case gutter === 'none':
-                    style['--typography-margin'] = '0';
-                    break;
-                case gutter === 'top':
-                    style['--typography-margin'] = `var(--${fontType}-margin-top-${fontSize}) 0 0`;
-                    break;
-                case gutter === 'bottom':
-                    style['--typography-margin'] = `0 0 var(--${fontType}-margin-bottom-${fontSize})`;
-                    break;
-                case gutter === 'both':
-                default:
-                    style[
-                        '--typography-margin'
-                    ] = `var(--${fontType}-margin-top-${fontSize}) 0 var(--${fontType}-margin-bottom-${fontSize})`;
-            }
-        }
-
-        return style as React.CSSProperties;
+    const styledTypographyProperties: PStyledTypography = {
+        color,
+        gutter,
+        weight: fontWeight,
+        size: fontSize,
+        type: fontType,
     };
 
     // TODO: find a better way to pass a computed component to the `as` property
     return (
-        <STypography as={getComponent() as never} style={getStyle()}>
+        <StyledTypography as={getComponent() as never} {...styledTypographyProperties}>
             {children}
-        </STypography>
+        </StyledTypography>
     );
 };
-
-export type { PTypography };
 
 export default Typography;

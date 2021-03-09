@@ -17,6 +17,19 @@ addParameters({
     controls: { hideNoControlsWarning: true },
     viewport: {
         viewports: INITIAL_VIEWPORTS,
+    options: {
+        storySort: (a, b) => {
+            if (a[0].toLocaleLowerCase().includes('overview')) return -1;
+            if (b[0].toLocaleLowerCase().includes('overview')) return 1;
+            return 0;
+        },
+    },
+    backgrounds: {
+        grid: {
+            cellSize: 4,
+            opacity: 0.2,
+            cellAmount: 16,
+        },
     },
 });
 
