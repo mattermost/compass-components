@@ -1,8 +1,7 @@
-import Typography, { PTypography } from './Typography';
+import Typography from './Typography';
 
 export * from './Typography.types';
+export * from './Typography.props';
 export * from './Typography.constants';
-
-export type { PTypography };
 
 export default Typography;

@@ -22,7 +22,15 @@ const Swatch: React.FC<PSwatch> = ({ color, shade, colorName, variant = 'right' 
     return (
         <Grid row={isRow} alignment={'stretch'} padding={isRow ? [8, 0] : 8} flex={0}>
             <Grid alignment={'end'} flex={1}>
-                <Shape border borderRadius={4} elevation={1} width={140} height={100} background={hexString} />
+                <Shape
+                    border
+                    borderRadius={4}
+                    elevation={1}
+                    elevationOnHover={3}
+                    width={140}
+                    height={100}
+                    background={hexString}
+                />
             </Grid>
             {hasText && (
                 <Grid alignment={'end'} flex={2} padding={[8, 0, 8, 12]}>

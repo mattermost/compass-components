@@ -2,14 +2,7 @@ import styled from 'styled-components';
 
 import { borderRadius, elevation } from '../../global-styles/globalStyles';
 
-import { PShape } from './Shape';
-
-type PStyledShape = Pick<PShape, 'borderRadius' | 'elevation' | 'border' | 'elevationOnHover'> & {
-    width: string;
-    height: string;
-    padding: string;
-    background: string;
-};
+import { PStyledShape } from './Shape.props';
 
 const StyledShape = styled.div<PStyledShape>`
     display: flex;
@@ -28,7 +21,5 @@ const StyledShape = styled.div<PStyledShape>`
         box-shadow: ${(props): string => elevation(props.elevationOnHover)};
     }
 `;
-
-export type { PStyledShape };
 
 export default StyledShape;
