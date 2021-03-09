@@ -17,6 +17,7 @@ addParameters({
     controls: { hideNoControlsWarning: true },
     viewport: {
         viewports: INITIAL_VIEWPORTS,
+    },
     options: {
         storySort: (a, b) => {
             if (a[0].toLocaleLowerCase().includes('overview')) return -1;
