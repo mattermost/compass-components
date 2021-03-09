@@ -1,15 +1,15 @@
 import { ArgsTable, Meta, Story, Canvas, Title, Subtitle } from '@storybook/addon-docs/blocks';
 import { DependenciesTable } from 'storybook-addon-deps/blocks';
 
-import GlobalStyle from '../../global-styles/globalStyles';
+import GlobalStyle from '../theme-provider/global-styles/globalStyles';
 import Shape from './index';
 import Grid from '../layout/Grid';
+import ThemeProvider from '../theme-provider/theme-provider';
 
 export const Template = args => (
-    <>
-        <GlobalStyle />
+    <ThemeProvider>
         <Shape {...args} />
-    </>
+    </ThemeProvider>
 );
 
 export const defaultArgs = {
@@ -47,9 +47,9 @@ export const argTypes = {
     },
 };
 
-<Meta component={Shape} title="Foundations/Shape" />
+<ThemeProvider />
 
-<GlobalStyle />
+<Meta component={Shape} title="Foundations/Shape" />
 
 <Title>Shape</Title>
 

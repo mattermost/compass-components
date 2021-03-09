@@ -396,7 +396,7 @@
     "unicorn/prefer-modern-dom-apis": "error",
     "unicorn/prefer-string-replace-all": "error",
     "unicorn/prefer-number-properties": "error",
-    "unicorn/no-null": "error",
+    "unicorn/no-null": "off",
     "unicorn/prefer-optional-catch-binding": "error",
     "unicorn/no-object-as-default-parameter": "error",
     "unicorn/prefer-array-find": "error",

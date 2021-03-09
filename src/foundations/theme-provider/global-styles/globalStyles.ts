@@ -1,16 +1,27 @@
 import { createGlobalStyle } from 'styled-components';
 
-import { TBorderRadiusSizes, TElevationLevel } from '../foundations/shape';
+import { TBorderRadiusSizes, TElevationLevel } from '../../shape';
+import { TTheme } from '../theme.types';
 
+import ColorStyles from './colors';
 import GlobalFontFaces from './fontFaces';
 import GlobalFontStyles from './fontStyles';
+
+type PGlobalStyles = {
+    theme: TTheme;
+};
+
+const primaryColor = (props: PGlobalStyles): string => props.theme.palette.primary;
 
 const GlobalStyle = createGlobalStyle`
     :root {
         --gutter-default: 8px;
         
+        ${ColorStyles}
         ${GlobalFontFaces}
         ${GlobalFontStyles}
+      
+        --primary-color: ${primaryColor};
 
         --border-radius-0: 0;
         --border-radius-4: calc(var(--gutter-default) * .5);
@@ -31,7 +42,7 @@ const GlobalStyle = createGlobalStyle`
         --elevation-shadow-5: 0 12px 32px 0 rgba(0,0,0,0.12);
         --elevation-shadow-6: 0 20px 32px 0 rgba(0,0,0,0.12);
         
-        --border-default: 1px solid rgba(61,60,64,0.16)
+        --border-default: 1px solid rgba(61,60,64,0.16);
     }
 `;
 

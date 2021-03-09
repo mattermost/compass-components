@@ -1,20 +1,23 @@
 import { Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
 
-import GlobalStyle from '../../global-styles/globalStyles';
+import GlobalStyle from '../theme-provider/global-styles/globalStyles';
 import Grid from '../layout/Grid';
 
-import { createColorShades, isValidColor } from '../../utils';
+import { createColorShades } from '../../utils';
 import Swatch from './Swatch';
-import neutralColors from './default-theme/neutral';
-import blueColors from './default-theme/blue';
-import cyanColors from './default-theme/cyan';
-import tealColors from './default-theme/teal';
-import yellowColors from './default-theme/yellow';
-import redColors from './default-theme/red';
-import orangeColors from './default-theme/orange';
-import purpleColors from './default-theme/purple';
-import indigoColors from './default-theme/indigo';
-import greenColors from './default-theme/green';
+import neutralColors from './default-colors/neutral';
+import blueColors from './default-colors/blue';
+import cyanColors from './default-colors/cyan';
+import tealColors from './default-colors/teal';
+import yellowColors from './default-colors/yellow';
+import redColors from './default-colors/red';
+import orangeColors from './default-colors/orange';
+import purpleColors from './default-colors/purple';
+import indigoColors from './default-colors/indigo';
+import greenColors from './default-colors/green';
+import ThemeProvider from '../theme-provider/theme-provider';
+
+<ThemeProvider />
 
 <Meta title="Foundations/Colors" />
 
@@ -174,8 +177,7 @@ export const Template = args => {
         colors = createColorShades(args.color);
     }
     return (
-        <>
-            <GlobalStyle />
+        <ThemeProvider>
             <Grid row>
                 <Grid>
                     {colors &&
@@ -189,7 +191,7 @@ export const Template = args => {
                         ))}
                 </Grid>
             </Grid>
-        </>
+        </ThemeProvider>
     );
 };
 
