@@ -1,4 +1,4 @@
-import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
+import { Meta, Story, Canvas, ArgsTable, Title, Subtitle } from '@storybook/addon-docs/blocks';
 
 import GlobalStyle from '../../global-styles/globalStyles';
 import Typography from './Typography';
@@ -9,12 +9,12 @@ import Shape from '../shape';
 
 <GlobalStyle />
 
-# Typography
+<Title>Typography</Title>
 
----
-
-> Text an integral part of any user interface, so it’s important that all typographic elements are designed
-> for legibility and consistency. This section defines the typographic style and usage guidelines.
+<Subtitle>
+    Text an integral part of any user interface, so it’s important that all typographic elements are designed for
+    legibility and consistency. This section defines the typographic style and usage guidelines.
+</Subtitle>
 
 ## Typefaces
 
@@ -29,8 +29,6 @@ It was developed to have high performance as a web font and is considered to be 
 strongest attributes of the top sans serif fonts. Open Sans is available to be used freely in products or projects.
 
 **Open Sans is used for all body copy and headings 50-200. See below for more details.**
-
-<ArgsTable of={Typography} />
 
 ## Type Scale
 
@@ -191,7 +189,7 @@ The chart below shows all the body copy sizes where Body 100 is the base font si
     ))}
 </>
 
-# Font Stack
+## Font Stack
 
 In cases where standard typefaces are not available, the following font stacks should be used for fallback so the device
 uses the system standard `sans-serif` typeface.
@@ -200,6 +198,10 @@ uses the system standard `sans-serif` typeface.
 font-family: Metropolis, sans-serif;
 font-family: “Open Sans”, sans-serif;
 ```
+
+## Component API
+
+<ArgsTable of={Typography} />
 
 export const Template = args => {
     const { text } = args;
