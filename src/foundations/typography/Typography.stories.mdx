@@ -4,6 +4,9 @@ import GlobalStyle from '../theme-provider/global-styles/globalStyles';
 import Typography from './Typography';
 import Grid from '../layout/Grid';
 import Shape from '../shape';
+import ThemeProvider from '../theme-provider/theme-provider';
+
+<ThemeProvider />
 
 <Meta component={Typography} title="Foundations/Typography" />
 
@@ -206,16 +209,14 @@ font-family: “Open Sans”, sans-serif;
 export const Template = args => {
     const { text } = args;
     return (
-        <>
-            <GlobalStyle />
+        <ThemeProvider>
             <Typography {...args}>{text}</Typography>
-        </>
+        </ThemeProvider>
     );
 };
 
 export const ParagraphTemplate = args => (
-    <>
-        <GlobalStyle />
+    <ThemeProvider>
         <Shape width={400}>
             <Typography
                 size={args.headingSize}
@@ -267,7 +268,7 @@ export const ParagraphTemplate = args => (
                 {args.paragraph}
             </Typography>
         </Shape>
-    </>
+    </ThemeProvider>
 );
 
 <Canvas hidden>
