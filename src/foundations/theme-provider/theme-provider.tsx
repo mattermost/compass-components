@@ -17,4 +17,17 @@ const ThemeProvider = ({ children = null, theme = lightTheme }: PThemeProvider):
     </StyledThemeProvider>
 );
 
+const CanvasThemeProvider = ({
+    children = null,
+    theme = lightTheme,
+}: PThemeProvider): JSX.Element => {
+    const bodyElement = document.querySelector('body');
+
+    bodyElement!.style.backgroundColor = theme.background;
+
+    return <ThemeProvider theme={theme}>{children}</ThemeProvider>;
+};
+
+export { CanvasThemeProvider };
+
 export default ThemeProvider;

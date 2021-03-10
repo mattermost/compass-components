@@ -1,6 +1,28 @@
 import { addParameters, addDecorator } from '@storybook/react';
 import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport';
 import { withA11y } from '@storybook/addon-a11y';
+import { withThemes } from 'storybook-addon-themes/react';
+
+addDecorator(withThemes);
+
+import lightTheme from '../src/foundations/theme-provider/light-theme';
+import darkTheme from '../src/foundations/theme-provider/dark-theme';
+import { CanvasThemeProvider } from '../src/foundations/theme-provider/theme-provider';
+
+const themes = [
+    {
+        name: 'light',
+        class: 'compass-light',
+        color: lightTheme.background,
+        definition: lightTheme,
+        default: true,
+    },
+    { name: 'dark', class: 'compass-dark', color: darkTheme.background, definition: darkTheme },
+];
+
+const CustomDecorator = (props) => (
+    <CanvasThemeProvider theme={props.theme.definition} children={props.children} />
+);
 
 addParameters({
     dependencies: {
@@ -31,6 +53,10 @@ addParameters({
             opacity: 0.2,
             cellAmount: 16,
         },
+    },
+    themes: {
+        list: themes,
+        Decorator: CustomDecorator,
     },
 });
 
