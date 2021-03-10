@@ -205,21 +205,19 @@ export const Template = (args) => {
         colors = createColorShades(args.color);
     }
     return (
-        <ThemeProvider>
-            <Grid row>
-                <Grid>
-                    {colors &&
-                        Object.keys(colors).map((shade) => (
-                            <Swatch
-                                key={`color_${shade}`}
-                                color={colors[shade]}
-                                colorName={args.name || ''}
-                                shade={shade}
-                            />
-                        ))}
-                </Grid>
+        <Grid row>
+            <Grid>
+                {colors &&
+                    Object.keys(colors).map((shade) => (
+                        <Swatch
+                            key={`color_${shade}`}
+                            color={colors[shade]}
+                            colorName={args.name || ''}
+                            shade={shade}
+                        />
+                    ))}
             </Grid>
-        </ThemeProvider>
+        </Grid>
     );
 };
 

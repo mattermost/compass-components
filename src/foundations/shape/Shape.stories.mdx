@@ -6,11 +6,7 @@ import Shape from './index';
 import Grid from '../layout/Grid';
 import ThemeProvider from '../theme-provider/theme-provider';
 
-export const Template = (args) => (
-    <ThemeProvider>
-        <Shape {...args} />
-    </ThemeProvider>
-);
+export const Template = (args) => <Shape {...args} />;
 
 export const defaultArgs = {
     border: true,

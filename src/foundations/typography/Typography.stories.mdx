@@ -209,67 +209,61 @@ device uses the system standard `sans-serif` typeface.
 
 export const Template = (args) => {
     const { text } = args;
-    return (
-        <ThemeProvider>
-            <Typography {...args}>{text}</Typography>
-        </ThemeProvider>
-    );
+    return <Typography {...args}>{text}</Typography>;
 };
 
 export const ParagraphTemplate = (args) => (
-    <ThemeProvider>
-        <Shape width={400}>
-            <Typography
-                size={args.headingSize}
-                gutter={args.headingGutter}
-                variant={args.headingVariant}
-                useRegular={args.headingUseRegular}
-                color={args.headingColor}
-            >
-                {args.heading}
-            </Typography>
-            <Typography
-                size={args.subtitleSize}
-                gutter={args.subtitleGutter}
-                variant={args.subtitleVariant}
-                color={args.subtitleColor}
-            >
-                {args.subtitle}
-            </Typography>
-            <Typography
-                size={args.paragraphSize}
-                gutter={args.paragraphGutter}
-                variant={args.paragraphVariant}
-                color={args.paragraphColor}
-            >
-                {args.paragraph}
-            </Typography>
-            <Typography
-                size={args.subtitleSize}
-                gutter={args.subtitleGutter}
-                variant={args.subtitleVariant}
-                color={args.subtitleColor}
-            >
-                {args.subtitle}
-            </Typography>
-            <Typography
-                size={args.paragraphSize}
-                gutter={args.paragraphGutter}
-                variant={args.paragraphVariant}
-                color={args.paragraphColor}
-            >
-                {args.paragraph}
-            </Typography>
-            <Typography
-                size={args.paragraphSize}
-                gutter={args.paragraphGutter}
-                variant={args.paragraphVariant}
-                color={args.paragraphColor}
-            >
-                {args.paragraph}
-            </Typography>
-        </Shape>
-    </ThemeProvider>
+    <Shape width={400}>
+        <Typography
+            size={args.headingSize}
+            gutter={args.headingGutter}
+            variant={args.headingVariant}
+            useRegular={args.headingUseRegular}
+            color={args.headingColor}
+        >
+            {args.heading}
+        </Typography>
+        <Typography
+            size={args.subtitleSize}
+            gutter={args.subtitleGutter}
+            variant={args.subtitleVariant}
+            color={args.subtitleColor}
+        >
+            {args.subtitle}
+        </Typography>
+        <Typography
+            size={args.paragraphSize}
+            gutter={args.paragraphGutter}
+            variant={args.paragraphVariant}
+            color={args.paragraphColor}
+        >
+            {args.paragraph}
+        </Typography>
+        <Typography
+            size={args.subtitleSize}
+            gutter={args.subtitleGutter}
+            variant={args.subtitleVariant}
+            color={args.subtitleColor}
+        >
+            {args.subtitle}
+        </Typography>
+        <Typography
+            size={args.paragraphSize}
+            gutter={args.paragraphGutter}
+            variant={args.paragraphVariant}
+            color={args.paragraphColor}
+        >
+            {args.paragraph}
+        </Typography>
+        <Typography
+            size={args.paragraphSize}
+            gutter={args.paragraphGutter}
+            variant={args.paragraphVariant}
+            color={args.paragraphColor}
+        >
+            {args.paragraph}
+        </Typography>
+    </Shape>
 );
 
 <Canvas hidden>

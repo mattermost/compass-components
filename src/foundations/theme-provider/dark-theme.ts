@@ -6,7 +6,7 @@ const darkTheme: TTheme = {
     type: 'dark',
     palette: {
         primary: {
-            main: indigo[200],
+            main: green[200],
         },
         secondary: {
             main: green[200],

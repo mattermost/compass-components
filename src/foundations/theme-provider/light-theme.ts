@@ -6,7 +6,7 @@ const lightTheme: TTheme = {
     type: 'light',
     palette: {
         primary: {
-            main: indigo[700],
+            main: red[500],
         },
         secondary: {
             main: green[500],

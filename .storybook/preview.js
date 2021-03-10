@@ -53,9 +53,11 @@ addParameters({
             opacity: 0.2,
             cellAmount: 16,
         },
+        disable: true,
     },
     themes: {
         list: themes,
+        clearable: false,
         Decorator: CustomDecorator,
     },
 });
