@@ -106,9 +106,6 @@ const VFontStyle = css`
     --heading-margin-bottom-600: ${Math.min(getMargin(headingFontSizes[600], 0.5), 8)}px;
     --heading-margin-bottom-700: ${Math.min(getMargin(headingFontSizes[700], 0.5), 8)}px;
     --heading-margin-bottom-1000: ${Math.min(getMargin(headingFontSizes[1000], 0.5), 8)}px;
-
-    --primary-text-color: #333;
-    --secondary-text-color: #787878;
 `;
 
 export default VFontStyle;

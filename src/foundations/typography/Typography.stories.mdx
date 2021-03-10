@@ -213,7 +213,7 @@ export const Template = (args) => {
 };
 
 export const ParagraphTemplate = (args) => (
-    <Shape width={400}>
+    <Shape width={400} padding={16} border borderRadius={4} elevation={2}>
         <Typography
             size={args.headingSize}
             gutter={args.headingGutter}
@@ -307,7 +307,9 @@ export const ParagraphTemplate = (args) => (
             headingGutter: {
                 control: { type: 'radio', options: ['none', 'both', 'top', 'bottom'] },
             },
-            headingColor: { control: { type: 'radio', options: ['primary', 'secondary'] } },
+            headingColor: {
+                control: { type: 'radio', options: ['primary', 'secondary', 'disabled'] },
+            },
             subtitle: { table: { disable: true } },
             subtitleSize: {
                 control: {
@@ -319,14 +321,18 @@ export const ParagraphTemplate = (args) => (
             subtitleGutter: {
                 control: { type: 'radio', options: ['none', 'both', 'top', 'bottom'] },
             },
-            subtitleColor: { control: { type: 'radio', options: ['primary', 'secondary'] } },
+            subtitleColor: {
+                control: { type: 'radio', options: ['primary', 'secondary', 'disabled'] },
+            },
             paragraph: { table: { disable: true } },
             paragraphSize: { control: { type: 'select', options: [25, 50, 75, 100, 200, 300] } },
             paragraphVariant: { table: { disable: true } },
             paragraphGutter: {
                 control: { type: 'radio', options: ['none', 'both', 'top', 'bottom'] },
             },
-            paragraphColor: { control: { type: 'radio', options: ['primary', 'secondary'] } },
+            paragraphColor: {
+                control: { type: 'radio', options: ['primary', 'secondary', 'disabled'] },
+            },
         }}
         args={{
             heading: 'Lorem ipsum dolor sit amet',

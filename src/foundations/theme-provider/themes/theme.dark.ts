@@ -37,9 +37,9 @@ const themeDark: TTheme = {
         },
     },
     text: {
-        primary: neutral[200],
-        secondary: neutral[500],
-        disabled: neutral[800],
+        primary: neutral[50],
+        secondary: neutral[300],
+        disabled: neutral[700],
     },
     background: {
         default: neutral[1100],

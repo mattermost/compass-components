@@ -37,9 +37,9 @@ const lightTheme: TTheme = {
         },
     },
     text: {
-        primary: neutral[900],
-        secondary: neutral[600],
-        disabled: neutral[300],
+        primary: neutral[1100],
+        secondary: neutral[800],
+        disabled: neutral[500],
     },
     background: {
         default: neutral[50],
