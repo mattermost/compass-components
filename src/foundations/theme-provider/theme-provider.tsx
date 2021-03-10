@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { ThemeProvider as StyledThemeProvider } from 'styled-components';
 
-import { TTheme } from './theme.types';
+import { TTheme } from './themes/theme.types';
 import GlobalStyle from './global-styles/globalStyles';
-import lightTheme from './light-theme';
+import lightTheme from './themes/theme.light';
 
 type PThemeProvider = {
     theme?: TTheme;
@@ -29,7 +29,7 @@ const CanvasThemeProvider = ({
 
     const bodyElement = document.querySelector('body');
 
-    bodyElement!.style.backgroundColor = theme.background;
+    bodyElement!.style.backgroundColor = theme.background.default;
 
     return <ThemeProvider theme={selectedTheme}>{children}</ThemeProvider>;
 };

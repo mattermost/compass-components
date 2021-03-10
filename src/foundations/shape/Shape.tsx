@@ -6,12 +6,12 @@ import StyledShape from './Shape.styles';
 import { PShape, PStyledShape } from './Shape.props';
 
 const Shape: React.FC<PShape> = ({
+    component = 'div',
     border = false,
     borderRadius = 0,
-    component = 'div',
     elevation = 0,
     elevationOnHover = elevation,
-    background = '#FFF',
+    background = 'var(--shape-background-color)',
     width = 'auto',
     height = 'auto',
     padding = 0,
@@ -22,10 +22,10 @@ const Shape: React.FC<PShape> = ({
         borderRadius,
         elevation,
         elevationOnHover,
+        background,
         width: 'auto',
         height: 'auto',
         padding: 'initial',
-        background: 'none',
     };
 
     if (borderRadius === 'circle' && width) {
@@ -50,10 +50,6 @@ const Shape: React.FC<PShape> = ({
         } else {
             styledShapeProperties.padding = `${padding}px`;
         }
-    }
-
-    if (background && isValidColor(background)) {
-        styledShapeProperties.background = background;
     }
 
     return (

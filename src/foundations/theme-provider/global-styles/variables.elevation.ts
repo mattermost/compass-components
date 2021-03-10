@@ -1,6 +1,6 @@
 import { css } from 'styled-components';
 
-import { TTheme } from '../theme.types';
+import { TTheme } from '../themes/theme.types';
 
 type PGlobalStyles = {
     theme: TTheme;

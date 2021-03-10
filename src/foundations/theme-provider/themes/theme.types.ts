@@ -7,7 +7,7 @@ type TThemeColorDefinition = {
 type TTHemeColors = {
     primary: TThemeColorDefinition;
     secondary: TThemeColorDefinition;
-    error: TThemeColorDefinition;
+    alert: TThemeColorDefinition;
     warning: TThemeColorDefinition;
     success: TThemeColorDefinition;
     info: TThemeColorDefinition;
@@ -19,11 +19,16 @@ type TTHemeTextColors = {
     disabled: string;
 };
 
+type TTHemeBackgroundColors = {
+    default: string;
+    shape: string;
+};
+
 type TTheme = {
     type: 'light' | 'dark';
     palette: TTHemeColors;
     text: TTHemeTextColors;
-    background: string;
+    background: TTHemeBackgroundColors;
 };
 
-export type { TTheme, TTHemeColors };
+export type { TTheme, TTHemeColors, TTHemeTextColors, TTHemeBackgroundColors };
