@@ -30,7 +30,7 @@ import OpenSansRegularItalic from '../../../assets/fonts/OpenSans-RegularItalic.
 import OpenSansLight from '../../../assets/fonts/OpenSans-Light.ttf';
 import OpenSansLightItalic from '../../../assets/fonts/OpenSans-LightItalic.ttf';
 
-const GlobalFontStyle = css`
+const VFontFaces = css`
     @font-face {
         font-family: 'Metropolis';
         src: url(${MetropolisBlack}) format('woff2');
@@ -202,4 +202,4 @@ const GlobalFontStyle = css`
     }
 `;
 
-export default GlobalFontStyle;
+export default VFontFaces;

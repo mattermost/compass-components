@@ -24,7 +24,7 @@ const headingFontSizes: Record<string, number> = {
 const getMargin = (fontSize: number, multiplier: number): number =>
     Math.round((fontSize * multiplier) / 4) * 4;
 
-const GlobalFontStyles = css`
+const VFontStyle = css`
     --body-font-family: “Open Sans”, sans-serif;
     --heading-font-family: Metropolis, sans-serif;
 
@@ -111,4 +111,4 @@ const GlobalFontStyles = css`
     --secondary-text-color: #787878;
 `;
 
-export default GlobalFontStyles;
+export default VFontStyle;

@@ -3,23 +3,28 @@ import { createGlobalStyle } from 'styled-components';
 import { TBorderRadiusSizes, TElevationLevel } from '../../shape';
 import { TTheme } from '../theme.types';
 
-import GlobalFontFaces from './fontFaces';
-import GlobalFontStyles from './fontStyles';
+import VElevation from './variables.elevation';
+import VFontFaces from './variables.font-faces';
+import VFontStyle from './variables.font-style';
 
 type PGlobalStyles = {
     theme: TTheme;
 };
 
-const primaryColor = (props: PGlobalStyles): string => props.theme.palette.primary.main;
+const getPrimaryColor = (props: PGlobalStyles): string => props.theme.palette.primary.main;
+
+const getElevationOpacity = (props: PGlobalStyles): number =>
+    props.theme.type === 'dark' ? 0.32 : 0.08;
 
 const GlobalStyle = createGlobalStyle`
     :root {
         --gutter-default: 8px;
         
-        ${GlobalFontFaces}
-        ${GlobalFontStyles}
+        ${VFontFaces}
+        ${VFontStyle}
+        ${VElevation}
       
-        --primary-color: ${primaryColor};
+        --primary-color: ${getPrimaryColor};
 
         --border-radius-0: 0;
         --border-radius-4: calc(var(--gutter-default) * .5);
@@ -33,12 +38,12 @@ const GlobalStyle = createGlobalStyle`
         // setting a big value renders a pill-shape border-radius
         --border-radius-pill: 10000px;
         
-        --elevation-shadow-1: 0 2px 3px 0 rgba(0,0,0,0.08);
-        --elevation-shadow-2: 0 4px 6px 0 rgba(0,0,0,0.12);
-        --elevation-shadow-3: 0 6px 14px 0 rgba(0,0,0,0.12);
-        --elevation-shadow-4: 0 8px 24px 0 rgba(0,0,0,0.12);
-        --elevation-shadow-5: 0 12px 32px 0 rgba(0,0,0,0.12);
-        --elevation-shadow-6: 0 20px 32px 0 rgba(0,0,0,0.12);
+        --elevation-shadow-1: 0 2px 3px 0 rgba(0,0,0, ${getElevationOpacity} );
+        --elevation-shadow-2: 0 4px 6px 0 rgba(0,0,0, ${getElevationOpacity} );
+        --elevation-shadow-3: 0 6px 14px 0 rgba(0,0,0, ${getElevationOpacity} );
+        --elevation-shadow-4: 0 8px 24px 0 rgba(0,0,0, ${getElevationOpacity} );
+        --elevation-shadow-5: 0 12px 32px 0 rgba(0,0,0, ${getElevationOpacity} );
+        --elevation-shadow-6: 0 20px 32px 0 rgba(0,0,0, ${getElevationOpacity} );
         
         --border-default: 1px solid rgba(61,60,64,0.16);
     }

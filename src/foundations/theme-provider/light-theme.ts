@@ -1,4 +1,4 @@
-import { green, indigo, neutral, purple, red, yellow } from '../colors';
+import { neutral, green, purple, red, yellow } from '../colors';
 
 import { TTheme } from './theme.types';
 
@@ -6,7 +6,9 @@ const lightTheme: TTheme = {
     type: 'light',
     palette: {
         primary: {
+            light: red[300],
             main: red[500],
+            dark: red[700],
         },
         secondary: {
             main: green[500],
