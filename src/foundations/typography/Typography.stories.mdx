@@ -1,7 +1,7 @@
 import { Meta, Story, Canvas, ArgsTable, Title, Subtitle } from '@storybook/addon-docs/blocks';
 
-import GlobalStyle from '../theme-provider/global-styles/globalStyles';
 import Typography from './Typography';
+
 import Grid from '../layout/Grid';
 import Shape from '../shape';
 import ThemeProvider from '../theme-provider/theme-provider';
@@ -10,13 +10,12 @@ import ThemeProvider from '../theme-provider/theme-provider';
 
 <Meta component={Typography} title="Foundations/Typography" />
 
-<GlobalStyle />
-
 <Title>Typography</Title>
 
 <Subtitle>
-    Text an integral part of any user interface, so it’s important that all typographic elements are designed for
-    legibility and consistency. This section defines the typographic style and usage guidelines.
+    Text an integral part of any user interface, so it’s important that all typographic elements are
+    designed for legibility and consistency. This section defines the typographic style and usage
+    guidelines.
 </Subtitle>
 
 ## Typefaces
@@ -28,7 +27,7 @@ beautiful at large point sizes.
 **Metropolis is used for headings 300-700. See below for more details.**
 
 Open Sans is another modern sans-serif typeface that is incredibly legible and offers an excellent reading experience.
-It was developed to have high performance as a web font and is considered to be a font that combines all of the
+It was developed to have high performance as a web font and is considered to be a font that combines all the
 strongest attributes of the top sans serif fonts. Open Sans is available to be used freely in products or projects.
 
 **Open Sans is used for all body copy and headings 50-200. See below for more details.**
@@ -85,7 +84,7 @@ export const headingSizes = [
 export const bodySizes = [...smallSizes, { size: 300, fontSize: 18, lineHeight: 28 }];
 
 <>
-    {headingSizes.map(heading => (
+    {headingSizes.map((heading) => (
         <>
             <hr />
             <Grid justify={'stretch'}>
@@ -144,7 +143,7 @@ Body always uses the regular font-weight, but where emphasis is needed, the semi
 The chart below shows all the body copy sizes where Body 100 is the base font size.
 
 <>
-    {bodySizes.map(body => (
+    {bodySizes.map((body) => (
         <>
             <hr />
             <Grid justify={'stretch'}>
@@ -194,19 +193,21 @@ The chart below shows all the body copy sizes where Body 100 is the base font si
 
 ## Font Stack
 
-In cases where standard typefaces are not available, the following font stacks should be used for fallback so the device
-uses the system standard `sans-serif` typeface.
+In cases where standard typefaces are not available, the following font stacks should be used as a fallback, so the
+device uses the system standard `sans-serif` typeface.
 
 ```css
-font-family: Metropolis, sans-serif;
-font-family: “Open Sans”, sans-serif;
+:root {
+    font-family: Metropolis, sans-serif;
+    font-family: “Open Sans”, sans-serif;
+}
 ```
 
 ## Component API
 
 <ArgsTable of={Typography} />
 
-export const Template = args => {
+export const Template = (args) => {
     const { text } = args;
     return (
         <ThemeProvider>
@@ -215,7 +216,7 @@ export const Template = args => {
     );
 };
 
-export const ParagraphTemplate = args => (
+export const ParagraphTemplate = (args) => (
     <ThemeProvider>
         <Shape width={400}>
             <Typography
@@ -306,8 +307,12 @@ export const ParagraphTemplate = args => (
                     options: [25, 50, 75, 100, 200, 300, 400, 500, 600, 700, 1000],
                 },
             },
-            headingVariant: { control: { type: 'select', options: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'] } },
-            headingGutter: { control: { type: 'radio', options: ['none', 'both', 'top', 'bottom'] } },
+            headingVariant: {
+                control: { type: 'select', options: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'] },
+            },
+            headingGutter: {
+                control: { type: 'radio', options: ['none', 'both', 'top', 'bottom'] },
+            },
             headingColor: { control: { type: 'radio', options: ['primary', 'secondary'] } },
             subtitle: { table: { disable: true } },
             subtitleSize: {
@@ -317,12 +322,16 @@ export const ParagraphTemplate = args => (
                 },
             },
             subtitleVariant: { table: { disable: true } },
-            subtitleGutter: { control: { type: 'radio', options: ['none', 'both', 'top', 'bottom'] } },
+            subtitleGutter: {
+                control: { type: 'radio', options: ['none', 'both', 'top', 'bottom'] },
+            },
             subtitleColor: { control: { type: 'radio', options: ['primary', 'secondary'] } },
             paragraph: { table: { disable: true } },
             paragraphSize: { control: { type: 'select', options: [25, 50, 75, 100, 200, 300] } },
             paragraphVariant: { table: { disable: true } },
-            paragraphGutter: { control: { type: 'radio', options: ['none', 'both', 'top', 'bottom'] } },
+            paragraphGutter: {
+                control: { type: 'radio', options: ['none', 'both', 'top', 'bottom'] },
+            },
             paragraphColor: { control: { type: 'radio', options: ['primary', 'secondary'] } },
         }}
         args={{

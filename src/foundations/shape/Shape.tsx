@@ -45,7 +45,7 @@ const Shape: React.FC<PShape> = ({
         if (Array.isArray(padding)) {
             styledShapeProperties.padding = padding
                 .slice(0, 4)
-                .map(s => `${s}px`)
+                .map((s) => `${s}px`)
                 .join(' ');
         } else {
             styledShapeProperties.padding = `${padding}px`;

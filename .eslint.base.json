@@ -470,8 +470,7 @@
 
     "ext/lines-between-object-properties": [
       "error",
-      "always",
-      { "exceptBetweenSingleLines": true }
+      "never"
     ],
 
     "regexp/match-any": "error",

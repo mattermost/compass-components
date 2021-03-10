@@ -21,7 +21,8 @@ const headingFontSizes: Record<string, number> = {
     1000: baseGutter * 5,
 };
 
-const getMargin = (fontSize: number, multiplier: number): number => Math.round((fontSize * multiplier) / 4) * 4;
+const getMargin = (fontSize: number, multiplier: number): number =>
+    Math.round((fontSize * multiplier) / 4) * 4;
 
 const GlobalFontStyles = css`
     --body-font-family: “Open Sans”, sans-serif;

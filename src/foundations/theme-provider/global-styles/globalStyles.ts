@@ -3,7 +3,6 @@ import { createGlobalStyle } from 'styled-components';
 import { TBorderRadiusSizes, TElevationLevel } from '../../shape';
 import { TTheme } from '../theme.types';
 
-import ColorStyles from './colors';
 import GlobalFontFaces from './fontFaces';
 import GlobalFontStyles from './fontStyles';
 
@@ -11,13 +10,12 @@ type PGlobalStyles = {
     theme: TTheme;
 };
 
-const primaryColor = (props: PGlobalStyles): string => props.theme.palette.primary;
+const primaryColor = (props: PGlobalStyles): string => props.theme.palette.primary.main;
 
 const GlobalStyle = createGlobalStyle`
     :root {
         --gutter-default: 8px;
         
-        ${ColorStyles}
         ${GlobalFontFaces}
         ${GlobalFontStyles}
       

@@ -33,7 +33,9 @@ const shadeValues: Record<string, number> = {
 function clamp(value: number, min = 0, max = 1): number {
     if (process.env.NODE_ENV !== 'production' && (value < min || value > max)) {
         // eslint-disable-next-line no-console
-        console.error(`Compass Components: The value provided ${value} is out of range [${min}, ${max}].`);
+        console.error(
+            `Compass Components: The value provided ${value} is out of range [${min}, ${max}].`
+        );
     }
 
     return Math.min(Math.max(min, value), max);
@@ -52,13 +54,15 @@ function hexToRgb(color: string): string {
     let colors = colorValues.match(re);
 
     if (colors && colors[0].length === 1) {
-        colors = colors.map(n => n + n);
+        colors = colors.map((n) => n + n);
     }
 
     return colors
         ? `rgb${colors.length === 4 ? 'a' : ''}(${colors
               .map((n, index) =>
-                  index < 3 ? Number.parseInt(n, 16) : Math.round((Number.parseInt(n, 16) / 255) * 1000) / 1000
+                  index < 3
+                      ? Number.parseInt(n, 16)
+                      : Math.round((Number.parseInt(n, 16) / 255) * 1000) / 1000
               )
               .join(', ')})`
         : '';
@@ -83,7 +87,7 @@ function rgbToHex(color: string): string {
 
     const { values } = decomposeColor(color);
 
-    return `#${values.map(n => intToHex(n)).join('')}`;
+    return `#${values.map((n) => intToHex(n)).join('')}`;
 }
 
 /**
@@ -165,7 +169,8 @@ function hslToRgb(color: string): string {
     const s = values[1] / 100;
     const l = values[2] / 100;
     const a = s * Math.min(l, 1 - l);
-    const f = (n: number, k = (n + h / 30) % 12): number => l - a * Math.max(Math.min(k - 3, 9 - k, 1), -1);
+    const f = (n: number, k = (n + h / 30) % 12): number =>
+        l - a * Math.max(Math.min(k - 3, 9 - k, 1), -1);
 
     let type = 'rgb';
 
@@ -202,7 +207,7 @@ function decomposeColor(color: string): TColorDefinition {
     }
 
     const valueString = color.slice(marker + 1, -1);
-    const values = valueString.split(',').map(value => Number.parseFloat(value));
+    const values = valueString.split(',').map((value) => Number.parseFloat(value));
 
     return { type, values };
 }

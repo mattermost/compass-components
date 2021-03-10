@@ -1,84 +1,84 @@
 {
-  "name": "compass-components",
-  "version": "1.0.0",
-  "description": "components aligning to the compass design system",
-  "main": "index.js",
-  "scripts": {
-    "build-storybook": "build-storybook",
-    "build": "node -v && rimraf ./lib && npm run build:compile && npm run build:copy-files",
-    "build:compile": "tsc --extendedDiagnostics -p \"./tsconfig.build.json\"",
-    "build:copy-files": "node ./scripts/copy-files.js",
-    "lint": "eslint ./src",
-    "lint:fix": "eslint --fix --cache ./src",
-    "storybook": "start-storybook -p 6006"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/mattermost/compass-components.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/mattermost/compass-components/issues"
-  },
-  "homepage": "https://github.com/mattermost/compass-components#readme",
-  "dependencies": {
-    "@types/node": "^12.0.0",
-    "@types/react": "^17.0.0",
-    "@types/react-dom": "^17.0.0",
-    "lodash.kebabcase": "^4.1.1",
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1",
-    "styled-components": "^5.2.1",
-    "typescript": "^4.2.2"
-  },
-  "devDependencies": {
-    "@babel/core": "^7.13.8",
-    "@storybook/addon-a11y": "^6.1.21",
-    "@storybook/addon-actions": "^6.1.20",
-    "@storybook/addon-docs": "^6.1.20",
-    "@storybook/addon-essentials": "^6.1.20",
-    "@storybook/addon-viewport": "^6.1.21",
-    "@storybook/addon-links": "^6.1.21",
-    "@storybook/react": "^6.1.20",
-    "@types/lodash.kebabcase": "^4.1.6",
-    "@types/styled-components": "^5.1.7",
-    "@typescript-eslint/eslint-plugin": "^4.16.1",
-    "@typescript-eslint/parser": "^4.16.1",
-    "babel-loader": "^8.2.2",
-    "eslint": "^7.21.0",
-    "eslint-config-prettier": "^8.1.0",
-    "eslint-plugin-array-func": "^3.1.7",
-    "eslint-plugin-eslint-comments": "^3.2.0",
-    "eslint-plugin-ext": "^0.1.0",
-    "eslint-plugin-implicit-dependencies": "^1.0.4",
-    "eslint-plugin-import": "^2.22.1",
-    "eslint-plugin-json": "^2.1.2",
-    "eslint-plugin-mdx": "^1.9.0",
-    "eslint-plugin-no-constructor-bind": "^2.0.4",
-    "eslint-plugin-no-use-extend-native": "^0.5.0",
-    "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-optimize-regex": "^1.2.0",
-    "eslint-plugin-prettier": "^3.3.1",
-    "eslint-plugin-promise": "^4.3.1",
-    "eslint-plugin-react-hooks": "^4.2.0",
-    "eslint-plugin-regexp": "^0.2.2",
-    "eslint-plugin-security": "^1.4.0",
-    "eslint-plugin-unicorn": "^28.0.2",
-    "husky": "=4",
-    "lint-staged": ">=10",
-    "prettier": "^2.2.1",
-    "storybook-addon-deps": "^2.1.3"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
+    "name": "compass-components",
+    "version": "1.0.0",
+    "description": "components aligning to the compass design system",
+    "main": "index.js",
+    "scripts": {
+        "build-storybook": "build-storybook",
+        "build": "node -v && rimraf ./lib && npm run build:compile && npm run build:copy-files",
+        "build:compile": "tsc --extendedDiagnostics -p \"./tsconfig.build.json\"",
+        "build:copy-files": "node ./scripts/copy-files.js",
+        "lint": "eslint ./src",
+        "lint:fix": "eslint --fix --cache ./src",
+        "storybook": "start-storybook -p 6006"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/mattermost/compass-components.git"
+    },
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/mattermost/compass-components/issues"
+    },
+    "homepage": "https://github.com/mattermost/compass-components#readme",
+    "dependencies": {
+        "@types/node": "^12.0.0",
+        "@types/react": "^17.0.0",
+        "@types/react-dom": "^17.0.0",
+        "lodash.kebabcase": "^4.1.1",
+        "react": "^17.0.1",
+        "react-dom": "^17.0.1",
+        "styled-components": "^5.2.1",
+        "typescript": "^4.2.2"
+    },
+    "devDependencies": {
+        "@babel/core": "^7.13.8",
+        "@storybook/addon-a11y": "^6.1.21",
+        "@storybook/addon-actions": "^6.1.20",
+        "@storybook/addon-docs": "^6.1.20",
+        "@storybook/addon-essentials": "^6.1.20",
+        "@storybook/addon-viewport": "^6.1.21",
+        "@storybook/addon-links": "^6.1.21",
+        "@storybook/react": "^6.1.20",
+        "@types/lodash.kebabcase": "^4.1.6",
+        "@types/styled-components": "^5.1.7",
+        "@typescript-eslint/eslint-plugin": "^4.16.1",
+        "@typescript-eslint/parser": "^4.16.1",
+        "babel-loader": "^8.2.2",
+        "eslint": "^7.21.0",
+        "eslint-config-prettier": "^8.1.0",
+        "eslint-plugin-array-func": "^3.1.7",
+        "eslint-plugin-eslint-comments": "^3.2.0",
+        "eslint-plugin-ext": "^0.1.0",
+        "eslint-plugin-implicit-dependencies": "^1.0.4",
+        "eslint-plugin-import": "^2.22.1",
+        "eslint-plugin-json": "^2.1.2",
+        "eslint-plugin-mdx": "^1.9.0",
+        "eslint-plugin-no-constructor-bind": "^2.0.4",
+        "eslint-plugin-no-use-extend-native": "^0.5.0",
+        "eslint-plugin-node": "^11.1.0",
+        "eslint-plugin-optimize-regex": "^1.2.0",
+        "eslint-plugin-prettier": "^3.3.1",
+        "eslint-plugin-promise": "^4.3.1",
+        "eslint-plugin-react-hooks": "^4.2.0",
+        "eslint-plugin-regexp": "^0.2.2",
+        "eslint-plugin-security": "^1.4.0",
+        "eslint-plugin-unicorn": "^28.0.2",
+        "husky": "=4",
+        "lint-staged": ">=10",
+        "prettier": "^2.2.1",
+        "storybook-addon-deps": "^2.1.3"
+    },
+    "husky": {
+        "hooks": {
+            "pre-commit": "lint-staged"
+        }
+    },
+    "lint-staged": {
+        "*.{js,jsx,ts,tsx,md,mdx}": [
+            "eslint --cache --fix",
+            "prettier --write"
+        ]
     }
-  },
-  "lint-staged": {
-    "*.{js,jsx,ts,tsx,md,mdx}": [
-      "eslint --cache --fix",
-      "prettier --write"
-    ]
-  }
 }
