@@ -1,10 +1,6 @@
 import { css } from 'styled-components';
 
-import { TTheme } from '../themes/theme.types';
-
-type PGlobalStyles = {
-    theme: TTheme;
-};
+import { PGlobalStyles } from './globalStyles';
 
 const getElevationOpacity = (props: PGlobalStyles): number =>
     props.theme.type === 'dark' ? 0.32 : 0.08;

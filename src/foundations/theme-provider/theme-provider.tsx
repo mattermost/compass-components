@@ -1,14 +1,39 @@
 import React, { useEffect, useState } from 'react';
-import { ThemeProvider as StyledThemeProvider } from 'styled-components';
+import { createGlobalStyle, ThemeProvider as StyledThemeProvider } from 'styled-components';
 
-import { TTheme } from './themes/theme.types';
-import GlobalStyle from './global-styles/globalStyles';
+import GlobalStyle, { PGlobalStyles } from './global-styles/globalStyles';
 import lightTheme from './themes/theme.light';
+import { TTheme } from './themes/theme.types';
 
 type PThemeProvider = {
     theme?: TTheme;
     children?: React.ReactNode | React.ReactNode[];
 };
+
+// storybook canvas- & docs-pages style overrides
+const SBGlobalStyles = createGlobalStyle`
+  body.sb-show-main {
+    background-color: ${(props: PGlobalStyles): string => props.theme.background.default};
+
+    .sbdocs-wrapper {
+      background-color: ${(props: PGlobalStyles): string =>
+          props.theme.type === 'dark' ? 'transparent' : '#FFF'};
+      
+      td {
+        background-color: ${(props: PGlobalStyles): string =>
+            props.theme.type === 'dark' ? props.theme.background.shape : '#FFF'};
+      }
+
+      h1, h2, h3, h4, h5, h6, p, th, td {
+        color: ${(props: PGlobalStyles): string => props.theme.text.primary};
+      }
+
+      h2 {
+        opacity: 0.75;
+      }
+    }
+  }
+`;
 
 const ThemeProvider = ({ children = null, theme = lightTheme }: PThemeProvider): JSX.Element => (
     <StyledThemeProvider theme={theme}>
@@ -27,11 +52,12 @@ const CanvasThemeProvider = ({
         setSelectedTheme(theme);
     }, [theme]);
 
-    const bodyElement = document.querySelector('body');
-
-    bodyElement!.style.backgroundColor = theme.background.default;
-
-    return <ThemeProvider theme={selectedTheme}>{children}</ThemeProvider>;
+    return (
+        <ThemeProvider theme={selectedTheme}>
+            <SBGlobalStyles />
+            {children}
+        </ThemeProvider>
+    );
 };
 
 export { CanvasThemeProvider };

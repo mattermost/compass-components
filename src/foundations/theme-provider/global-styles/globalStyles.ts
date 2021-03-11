@@ -53,4 +53,5 @@ function borderRadius(size: TBorderRadiusSizes = 0): string {
 }
 
 export { elevation, borderRadius };
+export type { PGlobalStyles };
 export default GlobalStyle;

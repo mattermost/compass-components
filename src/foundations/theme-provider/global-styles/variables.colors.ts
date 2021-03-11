@@ -1,10 +1,8 @@
 import { css } from 'styled-components';
 
-import { TTheme, TTHemeBackgroundColors, TTHemeTextColors } from '../themes/theme.types';
+import { TTHemeBackgroundColors, TTHemeTextColors } from '../themes/theme.types';
 
-type PGlobalStyles = {
-    theme: TTheme;
-};
+import { PGlobalStyles } from './globalStyles';
 
 const getTextColor = (type: keyof TTHemeTextColors) => (props: PGlobalStyles): string =>
     props.theme.text[type];
