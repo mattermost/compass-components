@@ -1,0 +1,131 @@
+import { ArgsTable, Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
+import { DependenciesTable } from 'storybook-addon-deps/blocks';
+
+import GlobalStyle from '../../global-styles/globalStyles';
+import Badges from './index';
+
+export const Template = args => (
+    <>
+        <GlobalStyle />
+        <Badges {...args} />
+    </>
+);
+
+export const defaultArgs = {
+    type: 'mention',
+    size: '',
+    status: 'online',
+    content: '1',
+};
+
+export const argTypes = {
+    type: {
+        control: {
+            type: 'select',
+            options: ['mention', 'unread', 'status', 'desktopApp'],
+        },
+    },
+    size: {
+        control: {
+            type: 'select',
+            options: ['sm', 'md'],
+        },
+    },
+    status: {
+        control: {
+            type: 'select',
+            options: ['online', 'offline'],
+        },
+    },
+    content: {
+        control: {
+            type: 'text',
+        },
+    },
+};
+
+<Meta component={Badges} title="Components/Badges" />
+
+<GlobalStyle />
+
+# Badges
+
+---
+
+Badges are small components typically used to indicate a numerical value or the status of an item to the user.
+
+## Mention Badges
+
+Mention Badges are used to show a numerical count of mentions that a user has received. It can be found in
+the Channel Sidebar as well as the App Header Bar.
+
+In cases where there is a number larger than 99 displayed in the badge, we limit the badge display to 99+
+
+## Unread Badges
+
+Unread Badges are smaller badges used to inform the user that there are unread messages in a particular
+Channel or Team. Unread Badges do not display a count.
+
+## Status Badges
+
+Status Badges are used to indicate the status of a particular user and are usually paired with an avatar
+or username.
+
+### Sizes
+
+## App Icon Badges
+
+For the Desktop App, badges are added to the app icon when there are mentions or unread messages.
+
+### Mac OS
+
+### Windows
+
+## Examples
+
+Below are some examples of the various badges in the context of larger components in the product
+
+---
+
+export const canvasExampleArgs = {
+    ...defaultArgs,
+};
+
+<Canvas hidden>
+    <Story
+        name="Mention Badges"
+        argTypes={argTypes}
+        args={{
+            ...canvasExampleArgs,
+        }}
+    >
+        {Template.bind({})}
+    </Story>
+    <Story
+        name="Unread Badges"
+        argTypes={argTypes}
+        args={{
+            ...canvasExampleArgs,
+        }}
+    >
+        {Template.bind({})}
+    </Story>
+    <Story
+        name="Status Badges"
+        argTypes={argTypes}
+        args={{
+            ...canvasExampleArgs,
+        }}
+    >
+        {Template.bind({})}
+    </Story>
+    <Story
+        name="App Icon Badges"
+        argTypes={argTypes}
+        args={{
+            ...canvasExampleArgs,
+        }}
+    >
+        {Template.bind({})}
+    </Story>
+</Canvas>
