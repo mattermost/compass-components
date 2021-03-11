@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { borderRadius, elevation } from '../../global-styles/globalStyles';
+import { borderRadius, elevation } from '../theme-provider/global-styles/globalStyles';
 
 import { PStyledShape } from './Shape.props';
 

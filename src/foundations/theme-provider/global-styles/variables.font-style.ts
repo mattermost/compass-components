@@ -21,9 +21,10 @@ const headingFontSizes: Record<string, number> = {
     1000: baseGutter * 5,
 };
 
-const getMargin = (fontSize: number, multiplier: number): number => Math.round((fontSize * multiplier) / 4) * 4;
+const getMargin = (fontSize: number, multiplier: number): number =>
+    Math.round((fontSize * multiplier) / 4) * 4;
 
-const GlobalFontStyles = css`
+const VFontStyle = css`
     --body-font-family: “Open Sans”, sans-serif;
     --heading-font-family: Metropolis, sans-serif;
 
@@ -105,9 +106,6 @@ const GlobalFontStyles = css`
     --heading-margin-bottom-600: ${Math.min(getMargin(headingFontSizes[600], 0.5), 8)}px;
     --heading-margin-bottom-700: ${Math.min(getMargin(headingFontSizes[700], 0.5), 8)}px;
     --heading-margin-bottom-1000: ${Math.min(getMargin(headingFontSizes[1000], 0.5), 8)}px;
-
-    --primary-text-color: #333;
-    --secondary-text-color: #787878;
 `;
 
-export default GlobalFontStyles;
+export default VFontStyle;

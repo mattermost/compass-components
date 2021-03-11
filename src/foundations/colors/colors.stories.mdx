@@ -1,20 +1,21 @@
-import { Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
-
-import GlobalStyle from '../../global-styles/globalStyles';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 import Grid from '../layout/Grid';
 
-import { createColorShades, isValidColor } from '../../utils';
+import { createColorShades } from '../../utils';
 import Swatch from './Swatch';
-import neutralColors from './default-theme/neutral';
-import blueColors from './default-theme/blue';
-import cyanColors from './default-theme/cyan';
-import tealColors from './default-theme/teal';
-import yellowColors from './default-theme/yellow';
-import redColors from './default-theme/red';
-import orangeColors from './default-theme/orange';
-import purpleColors from './default-theme/purple';
-import indigoColors from './default-theme/indigo';
-import greenColors from './default-theme/green';
+import neutralColors from './default-colors/neutral';
+import blueColors from './default-colors/blue';
+import cyanColors from './default-colors/cyan';
+import tealColors from './default-colors/teal';
+import yellowColors from './default-colors/yellow';
+import redColors from './default-colors/red';
+import orangeColors from './default-colors/orange';
+import purpleColors from './default-colors/purple';
+import indigoColors from './default-colors/indigo';
+import greenColors from './default-colors/green';
+import ThemeProvider from '../theme-provider/theme-provider';
+
+<ThemeProvider />
 
 <Meta title="Foundations/Colors" />
 
@@ -78,15 +79,20 @@ neutrals when we don't want to draw too much attention to a particular touchpoin
 disabled option.
 
 <Grid justify={'start'}>
-    {Object.keys(neutralColors).map(shade => (
-        <Swatch key={`neutralColor_${shade}`} color={neutralColors[shade]} colorName={'Neutral'} shade={shade} />
+    {Object.keys(neutralColors).map((shade) => (
+        <Swatch
+            key={`neutralColor_${shade}`}
+            color={neutralColors[shade]}
+            colorName={'Neutral'}
+            shade={shade}
+        />
     ))}
 </Grid>
 
 ### Blue
 
 <Grid justify={'start'}>
-    {Object.keys(blueColors).map(shade => (
+    {Object.keys(blueColors).map((shade) => (
         <Swatch key={`blue_${shade}`} color={blueColors[shade]} colorName={'Blue'} shade={shade} />
     ))}
 </Grid>
@@ -94,7 +100,7 @@ disabled option.
 ### Cyan
 
 <Grid justify={'start'}>
-    {Object.keys(cyanColors).map(shade => (
+    {Object.keys(cyanColors).map((shade) => (
         <Swatch key={`blue_${shade}`} color={cyanColors[shade]} colorName={'Cyan'} shade={shade} />
     ))}
 </Grid>
@@ -102,23 +108,33 @@ disabled option.
 ### Indigo
 
 <Grid justify={'start'}>
-    {Object.keys(indigoColors).map(shade => (
-        <Swatch key={`blue_${shade}`} color={indigoColors[shade]} colorName={'Indigo'} shade={shade} />
+    {Object.keys(indigoColors).map((shade) => (
+        <Swatch
+            key={`blue_${shade}`}
+            color={indigoColors[shade]}
+            colorName={'Indigo'}
+            shade={shade}
+        />
     ))}
 </Grid>
 
 ### Purple
 
 <Grid justify={'start'}>
-    {Object.keys(purpleColors).map(shade => (
-        <Swatch key={`blue_${shade}`} color={purpleColors[shade]} colorName={'Purple'} shade={shade} />
+    {Object.keys(purpleColors).map((shade) => (
+        <Swatch
+            key={`blue_${shade}`}
+            color={purpleColors[shade]}
+            colorName={'Purple'}
+            shade={shade}
+        />
     ))}
 </Grid>
 
 ### Teal
 
 <Grid justify={'start'}>
-    {Object.keys(tealColors).map(shade => (
+    {Object.keys(tealColors).map((shade) => (
         <Swatch key={`blue_${shade}`} color={tealColors[shade]} colorName={'Teal'} shade={shade} />
     ))}
 </Grid>
@@ -126,15 +142,20 @@ disabled option.
 ### Green
 
 <Grid justify={'start'}>
-    {Object.keys(greenColors).map(shade => (
-        <Swatch key={`blue_${shade}`} color={greenColors[shade]} colorName={'Green'} shade={shade} />
+    {Object.keys(greenColors).map((shade) => (
+        <Swatch
+            key={`blue_${shade}`}
+            color={greenColors[shade]}
+            colorName={'Green'}
+            shade={shade}
+        />
     ))}
 </Grid>
 
 ### Red
 
 <Grid justify={'start'}>
-    {Object.keys(redColors).map(shade => (
+    {Object.keys(redColors).map((shade) => (
         <Swatch key={`blue_${shade}`} color={redColors[shade]} colorName={'Red'} shade={shade} />
     ))}
 </Grid>
@@ -142,16 +163,26 @@ disabled option.
 ### Orange
 
 <Grid justify={'start'}>
-    {Object.keys(orangeColors).map(shade => (
-        <Swatch key={`blue_${shade}`} color={orangeColors[shade]} colorName={'Orange'} shade={shade} />
+    {Object.keys(orangeColors).map((shade) => (
+        <Swatch
+            key={`blue_${shade}`}
+            color={orangeColors[shade]}
+            colorName={'Orange'}
+            shade={shade}
+        />
     ))}
 </Grid>
 
 ### Yellow
 
 <Grid justify={'start'}>
-    {Object.keys(yellowColors).map(shade => (
-        <Swatch key={`blue_${shade}`} color={yellowColors[shade]} colorName={'Yellow'} shade={shade} />
+    {Object.keys(yellowColors).map((shade) => (
+        <Swatch
+            key={`blue_${shade}`}
+            color={yellowColors[shade]}
+            colorName={'Yellow'}
+            shade={shade}
+        />
     ))}
 </Grid>
 
@@ -168,28 +199,25 @@ export const argTypes = {
     },
 };
 
-export const Template = args => {
+export const Template = (args) => {
     let colors = args.color;
     if (typeof args.color === 'string') {
         colors = createColorShades(args.color);
     }
     return (
-        <>
-            <GlobalStyle />
-            <Grid row>
-                <Grid>
-                    {colors &&
-                        Object.keys(colors).map(shade => (
-                            <Swatch
-                                key={`color_${shade}`}
-                                color={colors[shade]}
-                                colorName={args.name || ''}
-                                shade={shade}
-                            />
-                        ))}
-                </Grid>
+        <Grid row>
+            <Grid>
+                {colors &&
+                    Object.keys(colors).map((shade) => (
+                        <Swatch
+                            key={`color_${shade}`}
+                            color={colors[shade]}
+                            colorName={args.name || ''}
+                            shade={shade}
+                        />
+                    ))}
             </Grid>
-        </>
+        </Grid>
     );
 };
 

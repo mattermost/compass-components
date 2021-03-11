@@ -20,9 +20,11 @@ const getMargin = (props: PStyledTypography): string => {
 
 const StyledTypography = styled.p<PStyledTypography>`
     font-family: ${(props: PStyledTypography): string => `var(--${props.type}-font-family)`};
-    font-size: ${(props: PStyledTypography): string => `var(--${props.type}-font-size-${props.size})`};
+    font-size: ${(props: PStyledTypography): string =>
+        `var(--${props.type}-font-size-${props.size})`};
     font-weight: ${(props: PStyledTypography): number => props.weight};
-    line-height: ${(props: PStyledTypography): string => `var(--${props.type}-line-height-${props.size})`};
+    line-height: ${(props: PStyledTypography): string =>
+        `var(--${props.type}-line-height-${props.size})`};
     color: ${(props: PStyledTypography): string => `var(--${props.color}-text-color, #000000)`};
     margin: ${(props: PStyledTypography): string => getMargin(props)};
 `;
