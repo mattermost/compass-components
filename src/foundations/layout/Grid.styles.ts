@@ -1,9 +1,6 @@
 import styled from 'styled-components';
 
-import { PGrid } from './Grid';
-
-type PStyledGrid = Required<Omit<PGrid, 'component' | 'children' | 'margin' | 'padding'>> &
-    Pick<PGrid, 'margin' | 'padding'>;
+import { PStyledGrid } from './Grid.props';
 
 const StyledGrid = styled.div<PStyledGrid>`
     display: flex;

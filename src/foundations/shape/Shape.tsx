@@ -1,7 +1,5 @@
 import React from 'react';
 
-import { isValidColor } from '../../utils';
-
 import StyledShape from './Shape.styles';
 import { PShape, PStyledShape } from './Shape.props';
 

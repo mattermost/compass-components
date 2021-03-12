@@ -29,7 +29,7 @@ import ThemeProvider from '../theme-provider/theme-provider';
 Our Primary Palette is comprised of blue, indigo, and neutral tones to bring trust and boldness to our brand. We use
 these colors in logical ways to guide the eye and highlight important information.
 
-<Grid row justify={'start'}>
+<Grid row justify={'flex-start'}>
     <Swatch color={blueColors[500]} colorName={'Blue'} shade={500} variant={'bottom'} />
     <Swatch color={indigoColors[500]} colorName={'Indigo'} shade={500} variant={'bottom'} />
     <Swatch color={neutralColors[1150]} colorName={'Neutral'} shade={1150} variant={'bottom'} />
@@ -41,7 +41,7 @@ these colors in logical ways to guide the eye and highlight important informatio
 Our secondary palette has a variety of colors to keep things fresh and interesting. We add warmer colors throughout to
 soften the experience and to impart confidence and optimism.
 
-<Grid row justify={'start'}>
+<Grid row justify={'flex-start'}>
     <Swatch color={cyanColors[400]} colorName={'Cyan'} shade={400} variant={'bottom'} />
     <Swatch color={purpleColors[400]} colorName={'Purple'} shade={400} variant={'bottom'} />
     <Swatch color={tealColors[400]} colorName={'Teal'} shade={400} variant={'bottom'} />
@@ -58,7 +58,7 @@ The consistent use of color keeps the cognitive load low and makes for a unified
 
 > **NOTE:** These colors are shades of the corresponding Secondary Palette above.
 
-<Grid justify={'start'}>
+<Grid justify={'flex-start'}>
     <Swatch color={redColors[500]} colorName={'Alert: Red'} shade={500} />
     <Swatch color={orangeColors[500]} colorName={'Warning: Orange'} shade={500} />
     <Swatch color={greenColors[600]} colorName={'Success: Green'} shade={600} />
@@ -76,7 +76,7 @@ Neutral colors have an increased level of variance to be used for text, elevatio
 neutrals when we don't want to draw too much attention to a particular touchpoint or convey information such as a
 disabled option.
 
-<Grid justify={'start'}>
+<Grid justify={'flex-start'}>
     {Object.keys(neutralColors).map((shade) => (
         <Swatch
             key={`neutralColor_${shade}`}
@@ -89,7 +89,7 @@ disabled option.
 
 ### Blue
 
-<Grid justify={'start'}>
+<Grid justify={'flex-start'}>
     {Object.keys(blueColors).map((shade) => (
         <Swatch key={`blue_${shade}`} color={blueColors[shade]} colorName={'Blue'} shade={shade} />
     ))}
@@ -97,7 +97,7 @@ disabled option.
 
 ### Cyan
 
-<Grid justify={'start'}>
+<Grid justify={'flex-start'}>
     {Object.keys(cyanColors).map((shade) => (
         <Swatch key={`blue_${shade}`} color={cyanColors[shade]} colorName={'Cyan'} shade={shade} />
     ))}
@@ -105,7 +105,7 @@ disabled option.
 
 ### Indigo
 
-<Grid justify={'start'}>
+<Grid justify={'flex-start'}>
     {Object.keys(indigoColors).map((shade) => (
         <Swatch
             key={`blue_${shade}`}
@@ -118,7 +118,7 @@ disabled option.
 
 ### Purple
 
-<Grid justify={'start'}>
+<Grid justify={'flex-start'}>
     {Object.keys(purpleColors).map((shade) => (
         <Swatch
             key={`blue_${shade}`}
@@ -131,7 +131,7 @@ disabled option.
 
 ### Teal
 
-<Grid justify={'start'}>
+<Grid justify={'flex-start'}>
     {Object.keys(tealColors).map((shade) => (
         <Swatch key={`blue_${shade}`} color={tealColors[shade]} colorName={'Teal'} shade={shade} />
     ))}
@@ -139,7 +139,7 @@ disabled option.
 
 ### Green
 
-<Grid justify={'start'}>
+<Grid justify={'flex-start'}>
     {Object.keys(greenColors).map((shade) => (
         <Swatch
             key={`blue_${shade}`}
@@ -152,7 +152,7 @@ disabled option.
 
 ### Red
 
-<Grid justify={'start'}>
+<Grid justify={'flex-start'}>
     {Object.keys(redColors).map((shade) => (
         <Swatch key={`blue_${shade}`} color={redColors[shade]} colorName={'Red'} shade={shade} />
     ))}
@@ -160,7 +160,7 @@ disabled option.
 
 ### Orange
 
-<Grid justify={'start'}>
+<Grid justify={'flex-start'}>
     {Object.keys(orangeColors).map((shade) => (
         <Swatch
             key={`blue_${shade}`}
@@ -173,7 +173,7 @@ disabled option.
 
 ### Yellow
 
-<Grid justify={'start'}>
+<Grid justify={'flex-start'}>
     {Object.keys(yellowColors).map((shade) => (
         <Swatch
             key={`blue_${shade}`}

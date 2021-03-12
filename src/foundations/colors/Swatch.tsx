@@ -1,6 +1,6 @@
 import React from 'react';
 
-import spacing from '../layout/Spacing';
+import spacing from '../layout/Grid.spacing';
 import Shape from '../shape';
 import Grid from '../layout/Grid';
 import { convertToRgb, rgbToHex, rgbToHsl } from '../../utils';
@@ -32,7 +32,7 @@ const Swatch: React.FC<PSwatch> = ({
             padding={isRow ? spacing().vertical(50) : spacing().all(50)}
             flex={0}
         >
-            <Grid alignment={'end'} flex={1}>
+            <Grid alignment={'flex-end'} flex={1}>
                 <Shape
                     border
                     borderRadius={4}
@@ -45,7 +45,7 @@ const Swatch: React.FC<PSwatch> = ({
             </Grid>
             {hasText && (
                 <Grid
-                    alignment={'end'}
+                    alignment={'flex-end'}
                     flex={2}
                     padding={spacing().trbl({ top: 50, right: 0, bottom: 50, left: 75 })}
                 >
