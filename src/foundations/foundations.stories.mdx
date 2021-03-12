@@ -34,8 +34,8 @@ import spacing from './layout/Grid.spacing';
     include things like Color, Typography, and Iconography.
 </Description>
 
-<Grid row>
-    <Grid padding={spacing().all(75).only('left', 0)}>
+<Grid row justify={'space-around'}>
+    <Grid padding={spacing().all(75).only('left', 0)} flex={1}>
         <a href={Utils.getStoryDocumentationUrl(colorStoryParams)} target={'_self'}>
             <Shape border borderRadius={4} elevation={0} elevationOnHover={2}>
                 <img src={colorImg} alt={'foundation-colors'} />
@@ -50,7 +50,7 @@ import spacing from './layout/Grid.spacing';
             </Shape>
         </a>
     </Grid>
-    <Grid padding={spacing().all(12)}>
+    <Grid padding={spacing().all(75)} flex={1}>
         <a href={Utils.getStoryDocumentationUrl(typographyStoryParams)} target={'_self'}>
             <Shape border borderRadius={4} elevation={0} elevationOnHover={2}>
                 <img src={typographyImg} alt={'foundation-typography'} />
@@ -65,7 +65,7 @@ import spacing from './layout/Grid.spacing';
             </Shape>
         </a>
     </Grid>
-    <Grid padding={spacing().all(12)}>
+    <Grid padding={spacing().all(75)} flex={1}>
         <a href={Utils.getStoryDocumentationUrl(shapeStoryParams)} target={'_self'}>
             <Shape border borderRadius={4} elevation={0} elevationOnHover={2}>
                 <img src={shapeImg} alt={'foundation-shape'} />
@@ -80,7 +80,7 @@ import spacing from './layout/Grid.spacing';
             </Shape>
         </a>
     </Grid>
-    <Grid padding={spacing().all(12).only('right', 0)}>
+    <Grid padding={spacing().all(75).only('right', 0)} flex={1}>
         <a href={Utils.getStoryDocumentationUrl(colorStoryParams)} target={'_self'}>
             <Shape border borderRadius={4} elevation={0} elevationOnHover={2}>
                 <img src={iconsImg} alt={'foundation-icons'} />
