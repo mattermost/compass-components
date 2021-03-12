@@ -409,7 +409,7 @@
     "unicorn/prefer-date-now": "error",
     "unicorn/prefer-array-some": "error",
     "unicorn/prefer-default-parameters": "error",
-    "unicorn/no-new-array": "error",
+    "unicorn/no-new-array": "off",
     "unicorn/prefer-array-index-of": "error",
     "unicorn/prefer-regexp-test": "error",
     "unicorn/consistent-destructuring": "error",

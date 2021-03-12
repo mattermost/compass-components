@@ -6,6 +6,7 @@ import Shape from './index';
 import Grid from '../layout/Grid';
 import ThemeProvider from '../theme-provider/theme-provider';
 import Typography from '../typography';
+import Spacing from '../layout/Spacing';
 
 export const Template = (args) => <Shape {...args} />;
 
@@ -56,7 +57,7 @@ export const argTypes = {
 
 There are 4 core shapes used throughout the Mattermost interface:
 
-<Grid padding={[24, 0]} justify={'stretch'}>
+<Grid padding={Spacing.only('top', 0)} justify={'stretch'}>
     <Grid row padding={[12, 6]} alignment={'center'}>
         <Grid justify={'center'}>
             <Shape {...defaultArgs} borderRadius={0} />

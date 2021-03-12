@@ -1,6 +1,7 @@
 import React from 'react';
 
 import SGrid from './Grid.styles';
+import { TSpacing } from './Spacing';
 
 type PGrid = {
     row?: boolean;
@@ -8,7 +9,7 @@ type PGrid = {
     component?: 'div' | 'span' | 'section' | 'aside';
     alignment?: 'start' | 'center' | 'end' | 'stretch';
     justify?: 'start' | 'center' | 'end' | 'stretch' | 'space-between' | 'space-evenly';
-    padding?: number | number[];
+    padding?: TSpacing;
     children?: React.ReactNode;
 };
 
@@ -23,7 +24,7 @@ const Grid: React.FC<PGrid> = ({
             '--grid-flex': '1',
             '--grid-align': 'start',
             '--grid-justify': 'start',
-            '--grid-padding': '0',
+            '--grid-padding': rest.padding?.parseSpacing() || '0',
         };
 
         if (rest.alignment) {
@@ -32,17 +33,6 @@ const Grid: React.FC<PGrid> = ({
 
         if (rest.justify) {
             style['--grid-justify'] = rest.justify;
-        }
-
-        if (rest.padding) {
-            if (Array.isArray(rest.padding)) {
-                style['--grid-padding'] = rest.padding
-                    .slice(0, 4)
-                    .map((s) => `${s}px`)
-                    .join(' ');
-            } else {
-                style['--grid-padding'] = `${rest.padding}px`;
-            }
         }
 
         if (rest.flex || rest.flex === 0) {

@@ -22,7 +22,7 @@ const GlobalStyle = createGlobalStyle`
         ${VFontStyle}
         ${VElevation}
         ${VBorderRadius}
-      
+
         --border-default: 1px solid rgba(61,60,64,0.16);
     }
 `;
