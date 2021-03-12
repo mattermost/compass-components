@@ -1,7 +1,7 @@
 import React from 'react';
 
 import StyledGrid from './Grid.styles';
-import spacing, { TSpacing } from './Spacing';
+import { TSpacing } from './Spacing';
 
 type PGrid = {
     row?: boolean;
@@ -27,8 +27,6 @@ const Grid: React.FC<PGrid> = ({
     alignment = 'start',
     justify = 'start',
     flex = 0,
-    padding = spacing().all(0),
-    margin = spacing().all(0),
     children,
     ...rest
 }: PGrid): JSX.Element => {
@@ -37,8 +35,6 @@ const Grid: React.FC<PGrid> = ({
         flex,
         alignment,
         justify,
-        padding,
-        margin,
     };
 
     return (
