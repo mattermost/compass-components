@@ -2,16 +2,17 @@ import styled from 'styled-components';
 
 import { PGrid } from './Grid';
 
-const SRow = styled.div<PGrid>`
+type PStyledGrid = Required<Omit<PGrid, 'component' | 'children'>>;
+
+const StyledGrid = styled.div<PStyledGrid>`
     display: flex;
-    flex: var(--grid-flex, 1);
+    flex: ${(props): number => props.flex || 0};
     flex-wrap: wrap;
     flex-direction: ${(props): string => (props.row ? 'row' : 'column')};
-    align-items: ${(props): string =>
-        props.row ? 'var(--grid-align, initial)' : 'var(--grid-justify, initial)'};
-    justify-content: ${(props): string =>
-        props.row ? 'var(--grid-justify, initial)' : 'var(--grid-align, initial)'};
-    padding: var(--grid-padding, calc(var(--gutter-default, 0) * 3));
+    align-items: ${(props): string => (props.row ? props.alignment : props.justify)};
+    justify-content: ${(props): string => (props.row ? props.justify : props.alignment)};
+    padding: ${(props): string => props.padding.parseSpacing()};
+    margin: ${(props): string => props.margin.parseSpacing()};
 `;
 
-export default SRow;
+export default StyledGrid;

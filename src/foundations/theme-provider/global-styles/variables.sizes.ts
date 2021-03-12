@@ -4,6 +4,7 @@ const VSizes = css`
     --size-0: 0;
     --size-25: 4px;
     --size-50: 8px;
+    --size-75: 12px;
     --size-100: 16px;
     --size-150: 24px;
     --size-200: 32px;

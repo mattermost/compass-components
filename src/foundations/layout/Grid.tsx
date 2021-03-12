@@ -1,7 +1,7 @@
 import React from 'react';
 
-import SGrid from './Grid.styles';
-import { TSpacing } from './Spacing';
+import StyledGrid from './Grid.styles';
+import Spacing, { TSpacing } from './Spacing';
 
 type PGrid = {
     row?: boolean;
@@ -10,42 +10,34 @@ type PGrid = {
     alignment?: 'start' | 'center' | 'end' | 'stretch';
     justify?: 'start' | 'center' | 'end' | 'stretch' | 'space-between' | 'space-evenly';
     padding?: TSpacing;
+    margin?: TSpacing;
     children?: React.ReactNode;
 };
 
 const Grid: React.FC<PGrid> = ({
     row = false,
     component = 'div',
+    alignment = 'start',
+    justify = 'start',
+    flex = 0,
+    padding = Spacing.all(0),
+    margin = Spacing.all(0),
     children,
     ...rest
 }: PGrid): JSX.Element => {
-    const getStyle = (): React.CSSProperties => {
-        const style = {
-            '--grid-flex': '1',
-            '--grid-align': 'start',
-            '--grid-justify': 'start',
-            '--grid-padding': rest.padding?.parseSpacing() || '0',
-        };
-
-        if (rest.alignment) {
-            style['--grid-align'] = rest.alignment;
-        }
-
-        if (rest.justify) {
-            style['--grid-justify'] = rest.justify;
-        }
-
-        if (rest.flex || rest.flex === 0) {
-            style['--grid-flex'] = `${rest.flex}`;
-        }
-
-        return style as React.CSSProperties;
+    const optionalProperties = {
+        row,
+        flex,
+        alignment,
+        justify,
+        padding,
+        margin,
     };
 
     return (
-        <SGrid row={row} as={component} style={getStyle()}>
+        <StyledGrid as={component} {...optionalProperties} {...rest}>
             {children}
-        </SGrid>
+        </StyledGrid>
     );
 };
 
