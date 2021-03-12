@@ -1,5 +1,6 @@
 import React from 'react';
 
+import spacing from '../layout/Spacing';
 import Shape from '../shape';
 import Grid from '../layout/Grid';
 import { convertToRgb, rgbToHex, rgbToHsl } from '../../utils';
@@ -25,7 +26,12 @@ const Swatch: React.FC<PSwatch> = ({
     const hasText = variant !== 'noText';
 
     return (
-        <Grid row={isRow} alignment={'stretch'} padding={isRow ? [8, 0] : 8} flex={0}>
+        <Grid
+            row={isRow}
+            alignment={'stretch'}
+            padding={isRow ? spacing().vertical(50) : spacing().all(50)}
+            flex={0}
+        >
             <Grid alignment={'end'} flex={1}>
                 <Shape
                     border
@@ -38,7 +44,11 @@ const Swatch: React.FC<PSwatch> = ({
                 />
             </Grid>
             {hasText && (
-                <Grid alignment={'end'} flex={2} padding={[8, 0, 8, 12]}>
+                <Grid
+                    alignment={'end'}
+                    flex={2}
+                    padding={spacing().trbl({ top: 50, right: 0, bottom: 50, left: 75 })}
+                >
                     <Grid flex={1}>
                         <Typography
                             variant={'subtitle'}

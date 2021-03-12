@@ -1,14 +1,21 @@
 import React from 'react';
 
 import StyledGrid from './Grid.styles';
-import Spacing, { TSpacing } from './Spacing';
+import spacing, { TSpacing } from './Spacing';
 
 type PGrid = {
     row?: boolean;
     flex?: number;
     component?: 'div' | 'span' | 'section' | 'aside';
     alignment?: 'start' | 'center' | 'end' | 'stretch';
-    justify?: 'start' | 'center' | 'end' | 'stretch' | 'space-between' | 'space-evenly';
+    justify?:
+        | 'start'
+        | 'center'
+        | 'end'
+        | 'stretch'
+        | 'space-around'
+        | 'space-between'
+        | 'space-evenly';
     padding?: TSpacing;
     margin?: TSpacing;
     children?: React.ReactNode;
@@ -20,8 +27,8 @@ const Grid: React.FC<PGrid> = ({
     alignment = 'start',
     justify = 'start',
     flex = 0,
-    padding = Spacing.all(0),
-    margin = Spacing.all(0),
+    padding = spacing().all(0),
+    margin = spacing().all(0),
     children,
     ...rest
 }: PGrid): JSX.Element => {

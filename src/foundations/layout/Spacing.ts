@@ -16,7 +16,7 @@ type TSpacing = {
     parseSpacing: () => string;
 };
 
-const Spacing = {
+const Spacing = (): TSpacing => ({
     spacing: new Array(4).fill(null),
     all(spacingToken: TSpacingTokens): TSpacing {
         this.spacing.fill(spacingToken);
@@ -72,7 +72,7 @@ const Spacing = {
 
         return spacingString;
     },
-};
+});
 
 export type { TSpacing, TSpacingSides, TSpacingTokens };
 export default Spacing;

@@ -5,7 +5,7 @@ import Typography from './Typography';
 import Grid from '../layout/Grid';
 import Shape from '../shape';
 import ThemeProvider from '../theme-provider/theme-provider';
-import Spacing from '../layout/Spacing';
+import spacing from '../layout/Spacing';
 
 <ThemeProvider />
 
@@ -214,7 +214,7 @@ export const Template = (args) => {
 };
 
 export const ParagraphTemplate = (args) => (
-    <Shape width={400} padding={Spacing.all(100)} border borderRadius={4} elevation={2}>
+    <Shape width={400} padding={spacing().all(100)} border borderRadius={4} elevation={2}>
         <Typography
             size={args.headingSize}
             gutter={args.headingGutter}
