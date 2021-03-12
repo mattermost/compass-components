@@ -12,7 +12,12 @@ type PSwatch = {
     variant?: 'noText' | 'bottom' | 'right';
 };
 
-const Swatch: React.FC<PSwatch> = ({ color, shade, colorName, variant = 'right' }: PSwatch): JSX.Element => {
+const Swatch: React.FC<PSwatch> = ({
+    color,
+    shade,
+    colorName,
+    variant = 'right',
+}: PSwatch): JSX.Element => {
     const rgbString = convertToRgb(color);
     const hexString = rgbToHex(rgbString);
     const hslString = rgbToHsl(rgbString);
@@ -35,7 +40,11 @@ const Swatch: React.FC<PSwatch> = ({ color, shade, colorName, variant = 'right' 
             {hasText && (
                 <Grid alignment={'end'} flex={2} padding={[8, 0, 8, 12]}>
                     <Grid flex={1}>
-                        <Typography variant={'subtitle'} size={200} gutter={isRow ? 'none' : 'bottom'}>
+                        <Typography
+                            variant={'subtitle'}
+                            size={200}
+                            gutter={isRow ? 'none' : 'bottom'}
+                        >
                             {`${colorName || ''} ${shade}`.trim()}
                         </Typography>
                     </Grid>

@@ -10,7 +10,7 @@ const isColor = (colorString: string): boolean => {
 
 const getStoryDocumentationUrl = (storyParameters: Record<string, string>): string => {
     const storyPathParts = storyParameters.title.split('/');
-    const storyPath = storyPathParts.map(part => kebabCase(part)).join('-');
+    const storyPath = storyPathParts.map((part) => kebabCase(part)).join('-');
 
     if (storyParameters.includeStories.length === 0) {
         return `/?path=/docs/${storyPath}--page`;

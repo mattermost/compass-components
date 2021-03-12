@@ -1,3 +1,5 @@
+import React from 'react';
+
 import { TBorderRadiusSizes, TElevationLevel } from './Shape.types';
 
 type PShape = {

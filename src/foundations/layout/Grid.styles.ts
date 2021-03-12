@@ -7,8 +7,10 @@ const SRow = styled.div<PGrid>`
     flex: var(--grid-flex, 1);
     flex-wrap: wrap;
     flex-direction: ${(props): string => (props.row ? 'row' : 'column')};
-    align-items: ${(props): string => (props.row ? 'var(--grid-align, initial)' : 'var(--grid-justify, initial)')};
-    justify-content: ${(props): string => (props.row ? 'var(--grid-justify, initial)' : 'var(--grid-align, initial)')};
+    align-items: ${(props): string =>
+        props.row ? 'var(--grid-align, initial)' : 'var(--grid-justify, initial)'};
+    justify-content: ${(props): string =>
+        props.row ? 'var(--grid-justify, initial)' : 'var(--grid-align, initial)'};
     padding: var(--grid-padding, calc(var(--gutter-default, 0) * 3));
 `;
 

@@ -12,7 +12,12 @@ type PGrid = {
     children?: React.ReactNode;
 };
 
-const Grid: React.FC<PGrid> = ({ row = false, component = 'div', children, ...rest }: PGrid): JSX.Element => {
+const Grid: React.FC<PGrid> = ({
+    row = false,
+    component = 'div',
+    children,
+    ...rest
+}: PGrid): JSX.Element => {
     const getStyle = (): React.CSSProperties => {
         const style = {
             '--grid-flex': '1',
@@ -33,7 +38,7 @@ const Grid: React.FC<PGrid> = ({ row = false, component = 'div', children, ...re
             if (Array.isArray(rest.padding)) {
                 style['--grid-padding'] = rest.padding
                     .slice(0, 4)
-                    .map(s => `${s}px`)
+                    .map((s) => `${s}px`)
                     .join(' ');
             } else {
                 style['--grid-padding'] = `${rest.padding}px`;

@@ -1,15 +1,26 @@
-import blue from './default-theme/blue';
-import cyan from './default-theme/cyan';
-import green from './default-theme/green';
-import indigo from './default-theme/indigo';
-import neutral from './default-theme/neutral';
-import orange from './default-theme/orange';
-import purple from './default-theme/purple';
-import red from './default-theme/red';
-import teal from './default-theme/teal';
-import yellow from './default-theme/yellow';
+import blue from './default-colors/blue';
+import cyan from './default-colors/cyan';
+import green from './default-colors/green';
+import indigo from './default-colors/indigo';
+import neutral from './default-colors/neutral';
+import orange from './default-colors/orange';
+import purple from './default-colors/purple';
+import red from './default-colors/red';
+import teal from './default-colors/teal';
+import yellow from './default-colors/yellow';
 
-const colors = { blue, cyan, green, indigo, neutral, orange, purple, red, teal, yellow };
+const colors: Record<string, Record<string, string>> = {
+    blue,
+    cyan,
+    green,
+    indigo,
+    neutral,
+    orange,
+    purple,
+    red,
+    teal,
+    yellow,
+};
 
 export { blue, cyan, green, indigo, neutral, orange, purple, red, teal, yellow };
 
