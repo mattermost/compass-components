@@ -1,4 +1,12 @@
-import { ArgsTable, Meta, Story, Canvas, Title, Subtitle } from '@storybook/addon-docs/blocks';
+import {
+    ArgsTable,
+    Meta,
+    Story,
+    Canvas,
+    Title,
+    Subtitle,
+    CodeOrSourceMdx,
+} from '@storybook/addon-docs/blocks';
 import { DependenciesTable } from 'storybook-addon-deps/blocks';
 
 import Shape from './index';
@@ -59,6 +67,7 @@ There are 4 core shapes used throughout the Mattermost interface:
         row
         padding={GridSpacing.symmetric({ vertical: 150, horizontal: 25 })}
         alignment={'center'}
+        justify={'space-around'}
     >
         <Grid justify={'center'}>
             <Shape {...defaultArgs} borderRadius={0} />
@@ -99,9 +108,9 @@ export const radiusExampleArgs = {
 <Grid padding={GridSpacing.symmetric({ vertical: 150 })} justify={'stretch'}>
     <Grid row alignment={'center'}>
         <Grid justify={'center'} flex={0}>
-            <Shape borderRadius={0} background={'transparent'} padding={GridSpacing.all(150)}>
+            <Grid padding={GridSpacing.all(150)}>
                 <Shape {...radiusExampleArgs} width={156} height={156} borderRadius={4} />
-            </Shape>
+            </Grid>
             <br />
             <Typography variant={'body'} size={200} gutter={'none'}>
                 <strong>4px</strong>
@@ -117,45 +126,45 @@ export const radiusExampleArgs = {
 <Grid padding={GridSpacing.symmetric({ vertical: 150 })} justify={'stretch'}>
     <Grid row justify={'space-between'}>
         <Grid justify={'center'} flex={0}>
-            <Shape borderRadius={0} background={'transparent'} padding={GridSpacing.all(150)}>
+            <Grid padding={GridSpacing.all(150)}>
                 <Shape {...radiusExampleArgs} borderRadius={8} />
-            </Shape>
+            </Grid>
             <br />
             <Typography variant={'body'} size={200} gutter={'none'}>
                 <strong>8px</strong>
             </Typography>
         </Grid>
         <Grid justify={'center'} flex={0}>
-            <Shape borderRadius={0} background={'transparent'} padding={GridSpacing.all(150)}>
+            <Grid padding={GridSpacing.all(150)}>
                 <Shape {...radiusExampleArgs} borderRadius={12} />
-            </Shape>
+            </Grid>
             <br />
             <Typography variant={'body'} size={200} gutter={'none'}>
                 <strong>12px</strong>
             </Typography>
         </Grid>
         <Grid justify={'center'} flex={0}>
-            <Shape borderRadius={0} background={'transparent'} padding={GridSpacing.all(150)}>
+            <Grid padding={GridSpacing.all(150)}>
                 <Shape {...radiusExampleArgs} borderRadius={16} />
-            </Shape>
+            </Grid>
             <br />
             <Typography variant={'body'} size={200} gutter={'none'}>
                 <strong>16px</strong>
             </Typography>
         </Grid>
         <Grid justify={'center'} flex={0}>
-            <Shape borderRadius={0} background={'transparent'} padding={GridSpacing.all(150)}>
+            <Grid padding={GridSpacing.all(150)}>
                 <Shape {...radiusExampleArgs} borderRadius={20} />
-            </Shape>
+            </Grid>
             <br />
             <Typography variant={'body'} size={200} gutter={'none'}>
                 <strong>20px</strong>
             </Typography>
         </Grid>
         <Grid justify={'center'} flex={0}>
-            <Shape borderRadius={0} background={'transparent'} padding={GridSpacing.all(150)}>
+            <Grid padding={GridSpacing.all(150)}>
                 <Shape {...radiusExampleArgs} borderRadius={24} />
-            </Shape>
+            </Grid>
             <br />
             <Typography variant={'body'} size={200} gutter={'none'}>
                 <strong>24px</strong>

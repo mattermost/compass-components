@@ -10,7 +10,6 @@ const StyledShape = styled.div<PStyledShape>`
     width: ${(props): string => props.width};
     height: ${(props): string => props.height};
     background-color: ${(props): string => props.background};
-    padding: ${(props): string => props.padding};
     border-radius: ${(props): string => borderRadius(props.borderRadius)};
     box-shadow: ${(props): string => elevation(props.elevation)};
     z-index: ${(props): number => props.elevation || 0};

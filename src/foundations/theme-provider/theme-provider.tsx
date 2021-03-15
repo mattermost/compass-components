@@ -30,6 +30,14 @@ const SBGlobalStyles = createGlobalStyle`
 
       h2 {
         opacity: 0.75;
+
+        &:not(.sbdocs-subtitle) {
+          border-bottom: 1px solid rgba(255,255,255,0.75);
+        }
+      }
+      
+      hr {
+        border-top: 1px solid rgba(255,255,255,0.75);
       }
     }
   }

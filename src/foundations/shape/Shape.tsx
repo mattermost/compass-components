@@ -12,7 +12,6 @@ const Shape: React.FC<PShape> = ({
     background = 'var(--shape-background-color)',
     width = 'auto',
     height = 'auto',
-    padding = 0,
     children,
 }: PShape): JSX.Element => {
     const styledShapeProperties: PStyledShape = {
@@ -23,7 +22,6 @@ const Shape: React.FC<PShape> = ({
         background,
         width: 'auto',
         height: 'auto',
-        padding: 'initial',
     };
 
     if (borderRadius === 'circle' && width) {
@@ -36,17 +34,6 @@ const Shape: React.FC<PShape> = ({
 
         if (height) {
             styledShapeProperties.height = typeof height === 'number' ? `${height}px` : height;
-        }
-    }
-
-    if (padding) {
-        if (Array.isArray(padding)) {
-            styledShapeProperties.padding = padding
-                .slice(0, 4)
-                .map((s) => `${s}px`)
-                .join(' ');
-        } else {
-            styledShapeProperties.padding = `${padding}px`;
         }
     }
 
