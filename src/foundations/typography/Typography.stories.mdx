@@ -2,10 +2,9 @@ import { Meta, Story, Canvas, ArgsTable, Title, Subtitle } from '@storybook/addo
 
 import Typography from './Typography';
 
-import Grid from '../layout/Grid';
+import Grid, { GridSpacing } from '../layout/';
 import Shape from '../shape';
 import ThemeProvider from '../theme-provider/theme-provider';
-import spacing from '../layout/Grid.spacing';
 
 <ThemeProvider />
 
@@ -214,7 +213,7 @@ export const Template = (args) => {
 };
 
 export const ParagraphTemplate = (args) => (
-    <Shape width={400} padding={spacing().all(100)} border borderRadius={4} elevation={2}>
+    <Shape width={400} padding={GridSpacing.all(100)} border borderRadius={4} elevation={2}>
         <Typography
             size={args.headingSize}
             gutter={args.headingGutter}

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { TSpacing } from './Grid.types';
+import { TSpacingDefinition } from './Grid.types';
 
 type PGrid = {
     /** renders the `Grid` component as a row (`flex-direction: row`) */
@@ -20,10 +20,10 @@ type PGrid = {
         | 'space-around'
         | 'space-between'
         | 'space-evenly';
-    /** padding according to `TSpacing` type */
-    padding?: TSpacing;
-    /** margin according to `TSpacing` type */
-    margin?: TSpacing;
+    /** padding according to `TSpacingDefinition` type */
+    padding?: TSpacingDefinition;
+    /** margin according to `TSpacingDefinition` type */
+    margin?: TSpacingDefinition;
     children?: React.ReactNode;
 };
 

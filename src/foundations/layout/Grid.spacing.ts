@@ -1,61 +1,44 @@
-import { TSpacing, TSpacingSides, TSpacingTokens, TSpacingTokensTRBL } from './Grid.types';
+import {
+    TSpacing,
+    TSpacingDefinition,
+    TSpacingSides,
+    TSpacingTokens,
+    TSpacingTokensSymmetric,
+    TSpacingTokensTRBL,
+} from './Grid.types';
 
-const GridSpacing = (): TSpacing => ({
-    spacing: new Array(4).fill(null),
-    all(spacingToken: TSpacingTokens): TSpacing {
-        this.spacing.fill(spacingToken);
-
-        return this;
+const GridSpacing: TSpacing = {
+    all(spacingToken: TSpacingTokens): TSpacingDefinition {
+        return [spacingToken, spacingToken, spacingToken, spacingToken];
     },
-    trbl({ top = 0, right = 0, bottom = 0, left = 0 }: TSpacingTokensTRBL): TSpacing {
-        this.spacing[0] = top;
-        this.spacing[1] = right;
-        this.spacing[2] = bottom;
-        this.spacing[3] = left;
-
-        return this;
+    trbl({ top = 0, right = 0, bottom = 0, left = 0 }: TSpacingTokensTRBL): TSpacingDefinition {
+        return [top, right, bottom, left];
     },
-    only(side: TSpacingSides, spacingToken: TSpacingTokens): TSpacing {
-        let index = 0;
+    only(side: TSpacingSides, spacingToken: TSpacingTokens): TSpacingDefinition {
+        const trblDefinition: TSpacingTokensTRBL = {
+            top: 0,
+            right: 0,
+            bottom: 0,
+            left: 0,
+        };
 
-        switch (side) {
-            case 'right':
-                index = 1;
-                break;
-            case 'bottom':
-                index = 2;
-                break;
-            case 'left':
-                index = 3;
-                break;
-            case 'top':
-            default:
-                index = 0;
-        }
+        trblDefinition[side] = spacingToken;
 
-        this.spacing[index] = spacingToken;
-
-        return this;
+        return this.trbl(trblDefinition);
     },
-    vertical(spacingToken: TSpacingTokens): TSpacing {
-        this.spacing[0] = spacingToken;
-        this.spacing[2] = spacingToken;
-
-        return this;
+    symmetric({ vertical = 0, horizontal = 0 }: TSpacingTokensSymmetric): TSpacingDefinition {
+        return this.trbl({
+            top: vertical,
+            right: horizontal,
+            bottom: vertical,
+            left: horizontal,
+        });
     },
-    horizontal(spacingToken: TSpacingTokens): TSpacing {
-        this.spacing[1] = spacingToken;
-        this.spacing[3] = spacingToken;
+};
 
-        return this;
-    },
-    parseSpacing(): string {
-        const spacingString = this.spacing.map((s = 0) => `var(--size-${s || 0})`).join(' ');
+const parseSpacing = (spacing: TSpacingDefinition): string =>
+    spacing.map((s = 0) => `var(--size-${s || 0})`).join(' ');
 
-        this.spacing = new Array(4).fill(null);
-
-        return spacingString;
-    },
-});
+export { parseSpacing };
 
 export default GridSpacing;

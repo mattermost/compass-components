@@ -1,10 +1,9 @@
 import React from 'react';
 
-import spacing from '../layout/Grid.spacing';
+import Grid, { GridSpacing } from '../layout';
 import Shape from '../shape';
-import Grid from '../layout/Grid';
+import Typography from '../typography';
 import { convertToRgb, rgbToHex, rgbToHsl } from '../../utils';
-import Typography from '../typography/Typography';
 
 type PSwatch = {
     color: string;
@@ -29,7 +28,7 @@ const Swatch: React.FC<PSwatch> = ({
         <Grid
             row={isRow}
             alignment={'stretch'}
-            padding={isRow ? spacing().vertical(50) : spacing().all(50)}
+            padding={isRow ? GridSpacing.symmetric({ vertical: 50 }) : GridSpacing.all(50)}
             flex={0}
         >
             <Grid alignment={'flex-end'} flex={1}>
@@ -47,7 +46,7 @@ const Swatch: React.FC<PSwatch> = ({
                 <Grid
                     alignment={'flex-end'}
                     flex={2}
-                    padding={spacing().trbl({ top: 50, right: 0, bottom: 50, left: 75 })}
+                    padding={GridSpacing.trbl({ top: 50, right: 0, bottom: 50, left: 75 })}
                 >
                     <Grid flex={1}>
                         <Typography

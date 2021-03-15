@@ -1,12 +1,9 @@
 import { ArgsTable, Meta, Story, Canvas, Title, Subtitle } from '@storybook/addon-docs/blocks';
 import { DependenciesTable } from 'storybook-addon-deps/blocks';
 
-import GlobalStyle from '../theme-provider/global-styles/globalStyles';
 import Shape from './index';
-import Grid from '../layout/Grid';
-import ThemeProvider from '../theme-provider/theme-provider';
+import Grid, { GridSpacing } from '../layout';
 import Typography from '../typography';
-import spacing from '../layout/Grid.spacing';
 
 export const Template = (args) => <Shape {...args} />;
 
@@ -57,8 +54,12 @@ export const argTypes = {
 
 There are 4 core shapes used throughout the Mattermost interface:
 
-<Grid padding={spacing().vertical(150)} justify={'stretch'}>
-    <Grid row padding={spacing().vertical(75).horizontal(25)} alignment={'center'}>
+<Grid padding={GridSpacing.symmetric({ vertical: 150 })} justify={'stretch'}>
+    <Grid
+        row
+        padding={GridSpacing.symmetric({ vertical: 150, horizontal: 25 })}
+        alignment={'center'}
+    >
         <Grid justify={'center'}>
             <Shape {...defaultArgs} borderRadius={0} />
         </Grid>
@@ -95,10 +96,10 @@ export const radiusExampleArgs = {
     height: 120,
 };
 
-<Grid padding={spacing().vertical(150)} justify={'stretch'}>
+<Grid padding={GridSpacing.symmetric({ vertical: 150 })} justify={'stretch'}>
     <Grid row alignment={'center'}>
         <Grid justify={'center'} flex={0}>
-            <Shape borderRadius={0} background={'transparent'} padding={spacing().all(150)}>
+            <Shape borderRadius={0} background={'transparent'} padding={GridSpacing.all(150)}>
                 <Shape {...radiusExampleArgs} width={156} height={156} borderRadius={4} />
             </Shape>
             <br />
@@ -113,10 +114,10 @@ export const radiusExampleArgs = {
 
 ---
 
-<Grid padding={spacing().vertical(150)} justify={'stretch'}>
+<Grid padding={GridSpacing.symmetric({ vertical: 150 })} justify={'stretch'}>
     <Grid row justify={'space-between'}>
         <Grid justify={'center'} flex={0}>
-            <Shape borderRadius={0} background={'transparent'} padding={spacing().all(150)}>
+            <Shape borderRadius={0} background={'transparent'} padding={GridSpacing.all(150)}>
                 <Shape {...radiusExampleArgs} borderRadius={8} />
             </Shape>
             <br />
@@ -125,7 +126,7 @@ export const radiusExampleArgs = {
             </Typography>
         </Grid>
         <Grid justify={'center'} flex={0}>
-            <Shape borderRadius={0} background={'transparent'} padding={spacing().all(150)}>
+            <Shape borderRadius={0} background={'transparent'} padding={GridSpacing.all(150)}>
                 <Shape {...radiusExampleArgs} borderRadius={12} />
             </Shape>
             <br />
@@ -134,7 +135,7 @@ export const radiusExampleArgs = {
             </Typography>
         </Grid>
         <Grid justify={'center'} flex={0}>
-            <Shape borderRadius={0} background={'transparent'} padding={spacing().all(150)}>
+            <Shape borderRadius={0} background={'transparent'} padding={GridSpacing.all(150)}>
                 <Shape {...radiusExampleArgs} borderRadius={16} />
             </Shape>
             <br />
@@ -143,7 +144,7 @@ export const radiusExampleArgs = {
             </Typography>
         </Grid>
         <Grid justify={'center'} flex={0}>
-            <Shape borderRadius={0} background={'transparent'} padding={spacing().all(150)}>
+            <Shape borderRadius={0} background={'transparent'} padding={GridSpacing.all(150)}>
                 <Shape {...radiusExampleArgs} borderRadius={20} />
             </Shape>
             <br />
@@ -152,7 +153,7 @@ export const radiusExampleArgs = {
             </Typography>
         </Grid>
         <Grid justify={'center'} flex={0}>
-            <Shape borderRadius={0} background={'transparent'} padding={spacing().all(150)}>
+            <Shape borderRadius={0} background={'transparent'} padding={GridSpacing.all(150)}>
                 <Shape {...radiusExampleArgs} borderRadius={24} />
             </Shape>
             <br />
