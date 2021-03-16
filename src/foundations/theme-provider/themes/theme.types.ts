@@ -17,6 +17,7 @@ type TTHemeTextColors = {
     primary: string;
     secondary: string;
     disabled: string;
+    contrast: string;
 };
 
 type TTHemeBackgroundColors = {
@@ -31,4 +32,10 @@ type TTheme = {
     background: TTHemeBackgroundColors;
 };
 
-export type { TTheme, TTHemeColors, TTHemeTextColors, TTHemeBackgroundColors };
+export type {
+    TThemeColorDefinition,
+    TTheme,
+    TTHemeColors,
+    TTHemeTextColors,
+    TTHemeBackgroundColors,
+};

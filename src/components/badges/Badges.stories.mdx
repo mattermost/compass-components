@@ -1,43 +1,25 @@
-import { ArgsTable, Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
+import { ArgsTable, Meta, Story, Canvas, Title, Subtitle } from '@storybook/addon-docs/blocks';
 import { DependenciesTable } from 'storybook-addon-deps/blocks';
 
-import GlobalStyle from '../../global-styles/globalStyles';
+import GlobalStyle from '../../foundations/theme-provider/global-styles/globalStyles';
 import Badges from './index';
+import Grid from '../../foundations/layout/Grid';
+import Typography from '../../foundations/typography';
 
-export const Template = args => (
-    <>
-        <GlobalStyle />
-        <Badges {...args} />
-    </>
-);
+export const Template = (args) => <Badges {...args} />;
 
 export const defaultArgs = {
-    type: 'mention',
-    size: '',
-    status: 'online',
-    content: '1',
+    location: 'sidebar',
 };
 
 export const argTypes = {
-    type: {
+    location: {
         control: {
             type: 'select',
-            options: ['mention', 'unread', 'status', 'desktopApp'],
+            options: ['sidebar', 'menu'],
         },
     },
-    size: {
-        control: {
-            type: 'select',
-            options: ['sm', 'md'],
-        },
-    },
-    status: {
-        control: {
-            type: 'select',
-            options: ['online', 'offline'],
-        },
-    },
-    content: {
+    mentionCount: {
         control: {
             type: 'text',
         },
@@ -48,16 +30,36 @@ export const argTypes = {
 
 <GlobalStyle />
 
-# Badges
+<Title>Badges</Title>
 
----
-
-Badges are small components typically used to indicate a numerical value or the status of an item to the user.
+<Subtitle>
+    Badges are small components typically used to indicate a numerical value or the status of an
+    item to the user.
+</Subtitle>
 
 ## Mention Badges
 
 Mention Badges are used to show a numerical count of mentions that a user has received. It can be found in
 the Channel Sidebar as well as the App Header Bar.
+
+<Grid padding={[24, 0]} justify={'stretch'}>
+    <Grid row padding={[12, 6]} alignment={'center'}>
+        <Grid justify={'center'}>
+            <Shape {...defaultArgs} borderRadius={0} />
+        </Grid>
+        <Grid justify={'center'}>
+            <Shape {...defaultArgs} borderRadius={12} />
+        </Grid>
+        <Grid justify={'center'}>
+            <Shape {...defaultArgs} borderRadius={'pill'} />
+        </Grid>
+        <Grid justify={'center'}>
+            <Shape {...defaultArgs} borderRadius={'circle'} />
+        </Grid>
+    </Grid>
+</Grid>
+
+<ArgsTable of={Shape} />
 
 In cases where there is a number larger than 99 displayed in the badge, we limit the badge display to 99+
 
@@ -66,26 +68,32 @@ In cases where there is a number larger than 99 displayed in the badge, we limit
 Unread Badges are smaller badges used to inform the user that there are unread messages in a particular
 Channel or Team. Unread Badges do not display a count.
 
+export const radiusExampleArgs = {
+    ...defaultArgs,
+    elevation: 2,
+    elevationOnHover: 5,
+    width: 120,
+    height: 120,
+};
+
+<Grid padding={[24, 0]} justify={'stretch'}>
+    <Grid row padding={0} alignment={'center'}>
+        <Grid justify={'center'} flex={0}>
+            <Shape borderRadius={0} background={'transparent'} padding={24}>
+                <Shape {...radiusExampleArgs} width={156} height={156} borderRadius={4} />
+            </Shape>
+            <br />
+            <Typography variant={'body'} size={200} gutter={'none'}>
+                <strong>4px</strong>
+            </Typography>
+        </Grid>
+    </Grid>
+</Grid>
+
 ## Status Badges
 
 Status Badges are used to indicate the status of a particular user and are usually paired with an avatar
-or username.
-
-### Sizes
-
-## App Icon Badges
-
-For the Desktop App, badges are added to the app icon when there are mentions or unread messages.
-
-### Mac OS
-
-### Windows
-
-## Examples
-
-Below are some examples of the various badges in the context of larger components in the product
-
----
+or username
 
 export const canvasExampleArgs = {
     ...defaultArgs,
@@ -112,15 +120,6 @@ export const canvasExampleArgs = {
     </Story>
     <Story
         name="Status Badges"
-        argTypes={argTypes}
-        args={{
-            ...canvasExampleArgs,
-        }}
-    >
-        {Template.bind({})}
-    </Story>
-    <Story
-        name="App Icon Badges"
         argTypes={argTypes}
         args={{
             ...canvasExampleArgs,

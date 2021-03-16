@@ -9,7 +9,7 @@ type PTypography = {
      * */
     variant: TTypographyVariant;
     /** which color is the text rendered with */
-    color?: 'primary' | 'secondary' | 'disabled';
+    color?: 'primary' | 'secondary' | 'disabled' | 'accent' | 'contrast';
     /** the size use to render the text. The actual px values depend on the variant as well  */
     size?: number;
     /** when using a header this option renders it in `regular`, not `bold` */
