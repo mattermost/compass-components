@@ -31,9 +31,9 @@ const MentionBadges: React.FC<PMentionBadges> = ({
             <Grid
                 alignment={'flex-end'}
                 flex={1}
-                padding={GridSpacing.symmetric({ vertical: 0, horizontal: 100 })}
+                padding={GridSpacing.symmetric({ vertical: 0, horizontal: 50 })}
             >
-                <Typography variant={'h6'} size={100} color={color} gutter={'none'}>
+                <Typography variant={'body'} size={25} color={color} gutter={'none'}>
                     <strong>{mentionCount}</strong>
                 </Typography>
             </Grid>
