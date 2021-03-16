@@ -1,9 +1,9 @@
 import React from 'react';
 
+import Grid, { GridSpacing } from '../layout';
 import Shape from '../shape';
-import Grid from '../layout/Grid';
+import Typography from '../typography';
 import { convertToRgb, rgbToHex, rgbToHsl } from '../../utils';
-import Typography from '../typography/Typography';
 
 type PSwatch = {
     color: string;
@@ -25,8 +25,13 @@ const Swatch: React.FC<PSwatch> = ({
     const hasText = variant !== 'noText';
 
     return (
-        <Grid row={isRow} alignment={'stretch'} padding={isRow ? [8, 0] : 8} flex={0}>
-            <Grid alignment={'end'} flex={1}>
+        <Grid
+            row={isRow}
+            alignment={'stretch'}
+            padding={isRow ? GridSpacing.symmetric({ vertical: 50 }) : GridSpacing.all(50)}
+            flex={0}
+        >
+            <Grid alignment={'flex-end'} flex={1}>
                 <Shape
                     border
                     borderRadius={4}
@@ -38,7 +43,11 @@ const Swatch: React.FC<PSwatch> = ({
                 />
             </Grid>
             {hasText && (
-                <Grid alignment={'end'} flex={2} padding={[8, 0, 8, 12]}>
+                <Grid
+                    alignment={'flex-end'}
+                    flex={2}
+                    padding={GridSpacing.trbl({ top: 50, right: 0, bottom: 50, left: 75 })}
+                >
                     <Grid flex={1}>
                         <Typography
                             variant={'subtitle'}

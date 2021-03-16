@@ -7,7 +7,7 @@ import shapeStoryParams from './shape/Shape.stories.mdx';
 import { Utils } from '../utils';
 import Shape from './shape';
 import Typography from './typography';
-import Grid from './layout/Grid';
+import Grid, { GridSpacing } from './layout';
 import ThemeProvider from './theme-provider/theme-provider';
 
 import collageImg from '../assets/images/foundation_overview_collage.png';
@@ -33,12 +33,12 @@ import iconsImg from '../assets/images/foundation_overview_icons.png';
     include things like Color, Typography, and Iconography.
 </Description>
 
-<Grid row>
-    <Grid padding={[12, 12, 12, 0]}>
+<Grid row justify={'space-around'}>
+    <Grid padding={GridSpacing.trbl({ top: 75, right: 75, bottom: 75, left: 0 })} flex={1}>
         <a href={Utils.getStoryDocumentationUrl(colorStoryParams)} target={'_self'}>
             <Shape border borderRadius={4} elevation={0} elevationOnHover={2}>
                 <img src={colorImg} alt={'foundation-colors'} />
-                <Grid padding={[8, 16]}>
+                <Grid padding={GridSpacing.symmetric({ vertical: 50, horizontal: 100 })}>
                     <Typography variant={'h3'} size={300}>
                         Color
                     </Typography>
@@ -49,11 +49,11 @@ import iconsImg from '../assets/images/foundation_overview_icons.png';
             </Shape>
         </a>
     </Grid>
-    <Grid padding={12}>
+    <Grid padding={GridSpacing.all(75)} flex={1}>
         <a href={Utils.getStoryDocumentationUrl(typographyStoryParams)} target={'_self'}>
             <Shape border borderRadius={4} elevation={0} elevationOnHover={2}>
                 <img src={typographyImg} alt={'foundation-typography'} />
-                <Grid padding={[8, 16]}>
+                <Grid padding={GridSpacing.symmetric({ vertical: 50, horizontal: 100 })}>
                     <Typography variant={'h3'} size={300}>
                         Typography
                     </Typography>
@@ -64,11 +64,11 @@ import iconsImg from '../assets/images/foundation_overview_icons.png';
             </Shape>
         </a>
     </Grid>
-    <Grid padding={12}>
+    <Grid padding={GridSpacing.all(75)} flex={1}>
         <a href={Utils.getStoryDocumentationUrl(shapeStoryParams)} target={'_self'}>
             <Shape border borderRadius={4} elevation={0} elevationOnHover={2}>
                 <img src={shapeImg} alt={'foundation-shape'} />
-                <Grid padding={[8, 16]}>
+                <Grid padding={GridSpacing.symmetric({ vertical: 50, horizontal: 100 })}>
                     <Typography variant={'h3'} size={300}>
                         Shape
                     </Typography>
@@ -79,11 +79,11 @@ import iconsImg from '../assets/images/foundation_overview_icons.png';
             </Shape>
         </a>
     </Grid>
-    <Grid padding={[12, 0, 12, 12]}>
+    <Grid padding={GridSpacing.trbl({ top: 75, right: 0, bottom: 75, left: 75 })} flex={1}>
         <a href={Utils.getStoryDocumentationUrl(colorStoryParams)} target={'_self'}>
             <Shape border borderRadius={4} elevation={0} elevationOnHover={2}>
                 <img src={iconsImg} alt={'foundation-icons'} />
-                <Grid padding={[8, 16]}>
+                <Grid padding={GridSpacing.symmetric({ vertical: 50, horizontal: 100 })}>
                     <Typography variant={'h3'} size={300}>
                         Iconography
                     </Typography>

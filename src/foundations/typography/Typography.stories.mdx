@@ -2,7 +2,7 @@ import { Meta, Story, Canvas, ArgsTable, Title, Subtitle } from '@storybook/addo
 
 import Typography from './Typography';
 
-import Grid from '../layout/Grid';
+import Grid, { GridSpacing } from '../layout/';
 import Shape from '../shape';
 import ThemeProvider from '../theme-provider/theme-provider';
 
@@ -213,56 +213,58 @@ export const Template = (args) => {
 };
 
 export const ParagraphTemplate = (args) => (
-    <Shape width={400} padding={16} border borderRadius={4} elevation={2}>
-        <Typography
-            size={args.headingSize}
-            gutter={args.headingGutter}
-            variant={args.headingVariant}
-            useRegular={args.headingUseRegular}
-            color={args.headingColor}
-        >
-            {args.heading}
-        </Typography>
-        <Typography
-            size={args.subtitleSize}
-            gutter={args.subtitleGutter}
-            variant={args.subtitleVariant}
-            color={args.subtitleColor}
-        >
-            {args.subtitle}
-        </Typography>
-        <Typography
-            size={args.paragraphSize}
-            gutter={args.paragraphGutter}
-            variant={args.paragraphVariant}
-            color={args.paragraphColor}
-        >
-            {args.paragraph}
-        </Typography>
-        <Typography
-            size={args.subtitleSize}
-            gutter={args.subtitleGutter}
-            variant={args.subtitleVariant}
-            color={args.subtitleColor}
-        >
-            {args.subtitle}
-        </Typography>
-        <Typography
-            size={args.paragraphSize}
-            gutter={args.paragraphGutter}
-            variant={args.paragraphVariant}
-            color={args.paragraphColor}
-        >
-            {args.paragraph}
-        </Typography>
-        <Typography
-            size={args.paragraphSize}
-            gutter={args.paragraphGutter}
-            variant={args.paragraphVariant}
-            color={args.paragraphColor}
-        >
-            {args.paragraph}
-        </Typography>
+    <Shape width={400} border borderRadius={4} elevation={2}>
+        <Grid padding={GridSpacing.all(100)}>
+            <Typography
+                size={args.headingSize}
+                gutter={args.headingGutter}
+                variant={args.headingVariant}
+                useRegular={args.headingUseRegular}
+                color={args.headingColor}
+            >
+                {args.heading}
+            </Typography>
+            <Typography
+                size={args.subtitleSize}
+                gutter={args.subtitleGutter}
+                variant={args.subtitleVariant}
+                color={args.subtitleColor}
+            >
+                {args.subtitle}
+            </Typography>
+            <Typography
+                size={args.paragraphSize}
+                gutter={args.paragraphGutter}
+                variant={args.paragraphVariant}
+                color={args.paragraphColor}
+            >
+                {args.paragraph}
+            </Typography>
+            <Typography
+                size={args.subtitleSize}
+                gutter={args.subtitleGutter}
+                variant={args.subtitleVariant}
+                color={args.subtitleColor}
+            >
+                {args.subtitle}
+            </Typography>
+            <Typography
+                size={args.paragraphSize}
+                gutter={args.paragraphGutter}
+                variant={args.paragraphVariant}
+                color={args.paragraphColor}
+            >
+                {args.paragraph}
+            </Typography>
+            <Typography
+                size={args.paragraphSize}
+                gutter={args.paragraphGutter}
+                variant={args.paragraphVariant}
+                color={args.paragraphColor}
+            >
+                {args.paragraph}
+            </Typography>
+        </Grid>
     </Shape>
 );
 

@@ -66,5 +66,3 @@ addParameters({
         Decorator: CustomDecorator,
     },
 });
-
-addDecorator(withA11y);

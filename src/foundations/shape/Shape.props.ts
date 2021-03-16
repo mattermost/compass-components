@@ -25,8 +25,6 @@ type PShape = {
      * `height` will be set from `width`
      * */
     height?: number | string | 'auto';
-    /** set a custom padding */
-    padding?: number | number[];
     /** set a custom background color */
     background?: string;
     children?: React.ReactNode | React.ReactNode[];
@@ -35,7 +33,6 @@ type PShape = {
 type PStyledShape = Pick<PShape, 'borderRadius' | 'elevation' | 'border' | 'elevationOnHover'> & {
     width: string;
     height: string;
-    padding: string;
     background: string;
 };
 
