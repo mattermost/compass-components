@@ -1,7 +1,7 @@
 import { Meta, Story, Canvas, ArgsTable, Title, Subtitle } from '@storybook/addon-docs/blocks';
 
 import Type from './Type';
-import { DEFAULT_TYPE_SIZE, TYPE_SIZES, TYPE_WEIGHTS } from './Type.constants';
+import { TYPE_SIZES, TYPE_WEIGHTS } from './Type.constants';
 
 <Meta component={Type} title="Foundations/Type" />
 
@@ -20,7 +20,7 @@ export const Template = (args) => {
     <Story
         name="Default"
         args={{
-            size: DEFAULT_TYPE_SIZE,
+            size: 100,
             type: 'body',
             text: 'Lorem ipsum dolor sit amet consetetur ...',
         }}

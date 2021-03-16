@@ -1,20 +1,12 @@
 import React from 'react';
-import clsx from 'clsx';
 
 import Type from '../../foundations/type';
 
 import { PHeading } from './Heading.props';
 
-const Heading: React.FC<PHeading> = ({
-    children,
-    className,
-    size = 100,
-    variant,
-    weight = 'bold',
-}): JSX.Element => {
+const Heading: React.FC<PHeading> = ({ children, size = 100, variant, weight }): JSX.Element => {
     let element = variant;
 
-    // set the default variant based on the defined size of variant if not defined
     if (!variant) {
         switch (true) {
             case size === 400:
@@ -38,13 +30,7 @@ const Heading: React.FC<PHeading> = ({
     }
 
     return (
-        <Type
-            className={clsx(className, 'Heading')}
-            variant={element}
-            size={size}
-            weight={weight}
-            type="heading"
-        >
+        <Type className="Heading" variant={element} size={size} weight={weight} type="heading">
             {children}
         </Type>
     );

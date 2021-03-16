@@ -1,8 +1,9 @@
 import { THeadingSize, THeadingVariant, THeadingWeight } from './Heading.types';
 
-export type PHeading = {
-    className?: string;
+type PHeading = {
     size?: THeadingSize;
     variant?: THeadingVariant;
     weight?: THeadingWeight;
 };
+
+export type { PHeading };
