@@ -52,10 +52,10 @@ export const spacings = {
 
 <Grid row alignment={'flex-end'}>
     {Object.keys(spacings).map((s) => (
-        <Grid justify={'center'} padding={spacing().all(75)}>
+        <Grid justify={'center'} padding={GridSpacing.all(75)}>
             <Shape border borderRadius={0} elevation={0}>
                 <Grid
-                    padding={spacing().trbl({
+                    padding={GridSpacing.trbl({
                         top: spacings[s],
                         right: 0,
                         bottom: 0,
