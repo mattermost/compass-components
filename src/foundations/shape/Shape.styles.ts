@@ -5,10 +5,13 @@ import { borderRadius, elevation } from '../theme-provider/global-styles/globalS
 import { PStyledShape } from './Shape.props';
 
 const StyledShape = styled.div<PStyledShape>`
+    flex: 1;
     display: flex;
     flex-direction: column;
     width: ${(props): string => props.width};
+    max-width: ${(props): string => props.width};
     height: ${(props): string => props.height};
+    max-height: ${(props): string => props.height};
     background-color: ${(props): string => props.background};
     border-radius: ${(props): string => borderRadius(props.borderRadius)};
     box-shadow: ${(props): string => elevation(props.elevation)};

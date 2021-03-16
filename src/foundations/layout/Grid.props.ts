@@ -10,9 +10,10 @@ type PGrid = {
     /** the HTML tag that is used to render the component */
     component?: 'div' | 'span' | 'section' | 'aside';
     /** defines the vertical alignment of items inside the component */
-    alignment?: 'flex-start' | 'center' | 'flex-end' | 'stretch';
+    alignment?: 'initial' | 'flex-start' | 'center' | 'flex-end' | 'stretch';
     /** defines the horizontal alignment of items inside the component */
     justify?:
+        | 'initial'
         | 'flex-start'
         | 'center'
         | 'flex-end'

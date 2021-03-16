@@ -12,13 +12,7 @@ import grid8pxImg from '../../assets/images/layout_8px-grid.png';
 import grid4pxImg from '../../assets/images/layout_4px-grid.png';
 import baselineImg from '../../assets/images/layout_baseline.png';
 import anatomyImg from '../../assets/images/layout_grid-anatomy.png';
-
-export const Template = (args) => <Grid {...args} />;
-
-export const exampleArgs = {
-    row: false,
-    flex: 1,
-};
+import { GridSpacing } from './index';
 
 <Meta component={Grid} title="Foundations/Grid" />
 
@@ -115,8 +109,79 @@ trustworthy. This kind of organization also helps users scan content and find wh
 
 <ArgsTable of={Grid} />
 
+export const Template = (args) => {
+    const { childCount, padding, margin, colPadding, colMargin, ...rest } = args;
+    const content = new Array(childCount).fill('gridChild');
+    return (
+        <Shape width={800} height={400} background={'rgb(240, 210, 180)'}>
+            <Grid margin={GridSpacing.all(margin)} flex={1}>
+                <Shape flex={1} border background={'rgb(210, 240, 180)'}>
+                    <Grid flex={1} padding={GridSpacing.all(padding)} {...rest}>
+                        {content.map((key, i) => (
+                            <Shape key={key + i} flex={1} border background={'rgb(240, 210, 180)'}>
+                                <Grid margin={GridSpacing.all(colMargin)} flex={1}>
+                                    <Shape flex={1} border background={'rgb(210, 240, 180)'}>
+                                        <Grid flex={1} padding={GridSpacing.all(colPadding)}>
+                                            <Shape flex={1} border background={'#F3F3F3'} />
+                                        </Grid>
+                                    </Shape>
+                                </Grid>
+                            </Shape>
+                        ))}
+                    </Grid>
+                </Shape>
+            </Grid>
+        </Shape>
+    );
+};
+
+export const exampleArgs = {
+    row: true,
+    padding: 0,
+    margin: 0,
+    colPadding: 0,
+    colMargin: 0,
+    flex: 1,
+    childCount: 4,
+};
+
+export const exampleArgTypes = {
+    childCount: {
+        control: {
+            type: 'range',
+            min: 1,
+            max: 8,
+            step: 1,
+        },
+    },
+    padding: {
+        control: {
+            type: 'select',
+            options: [0, 25, 50, 75, 100, 150, 200, 250, 300, 350, 400, 450, 500],
+        },
+    },
+    margin: {
+        control: {
+            type: 'select',
+            options: [0, 25, 50, 75, 100, 150, 200, 250, 300, 350, 400, 450, 500],
+        },
+    },
+    colPadding: {
+        control: {
+            type: 'select',
+            options: [0, 25, 50, 75, 100, 150, 200, 250, 300, 350, 400, 450, 500],
+        },
+    },
+    colMargin: {
+        control: {
+            type: 'select',
+            options: [0, 25, 50, 75, 100, 150, 200, 250, 300, 350, 400, 450, 500],
+        },
+    },
+};
+
 <Canvas hidden>
-    <Story name="Grid example" args={exampleArgs}>
+    <Story name="Grid" argTypes={exampleArgTypes} args={exampleArgs}>
         {Template.bind({})}
     </Story>
 </Canvas>

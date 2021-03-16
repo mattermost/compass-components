@@ -6,8 +6,8 @@ import StyledGrid from './Grid.styles';
 const Grid: React.FC<PGrid> = ({
     row = false,
     component = 'div',
-    alignment = 'flex-start',
-    justify = 'flex-start',
+    alignment = 'initial',
+    justify = 'initial',
     flex = 0,
     children,
     ...rest

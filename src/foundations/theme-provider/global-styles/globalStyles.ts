@@ -23,7 +23,7 @@ const GlobalStyle = createGlobalStyle`
         ${VElevation}
         ${VBorderRadius}
 
-        --border-default: 1px solid rgba(61,60,64,0.16);
+        --border-default: 1px solid var(--disabled-text-color);
     }
 `;
 
