@@ -28,13 +28,26 @@ const MentionBadges: React.FC<PMentionBadges> = ({
     }
 
     return (
-        <Shape borderRadius={'pill'} elevation={1} elevationOnHover={3} background={background}>
+        <Shape
+            borderRadius={'pill'}
+            elevation={1}
+            elevationOnHover={3}
+            background={background}
+            height={16}
+        >
             <Grid
-                alignment={'flex-end'}
+                alignment={'center'}
+                justify={'center'}
                 flex={1}
                 padding={GridSpacing.symmetric({ vertical: 0, horizontal: 50 })}
             >
-                <Typography variant={'body'} size={25} color={color} gutter={'none'}>
+                <Typography
+                    removeLineHeight
+                    variant={'body'}
+                    size={50}
+                    color={color}
+                    gutter={'none'}
+                >
                     <strong>
                         {mentionCount > mentionLimit ? `${mentionLimit}+` : mentionCount}
                     </strong>

@@ -24,7 +24,7 @@ const StyledTypography = styled.p<PStyledTypography>`
         `var(--${props.type}-font-size-${props.size})`};
     font-weight: ${(props: PStyledTypography): number => props.weight};
     line-height: ${(props: PStyledTypography): string =>
-        `var(--${props.type}-line-height-${props.size})`};
+        props.removeLineHeight ? '0' : `var(--${props.type}-line-height-${props.size})`};
     color: ${(props: PStyledTypography): string => `var(--${props.color}-text-color, #000000)`};
     margin: ${(props: PStyledTypography): string => getMargin(props)};
 `;
