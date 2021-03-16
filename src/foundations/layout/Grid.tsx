@@ -1,64 +1,31 @@
 import React from 'react';
 
-import SGrid from './Grid.styles';
-
-type PGrid = {
-    row?: boolean;
-    flex?: number;
-    component?: 'div' | 'span' | 'section' | 'aside';
-    alignment?: 'start' | 'center' | 'end' | 'stretch';
-    justify?: 'start' | 'center' | 'end' | 'stretch' | 'space-between' | 'space-evenly';
-    padding?: number | number[];
-    children?: React.ReactNode;
-};
+import { PGrid } from './Grid.props';
+import StyledGrid from './Grid.styles';
 
 const Grid: React.FC<PGrid> = ({
     row = false,
     component = 'div',
+    alignment = 'initial',
+    justify = 'initial',
+    flex = 0,
     children,
     ...rest
 }: PGrid): JSX.Element => {
-    const getStyle = (): React.CSSProperties => {
-        const style = {
-            '--grid-flex': '1',
-            '--grid-align': 'start',
-            '--grid-justify': 'start',
-            '--grid-padding': '0',
-        };
-
-        if (rest.alignment) {
-            style['--grid-align'] = rest.alignment;
-        }
-
-        if (rest.justify) {
-            style['--grid-justify'] = rest.justify;
-        }
-
-        if (rest.padding) {
-            if (Array.isArray(rest.padding)) {
-                style['--grid-padding'] = rest.padding
-                    .slice(0, 4)
-                    .map((s) => `${s}px`)
-                    .join(' ');
-            } else {
-                style['--grid-padding'] = `${rest.padding}px`;
-            }
-        }
-
-        if (rest.flex || rest.flex === 0) {
-            style['--grid-flex'] = `${rest.flex}`;
-        }
-
-        return style as React.CSSProperties;
+    const optionalProperties = {
+        row,
+        flex,
+        alignment,
+        justify,
     };
 
     return (
-        <SGrid row={row} as={component} style={getStyle()}>
+        <StyledGrid as={component} {...optionalProperties} {...rest}>
             {children}
-        </SGrid>
+        </StyledGrid>
     );
 };
 
-export default Grid;
-
 export type { PGrid };
+
+export default Grid;
