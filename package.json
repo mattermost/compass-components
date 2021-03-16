@@ -23,6 +23,7 @@
     },
     "homepage": "https://github.com/mattermost/compass-components#readme",
     "dependencies": {
+        "@mattermost/compass-icons": "github:mattermost/compass-icons#453e5ef3d36810cde4a0ce7843e437b994b42693",
         "@types/node": "^12.0.0",
         "@types/react": "^17.0.0",
         "@types/react-dom": "^17.0.0",
