@@ -9,6 +9,7 @@ import PMentionBadges from './Badges.props';
 const MentionBadges: React.FC<PMentionBadges> = ({
     location,
     mentionCount = 1,
+    mentionLimit = 99,
 }: PMentionBadges): JSX.Element => {
     let color: 'primary' | 'accent' | 'contrast' | undefined = 'primary';
     let background = 'var(--shape-background-color)';
@@ -34,7 +35,9 @@ const MentionBadges: React.FC<PMentionBadges> = ({
                 padding={GridSpacing.symmetric({ vertical: 0, horizontal: 50 })}
             >
                 <Typography variant={'body'} size={25} color={color} gutter={'none'}>
-                    <strong>{mentionCount}</strong>
+                    <strong>
+                        {mentionCount > mentionLimit ? `${mentionLimit}+` : mentionCount}
+                    </strong>
                 </Typography>
             </Grid>
         </Shape>
