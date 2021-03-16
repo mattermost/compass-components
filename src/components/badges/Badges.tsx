@@ -2,7 +2,7 @@ import React from 'react';
 
 import Shape from '../../foundations/shape';
 import Typography from '../../foundations/typography';
-import Grid from '../../foundations/layout/Grid';
+import Grid, { GridSpacing } from '../../foundations/layout';
 
 import PMentionBadges from './Badges.props';
 
@@ -27,23 +27,17 @@ const MentionBadges: React.FC<PMentionBadges> = ({
     }
 
     return (
-        <Grid alignment={'flex-end'} flex={1}>
-            <Shape
-                border
-                borderRadius={'pill'}
-                elevation={1}
-                elevationOnHover={3}
-                width={20}
-                height={16}
-                background={background}
+        <Shape borderRadius={'pill'} elevation={1} elevationOnHover={3} background={background}>
+            <Grid
+                alignment={'flex-end'}
+                flex={1}
+                padding={GridSpacing.symmetric({ vertical: 0, horizontal: 100 })}
             >
-                <Grid alignment={'flex-end'} flex={1}>
-                    <Typography variant={'h6'} size={100} color={color}>
-                        {mentionCount}
-                    </Typography>
-                </Grid>
-            </Shape>
-        </Grid>
+                <Typography variant={'h6'} size={100} color={color} gutter={'none'}>
+                    <strong>{mentionCount}</strong>
+                </Typography>
+            </Grid>
+        </Shape>
     );
 };
 
