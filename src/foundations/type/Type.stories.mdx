@@ -1,0 +1,44 @@
+import { Meta, Story, Canvas, ArgsTable, Title, Subtitle } from '@storybook/addon-docs/blocks';
+
+import Type from './Type';
+import { TYPE_SIZES, TYPE_WEIGHTS } from './Type.constants';
+
+<Meta component={Type} title="Foundations/Type" />
+
+<Title>Typography</Title>
+
+## Component API
+
+<ArgsTable of={Type} />
+
+export const Template = (args) => {
+    const { text } = args;
+    return <Type {...args}>{text}</Type>;
+};
+
+<Canvas hidden>
+    <Story
+        name="Default"
+        args={{
+            size: 100,
+            type: 'body',
+            text: 'Lorem ipsum dolor sit amet consetetur ...',
+        }}
+        argTypes={{
+            size: {
+                control: {
+                    type: 'select',
+                    options: TYPE_SIZES,
+                },
+            },
+            weight: {
+                control: {
+                    type: 'select',
+                    options: TYPE_WEIGHTS,
+                },
+            },
+        }}
+    >
+        {Template.bind({})}
+    </Story>
+</Canvas>

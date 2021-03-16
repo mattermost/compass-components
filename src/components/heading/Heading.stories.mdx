@@ -1,0 +1,49 @@
+import { Meta, Story, Canvas, ArgsTable, Title, Subtitle } from '@storybook/addon-docs/blocks';
+
+import Heading from './Heading';
+import { HEADING_SIZES, HEADING_VARIANTS, HEADING_WEIGHTS } from './Heading.constants';
+
+<Meta component={Heading} title="Components/Heading" />
+
+<Title>Heading</Title>
+
+## Component API
+
+<ArgsTable of={Heading} />
+
+export const Template = (args) => {
+    const { text } = args;
+    return <Heading {...args}>{text}</Heading>;
+};
+
+<Canvas hidden>
+    <Story
+        name="Default"
+        args={{
+            size: 100,
+            text: 'Lorem Ipsum Dolor',
+        }}
+        argTypes={{
+            size: {
+                control: {
+                    type: 'select',
+                    options: HEADING_SIZES,
+                },
+            },
+            variant: {
+                control: {
+                    type: 'select',
+                    options: HEADING_VARIANTS,
+                },
+            },
+            weight: {
+                control: {
+                    type: 'select',
+                    options: HEADING_WEIGHTS,
+                },
+            },
+        }}
+    >
+        {Template.bind({})}
+    </Story>
+</Canvas>
