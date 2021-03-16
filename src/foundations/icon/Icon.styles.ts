@@ -1,10 +1,8 @@
 import styled from 'styled-components';
 
-import Utils from '../../utils/utils';
-
 import { TIconSize } from './Icon.types';
 import { PStyledIcon } from './Icon.props';
-import { ICON_SIZES, ICON_FONT_SIZES } from './Icon.constants';
+import { DEFAULT_ICON_SIZE, ICON_SIZES, ICON_FONT_SIZES } from './Icon.constants';
 
 function generateIconFontSizes(
     iconSize: TIconSize,
@@ -35,9 +33,9 @@ const StyledIcon = styled.i<PStyledIcon>`
 
         &::before {
             margin: 0; // remove margins added by fontello
-            font-size: ${ICON_FONT_SIZES[20]}px;
+            font-size: ${ICON_FONT_SIZES[DEFAULT_ICON_SIZE]}px;
             line-height: 1;
-            letter-spacing: ${ICON_FONT_SIZES[20]}px;
+            letter-spacing: ${ICON_FONT_SIZES[DEFAULT_ICON_SIZE]}px;
         }
 
         // sizes
