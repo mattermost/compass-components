@@ -10,7 +10,7 @@ const Icon: React.FC<PIcon> = ({
     size = DEFAULT_ICON_SIZE,
     glyph = 'mattermost',
     ...props
-}) => (
+}): JSX.Element => (
     <StyledIcon
         className={clsx(className, 'Icon', `icon-${ICON_GLYPHS[glyph]}`)}
         data-size={size}
