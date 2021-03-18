@@ -1,7 +1,7 @@
 import { Meta, Story, Canvas, ArgsTable, Title, Subtitle } from '@storybook/addon-docs/blocks';
 
 import Text from './Text';
-import { TEXT_SIZES, TEXT_VARIANTS, TEXT_WEIGHTS } from './Text.constants';
+import { DEFAULT_TEXT_SIZE, TEXT_SIZES, TEXT_VARIANTS, TEXT_WEIGHTS } from './Text.constants';
 
 <Meta component={Text} title="Components/Text" />
 
@@ -20,7 +20,7 @@ export const Template = (args) => {
     <Story
         name="Default"
         args={{
-            size: 100,
+            size: DEFAULT_TEXT_SIZE,
             text: 'Lorem ipsum dolor sit amet consetetur ...',
         }}
         argTypes={{
