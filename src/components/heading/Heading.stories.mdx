@@ -1,7 +1,12 @@
 import { Meta, Story, Canvas, ArgsTable, Title, Subtitle } from '@storybook/addon-docs/blocks';
 
 import Heading from './Heading';
-import { HEADING_SIZES, HEADING_VARIANTS, HEADING_WEIGHTS } from './Heading.constants';
+import {
+    DEFAULT_HEADING_SIZE,
+    HEADING_SIZES,
+    HEADING_VARIANTS,
+    HEADING_WEIGHTS,
+} from './Heading.constants';
 
 <Meta component={Heading} title="Components/Heading" />
 
@@ -20,7 +25,9 @@ export const Template = (args) => {
     <Story
         name="Default"
         args={{
-            size: 100,
+            size: DEFAULT_HEADING_SIZE,
+            variant: 'h6',
+            weight: 'bold',
             text: 'Lorem Ipsum Dolor',
         }}
         argTypes={{

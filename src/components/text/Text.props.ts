@@ -1,10 +1,8 @@
 import { TTextSize, TTextVariant, TTextWeight } from './Text.types';
 
-type PText = {
-    className?: String;
+export type PText = {
+    className?: string;
     size?: TTextSize;
     variant?: TTextVariant;
     weight?: TTextWeight;
 };
-
-export { PText };

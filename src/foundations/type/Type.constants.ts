@@ -4,13 +4,13 @@ const TYPE_SIZES: TTypeSize[] = [25, 50, 75, 100, 200, 300, 400, 500, 600, 700, 
 
 const TYPE_WEIGHTS: TTypeWeight[] = ['light', 'regular', 'bold'];
 
-const BASE_TYPE_SIZE: TTypeSize = 100;
+const DEFAULT_TYPE_SIZE: TTypeSize = 100;
 
-const BASE_TYPE_TYPE: TTypeType = 'body';
+const DEFAULT_TYPE_TYPE: TTypeType = 'body';
 
-const BASE_FONT_SIZE = 14;
+const DEFAULT_FONT_SIZE = 14;
 
-const BASE_LINE_HEIGHT = 20;
+const DEFAULT_LINE_HEIGHT = 20;
 
 const BODY_FONT_SIZES: Record<TTypeSize, number> = {
     25: 10,
@@ -79,10 +79,10 @@ const HEADING_LINE_HEIGHTS: Record<TTypeSize, number> = {
 export {
     TYPE_SIZES,
     TYPE_WEIGHTS,
-    BASE_TYPE_SIZE,
-    BASE_TYPE_TYPE,
-    BASE_FONT_SIZE,
-    BASE_LINE_HEIGHT,
+    DEFAULT_TYPE_SIZE,
+    DEFAULT_TYPE_TYPE,
+    DEFAULT_FONT_SIZE,
+    DEFAULT_LINE_HEIGHT,
     BODY_FONT_SIZES,
     BODY_LINE_HEIGHTS,
     HEADING_FONT_SIZES,
