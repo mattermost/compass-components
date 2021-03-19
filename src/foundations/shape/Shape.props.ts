@@ -30,6 +30,7 @@ type PShape = {
     /** set a custom background color */
     background?: string;
     children?: React.ReactNode | React.ReactNode[];
+    className?: string;
 };
 
 export default PShape;

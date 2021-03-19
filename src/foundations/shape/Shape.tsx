@@ -1,3 +1,4 @@
+import clsx from 'clsx';
 import styled from 'styled-components';
 
 import { getBorderRadius, getElevation } from '../theme-provider/global-styles/globalStyles';
@@ -5,7 +6,9 @@ import { getBorderRadius, getElevation } from '../theme-provider/global-styles/g
 import PShape from './Shape.props';
 
 const getPxValue = (value: string | number): string =>
-    typeof value === 'number' ? `${value}px` : value;
+    typeof value === 'number' ? `${value}px` : getPercentageValue(value);
+
+const getPercentageValue = (value: string): string => (value.endsWith('%') ? value : '');
 
 const getShapeDimensions = (props: PShape): string => {
     if (props.borderRadius === 'circle' && (!props.width || typeof props.width !== 'number')) {
@@ -34,8 +37,11 @@ const getBorderDefinition = (props: PShape): string => {
     return '';
 };
 
-const Shape = styled.div.attrs({ className: 'Shape' }).withConfig({
-    shouldForwardProp: (property) => ['children', 'className'].includes(property),
+const Shape = styled.div.withConfig({
+    // this is to prevent all properties to being passed down to the underlying
+    // component, except for the ones we want to having them passe down
+    shouldForwardProp: (property) =>
+        !['width', 'height', 'elevation', 'borderRadius'].includes(property),
 })<PShape>`
     flex: ${(props): string => (props.width ? 'initial' : 'auto')};
     display: flex;
