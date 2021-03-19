@@ -1,37 +1,39 @@
 import styled from 'styled-components';
 
 import { TIconButtonSize } from './IconButton.types';
-import { PStyledIconButton } from './IconButton.props';
+import {
+    ICON_BUTTON_SIZES,
+    ICON_BUTTON_DIMENSIONS,
+    ICON_BUTTON_PADDING,
+    ICON_BUTTON_SPACING,
+} from './IconButton.constants';
 
-// eslint-disable-next-line max-params
-function generateSizeStyles(
-    sizeLabel: TIconButtonSize,
-    size: number,
-    padding: number,
-    spacing: number
-): string {
+function generateSizingStyles(size: TIconButtonSize): string {
     return `
-        &[data-size="${sizeLabel}"] {
-            padding: 0 ${padding}px;
-            min-width: ${size}px;
-            height: ${size}px;
+        &[data-size="${size}"] {
+            padding: 0 ${ICON_BUTTON_PADDING[size]}px;
+            min-width: ${ICON_BUTTON_DIMENSIONS[size]}px;
+            height: ${ICON_BUTTON_DIMENSIONS[size]}px;
 
             .IconButton_icon + .IconButton_label {
-                margin-left: ${spacing}px;
+                margin-left: ${ICON_BUTTON_SPACING[size]}px;
             }
         }
     `;
 }
 
-const StyledIconButton = styled.button<PStyledIconButton>`
-    --button-text-normal-rgb: var(--button-text-normal-rgb-default, 61, 60, 64);
-    --button-text-active-rgb: var(--button-text-active-rgb-default, 22, 109, 224);
-    --button-text-destructive-rgb: var(--button-text-destructive-rgb-default, 247, 67, 67);
-    --button-background-normal-rgb: var(--button-background-normal-rgb-default, 61, 60, 64);
-    --button-background-active-rgb: var(--button-background-active-rgb-default, 22, 109, 224);
-    --button-border-rgb: var(--button-border-rgb-default, 22, 109, 224);
-
+const StyledIconButton = styled.button`
     &.IconButton {
+        // define local variables using global variables and fallbacks
+        --normal-text-rgb: var(--button-normal-text-rgb, 61, 60, 64);
+        --active-text-rgb: var(--button-active-text-rgb, 22, 109, 224);
+        --normal-background-rgb: var(--button-normal-background-rgb, 61, 60, 64);
+        --active-background-rgb: var(--button-active-background-rgb, 22, 109, 224);
+        --border-rgb: var(--button-border-rgb, 22, 109, 224);
+        --destructive-rgb: var(--button-destructive-rgb, 247, 67, 67);
+        --speed-shortest: var(--animation-speed-shortest, 0.1s);
+
+        // element container base styles
         display: inline-flex;
         justify-content: center;
         align-items: center;
@@ -50,7 +52,7 @@ const StyledIconButton = styled.button<PStyledIconButton>`
         // sub elements
         .IconButton_icon,
         .IconButton_label {
-            color: rgba(var(--button-text-normal-rgb), 0.56);
+            color: rgba(var(--normal-text-rgb), 0.56);
         }
         .IconButton_icon + .IconButton_label {
             margin-left: 6px;
@@ -73,23 +75,25 @@ const StyledIconButton = styled.button<PStyledIconButton>`
         }
         &::before {
             opacity: 0;
-            background: rgba(var(--button-background-normal-rgb), 0.08);
+            background: rgba(var(--normal-background-rgb), 0.08);
         }
         &::after {
             opacity: 0;
-            border: solid 2px rgba(var(--button-border-rgb), 1);
+            border: solid 2px rgba(var(--border-rgb), 1);
         }
 
         // states
         &:hover {
             .IconButton_icon,
             .IconButton_label {
-                color: rgba(var(--button-text-normal-rgb), 0.72);
+                color: rgba(var(--normal-text-rgb), 0.72);
             }
             &::before {
                 opacity: 1;
             }
         }
+
+        // - only applies focus using keyboard in newer browsers, fallback is standard behaviour
         &:focus {
             &::after {
                 opacity: 1;
@@ -105,18 +109,27 @@ const StyledIconButton = styled.button<PStyledIconButton>`
                 opacity: 1;
             }
         }
-        &:active {
+
+        &:active,
+        &[data-toggled='true'] {
             .IconButton_icon,
             .IconButton_label {
-                color: rgb(var(--button-text-active-rgb));
+                color: rgb(var(--active-text-rgb));
             }
             &::before {
-                background: rgba(var(--button-background-active-rgb), 0.08);
+                background: rgba(var(--active-background-rgb), 0.08);
                 opacity: 1;
             }
             &:hover {
                 &::before {
-                    background: rgba(var(--button-background-active-rgb), 0.16);
+                    background: rgba(var(--active-background-rgb), 0.16);
+                }
+            }
+        }
+        &[data-toggled='true'] {
+            &:active {
+                &::before {
+                    background: rgba(var(--active-background-rgb), 0.08);
                 }
             }
         }
@@ -125,16 +138,29 @@ const StyledIconButton = styled.button<PStyledIconButton>`
         &[data-destructive='true']:not([disabled]) {
             .IconButton_icon,
             .IconButton_label {
-                color: rgb(var(--button-text-destructive-rgb));
+                color: rgb(var(--destructive-rgb));
             }
 
             &::after {
-                border-color: rgba(var(--button-text-destructive-rgb), 1);
+                border-color: rgba(var(--destructive-rgb), 1);
             }
 
-            &:active {
+            &:active,
+            &[data-toggled='true'] {
                 &::before {
-                    background: rgba(var(--button-text-destructive-rgb), 0.08);
+                    background: rgba(var(--destructive-rgb), 0.08);
+                }
+                &:hover {
+                    &::before {
+                        background: rgba(var(--destructive-rgb), 0.16);
+                    }
+                }
+            }
+            &[data-toggled='true'] {
+                &:active {
+                    &::before {
+                        background: rgba(var(--destructive-rgb), 0.08);
+                    }
                 }
             }
         }
@@ -148,7 +174,7 @@ const StyledIconButton = styled.button<PStyledIconButton>`
             &:active {
                 .IconButton_icon,
                 .IconButton_label {
-                    color: rgba(var(--button-text-normal-rgb), 0.32);
+                    color: rgba(var(--normal-text-rgb), 0.32);
                 }
 
                 &::before,
@@ -158,19 +184,11 @@ const StyledIconButton = styled.button<PStyledIconButton>`
             }
         }
 
-        // sizes (xsmall, small, small-compact, standard, large)
-        ${generateSizeStyles('xsmall', 24, 6, 4)}
+        // define sizes
+        ${ICON_BUTTON_SIZES.map((iconSize) => generateSizingStyles(iconSize))}
 
-        ${generateSizeStyles('small', 32, 8, 4)}
-    
-        ${generateSizeStyles('small-compact', 28, 6, 4)}
-    
-        ${generateSizeStyles('standard', 40, 10, 6)}
-    
-        ${generateSizeStyles('large', 48, 10, 6)}
-    
         // animation
-        .enable-animations & {
+        body.enable-animations & {
             &::before {
                 transition: opacity var(--animation-speed-shortest) 0s ease-in-out,
                     background-color var(--animation-speed-shortest) 0s ease-in-out;

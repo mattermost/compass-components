@@ -2,16 +2,13 @@ import { TIconGlyph } from '../../foundations/icon';
 
 import { TIconButtonSize } from './IconButton.types';
 
-type PIconButton = {
+export type PIconButton = {
     ariaLabel?: string;
     className?: string;
-    size?: TIconButtonSize;
-    iconGlyph: TIconGlyph;
-    disabled?: boolean;
     destructive?: boolean;
+    disabled?: boolean;
+    iconGlyph?: TIconGlyph;
     label?: string;
+    size?: TIconButtonSize;
+    toggled?: boolean;
 };
-
-type PStyledIconButton = {};
-
-export type { PIconButton, PStyledIconButton };
