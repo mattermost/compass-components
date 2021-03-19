@@ -1,7 +1,7 @@
 import React from 'react';
 import clsx from 'clsx';
 
-import Icon from '../../foundations/icon';
+import Icon from '../icon';
 import Text from '../text';
 
 import StyledIconButton from './IconButton.styles';

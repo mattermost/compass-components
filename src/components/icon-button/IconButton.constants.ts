@@ -1,4 +1,4 @@
-import { TIconSize } from '../../foundations/icon';
+import { TIconSize } from '../icon';
 import { TTextSize } from '../text';
 
 import { TIconButtonSize } from './IconButton.types';
