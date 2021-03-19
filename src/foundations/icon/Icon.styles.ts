@@ -1,48 +1,50 @@
 import styled from 'styled-components';
 
 import { TIconSize } from './Icon.types';
-import { PStyledIcon } from './Icon.props';
 import { DEFAULT_ICON_SIZE, ICON_SIZES, ICON_FONT_SIZES } from './Icon.constants';
 
-function generateIconFontSizes(
-    iconSize: TIconSize,
-    iconFontSizes: Record<TIconSize, number>
-): string {
+function generateIconFontSizes(iconSize: TIconSize): string {
     return `
 &[data-size="${iconSize}"] {
-    width: ${iconSize}px;
     height: ${iconSize}px;
+    width: ${iconSize}px;
 
     &::before {
-        font-size: ${iconFontSizes[iconSize]}px;
-        letter-spacing: ${iconFontSizes[iconSize]}px;
+        font-size: ${ICON_FONT_SIZES[iconSize]}px;
+        letter-spacing: ${ICON_FONT_SIZES[iconSize]}px;
     }
 }
     `;
 }
 
-const StyledIcon = styled.i<PStyledIcon>`
+const StyledIcon = styled.i`
     &.Icon {
-        display: inline-flex;
-        justify-content: center;
+        // define local variables using global variables and fallbacks
+        --speed-shortest: var(--animation-speed-shortest, 0.1s);
+
+        // element container base styles
         align-items: center;
+        display: inline-flex;
+        height: 20px;
+        justify-content: center;
         position: relative;
         padding: 0;
         width: 20px;
-        height: 20px;
 
+        // sub elements
         &::before {
-            margin: 0; // remove margins added by fontello
             font-size: ${ICON_FONT_SIZES[DEFAULT_ICON_SIZE]}px;
             line-height: 1;
             letter-spacing: ${ICON_FONT_SIZES[DEFAULT_ICON_SIZE]}px;
+            margin: 0; // remove margins added by fontello
         }
 
-        // sizes
-        ${ICON_SIZES.map((iconSize) => generateIconFontSizes(iconSize, ICON_FONT_SIZES))}
+        // define sizes
+        ${ICON_SIZES.map((iconSize) => generateIconFontSizes(iconSize))}
+
         // animation
-        .enable-animations & {
-            transition: color var(--animation-speed-shorter) 0s ease-in-out;
+        body.enable-animations & {
+            transition: color var(--speed-shortest) 0s ease-in-out;
         }
     }
 `;

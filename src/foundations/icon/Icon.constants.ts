@@ -1,6 +1,6 @@
 import { IconGlyphs } from '@mattermost/compass-icons/build/IconGlyphs';
 
-import { TIconSize } from './Icon.types';
+import { TIconGlyph, TIconSize } from './Icon.types';
 
 const DEFAULT_ICON_SIZE = 20;
 
@@ -19,4 +19,6 @@ const ICON_FONT_SIZES: Record<TIconSize, number> = {
     104: 120,
 };
 
-export { DEFAULT_ICON_SIZE, ICON_FONT_SIZES, IconGlyphs as ICON_GLYPHS, ICON_SIZES };
+const ICON_GLYPHS: Record<TIconGlyph, string> = { none: 'none', ...IconGlyphs };
+
+export { DEFAULT_ICON_SIZE, ICON_FONT_SIZES, ICON_GLYPHS, ICON_SIZES };
