@@ -1,5 +1,7 @@
 import { Meta, Story, Canvas, ArgsTable, Title, Subtitle } from '@storybook/addon-docs/blocks';
 
+import { ICON_GLYPHS } from '../../foundations/icon';
+
 import IconButton from './IconButton';
 import { ICON_BUTTON_SIZES } from './IconButton.constants';
 
@@ -20,12 +22,20 @@ export const Template = (args) => {
         name="Default"
         args={{
             size: 'standard',
+            iconGlyph: 'mattermost',
+            ariaLabel: 'Click the button to do the things!',
         }}
         argTypes={{
             size: {
                 control: {
                     type: 'select',
                     options: ICON_BUTTON_SIZES,
+                },
+            },
+            iconGlyph: {
+                control: {
+                    type: 'select',
+                    options: Object.keys(ICON_GLYPHS),
                 },
             },
         }}
