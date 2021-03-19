@@ -10,7 +10,6 @@ import {
     HEADING_LINE_HEIGHTS,
 } from './Type.constants';
 import { TTypeSize } from './Type.types';
-import { PStyledType } from './Type.props';
 
 function generateFontSize(
     typeSize: TTypeSize,
@@ -25,8 +24,8 @@ function generateFontSize(
 `;
 }
 
-const StyledType = styled.p<PStyledType>`
-    .Type {
+const StyledType = styled.p`
+    &.Type {
         // variables (would be defined in global styles)
         --body-font-family: 'Open Sans', sans-serif;
         --heading-font-family: Metropolis, sans-serif;
