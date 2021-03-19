@@ -33,7 +33,7 @@ const Swatch: React.FC<PSwatch> = ({
         >
             <Grid alignment={'flex-end'} flex={1}>
                 <Shape
-                    border
+                    borderWidth={1}
                     borderRadius={4}
                     elevation={1}
                     elevationOnHover={3}

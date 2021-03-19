@@ -1,47 +1,57 @@
-import React from 'react';
+import styled from 'styled-components';
 
-import StyledShape from './Shape.styles';
-import { PShape, PStyledShape } from './Shape.props';
+import { getBorderRadius, getElevation } from '../theme-provider/global-styles/globalStyles';
 
-const Shape: React.FC<PShape> = ({
-    component = 'div',
-    border = false,
-    borderRadius = 0,
-    elevation = 0,
-    elevationOnHover = elevation,
-    background = 'var(--shape-background-color)',
-    width = 'auto',
-    height = 'auto',
-    children,
-}: PShape): JSX.Element => {
-    const styledShapeProperties: PStyledShape = {
-        border,
-        borderRadius,
-        elevation,
-        elevationOnHover,
-        background,
-        width: 'auto',
-        height: 'auto',
-    };
+import PShape from './Shape.props';
 
-    if (borderRadius === 'circle' && width) {
-        styledShapeProperties.width = typeof width === 'number' ? `${width}px` : width;
-        styledShapeProperties.height = typeof width === 'number' ? `${width}px` : width;
-    } else {
-        if (width) {
-            styledShapeProperties.width = typeof width === 'number' ? `${width}px` : width;
-        }
+const getPxValue = (value: string | number): string =>
+    typeof value === 'number' ? `${value}px` : value;
 
-        if (height) {
-            styledShapeProperties.height = typeof height === 'number' ? `${height}px` : height;
-        }
+const getShapeDimensions = (props: PShape): string => {
+    if (props.borderRadius === 'circle' && (!props.width || typeof props.width !== 'number')) {
+        throw new TypeError(
+            'SHAPE: When choosing `circle` as value for `borderRadius` the width needs to be a number'
+        );
     }
 
-    return (
-        <StyledShape as={component} {...styledShapeProperties}>
-            {children}
-        </StyledShape>
-    );
+    if (props.borderRadius === 'circle' && props.width) {
+        return `width: ${getPxValue(props.width)}; height: ${getPxValue(props.width)};`;
+    }
+
+    const width = props.width ? `width: ${getPxValue(props.width)};` : '';
+    const height = props.height ? `height: ${getPxValue(props.height)};` : '';
+
+    return width + height;
 };
+
+const getBorderDefinition = (props: PShape): string => {
+    const { borderColor = 'var(--default-border-color)', borderWidth } = props;
+
+    if (borderColor && borderWidth) {
+        return `border: ${borderWidth}px solid ${borderColor}`;
+    }
+
+    return '';
+};
+
+const Shape = styled.div.attrs({ className: 'Shape' }).withConfig({
+    shouldForwardProp: (property) => ['children', 'className'].includes(property),
+})<PShape>`
+    flex: ${(props): string => (props.width ? 'initial' : 'auto')};
+    display: flex;
+    flex-direction: column;
+    background-color: ${(props): string =>
+        props.background ? props.background : 'var(--shape-background-color)'};
+    border-radius: ${(props): string => getBorderRadius(props.borderRadius)};
+    box-shadow: ${(props): string => getElevation(props.elevation)};
+    ${getBorderDefinition};
+    ${getShapeDimensions};
+    z-index: ${(props): number => props.elevation || 0};
+    transition: box-shadow 500ms ease-in-out;
+
+    &:hover {
+        box-shadow: ${(props): string => getElevation(props.elevationOnHover)};
+    }
+`;
 
 export default Shape;

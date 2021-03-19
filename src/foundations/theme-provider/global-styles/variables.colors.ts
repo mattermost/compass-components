@@ -18,6 +18,8 @@ const VColors = css`
     --primary-text-color: ${getTextColor('primary')};
     --secondary-text-color: ${getTextColor('secondary')};
     --disabled-text-color: ${getTextColor('disabled')};
+
+    --default-border-color: ${getTextColor('disabled')};
 `;
 
 export default VColors;
