@@ -10,12 +10,15 @@ import VElevation from './variables.elevation';
 import VFontFaces from './variables.font-faces';
 import VFontStyle from './variables.font-style';
 import VBorderRadius from './variables.border-radius';
+import reset from './reset-styles';
 
 type PGlobalStyles = {
     theme: TTheme;
 };
 
 const GlobalStyle = createGlobalStyle`
+    ${reset};
+
     :root {
         ${VSizes}
         ${VColors}
@@ -29,7 +32,7 @@ const GlobalStyle = createGlobalStyle`
     }
 `;
 
-function elevation(elevationLevel: TElevationLevel = 0): string {
+function getElevation(elevationLevel: TElevationLevel = 0): string {
     if (elevationLevel >= 0 && elevationLevel <= 6) {
         return `var(--elevation-shadow-${elevationLevel})`;
     }
@@ -37,10 +40,10 @@ function elevation(elevationLevel: TElevationLevel = 0): string {
     return 'var(--elevation-shadow-0)';
 }
 
-function borderRadius(size: TBorderRadiusSizes = 0): string {
+function getBorderRadius(size: TBorderRadiusSizes = 0): string {
     return `var(--border-radius-${size})`;
 }
 
-export { elevation, borderRadius };
+export { getElevation, getBorderRadius };
 export type { PGlobalStyles };
 export default GlobalStyle;

@@ -1,12 +1,4 @@
-import {
-    ArgsTable,
-    Meta,
-    Story,
-    Canvas,
-    Title,
-    Subtitle,
-    CodeOrSourceMdx,
-} from '@storybook/addon-docs/blocks';
+import { ArgsTable, Meta, Story, Canvas, Title, Subtitle } from '@storybook/addon-docs/blocks';
 import { DependenciesTable } from 'storybook-addon-deps/blocks';
 
 import Shape from './index';
@@ -16,21 +8,47 @@ import Type from '../type';
 export const Template = (args) => <Shape {...args} />;
 
 export const defaultArgs = {
-    border: true,
+    borderWidth: 1,
     borderRadius: 4,
     elevation: 1,
     elevationOnHover: 2,
     component: 'section',
-    width: 150,
+    width: 200,
     height: 50,
 };
 
 export const argTypes = {
+    forwardedAs: { table: { disable: true } },
+    theme: { table: { disable: true } },
+    ref: { table: { disable: true } },
+    as: {
+        type: { name: 'string', required: false },
+        defaultValue: 'div',
+        table: {
+            type: { summary: 'string' },
+            defaultValue: { summary: 'Hello String' },
+        },
+        control: {
+            type: 'select',
+            options: ['div', 'span', 'section', 'aside', 'button'],
+        },
+    },
     borderRadius: {
         control: {
             type: 'select',
             options: [0, 4, 8, 12, 16, 20, 24, 'circle', 'pill'],
         },
+    },
+    borderWidth: {
+        control: {
+            type: 'range',
+            min: 0,
+            max: 10,
+            step: 1,
+        },
+    },
+    borderColor: {
+        control: 'color',
     },
     elevation: {
         control: {
@@ -184,7 +202,7 @@ The circle shape is mostly reserved for the Avatar component.
 This helps distinguish users from other UI elements throughout the product.
 There are a few other elements that use the circle shape, like the Unread Badge or the Status Badge.
 
-<ArgsTable of={Shape} />
+<ArgsTable of={Shape} exclude={['theme', 'forwardedAs', 'ref']} />
 
 export const canvasExampleArgs = {
     ...defaultArgs,
@@ -237,7 +255,7 @@ export const canvasExampleArgs = {
             borderRadius: 'circle',
             elevation: 3,
             component: 'section',
-            width: 300,
+            width: 400,
             height: 100,
         }}
     >
