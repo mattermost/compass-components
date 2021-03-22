@@ -6,6 +6,7 @@ import { FONT_SIZE_MAPPING, HEADING_VARIANTS } from './Typography.constants';
 
 const Typography: React.FC<PTypography> = ({
     children,
+    removeLineHeight = false,
     variant = 'body',
     color = 'primary',
     size = 300,
@@ -34,6 +35,7 @@ const Typography: React.FC<PTypography> = ({
     const styledTypographyProperties: PStyledTypography = {
         color,
         gutter,
+        removeLineHeight,
         weight: fontWeight,
         size: fontSize,
         type: fontType,
