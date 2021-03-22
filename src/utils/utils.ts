@@ -1,7 +1,4 @@
 import kebabCase from 'lodash.kebabcase';
-import styled from 'styled-components';
-
-import PShape from '../foundations/shape/Shape.props';
 
 const isColor = (colorString: string): boolean => {
     const s = new Option().style;
