@@ -3,13 +3,21 @@ import clsx from 'clsx';
 
 import Type from '../../foundations/type/Type';
 
+import {
+    DEFAULT_HEADING_COLOR,
+    DEFAULT_HEADING_GUTTER,
+    DEFAULT_HEADING_SIZE,
+    DEFAULT_HEADING_VARIANT,
+    DEFAULT_HEADING_WEIGHT,
+} from './Heading.constants';
 import { PHeading } from './Heading.props';
 
 const Heading: React.FC<PHeading> = ({
-    size = 100,
-    variant = 'h6',
-    weight = 'bold',
-    color = 'primary',
+    size = DEFAULT_HEADING_SIZE,
+    variant = DEFAULT_HEADING_VARIANT,
+    weight = DEFAULT_HEADING_WEIGHT,
+    color = DEFAULT_HEADING_COLOR,
+    gutter = DEFAULT_HEADING_GUTTER,
     children,
     className,
 }): JSX.Element => {
@@ -45,6 +53,7 @@ const Heading: React.FC<PHeading> = ({
             as={element}
             size={size}
             weight={weight}
+            gutter={gutter}
             color={color}
         >
             {children}

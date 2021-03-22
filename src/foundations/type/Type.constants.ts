@@ -19,7 +19,11 @@ const TYPE_WEIGHTS: TTypeWeight[] = ['light', 'regular', 'bold'];
 
 const TYPE_GUTTERS: TTypeGutter[] = ['none', 'both', 'bottom', 'top'];
 
+const DEFAULT_TYPE_GUTTER: TTypeGutter = 'both';
+
 const TYPE_COLORS: TTypeColor[] = ['primary', 'secondary', 'disabled'];
+
+const DEFAULT_TYPE_COLOR: TTypeColor = 'primary';
 
 export {
     DEFAULT_TYPE_SIZE,
@@ -27,6 +31,8 @@ export {
     HEADING_SIZES,
     TYPE_WEIGHTS,
     TYPE_GUTTERS,
+    DEFAULT_TYPE_GUTTER,
     TYPE_COLORS,
+    DEFAULT_TYPE_COLOR,
     HEADING_VARIANTS,
 };

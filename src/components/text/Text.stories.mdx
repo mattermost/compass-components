@@ -2,7 +2,11 @@ import { Meta, Story, Canvas, ArgsTable, Title } from '@storybook/addon-docs/blo
 
 import Text from './Text';
 import {
+    DEFAULT_TEXT_COLOR,
+    DEFAULT_TEXT_GUTTER,
     DEFAULT_TEXT_SIZE,
+    DEFAULT_TEXT_VARIANT,
+    DEFAULT_TEXT_WEIGHT,
     TEXT_COLORS,
     TEXT_GUTTERS,
     TEXT_SIZES,
@@ -28,11 +32,11 @@ export const Template = (args) => {
         name="Default"
         args={{
             text: 'Lorem Ipsum Dolor',
-            variant: 'p',
+            variant: DEFAULT_TEXT_VARIANT,
             size: DEFAULT_TEXT_SIZE,
-            weight: 'bold',
-            gutter: 'both',
-            color: 'primary',
+            weight: DEFAULT_TEXT_WEIGHT,
+            gutter: DEFAULT_TEXT_GUTTER,
+            color: DEFAULT_TEXT_COLOR,
         }}
         argTypes={{
             size: {
