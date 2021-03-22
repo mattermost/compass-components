@@ -31,4 +31,10 @@ type TTheme = {
     background: TTHemeBackgroundColors;
 };
 
-export type { TTheme, TTHemeColors, TTHemeTextColors, TTHemeBackgroundColors };
+export type {
+    TTheme,
+    TTHemeColors,
+    TTHemeTextColors,
+    TTHemeBackgroundColors,
+    TThemeColorDefinition,
+};

@@ -1,8 +1,5 @@
 import { ArgsTable, Meta, Title, Subtitle, Canvas, Story } from '@storybook/addon-docs/blocks';
 
-import Grid from './Grid';
-import spacing from './Grid.spacing';
-
 import Shape from '../shape';
 import Typography from '../typography';
 
@@ -12,7 +9,7 @@ import grid8pxImg from '../../assets/images/layout_8px-grid.png';
 import grid4pxImg from '../../assets/images/layout_4px-grid.png';
 import baselineImg from '../../assets/images/layout_baseline.png';
 import anatomyImg from '../../assets/images/layout_grid-anatomy.png';
-import { GridSpacing } from './index';
+import Grid, { GridSpacing } from './index';
 
 <Meta component={Grid} title="Foundations/Grid" />
 
@@ -53,7 +50,7 @@ export const spacings = {
 <Grid row alignment={'flex-end'}>
     {Object.keys(spacings).map((s) => (
         <Grid justify={'center'} padding={GridSpacing.all(75)}>
-            <Shape border borderRadius={0} elevation={0}>
+            <Shape borderWidth={1} borderRadius={0} elevation={0}>
                 <Grid
                     padding={GridSpacing.trbl({
                         top: spacings[s],
@@ -113,16 +110,16 @@ export const Template = (args) => {
     const { childCount, padding, margin, colPadding, colMargin, ...rest } = args;
     const content = new Array(childCount).fill('gridChild');
     return (
-        <Shape width={800} height={400} background={'rgb(240, 210, 180)'}>
+        <Shape borderWidth={1} width={800} height={400} background={'rgb(240, 210, 180)'}>
             <Grid margin={GridSpacing.all(margin)} flex={1}>
-                <Shape flex={1} border background={'rgb(210, 240, 180)'}>
+                <Shape borderWidth={1} border background={'rgb(210, 240, 180)'}>
                     <Grid flex={1} padding={GridSpacing.all(padding)} {...rest}>
                         {content.map((key, i) => (
-                            <Shape key={key + i} flex={1} border background={'rgb(240, 210, 180)'}>
+                            <Shape key={key + i} borderWidth={1} background={'rgb(240, 210, 180)'}>
                                 <Grid margin={GridSpacing.all(colMargin)} flex={1}>
-                                    <Shape flex={1} border background={'rgb(210, 240, 180)'}>
+                                    <Shape borderWidth={1} background={'rgb(210, 240, 180)'}>
                                         <Grid flex={1} padding={GridSpacing.all(colPadding)}>
-                                            <Shape flex={1} border background={'#F3F3F3'} />
+                                            <Shape borderWidth={1} background={'#F3F3F3'} />
                                         </Grid>
                                     </Shape>
                                 </Grid>

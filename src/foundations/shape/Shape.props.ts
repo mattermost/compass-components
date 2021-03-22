@@ -5,8 +5,10 @@ import { TBorderRadiusSizes, TElevationLevel } from './Shape.types';
 type PShape = {
     /** The border-radius size */
     borderRadius?: TBorderRadiusSizes;
-    /** Should a border be rendered */
-    border?: boolean;
+    /** Color of the border (default: `var(--default-border-color)`) */
+    borderColor?: string;
+    /** Width of the border (default: `0`) */
+    borderWidth?: number;
     /**
      * Elevation refers to the z-index depth that an element sits on.
      * The base Elevation is 0 and has no depth.
@@ -17,7 +19,7 @@ type PShape = {
     /** If a hover-state should require a higher (or lower) elevation */
     elevationOnHover?: TElevationLevel;
     /** Which component should be used for rendering the Shape */
-    component?: 'div' | 'span' | 'section' | 'aside';
+    component?: 'div' | 'span' | 'section' | 'aside' | 'button';
     /** set a custom width */
     width?: number | string | 'auto';
     /**
@@ -28,12 +30,7 @@ type PShape = {
     /** set a custom background color */
     background?: string;
     children?: React.ReactNode | React.ReactNode[];
+    className?: string;
 };
 
-type PStyledShape = Pick<PShape, 'borderRadius' | 'elevation' | 'border' | 'elevationOnHover'> & {
-    width: string;
-    height: string;
-    background: string;
-};
-
-export type { PShape, PStyledShape };
+export default PShape;
