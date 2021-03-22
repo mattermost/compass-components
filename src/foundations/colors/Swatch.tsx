@@ -1,8 +1,9 @@
 import React from 'react';
 
+import Heading from '../../components/heading';
+import Text from '../../components/text';
 import Grid, { GridSpacing } from '../layout';
 import Shape from '../shape';
-import Typography from '../typography';
 import { convertToRgb, rgbToHex, rgbToHsl } from '../../utils';
 
 type PSwatch = {
@@ -49,24 +50,20 @@ const Swatch: React.FC<PSwatch> = ({
                     padding={GridSpacing.trbl({ top: 50, right: 0, bottom: 50, left: 75 })}
                 >
                     <Grid flex={1}>
-                        <Typography
-                            variant={'subtitle'}
-                            size={200}
-                            gutter={isRow ? 'none' : 'bottom'}
-                        >
+                        <Heading variant={'h6'} size={200} gutter={isRow ? 'none' : 'bottom'}>
                             {`${colorName || ''} ${shade}`.trim()}
-                        </Typography>
+                        </Heading>
                     </Grid>
                     <Grid>
-                        <Typography variant={'body'} size={75} gutter={'none'} color={'secondary'}>
+                        <Text variant={'p'} size={75} gutter={'none'} color={'secondary'}>
                             {hexString.toUpperCase?.()}
-                        </Typography>
-                        <Typography variant={'body'} size={75} gutter={'none'} color={'secondary'}>
+                        </Text>
+                        <Text variant={'p'} size={75} gutter={'none'} color={'secondary'}>
                             {rgbString}
-                        </Typography>
-                        <Typography variant={'body'} size={75} gutter={'none'} color={'secondary'}>
+                        </Text>
+                        <Text variant={'p'} size={75} gutter={'none'} color={'secondary'}>
                             {hslString}
-                        </Typography>
+                        </Text>
                     </Grid>
                 </Grid>
             )}

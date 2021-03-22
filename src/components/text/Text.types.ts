@@ -1,9 +1,5 @@
-import { TTypeSize, TTypeWeight } from '../../foundations/type';
-
-type TTextSize = Omit<TTypeSize, '400' | '500' | '600' | '700' | '800' | '900' | '1000'>;
-
-type TTextVariant = 'p' | 'span';
+import { TBodySize, TTypeWeight, TTypeBodyVariant } from '../../foundations/type';
 
 type TTextWeight = Omit<TTypeWeight, 'light'>;
 
-export type { TTextSize, TTextVariant, TTextWeight };
+export type { TBodySize as TTextSize, TTypeBodyVariant as TTextVariant, TTextWeight };

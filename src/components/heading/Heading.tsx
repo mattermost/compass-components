@@ -1,7 +1,7 @@
 import React from 'react';
 import clsx from 'clsx';
 
-import Type from '../../foundations/type';
+import Type from '../../foundations/type/Type';
 
 import { PHeading } from './Heading.props';
 
@@ -9,7 +9,7 @@ const Heading: React.FC<PHeading> = ({
     children,
     className,
     size = 100,
-    variant,
+    variant = 'h6',
     weight = 'bold',
 }): JSX.Element => {
     let element = variant;
@@ -41,9 +41,9 @@ const Heading: React.FC<PHeading> = ({
         <Type
             className={clsx(className, 'Heading')}
             variant={element}
+            as={element}
             size={size}
             weight={weight}
-            type="heading"
         >
             {children}
         </Type>

@@ -1,12 +1,12 @@
 import { Description, Meta, Subtitle, Title } from '@storybook/addon-docs/blocks';
 
 import colorStoryParams from './colors/colors.stories.mdx';
-import typographyStoryParams from './typography/Typography.stories.mdx';
+import typeStoryParams from './type/Type.stories.mdx';
 import shapeStoryParams from './shape/Shape.stories.mdx';
 
 import { Utils } from '../utils';
 import Shape from './shape';
-import Typography from './typography';
+import Type from './type';
 import Grid, { GridSpacing } from './layout';
 import ThemeProvider from './theme-provider/theme-provider';
 
@@ -39,27 +39,27 @@ import iconsImg from '../assets/images/foundation_overview_icons.png';
             <Shape border borderRadius={4} elevation={0} elevationOnHover={2}>
                 <img src={colorImg} alt={'foundation-colors'} />
                 <Grid padding={GridSpacing.symmetric({ vertical: 50, horizontal: 100 })}>
-                    <Typography variant={'h3'} size={300}>
+                    <Type variant={'h3'} size={300}>
                         Color
-                    </Typography>
-                    <Typography variant={'body'} size={100}>
+                    </Type>
+                    <Type variant={'body'} size={100}>
                         Discover the various palettes and shades.
-                    </Typography>
+                    </Type>
                 </Grid>
             </Shape>
         </a>
     </Grid>
     <Grid padding={GridSpacing.all(75)} flex={1}>
-        <a href={Utils.getStoryDocumentationUrl(typographyStoryParams)} target={'_self'}>
+        <a href={Utils.getStoryDocumentationUrl(typeStoryParams)} target={'_self'}>
             <Shape border borderRadius={4} elevation={0} elevationOnHover={2}>
                 <img src={typographyImg} alt={'foundation-typography'} />
                 <Grid padding={GridSpacing.symmetric({ vertical: 50, horizontal: 100 })}>
-                    <Typography variant={'h3'} size={300}>
+                    <Type variant={'h3'} size={300}>
                         Typography
-                    </Typography>
-                    <Typography variant={'body'} size={100}>
+                    </Type>
+                    <Type variant={'body'} size={100}>
                         Guidelines on typefaces, scales, weights and more.
-                    </Typography>
+                    </Type>
                 </Grid>
             </Shape>
         </a>
@@ -69,12 +69,12 @@ import iconsImg from '../assets/images/foundation_overview_icons.png';
             <Shape border borderRadius={4} elevation={0} elevationOnHover={2}>
                 <img src={shapeImg} alt={'foundation-shape'} />
                 <Grid padding={GridSpacing.symmetric({ vertical: 50, horizontal: 100 })}>
-                    <Typography variant={'h3'} size={300}>
+                    <Type variant={'h3'} size={300}>
                         Shape
-                    </Typography>
-                    <Typography variant={'body'} size={100}>
+                    </Type>
+                    <Type variant={'body'} size={100}>
                         How shape is used in Mattermost interfaces
-                    </Typography>
+                    </Type>
                 </Grid>
             </Shape>
         </a>
@@ -84,12 +84,12 @@ import iconsImg from '../assets/images/foundation_overview_icons.png';
             <Shape border borderRadius={4} elevation={0} elevationOnHover={2}>
                 <img src={iconsImg} alt={'foundation-icons'} />
                 <Grid padding={GridSpacing.symmetric({ vertical: 50, horizontal: 100 })}>
-                    <Typography variant={'h3'} size={300}>
+                    <Type variant={'h3'} size={300}>
                         Iconography
-                    </Typography>
-                    <Typography variant={'body'} size={100}>
+                    </Type>
+                    <Type variant={'body'} size={100}>
                         Simple visual aids used to guide our users
-                    </Typography>
+                    </Type>
                 </Grid>
             </Shape>
         </a>

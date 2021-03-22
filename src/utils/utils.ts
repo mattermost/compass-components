@@ -19,9 +19,20 @@ const getStoryDocumentationUrl = (storyParameters: Record<string, string>): stri
     return `/?path=/docs/${storyPath}--${kebabCase(storyParameters.includeStories[0])}`;
 };
 
+const doNotForwardProperties = (blacklist: string[]): ((property: string | number) => boolean) => (
+    property: string | number
+): boolean =>
+    // forward the property when it is a `data-*`attribute
+    property.toString().startsWith('data-') ||
+    // forward the property when it is a `aria-*`attribute
+    property.toString().startsWith('aria-') ||
+    // forward the property when it is not defined within the property-blacklist
+    !blacklist.includes(property.toString());
+
 const Utils = {
     isColor,
     getStoryDocumentationUrl,
+    doNotForwardProperties,
 };
 
 export default Utils;

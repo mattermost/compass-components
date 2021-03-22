@@ -3,6 +3,7 @@ import { createGlobalStyle } from 'styled-components';
 import { TBorderRadiusSizes, TElevationLevel } from '../../shape';
 import { TTheme } from '../themes/theme.types';
 
+import VAnimations from './variables.animations';
 import VSizes from './variables.sizes';
 import VColors from './variables.colors';
 import VElevation from './variables.elevation';
@@ -21,6 +22,7 @@ const GlobalStyle = createGlobalStyle`
         ${VFontFaces}
         ${VFontStyle}
         ${VElevation}
+        ${VAnimations}
         ${VBorderRadius}
 
         --border-default: 1px solid var(--disabled-text-color);

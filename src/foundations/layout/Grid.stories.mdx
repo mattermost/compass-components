@@ -1,10 +1,9 @@
 import { ArgsTable, Meta, Title, Subtitle, Canvas, Story } from '@storybook/addon-docs/blocks';
 
 import Grid from './Grid';
-import spacing from './Grid.spacing';
 
 import Shape from '../shape';
-import Typography from '../typography';
+import Type from '../type';
 
 import measurementImg from '../../assets/images/layout_measurement-units.png';
 import paddingImg from '../../assets/images/layout_padding.png';
@@ -63,9 +62,9 @@ export const spacings = {
                     })}
                 />
             </Shape>
-            <Typography variant={'body'} size={75}>
+            <Type variant={'p'} size={75}>
                 {s}
-            </Typography>
+            </Type>
         </Grid>
     ))}
 </Grid>
