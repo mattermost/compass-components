@@ -4,8 +4,10 @@ import Heading from './Heading';
 import {
     DEFAULT_HEADING_SIZE,
     HEADING_SIZES,
+    HEADING_GUTTERS,
     HEADING_VARIANTS,
     HEADING_WEIGHTS,
+    HEADING_COLORS,
 } from './Heading.constants';
 
 <Meta component={Heading} title="Components/Heading" />
@@ -14,7 +16,7 @@ import {
 
 ## Component API
 
-<ArgsTable of={Heading} />
+<ArgsTable of={Heading} exclude={['className']} />
 
 export const Template = (args) => {
     const { text } = args;
@@ -25,10 +27,12 @@ export const Template = (args) => {
     <Story
         name="Default"
         args={{
-            size: DEFAULT_HEADING_SIZE,
-            variant: 'h6',
-            weight: 'bold',
             text: 'Lorem Ipsum Dolor',
+            variant: 'h6',
+            size: DEFAULT_HEADING_SIZE,
+            weight: 'bold',
+            gutter: 'both',
+            color: 'primary',
         }}
         argTypes={{
             size: {
@@ -45,10 +49,23 @@ export const Template = (args) => {
             },
             weight: {
                 control: {
-                    type: 'select',
+                    type: 'radio',
                     options: HEADING_WEIGHTS,
                 },
             },
+            gutter: {
+                control: {
+                    type: 'radio',
+                    options: HEADING_GUTTERS,
+                },
+            },
+            color: {
+                control: {
+                    type: 'radio',
+                    options: HEADING_COLORS,
+                },
+            },
+            className: { table: { disable: true } },
         }}
     >
         {Template.bind({})}

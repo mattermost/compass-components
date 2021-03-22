@@ -6,11 +6,12 @@ import Type from '../../foundations/type/Type';
 import { PHeading } from './Heading.props';
 
 const Heading: React.FC<PHeading> = ({
-    children,
-    className,
     size = 100,
     variant = 'h6',
     weight = 'bold',
+    color = 'primary',
+    children,
+    className,
 }): JSX.Element => {
     let element = variant;
 
@@ -44,6 +45,7 @@ const Heading: React.FC<PHeading> = ({
             as={element}
             size={size}
             weight={weight}
+            color={color}
         >
             {children}
         </Type>

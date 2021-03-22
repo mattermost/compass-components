@@ -1,7 +1,14 @@
-import { Meta, Story, Canvas, ArgsTable, Title, Subtitle } from '@storybook/addon-docs/blocks';
+import { Meta, Story, Canvas, ArgsTable, Title } from '@storybook/addon-docs/blocks';
 
 import Text from './Text';
-import { DEFAULT_TEXT_SIZE, TEXT_SIZES, TEXT_VARIANTS, TEXT_WEIGHTS } from './Text.constants';
+import {
+    DEFAULT_TEXT_SIZE,
+    TEXT_COLORS,
+    TEXT_GUTTERS,
+    TEXT_SIZES,
+    TEXT_VARIANTS,
+    TEXT_WEIGHTS,
+} from './Text.constants';
 
 <Meta component={Text} title="Components/Text" />
 
@@ -20,10 +27,12 @@ export const Template = (args) => {
     <Story
         name="Default"
         args={{
-            size: DEFAULT_TEXT_SIZE,
+            text: 'Lorem Ipsum Dolor',
             variant: 'p',
-            weight: 'regular',
-            text: 'Lorem ipsum dolor sit amet consetetur ...',
+            size: DEFAULT_TEXT_SIZE,
+            weight: 'bold',
+            gutter: 'both',
+            color: 'primary',
         }}
         argTypes={{
             size: {
@@ -40,10 +49,23 @@ export const Template = (args) => {
             },
             weight: {
                 control: {
-                    type: 'select',
+                    type: 'radio',
                     options: TEXT_WEIGHTS,
                 },
             },
+            gutter: {
+                control: {
+                    type: 'radio',
+                    options: TEXT_GUTTERS,
+                },
+            },
+            color: {
+                control: {
+                    type: 'radio',
+                    options: TEXT_COLORS,
+                },
+            },
+            className: { table: { disable: true } },
         }}
     >
         {Template.bind({})}

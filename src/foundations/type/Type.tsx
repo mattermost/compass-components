@@ -5,7 +5,7 @@ import { Utils } from '../../utils';
 
 import { BODY_SIZES, DEFAULT_TYPE_SIZE, HEADING_SIZES, HEADING_VARIANTS } from './Type.constants';
 import { PType } from './Type.props';
-import { TTypeSize, TTypeType, TTypeVariant } from './Type.types';
+import { TTypeSize, TTypeType } from './Type.types';
 
 function generateFontSize(typeSize: TTypeSize, fontType: TTypeType): FlattenSimpleInterpolation {
     return css`

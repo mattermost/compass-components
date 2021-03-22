@@ -1,3 +1,5 @@
+import { TYPE_GUTTERS, TYPE_COLORS } from '../../foundations/type';
+
 import { TTextSize, TTextVariant, TTextWeight } from './Text.types';
 
 const DEFAULT_TEXT_SIZE: TTextSize = 100;
@@ -8,4 +10,11 @@ const TEXT_VARIANTS: TTextVariant[] = ['p', 'span'];
 
 const TEXT_WEIGHTS: TTextWeight[] = ['regular', 'bold'];
 
-export { DEFAULT_TEXT_SIZE, TEXT_SIZES, TEXT_VARIANTS, TEXT_WEIGHTS };
+export {
+    DEFAULT_TEXT_SIZE,
+    TEXT_SIZES,
+    TEXT_VARIANTS,
+    TEXT_WEIGHTS,
+    TYPE_GUTTERS as TEXT_GUTTERS,
+    TYPE_COLORS as TEXT_COLORS,
+};

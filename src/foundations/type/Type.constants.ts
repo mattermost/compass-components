@@ -1,13 +1,32 @@
-import { TBodySize, TTypeVariant, TTypeSize, TTypeWeight } from './Type.types';
+import {
+    TBodySize,
+    TTypeVariant,
+    TTypeSize,
+    TTypeWeight,
+    TTypeGutter,
+    TTypeColor,
+} from './Type.types';
+
+const DEFAULT_TYPE_SIZE: TTypeSize = 100;
 
 const BODY_SIZES: TBodySize[] = [25, 50, 75, 100, 200, 300];
 
-const HEADING_SIZES: TTypeSize[] = [25, 50, 75, 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000];
+const HEADING_SIZES: TTypeSize[] = [25, 50, 75, 100, 200, 300, 400, 500, 600, 700, 1000];
 
 const HEADING_VARIANTS: TTypeVariant[] = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'];
 
 const TYPE_WEIGHTS: TTypeWeight[] = ['light', 'regular', 'bold'];
 
-const DEFAULT_TYPE_SIZE: TTypeSize = 100;
+const TYPE_GUTTERS: TTypeGutter[] = ['none', 'both', 'bottom', 'top'];
 
-export { BODY_SIZES, HEADING_SIZES, TYPE_WEIGHTS, DEFAULT_TYPE_SIZE, HEADING_VARIANTS };
+const TYPE_COLORS: TTypeColor[] = ['primary', 'secondary', 'disabled'];
+
+export {
+    DEFAULT_TYPE_SIZE,
+    BODY_SIZES,
+    HEADING_SIZES,
+    TYPE_WEIGHTS,
+    TYPE_GUTTERS,
+    TYPE_COLORS,
+    HEADING_VARIANTS,
+};

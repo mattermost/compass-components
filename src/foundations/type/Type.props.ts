@@ -1,17 +1,26 @@
-import { TTypeSize, TTypeWeight, TTypeGutter, TTypeVariant } from './Type.types';
+import { TTypeSize, TTypeWeight, TTypeGutter, TTypeVariant, TTypeColor } from './Type.types';
 
 export type PType = {
     className?: string;
     /** the size use to render the text. The actual px values depend on the variant as well  */
     size?: TTypeSize;
     /**
-     * can be `heading` for h1 - h6 and `body` for rendering a p tag
+     * it is derived from the variant:
+     *  - `heading` for h1 - h6
+     *  - `body` p and span
      * */
     variant: TTypeVariant;
-    /** which color is the text rendered with */
-    color?: 'primary' | 'secondary' | 'disabled';
+    /**
+     * which color is the text rendered with
+     * @default 'primary'
+     * */
+    color?: TTypeColor;
     /** define the weight of the rendered font */
     weight?: TTypeWeight;
-    /** every text-variant has its own gutter. With this you can choose which one to render */
+    /**
+     * Every text-variant has its own gutter.
+     * With this you can choose which one to render.
+     * @default 'both'
+     * */
     gutter?: TTypeGutter;
 };
