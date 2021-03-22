@@ -55,6 +55,7 @@ const Heading: React.FC<PHeading> = ({
             weight={weight}
             gutter={gutter}
             color={color}
+            role={'heading'}
         >
             {children}
         </Type>

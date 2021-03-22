@@ -19,6 +19,8 @@ const getStoryDocumentationUrl = (storyParameters: Record<string, string>): stri
     return `/?path=/docs/${storyPath}--${kebabCase(storyParameters.includeStories[0])}`;
 };
 
+const propertyWhitelist: string[] = ['role', 'whitelist'];
+
 /**
  * this is to prevent all properties to be passed down to the underlying
  * component, except for the ones we want to pass down
@@ -42,6 +44,8 @@ const doNotForwardProperties = (blacklist: string[]): ((property: string | numbe
     property.toString().startsWith('data-') ||
     // forward the property when it is a `aria-*`attribute
     property.toString().startsWith('aria-') ||
+    // always forward the property when it is defined within the property-whitelist
+    propertyWhitelist.includes(property.toString()) ||
     // forward the property when it is not defined within the property-blacklist
     !blacklist.includes(property.toString());
 

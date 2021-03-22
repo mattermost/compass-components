@@ -29,6 +29,7 @@ const Text: React.FC<PText> = ({
         gutter={gutter}
         color={color}
         weight={weight as TTypeWeight}
+        role={'text'}
     >
         {children}
     </Type>
