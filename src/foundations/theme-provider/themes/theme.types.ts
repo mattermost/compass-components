@@ -33,9 +33,9 @@ type TTheme = {
 };
 
 export type {
-    TThemeColorDefinition,
     TTheme,
     TTHemeColors,
     TTHemeTextColors,
     TTHemeBackgroundColors,
+    TThemeColorDefinition,
 };

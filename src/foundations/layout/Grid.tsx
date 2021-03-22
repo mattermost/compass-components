@@ -8,15 +8,21 @@ const Grid: React.FC<PGrid> = ({
     component = 'div',
     alignment = 'initial',
     justify = 'initial',
-    flex = 0,
+    flex = 'auto',
+    wrap = true,
+    width = null,
+    height = null,
     children,
     ...rest
 }: PGrid): JSX.Element => {
     const optionalProperties = {
         row,
         flex,
+        wrap,
         alignment,
         justify,
+        width,
+        height,
     };
 
     return (

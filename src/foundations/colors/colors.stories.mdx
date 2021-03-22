@@ -202,7 +202,7 @@ export const Template = (args) => {
         colors = createColorShades(args.color);
     }
     return (
-        <Grid>
+        <Grid width={400}>
             {colors &&
                 Object.keys(colors).map((shade) => (
                     <Swatch
