@@ -38,8 +38,9 @@ const getBorderDefinition = (props: PShape): string => {
 };
 
 const Shape = styled.div.withConfig({
-    // this is to prevent all properties to being passed down to the underlying
-    // component, except for the ones we want to having them passe down
+    // this is to prevent all properties to be passed down to the underlying
+    // component, except for the ones we want to pass down
+    // (e.g. `type="button"` or `data-*` and `aria-*` attributes)
     shouldForwardProp: (property) =>
         !['width', 'height', 'elevation', 'borderRadius'].includes(property),
 })<PShape>`
