@@ -23,7 +23,6 @@ const Text: React.FC<PText> = ({
 }): JSX.Element => (
     <Type
         className={clsx(className, 'Text')}
-        as={variant}
         variant={variant}
         size={size}
         gutter={gutter}

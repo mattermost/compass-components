@@ -36,6 +36,10 @@ function generateMargins(typeSize: TTypeSize, fontType: TTypeType): FlattenSimpl
 
 const Type = styled.p
     .attrs((props: PType) => ({
+        // it is possible to remap props, so we do not need to pass down the
+        // `as` property from styled-components and prevent usage of
+        // unsupported HTML tags
+        as: props.variant,
         'data-size': props.size || DEFAULT_TYPE_SIZE,
         'data-type': HEADING_VARIANTS.includes(props.variant) ? 'heading' : 'body',
         'data-weight': props.weight,

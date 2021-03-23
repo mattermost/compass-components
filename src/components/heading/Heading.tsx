@@ -50,7 +50,6 @@ const Heading: React.FC<PHeading> = ({
         <Type
             className={clsx(className, 'Heading')}
             variant={element}
-            as={element}
             size={size}
             weight={weight}
             gutter={gutter}
