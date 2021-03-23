@@ -4,13 +4,13 @@ import Shape from '../../foundations/shape';
 import Typography from '../../foundations/typography';
 import Grid, { GridSpacing } from '../../foundations/layout';
 
-import PMentionBadges from './Badges.props';
+import PMentionBadge from './Badges.props';
 
-const MentionBadges: React.FC<PMentionBadges> = ({
+const MentionBadge: React.FC<PMentionBadge> = ({
     location,
     mentionCount = 1,
     mentionLimit = 99,
-}: PMentionBadges): JSX.Element => {
+}: PMentionBadge): JSX.Element => {
     let color: 'primary' | 'accent' | 'contrast' | undefined = 'primary';
     let background = 'var(--shape-background-color)';
 
@@ -33,7 +33,7 @@ const MentionBadges: React.FC<PMentionBadges> = ({
             elevation={1}
             elevationOnHover={3}
             background={background}
-            height={16}
+            width={'auto'}
         >
             <Grid
                 alignment={'center'}
@@ -41,13 +41,7 @@ const MentionBadges: React.FC<PMentionBadges> = ({
                 flex={1}
                 padding={GridSpacing.symmetric({ vertical: 0, horizontal: 50 })}
             >
-                <Typography
-                    removeLineHeight
-                    variant={'body'}
-                    size={50}
-                    color={color}
-                    gutter={'none'}
-                >
+                <Typography variant={'body'} size={50} color={color} gutter={'none'}>
                     <strong>
                         {mentionCount > mentionLimit ? `${mentionLimit}+` : mentionCount}
                     </strong>
@@ -57,4 +51,4 @@ const MentionBadges: React.FC<PMentionBadges> = ({
     );
 };
 
-export default MentionBadges;
+export default MentionBadge;
