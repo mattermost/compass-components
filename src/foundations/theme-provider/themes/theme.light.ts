@@ -40,6 +40,7 @@ const lightTheme: TTheme = {
         primary: neutral[1100],
         secondary: neutral[800],
         disabled: neutral[500],
+        contrast: neutral[0],
     },
     background: {
         default: neutral[50],
