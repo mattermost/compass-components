@@ -2,7 +2,7 @@ import { PType } from '../../foundations/type';
 
 import { TTextSize, TTextVariant, TTextWeight } from './Text.types';
 
-export type PText = Pick<PType, 'color' | 'gutter'> & {
+export type PText = Pick<PType, 'color' | 'margin'> & {
     className?: string;
     /**
      * the size-token used to render the text size.

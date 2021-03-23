@@ -1,4 +1,4 @@
-import { TTypeSize, TTypeWeight, TTypeGutter, TTypeVariant, TTypeColor } from './Type.types';
+import { TTypeSize, TTypeWeight, TTypeMargin, TTypeVariant, TTypeColor } from './Type.types';
 
 export type PType = {
     className?: string;
@@ -18,9 +18,9 @@ export type PType = {
     /** define the weight of the rendered font */
     weight?: TTypeWeight;
     /**
-     * Every text-variant has its own gutter.
+     * Every text-variant has its own margin.
      * With this you can choose which one to render.
      * @default 'both'
      * */
-    gutter?: TTypeGutter;
+    margin?: TTypeMargin;
 };

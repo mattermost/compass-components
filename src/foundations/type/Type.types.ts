@@ -12,7 +12,7 @@ type TTypeType = 'heading' | 'body';
 
 type TTypeWeight = 'light' | 'regular' | 'bold';
 
-type TTypeGutter = 'none' | 'top' | 'bottom' | 'both';
+type TTypeMargin = 'none' | 'top' | 'bottom' | 'both';
 
 type TTypeColor = 'primary' | 'secondary' | 'disabled';
 
@@ -21,7 +21,7 @@ export type {
     TTypeSize,
     TTypeType,
     TTypeWeight,
-    TTypeGutter,
+    TTypeMargin,
     TTypeHeadingVariant,
     TTypeBodyVariant,
     TTypeVariant,

@@ -3,13 +3,13 @@ import { Meta, Story, Canvas, ArgsTable, Title, Subtitle } from '@storybook/addo
 import Heading from './Heading';
 import {
     HEADING_SIZES,
-    HEADING_GUTTERS,
+    HEADING_MARGINS,
     HEADING_VARIANTS,
     HEADING_WEIGHTS,
     HEADING_COLORS,
     DEFAULT_HEADING_SIZE,
     DEFAULT_HEADING_WEIGHT,
-    DEFAULT_HEADING_GUTTER,
+    DEFAULT_HEADING_MARGIN,
     DEFAULT_HEADING_COLOR,
     DEFAULT_HEADING_VARIANT,
 } from './Heading.constants';
@@ -35,7 +35,7 @@ export const Template = (args) => {
             variant: DEFAULT_HEADING_VARIANT,
             size: DEFAULT_HEADING_SIZE,
             weight: DEFAULT_HEADING_WEIGHT,
-            gutter: DEFAULT_HEADING_GUTTER,
+            margin: DEFAULT_HEADING_MARGIN,
             color: DEFAULT_HEADING_COLOR,
         }}
         argTypes={{
@@ -57,10 +57,10 @@ export const Template = (args) => {
                     options: HEADING_WEIGHTS,
                 },
             },
-            gutter: {
+            margin: {
                 control: {
                     type: 'radio',
-                    options: HEADING_GUTTERS,
+                    options: HEADING_MARGINS,
                 },
             },
             color: {

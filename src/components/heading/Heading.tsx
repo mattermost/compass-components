@@ -5,7 +5,7 @@ import Type from '../../foundations/type/Type';
 
 import {
     DEFAULT_HEADING_COLOR,
-    DEFAULT_HEADING_GUTTER,
+    DEFAULT_HEADING_MARGIN,
     DEFAULT_HEADING_SIZE,
     DEFAULT_HEADING_VARIANT,
     DEFAULT_HEADING_WEIGHT,
@@ -17,7 +17,7 @@ const Heading: React.FC<PHeading> = ({
     variant = DEFAULT_HEADING_VARIANT,
     weight = DEFAULT_HEADING_WEIGHT,
     color = DEFAULT_HEADING_COLOR,
-    gutter = DEFAULT_HEADING_GUTTER,
+    margin = DEFAULT_HEADING_MARGIN,
     children,
     className,
 }): JSX.Element => {
@@ -52,7 +52,7 @@ const Heading: React.FC<PHeading> = ({
             variant={element}
             size={size}
             weight={weight}
-            gutter={gutter}
+            margin={margin}
             color={color}
             role={'heading'}
         >

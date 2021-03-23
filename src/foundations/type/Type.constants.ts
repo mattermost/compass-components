@@ -3,7 +3,7 @@ import {
     TTypeVariant,
     TTypeSize,
     TTypeWeight,
-    TTypeGutter,
+    TTypeMargin,
     TTypeColor,
 } from './Type.types';
 
@@ -17,9 +17,9 @@ const HEADING_VARIANTS: TTypeVariant[] = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'];
 
 const TYPE_WEIGHTS: TTypeWeight[] = ['light', 'regular', 'bold'];
 
-const TYPE_GUTTERS: TTypeGutter[] = ['none', 'both', 'bottom', 'top'];
+const TYPE_MARGINS: TTypeMargin[] = ['none', 'both', 'bottom', 'top'];
 
-const DEFAULT_TYPE_GUTTER: TTypeGutter = 'both';
+const DEFAULT_TYPE_MARGIN: TTypeMargin = 'both';
 
 const TYPE_COLORS: TTypeColor[] = ['primary', 'secondary', 'disabled'];
 
@@ -30,8 +30,8 @@ export {
     BODY_SIZES,
     HEADING_SIZES,
     TYPE_WEIGHTS,
-    TYPE_GUTTERS,
-    DEFAULT_TYPE_GUTTER,
+    TYPE_MARGINS,
+    DEFAULT_TYPE_MARGIN,
     TYPE_COLORS,
     DEFAULT_TYPE_COLOR,
     HEADING_VARIANTS,

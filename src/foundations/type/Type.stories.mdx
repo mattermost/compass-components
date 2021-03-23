@@ -92,34 +92,34 @@ export const bodySizes = [...smallSizes, { size: 300, fontSize: 18, lineHeight: 
                 </Grid>
                 <Grid row>
                     <Grid flex={3}>
-                        <Type variant={'body'} color={'secondary'} size={50} gutter={'none'}>
+                        <Type variant={'body'} color={'secondary'} size={50} margin={'none'}>
                             Family
                         </Type>
-                        <Type variant={'body'} size={200} gutter={'bottom'}>
+                        <Type variant={'body'} size={200} margin={'bottom'}>
                             {heading.size > 300 ? 'Metropolis (600)' : 'OpenSans (600)'}
                         </Type>
                     </Grid>
                     <Grid flex={2}>
-                        <Type variant={'body'} color={'secondary'} size={50} gutter={'none'}>
+                        <Type variant={'body'} color={'secondary'} size={50} margin={'none'}>
                             Size
                         </Type>
-                        <Type variant={'body'} size={200} gutter={'bottom'}>
+                        <Type variant={'body'} size={200} margin={'bottom'}>
                             {`${heading.fontSize}px`}
                         </Type>
                     </Grid>
                     <Grid flex={2}>
-                        <Type variant={'body'} color={'secondary'} size={50} gutter={'none'}>
+                        <Type variant={'body'} color={'secondary'} size={50} margin={'none'}>
                             Line Height
                         </Type>
-                        <Type variant={'body'} size={200} gutter={'bottom'}>
+                        <Type variant={'body'} size={200} margin={'bottom'}>
                             {`${heading.lineHeight}px`}
                         </Type>
                     </Grid>
                     <Grid flex={6}>
-                        <Type variant={'body'} color={'secondary'} size={50} gutter={'none'}>
+                        <Type variant={'body'} color={'secondary'} size={50} margin={'none'}>
                             Example
                         </Type>
-                        <Type variant={'h1'} size={heading.size} gutter={'bottom'}>
+                        <Type variant={'h1'} size={heading.size} margin={'bottom'}>
                             The quick brown fox jumps over the lazy dog
                         </Type>
                     </Grid>
@@ -151,34 +151,34 @@ The chart below shows all the body copy sizes where Body 100 is the base font si
                 </Grid>
                 <Grid row>
                     <Grid flex={3}>
-                        <Type variant={'body'} color={'secondary'} size={50} gutter={'none'}>
+                        <Type variant={'body'} color={'secondary'} size={50} margin={'none'}>
                             Family
                         </Type>
-                        <Type variant={'body'} size={200} gutter={'bottom'}>
+                        <Type variant={'body'} size={200} margin={'bottom'}>
                             OpenSans (400)
                         </Type>
                     </Grid>
                     <Grid flex={2}>
-                        <Type variant={'body'} color={'secondary'} size={50} gutter={'none'}>
+                        <Type variant={'body'} color={'secondary'} size={50} margin={'none'}>
                             Size
                         </Type>
-                        <Type variant={'body'} size={200} gutter={'bottom'}>
+                        <Type variant={'body'} size={200} margin={'bottom'}>
                             {`${body.fontSize}px`}
                         </Type>
                     </Grid>
                     <Grid flex={2}>
-                        <Type variant={'body'} color={'secondary'} size={50} gutter={'none'}>
+                        <Type variant={'body'} color={'secondary'} size={50} margin={'none'}>
                             Line Height
                         </Type>
-                        <Type variant={'body'} size={200} gutter={'bottom'}>
+                        <Type variant={'body'} size={200} margin={'bottom'}>
                             {`${body.lineHeight}px`}
                         </Type>
                     </Grid>
                     <Grid flex={6}>
-                        <Type variant={'body'} color={'secondary'} size={50} gutter={'none'}>
+                        <Type variant={'body'} color={'secondary'} size={50} margin={'none'}>
                             Example
                         </Type>
-                        <Type variant={'body'} size={body.size} gutter={'bottom'}>
+                        <Type variant={'body'} size={body.size} margin={'bottom'}>
                             The quick brown fox jumps over the lazy dog
                         </Type>
                     </Grid>
@@ -214,7 +214,7 @@ export const ParagraphTemplate = (args) => (
         <Grid padding={GridSpacing.all(100)}>
             <Type
                 size={args.headingSize}
-                gutter={args.headingGutter}
+                margin={args.headingMargin}
                 variant={args.headingVariant}
                 color={args.headingColor}
             >
@@ -222,7 +222,7 @@ export const ParagraphTemplate = (args) => (
             </Type>
             <Type
                 size={args.subtitleSize}
-                gutter={args.subtitleGutter}
+                margin={args.subtitleMargin}
                 variant={args.subtitleVariant}
                 color={args.subtitleColor}
             >
@@ -230,7 +230,7 @@ export const ParagraphTemplate = (args) => (
             </Type>
             <Type
                 size={args.paragraphSize}
-                gutter={args.paragraphGutter}
+                margin={args.paragraphMargin}
                 variant={args.paragraphVariant}
                 color={args.paragraphColor}
             >
@@ -238,7 +238,7 @@ export const ParagraphTemplate = (args) => (
             </Type>
             <Type
                 size={args.subtitleSize}
-                gutter={args.subtitleGutter}
+                margin={args.subtitleMargin}
                 variant={args.subtitleVariant}
                 color={args.subtitleColor}
             >
@@ -246,7 +246,7 @@ export const ParagraphTemplate = (args) => (
             </Type>
             <Type
                 size={args.paragraphSize}
-                gutter={args.paragraphGutter}
+                margin={args.paragraphMargin}
                 variant={args.paragraphVariant}
                 color={args.paragraphColor}
             >
@@ -254,7 +254,7 @@ export const ParagraphTemplate = (args) => (
             </Type>
             <Type
                 size={args.paragraphSize}
-                gutter={args.paragraphGutter}
+                margin={args.paragraphMargin}
                 variant={args.paragraphVariant}
                 color={args.paragraphColor}
             >
@@ -300,7 +300,7 @@ export const ParagraphTemplate = (args) => (
             headingVariant: {
                 control: { type: 'select', options: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'] },
             },
-            headingGutter: {
+            headingMargin: {
                 control: { type: 'radio', options: ['none', 'both', 'top', 'bottom'] },
             },
             headingColor: {
@@ -314,7 +314,7 @@ export const ParagraphTemplate = (args) => (
                 },
             },
             subtitleVariant: { table: { disable: true } },
-            subtitleGutter: {
+            subtitleMargin: {
                 control: { type: 'radio', options: ['none', 'both', 'top', 'bottom'] },
             },
             subtitleColor: {
@@ -323,7 +323,7 @@ export const ParagraphTemplate = (args) => (
             paragraph: { table: { disable: true } },
             paragraphSize: { control: { type: 'select', options: [25, 50, 75, 100, 200, 300] } },
             paragraphVariant: { table: { disable: true } },
-            paragraphGutter: {
+            paragraphMargin: {
                 control: { type: 'radio', options: ['none', 'both', 'top', 'bottom'] },
             },
             paragraphColor: {
@@ -334,19 +334,19 @@ export const ParagraphTemplate = (args) => (
             heading: 'Lorem ipsum dolor sit amet',
             headingSize: 500,
             headingVariant: 'h2',
-            headingGutter: 'both',
+            headingMargin: 'both',
             headingColor: 'primary',
             subtitle:
                 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.',
             subtitleSize: 300,
             subtitleVariant: 'subtitle',
-            subtitleGutter: 'both',
+            subtitleMargin: 'both',
             subtitleColor: 'primary',
             paragraph:
                 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.',
             paragraphSize: 100,
             paragraphVariant: 'body',
-            paragraphGutter: 'both',
+            paragraphMargin: 'both',
             paragraphColor: 'primary',
         }}
     >

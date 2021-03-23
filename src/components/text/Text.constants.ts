@@ -1,4 +1,4 @@
-import { TYPE_GUTTERS, TYPE_COLORS, TTypeGutter, TTypeColor } from '../../foundations/type';
+import { TYPE_MARGINS, TYPE_COLORS, TTypeMargin, TTypeColor } from '../../foundations/type';
 
 import { TTextSize, TTextVariant, TTextWeight } from './Text.types';
 
@@ -14,7 +14,7 @@ const TEXT_WEIGHTS: TTextWeight[] = ['regular', 'bold'];
 
 const DEFAULT_TEXT_WEIGHT: TTextWeight = 'regular';
 
-const DEFAULT_TEXT_GUTTER: TTypeGutter = 'both';
+const DEFAULT_TEXT_MARGIN: TTypeMargin = 'both';
 
 const DEFAULT_TEXT_COLOR: TTypeColor = 'primary';
 
@@ -25,8 +25,8 @@ export {
     DEFAULT_TEXT_VARIANT,
     TEXT_WEIGHTS,
     DEFAULT_TEXT_WEIGHT,
-    TYPE_GUTTERS as TEXT_GUTTERS,
-    DEFAULT_TEXT_GUTTER,
+    TYPE_MARGINS as TEXT_MARGINS,
+    DEFAULT_TEXT_MARGIN,
     TYPE_COLORS as TEXT_COLORS,
     DEFAULT_TEXT_COLOR,
 };

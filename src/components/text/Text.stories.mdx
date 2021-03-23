@@ -3,12 +3,12 @@ import { Meta, Story, Canvas, ArgsTable, Title } from '@storybook/addon-docs/blo
 import Text from './Text';
 import {
     DEFAULT_TEXT_COLOR,
-    DEFAULT_TEXT_GUTTER,
+    DEFAULT_TEXT_MARGIN,
     DEFAULT_TEXT_SIZE,
     DEFAULT_TEXT_VARIANT,
     DEFAULT_TEXT_WEIGHT,
     TEXT_COLORS,
-    TEXT_GUTTERS,
+    TEXT_MARGINS,
     TEXT_SIZES,
     TEXT_VARIANTS,
     TEXT_WEIGHTS,
@@ -35,7 +35,7 @@ export const Template = (args) => {
             variant: DEFAULT_TEXT_VARIANT,
             size: DEFAULT_TEXT_SIZE,
             weight: DEFAULT_TEXT_WEIGHT,
-            gutter: DEFAULT_TEXT_GUTTER,
+            margin: DEFAULT_TEXT_MARGIN,
             color: DEFAULT_TEXT_COLOR,
         }}
         argTypes={{
@@ -57,10 +57,10 @@ export const Template = (args) => {
                     options: TEXT_WEIGHTS,
                 },
             },
-            gutter: {
+            margin: {
                 control: {
                     type: 'radio',
-                    options: TEXT_GUTTERS,
+                    options: TEXT_MARGINS,
                 },
             },
             color: {

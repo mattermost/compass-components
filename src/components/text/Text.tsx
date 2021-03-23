@@ -6,7 +6,7 @@ import Type, { TTypeWeight } from '../../foundations/type';
 import { PText } from './Text.props';
 import {
     DEFAULT_TEXT_COLOR,
-    DEFAULT_TEXT_GUTTER,
+    DEFAULT_TEXT_MARGIN,
     DEFAULT_TEXT_SIZE,
     DEFAULT_TEXT_VARIANT,
     DEFAULT_TEXT_WEIGHT,
@@ -18,14 +18,14 @@ const Text: React.FC<PText> = ({
     size = DEFAULT_TEXT_SIZE,
     variant = DEFAULT_TEXT_VARIANT,
     weight = DEFAULT_TEXT_WEIGHT,
-    gutter = DEFAULT_TEXT_GUTTER,
+    margin = DEFAULT_TEXT_MARGIN,
     color = DEFAULT_TEXT_COLOR,
 }): JSX.Element => (
     <Type
         className={clsx(className, 'Text')}
         variant={variant}
         size={size}
-        gutter={gutter}
+        margin={margin}
         color={color}
         weight={weight as TTypeWeight}
         role={'text'}

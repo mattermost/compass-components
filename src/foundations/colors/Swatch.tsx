@@ -50,18 +50,18 @@ const Swatch: React.FC<PSwatch> = ({
                     padding={GridSpacing.trbl({ top: 50, right: 0, bottom: 50, left: 75 })}
                 >
                     <Grid flex={1}>
-                        <Heading variant={'h6'} size={200} gutter={isRow ? 'none' : 'bottom'}>
+                        <Heading variant={'h6'} size={200} margin={isRow ? 'none' : 'bottom'}>
                             {`${colorName || ''} ${shade}`.trim()}
                         </Heading>
                     </Grid>
                     <Grid>
-                        <Text variant={'p'} size={75} gutter={'none'} color={'secondary'}>
+                        <Text variant={'p'} size={75} margin={'none'} color={'secondary'}>
                             {hexString.toUpperCase?.()}
                         </Text>
-                        <Text variant={'p'} size={75} gutter={'none'} color={'secondary'}>
+                        <Text variant={'p'} size={75} margin={'none'} color={'secondary'}>
                             {rgbString}
                         </Text>
-                        <Text variant={'p'} size={75} gutter={'none'} color={'secondary'}>
+                        <Text variant={'p'} size={75} margin={'none'} color={'secondary'}>
                             {hslString}
                         </Text>
                     </Grid>

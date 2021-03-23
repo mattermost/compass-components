@@ -1,24 +1,24 @@
 import { css } from 'styled-components';
 
-const baseGutter = 8;
-const baseLineHeight = baseGutter * 2.5;
+const baseMargin = 8;
+const baseLineHeight = baseMargin * 2.5;
 
 const bodyFontSizes: Record<string, number> = {
-    25: baseGutter * 1.25,
-    50: baseGutter * 1.375,
-    75: baseGutter * 1.5,
-    100: baseGutter * 1.75,
-    200: baseGutter * 2,
-    300: baseGutter * 2.25,
+    25: baseMargin * 1.25,
+    50: baseMargin * 1.375,
+    75: baseMargin * 1.5,
+    100: baseMargin * 1.75,
+    200: baseMargin * 2,
+    300: baseMargin * 2.25,
 };
 
 const headingFontSizes: Record<string, number> = {
     ...bodyFontSizes,
-    400: baseGutter * 2.5,
-    500: baseGutter * 2.75,
-    600: baseGutter * 3.125,
-    700: baseGutter * 4,
-    1000: baseGutter * 5,
+    400: baseMargin * 2.5,
+    500: baseMargin * 2.75,
+    600: baseMargin * 3.125,
+    700: baseMargin * 4,
+    1000: baseMargin * 5,
 };
 
 const getMargin = (fontSize: number, multiplier: number): number =>
@@ -28,8 +28,8 @@ const VFontStyle = css`
     --body-font-family: “Open Sans”, sans-serif;
     --heading-font-family: Metropolis, sans-serif;
 
-    --base-font-size: ${baseGutter * 1.75}px;
-    --base-line-height: ${baseGutter * 2.5}px;
+    --base-font-size: ${baseMargin * 1.75}px;
+    --base-line-height: ${baseMargin * 2.5}px;
 
     --body-font-size-25: ${bodyFontSizes[25]}px;
     --body-font-size-50: ${bodyFontSizes[50]}px;

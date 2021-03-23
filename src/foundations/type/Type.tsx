@@ -18,16 +18,16 @@ function generateFontSize(typeSize: TTypeSize, fontType: TTypeType): FlattenSimp
 
 function generateMargins(typeSize: TTypeSize, fontType: TTypeType): FlattenSimpleInterpolation {
     return css`
-        &[data-gutter='none'] {
+        &[data-margin='none'] {
             margin: 0;
         }
-        &[data-gutter='top'] {
+        &[data-margin='top'] {
             margin: var(--${fontType}-margin-top-${typeSize}) 0 0;
         }
-        &[data-gutter='bottom'] {
+        &[data-margin='bottom'] {
             margin: 0 0 var(--${fontType}-margin-bottom-${typeSize});
         }
-        &[data-gutter='both'] {
+        &[data-margin='both'] {
             margin: var(--${fontType}-margin-top-${typeSize}) 0
                 var(--${fontType}-margin-bottom-${typeSize});
         }
@@ -43,7 +43,7 @@ const Type = styled.p
         'data-size': props.size || DEFAULT_TYPE_SIZE,
         'data-type': HEADING_VARIANTS.includes(props.variant) ? 'heading' : 'body',
         'data-weight': props.weight,
-        'data-gutter': props.gutter,
+        'data-margin': props.margin,
         'data-color': props.color || 'primary',
     }))
     .withConfig({
@@ -52,7 +52,7 @@ const Type = styled.p
             'type',
             'weight',
             'variant',
-            'gutter',
+            'margin',
         ]),
     })<PType>`
         // set default styles
@@ -82,7 +82,7 @@ const Type = styled.p
             color: var(--disabled-text-color);
         }
 
-        // set body-gutters
+        // set body-margins
         ${BODY_SIZES.map((bodySize) => generateMargins(bodySize, 'body'))}
 
         // set heading styles
@@ -109,7 +109,7 @@ const Type = styled.p
                 font-weight: var(--font-weight-regular);
             }
 
-            // set heading-gutters
+            // set heading-margins
             ${HEADING_SIZES.map((headingSize) => generateMargins(headingSize, 'heading'))}
         }
 
