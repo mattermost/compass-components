@@ -19,7 +19,7 @@ const getStoryDocumentationUrl = (storyParameters: Record<string, string>): stri
     return `/?path=/docs/${storyPath}--${kebabCase(storyParameters.includeStories[0])}`;
 };
 
-const defaultWhitelist: string[] = ['role', 'type'];
+const defaultWhitelist: string[] = ['role', 'type', 'children', 'className'];
 
 /**
  * this is to prevent all properties to be passed down to the underlying

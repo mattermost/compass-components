@@ -20,7 +20,7 @@ import {
 
 ## Component API
 
-<ArgsTable of={Heading} exclude={['className']} />
+<ArgsTable of={Heading} exclude={['as', 'ref', 'forwardedAs', 'theme']} />
 
 export const Template = (args) => {
     const { text } = args;
@@ -39,36 +39,11 @@ export const Template = (args) => {
             color: DEFAULT_HEADING_COLOR,
         }}
         argTypes={{
-            size: {
-                control: {
-                    type: 'select',
-                    options: HEADING_SIZES,
-                },
-            },
-            element: {
-                control: {
-                    type: 'select',
-                    options: HEADING_ELEMENTS,
-                },
-            },
-            weight: {
-                control: {
-                    type: 'radio',
-                    options: HEADING_WEIGHTS,
-                },
-            },
-            margin: {
-                control: {
-                    type: 'radio',
-                    options: HEADING_MARGINS,
-                },
-            },
-            color: {
-                control: {
-                    type: 'radio',
-                    options: HEADING_COLORS,
-                },
-            },
+            size: { control: { type: 'select', options: HEADING_SIZES } },
+            element: { control: { type: 'select', options: HEADING_ELEMENTS } },
+            weight: { control: { type: 'radio', options: HEADING_WEIGHTS } },
+            margin: { control: { type: 'radio', options: HEADING_MARGINS } },
+            color: { control: { type: 'radio', options: HEADING_COLORS } },
             className: { table: { disable: true } },
         }}
     >

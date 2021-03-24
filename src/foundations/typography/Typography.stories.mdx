@@ -4,6 +4,13 @@ import Typography from './Typography';
 
 import Grid, { GridSpacing } from '../layout/';
 import Shape from '../shape';
+import {
+    BODY_SIZES,
+    HEADING_ELEMENTS,
+    HEADING_SIZES,
+    TYPOGRAPHY_COLORS,
+    TYPOGRAPHY_MARGINS,
+} from './Typography.constants';
 
 <Meta component={Typography} title="Foundations/Typography" />
 
@@ -94,31 +101,31 @@ export const bodySizes = [...smallSizes, { size: 300, fontSize: 18, lineHeight: 
                 </Grid>
                 <Grid row>
                     <Grid flex={3}>
-                        <Typography element={'body'} color={'secondary'} size={50} margin={'none'}>
+                        <Typography element={'p'} color={'secondary'} size={50} margin={'none'}>
                             Family
                         </Typography>
-                        <Typography element={'body'} size={200} margin={'bottom'}>
+                        <Typography element={'p'} size={200} margin={'bottom'}>
                             {heading.size > 300 ? 'Metropolis (600)' : 'OpenSans (600)'}
                         </Typography>
                     </Grid>
                     <Grid flex={2}>
-                        <Typography element={'body'} color={'secondary'} size={50} margin={'none'}>
+                        <Typography element={'p'} color={'secondary'} size={50} margin={'none'}>
                             Size
                         </Typography>
-                        <Typography element={'body'} size={200} margin={'bottom'}>
+                        <Typography element={'p'} size={200} margin={'bottom'}>
                             {`${heading.fontSize}px`}
                         </Typography>
                     </Grid>
                     <Grid flex={2}>
-                        <Typography element={'body'} color={'secondary'} size={50} margin={'none'}>
+                        <Typography element={'p'} color={'secondary'} size={50} margin={'none'}>
                             Line Height
                         </Typography>
-                        <Typography element={'body'} size={200} margin={'bottom'}>
+                        <Typography element={'p'} size={200} margin={'bottom'}>
                             {`${heading.lineHeight}px`}
                         </Typography>
                     </Grid>
                     <Grid flex={6}>
-                        <Typography element={'body'} color={'secondary'} size={50} margin={'none'}>
+                        <Typography element={'p'} color={'secondary'} size={50} margin={'none'}>
                             Example
                         </Typography>
                         <Typography element={'h1'} size={heading.size} margin={'bottom'}>
@@ -153,34 +160,34 @@ The chart below shows all the body copy sizes where Body 100 is the base font si
                 </Grid>
                 <Grid row>
                     <Grid flex={3}>
-                        <Typography element={'body'} color={'secondary'} size={50} margin={'none'}>
+                        <Typography element={'p'} color={'secondary'} size={50} margin={'none'}>
                             Family
                         </Typography>
-                        <Typography element={'body'} size={200} margin={'bottom'}>
+                        <Typography element={'p'} size={200} margin={'bottom'}>
                             OpenSans (400)
                         </Typography>
                     </Grid>
                     <Grid flex={2}>
-                        <Typography element={'body'} color={'secondary'} size={50} margin={'none'}>
+                        <Typography element={'p'} color={'secondary'} size={50} margin={'none'}>
                             Size
                         </Typography>
-                        <Typography element={'body'} size={200} margin={'bottom'}>
+                        <Typography element={'p'} size={200} margin={'bottom'}>
                             {`${body.fontSize}px`}
                         </Typography>
                     </Grid>
                     <Grid flex={2}>
-                        <Typography element={'body'} color={'secondary'} size={50} margin={'none'}>
+                        <Typography element={'p'} color={'secondary'} size={50} margin={'none'}>
                             Line Height
                         </Typography>
-                        <Typography element={'body'} size={200} margin={'bottom'}>
+                        <Typography element={'p'} size={200} margin={'bottom'}>
                             {`${body.lineHeight}px`}
                         </Typography>
                     </Grid>
                     <Grid flex={6}>
-                        <Typography element={'body'} color={'secondary'} size={50} margin={'none'}>
+                        <Typography element={'p'} color={'secondary'} size={50} margin={'none'}>
                             Example
                         </Typography>
-                        <Typography element={'body'} size={body.size} margin={'bottom'}>
+                        <Typography element={'p'} size={body.size} margin={'bottom'}>
                             The quick brown fox jumps over the lazy dog
                         </Typography>
                     </Grid>
@@ -204,7 +211,7 @@ device uses the system standard `sans-serif` typeface.
 
 ## Component API
 
-<ArgsTable of={Typography} />
+<ArgsTable of={Typography} exclude={['as', 'ref', 'forwardedAs', 'theme']} />
 
 export const Template = (args) => {
     const { text } = args;
@@ -281,7 +288,7 @@ export const ParagraphTemplate = (args) => (
     <Story
         name="Paragraph"
         args={{
-            element: 'body',
+            element: 'p',
             color: 'primary',
             size: 200,
             text: 'Lorem ipsum dolor sit amet consetetur ...',
@@ -293,44 +300,20 @@ export const ParagraphTemplate = (args) => (
         name="Text-Section"
         argTypes={{
             heading: { table: { disable: true } },
-            headingSize: {
-                control: {
-                    type: 'select',
-                    options: [25, 50, 75, 100, 200, 300, 400, 500, 600, 700, 1000],
-                },
-            },
-            headingElement: {
-                control: { type: 'select', options: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'] },
-            },
-            headingMargin: {
-                control: { type: 'radio', options: ['none', 'both', 'top', 'bottom'] },
-            },
-            headingColor: {
-                control: { type: 'radio', options: ['primary', 'secondary', 'disabled'] },
-            },
+            headingSize: { control: { type: 'select', options: HEADING_SIZES } },
+            headingElement: { control: { type: 'select', options: HEADING_ELEMENTS } },
+            headingMargin: { control: { type: 'radio', options: TYPOGRAPHY_MARGINS } },
+            headingColor: { control: { type: 'radio', options: TYPOGRAPHY_COLORS } },
             subtitle: { table: { disable: true } },
-            subtitleSize: {
-                control: {
-                    type: 'select',
-                    options: [25, 50, 75, 100, 200, 300, 400, 500, 600, 700, 1000],
-                },
-            },
+            subtitleSize: { control: { type: 'select', options: HEADING_SIZES } },
             subtitleElement: { table: { disable: true } },
-            subtitleMargin: {
-                control: { type: 'radio', options: ['none', 'both', 'top', 'bottom'] },
-            },
-            subtitleColor: {
-                control: { type: 'radio', options: ['primary', 'secondary', 'disabled'] },
-            },
+            subtitleMargin: { control: { type: 'radio', options: TYPOGRAPHY_MARGINS } },
+            subtitleColor: { control: { type: 'radio', options: TYPOGRAPHY_COLORS } },
             paragraph: { table: { disable: true } },
-            paragraphSize: { control: { type: 'select', options: [25, 50, 75, 100, 200, 300] } },
+            paragraphSize: { control: { type: 'select', options: BODY_SIZES } },
             paragraphElement: { table: { disable: true } },
-            paragraphMargin: {
-                control: { type: 'radio', options: ['none', 'both', 'top', 'bottom'] },
-            },
-            paragraphColor: {
-                control: { type: 'radio', options: ['primary', 'secondary', 'disabled'] },
-            },
+            paragraphMargin: { control: { type: 'radio', options: TYPOGRAPHY_MARGINS } },
+            paragraphColor: { control: { type: 'radio', options: TYPOGRAPHY_COLORS } },
         }}
         args={{
             heading: 'Lorem ipsum dolor sit amet',
@@ -341,13 +324,13 @@ export const ParagraphTemplate = (args) => (
             subtitle:
                 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.',
             subtitleSize: 300,
-            subtitleElement: 'subtitle',
+            subtitleElement: 'h6',
             subtitleMargin: 'both',
             subtitleColor: 'primary',
             paragraph:
                 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.',
             paragraphSize: 100,
-            paragraphElement: 'body',
+            paragraphElement: 'p',
             paragraphMargin: 'both',
             paragraphColor: 'primary',
         }}

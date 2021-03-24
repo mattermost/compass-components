@@ -1,8 +1,8 @@
 import React from 'react';
 
 import Shape from '../../foundations/shape';
-import Typography from '../../foundations/typography';
 import Grid, { GridSpacing } from '../../foundations/layout';
+import Text from '../text';
 
 import PMentionBadge from './Badges.props';
 
@@ -11,16 +11,15 @@ const MentionBadge: React.FC<PMentionBadge> = ({
     mentionCount = 1,
     mentionLimit = 99,
 }: PMentionBadge): JSX.Element => {
-    let color: 'primary' | 'accent' | 'contrast' | undefined = 'primary';
+    const color: 'primary' | 'secondary' | undefined = 'primary';
+
     let background = 'var(--shape-background-color)';
 
     switch (location) {
         case 'sidebar':
-            color = 'accent';
             background = 'var(--shape-background-color)';
             break;
         case 'menu':
-            color = 'contrast';
             background = 'var(--disabled-text-color)';
             break;
         default:
@@ -41,11 +40,11 @@ const MentionBadge: React.FC<PMentionBadge> = ({
                 flex={1}
                 padding={GridSpacing.symmetric({ vertical: 0, horizontal: 50 })}
             >
-                <Typography variant={'body'} size={50} color={color} gutter={'none'}>
+                <Text element={'p'} size={50} color={color} margin={'none'}>
                     <strong>
                         {mentionCount > mentionLimit ? `${mentionLimit}+` : mentionCount}
                     </strong>
-                </Typography>
+                </Text>
             </Grid>
         </Shape>
     );
