@@ -54,8 +54,6 @@ const Heading: React.FC<PHeading> = ({
         }
     }
 
-    console.log(element, derivedElement);
-
     return (
         <Typography
             className={clsx(className, 'Heading')}
@@ -64,7 +62,6 @@ const Heading: React.FC<PHeading> = ({
             weight={weight}
             margin={margin}
             color={color}
-            role={'heading'}
         >
             {children}
         </Typography>
