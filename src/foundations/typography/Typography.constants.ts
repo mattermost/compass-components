@@ -5,7 +5,6 @@ import {
     TTypographyWeight,
     TTypographyMargin,
     TTypographyColor,
-    TTypographyHeadingElement,
 } from './Typography.types';
 
 const DEFAULT_TYPOGRAPHY_SIZE: TTypographySize = 100;
@@ -30,7 +29,7 @@ const HEADING_SIZES: TTypographySize[] = [
 
 const BODY_ELEMENTS: TTypographyElement[] = ['p', 'span', 'label'];
 
-const HEADING_ELEMENTS: TTypographyHeadingElement[] = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'];
+const HEADING_ELEMENTS: TTypographyElement[] = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'];
 
 const TYPOGRAPHY_WEIGHTS: TTypographyWeight[] = ['light', 'regular', 'bold'];
 

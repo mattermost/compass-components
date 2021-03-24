@@ -38,7 +38,6 @@ const Text: React.FC<PText> = ({
             color={color}
             weight={weight as TTypographyWeight}
             role={'text'}
-            variant={'body'}
         >
             {children}
         </Typography>

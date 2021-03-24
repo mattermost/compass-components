@@ -3,13 +3,18 @@ import { FlattenSimpleInterpolation } from 'styled-components/ts3.6';
 
 import { Utils } from '../../utils';
 
-import { BODY_SIZES, DEFAULT_TYPOGRAPHY_SIZE, HEADING_SIZES } from './Typography.constants';
+import {
+    BODY_SIZES,
+    DEFAULT_TYPOGRAPHY_SIZE,
+    HEADING_SIZES,
+    HEADING_ELEMENTS,
+} from './Typography.constants';
 import { PTypography } from './Typography.props';
-import { TTypographySize, TTypographyVariant } from './Typography.types';
+import { TTypographySize, TTypographyType } from './Typography.types';
 
 function generateFontStyleVariations(
     typeSize: TTypographySize,
-    fontType: TTypographyVariant
+    fontType: TTypographyType
 ): FlattenSimpleInterpolation {
     return css`
         &[data-size='${typeSize}'] {
@@ -40,7 +45,7 @@ const Typography = styled.p
         // unsupported HTML tags
         as: props.element,
         'data-size': props.size,
-        'data-type': props.variant,
+        'data-type': HEADING_ELEMENTS.includes(props.element) ? 'heading' : 'body',
         'data-weight': props.weight,
         'data-margin': props.margin,
         'data-color': props.color,

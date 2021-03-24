@@ -8,7 +8,7 @@ type TTypographyBodyElement = 'p' | 'span' | 'label';
 
 type TTypographyHeadingElement = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
 
-type TTypographyVariant = 'heading' | 'body';
+type TTypographyType = 'heading' | 'body';
 
 type TTypographyWeight = 'light' | 'regular' | 'bold';
 
@@ -22,7 +22,7 @@ export type {
     TTypographyElement,
     TTypographyBodyElement,
     TTypographyHeadingElement,
-    TTypographyVariant,
+    TTypographyType,
     TTypographyWeight,
     TTypographyMargin,
     TTypographyColor,
