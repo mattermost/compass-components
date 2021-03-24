@@ -9,21 +9,21 @@ import {
     DEFAULT_TYPE_MARGIN,
 } from '../../foundations/type';
 
-import { THeadingVariant } from './Heading.types';
+import { THeadingElement } from './Heading.types';
 
 const DEFAULT_HEADING_SIZE: TTypeSize = 100;
 
-const HEADING_VARIANTS: THeadingVariant[] = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'];
+const HEADING_ELEMENTS: THeadingElement[] = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'];
 
-const DEFAULT_HEADING_VARIANT: THeadingVariant = 'h6';
+const DEFAULT_HEADING_ELEMENT: THeadingElement = 'h6';
 
 const DEFAULT_HEADING_WEIGHT: TTypeWeight = 'bold';
 
 export {
     HEADING_SIZES,
     DEFAULT_HEADING_SIZE,
-    HEADING_VARIANTS,
-    DEFAULT_HEADING_VARIANT,
+    HEADING_ELEMENTS,
+    DEFAULT_HEADING_ELEMENT,
     TYPE_WEIGHTS as HEADING_WEIGHTS,
     DEFAULT_HEADING_WEIGHT,
     TYPE_MARGINS as HEADING_MARGINS,

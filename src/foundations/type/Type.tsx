@@ -3,7 +3,7 @@ import { FlattenSimpleInterpolation } from 'styled-components/ts3.6';
 
 import { Utils } from '../../utils';
 
-import { BODY_SIZES, DEFAULT_TYPE_SIZE, HEADING_SIZES, HEADING_VARIANTS } from './Type.constants';
+import { BODY_SIZES, DEFAULT_TYPE_SIZE, HEADING_SIZES, HEADING_ELEMENTS } from './Type.constants';
 import { PType } from './Type.props';
 import { TTypeSize, TTypeType } from './Type.types';
 
@@ -38,9 +38,9 @@ const Type = styled.p
         // it is possible to remap props, so we do not need to pass down the
         // `as` property from styled-components and prevent usage of
         // unsupported HTML tags
-        as: props.variant,
+        as: props.element,
         'data-size': props.size || DEFAULT_TYPE_SIZE,
-        'data-type': HEADING_VARIANTS.includes(props.variant) ? 'heading' : 'body',
+        'data-type': HEADING_ELEMENTS.includes(props.element) ? 'heading' : 'body',
         'data-weight': props.weight,
         'data-margin': props.margin,
         'data-color': props.color || 'primary',
@@ -50,7 +50,7 @@ const Type = styled.p
             'size',
             'type',
             'weight',
-            'variant',
+            'element',
             'margin',
         ]),
     })<PType>`

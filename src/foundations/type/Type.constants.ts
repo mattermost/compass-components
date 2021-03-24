@@ -1,6 +1,6 @@
 import {
     TBodySize,
-    TTypeVariant,
+    TTypeElement,
     TTypeSize,
     TTypeWeight,
     TTypeMargin,
@@ -13,7 +13,7 @@ const BODY_SIZES: TBodySize[] = [25, 50, 75, 100, 200, 300];
 
 const HEADING_SIZES: TTypeSize[] = [25, 50, 75, 100, 200, 300, 400, 500, 600, 700, 1000];
 
-const HEADING_VARIANTS: TTypeVariant[] = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'];
+const HEADING_ELEMENTS: TTypeElement[] = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'];
 
 const TYPE_WEIGHTS: TTypeWeight[] = ['light', 'regular', 'bold'];
 
@@ -34,5 +34,5 @@ export {
     DEFAULT_TYPE_MARGIN,
     TYPE_COLORS,
     DEFAULT_TYPE_COLOR,
-    HEADING_VARIANTS,
+    HEADING_ELEMENTS,
 };

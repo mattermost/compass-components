@@ -3,53 +3,54 @@ import clsx from 'clsx';
 
 import Type from '../../foundations/type/Type';
 
+import { THeadingElement } from './Heading.types';
 import {
     DEFAULT_HEADING_COLOR,
     DEFAULT_HEADING_MARGIN,
     DEFAULT_HEADING_SIZE,
-    DEFAULT_HEADING_VARIANT,
+    DEFAULT_HEADING_ELEMENT,
     DEFAULT_HEADING_WEIGHT,
 } from './Heading.constants';
 import { PHeading } from './Heading.props';
 
 const Heading: React.FC<PHeading> = ({
     size = DEFAULT_HEADING_SIZE,
-    variant = DEFAULT_HEADING_VARIANT,
+    element = DEFAULT_HEADING_ELEMENT,
     weight = DEFAULT_HEADING_WEIGHT,
     color = DEFAULT_HEADING_COLOR,
     margin = DEFAULT_HEADING_MARGIN,
     children,
     className,
 }): JSX.Element => {
-    let element = variant;
+    let derivedElement: THeadingElement | undefined = element;
 
-    // set the default variant based on the defined size of variant if not defined
-    if (!variant) {
+    // set the default element based on the defined size of element if not defined
+    if (!element) {
         switch (true) {
             case size === 400:
-                element = 'h5';
+                derivedElement = 'h5';
                 break;
             case size === 500:
-                element = 'h4';
+                derivedElement = 'h4';
                 break;
             case size === 600:
-                element = 'h3';
+                derivedElement = 'h3';
                 break;
             case size === 700:
-                element = 'h2';
+                derivedElement = 'h2';
                 break;
             case size >= 800:
-                element = 'h1';
+                derivedElement = 'h1';
                 break;
             default:
-                element = 'h6';
+                derivedElement = 'h6';
         }
     }
 
     return (
         <Type
             className={clsx(className, 'Heading')}
-            variant={element}
+            element={element || derivedElement}
             size={size}
             weight={weight}
             margin={margin}

@@ -2,11 +2,11 @@ type TBodySize = 25 | 50 | 75 | 100 | 200 | 300;
 
 type TTypeSize = TBodySize | 400 | 500 | 600 | 700 | 800 | 900 | 1000;
 
-type TTypeHeadingVariant = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
+type TTypeHeadingElement = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
 
-type TTypeBodyVariant = 'p' | 'span';
+type TTypeBodyElement = 'p' | 'span';
 
-type TTypeVariant = TTypeHeadingVariant | TTypeBodyVariant;
+type TTypeElement = TTypeHeadingElement | TTypeBodyElement;
 
 type TTypeType = 'heading' | 'body';
 
@@ -22,8 +22,8 @@ export type {
     TTypeType,
     TTypeWeight,
     TTypeMargin,
-    TTypeHeadingVariant,
-    TTypeBodyVariant,
-    TTypeVariant,
+    TTypeHeadingElement,
+    TTypeBodyElement,
+    TTypeElement,
     TTypeColor,
 };

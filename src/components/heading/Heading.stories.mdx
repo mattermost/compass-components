@@ -4,14 +4,14 @@ import Heading from './Heading';
 import {
     HEADING_SIZES,
     HEADING_MARGINS,
-    HEADING_VARIANTS,
+    HEADING_ELEMENTS,
     HEADING_WEIGHTS,
     HEADING_COLORS,
     DEFAULT_HEADING_SIZE,
     DEFAULT_HEADING_WEIGHT,
     DEFAULT_HEADING_MARGIN,
     DEFAULT_HEADING_COLOR,
-    DEFAULT_HEADING_VARIANT,
+    DEFAULT_HEADING_ELEMENT,
 } from './Heading.constants';
 
 <Meta component={Heading} title="Components/Heading" />
@@ -32,7 +32,7 @@ export const Template = (args) => {
         name="Default"
         args={{
             text: 'Lorem Ipsum Dolor',
-            variant: DEFAULT_HEADING_VARIANT,
+            element: DEFAULT_HEADING_ELEMENT,
             size: DEFAULT_HEADING_SIZE,
             weight: DEFAULT_HEADING_WEIGHT,
             margin: DEFAULT_HEADING_MARGIN,
@@ -45,10 +45,10 @@ export const Template = (args) => {
                     options: HEADING_SIZES,
                 },
             },
-            variant: {
+            element: {
                 control: {
                     type: 'select',
-                    options: HEADING_VARIANTS,
+                    options: HEADING_ELEMENTS,
                 },
             },
             weight: {

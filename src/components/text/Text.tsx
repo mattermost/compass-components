@@ -8,7 +8,7 @@ import {
     DEFAULT_TEXT_COLOR,
     DEFAULT_TEXT_MARGIN,
     DEFAULT_TEXT_SIZE,
-    DEFAULT_TEXT_VARIANT,
+    DEFAULT_TEXT_ELEMENT,
     DEFAULT_TEXT_WEIGHT,
 } from './Text.constants';
 
@@ -16,14 +16,14 @@ const Text: React.FC<PText> = ({
     children,
     className,
     size = DEFAULT_TEXT_SIZE,
-    variant = DEFAULT_TEXT_VARIANT,
+    element = DEFAULT_TEXT_ELEMENT,
     weight = DEFAULT_TEXT_WEIGHT,
     margin = DEFAULT_TEXT_MARGIN,
     color = DEFAULT_TEXT_COLOR,
 }): JSX.Element => (
     <Type
         className={clsx(className, 'Text')}
-        variant={variant}
+        element={element}
         size={size}
         margin={margin}
         color={color}

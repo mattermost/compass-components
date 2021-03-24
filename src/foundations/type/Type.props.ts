@@ -1,15 +1,15 @@
-import { TTypeSize, TTypeWeight, TTypeMargin, TTypeVariant, TTypeColor } from './Type.types';
+import { TTypeSize, TTypeWeight, TTypeMargin, TTypeElement, TTypeColor } from './Type.types';
 
 export type PType = {
     className?: string;
-    /** the size use to render the text. The actual px values depend on the variant as well  */
+    /** the size use to render the text. The actual px values depend on the element as well  */
     size?: TTypeSize;
     /**
-     * it is derived from the variant:
+     * it is derived from the element:
      *  - `heading` for h1 - h6
      *  - `body` p and span
      * */
-    variant: TTypeVariant;
+    element: TTypeElement;
     /**
      * which color is the text rendered with
      * @default 'primary'
@@ -18,7 +18,7 @@ export type PType = {
     /** define the weight of the rendered font */
     weight?: TTypeWeight;
     /**
-     * Every text-variant has its own margin.
+     * Every text-element has its own margin.
      * With this you can choose which one to render.
      * @default 'both'
      * */
