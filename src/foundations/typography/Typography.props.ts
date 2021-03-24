@@ -4,6 +4,7 @@ import {
     TTypographyMargin,
     TTypographyElement,
     TTypographyColor,
+    TTypographyVariant,
 } from './Typography.types';
 
 export type PTypography = {
@@ -11,11 +12,16 @@ export type PTypography = {
     /** the size use to render the text. The actual px values depend on the element as well  */
     size?: TTypographySize;
     /**
+     * all valid text tags
+     * e.g. `h1` - `h6`, `p`, `span` and `label`
+     * */
+    element: TTypographyElement;
+    /**
      * it is derived from the element:
      *  - `heading` for h1 - h6
      *  - `body` p, span and label
      * */
-    element: TTypographyElement;
+    variant: TTypographyVariant;
     /**
      * which color is the text rendered with
      * @default 'primary'

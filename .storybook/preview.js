@@ -1,6 +1,5 @@
 import { addParameters, addDecorator } from '@storybook/react';
 import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport';
-import { withA11y } from '@storybook/addon-a11y';
 import { withThemes } from 'storybook-addon-themes/react';
 
 addDecorator(withThemes);

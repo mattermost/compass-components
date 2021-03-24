@@ -64,7 +64,7 @@ const Heading: React.FC<PHeading> = ({
             weight={weight}
             margin={margin}
             color={color}
-            role={'heading'}
+            variant={'heading'}
         >
             {children}
         </Typography>
