@@ -11,6 +11,7 @@ import VFontFaces from './variables.font-faces';
 import VFontStyle from './variables.font-style';
 import VBorderRadius from './variables.border-radius';
 import reset from './reset-styles';
+import defaultStyles from './default-styles';
 
 type PGlobalStyles = {
     theme: TTheme;
@@ -30,6 +31,8 @@ const GlobalStyle = createGlobalStyle`
 
         --border-default: 1px solid var(--disabled-text-color);
     }
+    
+    ${defaultStyles};
 `;
 
 function getElevation(elevationLevel: TElevationLevel = 0): string {
