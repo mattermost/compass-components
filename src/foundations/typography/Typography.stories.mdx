@@ -4,9 +4,15 @@ import Typography from './Typography';
 
 import Grid, { GridSpacing } from '../layout/';
 import Shape from '../shape';
-import ThemeProvider from '../theme-provider/theme-provider';
-
-<ThemeProvider />
+import {
+    BODY_SIZES,
+    HEADING_ELEMENTS,
+    HEADING_SIZES,
+    TYPOGRAPHY_COLORS,
+    TYPOGRAPHY_MARGINS,
+} from './Typography.constants';
+import Heading from '../../components/heading';
+import Text from '../../components/text';
 
 <Meta component={Typography} title="Foundations/Typography" />
 
@@ -24,15 +30,19 @@ Compass uses Metropolis and Open Sans as the primary typefaces. Metropolis is a 
 open-sourced, and openly available. It has been designed for optimal readability at small point sizes while remaining
 beautiful at large point sizes.
 
+### Metropolis
+
 **Metropolis is used for headings 300-700. See below for more details.**
 
 Open Sans is another modern sans-serif typeface that is incredibly legible and offers an excellent reading experience.
 It was developed to have high performance as a web font and is considered to be a font that combines all the
 strongest attributes of the top sans serif fonts. Open Sans is available to be used freely in products or projects.
 
+### Open Sans
+
 **Open Sans is used for all body copy and headings 50-200. See below for more details.**
 
-## Type Scale
+## Typography Scale
 
 ### Scale Ratio
 
@@ -61,7 +71,7 @@ cases where the typographic contrast is needed.
 
 ### Heading Sizes
 
-The chart below shows all the heading sizes from Heading 100 to Heading 700, where 100 is the base font size as
+The chart below shows all the heading sizes from Heading 100 to Heading 1000, where 100 is the base font size as
 described above.
 
 export const smallSizes = [
@@ -77,7 +87,9 @@ export const headingSizes = [
     { size: 400, fontSize: 20, lineHeight: 28 },
     { size: 500, fontSize: 22, lineHeight: 28 },
     { size: 600, fontSize: 25, lineHeight: 30 },
-    { size: 700, fontSize: 32, lineHeight: 40 },
+    { size: 700, fontSize: 28, lineHeight: 36 },
+    { size: 800, fontSize: 32, lineHeight: 40 },
+    { size: 900, fontSize: 36, lineHeight: 40 },
     { size: 1000, fontSize: 40, lineHeight: 48 },
 ];
 
@@ -85,50 +97,50 @@ export const bodySizes = [...smallSizes, { size: 300, fontSize: 18, lineHeight: 
 
 <>
     {headingSizes.map((heading) => (
-        <>
+        <div key={`heading_${heading.size}`}>
             <hr />
             <Grid justify={'stretch'}>
                 <Grid row>
-                    <Typography variant={'h3'}>{`Heading ${heading.size}${
-                        heading.size === 100 ? ' (Base size)' : ''
-                    }`}</Typography>
+                    <Heading element={'h3'} size={300}>
+                        {`Heading ${heading.size}${heading.size === 100 ? ' (Base size)' : ''}`}
+                    </Heading>
                 </Grid>
                 <Grid row>
                     <Grid flex={3}>
-                        <Typography variant={'body'} color={'secondary'} size={50} gutter={'none'}>
+                        <Text element={'p'} color={'secondary'} size={50} margin={'none'}>
                             Family
-                        </Typography>
-                        <Typography variant={'body'} size={200} gutter={'bottom'}>
+                        </Text>
+                        <Text element={'p'} size={200} margin={'bottom'}>
                             {heading.size > 300 ? 'Metropolis (600)' : 'OpenSans (600)'}
-                        </Typography>
+                        </Text>
                     </Grid>
                     <Grid flex={2}>
-                        <Typography variant={'body'} color={'secondary'} size={50} gutter={'none'}>
+                        <Text element={'p'} color={'secondary'} size={50} margin={'none'}>
                             Size
-                        </Typography>
-                        <Typography variant={'body'} size={200} gutter={'bottom'}>
+                        </Text>
+                        <Text element={'p'} size={200} margin={'bottom'}>
                             {`${heading.fontSize}px`}
-                        </Typography>
+                        </Text>
                     </Grid>
                     <Grid flex={2}>
-                        <Typography variant={'body'} color={'secondary'} size={50} gutter={'none'}>
+                        <Text element={'p'} color={'secondary'} size={50} margin={'none'}>
                             Line Height
-                        </Typography>
-                        <Typography variant={'body'} size={200} gutter={'bottom'}>
+                        </Text>
+                        <Text element={'p'} size={200} margin={'bottom'}>
                             {`${heading.lineHeight}px`}
-                        </Typography>
+                        </Text>
                     </Grid>
                     <Grid flex={6}>
-                        <Typography variant={'body'} color={'secondary'} size={50} gutter={'none'}>
+                        <Text element={'p'} color={'secondary'} size={50} margin={'none'}>
                             Example
-                        </Typography>
-                        <Typography variant={'h1'} size={heading.size} gutter={'bottom'}>
+                        </Text>
+                        <Heading element={'h1'} size={heading.size} margin={'bottom'}>
                             The quick brown fox jumps over the lazy dog
-                        </Typography>
+                        </Heading>
                     </Grid>
                 </Grid>
             </Grid>
-        </>
+        </div>
     ))}
 </>
 
@@ -144,50 +156,50 @@ The chart below shows all the body copy sizes where Body 100 is the base font si
 
 <>
     {bodySizes.map((body) => (
-        <>
+        <div key={`body_${body.size}`}>
             <hr />
             <Grid justify={'stretch'}>
                 <Grid row>
-                    <Typography variant={'h3'}>{`Body ${body.size}${
-                        body.size === 100 ? ' (Base size)' : ''
-                    }`}</Typography>
+                    <Heading element={'h3'} size={300}>
+                        {`Body ${body.size}${body.size === 100 ? ' (Base size)' : ''}`}
+                    </Heading>
                 </Grid>
                 <Grid row>
                     <Grid flex={3}>
-                        <Typography variant={'body'} color={'secondary'} size={50} gutter={'none'}>
+                        <Text element={'p'} color={'secondary'} size={50} margin={'none'}>
                             Family
-                        </Typography>
-                        <Typography variant={'body'} size={200} gutter={'bottom'}>
+                        </Text>
+                        <Text element={'p'} size={200} margin={'bottom'}>
                             OpenSans (400)
-                        </Typography>
+                        </Text>
                     </Grid>
                     <Grid flex={2}>
-                        <Typography variant={'body'} color={'secondary'} size={50} gutter={'none'}>
+                        <Text element={'p'} color={'secondary'} size={50} margin={'none'}>
                             Size
-                        </Typography>
-                        <Typography variant={'body'} size={200} gutter={'bottom'}>
+                        </Text>
+                        <Text element={'p'} size={200} margin={'bottom'}>
                             {`${body.fontSize}px`}
-                        </Typography>
+                        </Text>
                     </Grid>
                     <Grid flex={2}>
-                        <Typography variant={'body'} color={'secondary'} size={50} gutter={'none'}>
+                        <Text element={'p'} color={'secondary'} size={50} margin={'none'}>
                             Line Height
-                        </Typography>
-                        <Typography variant={'body'} size={200} gutter={'bottom'}>
+                        </Text>
+                        <Text element={'p'} size={200} margin={'bottom'}>
                             {`${body.lineHeight}px`}
-                        </Typography>
+                        </Text>
                     </Grid>
                     <Grid flex={6}>
-                        <Typography variant={'body'} color={'secondary'} size={50} gutter={'none'}>
+                        <Text element={'p'} color={'secondary'} size={50} margin={'none'}>
                             Example
-                        </Typography>
-                        <Typography variant={'body'} size={body.size} gutter={'bottom'}>
+                        </Text>
+                        <Text element={'p'} size={body.size} margin={'bottom'}>
                             The quick brown fox jumps over the lazy dog
-                        </Typography>
+                        </Text>
                     </Grid>
                 </Grid>
             </Grid>
-        </>
+        </div>
     ))}
 </>
 
@@ -205,155 +217,100 @@ device uses the system standard `sans-serif` typeface.
 
 ## Component API
 
-<ArgsTable of={Typography} />
-
-export const Template = (args) => {
-    const { text } = args;
-    return <Typography {...args}>{text}</Typography>;
-};
+<ArgsTable of={Typography} exclude={['as', 'ref', 'forwardedAs', 'theme']} />
 
 export const ParagraphTemplate = (args) => (
     <Shape width={400} border borderRadius={4} elevation={2}>
         <Grid padding={GridSpacing.all(100)}>
-            <Typography
+            <Heading
                 size={args.headingSize}
-                gutter={args.headingGutter}
-                variant={args.headingVariant}
-                useRegular={args.headingUseRegular}
+                margin={args.headingMargin}
+                element={args.headingElement}
                 color={args.headingColor}
             >
                 {args.heading}
-            </Typography>
-            <Typography
+            </Heading>
+            <Heading
                 size={args.subtitleSize}
-                gutter={args.subtitleGutter}
-                variant={args.subtitleVariant}
+                margin={args.subtitleMargin}
+                element={args.subtitleElement}
                 color={args.subtitleColor}
             >
                 {args.subtitle}
-            </Typography>
-            <Typography
+            </Heading>
+            <Text
                 size={args.paragraphSize}
-                gutter={args.paragraphGutter}
-                variant={args.paragraphVariant}
+                margin={args.paragraphMargin}
+                element={args.paragraphElement}
                 color={args.paragraphColor}
             >
                 {args.paragraph}
-            </Typography>
-            <Typography
+            </Text>
+            <Heading
                 size={args.subtitleSize}
-                gutter={args.subtitleGutter}
-                variant={args.subtitleVariant}
+                margin={args.subtitleMargin}
+                element={args.subtitleElement}
                 color={args.subtitleColor}
             >
                 {args.subtitle}
-            </Typography>
-            <Typography
+            </Heading>
+            <Text
                 size={args.paragraphSize}
-                gutter={args.paragraphGutter}
-                variant={args.paragraphVariant}
+                margin={args.paragraphMargin}
+                element={args.paragraphElement}
                 color={args.paragraphColor}
             >
                 {args.paragraph}
-            </Typography>
-            <Typography
+            </Text>
+            <Text
                 size={args.paragraphSize}
-                gutter={args.paragraphGutter}
-                variant={args.paragraphVariant}
+                margin={args.paragraphMargin}
+                element={args.paragraphElement}
                 color={args.paragraphColor}
             >
                 {args.paragraph}
-            </Typography>
+            </Text>
         </Grid>
     </Shape>
 );
 
 <Canvas hidden>
     <Story
-        name="Headings"
-        args={{
-            variant: 'h1',
-            color: 'primary',
-            size: 700,
-            useRegular: false,
-            text: 'Lorem ipsum dolor sit amet consetetur ...',
-        }}
-    >
-        {Template.bind({})}
-    </Story>
-    <Story
-        name="Paragraph"
-        args={{
-            variant: 'body',
-            color: 'primary',
-            size: 200,
-            useRegular: false,
-            text: 'Lorem ipsum dolor sit amet consetetur ...',
-        }}
-    >
-        {Template.bind({})}
-    </Story>
-    <Story
         name="Text-Section"
         argTypes={{
             heading: { table: { disable: true } },
-            headingSize: {
-                control: {
-                    type: 'select',
-                    options: [25, 50, 75, 100, 200, 300, 400, 500, 600, 700, 1000],
-                },
-            },
-            headingVariant: {
-                control: { type: 'select', options: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'] },
-            },
-            headingGutter: {
-                control: { type: 'radio', options: ['none', 'both', 'top', 'bottom'] },
-            },
-            headingColor: {
-                control: { type: 'radio', options: ['primary', 'secondary', 'disabled'] },
-            },
+            headingSize: { control: { type: 'select', options: HEADING_SIZES } },
+            headingElement: { control: { type: 'select', options: HEADING_ELEMENTS } },
+            headingMargin: { control: { type: 'radio', options: TYPOGRAPHY_MARGINS } },
+            headingColor: { control: { type: 'radio', options: TYPOGRAPHY_COLORS } },
             subtitle: { table: { disable: true } },
-            subtitleSize: {
-                control: {
-                    type: 'select',
-                    options: [25, 50, 75, 100, 200, 300, 400, 500, 600, 700, 1000],
-                },
-            },
-            subtitleVariant: { table: { disable: true } },
-            subtitleGutter: {
-                control: { type: 'radio', options: ['none', 'both', 'top', 'bottom'] },
-            },
-            subtitleColor: {
-                control: { type: 'radio', options: ['primary', 'secondary', 'disabled'] },
-            },
+            subtitleSize: { control: { type: 'select', options: HEADING_SIZES } },
+            subtitleElement: { table: { disable: true } },
+            subtitleMargin: { control: { type: 'radio', options: TYPOGRAPHY_MARGINS } },
+            subtitleColor: { control: { type: 'radio', options: TYPOGRAPHY_COLORS } },
             paragraph: { table: { disable: true } },
-            paragraphSize: { control: { type: 'select', options: [25, 50, 75, 100, 200, 300] } },
-            paragraphVariant: { table: { disable: true } },
-            paragraphGutter: {
-                control: { type: 'radio', options: ['none', 'both', 'top', 'bottom'] },
-            },
-            paragraphColor: {
-                control: { type: 'radio', options: ['primary', 'secondary', 'disabled'] },
-            },
+            paragraphSize: { control: { type: 'select', options: BODY_SIZES } },
+            paragraphElement: { table: { disable: true } },
+            paragraphMargin: { control: { type: 'radio', options: TYPOGRAPHY_MARGINS } },
+            paragraphColor: { control: { type: 'radio', options: TYPOGRAPHY_COLORS } },
         }}
         args={{
             heading: 'Lorem ipsum dolor sit amet',
             headingSize: 500,
-            headingVariant: 'h2',
-            headingUseRegular: false,
-            headingGutter: 'both',
+            headingElement: 'h2',
+            headingMargin: 'both',
             headingColor: 'primary',
             subtitle:
                 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.',
             subtitleSize: 300,
-            subtitleVariant: 'subtitle',
-            subtitleGutter: 'both',
+            subtitleElement: 'h6',
+            subtitleMargin: 'both',
             subtitleColor: 'primary',
             paragraph:
                 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.',
             paragraphSize: 100,
-            paragraphVariant: 'body',
-            paragraphGutter: 'both',
+            paragraphElement: 'p',
+            paragraphMargin: 'both',
             paragraphColor: 'primary',
         }}
     >

@@ -1,6 +1,6 @@
-import clsx from 'clsx';
 import styled from 'styled-components';
 
+import { Utils } from '../../utils';
 import { getBorderRadius, getElevation } from '../theme-provider/global-styles/globalStyles';
 
 import PShape from './Shape.props';
@@ -38,11 +38,7 @@ const getBorderDefinition = (props: PShape): string => {
 };
 
 const Shape = styled.div.withConfig({
-    // this is to prevent all properties to be passed down to the underlying
-    // component, except for the ones we want to pass down
-    // (e.g. `type="button"` or `data-*` and `aria-*` attributes)
-    shouldForwardProp: (property) =>
-        !['width', 'height', 'elevation', 'borderRadius'].includes(property),
+    shouldForwardProp: Utils.forwardProperties(),
 })<PShape>`
     flex: ${(props): string => (props.width ? 'initial' : 'auto')};
     display: flex;

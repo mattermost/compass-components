@@ -4,6 +4,7 @@ import { DependenciesTable } from 'storybook-addon-deps/blocks';
 import Shape from './index';
 import Grid, { GridSpacing } from '../layout';
 import Typography from '../typography';
+import Text from '../../components/text';
 
 export const Template = (args) => <Shape {...args} />;
 
@@ -130,9 +131,9 @@ export const radiusExampleArgs = {
                 <Shape {...radiusExampleArgs} width={156} height={156} borderRadius={4} />
             </Grid>
             <br />
-            <Typography variant={'body'} size={200} gutter={'none'}>
+            <Text element={'p'} size={200} margin={'none'}>
                 <strong>4px</strong>
-            </Typography>
+            </Text>
         </Grid>
     </Grid>
 </Grid>
@@ -148,45 +149,45 @@ export const radiusExampleArgs = {
                 <Shape {...radiusExampleArgs} borderRadius={8} />
             </Grid>
             <br />
-            <Typography variant={'body'} size={200} gutter={'none'}>
+            <Text element={'p'} size={200} margin={'none'}>
                 <strong>8px</strong>
-            </Typography>
+            </Text>
         </Grid>
         <Grid justify={'center'} flex={0}>
             <Grid padding={GridSpacing.all(150)}>
                 <Shape {...radiusExampleArgs} borderRadius={12} />
             </Grid>
             <br />
-            <Typography variant={'body'} size={200} gutter={'none'}>
+            <Text element={'p'} size={200} margin={'none'}>
                 <strong>12px</strong>
-            </Typography>
+            </Text>
         </Grid>
         <Grid justify={'center'} flex={0}>
             <Grid padding={GridSpacing.all(150)}>
                 <Shape {...radiusExampleArgs} borderRadius={16} />
             </Grid>
             <br />
-            <Typography variant={'body'} size={200} gutter={'none'}>
+            <Text element={'p'} size={200} margin={'none'}>
                 <strong>16px</strong>
-            </Typography>
+            </Text>
         </Grid>
         <Grid justify={'center'} flex={0}>
             <Grid padding={GridSpacing.all(150)}>
                 <Shape {...radiusExampleArgs} borderRadius={20} />
             </Grid>
             <br />
-            <Typography variant={'body'} size={200} gutter={'none'}>
+            <Text element={'p'} size={200} margin={'none'}>
                 <strong>20px</strong>
-            </Typography>
+            </Text>
         </Grid>
         <Grid justify={'center'} flex={0}>
             <Grid padding={GridSpacing.all(150)}>
                 <Shape {...radiusExampleArgs} borderRadius={24} />
             </Grid>
             <br />
-            <Typography variant={'body'} size={200} gutter={'none'}>
+            <Text element={'p'} size={200} margin={'none'}>
                 <strong>24px</strong>
-            </Typography>
+            </Text>
         </Grid>
     </Grid>
 </Grid>
@@ -202,7 +203,7 @@ The circle shape is mostly reserved for the Avatar component.
 This helps distinguish users from other UI elements throughout the product.
 There are a few other elements that use the circle shape, like the Unread Badge or the Status Badge.
 
-<ArgsTable of={Shape} exclude={['theme', 'forwardedAs', 'ref']} />
+<ArgsTable of={Shape} exclude={['theme', 'forwardedAs', 'ref', 'as']} />
 
 export const canvasExampleArgs = {
     ...defaultArgs,
