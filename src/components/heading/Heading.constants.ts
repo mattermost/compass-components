@@ -1,0 +1,33 @@
+import {
+    TTypographySize,
+    TTypographyWeight,
+    HEADING_SIZES,
+    TYPOGRAPHY_WEIGHTS,
+    TYPOGRAPHY_MARGINS,
+    TYPOGRAPHY_COLORS,
+    DEFAULT_TYPOGRAPHY_COLOR,
+    DEFAULT_TYPOGRAPHY_MARGIN,
+} from '../../foundations/typography';
+
+import { THeadingElement } from './Heading.types';
+
+const DEFAULT_HEADING_SIZE: TTypographySize = 100;
+
+const HEADING_ELEMENTS: THeadingElement[] = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'];
+
+const DEFAULT_HEADING_ELEMENT: THeadingElement = 'h6';
+
+const DEFAULT_HEADING_WEIGHT: TTypographyWeight = 'bold';
+
+export {
+    HEADING_SIZES,
+    DEFAULT_HEADING_SIZE,
+    HEADING_ELEMENTS,
+    DEFAULT_HEADING_ELEMENT,
+    TYPOGRAPHY_WEIGHTS as HEADING_WEIGHTS,
+    DEFAULT_HEADING_WEIGHT,
+    TYPOGRAPHY_MARGINS as HEADING_MARGINS,
+    DEFAULT_TYPOGRAPHY_MARGIN as DEFAULT_HEADING_MARGIN,
+    TYPOGRAPHY_COLORS as HEADING_COLORS,
+    DEFAULT_TYPOGRAPHY_COLOR as DEFAULT_HEADING_COLOR,
+};
