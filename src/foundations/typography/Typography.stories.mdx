@@ -30,11 +30,15 @@ Compass uses Metropolis and Open Sans as the primary typefaces. Metropolis is a 
 open-sourced, and openly available. It has been designed for optimal readability at small point sizes while remaining
 beautiful at large point sizes.
 
+### Metropolis
+
 **Metropolis is used for headings 300-700. See below for more details.**
 
 Open Sans is another modern sans-serif typeface that is incredibly legible and offers an excellent reading experience.
 It was developed to have high performance as a web font and is considered to be a font that combines all the
 strongest attributes of the top sans serif fonts. Open Sans is available to be used freely in products or projects.
+
+### Open Sans
 
 **Open Sans is used for all body copy and headings 50-200. See below for more details.**
 
@@ -93,7 +97,7 @@ export const bodySizes = [...smallSizes, { size: 300, fontSize: 18, lineHeight: 
 
 <>
     {headingSizes.map((heading) => (
-        <>
+        <div key={`heading_${heading.size}`}>
             <hr />
             <Grid justify={'stretch'}>
                 <Grid row>
@@ -136,7 +140,7 @@ export const bodySizes = [...smallSizes, { size: 300, fontSize: 18, lineHeight: 
                     </Grid>
                 </Grid>
             </Grid>
-        </>
+        </div>
     ))}
 </>
 
@@ -152,7 +156,7 @@ The chart below shows all the body copy sizes where Body 100 is the base font si
 
 <>
     {bodySizes.map((body) => (
-        <>
+        <div key={`body_${body.size}`}>
             <hr />
             <Grid justify={'stretch'}>
                 <Grid row>
@@ -195,7 +199,7 @@ The chart below shows all the body copy sizes where Body 100 is the base font si
                     </Grid>
                 </Grid>
             </Grid>
-        </>
+        </div>
     ))}
 </>
 
