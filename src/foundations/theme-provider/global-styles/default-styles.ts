@@ -1,18 +1,26 @@
 import { css } from 'styled-components';
 import { FlattenSimpleInterpolation } from 'styled-components/ts3.6';
 
-import { DEFAULT_HEADING_SIZEMAP } from '../../../components/heading';
+import {
+    DEFAULT_HEADING_ELEMENT_SIZES,
+    DEFAULT_HEADING_SIZE,
+    HEADING_ELEMENTS,
+    THeadingElement,
+} from '../../../components/heading';
 import { DEFAULT_TEXT_SIZE } from '../../../components/text';
-import { HEADING_ELEMENTS, TTypographyHeadingElement } from '../../typography';
 
 const generateDefaultHeadingStyles = (): FlattenSimpleInterpolation =>
     HEADING_ELEMENTS.map(
-        (headingLevel: TTypographyHeadingElement) => css`
-            ${headingLevel} {
-                font-size: var(--heading-font-size-${DEFAULT_HEADING_SIZEMAP[headingLevel]});
-                line-height: var(--heading-line-height-${DEFAULT_HEADING_SIZEMAP[headingLevel]});
-                margin: var(--body-margin-top-${DEFAULT_HEADING_SIZEMAP[headingLevel]}) 0
-                    var(--body-margin-bottom-${DEFAULT_HEADING_SIZEMAP[headingLevel]});
+        (headingElement: THeadingElement) => css`
+            ${headingElement} {
+                font-size: var(
+                    --heading-font-size-${DEFAULT_HEADING_ELEMENT_SIZES[headingElement]}
+                );
+                line-height: var(
+                    --heading-line-height-${DEFAULT_HEADING_ELEMENT_SIZES[headingElement]}
+                );
+                margin: var(--body-margin-top-${DEFAULT_HEADING_ELEMENT_SIZES[headingElement]}) 0
+                    var(--body-margin-bottom-${DEFAULT_HEADING_ELEMENT_SIZES[headingElement]});
             }
         `
     );
@@ -41,6 +49,8 @@ const VDefaultStyles = css`
         // - defaults
         font-family: var(--heading-font-family, Metropolis, Arial, sans-serif);
         font-weight: var(--font-weight-bold, bold);
+        margin: var(--heading-margin-top-${DEFAULT_HEADING_SIZE}) 0
+            var(--heading-margin-bottom-${DEFAULT_HEADING_SIZE});
     }
 
     ${generateDefaultHeadingStyles()}
