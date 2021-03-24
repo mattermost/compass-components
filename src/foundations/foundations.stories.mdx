@@ -1,12 +1,12 @@
 import { Description, Meta, Subtitle, Title } from '@storybook/addon-docs/blocks';
 
 import colorStoryParams from './colors/colors.stories.mdx';
-import typeStoryParams from './type/Type.stories.mdx';
+import typeStoryParams from './typography/Typography.stories.mdx';
 import shapeStoryParams from './shape/Shape.stories.mdx';
 
 import { Utils } from '../utils';
 import Shape from './shape';
-import Type from './type';
+import Typography from './typography';
 import Grid, { GridSpacing } from './layout';
 import ThemeProvider from './theme-provider/theme-provider';
 
@@ -39,12 +39,12 @@ import iconsImg from '../assets/images/foundation_overview_icons.png';
             <Shape border borderRadius={4} elevation={0} elevationOnHover={2}>
                 <img src={colorImg} alt={'foundation-colors'} />
                 <Grid padding={GridSpacing.symmetric({ vertical: 50, horizontal: 100 })}>
-                    <Type variant={'h3'} size={300}>
+                    <Typography variant={'h3'} size={300}>
                         Color
-                    </Type>
-                    <Type variant={'body'} size={100}>
+                    </Typography>
+                    <Typography variant={'body'} size={100}>
                         Discover the various palettes and shades.
-                    </Type>
+                    </Typography>
                 </Grid>
             </Shape>
         </a>
@@ -54,12 +54,12 @@ import iconsImg from '../assets/images/foundation_overview_icons.png';
             <Shape border borderRadius={4} elevation={0} elevationOnHover={2}>
                 <img src={typographyImg} alt={'foundation-typography'} />
                 <Grid padding={GridSpacing.symmetric({ vertical: 50, horizontal: 100 })}>
-                    <Type variant={'h3'} size={300}>
+                    <Typography variant={'h3'} size={300}>
                         Typography
-                    </Type>
-                    <Type variant={'body'} size={100}>
+                    </Typography>
+                    <Typography variant={'body'} size={100}>
                         Guidelines on typefaces, scales, weights and more.
-                    </Type>
+                    </Typography>
                 </Grid>
             </Shape>
         </a>
@@ -69,12 +69,12 @@ import iconsImg from '../assets/images/foundation_overview_icons.png';
             <Shape border borderRadius={4} elevation={0} elevationOnHover={2}>
                 <img src={shapeImg} alt={'foundation-shape'} />
                 <Grid padding={GridSpacing.symmetric({ vertical: 50, horizontal: 100 })}>
-                    <Type variant={'h3'} size={300}>
+                    <Typography variant={'h3'} size={300}>
                         Shape
-                    </Type>
-                    <Type variant={'body'} size={100}>
+                    </Typography>
+                    <Typography variant={'body'} size={100}>
                         How shape is used in Mattermost interfaces
-                    </Type>
+                    </Typography>
                 </Grid>
             </Shape>
         </a>
@@ -84,12 +84,12 @@ import iconsImg from '../assets/images/foundation_overview_icons.png';
             <Shape border borderRadius={4} elevation={0} elevationOnHover={2}>
                 <img src={iconsImg} alt={'foundation-icons'} />
                 <Grid padding={GridSpacing.symmetric({ vertical: 50, horizontal: 100 })}>
-                    <Type variant={'h3'} size={300}>
+                    <Typography variant={'h3'} size={300}>
                         Iconography
-                    </Type>
-                    <Type variant={'body'} size={100}>
+                    </Typography>
+                    <Typography variant={'body'} size={100}>
                         Simple visual aids used to guide our users
-                    </Type>
+                    </Typography>
                 </Grid>
             </Shape>
         </a>

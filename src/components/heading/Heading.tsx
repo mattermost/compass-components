@@ -1,7 +1,7 @@
 import React from 'react';
 import clsx from 'clsx';
 
-import Type from '../../foundations/type/Type';
+import Typography from '../../foundations/typography/Typography';
 
 import { THeadingElement } from './Heading.types';
 import {
@@ -10,6 +10,7 @@ import {
     DEFAULT_HEADING_SIZE,
     DEFAULT_HEADING_ELEMENT,
     DEFAULT_HEADING_WEIGHT,
+    HEADING_ELEMENTS,
 } from './Heading.constants';
 import { PHeading } from './Heading.props';
 
@@ -22,7 +23,15 @@ const Heading: React.FC<PHeading> = ({
     children,
     className,
 }): JSX.Element => {
-    let derivedElement: THeadingElement | undefined = element;
+    // Whenever this component is used with an element that is not supported within the headings throw an error!
+    if (!HEADING_ELEMENTS.includes(element)) {
+        throw new Error(
+            `Compass Components: Heading component was used with an unsupported element '${element}'.
+            Please provide an element from these available options: ${HEADING_ELEMENTS.join(', ')}.`
+        );
+    }
+
+    let derivedElement: THeadingElement = element;
 
     // set the default element based on the defined size of element if not defined
     if (!element) {
@@ -48,7 +57,7 @@ const Heading: React.FC<PHeading> = ({
     }
 
     return (
-        <Type
+        <Typography
             className={clsx(className, 'Heading')}
             element={element || derivedElement}
             size={size}
@@ -58,7 +67,7 @@ const Heading: React.FC<PHeading> = ({
             role={'heading'}
         >
             {children}
-        </Type>
+        </Typography>
     );
 };
 

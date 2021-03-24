@@ -38,15 +38,7 @@ const getBorderDefinition = (props: PShape): string => {
 };
 
 const Shape = styled.div.withConfig({
-    shouldForwardProp: Utils.doNotForwardProperties([
-        'width',
-        'height',
-        'component',
-        'elevation',
-        'elevationOnHover',
-        'borderRadius',
-        'borderWidth',
-    ]),
+    shouldForwardProp: Utils.forwardProperties(),
 })<PShape>`
     flex: ${(props): string => (props.width ? 'initial' : 'auto')};
     display: flex;

@@ -1,5 +1,3 @@
-import { TBodySize, TTypeWeight, TTypeBodyElement } from '../../foundations/type';
+import { TTypographyBodySize, TTypographyBodyElement } from '../../foundations/typography';
 
-type TTextWeight = Omit<TTypeWeight, 'light'>;
-
-export type { TBodySize as TTextSize, TTypeBodyElement as TTextElement, TTextWeight };
+export type { TTypographyBodySize as TTextSize, TTypographyBodyElement as TTextElement };

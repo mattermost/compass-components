@@ -185,11 +185,11 @@ function hslToRgb(color: string): string {
 }
 
 /**
- * Returns an object with the type and values of a color.
+ * Returns an object with the typography and values of a color.
  *
  * Note: Does not support rgb % values.
  * @param {string} color - CSS color, i.e. one of: #nnn, #nnnnnn, rgb(), rgba(), hsl(), hsla()
- * @returns {object} - A MUI color object: {type: string, values: number[]}
+ * @returns {object} - A MUI color object: {typography: string, values: number[]}
  */
 function decomposeColor(color: string): TColorDefinition {
     if (color.charAt(0) === '#') {
@@ -213,9 +213,9 @@ function decomposeColor(color: string): TColorDefinition {
 }
 
 /**
- * Converts a color object with type and values to a string.
+ * Converts a color object with typography and values to a string.
  * @param {object} color - Decomposed color
- * @param {string} color.type - One of: 'rgb', 'rgba', 'hsl', 'hsla'
+ * @param {string} color.typography - One of: 'rgb', 'rgba', 'hsl', 'hsla'
  * @param {array} color.values - [n,n,n] or [n,n,n,n]
  * @returns {string} A CSS color string
  */
@@ -236,9 +236,9 @@ function recomposeColor(color: TColorDefinition): string {
 }
 
 /**
- * Converts a color object with type and values to a string.
+ * Converts a color object with typography and values to a string.
  * @param {object} color - Decomposed color
- * @param {string} color.type - One of: 'rgb', 'rgba', 'hsl', 'hsla'
+ * @param {string} color.typography - One of: 'rgb', 'rgba', 'hsl', 'hsla'
  * @param {array} color.values - [n,n,n] or [n,n,n,n]
  * @param {number} shade - 100 | 200 | ... | 800
  * @param {boolean} darker - some colors are best converted to darker shades (starting luminance -16%)

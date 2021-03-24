@@ -1,4 +1,9 @@
-import { TYPE_MARGINS, TYPE_COLORS, TTypeMargin, TTypeColor } from '../../foundations/type';
+import {
+    TYPOGRAPHY_MARGINS,
+    TYPOGRAPHY_COLORS,
+    DEFAULT_TYPOGRAPHY_MARGIN,
+    DEFAULT_TYPOGRAPHY_COLOR,
+} from '../../foundations/typography';
 
 import { TTextSize, TTextElement, TTextWeight } from './Text.types';
 
@@ -14,10 +19,6 @@ const TEXT_WEIGHTS: TTextWeight[] = ['regular', 'bold'];
 
 const DEFAULT_TEXT_WEIGHT: TTextWeight = 'regular';
 
-const DEFAULT_TEXT_MARGIN: TTypeMargin = 'both';
-
-const DEFAULT_TEXT_COLOR: TTypeColor = 'primary';
-
 export {
     TEXT_SIZES,
     DEFAULT_TEXT_SIZE,
@@ -25,8 +26,8 @@ export {
     DEFAULT_TEXT_ELEMENT,
     TEXT_WEIGHTS,
     DEFAULT_TEXT_WEIGHT,
-    TYPE_MARGINS as TEXT_MARGINS,
-    DEFAULT_TEXT_MARGIN,
-    TYPE_COLORS as TEXT_COLORS,
-    DEFAULT_TEXT_COLOR,
+    TYPOGRAPHY_MARGINS as TEXT_MARGINS,
+    DEFAULT_TYPOGRAPHY_MARGIN as DEFAULT_TEXT_MARGIN,
+    TYPOGRAPHY_COLORS as TEXT_COLORS,
+    DEFAULT_TYPOGRAPHY_COLOR as DEFAULT_TEXT_COLOR,
 };

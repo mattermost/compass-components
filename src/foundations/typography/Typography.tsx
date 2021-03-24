@@ -3,13 +3,18 @@ import { FlattenSimpleInterpolation } from 'styled-components/ts3.6';
 
 import { Utils } from '../../utils';
 
-import { BODY_SIZES, DEFAULT_TYPE_SIZE, HEADING_SIZES, HEADING_ELEMENTS } from './Type.constants';
-import { PType } from './Type.props';
-import { TTypeSize, TTypeType } from './Type.types';
+import {
+    BODY_SIZES,
+    DEFAULT_TYPOGRAPHY_SIZE,
+    HEADING_SIZES,
+    HEADING_ELEMENTS,
+} from './Typography.constants';
+import { PTypography } from './Typography.props';
+import { TTypographySize, TTypographyType } from './Typography.types';
 
 function generateFontStyleVariations(
-    typeSize: TTypeSize,
-    fontType: TTypeType
+    typeSize: TTypographySize,
+    fontType: TTypographyType
 ): FlattenSimpleInterpolation {
     return css`
         &[data-size='${typeSize}'] {
@@ -33,35 +38,29 @@ function generateFontStyleVariations(
     `;
 }
 
-const Type = styled.p
-    .attrs((props: PType) => ({
+const Typography = styled.p
+    .attrs((props: PTypography) => ({
         // it is possible to remap props, so we do not need to pass down the
         // `as` property from styled-components and prevent usage of
         // unsupported HTML tags
         as: props.element,
-        'data-size': props.size || DEFAULT_TYPE_SIZE,
+        'data-size': props.size,
         'data-type': HEADING_ELEMENTS.includes(props.element) ? 'heading' : 'body',
         'data-weight': props.weight,
         'data-margin': props.margin,
-        'data-color': props.color || 'primary',
+        'data-color': props.color,
     }))
     .withConfig({
-        shouldForwardProp: Utils.doNotForwardProperties([
-            'size',
-            'type',
-            'weight',
-            'element',
-            'margin',
-        ]),
-    })<PType>`
+        shouldForwardProp: Utils.forwardProperties(),
+    })<PTypography>`
         // set body type styles (default)
         // - defaults
         font-family: var(--body-font-family);
         font-size: var(--base-font-size);
         font-weight: var(--font-weight-regular);
         line-height: var(--base-line-height);
-        margin: var(--body-margin-top-${DEFAULT_TYPE_SIZE}) 0
-            var(--body-margin-bottom-${DEFAULT_TYPE_SIZE});
+        margin: var(--body-margin-top-${DEFAULT_TYPOGRAPHY_SIZE}) 0
+            var(--body-margin-bottom-${DEFAULT_TYPOGRAPHY_SIZE});
 
         // - set font syle variations
         ${BODY_SIZES.map((bodySize) => generateFontStyleVariations(bodySize, 'body'))}
@@ -88,8 +87,8 @@ const Type = styled.p
         &[data-type='heading'] {
             // - default overrides
             font-weight: var(--font-weight-bold);
-            margin: var(--heading-margin-top-${DEFAULT_TYPE_SIZE}) 0
-                var(--heading-margin-bottom-${DEFAULT_TYPE_SIZE});
+            margin: var(--heading-margin-top-${DEFAULT_TYPOGRAPHY_SIZE}) 0
+                var(--heading-margin-bottom-${DEFAULT_TYPOGRAPHY_SIZE});
 
             // - headings switch to heading font at size 300
             &[data-size='300'],
@@ -121,4 +120,4 @@ const Type = styled.p
         }
 `;
 
-export default Type;
+export default Typography;

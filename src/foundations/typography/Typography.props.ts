@@ -1,26 +1,32 @@
-import { TTypeSize, TTypeWeight, TTypeMargin, TTypeElement, TTypeColor } from './Type.types';
+import {
+    TTypographySize,
+    TTypographyWeight,
+    TTypographyMargin,
+    TTypographyElement,
+    TTypographyColor,
+} from './Typography.types';
 
-export type PType = {
+export type PTypography = {
     className?: string;
     /** the size use to render the text. The actual px values depend on the element as well  */
-    size?: TTypeSize;
+    size?: TTypographySize;
     /**
      * it is derived from the element:
      *  - `heading` for h1 - h6
-     *  - `body` p and span
+     *  - `body` p, span and label
      * */
-    element: TTypeElement;
+    element: TTypographyElement;
     /**
      * which color is the text rendered with
      * @default 'primary'
      * */
-    color?: TTypeColor;
+    color?: TTypographyColor;
     /** define the weight of the rendered font */
-    weight?: TTypeWeight;
+    weight?: TTypographyWeight;
     /**
      * Every text-element has its own margin.
      * With this you can choose which one to render.
      * @default 'both'
      * */
-    margin?: TTypeMargin;
+    margin?: TTypographyMargin;
 };

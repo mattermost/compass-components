@@ -1,8 +1,8 @@
-import { PType } from '../../foundations/type';
+import { PTypography } from '../../foundations/typography';
 
-import { TTextSize, TTextElement, TTextWeight } from './Text.types';
+import { TTextSize, TTextElement } from './Text.types';
 
-export type PText = Pick<PType, 'color' | 'margin'> & {
+export type PText = Pick<PTypography, 'color' | 'margin' | 'weight'> & {
     className?: string;
     /**
      * the size-token used to render the text size.
@@ -14,9 +14,4 @@ export type PText = Pick<PType, 'color' | 'margin'> & {
      * @default 'p'
      * */
     element?: TTextElement;
-    /**
-     * define the weight of the rendered text
-     * @default 'regular'
-     * */
-    weight?: TTextWeight;
 };

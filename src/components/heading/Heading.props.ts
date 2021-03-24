@@ -1,8 +1,8 @@
-import { PType } from '../../foundations/type';
+import { PTypography } from '../../foundations/typography';
 
 import { THeadingSize, THeadingElement } from './Heading.types';
 
-export type PHeading = Pick<PType, 'color' | 'margin' | 'weight'> & {
+export type PHeading = Pick<PTypography, 'color' | 'margin' | 'weight'> & {
     className?: string;
     /**
      * the size-token used to render the text size.

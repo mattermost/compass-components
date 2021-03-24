@@ -1,7 +1,7 @@
 import React from 'react';
 import clsx from 'clsx';
 
-import Type, { TTypeWeight } from '../../foundations/type';
+import Typography, { BODY_ELEMENTS, TTypographyWeight } from '../../foundations/typography';
 
 import { PText } from './Text.props';
 import {
@@ -20,18 +20,28 @@ const Text: React.FC<PText> = ({
     weight = DEFAULT_TEXT_WEIGHT,
     margin = DEFAULT_TEXT_MARGIN,
     color = DEFAULT_TEXT_COLOR,
-}): JSX.Element => (
-    <Type
-        className={clsx(className, 'Text')}
-        element={element}
-        size={size}
-        margin={margin}
-        color={color}
-        weight={weight as TTypeWeight}
-        role={'text'}
-    >
-        {children}
-    </Type>
-);
+}): JSX.Element => {
+    // Whenever this component is used with an element that is not supported within the headings throw an error!
+    if (!BODY_ELEMENTS.includes(element)) {
+        throw new Error(
+            `Compass Components: Heading component was used with an unsupported element '${element}'.
+            Please provide an element from these available options: ${BODY_ELEMENTS.join(', ')}.`
+        );
+    }
+
+    return (
+        <Typography
+            className={clsx(className, 'Text')}
+            element={element}
+            size={size}
+            margin={margin}
+            color={color}
+            weight={weight as TTypographyWeight}
+            role={'text'}
+        >
+            {children}
+        </Typography>
+    );
+};
 
 export default Text;
