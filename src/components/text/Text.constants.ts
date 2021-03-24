@@ -1,11 +1,13 @@
 import {
     TYPOGRAPHY_MARGINS,
     TYPOGRAPHY_COLORS,
+    TYPOGRAPHY_WEIGHTS,
     DEFAULT_TYPOGRAPHY_MARGIN,
     DEFAULT_TYPOGRAPHY_COLOR,
+    TTypographyWeight,
 } from '../../foundations/typography';
 
-import { TTextSize, TTextElement, TTextWeight } from './Text.types';
+import { TTextSize, TTextElement } from './Text.types';
 
 const TEXT_SIZES: TTextSize[] = [25, 50, 75, 100, 200, 300];
 
@@ -15,16 +17,14 @@ const TEXT_ELEMENTS: TTextElement[] = ['p', 'span'];
 
 const DEFAULT_TEXT_ELEMENT: TTextElement = 'p';
 
-const TEXT_WEIGHTS: TTextWeight[] = ['regular', 'bold'];
-
-const DEFAULT_TEXT_WEIGHT: TTextWeight = 'regular';
+const DEFAULT_TEXT_WEIGHT: TTypographyWeight = 'regular';
 
 export {
     TEXT_SIZES,
     DEFAULT_TEXT_SIZE,
     TEXT_ELEMENTS,
     DEFAULT_TEXT_ELEMENT,
-    TEXT_WEIGHTS,
+    TYPOGRAPHY_WEIGHTS as TEXT_WEIGHTS,
     DEFAULT_TEXT_WEIGHT,
     TYPOGRAPHY_MARGINS as TEXT_MARGINS,
     DEFAULT_TYPOGRAPHY_MARGIN as DEFAULT_TEXT_MARGIN,
