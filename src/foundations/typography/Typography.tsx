@@ -96,6 +96,8 @@ const Typography = styled.p
             &[data-size='500'],
             &[data-size='600'],
             &[data-size='700'],
+            &[data-size='800'],
+            &[data-size='900'],
             &[data-size='1000'] {
                 font-family: var(--heading-font-family);
             }

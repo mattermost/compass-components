@@ -11,7 +11,21 @@ const DEFAULT_TYPOGRAPHY_SIZE: TTypographySize = 100;
 
 const BODY_SIZES: TTypographyBodySize[] = [25, 50, 75, 100, 200, 300];
 
-const HEADING_SIZES: TTypographySize[] = [25, 50, 75, 100, 200, 300, 400, 500, 600, 700, 1000];
+const HEADING_SIZES: TTypographySize[] = [
+    25,
+    50,
+    75,
+    100,
+    200,
+    300,
+    400,
+    500,
+    600,
+    700,
+    800,
+    900,
+    1000,
+];
 
 const BODY_ELEMENTS: TTypographyElement[] = ['p', 'span', 'label'];
 
