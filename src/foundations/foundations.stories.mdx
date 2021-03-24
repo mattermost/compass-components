@@ -6,7 +6,6 @@ import shapeStoryParams from './shape/Shape.stories.mdx';
 
 import { Utils } from '../utils';
 import Shape from './shape';
-import Typography from './typography';
 import Grid, { GridSpacing } from './layout';
 import ThemeProvider from './theme-provider/theme-provider';
 
@@ -15,6 +14,8 @@ import colorImg from '../assets/images/foundation_overview_color.png';
 import typographyImg from '../assets/images/foundation_overview_typography.png';
 import shapeImg from '../assets/images/foundation_overview_shape.png';
 import iconsImg from '../assets/images/foundation_overview_icons.png';
+import Heading from '../components/heading';
+import Text from '../components/text';
 
 <Meta title="Foundations/Overview" />
 
@@ -39,12 +40,12 @@ import iconsImg from '../assets/images/foundation_overview_icons.png';
             <Shape border borderRadius={4} elevation={0} elevationOnHover={2}>
                 <img src={colorImg} alt={'foundation-colors'} />
                 <Grid padding={GridSpacing.symmetric({ vertical: 50, horizontal: 100 })}>
-                    <Typography element={'h3'} size={300}>
+                    <Heading element={'h3'} size={300}>
                         Color
-                    </Typography>
-                    <Typography element={'p'} size={100}>
+                    </Heading>
+                    <Text element={'p'} size={100}>
                         Discover the various palettes and shades.
-                    </Typography>
+                    </Text>
                 </Grid>
             </Shape>
         </a>
@@ -54,12 +55,12 @@ import iconsImg from '../assets/images/foundation_overview_icons.png';
             <Shape border borderRadius={4} elevation={0} elevationOnHover={2}>
                 <img src={typographyImg} alt={'foundation-typography'} />
                 <Grid padding={GridSpacing.symmetric({ vertical: 50, horizontal: 100 })}>
-                    <Typography element={'h3'} size={300}>
-                        Typography
-                    </Typography>
-                    <Typography element={'p'} size={100}>
+                    <Heading element={'h3'} size={300}>
+                        Heading
+                    </Heading>
+                    <Text element={'p'} size={100}>
                         Guidelines on typefaces, scales, weights and more.
-                    </Typography>
+                    </Text>
                 </Grid>
             </Shape>
         </a>
@@ -69,12 +70,12 @@ import iconsImg from '../assets/images/foundation_overview_icons.png';
             <Shape border borderRadius={4} elevation={0} elevationOnHover={2}>
                 <img src={shapeImg} alt={'foundation-shape'} />
                 <Grid padding={GridSpacing.symmetric({ vertical: 50, horizontal: 100 })}>
-                    <Typography element={'h3'} size={300}>
+                    <Heading element={'h3'} size={300}>
                         Shape
-                    </Typography>
-                    <Typography element={'p'} size={100}>
+                    </Heading>
+                    <Text element={'p'} size={100}>
                         How shape is used in Mattermost interfaces
-                    </Typography>
+                    </Text>
                 </Grid>
             </Shape>
         </a>
@@ -84,12 +85,12 @@ import iconsImg from '../assets/images/foundation_overview_icons.png';
             <Shape border borderRadius={4} elevation={0} elevationOnHover={2}>
                 <img src={iconsImg} alt={'foundation-icons'} />
                 <Grid padding={GridSpacing.symmetric({ vertical: 50, horizontal: 100 })}>
-                    <Typography element={'h3'} size={300}>
+                    <Heading element={'h3'} size={300}>
                         Iconography
-                    </Typography>
-                    <Typography element={'p'} size={100}>
+                    </Heading>
+                    <Text element={'p'} size={100}>
                         Simple visual aids used to guide our users
-                    </Typography>
+                    </Text>
                 </Grid>
             </Shape>
         </a>

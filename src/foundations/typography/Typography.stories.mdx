@@ -11,6 +11,8 @@ import {
     TYPOGRAPHY_COLORS,
     TYPOGRAPHY_MARGINS,
 } from './Typography.constants';
+import Heading from '../../components/heading';
+import Text from '../../components/text';
 
 <Meta component={Typography} title="Foundations/Typography" />
 
@@ -95,42 +97,42 @@ export const bodySizes = [...smallSizes, { size: 300, fontSize: 18, lineHeight: 
             <hr />
             <Grid justify={'stretch'}>
                 <Grid row>
-                    <Typography element={'h3'} size={300}>
+                    <Heading element={'h3'} size={300}>
                         {`Heading ${heading.size}${heading.size === 100 ? ' (Base size)' : ''}`}
-                    </Typography>
+                    </Heading>
                 </Grid>
                 <Grid row>
                     <Grid flex={3}>
-                        <Typography element={'p'} color={'secondary'} size={50} margin={'none'}>
+                        <Text element={'p'} color={'secondary'} size={50} margin={'none'}>
                             Family
-                        </Typography>
-                        <Typography element={'p'} size={200} margin={'bottom'}>
+                        </Text>
+                        <Text element={'p'} size={200} margin={'bottom'}>
                             {heading.size > 300 ? 'Metropolis (600)' : 'OpenSans (600)'}
-                        </Typography>
+                        </Text>
                     </Grid>
                     <Grid flex={2}>
-                        <Typography element={'p'} color={'secondary'} size={50} margin={'none'}>
+                        <Text element={'p'} color={'secondary'} size={50} margin={'none'}>
                             Size
-                        </Typography>
-                        <Typography element={'p'} size={200} margin={'bottom'}>
+                        </Text>
+                        <Text element={'p'} size={200} margin={'bottom'}>
                             {`${heading.fontSize}px`}
-                        </Typography>
+                        </Text>
                     </Grid>
                     <Grid flex={2}>
-                        <Typography element={'p'} color={'secondary'} size={50} margin={'none'}>
+                        <Text element={'p'} color={'secondary'} size={50} margin={'none'}>
                             Line Height
-                        </Typography>
-                        <Typography element={'p'} size={200} margin={'bottom'}>
+                        </Text>
+                        <Text element={'p'} size={200} margin={'bottom'}>
                             {`${heading.lineHeight}px`}
-                        </Typography>
+                        </Text>
                     </Grid>
                     <Grid flex={6}>
-                        <Typography element={'p'} color={'secondary'} size={50} margin={'none'}>
+                        <Text element={'p'} color={'secondary'} size={50} margin={'none'}>
                             Example
-                        </Typography>
-                        <Typography element={'h1'} size={heading.size} margin={'bottom'}>
+                        </Text>
+                        <Heading element={'h1'} size={heading.size} margin={'bottom'}>
                             The quick brown fox jumps over the lazy dog
-                        </Typography>
+                        </Heading>
                     </Grid>
                 </Grid>
             </Grid>
@@ -154,42 +156,42 @@ The chart below shows all the body copy sizes where Body 100 is the base font si
             <hr />
             <Grid justify={'stretch'}>
                 <Grid row>
-                    <Typography element={'h3'} size={300}>
+                    <Heading element={'h3'} size={300}>
                         {`Body ${body.size}${body.size === 100 ? ' (Base size)' : ''}`}
-                    </Typography>
+                    </Heading>
                 </Grid>
                 <Grid row>
                     <Grid flex={3}>
-                        <Typography element={'p'} color={'secondary'} size={50} margin={'none'}>
+                        <Text element={'p'} color={'secondary'} size={50} margin={'none'}>
                             Family
-                        </Typography>
-                        <Typography element={'p'} size={200} margin={'bottom'}>
+                        </Text>
+                        <Text element={'p'} size={200} margin={'bottom'}>
                             OpenSans (400)
-                        </Typography>
+                        </Text>
                     </Grid>
                     <Grid flex={2}>
-                        <Typography element={'p'} color={'secondary'} size={50} margin={'none'}>
+                        <Text element={'p'} color={'secondary'} size={50} margin={'none'}>
                             Size
-                        </Typography>
-                        <Typography element={'p'} size={200} margin={'bottom'}>
+                        </Text>
+                        <Text element={'p'} size={200} margin={'bottom'}>
                             {`${body.fontSize}px`}
-                        </Typography>
+                        </Text>
                     </Grid>
                     <Grid flex={2}>
-                        <Typography element={'p'} color={'secondary'} size={50} margin={'none'}>
+                        <Text element={'p'} color={'secondary'} size={50} margin={'none'}>
                             Line Height
-                        </Typography>
-                        <Typography element={'p'} size={200} margin={'bottom'}>
+                        </Text>
+                        <Text element={'p'} size={200} margin={'bottom'}>
                             {`${body.lineHeight}px`}
-                        </Typography>
+                        </Text>
                     </Grid>
                     <Grid flex={6}>
-                        <Typography element={'p'} color={'secondary'} size={50} margin={'none'}>
+                        <Text element={'p'} color={'secondary'} size={50} margin={'none'}>
                             Example
-                        </Typography>
-                        <Typography element={'p'} size={body.size} margin={'bottom'}>
+                        </Text>
+                        <Text element={'p'} size={body.size} margin={'bottom'}>
                             The quick brown fox jumps over the lazy dog
-                        </Typography>
+                        </Text>
                     </Grid>
                 </Grid>
             </Grid>
@@ -213,89 +215,62 @@ device uses the system standard `sans-serif` typeface.
 
 <ArgsTable of={Typography} exclude={['as', 'ref', 'forwardedAs', 'theme']} />
 
-export const Template = (args) => {
-    const { text } = args;
-    return <Typography {...args}>{text}</Typography>;
-};
-
 export const ParagraphTemplate = (args) => (
     <Shape width={400} border borderRadius={4} elevation={2}>
         <Grid padding={GridSpacing.all(100)}>
-            <Typography
+            <Heading
                 size={args.headingSize}
                 margin={args.headingMargin}
                 element={args.headingElement}
                 color={args.headingColor}
             >
                 {args.heading}
-            </Typography>
-            <Typography
+            </Heading>
+            <Heading
                 size={args.subtitleSize}
                 margin={args.subtitleMargin}
                 element={args.subtitleElement}
                 color={args.subtitleColor}
             >
                 {args.subtitle}
-            </Typography>
-            <Typography
+            </Heading>
+            <Text
                 size={args.paragraphSize}
                 margin={args.paragraphMargin}
                 element={args.paragraphElement}
                 color={args.paragraphColor}
             >
                 {args.paragraph}
-            </Typography>
-            <Typography
+            </Text>
+            <Heading
                 size={args.subtitleSize}
                 margin={args.subtitleMargin}
                 element={args.subtitleElement}
                 color={args.subtitleColor}
             >
                 {args.subtitle}
-            </Typography>
-            <Typography
+            </Heading>
+            <Text
                 size={args.paragraphSize}
                 margin={args.paragraphMargin}
                 element={args.paragraphElement}
                 color={args.paragraphColor}
             >
                 {args.paragraph}
-            </Typography>
-            <Typography
+            </Text>
+            <Text
                 size={args.paragraphSize}
                 margin={args.paragraphMargin}
                 element={args.paragraphElement}
                 color={args.paragraphColor}
             >
                 {args.paragraph}
-            </Typography>
+            </Text>
         </Grid>
     </Shape>
 );
 
 <Canvas hidden>
-    <Story
-        name="Headings"
-        args={{
-            element: 'h1',
-            color: 'primary',
-            size: 700,
-            text: 'Lorem ipsum dolor sit amet consetetur ...',
-        }}
-    >
-        {Template.bind({})}
-    </Story>
-    <Story
-        name="Paragraph"
-        args={{
-            element: 'p',
-            color: 'primary',
-            size: 200,
-            text: 'Lorem ipsum dolor sit amet consetetur ...',
-        }}
-    >
-        {Template.bind({})}
-    </Story>
     <Story
         name="Text-Section"
         argTypes={{
