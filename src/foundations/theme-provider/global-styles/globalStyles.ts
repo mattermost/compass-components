@@ -3,6 +3,7 @@ import { createGlobalStyle } from 'styled-components';
 import { TBorderRadiusSizes, TElevationLevel } from '../../shape';
 import { TTheme } from '../themes/theme.types';
 
+import VDefaultStyles from './variables.default-styles';
 import VSizes from './variables.sizes';
 import VColors from './variables.colors';
 import VElevation from './variables.elevation';
@@ -28,6 +29,8 @@ const GlobalStyle = createGlobalStyle`
 
         --border-default: 1px solid var(--disabled-text-color);
     }
+    
+    ${VDefaultStyles}
 `;
 
 function getElevation(elevationLevel: TElevationLevel = 0): string {
