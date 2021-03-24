@@ -17,6 +17,7 @@ type TTHemeTextColors = {
     primary: string;
     secondary: string;
     disabled: string;
+    contrast: string;
 };
 
 type TTHemeBackgroundColors = {

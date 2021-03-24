@@ -40,6 +40,7 @@ const themeDark: TTheme = {
         primary: neutral[50],
         secondary: neutral[300],
         disabled: neutral[700],
+        contrast: neutral[1000],
     },
     background: {
         default: neutral[1100],
