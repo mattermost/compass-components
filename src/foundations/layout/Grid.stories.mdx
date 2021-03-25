@@ -1,7 +1,7 @@
 import { ArgsTable, Meta, Title, Subtitle, Canvas, Story } from '@storybook/addon-docs/blocks';
 
 import Shape from '../shape';
-import Typography from '../typography';
+import Text from '../../components/text';
 
 import measurementImg from '../../assets/images/layout_measurement-units.png';
 import paddingImg from '../../assets/images/layout_padding.png';
@@ -9,6 +9,7 @@ import grid8pxImg from '../../assets/images/layout_8px-grid.png';
 import grid4pxImg from '../../assets/images/layout_4px-grid.png';
 import baselineImg from '../../assets/images/layout_baseline.png';
 import anatomyImg from '../../assets/images/layout_grid-anatomy.png';
+
 import Grid, { GridSpacing } from './index';
 
 <Meta component={Grid} title="Foundations/Grid" />
@@ -60,9 +61,9 @@ export const spacings = {
                     })}
                 />
             </Shape>
-            <Typography variant={'body'} size={75}>
+            <Text element={'p'} size={75}>
                 {s}
-            </Typography>
+            </Text>
         </Grid>
     ))}
 </Grid>

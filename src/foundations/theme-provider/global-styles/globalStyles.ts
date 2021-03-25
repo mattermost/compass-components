@@ -5,6 +5,7 @@ import '@mattermost/compass-icons';
 import { TBorderRadiusSizes, TElevationLevel } from '../../shape';
 import { TTheme } from '../themes/theme.types';
 
+import VAnimations from './variables.animations';
 import VSizes from './variables.sizes';
 import VColors from './variables.colors';
 import VElevation from './variables.elevation';
@@ -13,6 +14,7 @@ import VFontStyle from './variables.font-style';
 import VBorderRadius from './variables.border-radius';
 import VAnimationSpeeds from './variables.animation';
 import reset from './reset-styles';
+import defaultStyles from './default-styles';
 
 type PGlobalStyles = {
     theme: TTheme;
@@ -27,11 +29,14 @@ const GlobalStyle = createGlobalStyle`
         ${VFontFaces}
         ${VFontStyle}
         ${VElevation}
+        ${VAnimations}
         ${VBorderRadius}
         ${VAnimationSpeeds}
 
         --border-default: 1px solid var(--disabled-text-color);
     }
+    
+    ${defaultStyles};
 `;
 
 function getElevation(elevationLevel: TElevationLevel = 0): string {

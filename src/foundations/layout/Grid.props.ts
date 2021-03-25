@@ -23,9 +23,9 @@ type PGrid = {
         | 'space-around'
         | 'space-between'
         | 'space-evenly';
-    /** padding according to `TSpacingDefinition` type */
+    /** padding according to `TSpacingDefinition` typography */
     padding?: TSpacingDefinition;
-    /** margin according to `TSpacingDefinition` type */
+    /** margin according to `TSpacingDefinition` typography */
     margin?: TSpacingDefinition;
     /** restrict the width of a `Grid` */
     width?: number | null;

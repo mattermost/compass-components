@@ -1,7 +1,29 @@
-type TTypographySizes = 25 | 50 | 75 | 100 | 200 | 300 | 400 | 500 | 600 | 700 | 1000;
+type TTypographySize = TTypographyBodySize | 400 | 500 | 600 | 700 | 800 | 900 | 1000;
 
-type TTypographyHeadingVariant = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'subtitle';
+type TTypographyBodySize = 25 | 50 | 75 | 100 | 200 | 300;
 
-type TTypographyVariant = TTypographyHeadingVariant | 'body' | 'inline';
+type TTypographyElement = TTypographyHeadingElement | TTypographyBodyElement;
 
-export type { TTypographyHeadingVariant, TTypographyVariant, TTypographySizes };
+type TTypographyBodyElement = 'p' | 'span' | 'label';
+
+type TTypographyHeadingElement = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
+
+type TTypographyType = 'heading' | 'body';
+
+type TTypographyWeight = 'light' | 'regular' | 'bold';
+
+type TTypographyMargin = 'none' | 'top' | 'bottom' | 'both';
+
+type TTypographyColor = 'primary' | 'secondary' | 'disabled';
+
+export type {
+    TTypographySize,
+    TTypographyBodySize,
+    TTypographyElement,
+    TTypographyBodyElement,
+    TTypographyHeadingElement,
+    TTypographyType,
+    TTypographyWeight,
+    TTypographyMargin,
+    TTypographyColor,
+};

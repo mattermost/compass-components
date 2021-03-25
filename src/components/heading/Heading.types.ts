@@ -1,5 +1,3 @@
-import { TTypeSize, TTypeWeight } from '../../foundations/type';
+import { TTypographySize, TTypographyHeadingElement } from '../../foundations/typography';
 
-type THeadingVariant = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
-
-export type { TTypeSize as THeadingSize, THeadingVariant, TTypeWeight as THeadingWeight };
+export type { TTypographySize as THeadingSize, TTypographyHeadingElement as THeadingElement };

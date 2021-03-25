@@ -1,9 +1,3 @@
-import { TTypeSize, TTypeWeight } from '../../foundations/type';
+import { TTypographyBodySize, TTypographyBodyElement } from '../../foundations/typography';
 
-type TTextSize = Omit<TTypeSize, '400' | '500' | '600' | '700' | '800' | '900' | '1000'>;
-
-type TTextVariant = 'p' | 'span';
-
-type TTextWeight = Omit<TTypeWeight, 'light'>;
-
-export type { TTextSize, TTextVariant, TTextWeight };
+export type { TTypographyBodySize as TTextSize, TTypographyBodyElement as TTextElement };
