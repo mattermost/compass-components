@@ -15,3 +15,5 @@ export type PText = Pick<PTypography, 'color' | 'margin' | 'weight'> & {
      * */
     element?: TTextElement;
 };
+
+export default PText;
