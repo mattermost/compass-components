@@ -5,6 +5,7 @@ import Shape from './index';
 import Grid, { GridSpacing } from '../layout';
 import Typography from '../typography';
 import Text from '../../components/text';
+import { Utils } from '../../utils';
 
 export const Template = (args) => <Shape {...args} />;
 
@@ -18,20 +19,11 @@ export const defaultArgs = {
     height: 50,
 };
 
-export const argTypes = {
-    forwardedAs: { table: { disable: true } },
-    theme: { table: { disable: true } },
-    ref: { table: { disable: true } },
-    as: {
-        type: { name: 'string', required: false },
-        defaultValue: 'div',
-        table: {
-            type: { summary: 'string' },
-            defaultValue: { summary: 'Hello String' },
-        },
+export const argTypes = Utils.hideStyledComponentProperties({
+    component: {
         control: {
             type: 'select',
-            options: ['div', 'span', 'section', 'aside', 'button'],
+            options: ['div', 'section', 'aside', 'span', 'button'],
         },
     },
     borderRadius: {
@@ -66,7 +58,7 @@ export const argTypes = {
     background: {
         control: 'color',
     },
-};
+});
 
 <Meta component={Shape} title="Foundations/Shape" />
 

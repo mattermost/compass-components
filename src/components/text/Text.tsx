@@ -3,7 +3,7 @@ import clsx from 'clsx';
 
 import Typography, { BODY_ELEMENTS, TTypographyWeight } from '../../foundations/typography';
 
-import { PText } from './Text.props';
+import PText from './Text.props';
 import {
     DEFAULT_TEXT_COLOR,
     DEFAULT_TEXT_MARGIN,

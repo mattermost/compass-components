@@ -1219,9 +1219,9 @@
     "@types/yargs" "^15.0.0"
     chalk "^4.0.0"
 
-"@mattermost/compass-icons@github:mattermost/compass-icons#453e5ef3d36810cde4a0ce7843e437b994b42693":
+"@mattermost/compass-icons@github:mattermost/compass-icons#51f714cdcf213ed74ffe84c0c53deca91ec24a4c":
   version "0.1.0"
-  resolved "https://codeload.github.com/mattermost/compass-icons/tar.gz/453e5ef3d36810cde4a0ce7843e437b994b42693"
+  resolved "https://codeload.github.com/mattermost/compass-icons/tar.gz/51f714cdcf213ed74ffe84c0c53deca91ec24a4c"
   dependencies:
     esm "^3.2.25"
     fontello-batch-cli "^4.0.0"
@@ -5727,7 +5727,7 @@ fs-extra@^0.30.0:
     path-is-absolute "^1.0.0"
     rimraf "^2.2.8"
 
-fs-extra@^9.0.0:
+fs-extra@^9.0.0, fs-extra@^9.1.0:
   version "9.1.0"
   resolved "https://registry.yarnpkg.com/fs-extra/-/fs-extra-9.1.0.tgz#5954460c764a8da2094ba3554bf839e6b9a7c86d"
   integrity sha512-hcg3ZmepS30/7BSFqRvoo3DOMQu7IjqxO5nCDt+zM9XWjb33Wg7ziNT+Qvqbuc3+gWpzO02JubVyk2G4Zvo1OQ==
