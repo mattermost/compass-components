@@ -19,7 +19,10 @@ const ICON_FONT_SIZES: Record<TIconSize, number> = {
     104: 120,
 };
 
-const ICON_GLYPHS: Record<TIconGlyph, string> = { none: 'none', ...IconGlyphs };
+const ICON_GLYPHS: TIconGlyph[] = [
+    'none',
+    ...IconGlyphs.map((glyph: string) => glyph as TIconGlyph),
+];
 
 const DEFAULT_ICON_GLYPH: TIconGlyph = 'mattermost';
 

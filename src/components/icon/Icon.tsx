@@ -10,7 +10,6 @@ import {
     DEFAULT_ICON_GLYPH,
     DEFAULT_ICON_SIZE,
     ICON_FONT_SIZES,
-    ICON_GLYPHS,
     ICON_SIZES,
 } from './Icon.constants';
 
@@ -30,7 +29,7 @@ function generateIconFontSizes(iconSize: TIconSize): FlattenSimpleInterpolation 
 
 const Icon = styled.i
     .attrs((props: PIcon) => ({
-        className: clsx(props.className, `icon-${ICON_GLYPHS[props.glyph || DEFAULT_ICON_GLYPH]}`),
+        className: clsx(props.className, `icon-${props.glyph || DEFAULT_ICON_GLYPH}`),
         'aria-label': props.ariaLabel,
         'data-size': props.size || DEFAULT_ICON_SIZE,
         'data-glyph': props.glyph || DEFAULT_ICON_GLYPH,

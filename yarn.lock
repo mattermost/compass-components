@@ -1219,9 +1219,9 @@
     "@types/yargs" "^15.0.0"
     chalk "^4.0.0"
 
-"@mattermost/compass-icons@github:mattermost/compass-icons#453e5ef3d36810cde4a0ce7843e437b994b42693":
+"@mattermost/compass-icons@github:mattermost/compass-icons#51f714cdcf213ed74ffe84c0c53deca91ec24a4c":
   version "0.1.0"
-  resolved "https://codeload.github.com/mattermost/compass-icons/tar.gz/453e5ef3d36810cde4a0ce7843e437b994b42693"
+  resolved "https://codeload.github.com/mattermost/compass-icons/tar.gz/51f714cdcf213ed74ffe84c0c53deca91ec24a4c"
   dependencies:
     esm "^3.2.25"
     fontello-batch-cli "^4.0.0"
