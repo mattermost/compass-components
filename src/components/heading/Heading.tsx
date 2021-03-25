@@ -1,7 +1,7 @@
 import React from 'react';
 import clsx from 'clsx';
 
-import Typography from '../../foundations/typography/Typography';
+import Typography from '../../foundations/typography';
 
 import {
     DEFAULT_HEADING_COLOR,
