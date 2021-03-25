@@ -6,4 +6,4 @@ type PText = {
     weight?: TTextWeight;
 };
 
-export { PText };
+export default PText;

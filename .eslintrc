@@ -18,7 +18,7 @@
         "eol-last": "error",
         "prefer-arrow-callback": "error",
         "no-trailing-spaces": "error",
-        "no-unused-vars": "warn",
+        "no-unused-vars": ["error", { "ignoreRestSiblings": true }],
         "no-use-before-define": "off",
         "@typescript-eslint/no-use-before-define": ["error"],
         "no-restricted-properties": [
@@ -107,6 +107,7 @@
                 "no-case-declarations": "warn",
                 "require-atomic-updates": "off"
             },
+            "env": { "es6": true },
             "parserOptions": {
                 "ecmaVersion": 2018,
                 "sourceType": "module"

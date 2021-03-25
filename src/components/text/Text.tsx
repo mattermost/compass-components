@@ -2,7 +2,7 @@ import React from 'react';
 
 import Type, { TTypeSize, TTypeWeight } from '../../foundations/type';
 
-import { PText } from './Text.props';
+import PText from './Text.props';
 
 const Text: React.FC<PText> = ({
     children,
