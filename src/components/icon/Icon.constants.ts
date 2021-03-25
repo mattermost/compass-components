@@ -21,4 +21,6 @@ const ICON_FONT_SIZES: Record<TIconSize, number> = {
 
 const ICON_GLYPHS: Record<TIconGlyph, string> = { none: 'none', ...IconGlyphs };
 
-export { DEFAULT_ICON_SIZE, ICON_FONT_SIZES, ICON_GLYPHS, ICON_SIZES };
+const DEFAULT_ICON_GLYPH: TIconGlyph = 'mattermost';
+
+export { ICON_SIZES, DEFAULT_ICON_SIZE, ICON_FONT_SIZES, ICON_GLYPHS, DEFAULT_ICON_GLYPH };

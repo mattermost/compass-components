@@ -56,10 +56,21 @@ const forwardProperties = (whitelist: string[] = []): ((property: string | numbe
     // forward the property when it is defined within the passed property-whitelist
     whitelist.includes(property.toString());
 
+const hideStyledComponentProperties = (
+    properties: Record<string, unknown>
+): Record<string, unknown> => ({
+    forwardedAs: { table: { disable: true } },
+    theme: { table: { disable: true } },
+    ref: { table: { disable: true } },
+    as: { table: { disable: true } },
+    ...properties,
+});
+
 const Utils = {
     isColor,
-    getStoryDocumentationUrl,
     forwardProperties,
+    getStoryDocumentationUrl,
+    hideStyledComponentProperties,
 };
 
 export default Utils;

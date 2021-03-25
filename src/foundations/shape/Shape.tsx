@@ -37,9 +37,14 @@ const getBorderDefinition = (props: PShape): string => {
     return '';
 };
 
-const Shape = styled.div.withConfig({
-    shouldForwardProp: Utils.forwardProperties(),
-})<PShape>`
+const Shape = styled.div
+    .attrs(({ component, ...rest }: PShape) => ({
+        ...rest,
+        as: component,
+    }))
+    .withConfig({
+        shouldForwardProp: Utils.forwardProperties(),
+    })<PShape>`
     flex: ${(props): string => (props.width ? 'initial' : 'auto')};
     display: flex;
     flex-direction: column;

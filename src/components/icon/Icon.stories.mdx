@@ -1,7 +1,8 @@
-import { Meta, Story, Canvas, ArgsTable, Title, Subtitle } from '@storybook/addon-docs/blocks';
+import { Meta, Story, Canvas, ArgsTable, Title } from '@storybook/addon-docs/blocks';
 
 import Icon from './Icon';
-import { ICON_GLYPHS, ICON_SIZES } from './Icon.constants';
+import { DEFAULT_ICON_GLYPH, DEFAULT_ICON_SIZE, ICON_GLYPHS, ICON_SIZES } from './Icon.constants';
+import { Utils } from '../../utils';
 
 <Meta component={Icon} title="Components/Icon" />
 
@@ -19,10 +20,10 @@ export const Template = (args) => {
     <Story
         name="Default"
         args={{
-            size: 20,
-            glyph: 'mattermost',
+            size: DEFAULT_ICON_SIZE,
+            glyph: DEFAULT_ICON_GLYPH,
         }}
-        argTypes={{
+        argTypes={Utils.hideStyledComponentProperties({
             size: {
                 control: {
                     type: 'select',
@@ -35,7 +36,10 @@ export const Template = (args) => {
                     options: Object.keys(ICON_GLYPHS),
                 },
             },
-        }}
+            'aria-label': { table: { disable: true } },
+            'data-size': { table: { disable: true } },
+            'data-glyph': { table: { disable: true } },
+        })}
     >
         {Template.bind({})}
     </Story>
