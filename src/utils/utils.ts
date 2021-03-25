@@ -1,5 +1,7 @@
 import kebabCase from 'lodash.kebabcase';
 
+import { defaultPropertyWhitelist } from './constants';
+
 const isColor = (colorString: string): boolean => {
     const s = new Option().style;
 
@@ -18,8 +20,6 @@ const getStoryDocumentationUrl = (storyParameters: Record<string, string>): stri
 
     return `/?path=/docs/${storyPath}--${kebabCase(storyParameters.includeStories[0])}`;
 };
-
-const defaultWhitelist: string[] = ['role', 'type', 'children', 'className'];
 
 /**
  * this is to prevent all properties to be passed down to the underlying
@@ -52,7 +52,7 @@ const forwardProperties = (whitelist: string[] = []): ((property: string | numbe
     // forward the property when it is a `aria-*`attribute
     property.toString().startsWith('aria-') ||
     // always forward the property when it is defined within the property-whitelist
-    defaultWhitelist.includes(property.toString()) ||
+    defaultPropertyWhitelist.includes(property.toString()) ||
     // forward the property when it is defined within the passed property-whitelist
     whitelist.includes(property.toString());
 

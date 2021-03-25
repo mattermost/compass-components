@@ -5,6 +5,7 @@ import { FlattenSimpleInterpolation } from 'styled-components/ts3.6';
 import { Utils } from '../../utils';
 
 import { PIcon } from './Icon.props';
+import { TIconSize } from './Icon.types';
 import {
     DEFAULT_ICON_GLYPH,
     DEFAULT_ICON_SIZE,
@@ -12,7 +13,6 @@ import {
     ICON_GLYPHS,
     ICON_SIZES,
 } from './Icon.constants';
-import { TIconSize } from './Icon.types';
 
 function generateIconFontSizes(iconSize: TIconSize): FlattenSimpleInterpolation {
     return css`
