@@ -38,10 +38,12 @@ const Icon = styled.i
         shouldForwardProp: Utils.forwardProperties(),
     })<PIcon>`
     // define local variables using global variables and fallbacks
-    --speed-shortest: var(--animation-speed-shortest, 0.1s);
+    --color-foreground: var(--icon-color-foreground, var(--primary-color-dark, black));
+    --animation-speed: var(--animation-speed-shortest, 0.1s);
 
     // element container base styles
     align-items: center;
+    color: var(--color-foreground);
     display: inline-flex;
     height: 20px;
     justify-content: center;
@@ -62,7 +64,7 @@ const Icon = styled.i
 
     // animation
     body.enable-animations & {
-        transition: color var(--speed-shortest) 0s ease-in-out;
+        transition: color var(--animation-speed) 0s ease-in-out;
     }
 `;
 
