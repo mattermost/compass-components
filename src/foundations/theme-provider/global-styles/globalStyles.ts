@@ -1,4 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
+// eslint-disable-next-line import/no-unassigned-import
+import '@mattermost/compass-icons';
 
 import { TBorderRadiusSizes, TElevationLevel } from '../../shape';
 import { TTheme } from '../themes/theme.types';
@@ -10,6 +12,7 @@ import VElevation from './variables.elevation';
 import VFontFaces from './variables.font-faces';
 import VFontStyle from './variables.font-style';
 import VBorderRadius from './variables.border-radius';
+import VAnimationSpeeds from './variables.animation';
 import reset from './reset-styles';
 import defaultStyles from './default-styles';
 
@@ -28,6 +31,7 @@ const GlobalStyle = createGlobalStyle`
         ${VElevation}
         ${VAnimations}
         ${VBorderRadius}
+        ${VAnimationSpeeds}
 
         --border-default: 1px solid var(--disabled-text-color);
     }
