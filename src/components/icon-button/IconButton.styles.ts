@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 import { FlattenSimpleInterpolation } from 'styled-components/ts3.6';
 
-import { TIconButtonSize } from './IconButton.types';
+import { TIconButtonSize, IconButtonLayer, IconButtonState } from './IconButton.types';
 import {
     ICON_BUTTON_SIZES,
     ICON_BUTTON_DIMENSIONS,
@@ -19,8 +19,40 @@ function generateSizingStyles(size: TIconButtonSize): FlattenSimpleInterpolation
     `;
 }
 
+function getRBGColour({ colourName, opacity }: IconButtonLayer): string {
+    if (opacity && opacity >= 0 && opacity < 1) {
+        return `rgba(var(--colour-${colourName}-rgb), ${opacity})`;
+    }
+
+    return `rgb(var(--colour-${colourName}-rgb))`;
+}
+
+function getLayerStyles(layer: IconButtonLayer): string {
+    return `--colour-${layer.type}: ${getRBGColour(layer)};`;
+}
+
+function generateStateStyles(stateStyles: IconButtonState[]): FlattenSimpleInterpolation {
+    return css`
+        ${stateStyles
+            .map(({ selector, layers }: IconButtonState) => {
+                if (selector === 'base') {
+                    return `
+                        ${layers.map(getLayerStyles).join('\n')}
+                    `;
+                }
+
+                return `
+                    &:${selector} {
+                        ${layers.map(getLayerStyles).join('\n')}
+                    }
+                `;
+            })
+            .join('\n')};
+    `;
+}
+
 const StyledIconButton = styled.button`
-    // define component colours
+    // set component colours
     --colour-primary-rgb: var(--button-colour-primary-rgb, 61, 60, 64);
     --colour-inverted-primary-rgb: var(--button-colour-inverted-primary-rgb, 255, 255, 255);
     --colour-secondary-rgb: var(--button-colour-secondary-rgb, 22, 109, 224);
@@ -83,91 +115,151 @@ const StyledIconButton = styled.button`
 
     // apply interaction state changes
     &[disabled] {
-        --colour-foreground: rgba(var(--colour-primary-rgb), 0.32);
+        ${generateStateStyles([
+            {
+                selector: 'base',
+                layers: [{ type: 'foreground', colourName: 'primary', opacity: 0.32 }],
+            },
+        ])}
 
         &[data-inverted='true'] {
-            --colour-foreground: rgba(var(--colour-inverted-primary-rgb), 0.32);
+            ${generateStateStyles([
+                {
+                    selector: 'base',
+                    layers: [{ type: 'foreground', colourName: 'inverted-primary', opacity: 0.32 }],
+                },
+            ])}
         }
     }
 
     &:not([disabled]) {
-        &:hover {
-            --colour-foreground: rgba(var(--colour-primary-rgb), 0.72);
-            --colour-background: rgba(var(--colour-primary-rgb), 0.08);
-        }
-
-        &:active {
-            --colour-foreground: rgb(var(--colour-secondary-rgb));
-            --colour-background: rgba(var(--colour-secondary-rgb), 0.08);
-        }
+        ${generateStateStyles([
+            {
+                selector: 'hover',
+                layers: [
+                    { type: 'foreground', colourName: 'primary', opacity: 0.72 },
+                    { type: 'background', colourName: 'primary', opacity: 0.08 },
+                ],
+            },
+            {
+                selector: 'active',
+                layers: [
+                    { type: 'foreground', colourName: 'secondary' },
+                    { type: 'background', colourName: 'secondary', opacity: 0.08 },
+                ],
+            },
+        ])}
 
         &[data-destructive='true'] {
-            --colour-foreground: rgb(var(--colour-destructive-rgb));
-            --colour-border: rgb(var(--colour-destructive-rgb));
-
-            &:hover {
-                --colour-background: rgba(var(--colour-destructive-rgb), 0.08);
-            }
-
-            &:active {
-                --colour-background: rgba(var(--colour-destructive-rgb), 0.16);
-            }
+            ${generateStateStyles([
+                {
+                    selector: 'base',
+                    layers: [
+                        { type: 'foreground', colourName: 'destructive' },
+                        { type: 'border', colourName: 'destructive' },
+                    ],
+                },
+                {
+                    selector: 'hover',
+                    layers: [{ type: 'background', colourName: 'destructive', opacity: 0.08 }],
+                },
+                {
+                    selector: 'active',
+                    layers: [{ type: 'background', colourName: 'destructive', opacity: 0.16 }],
+                },
+            ])}
         }
 
         &[data-toggled='true']:not([data-destructive='true']) {
-            --colour-foreground: rgb(var(--colour-inverted-primary-rgb));
-            --colour-background: rgb(var(--colour-secondary-rgb));
-            --colour-border: rgb(var(--colour-inverted-focus-rgb));
-
-            &:hover {
-                --colour-background: rgba(var(--colour-secondary-rgb), 0.92);
-            }
-
-            &:active {
-                --colour-foreground: rgb(var(--colour-secondary-rgb));
-                --colour-background: rgba(var(--colour-secondary-rgb), 0.08);
-            }
+            ${generateStateStyles([
+                {
+                    selector: 'base',
+                    layers: [
+                        { type: 'foreground', colourName: 'inverted-primary' },
+                        { type: 'background', colourName: 'secondary' },
+                        { type: 'border', colourName: 'inverted-focus' },
+                    ],
+                },
+                {
+                    selector: 'hover',
+                    layers: [{ type: 'background', colourName: 'secondary', opacity: 0.92 }],
+                },
+                {
+                    selector: 'active',
+                    layers: [
+                        { type: 'foreground', colourName: 'secondary' },
+                        { type: 'background', colourName: 'secondary', opacity: 0.08 },
+                    ],
+                },
+            ])}
         }
 
         &[data-inverted='true'] {
-            --colour-foreground: rgba(var(--colour-inverted-primary-rgb), 0.64);
-            --colour-border: rgb(var(--colour-inverted-focus-rgb));
-
-            &:hover {
-                --colour-foreground: rgb(var(--colour-inverted-primary-rgb));
-                --colour-background: rgba(var(--colour-inverted-primary-rgb), 0.08);
-            }
-
-            &:active {
-                --colour-background: rgba(var(--colour-inverted-primary-rgb), 0.16);
-            }
+            ${generateStateStyles([
+                {
+                    selector: 'base',
+                    layers: [
+                        { type: 'foreground', colourName: 'inverted-primary', opacity: 0.64 },
+                        { type: 'border', colourName: 'inverted-focus' },
+                    ],
+                },
+                {
+                    selector: 'hover',
+                    layers: [
+                        { type: 'foreground', colourName: 'inverted-primary' },
+                        { type: 'background', colourName: 'inverted-primary', opacity: 0.08 },
+                    ],
+                },
+                {
+                    selector: 'active',
+                    layers: [{ type: 'background', colourName: 'inverted-primary', opacity: 0.16 }],
+                },
+            ])}
 
             &[data-destructive='true'] {
-                --colour-border: rgb(var(--colour-destructive-rgb));
-
-                &:hover {
-                    --colour-foreground: rgb(var(--colour-inverted-primary-rgb));
-                    --colour-background: rgba(var(--colour-destructive-rgb), 0.8);
-                }
-
-                &:active {
-                    --colour-background: rgb(var(--colour-destructive-rgb));
-                }
+                ${generateStateStyles([
+                    {
+                        selector: 'base',
+                        layers: [{ type: 'border', colourName: 'destructive' }],
+                    },
+                    {
+                        selector: 'hover',
+                        layers: [
+                            { type: 'foreground', colourName: 'inverted-primary' },
+                            { type: 'background', colourName: 'destructive', opacity: 0.8 },
+                        ],
+                    },
+                    {
+                        selector: 'active',
+                        layers: [{ type: 'background', colourName: 'destructive' }],
+                    },
+                ])}
             }
 
             &[data-toggled='true']:not([data-destructive='true']) {
-                --colour-foreground: rgb(var(--colour-secondary-rgb));
-                --colour-background: rgb(var(--colour-inverted-primary-rgb));
-                --colour-border: rgb(var(--colour-inverted-focus-rgb));
-
-                &:hover {
-                    --colour-background: rgba(var(--colour-inverted-primary-rgb), 0.92);
-                }
-
-                &:active {
-                    --colour-foreground: rgb(var(--colour-inverted-primary-rgb));
-                    --colour-background: rgba(var(--colour-inverted-primary-rgb), 0.16);
-                }
+                ${generateStateStyles([
+                    {
+                        selector: 'base',
+                        layers: [
+                            { type: 'foreground', colourName: 'secondary' },
+                            { type: 'background', colourName: 'inverted-primary' },
+                            { type: 'border', colourName: 'inverted-focus' },
+                        ],
+                    },
+                    {
+                        selector: 'hover',
+                        layers: [
+                            { type: 'background', colourName: 'inverted-primary', opacity: 0.92 },
+                        ],
+                    },
+                    {
+                        selector: 'active',
+                        layers: [
+                            { type: 'foreground', colourName: 'inverted-primary' },
+                            { type: 'background', colourName: 'inverted-primary', opacity: 0.16 },
+                        ],
+                    },
+                ])}
             }
         }
     }
