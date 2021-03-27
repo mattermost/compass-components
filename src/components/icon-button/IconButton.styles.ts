@@ -35,7 +35,7 @@ function generateStateStyles(stateStyles: IconButtonState[]): FlattenSimpleInter
     return css`
         ${stateStyles
             .map(({ selector, layers }: IconButtonState) => {
-                if (selector === 'base') {
+                if (!selector) {
                     return `
                         ${layers.map(getLayerColours).join('\n')}
                     `;
@@ -117,7 +117,6 @@ const StyledIconButton = styled.button`
     &[disabled] {
         ${generateStateStyles([
             {
-                selector: 'none',
                 layers: [{ name: 'foreground', colour: '--colour-primary-rgb', opacity: 0.32 }],
             },
         ])}
@@ -125,7 +124,6 @@ const StyledIconButton = styled.button`
         &[data-inverted='true'] {
             ${generateStateStyles([
                 {
-                    selector: 'none',
                     layers: [
                         {
                             name: 'foreground',
@@ -159,7 +157,6 @@ const StyledIconButton = styled.button`
         &[data-destructive='true'] {
             ${generateStateStyles([
                 {
-                    selector: 'none',
                     layers: [
                         { name: 'foreground', colour: '--colour-destructive-rgb' },
                         { name: 'border', colour: '--colour-destructive-rgb' },
@@ -191,7 +188,6 @@ const StyledIconButton = styled.button`
         &[data-toggled='true']:not([data-destructive='true']) {
             ${generateStateStyles([
                 {
-                    selector: 'none',
                     layers: [
                         { name: 'foreground', colour: '--colour-inverted-primary-rgb' },
                         { name: 'background', colour: '--colour-secondary-rgb' },
@@ -225,7 +221,6 @@ const StyledIconButton = styled.button`
         &[data-inverted='true'] {
             ${generateStateStyles([
                 {
-                    selector: 'none',
                     layers: [
                         {
                             name: 'foreground',
@@ -261,7 +256,6 @@ const StyledIconButton = styled.button`
             &[data-destructive='true'] {
                 ${generateStateStyles([
                     {
-                        selector: 'none',
                         layers: [{ name: 'border', colour: '--colour-destructive-rgb' }],
                     },
                     {
@@ -285,7 +279,6 @@ const StyledIconButton = styled.button`
             &[data-toggled='true']:not([data-destructive='true']) {
                 ${generateStateStyles([
                     {
-                        selector: 'none',
                         layers: [
                             { name: 'foreground', colour: '--colour-secondary-rgb' },
                             { name: 'background', colour: '--colour-inverted-primary-rgb' },
