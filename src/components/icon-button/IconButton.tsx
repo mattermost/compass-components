@@ -33,7 +33,13 @@ const IconButton: React.FC<PIconButton> = ({
         );
 
     const buttonLabel = label ? (
-        <Text className="IconButton_label" size={ICON_BUTTON_TEXT_SIZES[size]} weight="bold">
+        <Text
+            className="IconButton_label"
+            size={ICON_BUTTON_TEXT_SIZES[size]}
+            weight="bold"
+            margin="none"
+            element="span"
+        >
             {label}
         </Text>
     ) : null;

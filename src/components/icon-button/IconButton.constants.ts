@@ -38,11 +38,11 @@ const ICON_BUTTON_DIMENSIONS: Record<TIconButtonSize, number> = {
 };
 
 const ICON_BUTTON_PADDING: Record<TIconButtonSize, number> = {
-    xsmall: 6,
-    'small-compact': 6,
-    small: 8,
-    standard: 10,
-    large: 10,
+    xsmall: 4,
+    'small-compact': 4,
+    small: 6,
+    standard: 8,
+    large: 8,
 };
 
 const ICON_BUTTON_SPACING: Record<TIconButtonSize, number> = {
