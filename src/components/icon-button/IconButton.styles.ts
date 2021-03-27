@@ -19,16 +19,16 @@ function generateSizingStyles(size: TIconButtonSize): FlattenSimpleInterpolation
     `;
 }
 
-function getRBGColour({ colourName, opacity }: IconButtonLayer): string {
+function getRBGColour({ colour, opacity }: IconButtonLayer): string {
     if (opacity && opacity >= 0 && opacity < 1) {
-        return `rgba(var(--colour-${colourName}-rgb), ${opacity})`;
+        return `rgba(var(${colour}), ${opacity})`;
     }
 
-    return `rgb(var(--colour-${colourName}-rgb))`;
+    return `rgb(var(${colour}))`;
 }
 
-function getLayerStyles(layer: IconButtonLayer): string {
-    return `--colour-${layer.type}: ${getRBGColour(layer)};`;
+function getLayerColours(layer: IconButtonLayer): string {
+    return `--colour-${layer.name}: ${getRBGColour(layer)};`;
 }
 
 function generateStateStyles(stateStyles: IconButtonState[]): FlattenSimpleInterpolation {
@@ -37,13 +37,13 @@ function generateStateStyles(stateStyles: IconButtonState[]): FlattenSimpleInter
             .map(({ selector, layers }: IconButtonState) => {
                 if (selector === 'base') {
                     return `
-                        ${layers.map(getLayerStyles).join('\n')}
+                        ${layers.map(getLayerColours).join('\n')}
                     `;
                 }
 
                 return `
                     &:${selector} {
-                        ${layers.map(getLayerStyles).join('\n')}
+                        ${layers.map(getLayerColours).join('\n')}
                     }
                 `;
             })
@@ -118,7 +118,7 @@ const StyledIconButton = styled.button`
         ${generateStateStyles([
             {
                 selector: 'base',
-                layers: [{ type: 'foreground', colourName: 'primary', opacity: 0.32 }],
+                layers: [{ name: 'foreground', colour: '--colour-primary-rgb', opacity: 0.32 }],
             },
         ])}
 
@@ -126,7 +126,13 @@ const StyledIconButton = styled.button`
             ${generateStateStyles([
                 {
                     selector: 'base',
-                    layers: [{ type: 'foreground', colourName: 'inverted-primary', opacity: 0.32 }],
+                    layers: [
+                        {
+                            name: 'foreground',
+                            colour: '--colour-inverted-primary-rgb',
+                            opacity: 0.32,
+                        },
+                    ],
                 },
             ])}
         }
@@ -137,15 +143,15 @@ const StyledIconButton = styled.button`
             {
                 selector: 'hover',
                 layers: [
-                    { type: 'foreground', colourName: 'primary', opacity: 0.72 },
-                    { type: 'background', colourName: 'primary', opacity: 0.08 },
+                    { name: 'foreground', colour: '--colour-primary-rgb', opacity: 0.72 },
+                    { name: 'background', colour: '--colour-primary-rgb', opacity: 0.08 },
                 ],
             },
             {
                 selector: 'active',
                 layers: [
-                    { type: 'foreground', colourName: 'secondary' },
-                    { type: 'background', colourName: 'secondary', opacity: 0.08 },
+                    { name: 'foreground', colour: '--colour-secondary-rgb' },
+                    { name: 'background', colour: '--colour-secondary-rgb', opacity: 0.08 },
                 ],
             },
         ])}
@@ -155,17 +161,29 @@ const StyledIconButton = styled.button`
                 {
                     selector: 'base',
                     layers: [
-                        { type: 'foreground', colourName: 'destructive' },
-                        { type: 'border', colourName: 'destructive' },
+                        { name: 'foreground', colour: '--colour-destructive-rgb' },
+                        { name: 'border', colour: '--colour-destructive-rgb' },
                     ],
                 },
                 {
                     selector: 'hover',
-                    layers: [{ type: 'background', colourName: 'destructive', opacity: 0.08 }],
+                    layers: [
+                        {
+                            name: 'background',
+                            colour: '--colour-destructive-rgb',
+                            opacity: 0.08,
+                        },
+                    ],
                 },
                 {
                     selector: 'active',
-                    layers: [{ type: 'background', colourName: 'destructive', opacity: 0.16 }],
+                    layers: [
+                        {
+                            name: 'background',
+                            colour: '--colour-destructive-rgb',
+                            opacity: 0.16,
+                        },
+                    ],
                 },
             ])}
         }
@@ -175,20 +193,30 @@ const StyledIconButton = styled.button`
                 {
                     selector: 'base',
                     layers: [
-                        { type: 'foreground', colourName: 'inverted-primary' },
-                        { type: 'background', colourName: 'secondary' },
-                        { type: 'border', colourName: 'inverted-focus' },
+                        { name: 'foreground', colour: '--colour-inverted-primary-rgb' },
+                        { name: 'background', colour: '--colour-secondary-rgb' },
+                        { name: 'border', colour: '--colour-inverted-focus-rgb' },
                     ],
                 },
                 {
                     selector: 'hover',
-                    layers: [{ type: 'background', colourName: 'secondary', opacity: 0.92 }],
+                    layers: [
+                        {
+                            name: 'background',
+                            colour: '--colour-secondary-rgb',
+                            opacity: 0.92,
+                        },
+                    ],
                 },
                 {
                     selector: 'active',
                     layers: [
-                        { type: 'foreground', colourName: 'secondary' },
-                        { type: 'background', colourName: 'secondary', opacity: 0.08 },
+                        { name: 'foreground', colour: '--colour-secondary-rgb' },
+                        {
+                            name: 'background',
+                            colour: '--colour-secondary-rgb',
+                            opacity: 0.08,
+                        },
                     ],
                 },
             ])}
@@ -199,20 +227,34 @@ const StyledIconButton = styled.button`
                 {
                     selector: 'base',
                     layers: [
-                        { type: 'foreground', colourName: 'inverted-primary', opacity: 0.64 },
-                        { type: 'border', colourName: 'inverted-focus' },
+                        {
+                            name: 'foreground',
+                            colour: '--colour-inverted-primary-rgb',
+                            opacity: 0.64,
+                        },
+                        { name: 'border', colour: '--colour-inverted-focus-rgb' },
                     ],
                 },
                 {
                     selector: 'hover',
                     layers: [
-                        { type: 'foreground', colourName: 'inverted-primary' },
-                        { type: 'background', colourName: 'inverted-primary', opacity: 0.08 },
+                        { name: 'foreground', colour: '--colour-inverted-primary-rgb' },
+                        {
+                            name: 'background',
+                            colour: '--colour-inverted-primary-rgb',
+                            opacity: 0.08,
+                        },
                     ],
                 },
                 {
                     selector: 'active',
-                    layers: [{ type: 'background', colourName: 'inverted-primary', opacity: 0.16 }],
+                    layers: [
+                        {
+                            name: 'background',
+                            colour: '--colour-inverted-primary-rgb',
+                            opacity: 0.16,
+                        },
+                    ],
                 },
             ])}
 
@@ -220,18 +262,22 @@ const StyledIconButton = styled.button`
                 ${generateStateStyles([
                     {
                         selector: 'base',
-                        layers: [{ type: 'border', colourName: 'destructive' }],
+                        layers: [{ name: 'border', colour: '--colour-destructive-rgb' }],
                     },
                     {
                         selector: 'hover',
                         layers: [
-                            { type: 'foreground', colourName: 'inverted-primary' },
-                            { type: 'background', colourName: 'destructive', opacity: 0.8 },
+                            { name: 'foreground', colour: '--colour-inverted-primary-rgb' },
+                            {
+                                name: 'background',
+                                colour: '--colour-destructive-rgb',
+                                opacity: 0.8,
+                            },
                         ],
                     },
                     {
                         selector: 'active',
-                        layers: [{ type: 'background', colourName: 'destructive' }],
+                        layers: [{ name: 'background', colour: '--colour-destructive-rgb' }],
                     },
                 ])}
             }
@@ -241,22 +287,30 @@ const StyledIconButton = styled.button`
                     {
                         selector: 'base',
                         layers: [
-                            { type: 'foreground', colourName: 'secondary' },
-                            { type: 'background', colourName: 'inverted-primary' },
-                            { type: 'border', colourName: 'inverted-focus' },
+                            { name: 'foreground', colour: '--colour-secondary-rgb' },
+                            { name: 'background', colour: '--colour-inverted-primary-rgb' },
+                            { name: 'border', colour: '--colour-inverted-focus-rgb' },
                         ],
                     },
                     {
                         selector: 'hover',
                         layers: [
-                            { type: 'background', colourName: 'inverted-primary', opacity: 0.92 },
+                            {
+                                name: 'background',
+                                colour: '--colour-inverted-primary-rgb',
+                                opacity: 0.92,
+                            },
                         ],
                     },
                     {
                         selector: 'active',
                         layers: [
-                            { type: 'foreground', colourName: 'inverted-primary' },
-                            { type: 'background', colourName: 'inverted-primary', opacity: 0.16 },
+                            { name: 'foreground', colour: '--colour-inverted-primary-rgb' },
+                            {
+                                name: 'background',
+                                colour: '--colour-inverted-primary-rgb',
+                                opacity: 0.16,
+                            },
                         ],
                     },
                 ])}
