@@ -1,4 +1,5 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+import { FlattenSimpleInterpolation } from 'styled-components/ts3.6';
 
 import { TIconButtonSize } from './IconButton.types';
 import {
@@ -8,9 +9,9 @@ import {
     ICON_BUTTON_SPACING,
 } from './IconButton.constants';
 
-function generateSizingStyles(size: TIconButtonSize): string {
-    return `
-        &[data-size="${size}"] {
+function generateSizingStyles(size: TIconButtonSize): FlattenSimpleInterpolation {
+    return css`
+        &[data-size='${size}'] {
             --horizontal-padding: ${ICON_BUTTON_PADDING[size]}px;
             --size: ${ICON_BUTTON_DIMENSIONS[size]}px;
             --child-spacing: ${ICON_BUTTON_SPACING[size]}px;
