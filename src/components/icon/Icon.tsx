@@ -7,23 +7,17 @@ import { Utils } from '../../utils';
 import { PIcon } from './Icon.props';
 import { TIconSize } from './Icon.types';
 import {
-    ICON_GLYPHS,
     DEFAULT_ICON_GLYPH,
     DEFAULT_ICON_SIZE,
     ICON_FONT_SIZES,
     ICON_SIZES,
 } from './Icon.constants';
 
-function generateIconFontSizes(iconSize: TIconSize): FlattenSimpleInterpolation {
+function generateIconSizingStyles(iconSize: TIconSize): FlattenSimpleInterpolation {
     return css`
         &[data-size='${iconSize}'] {
-            height: ${iconSize}px;
-            width: ${iconSize}px;
-
-            &::before {
-                font-size: ${ICON_FONT_SIZES[iconSize]}px;
-                letter-spacing: ${ICON_FONT_SIZES[iconSize]}px;
-            }
+            --size: ${iconSize}px;
+            --font-size: ${ICON_FONT_SIZES[iconSize]}px;
         }
     `;
 }
@@ -38,30 +32,34 @@ const Icon = styled.i
     .withConfig({
         shouldForwardProp: Utils.forwardProperties(),
     })<PIcon>`
-    // define local variables using global variables and fallbacks
+    // define component colours
     --color-foreground: var(--icon-color-foreground, var(--primary-color-dark, black));
+    
+    // set component variable defaults
+    --size: 20px;
+    --font-size: ${ICON_FONT_SIZES[DEFAULT_ICON_SIZE]}px;
     --animation-speed: var(--animation-speed-shortest, 0.1s);
 
     // element container base styles
     align-items: center;
     color: var(--color-foreground);
     display: inline-flex;
-    height: 20px;
+    height: var(--size);
     justify-content: center;
     position: relative;
     padding: 0;
-    width: 20px;
+    width: var(--size);
 
     // sub elements
     &::before {
-        font-size: ${ICON_FONT_SIZES[DEFAULT_ICON_SIZE]}px;
+        font-size: var(--font-size);
         line-height: 1;
-        letter-spacing: ${ICON_FONT_SIZES[DEFAULT_ICON_SIZE]}px;
+        letter-spacing: var(--font-size);
         margin: 0; // remove margins added by fontello
     }
 
     // define sizes
-    ${ICON_SIZES.map((iconSize) => generateIconFontSizes(iconSize))}
+    ${ICON_SIZES.map((iconSize) => generateIconSizingStyles(iconSize))}
 
     // animation
     body.enable-animations & {

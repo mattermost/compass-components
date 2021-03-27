@@ -67,7 +67,9 @@ const StyledIconButton = styled.button`
     }
 
     // default child element styles
-    .IconButton_icon,
+    .IconButton_icon {
+        --icon-color-foreground: var(--colour-foreground);
+    }
     .IconButton_label {
         color: var(--colour-foreground);
     }
