@@ -78,10 +78,10 @@ const StyledIconButton = styled.button`
         margin-left: var(--child-spacing);
     }
 
-    // apply variable sizing styles
+    // apply variable sizing changes
     ${ICON_BUTTON_SIZES.map(generateSizingStyles)}
 
-    // apply interaction states
+    // apply interaction state changes
     &[disabled] {
         --colour-foreground: rgba(var(--colour-primary-rgb), 0.32);
 
