@@ -2,7 +2,7 @@ type TIconButtonSize = 'xsmall' | 'small-compact' | 'small' | 'standard' | 'larg
 
 type IconButtonLayer = {
     type: 'foreground' | 'background' | 'border';
-    name:
+    colourName:
         | 'primary'
         | 'secondary'
         | 'focus'
