@@ -18,6 +18,7 @@ const IconButton: React.FC<PIconButton> = ({
     destructive,
     disabled,
     iconGlyph,
+    inverted,
     label,
     size = DEFAULT_ICON_BUTTON_SIZE,
     toggled,
@@ -45,6 +46,7 @@ const IconButton: React.FC<PIconButton> = ({
             data-destructive={destructive}
             data-size={size}
             data-toggled={toggled}
+            data-inverted={inverted}
         >
             {buttonIcon}
             {buttonLabel}

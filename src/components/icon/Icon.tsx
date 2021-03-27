@@ -7,6 +7,7 @@ import { Utils } from '../../utils';
 import { PIcon } from './Icon.props';
 import { TIconSize } from './Icon.types';
 import {
+    ICON_GLYPHS,
     DEFAULT_ICON_GLYPH,
     DEFAULT_ICON_SIZE,
     ICON_FONT_SIZES,

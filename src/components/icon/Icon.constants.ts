@@ -24,6 +24,6 @@ const ICON_GLYPHS: TIconGlyph[] = [
     ...IconGlyphs.map((glyph: string) => glyph as TIconGlyph),
 ];
 
-const DEFAULT_ICON_GLYPH: TIconGlyph = 'mattermost';
+const DEFAULT_ICON_GLYPH: TIconGlyph = 'mattermost' as TIconGlyph;
 
 export { ICON_SIZES, DEFAULT_ICON_SIZE, ICON_FONT_SIZES, ICON_GLYPHS, DEFAULT_ICON_GLYPH };

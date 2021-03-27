@@ -8,6 +8,7 @@ export type PIconButton = {
     destructive?: boolean;
     disabled?: boolean;
     iconGlyph?: TIconGlyph;
+    inverted?: boolean;
     label?: string;
     size?: TIconButtonSize;
     toggled?: boolean;

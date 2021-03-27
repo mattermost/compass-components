@@ -23,179 +23,265 @@ function generateSizingStyles(size: TIconButtonSize): string {
 }
 
 const StyledIconButton = styled.button`
-    &.IconButton {
-        // define local variables using global variables and fallbacks
-        --normal-text-rgb: var(--button-normal-text-rgb, 61, 60, 64);
-        --active-text-rgb: var(--button-active-text-rgb, 22, 109, 224);
-        --normal-background-rgb: var(--button-normal-background-rgb, 61, 60, 64);
-        --active-background-rgb: var(--button-active-background-rgb, 22, 109, 224);
-        --border-rgb: var(--button-border-rgb, 22, 109, 224);
-        --destructive-rgb: var(--button-destructive-rgb, 247, 67, 67);
-        --speed-shortest: var(--animation-speed-shortest, 0.1s);
+    // define local variables using global variables and fallbacks
+    --colour-primary-rgb: var(--button-colour-primary-rgb, 61, 60, 64);
+    --colour-inverted-primary-rgb: var(--button-colour-inverted-primary-rgb, 255, 255, 255);
 
-        // element container base styles
-        display: inline-flex;
-        justify-content: center;
-        align-items: center;
-        position: relative;
-        padding: 0 10px;
-        min-width: 40px;
-        height: 40px;
+    --colour-secondary-rgb: var(--button-colour-secondary-rgb, 22, 109, 224);
+    --colour-inverted-secondary-rgb: var(--button-colour-inverted-secondary-rgb, 20, 93, 191);
+
+    --colour-focus-rgb: var(--button-colour-focus-rgb, 22, 109, 224);
+    --colour-inverted-focus-rgb: var(--button-colour-inverted-focus-rgb, 87, 158, 255);
+
+    --colour-destructive-rgb: var(--button-colour-destructive-rgb, 247, 67, 67);
+    --colour-inverted-destructive-rgb: var(--button-colour-inverted-destructive-rgb, 247, 67, 67);
+
+    // element container base styles
+    align-items: center;
+    background: transparent;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    display: inline-flex;
+    height: 40px;
+    justify-content: center;
+    min-width: 40px;
+    outline: none;
+    overflow: hidden;
+    padding: 0 10px;
+    position: relative;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+
+    // sub elements
+    .IconButton_icon,
+    .IconButton_label {
+        color: rgba(var(--colour-primary-rgb), 0.56);
+    }
+    .IconButton_icon + .IconButton_label {
+        margin-left: 6px;
+    }
+
+    // - ::before for fill, ::after for border
+    &::before,
+    &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
         border-radius: 4px;
         border: none;
-        outline: none;
         background: transparent;
-        -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-        overflow: hidden;
-        cursor: pointer;
+        z-index: 0;
+        pointer-events: none;
+    }
+    &::before {
+        opacity: 0;
+        background: rgba(var(--colour-primary-rgb), 0.08);
+    }
+    &::after {
+        opacity: 0;
+        border: solid 2px rgba(var(--colour-focus-rgb), 1);
+    }
 
-        // sub elements
+    // states
+    &:hover {
         .IconButton_icon,
         .IconButton_label {
-            color: rgba(var(--normal-text-rgb), 0.56);
-        }
-        .IconButton_icon + .IconButton_label {
-            margin-left: 6px;
-        }
-
-        // - ::before for fill, ::after for border
-        &::before,
-        &::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            bottom: 0;
-            right: 0;
-            border-radius: 4px;
-            border: none;
-            background: transparent;
-            z-index: 0;
-            pointer-events: none;
+            color: rgba(var(--colour-primary-rgb), 0.72);
         }
         &::before {
-            opacity: 0;
-            background: rgba(var(--normal-background-rgb), 0.08);
+            opacity: 1;
         }
+    }
+
+    // - only applies focus using keyboard in newer browsers, fallback is standard behaviour
+    &:focus {
+        &::after {
+            opacity: 1;
+        }
+    }
+    &:focus:not(:focus-visible) {
         &::after {
             opacity: 0;
-            border: solid 2px rgba(var(--border-rgb), 1);
         }
+    }
+    &:focus-visible {
+        &::after {
+            opacity: 1;
+        }
+    }
 
-        // states
+    &:active {
+        .IconButton_icon,
+        .IconButton_label {
+            color: rgba(var(--colour-secondary-rgb), 1);
+        }
+        &::before {
+            background: rgba(var(--colour-secondary-rgb), 0.08);
+            opacity: 1;
+        }
+    }
+
+    &[data-inverted='true'] {
+        .IconButton_icon,
+        .IconButton_label {
+            color: rgba(var(--colour-inverted-primary-rgb), 0.64);
+        }
+        &::before {
+            background: rgba(var(--colour-inverted-primary-rgb), 0.08);
+        }
+        &::after {
+            border: solid 2px rgba(var(--colour-inverted-focus-rgb), 1);
+        }
         &:hover {
             .IconButton_icon,
             .IconButton_label {
-                color: rgba(var(--normal-text-rgb), 0.72);
+                color: rgba(var(--colour-inverted-primary-rgb), 1);
+            }
+        }
+        &:active {
+            &::before {
+                background: rgba(var(--colour-inverted-primary-rgb), 0.16);
+            }
+        }
+    }
+
+    // variations
+    &[data-toggled='true']:not([disabled]):not([data-destructive='true']) {
+        .IconButton_icon,
+        .IconButton_label {
+            color: rgba(var(--colour-inverted-primary-rgb), 1);
+        }
+        &::before {
+            background: rgba(var(--colour-secondary-rgb), 1);
+            opacity: 1;
+        }
+        &::after {
+            border: solid 2px rgba(var(--colour-inverted-focus-rgb), 1);
+        }
+        &:hover {
+            &::before {
+                background: rgba(var(--colour-secondary-rgb), 0.92);
+            }
+        }
+        &:active {
+            .IconButton_icon,
+            .IconButton_label {
+                color: rgba(var(--colour-secondary-rgb), 1);
             }
             &::before {
-                opacity: 1;
+                background: rgba(var(--colour-secondary-rgb), 0.08);
             }
         }
 
-        // - only applies focus using keyboard in newer browsers, fallback is standard behaviour
-        &:focus {
-            &::after {
-                opacity: 1;
+        &[data-inverted='true'] {
+            .IconButton_icon,
+            .IconButton_label {
+                color: rgba(var(--colour-inverted-secondary-rgb), 1);
+            }
+            &::before {
+                background: rgba(var(--colour-inverted-primary-rgb), 1);
+            }
+            &:hover {
+                &::before {
+                    background: rgba(var(--colour-inverted-primary-rgb), 0.92);
+                }
+            }
+            &:active {
+                .IconButton_icon,
+                .IconButton_label {
+                    color: rgba(var(--colour-inverted-primary-rgb), 1);
+                }
+                &::before {
+                    background: rgba(var(--colour-inverted-primary-rgb), 0.08);
+                }
             }
         }
-        &:focus:not(:focus-visible) {
+    }
+
+    &[data-destructive='true']:not([disabled]) {
+        .IconButton_icon,
+        .IconButton_label {
+            color: rgba(var(--colour-destructive-rgb), 1);
+        }
+
+        &::after {
+            border-color: rgba(var(--colour-destructive-rgb), 1);
+        }
+
+        &:hover {
+            &::before {
+                background: rgba(var(--colour-destructive-rgb), 0.08);
+            }
+        }
+
+        &:active {
+            &::before {
+                background: rgba(var(--colour-destructive-rgb), 0.16);
+            }
+        }
+
+        &[data-inverted='true'] {
+            .IconButton_icon,
+            .IconButton_label {
+                color: rgba(var(--colour-inverted-primary-rgb), 0.64);
+            }
+            &:hover {
+                .IconButton_icon,
+                .IconButton_label {
+                    color: rgba(var(--colour-inverted-primary-rgb), 1);
+                }
+                &::before {
+                    background: rgba(var(--colour-inverted-destructive-rgb), 0.8);
+                }
+            }
+            &:active {
+                &::before {
+                    background: rgba(var(--colour-destructive-rgb), 1);
+                }
+            }
+        }
+    }
+
+    &[disabled] {
+        cursor: not-allowed;
+
+        &,
+        &:hover,
+        &:focus,
+        &:focus-visible,
+        &:active {
+            .IconButton_icon,
+            .IconButton_label {
+                color: rgba(var(--colour-primary-rgb), 0.32);
+            }
+
+            &::before,
             &::after {
                 opacity: 0;
             }
         }
-        &:focus-visible {
-            &::after {
-                opacity: 1;
-            }
-        }
-
-        &:active,
-        &[data-toggled='true'] {
+        &[data-inverted='true'] {
             .IconButton_icon,
             .IconButton_label {
-                color: rgb(var(--active-text-rgb));
-            }
-            &::before {
-                background: rgba(var(--active-background-rgb), 0.08);
-                opacity: 1;
-            }
-            &:hover {
-                &::before {
-                    background: rgba(var(--active-background-rgb), 0.16);
-                }
+                color: rgba(var(--colour-inverted-primary-rgb), 0.32);
             }
         }
-        &[data-toggled='true'] {
-            &:active {
-                &::before {
-                    background: rgba(var(--active-background-rgb), 0.08);
-                }
-            }
-        }
+    }
 
-        // variations
-        &[data-destructive='true']:not([disabled]) {
-            .IconButton_icon,
-            .IconButton_label {
-                color: rgb(var(--destructive-rgb));
-            }
+    // define sizes
+    ${ICON_BUTTON_SIZES.map((iconSize) => generateSizingStyles(iconSize))}
 
-            &::after {
-                border-color: rgba(var(--destructive-rgb), 1);
-            }
-
-            &:active,
-            &[data-toggled='true'] {
-                &::before {
-                    background: rgba(var(--destructive-rgb), 0.08);
-                }
-                &:hover {
-                    &::before {
-                        background: rgba(var(--destructive-rgb), 0.16);
-                    }
-                }
-            }
-            &[data-toggled='true'] {
-                &:active {
-                    &::before {
-                        background: rgba(var(--destructive-rgb), 0.08);
-                    }
-                }
-            }
-        }
-        &[disabled] {
-            cursor: not-allowed;
-
-            &,
-            &:hover,
-            &:focus,
-            &:focus-visible,
-            &:active {
-                .IconButton_icon,
-                .IconButton_label {
-                    color: rgba(var(--normal-text-rgb), 0.32);
-                }
-
-                &::before,
-                &::after {
-                    opacity: 0;
-                }
-            }
-        }
-
-        // define sizes
-        ${ICON_BUTTON_SIZES.map((iconSize) => generateSizingStyles(iconSize))}
-
-        // animation
+    // animation
         body.enable-animations & {
-            &::before {
-                transition: opacity var(--animation-speed-shortest) 0s ease-in-out,
-                    background-color var(--animation-speed-shortest) 0s ease-in-out;
-            }
-            &::after {
-                transition: opacity var(--animation-speed-shortest) 0s ease-in-out;
-            }
+        &::before {
+            transition: opacity var(--animation-speed) 0s ease-in-out,
+                background var(--animation-speed) 0s ease-in-out;
+        }
+        &::after {
+            transition: opacity var(--animation-speed) 0s ease-in-out;
         }
     }
 `;
