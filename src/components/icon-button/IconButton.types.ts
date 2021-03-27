@@ -14,7 +14,7 @@ type IconButtonLayer = {
 };
 
 type IconButtonState = {
-    selector: 'base' | 'hover' | 'active';
+    selector: 'none' | 'hover' | 'active';
     layers: IconButtonLayer[];
 };
 
