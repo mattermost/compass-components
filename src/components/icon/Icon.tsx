@@ -32,7 +32,7 @@ const Icon = styled.i
     .withConfig({
         shouldForwardProp: Utils.forwardProperties(),
     })<PIcon>`
-    // define component colours
+    // define component colors
     --color-foreground: var(--icon-color-foreground, var(--primary-color-dark, black));
     
     // set component variable defaults

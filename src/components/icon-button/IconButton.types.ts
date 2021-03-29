@@ -2,14 +2,14 @@ type TIconButtonSize = 'xsmall' | 'small-compact' | 'small' | 'standard' | 'larg
 
 type IconButtonLayer = {
     name: 'foreground' | 'background' | 'border';
-    colour:
-        | '--colour-primary-rgb'
-        | '--colour-secondary-rgb'
-        | '--colour-focus-rgb'
-        | '--colour-inverted-primary-rgb'
-        | '--colour-inverted-secondary-rgb'
-        | '--colour-inverted-focus-rgb'
-        | '--colour-destructive-rgb';
+    color:
+        | '--color-primary-rgb'
+        | '--color-secondary-rgb'
+        | '--color-focus-rgb'
+        | '--color-inverted-primary-rgb'
+        | '--color-inverted-secondary-rgb'
+        | '--color-inverted-focus-rgb'
+        | '--color-destructive-rgb';
     opacity?: number;
 };
 
