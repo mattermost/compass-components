@@ -15,6 +15,7 @@ import {
 } from './Text.constants';
 import Grid from '../../foundations/layout';
 import Heading from '../heading';
+import ArgumentsTable from '../../utils/Argstable';
 
 <Meta component={Text} title="Components/Text" />
 
@@ -88,7 +89,7 @@ export const bodySizes = [
 
 ## Component API
 
-<ArgsTable of={Text} exclude={['as', 'ref', 'forwardedAs', 'theme']} />
+<ArgumentsTable componentName={'Text'} />
 
 export const Template = (args) => {
     const { text } = args;

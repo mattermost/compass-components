@@ -1,0 +1,476 @@
+[
+  {
+    "tags": {},
+    "description": "",
+    "displayName": "Badges",
+    "methods": [],
+    "props": {},
+    "filename": "./src/components/badges/Badges.tsx"
+  },
+  {
+    "tags": {},
+    "description": "",
+    "displayName": "Heading",
+    "methods": [],
+    "props": {
+      "color": {
+        "defaultValue": {
+          "value": null
+        },
+        "description": "which color is the text rendered with",
+        "name": "color",
+        "declarations": [
+          {
+            "fileName": "compass-components/src/foundations/typography/Typography.props.ts",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "enum",
+          "raw": "TTypographyColor",
+          "value": [
+            {
+              "value": "\"primary\""
+            },
+            {
+              "value": "\"secondary\""
+            },
+            {
+              "value": "\"disabled\""
+            }
+          ]
+        }
+      },
+      "margin": {
+        "defaultValue": {
+          "value": null
+        },
+        "description": "Every text-element has its own margin.\nWith this you can choose which one to render",
+        "name": "margin",
+        "declarations": [
+          {
+            "fileName": "compass-components/src/foundations/typography/Typography.props.ts",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "enum",
+          "raw": "TTypographyMargin",
+          "value": [
+            {
+              "value": "\"none\""
+            },
+            {
+              "value": "\"top\""
+            },
+            {
+              "value": "\"bottom\""
+            },
+            {
+              "value": "\"both\""
+            }
+          ]
+        }
+      },
+      "weight": {
+        "defaultValue": {
+          "value": null
+        },
+        "description": "define the weight of the rendered font",
+        "name": "weight",
+        "declarations": [
+          {
+            "fileName": "compass-components/src/foundations/typography/Typography.props.ts",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "enum",
+          "raw": "TTypographyWeight",
+          "value": [
+            {
+              "value": "\"light\""
+            },
+            {
+              "value": "\"regular\""
+            },
+            {
+              "value": "\"bold\""
+            }
+          ]
+        }
+      },
+      "size": {
+        "defaultValue": {
+          "value": null
+        },
+        "description": "the size-token used to render the text size.\n\nThere is a default for a case where `element` is not manually set as well",
+        "name": "size",
+        "declarations": [
+          {
+            "fileName": "compass-components/src/components/heading/Heading.props.ts",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "enum",
+          "raw": "TTypographySize",
+          "value": [
+            {
+              "value": "25"
+            },
+            {
+              "value": "50"
+            },
+            {
+              "value": "75"
+            },
+            {
+              "value": "100"
+            },
+            {
+              "value": "200"
+            },
+            {
+              "value": "300"
+            },
+            {
+              "value": "400"
+            },
+            {
+              "value": "500"
+            },
+            {
+              "value": "600"
+            },
+            {
+              "value": "700"
+            },
+            {
+              "value": "800"
+            },
+            {
+              "value": "900"
+            },
+            {
+              "value": "1000"
+            }
+          ]
+        }
+      },
+      "element": {
+        "defaultValue": null,
+        "description": "for heading components the range is `h1` - `h6`.\nIf not set manually set it derives the element from the size",
+        "name": "element",
+        "declarations": [
+          {
+            "fileName": "compass-components/src/components/heading/Heading.props.ts",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "enum",
+          "raw": "TTypographyHeadingElement",
+          "value": [
+            {
+              "value": "\"h1\""
+            },
+            {
+              "value": "\"h2\""
+            },
+            {
+              "value": "\"h3\""
+            },
+            {
+              "value": "\"h4\""
+            },
+            {
+              "value": "\"h5\""
+            },
+            {
+              "value": "\"h6\""
+            }
+          ]
+        }
+      }
+    },
+    "filename": "./src/components/heading/Heading.tsx"
+  },
+  {
+    "tags": {},
+    "description": "",
+    "displayName": "Icon",
+    "methods": [],
+    "props": {
+      "size": {
+        "defaultValue": {
+          "value": "10"
+        },
+        "description": "the size the icon is rendered with",
+        "name": "size",
+        "declarations": [
+          {
+            "fileName": "compass-components/src/components/icon/Icon.props.ts",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "enum",
+          "raw": "TIconSize",
+          "value": [
+            {
+              "value": "10"
+            },
+            {
+              "value": "12"
+            },
+            {
+              "value": "16"
+            },
+            {
+              "value": "20"
+            },
+            {
+              "value": "28"
+            },
+            {
+              "value": "32"
+            },
+            {
+              "value": "40"
+            },
+            {
+              "value": "52"
+            },
+            {
+              "value": "64"
+            },
+            {
+              "value": "104"
+            }
+          ]
+        }
+      },
+      "glyph": {
+        "defaultValue": {
+          "value": "'mattermost'"
+        },
+        "description": "the icon-glyph that is being rendered",
+        "name": "glyph",
+        "declarations": [
+          {
+            "fileName": "compass-components/src/components/icon/Icon.props.ts",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "enum",
+          "raw": "TIconGlyph",
+          "value": [
+            {
+              "value": "\"none\""
+            },
+            {
+              "value": "{ accountMinusOutline: string; accountMultipleOutline: string; accountOutline: string; accountPlusOutline: string; airplaneVariant: string; airplane: string; alertCircleOutline: string; ... 214 more ...; webhook: string; }"
+            }
+          ]
+        }
+      },
+      "ariaLabel": {
+        "defaultValue": null,
+        "description": "add an aria-label for a11y",
+        "name": "ariaLabel",
+        "declarations": [
+          {
+            "fileName": "compass-components/src/components/icon/Icon.props.ts",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "enum",
+          "raw": "string",
+          "value": [
+            {
+              "value": "string"
+            }
+          ]
+        }
+      }
+    },
+    "filename": "./src/components/icon/Icon.tsx"
+  },
+  {
+    "tags": {},
+    "description": "",
+    "displayName": "Text",
+    "methods": [],
+    "props": {
+      "color": {
+        "defaultValue": {
+          "value": null
+        },
+        "description": "which color is the text rendered with",
+        "name": "color",
+        "declarations": [
+          {
+            "fileName": "compass-components/src/foundations/typography/Typography.props.ts",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "enum",
+          "raw": "TTypographyColor",
+          "value": [
+            {
+              "value": "\"primary\""
+            },
+            {
+              "value": "\"secondary\""
+            },
+            {
+              "value": "\"disabled\""
+            }
+          ]
+        }
+      },
+      "margin": {
+        "defaultValue": {
+          "value": null
+        },
+        "description": "Every text-element has its own margin.\nWith this you can choose which one to render",
+        "name": "margin",
+        "declarations": [
+          {
+            "fileName": "compass-components/src/foundations/typography/Typography.props.ts",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "enum",
+          "raw": "TTypographyMargin",
+          "value": [
+            {
+              "value": "\"none\""
+            },
+            {
+              "value": "\"top\""
+            },
+            {
+              "value": "\"bottom\""
+            },
+            {
+              "value": "\"both\""
+            }
+          ]
+        }
+      },
+      "weight": {
+        "defaultValue": {
+          "value": null
+        },
+        "description": "define the weight of the rendered font",
+        "name": "weight",
+        "declarations": [
+          {
+            "fileName": "compass-components/src/foundations/typography/Typography.props.ts",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "enum",
+          "raw": "TTypographyWeight",
+          "value": [
+            {
+              "value": "\"light\""
+            },
+            {
+              "value": "\"regular\""
+            },
+            {
+              "value": "\"bold\""
+            }
+          ]
+        }
+      },
+      "size": {
+        "defaultValue": {
+          "value": null
+        },
+        "description": "the size-token used to render the text size.",
+        "name": "size",
+        "declarations": [
+          {
+            "fileName": "compass-components/src/components/text/Text.props.ts",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "enum",
+          "raw": "TTypographyBodySize",
+          "value": [
+            {
+              "value": "25"
+            },
+            {
+              "value": "50"
+            },
+            {
+              "value": "75"
+            },
+            {
+              "value": "100"
+            },
+            {
+              "value": "200"
+            },
+            {
+              "value": "300"
+            }
+          ]
+        }
+      },
+      "element": {
+        "defaultValue": {
+          "value": null
+        },
+        "description": "for text components the options are `p` and `span`",
+        "name": "element",
+        "declarations": [
+          {
+            "fileName": "compass-components/src/components/text/Text.props.ts",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "enum",
+          "raw": "TTypographyBodyElement",
+          "value": [
+            {
+              "value": "\"p\""
+            },
+            {
+              "value": "\"span\""
+            },
+            {
+              "value": "\"label\""
+            }
+          ]
+        }
+      }
+    },
+    "filename": "./src/components/text/Text.tsx"
+  }
+]

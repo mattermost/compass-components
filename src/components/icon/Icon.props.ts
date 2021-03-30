@@ -10,7 +10,7 @@ export type PIcon = {
     /**
      * the size the icon is rendered with
      *
-     * @default 20
+     * @default 10
      * */
     size?: TIconSize;
     /** add an aria-label for a11y */

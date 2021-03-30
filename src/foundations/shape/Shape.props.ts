@@ -19,7 +19,7 @@ type PShape = {
     /** If a hover-state should require a higher (or lower) elevation */
     elevationOnHover?: TElevationLevel;
     /** Which component should be used for rendering the Shape */
-    component?: 'div' | 'span' | 'section' | 'aside' | 'button';
+    component?: 'div' | 'span' | 'section' | 'aside' | 'button' | 'table' | 'thead' | 'tbody';
     /** set a custom width */
     width?: number | string | 'auto';
     /**

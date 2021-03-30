@@ -10,7 +10,7 @@ type PThemeProvider = {
     children?: React.ReactNode | React.ReactNode[];
 };
 
-// storybook canvas- & docs-pages style overrides
+// storybook canvas- & .docs-pages style overrides
 const SBGlobalStyles = createGlobalStyle`
     body.sb-show-main.sb-main-centered {
         background-color: ${(props: PGlobalStyles): string => props.theme.background.default};

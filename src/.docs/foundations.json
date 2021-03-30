@@ -1,0 +1,808 @@
+[
+  {
+    "tags": {},
+    "description": "",
+    "displayName": "Swatch",
+    "methods": [],
+    "props": {},
+    "filename": "./src/foundations/colors/Swatch.tsx"
+  },
+  {
+    "tags": {},
+    "description": "",
+    "displayName": "Grid",
+    "methods": [],
+    "props": {
+      "row": {
+        "defaultValue": {
+          "value": "false"
+        },
+        "description": "renders the `Grid` component as a row (`flex-direction: row`)",
+        "name": "row",
+        "declarations": [
+          {
+            "fileName": "compass-components/src/foundations/layout/Grid.props.ts",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "enum",
+          "raw": "boolean",
+          "value": [
+            {
+              "value": "false"
+            },
+            {
+              "value": "true"
+            }
+          ]
+        }
+      },
+      "flex": {
+        "defaultValue": {
+          "value": "auto"
+        },
+        "description": "flex value to use",
+        "name": "flex",
+        "declarations": [
+          {
+            "fileName": "compass-components/src/foundations/layout/Grid.props.ts",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "enum",
+          "raw": "number | \"auto\"",
+          "value": [
+            {
+              "value": "number"
+            },
+            {
+              "value": "\"auto\""
+            }
+          ]
+        }
+      },
+      "wrap": {
+        "defaultValue": {
+          "value": "true"
+        },
+        "description": "wrap content?",
+        "name": "wrap",
+        "declarations": [
+          {
+            "fileName": "compass-components/src/foundations/layout/Grid.props.ts",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "enum",
+          "raw": "boolean",
+          "value": [
+            {
+              "value": "false"
+            },
+            {
+              "value": "true"
+            }
+          ]
+        }
+      },
+      "component": {
+        "defaultValue": {
+          "value": "div"
+        },
+        "description": "the HTML tag that is used to render the component",
+        "name": "component",
+        "declarations": [
+          {
+            "fileName": "compass-components/src/foundations/layout/Grid.props.ts",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "enum",
+          "raw": "\"div\" | \"span\" | \"section\" | \"aside\"",
+          "value": [
+            {
+              "value": "\"div\""
+            },
+            {
+              "value": "\"span\""
+            },
+            {
+              "value": "\"section\""
+            },
+            {
+              "value": "\"aside\""
+            }
+          ]
+        }
+      },
+      "alignment": {
+        "defaultValue": {
+          "value": "initial"
+        },
+        "description": "defines the vertical alignment of items inside the component",
+        "name": "alignment",
+        "declarations": [
+          {
+            "fileName": "compass-components/src/foundations/layout/Grid.props.ts",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "enum",
+          "raw": "\"initial\" | \"flex-start\" | \"center\" | \"flex-end\" | \"stretch\"",
+          "value": [
+            {
+              "value": "\"initial\""
+            },
+            {
+              "value": "\"flex-start\""
+            },
+            {
+              "value": "\"center\""
+            },
+            {
+              "value": "\"flex-end\""
+            },
+            {
+              "value": "\"stretch\""
+            }
+          ]
+        }
+      },
+      "justify": {
+        "defaultValue": {
+          "value": "initial"
+        },
+        "description": "defines the horizontal alignment of items inside the component",
+        "name": "justify",
+        "declarations": [
+          {
+            "fileName": "compass-components/src/foundations/layout/Grid.props.ts",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "enum",
+          "raw": "\"initial\" | \"flex-start\" | \"center\" | \"flex-end\" | \"stretch\" | \"space-around\" | \"space-between\" | \"space-evenly\"",
+          "value": [
+            {
+              "value": "\"initial\""
+            },
+            {
+              "value": "\"flex-start\""
+            },
+            {
+              "value": "\"center\""
+            },
+            {
+              "value": "\"flex-end\""
+            },
+            {
+              "value": "\"stretch\""
+            },
+            {
+              "value": "\"space-around\""
+            },
+            {
+              "value": "\"space-between\""
+            },
+            {
+              "value": "\"space-evenly\""
+            }
+          ]
+        }
+      },
+      "padding": {
+        "defaultValue": null,
+        "description": "padding according to `TSpacingDefinition` typography",
+        "name": "padding",
+        "declarations": [
+          {
+            "fileName": "compass-components/src/foundations/layout/Grid.props.ts",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "enum",
+          "raw": "TSpacingDefinition",
+          "value": [
+            {
+              "value": "TSpacingDefinition"
+            }
+          ]
+        }
+      },
+      "margin": {
+        "defaultValue": null,
+        "description": "margin according to `TSpacingDefinition` typography",
+        "name": "margin",
+        "declarations": [
+          {
+            "fileName": "compass-components/src/foundations/layout/Grid.props.ts",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "enum",
+          "raw": "TSpacingDefinition",
+          "value": [
+            {
+              "value": "TSpacingDefinition"
+            }
+          ]
+        }
+      },
+      "width": {
+        "defaultValue": {
+          "value": "null"
+        },
+        "description": "restrict the width of a `Grid`",
+        "name": "width",
+        "declarations": [
+          {
+            "fileName": "compass-components/src/foundations/layout/Grid.props.ts",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "enum",
+          "raw": "number | null",
+          "value": [
+            {
+              "value": "null"
+            },
+            {
+              "value": "number"
+            }
+          ]
+        }
+      },
+      "height": {
+        "defaultValue": {
+          "value": "null"
+        },
+        "description": "restrict the height of a `Grid`",
+        "name": "height",
+        "declarations": [
+          {
+            "fileName": "compass-components/src/foundations/layout/Grid.props.ts",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "enum",
+          "raw": "number | null",
+          "value": [
+            {
+              "value": "null"
+            },
+            {
+              "value": "number"
+            }
+          ]
+        }
+      }
+    },
+    "filename": "./src/foundations/layout/Grid.tsx"
+  },
+  {
+    "tags": {},
+    "description": "",
+    "displayName": "Shape",
+    "methods": [],
+    "props": {
+      "height": {
+        "defaultValue": null,
+        "description": "set a custom height. When `borderRadius` is set to `'circle'`,\n`height` will be set from `width`",
+        "name": "height",
+        "declarations": [
+          {
+            "fileName": "compass-components/src/foundations/shape/Shape.props.ts",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "enum",
+          "raw": "string | number",
+          "value": [
+            {
+              "value": "string"
+            },
+            {
+              "value": "number"
+            }
+          ]
+        }
+      },
+      "width": {
+        "defaultValue": null,
+        "description": "set a custom width",
+        "name": "width",
+        "declarations": [
+          {
+            "fileName": "compass-components/src/foundations/shape/Shape.props.ts",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "enum",
+          "raw": "string | number",
+          "value": [
+            {
+              "value": "string"
+            },
+            {
+              "value": "number"
+            }
+          ]
+        }
+      },
+      "elevation": {
+        "defaultValue": null,
+        "description": "Elevation refers to the z-index depth that an element sits on.\nThe base Elevation is 0 and has no depth.\nSubsequent layers increment this Elevation value.\nIn total, there are 6 Elevation levels, not including the base level 0.",
+        "name": "elevation",
+        "declarations": [
+          {
+            "fileName": "compass-components/src/foundations/shape/Shape.props.ts",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "enum",
+          "raw": "TElevationLevel",
+          "value": [
+            {
+              "value": "0"
+            },
+            {
+              "value": "4"
+            },
+            {
+              "value": "1"
+            },
+            {
+              "value": "2"
+            },
+            {
+              "value": "3"
+            },
+            {
+              "value": "5"
+            },
+            {
+              "value": "6"
+            }
+          ]
+        }
+      },
+      "component": {
+        "defaultValue": null,
+        "description": "Which component should be used for rendering the Shape",
+        "name": "component",
+        "declarations": [
+          {
+            "fileName": "compass-components/src/foundations/shape/Shape.props.ts",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "enum",
+          "raw": "\"aside\" | \"button\" | \"div\" | \"section\" | \"span\" | \"table\" | \"tbody\" | \"thead\"",
+          "value": [
+            {
+              "value": "\"aside\""
+            },
+            {
+              "value": "\"button\""
+            },
+            {
+              "value": "\"div\""
+            },
+            {
+              "value": "\"section\""
+            },
+            {
+              "value": "\"span\""
+            },
+            {
+              "value": "\"table\""
+            },
+            {
+              "value": "\"tbody\""
+            },
+            {
+              "value": "\"thead\""
+            }
+          ]
+        }
+      },
+      "borderRadius": {
+        "defaultValue": null,
+        "description": "The border-radius size",
+        "name": "borderRadius",
+        "declarations": [
+          {
+            "fileName": "compass-components/src/foundations/shape/Shape.props.ts",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "enum",
+          "raw": "TBorderRadiusSizes",
+          "value": [
+            {
+              "value": "0"
+            },
+            {
+              "value": "\"circle\""
+            },
+            {
+              "value": "4"
+            },
+            {
+              "value": "8"
+            },
+            {
+              "value": "12"
+            },
+            {
+              "value": "16"
+            },
+            {
+              "value": "20"
+            },
+            {
+              "value": "24"
+            },
+            {
+              "value": "\"pill\""
+            }
+          ]
+        }
+      },
+      "borderColor": {
+        "defaultValue": null,
+        "description": "Color of the border (default: `var(--default-border-color)`)",
+        "name": "borderColor",
+        "declarations": [
+          {
+            "fileName": "compass-components/src/foundations/shape/Shape.props.ts",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "enum",
+          "raw": "string",
+          "value": [
+            {
+              "value": "string"
+            }
+          ]
+        }
+      },
+      "borderWidth": {
+        "defaultValue": null,
+        "description": "Width of the border (default: `0`)",
+        "name": "borderWidth",
+        "declarations": [
+          {
+            "fileName": "compass-components/src/foundations/shape/Shape.props.ts",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "enum",
+          "raw": "number",
+          "value": [
+            {
+              "value": "number"
+            }
+          ]
+        }
+      },
+      "elevationOnHover": {
+        "defaultValue": null,
+        "description": "If a hover-state should require a higher (or lower) elevation",
+        "name": "elevationOnHover",
+        "declarations": [
+          {
+            "fileName": "compass-components/src/foundations/shape/Shape.props.ts",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "enum",
+          "raw": "TElevationLevel",
+          "value": [
+            {
+              "value": "0"
+            },
+            {
+              "value": "4"
+            },
+            {
+              "value": "1"
+            },
+            {
+              "value": "2"
+            },
+            {
+              "value": "3"
+            },
+            {
+              "value": "5"
+            },
+            {
+              "value": "6"
+            }
+          ]
+        }
+      },
+      "background": {
+        "defaultValue": null,
+        "description": "set a custom background color",
+        "name": "background",
+        "declarations": [
+          {
+            "fileName": "compass-components/src/foundations/shape/Shape.props.ts",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "enum",
+          "raw": "string",
+          "value": [
+            {
+              "value": "string"
+            }
+          ]
+        }
+      }
+    },
+    "filename": "./src/foundations/shape/Shape.tsx"
+  },
+  {
+    "tags": {},
+    "description": "",
+    "displayName": "CanvasThemeProvider",
+    "methods": [],
+    "props": {},
+    "filename": "./src/foundations/theme-provider/theme-provider.tsx"
+  },
+  {
+    "tags": {},
+    "description": "",
+    "displayName": "Typography",
+    "methods": [],
+    "props": {
+      "color": {
+        "defaultValue": {
+          "value": "'primary'"
+        },
+        "description": "which color is the text rendered with",
+        "name": "color",
+        "parent": {
+          "fileName": "compass-components/node_modules/@types/react/index.d.ts",
+          "name": "HTMLAttributes"
+        },
+        "declarations": [
+          {
+            "fileName": "compass-components/node_modules/@types/react/index.d.ts",
+            "name": "HTMLAttributes"
+          },
+          {
+            "fileName": "compass-components/src/foundations/typography/Typography.props.ts",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "enum",
+          "raw": "\"disabled\" | \"primary\" | \"secondary\"",
+          "value": [
+            {
+              "value": "\"disabled\""
+            },
+            {
+              "value": "\"primary\""
+            },
+            {
+              "value": "\"secondary\""
+            }
+          ]
+        }
+      },
+      "size": {
+        "defaultValue": {
+          "value": "100"
+        },
+        "description": "the size use to render the text. The actual px values depend on the element as well",
+        "name": "size",
+        "declarations": [
+          {
+            "fileName": "compass-components/src/foundations/typography/Typography.props.ts",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "enum",
+          "raw": "TTypographySize",
+          "value": [
+            {
+              "value": "25"
+            },
+            {
+              "value": "50"
+            },
+            {
+              "value": "75"
+            },
+            {
+              "value": "100"
+            },
+            {
+              "value": "200"
+            },
+            {
+              "value": "300"
+            },
+            {
+              "value": "400"
+            },
+            {
+              "value": "500"
+            },
+            {
+              "value": "600"
+            },
+            {
+              "value": "700"
+            },
+            {
+              "value": "800"
+            },
+            {
+              "value": "900"
+            },
+            {
+              "value": "1000"
+            }
+          ]
+        }
+      },
+      "element": {
+        "defaultValue": {
+          "value": "'p'"
+        },
+        "description": "it is derived from the element:\n - `heading` for h1 - h6\n - `body` p, span and label",
+        "name": "element",
+        "declarations": [
+          {
+            "fileName": "compass-components/src/foundations/typography/Typography.props.ts",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": true,
+        "type": {
+          "name": "enum",
+          "raw": "TTypographyElement",
+          "value": [
+            {
+              "value": "\"h1\""
+            },
+            {
+              "value": "\"h2\""
+            },
+            {
+              "value": "\"h3\""
+            },
+            {
+              "value": "\"h4\""
+            },
+            {
+              "value": "\"h5\""
+            },
+            {
+              "value": "\"h6\""
+            },
+            {
+              "value": "\"label\""
+            },
+            {
+              "value": "\"p\""
+            },
+            {
+              "value": "\"span\""
+            }
+          ]
+        }
+      },
+      "weight": {
+        "defaultValue": {
+          "value": "'regular'"
+        },
+        "description": "define the weight of the rendered font",
+        "name": "weight",
+        "declarations": [
+          {
+            "fileName": "compass-components/src/foundations/typography/Typography.props.ts",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "enum",
+          "raw": "TTypographyWeight",
+          "value": [
+            {
+              "value": "\"light\""
+            },
+            {
+              "value": "\"regular\""
+            },
+            {
+              "value": "\"bold\""
+            }
+          ]
+        }
+      },
+      "margin": {
+        "defaultValue": {
+          "value": "'both'"
+        },
+        "description": "Every text-element has its own margin.\nWith this you can choose which one to render",
+        "name": "margin",
+        "declarations": [
+          {
+            "fileName": "compass-components/src/foundations/typography/Typography.props.ts",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "enum",
+          "raw": "TTypographyMargin",
+          "value": [
+            {
+              "value": "\"none\""
+            },
+            {
+              "value": "\"top\""
+            },
+            {
+              "value": "\"bottom\""
+            },
+            {
+              "value": "\"both\""
+            }
+          ]
+        }
+      }
+    },
+    "filename": "./src/foundations/typography/Typography.tsx"
+  }
+]
