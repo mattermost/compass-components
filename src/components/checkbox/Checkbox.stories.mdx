@@ -1,0 +1,69 @@
+import { Meta, Story, Canvas, Title, Subtitle } from '@storybook/addon-docs/blocks';
+
+import Checkbox from './index';
+
+export const Template = (args) => <Checkbox {...args} />;
+
+export const defaultArgs = {
+    labelText: 'Public',
+    state: 'on',
+    size: 'md',
+    hideLabel: false,
+};
+
+export const argTypes = {
+    state: {
+        control: {
+            type: 'select',
+            options: ['on', 'off', 'status', 'disabled'],
+        },
+    },
+    size: {
+        control: {
+            type: 'select',
+            options: ['sm', 'md', 'lg'],
+        },
+    },
+    hideLabel: {
+        control: {
+            type: 'radio',
+            options: ['true', 'false'],
+        },
+    },
+};
+
+<Meta component={Checkbox} title="Components/Checkbox" />
+
+<Title>Checkboxes</Title>
+
+<Subtitle>Checkboxes empower users to make multiple selections.</Subtitle>
+
+## Anatomy
+
+Checkboxes are comprised of:
+
+-   Selector
+-   Label
+    Clicking either the Selector or the Label should toggle the state of the checkbox.
+
+## States
+
+## Animation
+
+## Sizes
+
+export const canvasExampleArgs = {
+    ...defaultArgs,
+};
+
+<Canvas hidden>
+    <Story
+        name="Default"
+        argTypes={argTypes}
+        args={{
+            ...canvasExampleArgs,
+        }}
+    >
+        {Template.bind({})}
+    </Story>
+</Canvas>
