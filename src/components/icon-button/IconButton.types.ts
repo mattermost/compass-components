@@ -1,21 +1,30 @@
+import { TIconSize } from '../icon';
+import { TTextSize } from '../text';
+
 type TIconButtonSize = 'xsmall' | 'small-compact' | 'small' | 'standard' | 'large';
 
-type IconButtonLayer = {
+type TIconButtonLayer = {
     name: 'foreground' | 'background' | 'border';
     color:
         | '--color-primary-rgb'
+        | '--color-primary-inverse-rgb'
         | '--color-secondary-rgb'
         | '--color-focus-rgb'
-        | '--color-inverted-primary-rgb'
-        | '--color-inverted-secondary-rgb'
-        | '--color-inverted-focus-rgb'
         | '--color-destructive-rgb';
     opacity?: number;
 };
 
-type IconButtonState = {
+type TIconButtonState = {
     selector?: 'hover' | 'active';
-    layers: IconButtonLayer[];
+    layers: TIconButtonLayer[];
 };
 
-export type { TIconButtonSize, IconButtonLayer, IconButtonState };
+type TIconButtonProperties = {
+    textSize: TTextSize;
+    iconSize: TIconSize;
+    dimensions: number;
+    padding: number;
+    spacing: number;
+};
+
+export type { TIconButtonSize, TIconButtonLayer, TIconButtonState, TIconButtonProperties };

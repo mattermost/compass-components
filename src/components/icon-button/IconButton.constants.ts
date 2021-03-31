@@ -1,7 +1,7 @@
 import { TIconSize } from '../icon';
 import { TTextSize } from '../text';
 
-import { TIconButtonSize } from './IconButton.types';
+import { TIconButtonSize, TIconButtonProperties } from './IconButton.types';
 
 const DEFAULT_ICON_BUTTON_SIZE: TIconButtonSize = 'standard';
 
@@ -13,52 +13,42 @@ const ICON_BUTTON_SIZES: TIconButtonSize[] = [
     'large',
 ];
 
-const ICON_BUTTON_TEXT_SIZES: Record<TIconButtonSize, TTextSize> = {
-    xsmall: 75,
-    'small-compact': 100,
-    small: 100,
-    standard: 200,
-    large: 300,
+const ICON_BUTTON_PROPERTIES: Record<TIconButtonSize, TIconButtonProperties> = {
+    xsmall: {
+        textSize: 75,
+        iconSize: 12,
+        dimensions: 24,
+        padding: 4,
+        spacing: 4,
+    },
+    'small-compact': {
+        textSize: 100,
+        iconSize: 16,
+        dimensions: 24,
+        padding: 4,
+        spacing: 4,
+    },
+    small: {
+        textSize: 100,
+        iconSize: 16,
+        dimensions: 32,
+        padding: 6,
+        spacing: 4,
+    },
+    standard: {
+        textSize: 200,
+        iconSize: 20,
+        dimensions: 40,
+        padding: 8,
+        spacing: 6,
+    },
+    large: {
+        textSize: 300,
+        iconSize: 28,
+        dimensions: 48,
+        padding: 6,
+        spacing: 6,
+    },
 };
 
-const ICON_BUTTON_ICON_SIZES: Record<TIconButtonSize, TIconSize> = {
-    xsmall: 12,
-    'small-compact': 16,
-    small: 16,
-    standard: 20,
-    large: 28,
-};
-
-const ICON_BUTTON_DIMENSIONS: Record<TIconButtonSize, number> = {
-    xsmall: 24,
-    'small-compact': 28,
-    small: 32,
-    standard: 40,
-    large: 48,
-};
-
-const ICON_BUTTON_PADDING: Record<TIconButtonSize, number> = {
-    xsmall: 4,
-    'small-compact': 4,
-    small: 6,
-    standard: 8,
-    large: 8,
-};
-
-const ICON_BUTTON_SPACING: Record<TIconButtonSize, number> = {
-    xsmall: 4,
-    'small-compact': 4,
-    small: 4,
-    standard: 6,
-    large: 6,
-};
-
-export {
-    DEFAULT_ICON_BUTTON_SIZE,
-    ICON_BUTTON_SIZES,
-    ICON_BUTTON_TEXT_SIZES,
-    ICON_BUTTON_ICON_SIZES,
-    ICON_BUTTON_DIMENSIONS,
-    ICON_BUTTON_PADDING,
-    ICON_BUTTON_SPACING,
-};
+export { DEFAULT_ICON_BUTTON_SIZE, ICON_BUTTON_SIZES, ICON_BUTTON_PROPERTIES };

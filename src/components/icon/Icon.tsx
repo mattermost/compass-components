@@ -33,9 +33,10 @@ const Icon = styled.i
         shouldForwardProp: Utils.forwardProperties(),
     })<PIcon>`
     // define component colors
-    --color-foreground: var(--icon-color-foreground, var(--primary-color-dark, black));
+    --color-primary-rgb: var(--icon-color-primary-rgb, var(--primary-color-dark, black));
     
     // set component variable defaults
+    --color-foreground: var(--color-primary-rgb);
     --size: 20px;
     --font-size: ${ICON_FONT_SIZES[DEFAULT_ICON_SIZE]}px;
     --animation-speed: var(--animation-speed-shortest, 0.1s);

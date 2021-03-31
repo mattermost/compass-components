@@ -6,11 +6,7 @@ import Text from '../text';
 
 import StyledIconButton from './IconButton.styles';
 import { PIconButton } from './IconButton.props';
-import {
-    DEFAULT_ICON_BUTTON_SIZE,
-    ICON_BUTTON_TEXT_SIZES,
-    ICON_BUTTON_ICON_SIZES,
-} from './IconButton.constants';
+import { DEFAULT_ICON_BUTTON_SIZE, ICON_BUTTON_PROPERTIES } from './IconButton.constants';
 
 const IconButton: React.FC<PIconButton> = ({
     ariaLabel,
@@ -28,14 +24,14 @@ const IconButton: React.FC<PIconButton> = ({
             <Icon
                 className="IconButton_icon"
                 glyph={iconGlyph}
-                size={ICON_BUTTON_ICON_SIZES[size]}
+                size={ICON_BUTTON_PROPERTIES[size].iconSize}
             />
         );
 
     const buttonLabel = label ? (
         <Text
             className="IconButton_label"
-            size={ICON_BUTTON_TEXT_SIZES[size]}
+            size={ICON_BUTTON_PROPERTIES[size].textSize}
             weight="bold"
             margin="none"
             element="span"

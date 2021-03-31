@@ -1,25 +1,20 @@
 import styled, { css } from 'styled-components';
 import { FlattenSimpleInterpolation } from 'styled-components/ts3.6';
 
-import { TIconButtonSize, IconButtonLayer, IconButtonState } from './IconButton.types';
-import {
-    ICON_BUTTON_SIZES,
-    ICON_BUTTON_DIMENSIONS,
-    ICON_BUTTON_PADDING,
-    ICON_BUTTON_SPACING,
-} from './IconButton.constants';
+import { TIconButtonSize, TIconButtonLayer, TIconButtonState } from './IconButton.types';
+import { ICON_BUTTON_SIZES, ICON_BUTTON_PROPERTIES } from './IconButton.constants';
 
 function generateSizingStyles(size: TIconButtonSize): FlattenSimpleInterpolation {
     return css`
         &[data-size='${size}'] {
-            --horizontal-padding: ${ICON_BUTTON_PADDING[size]}px;
-            --size: ${ICON_BUTTON_DIMENSIONS[size]}px;
-            --child-spacing: ${ICON_BUTTON_SPACING[size]}px;
+            --horizontal-padding: ${ICON_BUTTON_PROPERTIES[size].padding}px;
+            --size: ${ICON_BUTTON_PROPERTIES[size].dimensions}px;
+            --child-spacing: ${ICON_BUTTON_PROPERTIES[size].spacing}px;
         }
     `;
 }
 
-function getRBGColour({ color, opacity }: IconButtonLayer): string {
+function getRBGColour({ color, opacity }: TIconButtonLayer): string {
     if (opacity && opacity >= 0 && opacity < 1) {
         return `rgba(var(${color}), ${opacity})`;
     }
@@ -27,14 +22,14 @@ function getRBGColour({ color, opacity }: IconButtonLayer): string {
     return `rgb(var(${color}))`;
 }
 
-function getLayerColours(layer: IconButtonLayer): string {
+function getLayerColours(layer: TIconButtonLayer): string {
     return `--color-${layer.name}: ${getRBGColour(layer)};`;
 }
 
-function generateStateStyles(stateStyles: IconButtonState[]): FlattenSimpleInterpolation {
+function generateStateStyles(stateStyles: TIconButtonState[]): FlattenSimpleInterpolation {
     return css`
         ${stateStyles
-            .map(({ selector, layers }: IconButtonState) => {
+            .map(({ selector, layers }: TIconButtonState) => {
                 if (!selector) {
                     return `
                         ${layers.map(getLayerColours).join('\n')}
@@ -53,23 +48,21 @@ function generateStateStyles(stateStyles: IconButtonState[]): FlattenSimpleInter
 
 const StyledIconButton = styled.button`
     // set component colors
-    --color-primary-rgb: var(--button-color-primary-rgb, 61, 60, 64);
-    --color-inverted-primary-rgb: var(--button-color-inverted-primary-rgb, 255, 255, 255);
-    --color-secondary-rgb: var(--button-color-secondary-rgb, 22, 109, 224);
-    --color-inverted-secondary-rgb: var(--button-color-inverted-secondary-rgb, 20, 93, 191);
-    --color-focus-rgb: var(--button-color-focus-rgb, 22, 109, 224);
-    --color-inverted-focus-rgb: var(--button-color-inverted-focus-rgb, 87, 158, 255);
+    --color-primary-rgb: var(--button-color-primary-rgb, 22, 109, 224);
+    --color-primary-inverse-rgb: var(--button-color-inverted-primary-rgb, 255, 255, 255);
+    --color-secondary-rgb: var(--button-color-primary-rgb, 61, 60, 64);
+    --color-focus-rgb: var(--button-color-focus-rgb, 87, 158, 255);
     --color-destructive-rgb: var(--button-color-destructive-rgb, 247, 67, 67);
 
     // set component variable defaults
-    --color-foreground: rgba(var(--color-primary-rgb), 0.56);
+    --color-foreground: rgba(var(--color-secondary-rgb), 0.56);
     --color-background: transparent;
     --color-border: rgb(var(--color-focus-rgb));
     --size: 40px;
     --radius-border: 4px;
     --child-spacing: 6px;
     --horizontal-padding: 8px;
-    --animation-speed: var(--animation-speed-shortest);
+    --animation-speed: var(--animation-speed-shortest, 0.1s);
 
     // default container styles
     display: flex;
@@ -79,7 +72,6 @@ const StyledIconButton = styled.button`
     min-width: var(--size);
     height: var(--size);
     border-radius: var(--radius-border);
-    color: var(--color-foreground);
     background: var(--color-background);
     border: solid 2px transparent;
     cursor: pointer;
@@ -100,9 +92,8 @@ const StyledIconButton = styled.button`
     }
 
     // default child element styles
-    .IconButton_icon {
-        --icon-color-foreground: var(--color-foreground);
-    }
+    --icon-color-primary-rgb: var(--color-foreground);
+    // TODO: this should be updated once we implement the color token strategy for type components
     .IconButton_label {
         color: var(--color-foreground);
     }
@@ -117,19 +108,14 @@ const StyledIconButton = styled.button`
     &[disabled] {
         ${generateStateStyles([
             {
-                layers: [{ name: 'foreground', color: '--color-primary-rgb', opacity: 0.32 }],
+                layers: [{ name: 'foreground', color: '--color-secondary-rgb', opacity: 0.32 }],
             },
         ])}
-
         &[data-inverted='true'] {
             ${generateStateStyles([
                 {
                     layers: [
-                        {
-                            name: 'foreground',
-                            color: '--color-inverted-primary-rgb',
-                            opacity: 0.32,
-                        },
+                        { name: 'foreground', color: '--color-primary-inverse-rgb', opacity: 0.32 },
                     ],
                 },
             ])}
@@ -141,15 +127,15 @@ const StyledIconButton = styled.button`
             {
                 selector: 'hover',
                 layers: [
-                    { name: 'foreground', color: '--color-primary-rgb', opacity: 0.72 },
-                    { name: 'background', color: '--color-primary-rgb', opacity: 0.08 },
+                    { name: 'foreground', color: '--color-secondary-rgb', opacity: 0.72 },
+                    { name: 'background', color: '--color-secondary-rgb', opacity: 0.08 },
                 ],
             },
             {
                 selector: 'active',
                 layers: [
-                    { name: 'foreground', color: '--color-secondary-rgb' },
-                    { name: 'background', color: '--color-secondary-rgb', opacity: 0.08 },
+                    { name: 'foreground', color: '--color-primary-rgb' },
+                    { name: 'background', color: '--color-primary-rgb', opacity: 0.08 },
                 ],
             },
         ])}
@@ -189,9 +175,8 @@ const StyledIconButton = styled.button`
             ${generateStateStyles([
                 {
                     layers: [
-                        { name: 'foreground', color: '--color-inverted-primary-rgb' },
-                        { name: 'background', color: '--color-secondary-rgb' },
-                        { name: 'border', color: '--color-inverted-focus-rgb' },
+                        { name: 'foreground', color: '--color-primary-inverse-rgb' },
+                        { name: 'background', color: '--color-primary-rgb' },
                     ],
                 },
                 {
@@ -199,7 +184,7 @@ const StyledIconButton = styled.button`
                     layers: [
                         {
                             name: 'background',
-                            color: '--color-secondary-rgb',
+                            color: '--color-primary-rgb',
                             opacity: 0.92,
                         },
                     ],
@@ -207,10 +192,10 @@ const StyledIconButton = styled.button`
                 {
                     selector: 'active',
                     layers: [
-                        { name: 'foreground', color: '--color-secondary-rgb' },
+                        { name: 'foreground', color: '--color-primary-rgb' },
                         {
                             name: 'background',
-                            color: '--color-secondary-rgb',
+                            color: '--color-primary-rgb',
                             opacity: 0.08,
                         },
                     ],
@@ -224,19 +209,18 @@ const StyledIconButton = styled.button`
                     layers: [
                         {
                             name: 'foreground',
-                            color: '--color-inverted-primary-rgb',
+                            color: '--color-primary-inverse-rgb',
                             opacity: 0.64,
                         },
-                        { name: 'border', color: '--color-inverted-focus-rgb' },
                     ],
                 },
                 {
                     selector: 'hover',
                     layers: [
-                        { name: 'foreground', color: '--color-inverted-primary-rgb' },
+                        { name: 'foreground', color: '--color-primary-inverse-rgb' },
                         {
                             name: 'background',
-                            color: '--color-inverted-primary-rgb',
+                            color: '--color-primary-inverse-rgb',
                             opacity: 0.08,
                         },
                     ],
@@ -244,9 +228,10 @@ const StyledIconButton = styled.button`
                 {
                     selector: 'active',
                     layers: [
+                        { name: 'foreground', color: '--color-primary-inverse-rgb' },
                         {
                             name: 'background',
-                            color: '--color-inverted-primary-rgb',
+                            color: '--color-primary-inverse-rgb',
                             opacity: 0.16,
                         },
                     ],
@@ -261,7 +246,7 @@ const StyledIconButton = styled.button`
                     {
                         selector: 'hover',
                         layers: [
-                            { name: 'foreground', color: '--color-inverted-primary-rgb' },
+                            { name: 'foreground', color: '--color-primary-inverse-rgb' },
                             {
                                 name: 'background',
                                 color: '--color-destructive-rgb',
@@ -280,9 +265,8 @@ const StyledIconButton = styled.button`
                 ${generateStateStyles([
                     {
                         layers: [
-                            { name: 'foreground', color: '--color-secondary-rgb' },
-                            { name: 'background', color: '--color-inverted-primary-rgb' },
-                            { name: 'border', color: '--color-inverted-focus-rgb' },
+                            { name: 'foreground', color: '--color-primary-rgb' },
+                            { name: 'background', color: '--color-primary-inverse-rgb' },
                         ],
                     },
                     {
@@ -290,7 +274,7 @@ const StyledIconButton = styled.button`
                         layers: [
                             {
                                 name: 'background',
-                                color: '--color-inverted-primary-rgb',
+                                color: '--color-primary-inverse-rgb',
                                 opacity: 0.92,
                             },
                         ],
@@ -298,10 +282,10 @@ const StyledIconButton = styled.button`
                     {
                         selector: 'active',
                         layers: [
-                            { name: 'foreground', color: '--color-inverted-primary-rgb' },
+                            { name: 'foreground', color: '--color-primary-inverse-rgb' },
                             {
                                 name: 'background',
-                                color: '--color-inverted-primary-rgb',
+                                color: '--color-primary-inverse-rgb',
                                 opacity: 0.16,
                             },
                         ],
@@ -313,8 +297,7 @@ const StyledIconButton = styled.button`
 
     // apply animation transitions
     body.enable-animations & {
-        transition: color var(--animation-speed) 0s ease-in-out,
-            border var(--animation-speed) 0s ease-in-out,
+        transition: border var(--animation-speed) 0s ease-in-out,
             background var(--animation-speed) 0s ease-in-out;
     }
 `;
