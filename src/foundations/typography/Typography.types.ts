@@ -14,7 +14,7 @@ type TTypographyWeight = 'light' | 'regular' | 'bold';
 
 type TTypographyMargin = 'none' | 'top' | 'bottom' | 'both';
 
-type TTypographyColor = 'primary' | 'secondary' | 'disabled';
+type TTypographyColor = 'primary' | 'secondary' | 'disabled' | 'contrast' | 'accent';
 
 export type {
     TTypographySize,

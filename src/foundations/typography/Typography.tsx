@@ -83,6 +83,14 @@ const Typography = styled.p
             color: var(--disabled-text-color);
         }
 
+        &[data-color='contrast'] {
+            color: var(--contrast-text-color);
+        }
+
+        &[data-color='accent'] {
+            color: var(--accent-text-color);
+        }
+
         // set heading type styles
         &[data-type='heading'] {
             // - default overrides

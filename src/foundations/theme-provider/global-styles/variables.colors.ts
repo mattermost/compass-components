@@ -31,6 +31,8 @@ const VColors = css`
     --primary-text-color: ${getTextColor('primary')};
     --secondary-text-color: ${getTextColor('secondary')};
     --disabled-text-color: ${getTextColor('disabled')};
+    --contrast-text-color: ${getTextColor('contrast')};
+    --accent-text-color: ${getAccentColor('main')};
 
     --default-border-color: ${getTextColor('disabled')};
 

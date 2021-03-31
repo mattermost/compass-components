@@ -1,15 +1,23 @@
+import { storiesOf } from '@storybook/react';
 import { Meta, Story, Canvas, Title, Subtitle } from '@storybook/addon-docs/blocks';
 
-import Badges from './index';
+import Badge from './index';
 
-export const Template = (args) => <Badges {...args} />;
+export const MentionTemplate = (args) => <Badge {...args} />;
+export const UnreadTemplate = (args) => <Badge {...args} />;
 
-export const defaultArgs = {
+export const mentionBadgeDefaultArgs = {
     location: 'sidebar',
     mentionCount: 1,
+    width: 'auto',
 };
 
-export const argTypes = {
+export const unreadBadgeDefaultArgs = {
+    width: 8,
+    mentionCount: 0,
+};
+
+export const mentionBadgeArgTypes = {
     location: {
         control: {
             type: 'select',
@@ -26,7 +34,18 @@ export const argTypes = {
     },
 };
 
-<Meta component={Badges} title="Components/Badges" />
+export const unreadBadgeArgTypes = {
+    width: {
+        control: {
+            type: 'range',
+            min: 1,
+            max: 100,
+            step: 1,
+        },
+    },
+};
+
+<Meta component={Badge} title="Components/Badges" parameters={{ status: 'stable' }} />
 
 <Title>Badges</Title>
 
@@ -53,35 +72,35 @@ Status Badges are used to indicate the status of a particular user and are usual
 or username
 
 export const canvasExampleArgs = {
-    ...defaultArgs,
+    ...mentionBadgeDefaultArgs,
 };
 
 <Canvas hidden>
     <Story
         name="Mention Badges"
-        argTypes={argTypes}
+        argTypes={mentionBadgeArgTypes}
         args={{
-            ...canvasExampleArgs,
+            ...mentionBadgeDefaultArgs,
         }}
     >
-        {Template.bind({})}
+        {MentionTemplate.bind({})}
     </Story>
     <Story
         name="Unread Badges"
-        argTypes={argTypes}
+        argTypes={unreadBadgeArgTypes}
         args={{
-            ...canvasExampleArgs,
+            ...unreadBadgeDefaultArgs,
         }}
     >
-        {Template.bind({})}
+        {UnreadTemplate.bind({})}
     </Story>
     <Story
         name="Status Badges"
-        argTypes={argTypes}
+        argTypes={mentionBadgeArgTypes}
         args={{
             ...canvasExampleArgs,
         }}
     >
-        {Template.bind({})}
+        {MentionTemplate.bind({})}
     </Story>
 </Canvas>
