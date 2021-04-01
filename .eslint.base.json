@@ -10,7 +10,8 @@
         "no-use-extend-native",
         "no-constructor-bind",
         "ext",
-        "regexp"
+        "regexp",
+        "regex"
     ],
 
     "parserOptions": {
@@ -48,6 +49,16 @@
     ],
 
     "rules": {
+        "regex/invalid": [
+            "error",
+            [
+                {
+                    "regex": "colour",
+                    "message": "please use 'color' instead of 'colour'",
+                    "replacement": "color"
+                }
+            ]
+        ],
         "no-alert": "error",
         "no-array-constructor": "error",
         "no-bitwise": "error",
