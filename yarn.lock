@@ -5059,6 +5059,11 @@ eslint-plugin-react@^7.22.0:
     resolve "^1.18.1"
     string.prototype.matchall "^4.0.2"
 
+eslint-plugin-regex@^1.7.0:
+  version "1.7.0"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-regex/-/eslint-plugin-regex-1.7.0.tgz#761ed42a25a1590d806740b961ff11d0f558bc1c"
+  integrity sha512-dSonj8OBs27A3r7lD8XlR2sx4DjWfr7yxR4qqhAjdwm5QIlVXq8v+u9/3Lzp/gXtcJfTbzQOJSjDN2Cly+IuHg==
+
 eslint-plugin-regexp@^0.2.2:
   version "0.2.2"
   resolved "https://registry.yarnpkg.com/eslint-plugin-regexp/-/eslint-plugin-regexp-0.2.2.tgz#de86ebe919375ac97832a23b6bd7e0ad3888f223"
