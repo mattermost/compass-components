@@ -15,7 +15,7 @@
     "props": {
       "color": {
         "defaultValue": {
-          "value": null
+          "value": "primary"
         },
         "description": "which color is the text rendered with",
         "name": "color",
@@ -44,7 +44,7 @@
       },
       "margin": {
         "defaultValue": {
-          "value": null
+          "value": "both"
         },
         "description": "Every text-element has its own margin.\nWith this you can choose which one to render",
         "name": "margin",
@@ -76,7 +76,7 @@
       },
       "weight": {
         "defaultValue": {
-          "value": null
+          "value": "bold"
         },
         "description": "define the weight of the rendered font",
         "name": "weight",
@@ -105,7 +105,7 @@
       },
       "size": {
         "defaultValue": {
-          "value": null
+          "value": "100"
         },
         "description": "the size-token used to render the text size.\n\nThere is a default for a case where `element` is not manually set as well",
         "name": "size",
@@ -271,16 +271,7 @@
         ],
         "required": false,
         "type": {
-          "name": "enum",
-          "raw": "TIconGlyph",
-          "value": [
-            {
-              "value": "\"none\""
-            },
-            {
-              "value": "{ accountMinusOutline: string; accountMultipleOutline: string; accountOutline: string; accountPlusOutline: string; airplaneVariant: string; airplane: string; alertCircleOutline: string; ... 214 more ...; webhook: string; }"
-            }
-          ]
+          "name": "any"
         }
       },
       "ariaLabel": {
@@ -315,7 +306,7 @@
     "props": {
       "color": {
         "defaultValue": {
-          "value": null
+          "value": "primary"
         },
         "description": "which color is the text rendered with",
         "name": "color",
@@ -344,7 +335,7 @@
       },
       "margin": {
         "defaultValue": {
-          "value": null
+          "value": "both"
         },
         "description": "Every text-element has its own margin.\nWith this you can choose which one to render",
         "name": "margin",
@@ -376,7 +367,7 @@
       },
       "weight": {
         "defaultValue": {
-          "value": null
+          "value": "regular"
         },
         "description": "define the weight of the rendered font",
         "name": "weight",
@@ -405,7 +396,7 @@
       },
       "size": {
         "defaultValue": {
-          "value": null
+          "value": "100"
         },
         "description": "the size-token used to render the text size.",
         "name": "size",
@@ -443,7 +434,7 @@
       },
       "element": {
         "defaultValue": {
-          "value": null
+          "value": "p"
         },
         "description": "for text components the options are `p` and `span`",
         "name": "element",

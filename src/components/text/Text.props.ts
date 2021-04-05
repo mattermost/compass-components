@@ -3,17 +3,9 @@ import { PTypography } from '../../foundations/typography';
 import { TTextSize, TTextElement } from './Text.types';
 
 export type PText = Pick<PTypography, 'color' | 'margin' | 'weight'> & {
-    /**
-     * the size-token used to render the text size.
-     *
-     * @default 100
-     * */
+    /** the size-token used to render the text size. */
     size?: TTextSize;
-    /**
-     * for text components the options are `p` and `span`
-     *
-     * @default 'p'
-     * */
+    /** for text components the options are `p` and `span` */
     element?: TTextElement;
     className?: string;
 };
