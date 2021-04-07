@@ -22,7 +22,7 @@ const Text: React.FC<PText> = ({
     color = DEFAULT_TEXT_COLOR,
 }): JSX.Element => {
     // Whenever this component is used with an element that is not supported within the headings throw an error!
-    if (!BODY_ELEMENTS.includes(element)) {
+    if (element && !BODY_ELEMENTS.includes(element)) {
         throw new Error(
             `Compass Components: Heading component was used with an unsupported element '${element}'.
             Please provide an element from these available options: ${BODY_ELEMENTS.join(', ')}.`
