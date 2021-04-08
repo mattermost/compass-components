@@ -39,8 +39,6 @@ const DEFAULT_TYPOGRAPHY_MARGIN: TTypographyMargin = 'both';
 
 const TYPOGRAPHY_COLORS: TTypographyColor[] = ['primary', 'secondary', 'disabled'];
 
-const DEFAULT_TYPOGRAPHY_COLOR: TTypographyColor = 'primary';
-
 export {
     DEFAULT_TYPOGRAPHY_SIZE,
     BODY_SIZES,
@@ -51,5 +49,4 @@ export {
     TYPOGRAPHY_MARGINS,
     DEFAULT_TYPOGRAPHY_MARGIN,
     TYPOGRAPHY_COLORS,
-    DEFAULT_TYPOGRAPHY_COLOR,
 };

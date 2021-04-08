@@ -47,7 +47,6 @@ const Shape = styled.div
     })<PShape>`
     flex: ${(props): string => (props.width ? 'initial' : 'auto')};
     display: flex;
-    flex-direction: column;
     background-color: ${(props): string =>
         props.background ? props.background : 'var(--shape-background-color)'};
     border-radius: ${(props): string => getBorderRadius(props.borderRadius)};

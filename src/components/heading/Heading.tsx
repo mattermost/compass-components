@@ -4,7 +4,6 @@ import clsx from 'clsx';
 import Typography from '../../foundations/typography';
 
 import {
-    DEFAULT_HEADING_COLOR,
     DEFAULT_HEADING_MARGIN,
     DEFAULT_HEADING_SIZE,
     DEFAULT_HEADING_WEIGHT,
@@ -16,7 +15,7 @@ const Heading: React.FC<PHeading> = ({
     children,
     className,
     element,
-    color = DEFAULT_HEADING_COLOR,
+    color,
     margin = DEFAULT_HEADING_MARGIN,
     size = DEFAULT_HEADING_SIZE,
     weight = DEFAULT_HEADING_WEIGHT,

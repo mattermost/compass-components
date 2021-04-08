@@ -10,7 +10,6 @@ import {
     DEFAULT_HEADING_SIZE,
     DEFAULT_HEADING_WEIGHT,
     DEFAULT_HEADING_MARGIN,
-    DEFAULT_HEADING_COLOR,
 } from './Heading.constants';
 import Grid from '../../foundations/layout';
 import Text from '../text';
@@ -116,7 +115,6 @@ export const Template = (args) => {
             size: DEFAULT_HEADING_SIZE,
             weight: DEFAULT_HEADING_WEIGHT,
             margin: DEFAULT_HEADING_MARGIN,
-            color: DEFAULT_HEADING_COLOR,
         }}
         argTypes={{
             size: { control: { type: 'select', options: HEADING_SIZES } },

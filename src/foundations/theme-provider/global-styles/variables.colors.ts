@@ -39,6 +39,26 @@ const VColors = css`
     --primary-color-light: ${getThemeColor('primary', 'light')};
     --primary-color-main: ${getThemeColor('primary', 'main')};
     --primary-color-dark: ${getThemeColor('primary', 'dark')};
+
+    --secondary-color-light: ${getThemeColor('secondary', 'light')};
+    --secondary-color-main: ${getThemeColor('secondary', 'main')};
+    --secondary-color-dark: ${getThemeColor('secondary', 'dark')};
+
+    --alert-color-light: ${getThemeColor('alert', 'light')};
+    --alert-color-main: ${getThemeColor('alert', 'main')};
+    --alert-color-dark: ${getThemeColor('alert', 'dark')};
+
+    --warning-color-light: ${getThemeColor('warning', 'light')};
+    --warning-color-main: ${getThemeColor('warning', 'main')};
+    --warning-color-dark: ${getThemeColor('warning', 'dark')};
+
+    --success-color-light: ${getThemeColor('success', 'light')};
+    --success-color-main: ${getThemeColor('success', 'main')};
+    --success-color-dark: ${getThemeColor('success', 'dark')};
+
+    --info-color-light: ${getThemeColor('info', 'light')};
+    --info-color-main: ${getThemeColor('info', 'main')};
+    --info-color-dark: ${getThemeColor('info', 'dark')};
 `;
 
 export default VColors;

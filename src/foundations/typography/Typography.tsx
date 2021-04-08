@@ -64,6 +64,8 @@ const Typography = styled.p
 
         // - set font syle variations
         ${BODY_SIZES.map((bodySize) => generateFontStyleVariations(bodySize, 'body'))}
+        
+        color: inherit;
 
         // - override weight if specified (body only supports regular and bold weights)
         &[data-weight='bold'] {

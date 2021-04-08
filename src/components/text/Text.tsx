@@ -5,7 +5,6 @@ import Typography, { BODY_ELEMENTS, TTypographyWeight } from '../../foundations/
 
 import PText from './Text.props';
 import {
-    DEFAULT_TEXT_COLOR,
     DEFAULT_TEXT_MARGIN,
     DEFAULT_TEXT_SIZE,
     DEFAULT_TEXT_ELEMENT,
@@ -15,11 +14,11 @@ import {
 const Text: React.FC<PText> = ({
     children,
     className,
+    color,
     size = DEFAULT_TEXT_SIZE,
     element = DEFAULT_TEXT_ELEMENT,
     weight = DEFAULT_TEXT_WEIGHT,
     margin = DEFAULT_TEXT_MARGIN,
-    color = DEFAULT_TEXT_COLOR,
 }): JSX.Element => {
     // Whenever this component is used with an element that is not supported within the headings throw an error!
     if (element && !BODY_ELEMENTS.includes(element)) {
