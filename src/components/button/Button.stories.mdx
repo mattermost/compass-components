@@ -1,10 +1,26 @@
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 import Button from './Button.tsx';
+import { BUTTON_SIZES, BUTTON_VARIANTS, BUTTON_WIDTHS } from './Button.constants';
 
 <Meta title={'Components/Button'} />
 
 <Canvas hidden>
-    <Story name="Default">
-        <Button label={'BUTTON'} />
+    <Story
+        name="Default"
+        args={{
+            label: 'BUTTON',
+            disabled: false,
+            destructive: false,
+            size: 'medium',
+            variant: 'primary',
+        }}
+        argTypes={{
+            size: { control: { type: 'select', options: BUTTON_SIZES } },
+            variant: { control: { type: 'select', options: BUTTON_VARIANTS } },
+            width: { control: { type: 'select', options: [...BUTTON_WIDTHS, 100, 200, 300, 400] } },
+            className: { table: { disable: true } },
+        }}
+    >
+        {(args) => <Button {...args} />}
     </Story>
 </Canvas>

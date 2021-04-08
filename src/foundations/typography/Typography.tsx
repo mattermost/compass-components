@@ -24,15 +24,22 @@ function generateFontStyleVariations(
             &[data-margin='none'] {
                 margin: 0;
             }
+
             &[data-margin='top'] {
                 margin: var(--${fontType}-margin-top-${typeSize}) 0 0;
             }
+
             &[data-margin='bottom'] {
                 margin: 0 0 var(--${fontType}-margin-bottom-${typeSize});
             }
+
             &[data-margin='both'] {
                 margin: var(--${fontType}-margin-top-${typeSize}) 0
                     var(--${fontType}-margin-bottom-${typeSize});
+            }
+
+            &[data-inherit-line-height] {
+                line-height: inherit;
             }
         }
     `;
@@ -49,6 +56,7 @@ const Typography = styled.p
         'data-weight': props.weight,
         'data-margin': props.margin,
         'data-color': props.color,
+        'data-inherit-line-height': props.inheritLineHeight,
     }))
     .withConfig({
         shouldForwardProp: Utils.forwardProperties(),

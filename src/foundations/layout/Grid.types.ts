@@ -1,4 +1,19 @@
-type TSpacingTokens = 0 | 25 | 50 | 75 | 100 | 150 | 200 | 250 | 300 | 350 | 400 | 450 | 500;
+type TSpacingTokens =
+    | 0
+    | 25
+    | 50
+    | 75
+    | 100
+    | 125
+    | 150
+    | 175
+    | 200
+    | 250
+    | 300
+    | 350
+    | 400
+    | 450
+    | 500;
 
 type TSpacingSides = 'top' | 'right' | 'bottom' | 'left';
 

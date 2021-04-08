@@ -10,6 +10,8 @@ export type PTypography = {
     className?: string;
     /** the size use to render the text. The actual px values depend on the element as well  */
     size?: TTypographySize;
+    /** in some cases it is needed to inherit the parents line-height */
+    inheritLineHeight?: boolean;
     /**
      * it is derived from the element:
      *  - `heading` for h1 - h6

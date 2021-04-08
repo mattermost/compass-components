@@ -15,6 +15,7 @@ const Text: React.FC<PText> = ({
     children,
     className,
     color,
+    inheritLineHeight = false,
     size = DEFAULT_TEXT_SIZE,
     element = DEFAULT_TEXT_ELEMENT,
     weight = DEFAULT_TEXT_WEIGHT,
@@ -37,6 +38,7 @@ const Text: React.FC<PText> = ({
             color={color}
             weight={weight as TTypographyWeight}
             role={'text'}
+            inheritLineHeight={inheritLineHeight}
         >
             {children}
         </Typography>
