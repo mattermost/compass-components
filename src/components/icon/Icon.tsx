@@ -29,10 +29,11 @@ function generateIconFontSizes(iconSize: TIconSize): FlattenSimpleInterpolation 
 
 const Icon = styled.i
     .attrs((props: PIcon) => ({
-        className: clsx(props.className, `icon-${props.glyph || DEFAULT_ICON_GLYPH}`),
+        className: `icon-${props.glyph || DEFAULT_ICON_GLYPH}`,
         'aria-label': props.ariaLabel,
         'data-size': props.size || DEFAULT_ICON_SIZE,
         'data-glyph': props.glyph || DEFAULT_ICON_GLYPH,
+        'data-color': props.color || 'inherit',
     }))
     .withConfig({
         shouldForwardProp: Utils.forwardProperties(),
@@ -40,6 +41,10 @@ const Icon = styled.i
     // define local variables using global variables and fallbacks
     --color-foreground: var(--icon-color-foreground, var(--primary-color-dark, black));
     --animation-speed: var(--animation-speed-shortest, 0.1s);
+    
+    &[data-color='inherit'] {
+        --color-foreground: inherit;
+    }
 
     // element container base styles
     align-items: center;

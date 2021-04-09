@@ -24,6 +24,7 @@ const neutral = {
     1100: 'hsl(225,12%,12%)',
     1150: 'hsl(225,12%,8%)',
     1200: 'hsl(225,12%,4%)',
+    1250: 'hsl(225,12%,0%)',
 };
 
 export default neutral;

@@ -337,6 +337,33 @@ function isValidColor(color: string): boolean {
     return supportedColorTypes.includes(type);
 }
 
+/**
+ * return rgb string to be used in (S)CSS properties
+ * @param {string} rgb - color string
+ * @param {number} opacity - color opacity
+ * @returns {string}
+ */
+function getRGBString(rgb: string, opacity?: number): string {
+    // convert string to numbers-array
+    const values = rgb.split(',').map((value) => Number.parseInt(value.trim(), 10));
+
+    if (values.length !== 3 || values.filter((x) => x && !(x < 0 || x > 255)).length !== 3) {
+        throw new Error(
+            `Compass Components: colorutils - Please provide a valid rgb color string to this function. Reason: ${
+                values.length === 3
+                    ? 'RGB values are not in the range between 0 - 255'
+                    : 'Not all RGB values were provided to the function.'
+            }`
+        );
+    }
+
+    if (opacity) {
+        return `rgba(${rgb},${clamp(opacity)})`;
+    }
+
+    return `rgb(${rgb})`;
+}
+
 export {
     alpha,
     convertToRgb,
@@ -349,4 +376,5 @@ export {
     rgbToHsl,
     createColorShades,
     isValidColor,
+    getRGBString,
 };

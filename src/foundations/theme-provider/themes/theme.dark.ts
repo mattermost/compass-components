@@ -1,4 +1,4 @@
-import { indigo, green, red, neutral, orange, purple, teal } from '../../colors';
+import { indigo, green, red, neutral, orange, purple, teal, blue } from '../../colors';
 
 import { TTheme } from './theme.types';
 
@@ -35,6 +35,16 @@ const themeDark: TTheme = {
             main: indigo[200],
             dark: indigo[300],
         },
+    },
+    action: {
+        hover: neutral[0],
+        hoverOpacity: 0.08,
+        active: neutral[0],
+        activeOpacity: 0.16,
+        focus: neutral[1250],
+        focusOpacity: 0.32,
+        selected: purple[500],
+        disabled: neutral[1100],
     },
     text: {
         primary: neutral[50],

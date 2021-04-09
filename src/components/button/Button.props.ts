@@ -5,6 +5,7 @@ import { TButtonSize, TButtonVariant, TButtonWidth } from './Button.types';
 type PButtonBase = Omit<PButton, 'variant'> & {
     'data-destructive'?: boolean;
     'data-variant'?: TButtonVariant;
+    'data-size'?: TButtonSize;
 };
 
 type PButton = {

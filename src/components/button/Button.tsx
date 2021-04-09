@@ -1,7 +1,5 @@
 import styled from 'styled-components';
 
-import Text from '../text';
-
 import ButtonBase from './Button.base';
 import {
     DEFAULT_BUTTON_SIZE,
@@ -25,6 +23,10 @@ const handleProperties = ({
         ...rest,
     };
 
+    if (size && size !== DEFAULT_BUTTON_SIZE) {
+        baseProperties['data-size'] = size;
+    }
+
     if (destructive) {
         baseProperties['data-destructive'] = destructive;
     }
@@ -39,20 +41,47 @@ const handleProperties = ({
 const Button = styled(ButtonBase).attrs(handleProperties)<PButton>`
     // define local variables
     --button-bg: var(--primary-color-main);
-    --button-bg-hover: linear-gradient(rgba(0, 0, 0, 0.08), rgba(0, 0, 0, 0.08));
-    --button-bg-active: linear-gradient(rgba(0, 0, 0, 0.16), rgba(0, 0, 0, 0.16));
+    --button-bg-hover: linear-gradient(
+        rgba(var(--action-color-hover), 0.08),
+        rgba(var(--action-color-hover), 0.08)
+    );
+    --button-bg-active: linear-gradient(
+        rgba(var(--action-color-active), 0.16),
+        rgba(var(--action-color-active), 0.16)
+    );
+
+    --button-border: var(--primary-color-main);
     --button-text-color: var(--contrast-text-color);
 
+    --button-icon-margin: 7px;
+
+    &[data-size='small'] {
+        --button-icon-margin: 5px;
+    }
+
+    &[data-size='large'] {
+        --button-icon-margin: 8px;
+    }
+
+    // destructive button
     &[data-destructive] {
         --button-bg: var(--alert-color-main);
     }
 
+    // disabled button
     &[disabled] {
-        --button-bg: var(--disabled-color-main);
+        --button-bg: var(--action-color-disabled);
+    }
+
+    &[data-variant='secondary'] {
+        --button-bg: transparent;
+        --button-bg-hover: var();
     }
 
     background: var(--button-bg);
     color: var(--button-text-color);
+
+    line-height: 16px;
 
     &:not([disabled]) {
         &:hover {
@@ -68,7 +97,14 @@ const Button = styled(ButtonBase).attrs(handleProperties)<PButton>`
         }
     }
 
-    line-height: 16px;
+    i {
+        &:first-child {
+            margin-right: var(--button-icon-margin);
+        }
+        &:last-child {
+            margin-left: var(--button-icon-margin);
+        }
+    }
 `;
 
 export default Button;

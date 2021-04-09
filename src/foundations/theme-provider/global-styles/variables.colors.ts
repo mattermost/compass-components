@@ -1,6 +1,7 @@
 import { css } from 'styled-components';
 
 import {
+    TTHemeActionColors,
     TTHemeBackgroundColors,
     TThemeColorDefinition,
     TTHemeColors,
@@ -9,9 +10,15 @@ import {
 
 import { PGlobalStyles } from './globalStyles';
 
-const getThemeColor = (colorToken: keyof TTHemeColors, colorShade: keyof TThemeColorDefinition) => (
+const getPaletteColor = (
+    colorToken: keyof TTHemeColors,
+    colorShade: keyof TThemeColorDefinition
+) => (props: PGlobalStyles): string =>
+    props.theme.palette[colorToken][colorShade] || props.theme.palette[colorToken].main;
+
+const getActionColor = (colorToken: keyof TTHemeActionColors) => (
     props: PGlobalStyles
-): string => props.theme.palette[colorToken][colorShade] || props.theme.palette[colorToken].main;
+): string | number => props.theme.action[colorToken];
 
 const getTextColor = (type: keyof TTHemeTextColors) => (props: PGlobalStyles): string =>
     props.theme.text[type];
@@ -36,29 +43,38 @@ const VColors = css`
 
     --default-border-color: ${getTextColor('disabled')};
 
-    --primary-color-light: ${getThemeColor('primary', 'light')};
-    --primary-color-main: ${getThemeColor('primary', 'main')};
-    --primary-color-dark: ${getThemeColor('primary', 'dark')};
+    --primary-color-light: ${getPaletteColor('primary', 'light')};
+    --primary-color-main: ${getPaletteColor('primary', 'main')};
+    --primary-color-dark: ${getPaletteColor('primary', 'dark')};
 
-    --secondary-color-light: ${getThemeColor('secondary', 'light')};
-    --secondary-color-main: ${getThemeColor('secondary', 'main')};
-    --secondary-color-dark: ${getThemeColor('secondary', 'dark')};
+    --secondary-color-light: ${getPaletteColor('secondary', 'light')};
+    --secondary-color-main: ${getPaletteColor('secondary', 'main')};
+    --secondary-color-dark: ${getPaletteColor('secondary', 'dark')};
 
-    --alert-color-light: ${getThemeColor('alert', 'light')};
-    --alert-color-main: ${getThemeColor('alert', 'main')};
-    --alert-color-dark: ${getThemeColor('alert', 'dark')};
+    --alert-color-light: ${getPaletteColor('alert', 'light')};
+    --alert-color-main: ${getPaletteColor('alert', 'main')};
+    --alert-color-dark: ${getPaletteColor('alert', 'dark')};
 
-    --warning-color-light: ${getThemeColor('warning', 'light')};
-    --warning-color-main: ${getThemeColor('warning', 'main')};
-    --warning-color-dark: ${getThemeColor('warning', 'dark')};
+    --warning-color-light: ${getPaletteColor('warning', 'light')};
+    --warning-color-main: ${getPaletteColor('warning', 'main')};
+    --warning-color-dark: ${getPaletteColor('warning', 'dark')};
 
-    --success-color-light: ${getThemeColor('success', 'light')};
-    --success-color-main: ${getThemeColor('success', 'main')};
-    --success-color-dark: ${getThemeColor('success', 'dark')};
+    --success-color-light: ${getPaletteColor('success', 'light')};
+    --success-color-main: ${getPaletteColor('success', 'main')};
+    --success-color-dark: ${getPaletteColor('success', 'dark')};
 
-    --info-color-light: ${getThemeColor('info', 'light')};
-    --info-color-main: ${getThemeColor('info', 'main')};
-    --info-color-dark: ${getThemeColor('info', 'dark')};
+    --info-color-light: ${getPaletteColor('info', 'light')};
+    --info-color-main: ${getPaletteColor('info', 'main')};
+    --info-color-dark: ${getPaletteColor('info', 'dark')};
+
+    --action-color-hover: ${getActionColor('hover')};
+    --action-color-hoverOpacity: ${getActionColor('hoverOpacity')};
+    --action-color-active: ${getActionColor('active')};
+    --action-color-activeOpacity: ${getActionColor('activeOpacity')};
+    --action-color-focus: ${getActionColor('focus')};
+    --action-color-focusOpacity: ${getActionColor('focusOpacity')};
+    --action-color-selected: ${getActionColor('selected')};
+    --action-color-disabled: ${getActionColor('disabled')};
 `;
 
 export default VColors;
