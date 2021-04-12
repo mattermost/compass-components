@@ -45,7 +45,7 @@ const lightTheme: TTheme = {
         focus: neutral[0],
         focusOpacity: 0.32,
         selected: blue[500],
-        disabled: neutral[200],
+        disabled: neutral[900],
     },
     text: {
         primary: neutral[1100],

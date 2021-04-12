@@ -55,10 +55,6 @@ const Shape = styled.div
     ${getShapeDimensions};
     z-index: ${(props): number => props.elevation || 0};
     transition: box-shadow 500ms ease-in-out;
-
-    &:hover {
-        box-shadow: ${(props): string => getElevation(props.elevationOnHover)};
-    }
 `;
 
 export default Shape;

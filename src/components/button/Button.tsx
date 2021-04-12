@@ -35,54 +35,56 @@ const handleProperties = ({
 
 const getButtonVariables = ({
     theme: { palette, action, text },
+    size,
     variant,
     disabled,
     destructive,
 }: ThemedStyledProps<PButton, TTheme>): FlattenSimpleInterpolation => {
-    let mainColor = palette.primary.main;
+    let mainColor = destructive ? palette.alert.main : palette.primary.main;
     let hoverColor = action.hover;
     let bgOpacity = 1;
 
     let textColor = text.contrast;
+    let borderColor = mainColor;
 
-    switch (true) {
-        case disabled:
-            // immediately return interpolated css for disabled buttons with disabled theme color
-            return css`
-                --button-bg: ${action.disabled};
-                --button-bg-hover: ${action.disabled};
-                --button-bg-active: ${action.disabled};
+    if (variant !== 'primary') {
+        // for variants `secondary` and `tertiary` use the
+        // primary color, but set alpha to `0`
+        bgOpacity = 0;
+        // hoverColor is set to the primary button color
+        hoverColor = mainColor;
+        textColor = mainColor;
+    }
 
-                --button-text-color: ${textColor};
-            `;
-        case destructive:
-            mainColor = palette.alert.main;
-            break;
-        case variant === 'primary':
-            mainColor = palette.primary.main;
-            break;
-        case variant === 'secondary' || variant === 'tertiary':
-        default:
-            // for variants `secondary` and `tertiary` use the
-            // primary color, but set alpha to `0`
-            bgOpacity = 0;
-            // hoverColor is set to the primary button color
-            hoverColor = mainColor;
-            textColor = mainColor;
+    if (disabled) {
+        bgOpacity = variant === 'primary' ? 0.08 : 0;
+        mainColor = action.disabled;
+        textColor = alpha(mainColor, 0.32);
+        borderColor = textColor;
+    }
+
+    // @default: `size === 'medium'`
+    let iconMargin = 7;
+
+    if (size === 'small') {
+        iconMargin = 5;
+    } else if (size === 'large') {
+        iconMargin = 8;
     }
 
     const buttonBg = alpha(mainColor, bgOpacity);
-    const buttonBgHover = blendColors(buttonBg, alpha(hoverColor, action.hoverOpacity));
-    const buttonBgActive = blendColors(buttonBg, alpha(hoverColor, action.activeOpacity));
 
     return css`
         --button-bg-color: ${buttonBg};
-        --button-bg-color-hover: ${buttonBgHover};
-        --button-bg-color-active: ${buttonBgActive};
+        --button-bg-color-hover: ${blendColors(buttonBg, alpha(hoverColor, action.hoverOpacity))};
+        --button-bg-color-active: ${blendColors(buttonBg, alpha(hoverColor, action.activeOpacity))};
 
         --button-text-color: ${textColor};
+        --button-border-color: ${borderColor};
 
-        --button-border-color: ${mainColor};
+        ${variant === 'secondary' && 'box-shadow: inset 0 0 0 1px var(--button-border-color);'}
+
+        --button-icon-margin: ${iconMargin}px;
     `;
 };
 
@@ -90,19 +92,8 @@ const Button = styled(ButtonBase).attrs(handleProperties)<PButton>`
     // define local variables
     ${getButtonVariables};
 
-    --button-icon-margin: 7px;
-
-    &[data-size='small'] {
-        --button-icon-margin: 5px;
-    }
-
-    &[data-size='large'] {
-        --button-icon-margin: 8px;
-    }
-
     background: var(--button-bg-color);
     color: var(--button-text-color);
-    box-shadow: inset 0 0 0 1px var(--button-border-color);
 
     line-height: 16px;
 
