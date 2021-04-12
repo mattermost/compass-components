@@ -42,7 +42,7 @@ const getButtonVariables = ({
 }: ThemedStyledProps<PButton, TTheme>): FlattenSimpleInterpolation => {
     let mainColor = destructive ? palette.alert.main : palette.primary.main;
     let hoverColor = action.hover;
-    let bgOpacity = 1;
+    let bgOpacity = disabled ? 0.08 : 1;
 
     let textColor = text.contrast;
     let borderColor = mainColor;
@@ -52,13 +52,14 @@ const getButtonVariables = ({
         // primary color, but set alpha to `0`
         bgOpacity = 0;
         // hoverColor is set to the primary button color
+        // for non-`primary` buttons
         hoverColor = mainColor;
         textColor = mainColor;
     }
 
     if (disabled) {
-        bgOpacity = variant === 'primary' ? 0.08 : 0;
         mainColor = action.disabled;
+        // texts, icons and borders are slightly opaque with disabled buttons
         textColor = alpha(mainColor, 0.32);
         borderColor = textColor;
     }
@@ -92,7 +93,9 @@ const Button = styled(ButtonBase).attrs(handleProperties)<PButton>`
     // define local variables
     ${getButtonVariables};
 
+    // set default background
     background: var(--button-bg-color);
+    // set default text-color
     color: var(--button-text-color);
 
     line-height: 16px;

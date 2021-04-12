@@ -38,9 +38,10 @@ const getBorderDefinition = (props: PShape): string => {
 };
 
 const Shape = styled.div
-    .attrs(({ component, ...rest }: PShape) => ({
-        ...rest,
+    // ignoring the className property prevents duplicate classes to be added to the HTML element
+    .attrs(({ component, className: ignoreClassName, ...rest }: PShape) => ({
         as: component,
+        ...rest,
     }))
     .withConfig({
         shouldForwardProp: Utils.forwardProperties(),
