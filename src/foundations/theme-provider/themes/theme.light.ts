@@ -1,3 +1,4 @@
+import { alpha } from '../../../utils';
 import { neutral, green, red, blue, indigo, orange } from '../../colors';
 
 import { TTheme } from './theme.types';

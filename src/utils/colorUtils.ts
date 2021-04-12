@@ -1,3 +1,5 @@
+import { normal } from 'color-blend';
+
 type TColorDefinition = {
     type: string;
     values: number[];
@@ -337,6 +339,29 @@ function isValidColor(color: string): boolean {
     return supportedColorTypes.includes(type);
 }
 
+function blendColors(baseColor: string, layerColor: string): string {
+    const decomposedBase = decomposeColor(convertToRgb(baseColor));
+    const decomposedLayer = decomposeColor(convertToRgb(layerColor));
+
+    const base = {
+        r: decomposedBase.values[0],
+        g: decomposedBase.values[1],
+        b: decomposedBase.values[2],
+        a: Number.isNaN(decomposedBase.values[3]) ? 1 : decomposedBase.values[3],
+    };
+
+    const layer = {
+        r: decomposedLayer.values[0],
+        g: decomposedLayer.values[1],
+        b: decomposedLayer.values[2],
+        a: Number.isNaN(decomposedLayer.values[3]) ? 1 : decomposedLayer.values[3],
+    };
+
+    const mixed = normal(base, layer);
+
+    return recomposeColor({ type: 'rgba', values: [mixed.r, mixed.g, mixed.b, mixed.a] });
+}
+
 /**
  * return rgb string to be used in (S)CSS properties
  * @param {string} rgb - color string
@@ -377,4 +402,5 @@ export {
     createColorShades,
     isValidColor,
     getRGBString,
+    blendColors,
 };

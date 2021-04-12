@@ -5,9 +5,9 @@ import Shape from '../../foundations/shape';
 import Icon, { TIconSize } from '../icon';
 import Text, { TTextSize } from '../text';
 
-import { PButton, PButtonBase } from './Button.props';
+import { PButton } from './Button.props';
 
-const ButtonBase: React.FC<PButtonBase> = ({
+const ButtonBase: React.FC<PButton> = ({
     label,
     leadingIcon,
     trailingIcon,

@@ -1,4 +1,3 @@
-import clsx from 'clsx';
 import styled, { css } from 'styled-components';
 import { FlattenSimpleInterpolation } from 'styled-components/ts3.6';
 
