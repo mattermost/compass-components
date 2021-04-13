@@ -32,6 +32,7 @@ type PGrid = {
     /** restrict the height of a `Grid` */
     height?: number | null;
     children?: React.ReactNode;
+    className?: string;
 };
 
 type PStyledGrid = Required<Omit<PGrid, 'component' | 'children' | 'margin' | 'padding'>> &

@@ -33,7 +33,7 @@ const HEADING_ELEMENTS: TTypographyElement[] = ['h1', 'h2', 'h3', 'h4', 'h5', 'h
 
 const TYPOGRAPHY_WEIGHTS: TTypographyWeight[] = ['light', 'regular', 'bold'];
 
-const TYPOGRAPHY_MARGINS: TTypographyMargin[] = ['none', 'both', 'bottom', 'top'];
+const TYPOGRAPHY_MARGINS: TTypographyMargin[] = ['none', 'both', 'bottom', 'top', 'all'];
 
 const DEFAULT_TYPOGRAPHY_MARGIN: TTypographyMargin = 'both';
 

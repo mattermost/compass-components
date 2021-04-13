@@ -35,7 +35,8 @@ const VDefaultStyles = css`
         font-size: var(--body-font-size-${DEFAULT_TEXT_SIZE});
         font-weight: var(--font-weight-regular);
         line-height: var(--body-line-height-${DEFAULT_TEXT_SIZE});
-        margin: var(--body-margin-top-${DEFAULT_TEXT_SIZE}) 0
+        margin: var(--body-margin-top-${DEFAULT_TEXT_SIZE})
+            var(--body-margin-side-${DEFAULT_TEXT_SIZE})
             var(--body-margin-bottom-${DEFAULT_TEXT_SIZE});
     }
 

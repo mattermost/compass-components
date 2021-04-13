@@ -34,6 +34,12 @@ function generateFontStyleVariations(
                 margin: var(--${fontType}-margin-top-${typeSize}) 0
                     var(--${fontType}-margin-bottom-${typeSize});
             }
+
+            &[data-margin='all'] {
+                margin: var(--${fontType}-margin-top-${typeSize}) 
+                    var(--${fontType}-margin-side-${typeSize});
+                    var(--${fontType}-margin-bottom-${typeSize});
+            }
         }
     `;
 }
@@ -59,7 +65,8 @@ const Typography = styled.p
         font-size: var(--base-font-size);
         font-weight: var(--font-weight-regular);
         line-height: var(--base-line-height);
-        margin: var(--body-margin-top-${DEFAULT_TYPOGRAPHY_SIZE}) 0
+        margin: var(--body-margin-top-${DEFAULT_TYPOGRAPHY_SIZE})
+            var(--body-margin-side-${DEFAULT_TYPOGRAPHY_SIZE})
             var(--body-margin-bottom-${DEFAULT_TYPOGRAPHY_SIZE});
 
         // - set font syle variations

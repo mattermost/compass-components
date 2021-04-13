@@ -12,7 +12,7 @@ type TTypographyType = 'heading' | 'body';
 
 type TTypographyWeight = 'light' | 'regular' | 'bold';
 
-type TTypographyMargin = 'none' | 'top' | 'bottom' | 'both';
+type TTypographyMargin = 'none' | 'top' | 'bottom' | 'both' | 'all';
 
 type TTypographyColor = 'primary' | 'secondary' | 'disabled' | 'contrast' | 'accent';
 

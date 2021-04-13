@@ -50,6 +50,11 @@ const VFontStyle = css`
         (key) => `--body-margin-bottom-${key}: ${getMargin(bodyFontSizes[key], 0.75)}px;`
     )}
 
+    // generate body margin-bottom variables
+    ${Object.keys(bodyFontSizes).map(
+        (key) => `--body-margin-side-${key}: ${getMargin(bodyFontSizes[key], 0.75)}px;`
+    )}
+
     --body-line-height-25: ${baseLineHeight * 0.8}px;
     --body-line-height-50: ${baseLineHeight * 0.8}px;
     --body-line-height-75: ${baseLineHeight * 0.8}px;

@@ -1,110 +1,70 @@
-import React from 'react';
-import styled from 'styled-components';
-import clsx from 'clsx';
+import styled, { css } from 'styled-components';
+import { FlattenSimpleInterpolation, ThemedStyledProps } from 'styled-components/ts3.6';
 
-import Shape from '../../foundations/shape';
-import Grid, { GridSpacing, TSpacingTokensSymmetric } from '../../foundations/layout';
-import Text, { TTextSize } from '../text';
-import Icon, { TIconSize } from '../icon';
+import { TTheme } from '../../foundations/theme-provider/themes/theme.types';
 
+import CheckboxBase from './Checkbox.base';
 import PCheckbox from './Checkbox.props';
 import { DEFAULT_CHECKBOX_SIZE, DEFAULT_CHECKBOX_STATE } from './Checkbox.constants';
 
-const CheckboxBase: React.FC<PCheckbox> = ({
-    labelText = 'Public',
+const baseProperties = ({
     state = DEFAULT_CHECKBOX_STATE,
     size = DEFAULT_CHECKBOX_SIZE,
-    hideLabel = false,
     className,
-}: PCheckbox): JSX.Element => {
-    let labelSize: TTextSize = 100;
-    let checkboxSize = 20;
+}: PCheckbox): PCheckbox => ({
+    state,
+    size,
+    className,
+});
 
-    const iconSize: TIconSize = 12;
+const getCheckboxVariables = ({
+    theme: { palette, background, text },
+    size,
+    state,
+}: ThemedStyledProps<PCheckbox, TTheme>): FlattenSimpleInterpolation => {
+    const textColor = text.primary;
+    const checkmarkColor = text.contrast;
 
-    let background = 'var(--shape-background-color)';
-    let borderColor = 'inherit';
+    let checkboxBg = background.default;
 
-    const spacing: TSpacingTokensSymmetric = {
-        vertical: 0,
-        horizontal: 0,
-    };
+    const borderColor = text.disabled;
 
-    switch (size) {
-        case 'lg':
-            labelSize = 200;
-            checkboxSize = 20;
-            spacing.vertical = 25;
-            spacing.horizontal = 25;
-            break;
-        case 'md':
-            labelSize = 75;
-            checkboxSize = 14;
-            spacing.vertical = 0;
-            spacing.horizontal = 0;
-            break;
-        case 'sm':
-            labelSize = 75;
-            checkboxSize = 12;
-            spacing.vertical = 0;
-            spacing.horizontal = 0;
-            break;
-        default:
-            break;
+    if (state === 'on') {
+        checkboxBg = palette.primary.main;
     }
 
-    switch (state) {
-        case 'on':
-            background = 'var(--primary-color-main, blue)';
-            borderColor = 'var(--primary-color-main, blue)';
-            break;
-        case 'off':
-            background = 'var(--shape-background-color)';
-            borderColor = 'black';
-            break;
-        case 'status':
-            background = 'var(--shape-background-color)';
-            borderColor = 'red';
-            break;
-        case 'disabled':
-            background = 'var(--disabled-text-color)';
-            break;
-        default:
-            break;
+    // @default: `size === 'medium'`
+    let iconMargin = 7;
+
+    if (size === 'sm') {
+        iconMargin = 5;
+    } else if (size === 'lg') {
+        iconMargin = 8;
     }
 
-    return (
-        <>
-            <Shape
-                borderRadius={4}
-                elevation={1}
-                elevationOnHover={3}
-                background={background}
-                width={checkboxSize}
-                height={checkboxSize}
-            >
-                <Grid
-                    alignment={'center'}
-                    justify={'center'}
-                    flex={1}
-                    padding={GridSpacing.symmetric(spacing)}
-                >
-                    <Icon glyph="check" size={iconSize} />
-                </Grid>
-            </Shape>
-            {!hideLabel && (
-                <Text size={labelSize}>
-                    <strong>{labelText}</strong>
-                </Text>
-            )}
-        </>
-    );
+    return css`
+        --checkbox-bg-color: ${checkboxBg};
+        --checkbox-text-color: ${textColor};
+        --checkbox-border-color: ${borderColor};
+        --checkbox-icon-color: ${checkmarkColor};
+        --checkbox-icon-margin: ${iconMargin}px;
+    `;
 };
 
-const Checkbox = styled(CheckboxBase).attrs((props: PCheckbox) => ({
-    className: clsx(props.className, 'Checkbox'),
-}))<PCheckbox>`
-    'color':'white', ;
+const Checkbox = styled(CheckboxBase).attrs(baseProperties)<PCheckbox>`
+    ${getCheckboxVariables};
+    // set default text-color
+    color: var(--checkbox-text-color);
+
+    div {
+        background: var(--checkbox-bg-color);
+    }
+
+    i {
+        color: var(--checkbox-icon-color);
+    }
+
+    transition: all 500ms 0s ease-in-out;
 `;
 
 export default Checkbox;
