@@ -1,4 +1,5 @@
 import { Meta, Story, Canvas, Title, Subtitle } from '@storybook/addon-docs/blocks';
+import { Utils, defaultArgumentsTableExclusion } from '../../utils';
 
 import Checkbox from './index';
 
@@ -11,7 +12,7 @@ export const defaultArgs = {
     hideLabel: false,
 };
 
-export const argTypes = {
+export const argTypes = Utils.hideStyledComponentProperties({
     state: {
         control: {
             type: 'select',
@@ -30,7 +31,7 @@ export const argTypes = {
             options: ['true', 'false'],
         },
     },
-};
+});
 
 <Meta component={Checkbox} title="Components/Checkbox" />
 

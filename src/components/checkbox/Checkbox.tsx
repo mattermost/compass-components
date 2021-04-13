@@ -5,41 +5,40 @@ import { TTheme } from '../../foundations/theme-provider/themes/theme.types';
 
 import CheckboxBase from './Checkbox.base';
 import PCheckbox from './Checkbox.props';
-import { DEFAULT_CHECKBOX_SIZE, DEFAULT_CHECKBOX_STATE } from './Checkbox.constants';
+import { DEFAULT_CHECKBOX_STATE } from './Checkbox.constants';
 
-const baseProperties = ({
-    state = DEFAULT_CHECKBOX_STATE,
-    size = DEFAULT_CHECKBOX_SIZE,
-    className,
-}: PCheckbox): PCheckbox => ({
+const baseProperties = ({ state = DEFAULT_CHECKBOX_STATE, className }: PCheckbox): PCheckbox => ({
     state,
-    size,
     className,
 });
 
 const getCheckboxVariables = ({
     theme: { palette, background, text },
-    size,
     state,
 }: ThemedStyledProps<PCheckbox, TTheme>): FlattenSimpleInterpolation => {
     const textColor = text.primary;
-    const checkmarkColor = text.contrast;
 
+    let checkmarkColor = 'transparent';
     let checkboxBg = background.default;
+    let borderColor = text.disabled;
 
-    const borderColor = text.disabled;
-
-    if (state === 'on') {
-        checkboxBg = palette.primary.main;
-    }
-
-    // @default: `size === 'medium'`
-    let iconMargin = 7;
-
-    if (size === 'sm') {
-        iconMargin = 5;
-    } else if (size === 'lg') {
-        iconMargin = 8;
+    switch (state) {
+        case 'on':
+            checkmarkColor = text.contrast;
+            checkboxBg = palette.primary.main;
+            borderColor = palette.primary.main;
+            break;
+        case 'off':
+            borderColor = text.secondary;
+            break;
+        case 'status':
+            borderColor = palette.alert.main;
+            break;
+        case 'disabled':
+            checkboxBg = background.default;
+            break;
+        default:
+            break;
     }
 
     return css`
@@ -47,7 +46,6 @@ const getCheckboxVariables = ({
         --checkbox-text-color: ${textColor};
         --checkbox-border-color: ${borderColor};
         --checkbox-icon-color: ${checkmarkColor};
-        --checkbox-icon-margin: ${iconMargin}px;
     `;
 };
 
@@ -58,6 +56,8 @@ const Checkbox = styled(CheckboxBase).attrs(baseProperties)<PCheckbox>`
 
     div {
         background: var(--checkbox-bg-color);
+        border-color: var(--checkbox-border-color);
+        border-width: 1px;
     }
 
     i {

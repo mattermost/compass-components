@@ -6,10 +6,11 @@ import Icon, { TIconSize } from '../icon';
 import Text, { TTextSize } from '../text';
 
 import PCheckbox from './Checkbox.props';
+import { DEFAULT_CHECKBOX_SIZE } from './Checkbox.constants';
 
 const CheckboxBase: React.FC<PCheckbox> = ({
     labelText = 'Public',
-    size,
+    size = DEFAULT_CHECKBOX_SIZE,
     hideLabel = false,
     className,
 }: PCheckbox): JSX.Element => {
