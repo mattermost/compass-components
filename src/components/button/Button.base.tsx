@@ -1,9 +1,8 @@
 import React from 'react';
 
-import Grid, { GridSpacing, TSpacingTokensSymmetric } from '../../foundations/layout';
+import Grid, { Spacing, TSpacingTokensSymmetric } from '../../foundations/layout';
 import Shape from '../../foundations/shape';
-import Icon, { TIconSize } from '../icon';
-import Text, { TTextSize } from '../text';
+import Text, { TTextSizeToken } from '../text';
 
 import { PButton } from './Button.props';
 
@@ -15,8 +14,7 @@ const ButtonBase: React.FC<PButton> = ({
     width,
     ...rest
 }: PButton) => {
-    let labelSize: TTextSize = 100;
-    let iconSize: TIconSize = 18;
+    let labelSize: TTextSizeToken = 100;
 
     const hasIcon = leadingIcon || trailingIcon;
     const spacing: TSpacingTokensSymmetric = {
@@ -27,13 +25,11 @@ const ButtonBase: React.FC<PButton> = ({
     switch (size) {
         case 'large':
             labelSize = 200;
-            iconSize = 24;
             spacing.vertical = hasIcon ? 75 : 100;
             spacing.horizontal = 150;
             break;
         case 'small':
             labelSize = 75;
-            iconSize = 14;
             // line-height on text is 16, so there is no need to adjust paddings
             spacing.vertical = 50;
             spacing.horizontal = 100;
@@ -47,16 +43,17 @@ const ButtonBase: React.FC<PButton> = ({
             component={'button'}
             borderRadius={4}
             width={width === 'full' ? '100%' : width}
+            elevation={2}
+            elevationOnHover={6}
             {...rest}
         >
             <Grid
                 row
                 alignment={'center'}
                 justify={'center'}
-                padding={GridSpacing.symmetric(spacing)}
+                padding={Spacing.symmetric(spacing)}
                 flex={1}
             >
-                {leadingIcon && <Icon glyph={leadingIcon} size={iconSize} />}
                 <Text
                     element={'span'}
                     size={labelSize}
@@ -66,7 +63,6 @@ const ButtonBase: React.FC<PButton> = ({
                 >
                     {label}
                 </Text>
-                {trailingIcon && <Icon glyph={trailingIcon} size={iconSize} />}
             </Grid>
         </Shape>
     );

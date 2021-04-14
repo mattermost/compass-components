@@ -2,7 +2,7 @@ import React from 'react';
 
 import Heading from '../../components/heading';
 import Text from '../../components/text';
-import Grid, { GridSpacing } from '../layout';
+import Grid, { Spacing } from '../layout';
 import Shape from '../shape';
 import { convertToRgb, rgbToHex, rgbToHsl } from '../../utils';
 
@@ -29,7 +29,7 @@ const Swatch: React.FC<PSwatch> = ({
         <Grid
             row={isRow}
             alignment={'stretch'}
-            padding={isRow ? GridSpacing.symmetric({ vertical: 50 }) : GridSpacing.all(50)}
+            padding={isRow ? Spacing.symmetric({ vertical: 50 }) : Spacing.all(50)}
             flex={0}
         >
             <Grid alignment={'flex-end'} flex={1}>
@@ -47,7 +47,7 @@ const Swatch: React.FC<PSwatch> = ({
                 <Grid
                     alignment={'flex-end'}
                     flex={2}
-                    padding={GridSpacing.trbl({ top: 50, right: 0, bottom: 50, left: 75 })}
+                    padding={Spacing.trbl({ top: 50, right: 0, bottom: 50, left: 75 })}
                 >
                     <Grid flex={1}>
                         <Heading element={'h6'} size={200} margin={isRow ? 'none' : 'bottom'}>

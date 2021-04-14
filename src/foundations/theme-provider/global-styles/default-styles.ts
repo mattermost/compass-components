@@ -4,39 +4,41 @@ import { FlattenSimpleInterpolation } from 'styled-components/ts3.6';
 import {
     DEFAULT_HEADING_ELEMENT_SIZES,
     DEFAULT_HEADING_SIZE,
+    DEFAULT_HEADING_WEIGHT,
+    HEADING_DEFINITIONS,
     HEADING_ELEMENTS,
     THeadingElement,
 } from '../../../components/heading';
-import { DEFAULT_TEXT_SIZE } from '../../../components/text';
+import { DEFAULT_TEXT_SIZE, DEFAULT_TEXT_WEIGHT, TEXT_DEFINITIONS } from '../../../components/text';
+import { FONT_TYPE_FAMILIES } from '../../../shared/shared.constants';
 
 const generateDefaultHeadingStyles = (): FlattenSimpleInterpolation =>
-    HEADING_ELEMENTS.map(
-        (headingElement: THeadingElement) => css`
+    HEADING_ELEMENTS.map((headingElement: THeadingElement) => {
+        const size = DEFAULT_HEADING_ELEMENT_SIZES[headingElement];
+
+        return css`
             ${headingElement} {
-                font-size: var(
-                    --heading-font-size-${DEFAULT_HEADING_ELEMENT_SIZES[headingElement]}
-                );
-                line-height: var(
-                    --heading-line-height-${DEFAULT_HEADING_ELEMENT_SIZES[headingElement]}
-                );
-                margin: var(--body-margin-top-${DEFAULT_HEADING_ELEMENT_SIZES[headingElement]}) 0
-                    var(--body-margin-bottom-${DEFAULT_HEADING_ELEMENT_SIZES[headingElement]});
+                font-size: ${HEADING_DEFINITIONS[size].size}px;
+                line-height: ${HEADING_DEFINITIONS[size].lineHeight}px;
+                margin: ${HEADING_DEFINITIONS[size].marginTop}px 0
+                    ${HEADING_DEFINITIONS[size].marginBottom}px;
             }
-        `
-    );
+        `;
+    });
 
 const VDefaultStyles = css`
+    :root {
+        font-size: ${TEXT_DEFINITIONS[DEFAULT_TEXT_SIZE].size}px;
+        font-weight: ${DEFAULT_TEXT_WEIGHT};
+        line-height: ${TEXT_DEFINITIONS[DEFAULT_TEXT_SIZE].lineHeight}px;
+    }
+
     p,
     span,
     label {
         // set body type styles
         // - defaults
-        font-family: var(--body-font-family);
-        font-size: var(--body-font-size-${DEFAULT_TEXT_SIZE});
-        font-weight: var(--font-weight-regular);
-        line-height: var(--body-line-height-${DEFAULT_TEXT_SIZE});
-        margin: var(--body-margin-top-${DEFAULT_TEXT_SIZE}) 0
-            var(--body-margin-bottom-${DEFAULT_TEXT_SIZE});
+        margin: ${TEXT_DEFINITIONS[DEFAULT_TEXT_SIZE].margin}px 0;
     }
 
     h1,
@@ -47,13 +49,17 @@ const VDefaultStyles = css`
     h6 {
         // set heading type styles
         // - defaults
-        font-family: var(--heading-font-family, Metropolis, Arial, sans-serif);
-        font-weight: var(--font-weight-bold, bold);
-        margin: var(--heading-margin-top-${DEFAULT_HEADING_SIZE}) 0
-            var(--heading-margin-bottom-${DEFAULT_HEADING_SIZE});
+        font-family: ${FONT_TYPE_FAMILIES.heading};
+        font-weight: ${DEFAULT_HEADING_WEIGHT};
+        margin: ${HEADING_DEFINITIONS[DEFAULT_HEADING_SIZE].marginTop}px 0
+            ${HEADING_DEFINITIONS[DEFAULT_HEADING_SIZE].marginBottom}px;
     }
 
     ${generateDefaultHeadingStyles()}
+
+    html, body {
+        background: ${({ theme }): string => theme.background.default};
+    }
 `;
 
 export default VDefaultStyles;

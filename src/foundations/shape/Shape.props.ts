@@ -1,10 +1,10 @@
 import React from 'react';
 
-import { TBorderRadiusSizes, TElevationLevel } from './Shape.types';
+import { TShapeBorderRadius, TShapeElevationLevel } from './Shape.types';
 
 type PShape = {
     /** The border-radius size */
-    borderRadius?: TBorderRadiusSizes;
+    borderRadius?: TShapeBorderRadius;
     /** Color of the border (default: `var(--default-border-color)`) */
     borderColor?: string;
     /** Width of the border (default: `0`) */
@@ -15,9 +15,9 @@ type PShape = {
      * Subsequent layers increment this Elevation value.
      * In total, there are 6 Elevation levels, not including the base level 0.
      * */
-    elevation?: TElevationLevel;
+    elevation?: TShapeElevationLevel;
     /** If a hover-state should require a higher (or lower) elevation */
-    elevationOnHover?: TElevationLevel;
+    elevationOnHover?: TShapeElevationLevel;
     /** Which component should be used for rendering the Shape */
     component?: 'div' | 'span' | 'section' | 'aside' | 'button';
     /** set a custom width */

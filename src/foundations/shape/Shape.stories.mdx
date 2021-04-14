@@ -2,7 +2,7 @@ import { ArgsTable, Meta, Story, Canvas, Title, Subtitle } from '@storybook/addo
 import { DependenciesTable } from 'storybook-addon-deps/blocks';
 
 import Shape from './index';
-import Grid, { GridSpacing } from '../layout';
+import Grid, { Spacing } from '../layout';
 import Typography from '../typography';
 import Text from '../../components/text';
 import { Utils } from '../../utils';
@@ -73,10 +73,10 @@ export const argTypes = Utils.hideStyledComponentProperties({
 
 There are 4 core shapes used throughout the Mattermost interface:
 
-<Grid padding={GridSpacing.symmetric({ vertical: 150 })} justify={'stretch'}>
+<Grid padding={Spacing.symmetric({ vertical: 150 })} justify={'stretch'}>
     <Grid
         row
-        padding={GridSpacing.symmetric({ vertical: 150, horizontal: 25 })}
+        padding={Spacing.symmetric({ vertical: 150, horizontal: 25 })}
         alignment={'center'}
         justify={'space-around'}
     >
@@ -116,10 +116,10 @@ export const radiusExampleArgs = {
     height: 120,
 };
 
-<Grid padding={GridSpacing.symmetric({ vertical: 150 })} justify={'stretch'}>
+<Grid padding={Spacing.symmetric({ vertical: 150 })} justify={'stretch'}>
     <Grid row alignment={'center'}>
         <Grid justify={'center'} flex={0}>
-            <Grid padding={GridSpacing.all(150)}>
+            <Grid padding={Spacing.all(150)}>
                 <Shape {...radiusExampleArgs} width={156} height={156} borderRadius={4} />
             </Grid>
             <br />
@@ -134,10 +134,10 @@ export const radiusExampleArgs = {
 
 ---
 
-<Grid padding={GridSpacing.symmetric({ vertical: 150 })} justify={'stretch'}>
+<Grid padding={Spacing.symmetric({ vertical: 150 })} justify={'stretch'}>
     <Grid row justify={'space-between'}>
         <Grid justify={'center'} flex={0}>
-            <Grid padding={GridSpacing.all(150)}>
+            <Grid padding={Spacing.all(150)}>
                 <Shape {...radiusExampleArgs} borderRadius={8} />
             </Grid>
             <br />
@@ -146,7 +146,7 @@ export const radiusExampleArgs = {
             </Text>
         </Grid>
         <Grid justify={'center'} flex={0}>
-            <Grid padding={GridSpacing.all(150)}>
+            <Grid padding={Spacing.all(150)}>
                 <Shape {...radiusExampleArgs} borderRadius={12} />
             </Grid>
             <br />
@@ -155,7 +155,7 @@ export const radiusExampleArgs = {
             </Text>
         </Grid>
         <Grid justify={'center'} flex={0}>
-            <Grid padding={GridSpacing.all(150)}>
+            <Grid padding={Spacing.all(150)}>
                 <Shape {...radiusExampleArgs} borderRadius={16} />
             </Grid>
             <br />
@@ -164,7 +164,7 @@ export const radiusExampleArgs = {
             </Text>
         </Grid>
         <Grid justify={'center'} flex={0}>
-            <Grid padding={GridSpacing.all(150)}>
+            <Grid padding={Spacing.all(150)}>
                 <Shape {...radiusExampleArgs} borderRadius={20} />
             </Grid>
             <br />
@@ -173,7 +173,7 @@ export const radiusExampleArgs = {
             </Text>
         </Grid>
         <Grid justify={'center'} flex={0}>
-            <Grid padding={GridSpacing.all(150)}>
+            <Grid padding={Spacing.all(150)}>
                 <Shape {...radiusExampleArgs} borderRadius={24} />
             </Grid>
             <br />

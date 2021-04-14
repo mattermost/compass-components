@@ -66,11 +66,40 @@ const hideStyledComponentProperties = (
     ...properties,
 });
 
+const isNumber = (x: any): x is number => typeof x === 'number';
+
+const isString = (x: any): x is string => typeof x === 'string';
+
+const getFontMargin = (fontSize: number, multiplier: number): number =>
+    Math.max(Math.round((fontSize * multiplier) / 4) * 4, 8);
+
+/**
+ * Returns a number whose value is limited to the given range.
+ * @param {number} value The value to be clamped
+ * @param {number} min The lower boundary of the output range
+ * @param {number} max The upper boundary of the output range
+ * @returns {number} A number in the range [min, max]
+ */
+function clamp(value: number, min = 0, max = 1): number {
+    if (value < min || value > max) {
+        // eslint-disable-next-line no-console
+        console.error(
+            `Compass Components: The value provided ${value} is out of range [${min}, ${max}].`
+        );
+    }
+
+    return Math.min(Math.max(min, value), max);
+}
+
 const Utils = {
+    clamp,
     isColor,
+    isNumber,
+    isString,
     forwardProperties,
     getStoryDocumentationUrl,
     hideStyledComponentProperties,
+    getFontMargin,
 };
 
 export default Utils;

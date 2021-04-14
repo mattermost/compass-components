@@ -1,4 +1,3 @@
-import { alpha } from '../../../utils';
 import { neutral, green, red, blue, indigo, orange } from '../../colors';
 
 import { TTheme } from './theme.types';
@@ -49,6 +48,7 @@ const lightTheme: TTheme = {
     },
     text: {
         primary: neutral[1100],
+        accent: neutral[900],
         secondary: neutral[800],
         disabled: neutral[500],
         contrast: neutral[0],

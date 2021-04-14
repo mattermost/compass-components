@@ -12,4 +12,5 @@ export type PButton = {
     leadingIcon?: TIconGlyph;
     trailingIcon?: TIconGlyph;
     className?: string;
+    onClick: () => void;
 };

@@ -29,6 +29,7 @@ type TTHemeTextColors = {
     secondary: string;
     disabled: string;
     contrast: string;
+    accent: string;
 };
 
 type TTHemeBackgroundColors = {

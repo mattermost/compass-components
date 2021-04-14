@@ -1,5 +1,19 @@
-type TBorderRadiusSizes = 0 | 4 | 8 | 12 | 16 | 20 | 24 | 'circle' | 'pill';
+type TShapeBorderRadius = 0 | 4 | 8 | 12 | 16 | 20 | 24 | 'circle' | 'pill';
 
-type TElevationLevel = 0 | 1 | 2 | 3 | 4 | 5 | 6;
+type TShapeElevationLevel = 0 | 1 | 2 | 3 | 4 | 5 | 6;
 
-export type { TBorderRadiusSizes, TElevationLevel };
+type TShapeElevationDefinition = {
+    y: number;
+    blur: number;
+};
+
+type TShapeElevationDefinitions = {
+    [key in TShapeElevationLevel]: TShapeElevationDefinition;
+};
+
+export type {
+    TShapeBorderRadius,
+    TShapeElevationLevel,
+    TShapeElevationDefinition,
+    TShapeElevationDefinitions,
+};

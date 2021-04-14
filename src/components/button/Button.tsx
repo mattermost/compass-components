@@ -5,38 +5,13 @@ import { TTheme } from '../../foundations/theme-provider/themes/theme.types';
 import { alpha, blendColors } from '../../utils';
 
 import ButtonBase from './Button.base';
-import {
-    DEFAULT_BUTTON_SIZE,
-    DEFAULT_BUTTON_VARIANT,
-    DEFAULT_BUTTON_WIDTH,
-} from './Button.constants';
+import { DEFAULT_BUTTON_SIZE, DEFAULT_BUTTON_VARIANT } from './Button.constants';
 import { PButton } from './Button.props';
-
-const handleProperties = ({
-    disabled = false,
-    variant = DEFAULT_BUTTON_VARIANT,
-    size = DEFAULT_BUTTON_SIZE,
-    width = DEFAULT_BUTTON_WIDTH,
-    ...rest
-}: PButton): PButton => {
-    const baseProperties: PButton = {
-        size,
-        width,
-        variant,
-        ...rest,
-    };
-
-    if (disabled) {
-        baseProperties.disabled = disabled;
-    }
-
-    return baseProperties;
-};
 
 const getButtonVariables = ({
     theme: { palette, action, text },
-    size,
-    variant,
+    size = DEFAULT_BUTTON_SIZE,
+    variant = DEFAULT_BUTTON_VARIANT,
     disabled,
     destructive,
 }: ThemedStyledProps<PButton, TTheme>): FlattenSimpleInterpolation => {
@@ -75,54 +50,48 @@ const getButtonVariables = ({
 
     const buttonBg = alpha(mainColor, bgOpacity);
 
+    const actionStyles = disabled
+        ? null
+        : css`
+              &:hover {
+                  background: ${disabled
+                      ? buttonBg
+                      : blendColors(buttonBg, alpha(hoverColor, action.hoverOpacity))};
+              }
+              &:active {
+                  background: ${disabled
+                      ? buttonBg
+                      : blendColors(buttonBg, alpha(hoverColor, action.activeOpacity))};
+              }
+              &:focus {
+                  box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.32),
+                      inset 0 0 0 2px ${borderColor};
+              }
+          `;
+
     return css`
-        --button-bg-color: ${buttonBg};
-        --button-bg-color-hover: ${blendColors(buttonBg, alpha(hoverColor, action.hoverOpacity))};
-        --button-bg-color-active: ${blendColors(buttonBg, alpha(hoverColor, action.activeOpacity))};
+        background: ${buttonBg};
+        color: ${textColor};
+        ${variant === 'secondary' && `box-shadow: inset 0 0 0 1px ${borderColor};`}
 
-        --button-text-color: ${textColor};
-        --button-border-color: ${borderColor};
+        ${actionStyles}
 
-        ${variant === 'secondary' && 'box-shadow: inset 0 0 0 1px var(--button-border-color);'}
-
-        --button-icon-margin: ${iconMargin}px;
+        i {
+            &:first-child {
+                margin-right: ${iconMargin}px;
+            }
+            &:last-child {
+                margin-left: ${iconMargin}px;
+            }
+        }
     `;
 };
 
-const Button = styled(ButtonBase).attrs(handleProperties)<PButton>`
-    // define local variables
-    ${getButtonVariables};
-
-    // set default background
-    background: var(--button-bg-color);
-    // set default text-color
-    color: var(--button-text-color);
-
+const Button = styled(ButtonBase)<PButton>`
     line-height: 16px;
 
-    &:not([disabled]) {
-        &:hover {
-            background-color: var(--button-bg-color-hover);
-        }
-
-        &:active {
-            background-color: var(--button-bg-color-active);
-        }
-
-        &:focus {
-            box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.32),
-                inset 0 0 0 2px var(--button-border-color);
-        }
-    }
-
-    i {
-        &:first-child {
-            margin-right: var(--button-icon-margin);
-        }
-        &:last-child {
-            margin-left: var(--button-icon-margin);
-        }
-    }
+    // define local variables
+    ${getButtonVariables};
 
     transition: all 500ms 0s ease-in-out;
 `;

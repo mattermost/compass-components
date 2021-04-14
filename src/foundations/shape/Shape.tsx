@@ -1,9 +1,12 @@
 import styled from 'styled-components';
+import { ThemedStyledProps } from 'styled-components/ts3.6';
 
+import { TTheme } from '../theme-provider/themes/theme.types';
 import { Utils } from '../../utils';
-import { getBorderRadius, getElevation } from '../theme-provider/global-styles/globalStyles';
 
 import PShape from './Shape.props';
+import { DEFAULT_SHAPE_BORDER_RADIUS, DEFAULT_SHAPE_ELEVATION_LEVEL } from './Shape.constants';
+import { TShapeBorderRadius } from './Shape.types';
 
 const getPxValue = (value: string | number): string =>
     typeof value === 'number' ? `${value}px` : getPercentageValue(value);
@@ -27,35 +30,43 @@ const getShapeDimensions = (props: PShape): string => {
     return width + height;
 };
 
-const getBorderDefinition = (props: PShape): string => {
-    const { borderColor = 'var(--default-border-color)', borderWidth } = props;
-
-    if (borderColor && borderWidth) {
-        return `border: ${borderWidth}px solid ${borderColor}`;
+const getBorderRadius = (radius: TShapeBorderRadius): string => {
+    if (Utils.isString(radius)) {
+        return radius === 'circle' ? '50%' : '10000px';
     }
 
-    return '';
+    return `${radius}px`;
 };
 
 const Shape = styled.div
     // ignoring the className property prevents duplicate classes to be added to the HTML element
-    .attrs(({ component, className: ignoreClassName, ...rest }: PShape) => ({
-        as: component,
-        ...rest,
-    }))
+    .attrs(
+        ({
+            component,
+            borderRadius,
+            elevation,
+            elevationOnHover,
+            className: ignoreClassName,
+            ...rest
+        }: PShape) => ({
+            as: component,
+            borderRadius: borderRadius || DEFAULT_SHAPE_BORDER_RADIUS,
+            elevation: elevation || DEFAULT_SHAPE_ELEVATION_LEVEL,
+            elevationOnHover: elevationOnHover || DEFAULT_SHAPE_ELEVATION_LEVEL,
+            ...rest,
+        })
+    )
     .withConfig({
         shouldForwardProp: Utils.forwardProperties(),
-    })<PShape>`
-    flex: ${(props): string => (props.width ? 'initial' : 'auto')};
+    })<ThemedStyledProps<PShape, TTheme>>`
     display: flex;
-    background-color: ${(props): string =>
-        props.background ? props.background : 'var(--shape-background-color)'};
+    flex: ${(props): string => (props.width ? 'initial' : 'auto')};
+
     border-radius: ${(props): string => getBorderRadius(props.borderRadius)};
-    box-shadow: ${(props): string => getElevation(props.elevation)};
-    ${getBorderDefinition};
+
     ${getShapeDimensions};
+
     z-index: ${(props): number => props.elevation || 0};
-    transition: box-shadow 500ms ease-in-out;
 `;
 
 export default Shape;

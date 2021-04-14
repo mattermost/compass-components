@@ -1,7 +1,7 @@
 import React from 'react';
 
 import Shape from '../../foundations/shape';
-import Grid, { GridSpacing } from '../../foundations/layout';
+import Grid, { Spacing } from '../../foundations/layout';
 import Text from '../text';
 
 import PMentionBadge from './Badges.props';
@@ -44,7 +44,7 @@ const MentionBadge: React.FC<PMentionBadge> = ({
                     alignment={'center'}
                     justify={'center'}
                     flex={1}
-                    padding={GridSpacing.symmetric({ vertical: 0, horizontal: 50 })}
+                    padding={Spacing.symmetric({ vertical: 0, horizontal: 50 })}
                 >
                     <Text element={'p'} size={75} color={color} margin={'none'}>
                         <strong>

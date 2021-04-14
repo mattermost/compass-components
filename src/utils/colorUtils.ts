@@ -1,5 +1,7 @@
 import { normal } from 'color-blend';
 
+import Utils from './utils';
+
 type TColorDefinition = {
     type: string;
     values: number[];
@@ -24,24 +26,6 @@ const shadeValues: Record<string, number> = {
     700: 0.32,
     800: 0.24,
 };
-
-/**
- * Returns a number whose value is limited to the given range.
- * @param {number} value The value to be clamped
- * @param {number} min The lower boundary of the output range
- * @param {number} max The upper boundary of the output range
- * @returns {number} A number in the range [min, max]
- */
-function clamp(value: number, min = 0, max = 1): number {
-    if (process.env.NODE_ENV !== 'production' && (value < min || value > max)) {
-        // eslint-disable-next-line no-console
-        console.error(
-            `Compass Components: The value provided ${value} is out of range [${min}, ${max}].`
-        );
-    }
-
-    return Math.min(Math.max(min, value), max);
-}
 
 /**
  * Converts a color from CSS hex format to CSS rgb format.
@@ -153,7 +137,7 @@ function rgbToHslValues(rgbArray: number[]): number[] {
     }
 
     if (rgbArray[3] || rgbArray[3] === 0) {
-        return [h, s, l, clamp(rgbArray[3])];
+        return [h, s, l, Utils.clamp(rgbArray[3])];
     }
 
     return [h, s, l];
@@ -289,7 +273,7 @@ function recomposeColorWithShade(color: TColorDefinition, shade: string, darker:
 function alpha(color: string, value: number): string {
     const decomposedColor = decomposeColor(color);
 
-    const clampedValue = clamp(value);
+    const clampedValue = Utils.clamp(value);
 
     if (decomposedColor.type === 'rgb' || decomposedColor.type === 'hsl') {
         decomposedColor.type += 'a';
@@ -347,14 +331,20 @@ function blendColors(baseColor: string, layerColor: string): string {
         r: decomposedBase.values[0],
         g: decomposedBase.values[1],
         b: decomposedBase.values[2],
-        a: Number.isNaN(decomposedBase.values[3]) ? 1 : decomposedBase.values[3],
+        a:
+            decomposedBase.values[3] === undefined || Number.isNaN(decomposedBase.values[3])
+                ? 1
+                : decomposedBase.values[3],
     };
 
     const layer = {
         r: decomposedLayer.values[0],
         g: decomposedLayer.values[1],
         b: decomposedLayer.values[2],
-        a: Number.isNaN(decomposedLayer.values[3]) ? 1 : decomposedLayer.values[3],
+        a:
+            decomposedLayer.values[3] === undefined || Number.isNaN(decomposedLayer.values[3])
+                ? 1
+                : decomposedLayer.values[3],
     };
 
     const mixed = normal(base, layer);
@@ -383,7 +373,7 @@ function getRGBString(rgb: string, opacity?: number): string {
     }
 
     if (opacity) {
-        return `rgba(${rgb},${clamp(opacity)})`;
+        return `rgba(${rgb},${Utils.clamp(opacity)})`;
     }
 
     return `rgb(${rgb})`;

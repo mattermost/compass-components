@@ -1,7 +1,9 @@
-import React from 'react';
-import clsx from 'clsx';
+import styled, { css } from 'styled-components';
+import { FlattenSimpleInterpolation, ThemedStyledProps } from 'styled-components/ts3.6';
 
-import Typography, { BODY_ELEMENTS, TTypographyWeight } from '../../foundations/typography';
+import { Utils } from '../../utils';
+import { TTheme } from '../../foundations/theme-provider/themes/theme.types';
+import { FONT_TYPE_FAMILIES } from '../../shared/shared.constants';
 
 import PText from './Text.props';
 import {
@@ -9,40 +11,72 @@ import {
     DEFAULT_TEXT_SIZE,
     DEFAULT_TEXT_ELEMENT,
     DEFAULT_TEXT_WEIGHT,
+    TEXT_ELEMENTS,
+    TEXT_DEFINITIONS,
 } from './Text.constants';
 
-const Text: React.FC<PText> = ({
-    children,
-    className,
+const getTextVariables = ({
     color,
-    inheritLineHeight = false,
-    size = DEFAULT_TEXT_SIZE,
+    theme,
+    inheritLineHeight,
     element = DEFAULT_TEXT_ELEMENT,
-    weight = DEFAULT_TEXT_WEIGHT,
     margin = DEFAULT_TEXT_MARGIN,
-}): JSX.Element => {
+    size = DEFAULT_TEXT_SIZE,
+    weight = DEFAULT_TEXT_WEIGHT,
+}: ThemedStyledProps<PText, TTheme>): FlattenSimpleInterpolation => {
     // Whenever this component is used with an element that is not supported within the headings throw an error!
-    if (element && !BODY_ELEMENTS.includes(element)) {
+    if (!TEXT_ELEMENTS.includes(element)) {
         throw new Error(
-            `Compass Components: Heading component was used with an unsupported element '${element}'.
-            Please provide an element from these available options: ${BODY_ELEMENTS.join(', ')}.`
+            `Compass Components: Text component was used with an unsupported element '${element}'.
+            Please provide one from these available options: ${TEXT_ELEMENTS.join(', ')}.`
         );
     }
 
-    return (
-        <Typography
-            className={clsx(className, 'Text')}
-            element={element}
-            size={size}
-            margin={margin}
-            color={color}
-            weight={weight as TTypographyWeight}
-            role={'text'}
-            inheritLineHeight={inheritLineHeight}
-        >
-            {children}
-        </Typography>
-    );
+    const textColor = color && color !== 'inherit' ? theme.text[color] : color;
+    const lineHeight = inheritLineHeight ? 'inherit' : `${TEXT_DEFINITIONS[size].lineHeight}px`;
+
+    let marginValue = `${TEXT_DEFINITIONS[size].margin}px 0`;
+
+    switch (margin) {
+        case 'none':
+            marginValue = '0';
+            break;
+        case 'bottom':
+            marginValue = `0 0 ${TEXT_DEFINITIONS[size].margin}px`;
+            break;
+        case 'top':
+            marginValue = `${TEXT_DEFINITIONS[size].margin}px 0 0`;
+            break;
+        default:
+    }
+
+    return css`
+        font-family: ${FONT_TYPE_FAMILIES.body};
+        font-weight: ${weight};
+        font-size: ${TEXT_DEFINITIONS[size].size}px;
+        line-height: ${lineHeight};
+
+        margin: ${marginValue};
+        color: ${textColor};
+    `;
 };
+
+const Text = styled.p
+    .attrs((props: PText) => ({
+        // it is possible to remap props, so we do not need to pass down the
+        // `as` property from styled-components and prevent usage of
+        // unsupported HTML tags
+        as: props.element,
+    }))
+    .withConfig({
+        shouldForwardProp: Utils.forwardProperties(),
+    })<PText>`
+    ${getTextVariables}
+    
+    // animation
+    body.enable-animations & {
+        transition: color var(--animation-speed-shortest) 0s ease-in-out;
+    }
+`;
 
 export default Text;

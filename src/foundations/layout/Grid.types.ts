@@ -1,3 +1,19 @@
+type TGridComponent = 'div' | 'span' | 'section' | 'aside';
+
+type TGridAlignment = 'initial' | 'flex-start' | 'center' | 'flex-end' | 'stretch';
+
+type TGridJustify =
+    | 'initial'
+    | 'flex-start'
+    | 'center'
+    | 'flex-end'
+    | 'stretch'
+    | 'space-around'
+    | 'space-between'
+    | 'space-evenly';
+
+type TGridFlex = number | 'auto';
+
 type TSpacingTokens =
     | 0
     | 25
@@ -43,6 +59,10 @@ type TSpacing = {
 };
 
 export type {
+    TGridComponent,
+    TGridAlignment,
+    TGridJustify,
+    TGridFlex,
     TSpacing,
     TSpacingSides,
     TSpacingTokens,

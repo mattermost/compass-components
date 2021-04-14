@@ -1,4 +1,4 @@
-import { indigo, green, red, neutral, orange, purple, teal, blue } from '../../colors';
+import { indigo, green, red, neutral, orange, purple, teal } from '../../colors';
 
 import { TTheme } from './theme.types';
 
@@ -44,10 +44,11 @@ const themeDark: TTheme = {
         focus: neutral[1250],
         focusOpacity: 0.32,
         selected: purple[500],
-        disabled: neutral[1100],
+        disabled: neutral[100],
     },
     text: {
         primary: neutral[50],
+        accent: neutral[150],
         secondary: neutral[300],
         disabled: neutral[700],
         contrast: neutral[1000],

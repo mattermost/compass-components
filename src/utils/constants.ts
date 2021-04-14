@@ -7,6 +7,7 @@ const defaultPropertyWhitelist: string[] = [
     'role',
     'selected',
     'type',
+    'onClick',
 ];
 
 export { defaultArgumentsTableExclusion, defaultPropertyWhitelist };
