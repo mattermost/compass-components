@@ -1,8 +1,8 @@
-import { IconGlyphTypes } from '@mattermost/compass-icons/build/IconGlyphs';
+import IconGlyphs from '@mattermost/compass-icons/build/IconGlyphs';
 
 import { TTHemeColors } from '../../foundations/theme-provider/themes/theme.types';
 
-type TIconGlyph = 'none' | IconGlyphTypes;
+type TIconGlyph = 'none' | typeof IconGlyphs[number];
 
 type TIconSize = 10 | 12 | 14 | 16 | 18 | 20 | 24 | 28 | 32 | 40 | 52 | 64 | 104;
 
