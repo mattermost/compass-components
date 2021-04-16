@@ -51,7 +51,7 @@ const themeDark: TTheme = {
         accent: neutral[150],
         secondary: neutral[300],
         disabled: neutral[700],
-        contrast: neutral[1000],
+        contrast: neutral[100],
     },
     background: {
         default: neutral[1100],

@@ -1,5 +1,6 @@
 import {
     TShapeBorderRadius,
+    TShapeElement,
     TShapeElevationDefinitions,
     TShapeElevationLevel,
 } from './Shape.types';
@@ -12,12 +13,9 @@ const SHAPE_ELEVATION_LEVELS: TShapeElevationLevel[] = [0, 1, 2, 3, 4, 5, 6];
 
 const DEFAULT_SHAPE_ELEVATION_LEVEL: TShapeElevationLevel = 0;
 
-// --elevation-shadow-1: 0 2px 3px 0 rgba(0, 0, 0, ${getElevationOpacity});
-// --elevation-shadow-2: 0 4px 6px 0 rgba(0, 0, 0, ${getElevationOpacity});
-// --elevation-shadow-3: 0 6px 14px 0 rgba(0, 0, 0, ${getElevationOpacity});
-// --elevation-shadow-4: 0 8px 24px 0 rgba(0, 0, 0, ${getElevationOpacity});
-// --elevation-shadow-5: 0 12px 32px 0 rgba(0, 0, 0, ${getElevationOpacity});
-// --elevation-shadow-6: 0 20px 32px 0 rgba(0, 0, 0, ${getElevationOpacity});
+const SHAPE_ELEMENTS: TShapeElement[] = ['div', 'span', 'section', 'aside', 'button'];
+
+const DEFAULT_SHAPE_ELEMENT: TShapeElement = 'div';
 
 const SHAPE_ELEVATION_DEFINITIONS: TShapeElevationDefinitions = {
     0: { y: 0, blur: 0 },
@@ -35,4 +33,6 @@ export {
     SHAPE_ELEVATION_LEVELS,
     DEFAULT_SHAPE_ELEVATION_LEVEL,
     SHAPE_ELEVATION_DEFINITIONS,
+    SHAPE_ELEMENTS,
+    DEFAULT_SHAPE_ELEMENT,
 };

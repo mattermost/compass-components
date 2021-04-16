@@ -12,7 +12,7 @@ type TGridJustify =
     | 'space-between'
     | 'space-evenly';
 
-type TGridFlex = number | 'auto';
+type TGridFlex = number | 'auto' | 'initial';
 
 type TSpacingTokens =
     | 0

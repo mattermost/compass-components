@@ -8,7 +8,7 @@ const DEFAULT_GRID_ROW = false;
 
 const DEFAULT_GRID_WRAP = false;
 
-const DEFAULT_GRID_FLEX: TGridFlex = 'auto';
+const DEFAULT_GRID_FLEX: TGridFlex = 'initial';
 
 const GRID_ALIGNMENTS: TGridAlignment[] = [
     'initial',

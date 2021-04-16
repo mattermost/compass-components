@@ -65,6 +65,8 @@ const Shape = styled.div
     border-radius: ${(props): string => getBorderRadius(props.borderRadius)};
 
     ${getShapeDimensions};
+    
+    background: ${(props): string => props.theme.background.shape};
 
     z-index: ${(props): number => props.elevation || 0};
 `;

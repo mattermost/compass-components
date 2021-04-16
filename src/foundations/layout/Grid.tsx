@@ -12,7 +12,7 @@ import {
     DEFAULT_GRID_ROW,
     DEFAULT_GRID_WRAP,
 } from './Grid.constants';
-import { TGridAlignment, TGridJustify } from './Grid.types';
+import { TGridAlignment, TGridFlex, TGridJustify } from './Grid.types';
 
 const Grid = styled.div
     // ignoring the className property prevents duplicate classes to be added to the HTML element
@@ -40,13 +40,11 @@ const Grid = styled.div
         shouldForwardProp: Utils.forwardProperties(),
     })<PGrid>`
     display: flex;
-    flex: ${(props): number | 'auto' => props.flex};
+    flex: ${(props): TGridFlex => props.flex};
     flex-wrap: ${(props): string => (props.wrap ? 'wrap' : 'nowrap')};
     flex-direction: ${(props): string => (props.row ? 'row' : 'column')};
-    align-items: ${(props): TGridJustify | TGridAlignment =>
-        props.row ? props.alignment : props.justify};
-    justify-content: ${(props): TGridJustify | TGridAlignment =>
-        props.row ? props.justify : props.alignment};
+    align-items: ${(props): TGridAlignment => props.alignment};
+    justify-content: ${(props): TGridJustify => props.justify};
     padding: ${(props): string => (props.padding ? parseSpacing(props.padding) : '0')};
     margin: ${(props): string => (props.margin ? parseSpacing(props.margin) : '0')};
     ${(props): string => (props.width && props.width >= 0 ? `max-width: ${props.width}px;` : '')}

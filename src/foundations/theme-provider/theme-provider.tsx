@@ -11,7 +11,7 @@ type PThemeProvider = {
 };
 
 // storybook canvas- & docs-pages style overrides
-const SBGlobalStyles = createGlobalStyle`
+const CanvasGlobalStyles = createGlobalStyle`
     body.sb-show-main.sb-main-centered {
         background-color: ${(props: PGlobalStyles): string => props.theme.background.default};
         align-items: stretch;
@@ -22,10 +22,18 @@ const SBGlobalStyles = createGlobalStyle`
             justify-content: center;
             align-items: center;
         }
+    }
+`;
+
+// storybook canvas- & docs-pages style overrides
+const DocumentationGlobalStyles = createGlobalStyle`
+    body.sb-show-main {
+        background-color: ${(props: PGlobalStyles): string => props.theme.background.default};
+        align-items: stretch;
 
         .sbdocs-wrapper {
             background-color: ${(props: PGlobalStyles): string =>
-                props.theme.type === 'dark' ? 'transparent' : '#FFF'};
+                props.theme.type === 'dark' ? 'transparent' : props.theme.background.default};
 
             td {
                 background-color: ${(props: PGlobalStyles): string =>
@@ -70,12 +78,30 @@ const CanvasThemeProvider = ({
 
     return (
         <ThemeProvider theme={selectedTheme}>
-            <SBGlobalStyles />
+            <CanvasGlobalStyles />
             {children}
         </ThemeProvider>
     );
 };
 
-export { CanvasThemeProvider };
+const DocumentationThemeProvider = ({
+    children = null,
+    theme = lightTheme,
+}: PThemeProvider): JSX.Element => {
+    const [selectedTheme, setSelectedTheme] = useState<TTheme>(theme);
+
+    useEffect(() => {
+        setSelectedTheme(theme);
+    }, [theme]);
+
+    return (
+        <ThemeProvider theme={selectedTheme}>
+            <DocumentationGlobalStyles />
+            {children}
+        </ThemeProvider>
+    );
+};
+
+export { CanvasThemeProvider, DocumentationThemeProvider };
 
 export default ThemeProvider;
