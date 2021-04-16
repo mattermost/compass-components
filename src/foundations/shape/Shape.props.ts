@@ -31,6 +31,7 @@ type PShape = {
     background?: string;
     children?: React.ReactNode | React.ReactNode[];
     className?: string;
+    onClick?: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
 };
 
 export default PShape;

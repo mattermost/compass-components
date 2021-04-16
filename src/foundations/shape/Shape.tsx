@@ -27,16 +27,6 @@ const getShapeDimensions = (props: PShape): string => {
     return width + height;
 };
 
-const getBorderDefinition = (props: PShape): string => {
-    const { borderColor = 'var(--default-border-color)', borderWidth } = props;
-
-    if (borderColor && borderWidth) {
-        return `border: ${borderWidth}px solid ${borderColor}`;
-    }
-
-    return '';
-};
-
 const Shape = styled.div
     .attrs(({ component, ...rest }: PShape) => ({
         ...rest,
@@ -52,7 +42,6 @@ const Shape = styled.div
         props.background ? props.background : 'var(--shape-background-color)'};
     border-radius: ${(props): string => getBorderRadius(props.borderRadius)};
     box-shadow: ${(props): string => getElevation(props.elevation)};
-    ${getBorderDefinition};
     ${getShapeDimensions};
     z-index: ${(props): number => props.elevation || 0};
     transition: box-shadow 500ms ease-in-out;

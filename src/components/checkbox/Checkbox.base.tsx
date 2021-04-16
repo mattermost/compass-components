@@ -8,6 +8,8 @@ import Text, { TTextSize } from '../text';
 import PCheckbox from './Checkbox.props';
 import { DEFAULT_CHECKBOX_SIZE } from './Checkbox.constants';
 
+const toggleCheckboxState = (event: React.MouseEvent<HTMLDivElement, MouseEvent>): null => null;
+
 const CheckboxBase: React.FC<PCheckbox> = ({
     labelText = 'Public',
     size = DEFAULT_CHECKBOX_SIZE,
@@ -50,11 +52,15 @@ const CheckboxBase: React.FC<PCheckbox> = ({
     return (
         <Grid row alignment={'center'} justify={'center'} className={className}>
             <Shape
+                className={`${className}--Shape`}
                 borderRadius={4}
                 elevation={1}
                 elevationOnHover={3}
                 width={checkboxSize}
                 height={checkboxSize}
+                onClick={(event: React.MouseEvent<HTMLDivElement, MouseEvent>): null => {
+                    toggleCheckboxState(event);
+                }}
             >
                 <Grid
                     alignment={'center'}

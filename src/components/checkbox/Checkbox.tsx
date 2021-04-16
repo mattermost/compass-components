@@ -7,9 +7,10 @@ import CheckboxBase from './Checkbox.base';
 import PCheckbox from './Checkbox.props';
 import { DEFAULT_CHECKBOX_STATE } from './Checkbox.constants';
 
-const baseProperties = ({ state = DEFAULT_CHECKBOX_STATE, className }: PCheckbox): PCheckbox => ({
+const baseProperties = ({ state = DEFAULT_CHECKBOX_STATE, onClick }: PCheckbox): PCheckbox => ({
     state,
-    className,
+    className: 'Checkbox',
+    onClick,
 });
 
 const getCheckboxVariables = ({
@@ -54,10 +55,9 @@ const Checkbox = styled(CheckboxBase).attrs(baseProperties)<PCheckbox>`
     // set default text-color
     color: var(--checkbox-text-color);
 
-    div {
+    .Checkbox--Shape {
         background: var(--checkbox-bg-color);
-        border-color: var(--checkbox-border-color);
-        border-width: 1px;
+        border: 1px solid var(--checkbox-border-color);
     }
 
     i {

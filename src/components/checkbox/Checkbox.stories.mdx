@@ -33,7 +33,15 @@ export const argTypes = Utils.hideStyledComponentProperties({
     },
 });
 
-<Meta component={Checkbox} title="Components/Checkbox" />
+<Meta
+    component={Checkbox}
+    title="Components/Checkbox"
+    parameters={{
+        actions: {
+            handles: ['click .Checkbox'],
+        },
+    }}
+/>
 
 <Title>Checkboxes</Title>
 
