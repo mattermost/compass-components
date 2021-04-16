@@ -66,9 +66,11 @@ const hideStyledComponentProperties = (
     ...properties,
 });
 
+/* eslint-disable @typescript-eslint/no-explicit-any */
 const isNumber = (x: any): x is number => typeof x === 'number';
-
 const isString = (x: any): x is string => typeof x === 'string';
+const isFunction = (x: any): x is Function => typeof x === 'function';
+/* eslint-enable @typescript-eslint/no-explicit-any */
 
 const getFontMargin = (fontSize: number, multiplier: number): number =>
     Math.max(Math.round((fontSize * multiplier) / 4) * 4, 8);
@@ -95,6 +97,7 @@ const SharedUtils = {
     clamp,
     isColor,
     isNumber,
+    isFunction,
     isString,
     forwardProperties,
     getStoryDocumentationUrl,

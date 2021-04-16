@@ -13,6 +13,7 @@ const FONT_COLORS: TFontColor[] = ['primary', 'secondary', 'disabled'];
 
 const DEFAULT_ARGUMENTSTABLE_EXCLUSION: string[] = [
     'children',
+    'className',
     'as',
     'forwardedAs',
     'ref',

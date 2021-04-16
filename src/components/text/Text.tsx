@@ -18,7 +18,7 @@ import {
 const getTextVariables = ({
     color,
     theme,
-    inheritLineHeight,
+    inheritLineHeight = false,
     element = DEFAULT_TEXT_ELEMENT,
     margin = DEFAULT_TEXT_MARGIN,
     size = DEFAULT_TEXT_SIZE,

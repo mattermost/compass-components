@@ -18,7 +18,7 @@ import { PHeading } from './Heading.props';
 const getHeadingVariables = ({
     color,
     theme,
-    inheritLineHeight,
+    inheritLineHeight = false,
     element = DEFAULT_HEADING_ELEMENT,
     margin = DEFAULT_HEADING_MARGIN,
     size = DEFAULT_HEADING_SIZE,

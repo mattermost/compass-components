@@ -18,13 +18,13 @@ const Grid = styled.div
     // ignoring the className property prevents duplicate classes to be added to the HTML element
     .attrs(
         ({
+            className: ignoreClassName,
             component,
             alignment,
             justify,
             row,
             flex,
             wrap,
-            className: ignoreClassName,
             ...rest
         }: PGrid) => ({
             as: component || DEFAULT_GRID_COMPONENT,

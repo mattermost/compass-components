@@ -1,4 +1,8 @@
-import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+
+import { DEFAULT_ICON_GLYPH, ICON_GLYPHS } from '../icon';
+import { DEFAULT_ARGUMENTSTABLE_EXCLUSION } from '../../shared/shared.constants';
+
 import Button from './Button.tsx';
 import {
     BUTTON_SIZES,
@@ -8,14 +12,10 @@ import {
     DEFAULT_BUTTON_VARIANT,
     DEFAULT_BUTTON_WIDTH,
 } from './Button.constants';
-import { DEFAULT_ICON_GLYPH, ICON_GLYPHS } from '../icon';
-import ThemeProvider from '../../foundations/theme-provider/theme-provider';
 
 <Meta title={'Components/Button'} />
 
-<ThemeProvider>
-
-</ThemeProvider>
+<ArgsTable of={Button} exclude={[...DEFAULT_ARGUMENTSTABLE_EXCLUSION]} />
 
 <Canvas hidden>
     <Story
