@@ -43,8 +43,6 @@ const ButtonBase: React.FC<PButton> = ({
             component={'button'}
             borderRadius={4}
             width={width === 'full' ? '100%' : width}
-            elevation={2}
-            elevationOnHover={6}
             {...rest}
         >
             <Grid
