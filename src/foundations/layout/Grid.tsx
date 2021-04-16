@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { Utils } from '../../utils';
+import { SharedUtils } from '../../shared';
 
 import { PGrid } from './Grid.props';
 import { parseSpacing } from './Spacing';
@@ -37,7 +37,7 @@ const Grid = styled.div
         })
     )
     .withConfig({
-        shouldForwardProp: Utils.forwardProperties(),
+        shouldForwardProp: SharedUtils.forwardProperties(),
     })<PGrid>`
     display: flex;
     flex: ${(props): TGridFlex => props.flex};

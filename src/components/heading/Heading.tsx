@@ -3,7 +3,7 @@ import { FlattenSimpleInterpolation, ThemedStyledProps } from 'styled-components
 
 import { FONT_TYPE_FAMILIES } from '../../shared/shared.constants';
 import { TTheme } from '../../foundations/theme-provider/themes/theme.types';
-import { Utils } from '../../utils';
+import { SharedUtils } from '../../shared';
 
 import {
     DEFAULT_HEADING_ELEMENT,
@@ -69,7 +69,7 @@ const Heading = styled.h6
         as: props.element,
     }))
     .withConfig({
-        shouldForwardProp: Utils.forwardProperties(),
+        shouldForwardProp: SharedUtils.forwardProperties(),
     })<PHeading>`
     ${getHeadingVariables}
     

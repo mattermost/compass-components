@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 import { FlattenSimpleInterpolation } from 'styled-components/ts3.6';
 
-import { Utils } from '../../utils';
+import { SharedUtils } from '../../shared';
 
 import { PIcon } from './Icon.props';
 import { TIconSize } from './Icon.types';
@@ -35,7 +35,7 @@ const Icon = styled.i
         'data-color': props.color || 'inherit',
     }))
     .withConfig({
-        shouldForwardProp: Utils.forwardProperties(),
+        shouldForwardProp: SharedUtils.forwardProperties(),
     })<PIcon>`
     // define local variables using global variables and fallbacks
     --color-foreground: var(--icon-color-foreground, var(--primary-color-dark, black));

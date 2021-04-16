@@ -1,5 +1,5 @@
 import { FONT_COLORS, FONT_MARGINS, FONT_WEIGHTS } from '../../shared/shared.constants';
-import { Utils } from '../../utils';
+import { SharedUtils } from '../../shared';
 
 import {
     THeadingDefinitions,
@@ -94,11 +94,11 @@ const HEADING_DEFINITIONS: THeadingDefinitions = {
 };
 
 HEADING_SIZE_TOKENS.forEach((sizeToken) => {
-    HEADING_DEFINITIONS[sizeToken].marginTop = Utils.getFontMargin(
+    HEADING_DEFINITIONS[sizeToken].marginTop = SharedUtils.getFontMargin(
         HEADING_DEFINITIONS[sizeToken].size,
         8 / 9
     );
-    HEADING_DEFINITIONS[sizeToken].marginBottom = Utils.getFontMargin(
+    HEADING_DEFINITIONS[sizeToken].marginBottom = SharedUtils.getFontMargin(
         HEADING_DEFINITIONS[sizeToken].size,
         0.5
     );

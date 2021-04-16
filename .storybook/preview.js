@@ -6,7 +6,11 @@ addDecorator(withThemes);
 
 import lightTheme from '../src/foundations/theme-provider/themes/theme.light';
 import themeDark from '../src/foundations/theme-provider/themes/theme.dark';
-import { CanvasThemeProvider } from '../src/foundations/theme-provider/theme-provider';
+import {
+    CanvasThemeProvider,
+    DocumentationThemeProvider,
+} from '../src/foundations/theme-provider/theme-provider';
+import { DocsContainer } from '@storybook/addon-docs/blocks';
 
 const themes = [
     {
@@ -24,8 +28,8 @@ const themes = [
     },
 ];
 
-const CustomDecorator = (props) => (
-    <CanvasThemeProvider theme={props.theme.definition} children={props.children} />
+const CustomDecorator = ({ theme, children }) => (
+    <CanvasThemeProvider theme={theme.definition} children={children} />
 );
 
 addParameters({
@@ -63,5 +67,14 @@ addParameters({
         list: themes,
         clearable: false,
         Decorator: CustomDecorator,
+    },
+    docs: {
+        container: ({ context, children }) => {
+            return (
+                <DocsContainer context={context}>
+                    <DocumentationThemeProvider>{children}</DocumentationThemeProvider>
+                </DocsContainer>
+            );
+        },
     },
 });

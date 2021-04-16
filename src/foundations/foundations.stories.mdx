@@ -3,7 +3,7 @@ import { Description, Meta, Subtitle, Title } from '@storybook/addon-docs/blocks
 import colorStoryParams from './colors/colors.stories.mdx';
 import shapeStoryParams from './shape/Shape.stories.mdx';
 
-import { Utils } from '../utils';
+import { SharedUtils } from '../shared';
 import Shape from './shape';
 import Grid, { Spacing } from './layout';
 import ThemeProvider from './theme-provider/theme-provider';
@@ -35,7 +35,7 @@ import Text from '../components/text';
 
 <Grid row justify={'space-around'}>
     <Grid padding={Spacing.trbl({ top: 75, right: 75, bottom: 75, left: 0 })} flex={1}>
-        <a href={Utils.getStoryDocumentationUrl(colorStoryParams)} target={'_self'}>
+        <a href={SharedUtils.getStoryDocumentationUrl(colorStoryParams)} target={'_self'}>
             <Shape border borderRadius={4} elevation={0} elevationOnHover={2}>
                 <img src={colorImg} alt={'foundation-colors'} />
                 <Grid padding={Spacing.symmetric({ vertical: 50, horizontal: 100 })}>
@@ -50,22 +50,7 @@ import Text from '../components/text';
         </a>
     </Grid>
     <Grid padding={Spacing.all(75)} flex={1}>
-        <a href={Utils.getStoryDocumentationUrl(typeStoryParams)} target={'_self'}>
-            <Shape border borderRadius={4} elevation={0} elevationOnHover={2}>
-                <img src={typographyImg} alt={'foundation-typography'} />
-                <Grid padding={Spacing.symmetric({ vertical: 50, horizontal: 100 })}>
-                    <Heading element={'h3'} size={300}>
-                        Heading
-                    </Heading>
-                    <Text element={'p'} size={100}>
-                        Guidelines on typefaces, scales, weights and more.
-                    </Text>
-                </Grid>
-            </Shape>
-        </a>
-    </Grid>
-    <Grid padding={Spacing.all(75)} flex={1}>
-        <a href={Utils.getStoryDocumentationUrl(shapeStoryParams)} target={'_self'}>
+        <a href={SharedUtils.getStoryDocumentationUrl(shapeStoryParams)} target={'_self'}>
             <Shape border borderRadius={4} elevation={0} elevationOnHover={2}>
                 <img src={shapeImg} alt={'foundation-shape'} />
                 <Grid padding={Spacing.symmetric({ vertical: 50, horizontal: 100 })}>
@@ -80,7 +65,7 @@ import Text from '../components/text';
         </a>
     </Grid>
     <Grid padding={Spacing.trbl({ top: 75, right: 0, bottom: 75, left: 75 })} flex={1}>
-        <a href={Utils.getStoryDocumentationUrl(colorStoryParams)} target={'_self'}>
+        <a href={SharedUtils.getStoryDocumentationUrl(colorStoryParams)} target={'_self'}>
             <Shape border borderRadius={4} elevation={0} elevationOnHover={2}>
                 <img src={iconsImg} alt={'foundation-icons'} />
                 <Grid padding={Spacing.symmetric({ vertical: 50, horizontal: 100 })}>

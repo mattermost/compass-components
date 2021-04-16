@@ -1,4 +1,4 @@
-import { ArgsTable, Meta, Title, Subtitle, Canvas, Story } from '@storybook/addon-docs/blocks';
+import { ArgsTable, Meta, Title, Subtitle } from '@storybook/addon-docs/blocks';
 
 import Shape from '../shape';
 import Text from '../../components/text';
@@ -52,7 +52,7 @@ export const spacings = {
 
 <Grid row alignment={'flex-end'}>
     {Object.keys(spacings).map((s) => (
-        <Grid justify={'center'} padding={Spacing.all(75)}>
+        <Grid alignment={'center'} padding={Spacing.all(75)}>
             <Shape borderWidth={1} borderRadius={0} elevation={0}>
                 <Grid
                     padding={Spacing.trbl({
@@ -108,80 +108,3 @@ trustworthy. This kind of organization also helps users scan content and find wh
 <img src={anatomyImg} alt={'example of the horizontal grid anatomy'} />
 
 <ArgsTable of={Grid} />
-
-export const Template = (args) => {
-    const { childCount, padding, margin, colPadding, colMargin, ...rest } = args;
-    const content = new Array(childCount).fill('gridChild');
-    return (
-        <Shape borderWidth={1} width={800} height={400} background={'rgb(240, 210, 180)'}>
-            <Grid margin={Spacing.all(margin)} flex={1}>
-                <Shape borderWidth={1} border background={'rgb(210, 240, 180)'}>
-                    <Grid flex={1} padding={Spacing.all(padding)} {...rest}>
-                        {content.map((key, i) => (
-                            <Shape key={key + i} borderWidth={1} background={'rgb(240, 210, 180)'}>
-                                <Grid margin={Spacing.all(colMargin)} flex={1}>
-                                    <Shape borderWidth={1} background={'rgb(210, 240, 180)'}>
-                                        <Grid flex={1} padding={Spacing.all(colPadding)}>
-                                            <Shape borderWidth={1} background={'#F3F3F3'} />
-                                        </Grid>
-                                    </Shape>
-                                </Grid>
-                            </Shape>
-                        ))}
-                    </Grid>
-                </Shape>
-            </Grid>
-        </Shape>
-    );
-};
-
-export const exampleArgs = {
-    row: true,
-    padding: 0,
-    margin: 0,
-    colPadding: 0,
-    colMargin: 0,
-    flex: 1,
-    childCount: 4,
-};
-
-export const exampleArgTypes = {
-    childCount: {
-        control: {
-            type: 'range',
-            min: 1,
-            max: 8,
-            step: 1,
-        },
-    },
-    padding: {
-        control: {
-            type: 'select',
-            options: [0, 25, 50, 75, 100, 150, 200, 250, 300, 350, 400, 450, 500],
-        },
-    },
-    margin: {
-        control: {
-            type: 'select',
-            options: [0, 25, 50, 75, 100, 150, 200, 250, 300, 350, 400, 450, 500],
-        },
-    },
-    colPadding: {
-        control: {
-            type: 'select',
-            options: [0, 25, 50, 75, 100, 150, 200, 250, 300, 350, 400, 450, 500],
-        },
-    },
-    colMargin: {
-        control: {
-            type: 'select',
-            options: [0, 25, 50, 75, 100, 150, 200, 250, 300, 350, 400, 450, 500],
-        },
-    },
-};
-
-<Canvas hidden>
-    <Story name="Grid" argTypes={exampleArgTypes} args={exampleArgs}>
-        {Template.bind({})}
-    </Story>
-</Canvas>

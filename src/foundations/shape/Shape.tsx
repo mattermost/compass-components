@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { ThemedStyledProps } from 'styled-components/ts3.6';
 
 import { TTheme } from '../theme-provider/themes/theme.types';
-import { Utils } from '../../utils';
+import { SharedUtils } from '../../shared';
 
 import PShape from './Shape.props';
 import { DEFAULT_SHAPE_BORDER_RADIUS, DEFAULT_SHAPE_ELEVATION_LEVEL } from './Shape.constants';
@@ -31,7 +31,7 @@ const getShapeDimensions = (props: PShape): string => {
 };
 
 const getBorderRadius = (radius: TShapeBorderRadius): string => {
-    if (Utils.isString(radius)) {
+    if (SharedUtils.isString(radius)) {
         return radius === 'circle' ? '50%' : '10000px';
     }
 
@@ -57,7 +57,7 @@ const Shape = styled.div
         })
     )
     .withConfig({
-        shouldForwardProp: Utils.forwardProperties(),
+        shouldForwardProp: SharedUtils.forwardProperties(),
     })<ThemedStyledProps<PShape, TTheme>>`
     display: flex;
     flex: ${(props): string => (props.width ? 'initial' : 'auto')};

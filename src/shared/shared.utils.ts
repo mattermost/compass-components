@@ -1,6 +1,6 @@
 import kebabCase from 'lodash.kebabcase';
 
-import { defaultPropertyWhitelist } from './constants';
+import { DEFAULT_PROPERTY_WHITELIST } from './shared.constants';
 
 const isColor = (colorString: string): boolean => {
     const s = new Option().style;
@@ -35,12 +35,12 @@ const getStoryDocumentationUrl = (storyParameters: Record<string, string>): stri
  * ```typescript
  * // pass down `width` and `height` properties
  * const StyledDiv = styled.div.withConfig({
- *   shouldForwardProp: Utils.forwardProperties(['width', 'height']),
+ *   shouldForwardProp: SharedUtils.forwardProperties(['width', 'height']),
  * })<PDiv>` ... `
  *
  * // block all properties from being passed down
  * const StyledSection = styled.section.withConfig({
- *   shouldForwardProp: Utils.forwardProperties(),
+ *   shouldForwardProp: SharedUtils.forwardProperties(),
  * })<PSection>` ... `
  * ```
  * */
@@ -52,7 +52,7 @@ const forwardProperties = (whitelist: string[] = []): ((property: string | numbe
     // forward the property when it is a `aria-*`attribute
     property.toString().startsWith('aria-') ||
     // always forward the property when it is defined within the property-whitelist
-    defaultPropertyWhitelist.includes(property.toString()) ||
+    DEFAULT_PROPERTY_WHITELIST.includes(property.toString()) ||
     // forward the property when it is defined within the passed property-whitelist
     whitelist.includes(property.toString());
 
@@ -91,7 +91,7 @@ function clamp(value: number, min = 0, max = 1): number {
     return Math.min(Math.max(min, value), max);
 }
 
-const Utils = {
+const SharedUtils = {
     clamp,
     isColor,
     isNumber,
@@ -102,4 +102,4 @@ const Utils = {
     getFontMargin,
 };
 
-export default Utils;
+export default SharedUtils;

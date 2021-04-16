@@ -16,15 +16,11 @@ const MentionBadge: React.FC<PMentionBadge> = ({
 
     const isUnreadBadge = mentionCount === 0;
 
-    let background = 'var(--shape-background-color)';
-
     switch (location) {
         case 'sidebar':
-            background = 'var(--shape-background-color)';
             color = 'accent';
             break;
         case 'menu':
-            background = 'var(--disabled-text-color)';
             color = 'contrast';
             break;
         default:
@@ -36,7 +32,6 @@ const MentionBadge: React.FC<PMentionBadge> = ({
             borderRadius={isUnreadBadge ? 'circle' : 'pill'}
             elevation={1}
             elevationOnHover={3}
-            background={background}
             width={width}
         >
             {!isUnreadBadge && (

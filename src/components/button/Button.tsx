@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components';
 import { FlattenSimpleInterpolation, ThemedStyledProps } from 'styled-components/ts3.6';
 
 import { TTheme } from '../../foundations/theme-provider/themes/theme.types';
-import { alpha, blendColors } from '../../utils';
+import { alpha, blendColors } from '../../shared';
 
 import ButtonBase from './Button.base';
 import { DEFAULT_BUTTON_SIZE, DEFAULT_BUTTON_VARIANT } from './Button.constants';
