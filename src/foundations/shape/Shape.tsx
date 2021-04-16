@@ -5,8 +5,12 @@ import { TTheme } from '../theme-provider/themes/theme.types';
 import { SharedUtils } from '../../shared';
 
 import PShape from './Shape.props';
-import { DEFAULT_SHAPE_BORDER_RADIUS, DEFAULT_SHAPE_ELEVATION_LEVEL } from './Shape.constants';
-import { TShapeBorderRadius } from './Shape.types';
+import {
+    DEFAULT_SHAPE_BORDER_RADIUS,
+    DEFAULT_SHAPE_ELEVATION_LEVEL,
+    SHAPE_ELEVATION_DEFINITIONS,
+} from './Shape.constants';
+import { TShapeBorderRadius, TShapeElevationLevel } from './Shape.types';
 
 const getPxValue = (value: string | number): string =>
     typeof value === 'number' ? `${value}px` : getPercentageValue(value);
@@ -38,6 +42,9 @@ const getBorderRadius = (radius: TShapeBorderRadius): string => {
     return `${radius}px`;
 };
 
+const getElevation = (elevation: TShapeElevationLevel, opacity: number): string =>
+    `0 ${SHAPE_ELEVATION_DEFINITIONS[elevation].y}px ${SHAPE_ELEVATION_DEFINITIONS[elevation].blur}px 0 rgba(0,0,0,${opacity})`;
+
 const Shape = styled.div
     // ignoring the className property prevents duplicate classes to be added to the HTML element
     .attrs(
@@ -63,12 +70,19 @@ const Shape = styled.div
     flex: ${(props): string => (props.width ? 'initial' : 'auto')};
 
     border-radius: ${(props): string => getBorderRadius(props.borderRadius)};
+    background: ${(props): string => props.theme.background.shape};
 
     ${getShapeDimensions};
     
-    background: ${(props): string => props.theme.background.shape};
-
     z-index: ${(props): number => props.elevation || 0};
+    box-shadow: ${(props): string => getElevation(props.elevation, props.theme.elevationOpacity)};
+    
+    &:hover {
+        box-shadow: ${(props): string =>
+            getElevation(props.elevationOnHover, props.theme.elevationOpacity)};
+    }
+    
+    transition: box-shadow 500ms ease-in-out;
 `;
 
 export default Shape;

@@ -4,6 +4,7 @@ import { TTheme } from './theme.types';
 
 const themeDark: TTheme = {
     type: 'dark',
+    elevationOpacity: 0.32,
     palette: {
         primary: {
             light: purple[300],

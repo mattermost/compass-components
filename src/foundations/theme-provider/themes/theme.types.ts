@@ -39,6 +39,7 @@ type TTHemeBackgroundColors = {
 
 type TTheme = {
     type: 'light' | 'dark';
+    elevationOpacity: number;
     palette: TTHemeColors;
     action: TTHemeActionColors;
     text: TTHemeTextColors;
