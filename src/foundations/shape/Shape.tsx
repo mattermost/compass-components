@@ -1,5 +1,5 @@
-import styled from 'styled-components';
-import { ThemedStyledProps } from 'styled-components/ts3.6';
+import styled, { css } from 'styled-components';
+import { FlattenSimpleInterpolation, ThemedStyledProps } from 'styled-components/ts3.6';
 
 import { TTheme } from '../theme-provider/themes/theme.types';
 import { SharedUtils } from '../../shared';
@@ -42,24 +42,55 @@ const getBorderRadius = (radius: TShapeBorderRadius): string => {
     return `${radius}px`;
 };
 
-const getElevation = (elevation: TShapeElevationLevel, opacity: number): string =>
+const getElevationValue = (elevation: TShapeElevationLevel, opacity: number): string =>
     `0 ${SHAPE_ELEVATION_DEFINITIONS[elevation].y}px ${SHAPE_ELEVATION_DEFINITIONS[elevation].blur}px 0 rgba(0,0,0,${opacity})`;
+
+const getElevation = ({
+    elevation,
+    elevationOnHover,
+    theme,
+}: ThemedStyledProps<PShape, TTheme>): FlattenSimpleInterpolation | null => {
+    if (SharedUtils.isNumber(elevation) && SharedUtils.isNumber(elevationOnHover)) {
+        const clampedElevation = SharedUtils.clamp(elevation, 0, 6);
+        const clampedElevationOnHover = SharedUtils.clamp(elevation, 0, 6);
+
+        return css`
+            box-shadow: ${getElevationValue(
+                clampedElevation as TShapeElevationLevel,
+                theme.elevationOpacity
+            )};
+
+            ${elevation && elevation !== elevationOnHover
+                ? `
+                    &:hover {
+                        box-shadow: ${getElevationValue(
+                            clampedElevationOnHover as TShapeElevationLevel,
+                            theme.elevationOpacity
+                        )};
+                    }
+                `
+                : null}
+        `;
+    }
+
+    return null;
+};
 
 const Shape = styled.div
     // ignoring the className property prevents duplicate classes to be added to the HTML element
     .attrs(
         ({
             component,
-            borderRadius,
-            elevation,
-            elevationOnHover,
+            borderRadius = DEFAULT_SHAPE_BORDER_RADIUS,
+            elevation = DEFAULT_SHAPE_ELEVATION_LEVEL,
+            elevationOnHover = DEFAULT_SHAPE_ELEVATION_LEVEL,
             className: ignoreClassName,
             ...rest
         }: PShape) => ({
             as: component,
-            borderRadius: borderRadius || DEFAULT_SHAPE_BORDER_RADIUS,
-            elevation: elevation || DEFAULT_SHAPE_ELEVATION_LEVEL,
-            elevationOnHover: elevationOnHover || DEFAULT_SHAPE_ELEVATION_LEVEL,
+            borderRadius,
+            elevation,
+            elevationOnHover,
             ...rest,
         })
     )
@@ -72,16 +103,9 @@ const Shape = styled.div
     background-color: ${(props): string => props.theme.background.shape};
 
     ${getShapeDimensions};
+    ${getElevation};
     
     z-index: ${(props): number => props.elevation || 0};
-    box-shadow: ${(props): string => getElevation(props.elevation, props.theme.elevationOpacity)};
-    
-    &:hover {
-        box-shadow: ${(props): string =>
-            getElevation(props.elevationOnHover, props.theme.elevationOpacity)};
-    }
-    
-    transition: box-shadow 500ms ease-in-out;
 `;
 
 export default Shape;
