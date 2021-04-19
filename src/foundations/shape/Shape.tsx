@@ -60,16 +60,16 @@ const getElevation = ({
                 theme.elevationOpacity
             )};
 
-            ${elevation && elevation !== elevationOnHover
-                ? `
+            ${elevation === elevationOnHover
+                ? null
+                : `
                     &:hover {
                         box-shadow: ${getElevationValue(
                             clampedElevationOnHover as TShapeElevationLevel,
                             theme.elevationOpacity
                         )};
                     }
-                `
-                : null}
+                `}
         `;
     }
 
