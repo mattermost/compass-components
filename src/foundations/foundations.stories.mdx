@@ -10,7 +10,6 @@ import ThemeProvider from './theme-provider/theme-provider';
 
 import collageImg from '../assets/images/foundation_overview_collage.png';
 import colorImg from '../assets/images/foundation_overview_color.png';
-import typographyImg from '../assets/images/foundation_overview_typography.png';
 import shapeImg from '../assets/images/foundation_overview_shape.png';
 import iconsImg from '../assets/images/foundation_overview_icons.png';
 import Heading from '../components/heading';
@@ -21,6 +20,7 @@ import Text from '../components/text';
 <ThemeProvider />
 
 <Title>Foundations</Title>
+
 <Subtitle>
     Foundations are the most basic building blocks of the system. <br />
     Every interface element uses these foundations in some form or another.
@@ -37,14 +37,16 @@ import Text from '../components/text';
     <Grid padding={Spacing.trbl({ top: 75, right: 75, bottom: 75, left: 0 })} flex={1}>
         <a href={SharedUtils.getStoryDocumentationUrl(colorStoryParams)} target={'_self'}>
             <Shape border borderRadius={4} elevation={0} elevationOnHover={2}>
-                <img src={colorImg} alt={'foundation-colors'} />
-                <Grid padding={Spacing.symmetric({ vertical: 50, horizontal: 100 })}>
-                    <Heading element={'h3'} size={300}>
-                        Color
-                    </Heading>
-                    <Text element={'p'} size={100}>
-                        Discover the various palettes and shades.
-                    </Text>
+                <Grid>
+                    <img src={colorImg} alt={'foundation-colors'} />
+                    <Grid padding={Spacing.symmetric({ vertical: 50, horizontal: 100 })}>
+                        <Heading element={'h3'} size={300}>
+                            Color
+                        </Heading>
+                        <Text element={'p'} size={100}>
+                            Discover the various palettes and shades.
+                        </Text>
+                    </Grid>
                 </Grid>
             </Shape>
         </a>
@@ -52,14 +54,16 @@ import Text from '../components/text';
     <Grid padding={Spacing.all(75)} flex={1}>
         <a href={SharedUtils.getStoryDocumentationUrl(shapeStoryParams)} target={'_self'}>
             <Shape border borderRadius={4} elevation={0} elevationOnHover={2}>
-                <img src={shapeImg} alt={'foundation-shape'} />
-                <Grid padding={Spacing.symmetric({ vertical: 50, horizontal: 100 })}>
-                    <Heading element={'h3'} size={300}>
-                        Shape
-                    </Heading>
-                    <Text element={'p'} size={100}>
-                        How shape is used in Mattermost interfaces
-                    </Text>
+                <Grid>
+                    <img src={shapeImg} alt={'foundation-shape'} />
+                    <Grid padding={Spacing.symmetric({ vertical: 50, horizontal: 100 })}>
+                        <Heading element={'h3'} size={300}>
+                            Shape
+                        </Heading>
+                        <Text element={'p'} size={100}>
+                            How shape is used in Mattermost interfaces
+                        </Text>
+                    </Grid>
                 </Grid>
             </Shape>
         </a>
@@ -67,14 +71,16 @@ import Text from '../components/text';
     <Grid padding={Spacing.trbl({ top: 75, right: 0, bottom: 75, left: 75 })} flex={1}>
         <a href={SharedUtils.getStoryDocumentationUrl(colorStoryParams)} target={'_self'}>
             <Shape border borderRadius={4} elevation={0} elevationOnHover={2}>
-                <img src={iconsImg} alt={'foundation-icons'} />
-                <Grid padding={Spacing.symmetric({ vertical: 50, horizontal: 100 })}>
-                    <Heading element={'h3'} size={300}>
-                        Iconography
-                    </Heading>
-                    <Text element={'p'} size={100}>
-                        Simple visual aids used to guide our users
-                    </Text>
+                <Grid>
+                    <img src={iconsImg} alt={'foundation-icons'} />
+                    <Grid padding={Spacing.symmetric({ vertical: 50, horizontal: 100 })}>
+                        <Heading element={'h3'} size={300}>
+                            Iconography
+                        </Heading>
+                        <Text element={'p'} size={100}>
+                            Simple visual aids used to guide our users
+                        </Text>
+                    </Grid>
                 </Grid>
             </Shape>
         </a>
