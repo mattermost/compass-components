@@ -16,9 +16,11 @@ const getButtonVariables = ({
     size = DEFAULT_BUTTON_SIZE,
     variant = DEFAULT_BUTTON_VARIANT,
 }: ThemedStyledProps<PButton, TTheme>): FlattenSimpleInterpolation => {
+    const isDisabled = disabled || !SharedUtils.isFunction(onClick);
+
     let mainColor = destructive ? palette.alert.main : palette.primary.main;
     let hoverColor = action.hover;
-    let bgOpacity = disabled ? 0.08 : 1;
+    let bgOpacity = isDisabled ? 0.08 : 1;
 
     let textColor = text.contrast;
     let borderColor = mainColor;
@@ -33,7 +35,7 @@ const getButtonVariables = ({
         textColor = mainColor;
     }
 
-    if (disabled || !SharedUtils.isFunction(onClick)) {
+    if (isDisabled) {
         mainColor = action.disabled;
         // texts, icons and borders are slightly opaque with disabled buttons
         textColor = alpha(mainColor, 0.32);
@@ -71,7 +73,7 @@ const getButtonVariables = ({
           `;
 
     return css`
-        background: ${buttonBg};
+        background-color: ${buttonBg};
         color: ${textColor};
         ${variant === 'secondary' && `box-shadow: inset 0 0 0 1px ${borderColor};`}
 
@@ -89,7 +91,7 @@ const getButtonVariables = ({
 };
 
 const Button = styled(ButtonBase)<PButton>`
-    line-height: 16px;
+    align-items: stretch;
 
     // define local variables
     ${getButtonVariables};

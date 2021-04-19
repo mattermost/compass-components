@@ -21,7 +21,7 @@ import {
     <Story
         name="Default"
         args={{
-            label: 'BUTTON',
+            label: 'normal button',
             disabled: false,
             destructive: false,
             size: DEFAULT_BUTTON_SIZE,
@@ -37,6 +37,7 @@ import {
             leadingIcon: { table: { disable: true } },
             trailingIcon: { table: { disable: true } },
             className: { table: { disable: true } },
+            onClick: { action: 'clicked' },
         }}
     >
         {(args) => <Button {...args} />}
@@ -44,7 +45,7 @@ import {
     <Story
         name="Leading Icon"
         args={{
-            label: 'BUTTON',
+            label: 'leading icon button',
             disabled: false,
             destructive: false,
             size: DEFAULT_BUTTON_SIZE,
@@ -60,6 +61,7 @@ import {
             leadingIcon: { control: { type: 'select', options: ICON_GLYPHS } },
             trailingIcon: { table: { disable: true } },
             className: { table: { disable: true } },
+            onClick: { action: 'clicked' },
         }}
     >
         {(args) => <Button {...args} />}
@@ -67,7 +69,7 @@ import {
     <Story
         name="Trailing Icon"
         args={{
-            label: 'BUTTON',
+            label: 'trailing icon button',
             disabled: false,
             destructive: false,
             size: DEFAULT_BUTTON_SIZE,
@@ -83,6 +85,7 @@ import {
             leadingIcon: { table: { disable: true } },
             trailingIcon: { control: { type: 'select', options: ICON_GLYPHS } },
             className: { table: { disable: true } },
+            onClick: { action: 'clicked' },
         }}
     >
         {(args) => <Button {...args} />}

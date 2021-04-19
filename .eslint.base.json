@@ -128,7 +128,7 @@
         "max-depth": "error",
         "max-nested-callbacks": "error",
         "max-params": "error",
-        "max-statements": ["error", 20],
+        "max-statements": "off",
         "new-cap": "error",
         "object-shorthand": "error",
         "operator-assignment": "error",

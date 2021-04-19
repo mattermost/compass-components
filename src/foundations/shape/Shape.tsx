@@ -67,10 +67,9 @@ const Shape = styled.div
         shouldForwardProp: SharedUtils.forwardProperties(),
     })<ThemedStyledProps<PShape, TTheme>>`
     display: flex;
-    flex: ${(props): string => (props.width ? 'initial' : 'auto')};
 
     border-radius: ${(props): string => getBorderRadius(props.borderRadius)};
-    background: ${(props): string => props.theme.background.shape};
+    background-color: ${(props): string => props.theme.background.shape};
 
     ${getShapeDimensions};
     

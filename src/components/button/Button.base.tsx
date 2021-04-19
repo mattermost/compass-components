@@ -2,6 +2,7 @@ import React from 'react';
 
 import Grid, { Spacing, TSpacingTokensSymmetric } from '../../foundations/layout';
 import Shape from '../../foundations/shape';
+import Icon, { TIconSize } from '../icon';
 import Text, { TTextSizeToken } from '../text';
 
 import { PButton } from './Button.props';
@@ -15,23 +16,26 @@ const ButtonBase: React.FC<PButton> = ({
     ...rest
 }: PButton) => {
     let labelSize: TTextSizeToken = 100;
+    let iconSize: TIconSize = 18;
+    let height = 40;
 
-    const hasIcon = leadingIcon || trailingIcon;
     const spacing: TSpacingTokensSymmetric = {
-        vertical: 75,
+        vertical: 0,
         horizontal: 125,
     };
 
     switch (size) {
         case 'large':
             labelSize = 200;
-            spacing.vertical = hasIcon ? 75 : 100;
+            iconSize = 24;
+            height = 48;
             spacing.horizontal = 150;
             break;
         case 'small':
             labelSize = 75;
+            iconSize = 14;
+            height = 32;
             // line-height on text is 16, so there is no need to adjust paddings
-            spacing.vertical = 50;
             spacing.horizontal = 100;
             break;
         case 'medium':
@@ -43,6 +47,7 @@ const ButtonBase: React.FC<PButton> = ({
             component={'button'}
             borderRadius={4}
             width={width === 'full' ? '100%' : width}
+            height={height}
             {...rest}
         >
             <Grid
@@ -52,6 +57,7 @@ const ButtonBase: React.FC<PButton> = ({
                 padding={Spacing.symmetric(spacing)}
                 flex={1}
             >
+                {leadingIcon && <Icon glyph={leadingIcon} size={iconSize} />}
                 <Text
                     element={'span'}
                     size={labelSize}
@@ -61,6 +67,7 @@ const ButtonBase: React.FC<PButton> = ({
                 >
                     {label}
                 </Text>
+                {trailingIcon && <Icon glyph={trailingIcon} />}
             </Grid>
         </Shape>
     );
