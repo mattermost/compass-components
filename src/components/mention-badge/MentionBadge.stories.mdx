@@ -1,10 +1,6 @@
-import { storiesOf } from '@storybook/react';
 import { Meta, Story, Canvas, Title, Subtitle } from '@storybook/addon-docs/blocks';
 
-import Badge from './index';
-
-export const MentionTemplate = (args) => <Badge {...args} />;
-export const UnreadTemplate = (args) => <Badge {...args} />;
+import MentionBadge from './index';
 
 export const mentionBadgeDefaultArgs = {
     location: 'sidebar',
@@ -45,7 +41,7 @@ export const unreadBadgeArgTypes = {
     },
 };
 
-<Meta component={Badge} title="Components/Badges" parameters={{ status: 'stable' }} />
+<Meta component={MentionBadge} title="Components/MentionBadge" parameters={{ status: 'stable' }} />
 
 <Title>Badges</Title>
 
@@ -83,7 +79,7 @@ export const canvasExampleArgs = {
             ...mentionBadgeDefaultArgs,
         }}
     >
-        {MentionTemplate.bind({})}
+        {(args) => <MentionBadge {...args} />}
     </Story>
     <Story
         name="Unread Badges"
@@ -92,7 +88,7 @@ export const canvasExampleArgs = {
             ...unreadBadgeDefaultArgs,
         }}
     >
-        {UnreadTemplate.bind({})}
+        {(args) => <MentionBadge {...args} />}
     </Story>
     <Story
         name="Status Badges"
@@ -101,6 +97,6 @@ export const canvasExampleArgs = {
             ...canvasExampleArgs,
         }}
     >
-        {MentionTemplate.bind({})}
+        {(args) => <MentionBadge {...args} />}
     </Story>
 </Canvas>

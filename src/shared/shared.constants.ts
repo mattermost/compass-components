@@ -1,11 +1,17 @@
 import { TFontColor, TFontMargin, TFontWeight } from './shared.types';
 
 const FONT_TYPE_FAMILIES: Record<'heading' | 'body', string> = {
-    body: '“Open Sans”, sans-serif',
+    body: "'Open Sans', sans-serif",
     heading: 'Metropolis, sans-serif',
 };
 
 const FONT_WEIGHTS: TFontWeight[] = ['light', 'regular', 'bold'];
+
+const FONT_WEIGHT_MAP: Record<TFontWeight, 300 | 400 | 600> = {
+    light: 300,
+    regular: 400,
+    bold: 600,
+};
 
 const FONT_MARGINS: TFontMargin[] = ['none', 'both', 'bottom', 'top'];
 
@@ -37,4 +43,5 @@ export {
     FONT_COLORS,
     FONT_MARGINS,
     FONT_WEIGHTS,
+    FONT_WEIGHT_MAP,
 };

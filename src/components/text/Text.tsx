@@ -3,7 +3,7 @@ import { FlattenSimpleInterpolation, ThemedStyledProps } from 'styled-components
 
 import { SharedUtils } from '../../shared';
 import { TTheme } from '../../foundations/theme-provider/themes/theme.types';
-import { FONT_TYPE_FAMILIES } from '../../shared/shared.constants';
+import { FONT_TYPE_FAMILIES, FONT_WEIGHT_MAP } from '../../shared/shared.constants';
 
 import PText from './Text.props';
 import {
@@ -52,7 +52,7 @@ const getTextVariables = ({
 
     return css`
         font-family: ${FONT_TYPE_FAMILIES.body};
-        font-weight: ${weight};
+        font-weight: ${FONT_WEIGHT_MAP[weight]};
         font-size: ${TEXT_DEFINITIONS[size].size}px;
         line-height: ${lineHeight};
 

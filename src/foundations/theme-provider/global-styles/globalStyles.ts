@@ -16,9 +16,9 @@ type PGlobalStyles = {
 
 const GlobalStyle = createGlobalStyle`
     ${reset};
+    ${VFontFaces}
 
     :root {
-        ${VFontFaces}
         ${VFontStyle}
         ${VElevation}
     }

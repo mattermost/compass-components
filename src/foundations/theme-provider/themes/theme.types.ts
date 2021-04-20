@@ -34,6 +34,7 @@ type TTHemeTextColors = {
 
 type TTHemeBackgroundColors = {
     default: string;
+    badge: string;
     shape: string;
 };
 

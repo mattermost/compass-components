@@ -55,6 +55,7 @@ const lightTheme: TTheme = {
         contrast: neutral[0],
     },
     background: {
+        badge: neutral[1000],
         default: neutral[50],
         shape: neutral[0],
     },

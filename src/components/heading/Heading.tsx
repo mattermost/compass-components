@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 import { FlattenSimpleInterpolation, ThemedStyledProps } from 'styled-components/ts3.6';
 
-import { FONT_TYPE_FAMILIES } from '../../shared/shared.constants';
+import { FONT_TYPE_FAMILIES, FONT_WEIGHT_MAP } from '../../shared/shared.constants';
 import { TTheme } from '../../foundations/theme-provider/themes/theme.types';
 import { SharedUtils } from '../../shared';
 
@@ -52,7 +52,7 @@ const getHeadingVariables = ({
 
     return css`
         font-family: ${size > 300 ? FONT_TYPE_FAMILIES.heading : FONT_TYPE_FAMILIES.body};
-        font-weight: ${weight};
+        font-weight: ${FONT_WEIGHT_MAP[weight]};
         font-size: ${HEADING_DEFINITIONS[size].size}px;
         line-height: ${lineHeight};
 
