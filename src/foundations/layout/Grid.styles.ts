@@ -4,7 +4,7 @@ import { PStyledGrid } from './Grid.props';
 import { parseSpacing } from './Grid.spacing';
 
 const StyledGrid = styled.div.attrs({ className: 'Grid' }).withConfig({
-    shouldForwardProp: (property) => ['children', 'className'].includes(property),
+    shouldForwardProp: (property) => ['children', 'className', 'onClick'].includes(property),
 })<PStyledGrid>`
     display: flex;
     flex: ${(props): number | 'auto' => props.flex};
