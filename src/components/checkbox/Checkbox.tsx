@@ -5,20 +5,17 @@ import { TTheme } from '../../foundations/theme-provider/themes/theme.types';
 
 import CheckboxBase from './Checkbox.base';
 import PCheckbox from './Checkbox.props';
-import { DEFAULT_CHECKBOX_STATE } from './Checkbox.constants';
+import { DEFAULT_CHECKBOX_STATE, DEFAULT_CHECKBOX_SIZE } from './Checkbox.constants';
 
-const baseProperties = ({ state = DEFAULT_CHECKBOX_STATE, onClick }: PCheckbox): PCheckbox => ({
+const baseProperties = ({ state = DEFAULT_CHECKBOX_STATE }: PCheckbox): PCheckbox => ({
     state,
     className: 'Checkbox',
-    onClick,
 });
 
 const getCheckboxVariables = ({
     theme: { palette, background, text },
     state,
 }: ThemedStyledProps<PCheckbox, TTheme>): FlattenSimpleInterpolation => {
-    const textColor = text.primary;
-
     let checkmarkColor = 'transparent';
     let checkboxBg = background.default;
     let borderColor = text.disabled;
@@ -44,7 +41,6 @@ const getCheckboxVariables = ({
 
     return css`
         --checkbox-bg-color: ${checkboxBg};
-        --checkbox-text-color: ${textColor};
         --checkbox-border-color: ${borderColor};
         --checkbox-icon-color: ${checkmarkColor};
     `;
@@ -52,15 +48,16 @@ const getCheckboxVariables = ({
 
 const Checkbox = styled(CheckboxBase).attrs(baseProperties)<PCheckbox>`
     ${getCheckboxVariables};
-    // set default text-color
-    color: var(--checkbox-text-color);
+    cursor: pointer;
 
-    .Checkbox--Shape {
-        background: var(--checkbox-bg-color);
-        border: 1px solid var(--checkbox-border-color);
+    .Checkbox--input {
+        display: none;
     }
 
     i {
+        border-radius: 2px;
+        background: var(--checkbox-bg-color);
+        border: 1px solid var(--checkbox-border-color);
         color: var(--checkbox-icon-color);
     }
 

@@ -19,7 +19,9 @@ type PShape = {
     /** If a hover-state should require a higher (or lower) elevation */
     elevationOnHover?: TElevationLevel;
     /** Which component should be used for rendering the Shape */
-    component?: 'div' | 'span' | 'section' | 'aside' | 'button';
+    component?: 'div' | 'span' | 'section' | 'aside' | 'button' | 'input';
+    /** If the component is an input, which type */
+    type?: 'checkbox';
     /** set a custom width */
     width?: number | string | 'auto';
     /**
@@ -31,7 +33,6 @@ type PShape = {
     background?: string;
     children?: React.ReactNode | React.ReactNode[];
     className?: string;
-    onClick?: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
 };
 
 export default PShape;

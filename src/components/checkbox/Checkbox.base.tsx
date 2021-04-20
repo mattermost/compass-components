@@ -6,21 +6,20 @@ import Icon, { TIconSize } from '../icon';
 import Text, { TTextSize } from '../text';
 
 import PCheckbox from './Checkbox.props';
-import { DEFAULT_CHECKBOX_SIZE } from './Checkbox.constants';
-
-const toggleCheckboxState = (event: React.MouseEvent<HTMLDivElement, MouseEvent>): null => null;
+import { DEFAULT_CHECKBOX_SIZE, DEFAULT_CHECKBOX_STATE } from './Checkbox.constants';
 
 const CheckboxBase: React.FC<PCheckbox> = ({
     labelText = 'Public',
+    state = DEFAULT_CHECKBOX_STATE,
     size = DEFAULT_CHECKBOX_SIZE,
     hideLabel = false,
     className,
+    onClick,
 }: PCheckbox): JSX.Element => {
     let labelSize: TTextSize = 100;
-    let checkboxSize = 20;
+    let iconSize: TIconSize = 12;
 
-    const iconSize: TIconSize = 12;
-
+    const textColor = state === 'disabled' ? 'disabled' : 'primary';
     const spacing: TSpacingTokensSymmetric = {
         vertical: 0,
         horizontal: 0,
@@ -28,20 +27,20 @@ const CheckboxBase: React.FC<PCheckbox> = ({
 
     switch (size) {
         case 'lg':
+            iconSize = 16;
             labelSize = 200;
-            checkboxSize = 20;
             spacing.vertical = 25;
             spacing.horizontal = 25;
             break;
         case 'md':
+            iconSize = 12;
             labelSize = 75;
-            checkboxSize = 14;
             spacing.vertical = 0;
             spacing.horizontal = 0;
             break;
         case 'sm':
+            iconSize = 10;
             labelSize = 75;
-            checkboxSize = 12;
             spacing.vertical = 0;
             spacing.horizontal = 0;
             break;
@@ -50,29 +49,25 @@ const CheckboxBase: React.FC<PCheckbox> = ({
     }
 
     return (
-        <Grid row alignment={'center'} justify={'center'} className={className}>
+        <Grid
+            row
+            alignment={'center'}
+            justify={'center'}
+            flex={1}
+            className={className}
+            onClick={onClick}
+            padding={GridSpacing.symmetric(spacing)}
+        >
             <Shape
-                className={`${className}--Shape`}
-                borderRadius={4}
+                className={`${className}--input`}
+                component={'input'}
+                type={'checkbox'}
                 elevation={1}
                 elevationOnHover={3}
-                width={checkboxSize}
-                height={checkboxSize}
-                onClick={(event: React.MouseEvent<HTMLDivElement, MouseEvent>): null => {
-                    toggleCheckboxState(event);
-                }}
-            >
-                <Grid
-                    alignment={'center'}
-                    justify={'center'}
-                    flex={1}
-                    padding={GridSpacing.symmetric(spacing)}
-                >
-                    <Icon color={'inherit'} glyph="check" size={iconSize} />
-                </Grid>
-            </Shape>
+            />
+            <Icon color={'inherit'} glyph="check" size={iconSize} />
             {!hideLabel && (
-                <Text margin={'all'} size={labelSize}>
+                <Text color={textColor} margin={'all'} size={labelSize}>
                     <strong>{labelText}</strong>
                 </Text>
             )}

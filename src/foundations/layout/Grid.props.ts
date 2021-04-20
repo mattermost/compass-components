@@ -33,6 +33,7 @@ type PGrid = {
     height?: number | null;
     children?: React.ReactNode;
     className?: string;
+    onClick?: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
 };
 
 type PStyledGrid = Required<Omit<PGrid, 'component' | 'children' | 'margin' | 'padding'>> &

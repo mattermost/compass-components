@@ -1,9 +1,13 @@
+import { useState } from 'react';
 import { Meta, Story, Canvas, Title, Subtitle } from '@storybook/addon-docs/blocks';
 import { Utils, defaultArgumentsTableExclusion } from '../../utils';
 
 import Checkbox from './index';
-
-export const Template = (args) => <Checkbox {...args} />;
+export const CheckboxStateful = (args) => {
+    const [value, setValue] = useState(false);
+    console.log(value);
+    return <Checkbox {...args} onClick={() => setValue(!value)} />;
+};
 
 export const defaultArgs = {
     labelText: 'Public',
@@ -33,15 +37,7 @@ export const argTypes = Utils.hideStyledComponentProperties({
     },
 });
 
-<Meta
-    component={Checkbox}
-    title="Components/Checkbox"
-    parameters={{
-        actions: {
-            handles: ['click .Checkbox'],
-        },
-    }}
-/>
+<Meta component={CheckboxStateful} title="Components/Checkbox" />
 
 <Title>Checkboxes</Title>
 
@@ -73,6 +69,6 @@ export const canvasExampleArgs = {
             ...canvasExampleArgs,
         }}
     >
-        {Template.bind({})}
+        {(args) => <CheckboxStateful {...args} />}
     </Story>
 </Canvas>

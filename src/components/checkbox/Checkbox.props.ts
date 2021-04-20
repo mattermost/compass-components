@@ -7,7 +7,7 @@ type PCheckbox = {
     hideLabel?: boolean;
     className?: string;
     borderColor?: string;
-    onClick: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
+    onClick: (event: React.MouseEvent<HTMLElement, MouseEvent>) => void;
 };
 
 export default PCheckbox;
