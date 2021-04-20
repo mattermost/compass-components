@@ -59,9 +59,10 @@ const Checkbox = styled(CheckboxBase).attrs(baseProperties)<PCheckbox>`
         background: var(--checkbox-bg-color);
         border: 1px solid var(--checkbox-border-color);
         color: var(--checkbox-icon-color);
-    }
 
-    transition: all 500ms 0s ease-in-out;
+        transition: background-color 200ms 0ms ease-in-out, opacity 200ms 125ms ease-in,
+            scale 2000ms 0ms cubic-bezier(0.17, 0.67, 0.82, 0.28);
+    }
 `;
 
 export default Checkbox;
