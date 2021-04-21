@@ -82,7 +82,7 @@ const getFontMargin = (fontSize: number, multiplier: number): number =>
  * @param {number} max The upper boundary of the output range
  * @returns {number} A number in the range [min, max]
  */
-function clamp<T>(value: number, min = 0, max = 1): T | number {
+function clamp(value: number, min = 0, max = 1): number {
     if (value < min || value > max) {
         throw new Error(
             `Compass Components: The value provided ${value} is out of range [${min}, ${max}].`

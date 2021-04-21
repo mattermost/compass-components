@@ -4,27 +4,30 @@ import { FlattenSimpleInterpolation, ThemedStyledProps } from 'styled-components
 import { TTheme } from '../../foundations/theme-provider/themes/theme.types';
 
 import StatusBadgeBase from './StatusBadge.base';
+import { DEFAULT_STATUSBADGE_SIZE } from './StatusBadge.constants';
 import PStatusBadge from './StatusBadge.props';
 
-const getStatusColor = ({
+const getStatusStyles = ({
+    background,
     status,
-    size,
     theme,
 }: ThemedStyledProps<PStatusBadge, TTheme>): FlattenSimpleInterpolation => {
     const color = theme.badges[status];
-    const borderColor = status === 'offline' ? color : 'transparent';
-    const borderWidth = size && size > 18 ? 3 : 2;
 
     return css`
-        background-color: transparent;
+        background-color: ${background};
         color: ${color};
-        outline: ${borderWidth} transparent;
-        border: ${`${borderWidth}px solid ${borderColor}`};
     `;
 };
 
-const StatusBadge = styled(StatusBadgeBase)<ThemedStyledProps<PStatusBadge, TTheme>>`
-    ${getStatusColor};
+const StatusBadge = styled(StatusBadgeBase).attrs(
+    ({ background = 'transparent', size = DEFAULT_STATUSBADGE_SIZE, ...rest }: PStatusBadge) => ({
+        background,
+        size,
+        ...rest,
+    })
+)<ThemedStyledProps<PStatusBadge, TTheme>>`
+    ${getStatusStyles};
 `;
 
 export default StatusBadge;

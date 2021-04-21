@@ -1,28 +1,152 @@
 import { Meta, Story, Canvas, Title, Subtitle } from '@storybook/addon-docs/blocks';
 
 import StatusBadge from './index';
+import {
+    DEFAULT_STATUSBADGE_SIZE,
+    STATUSBADGE_SIZES,
+    STATUSBADGE_STATUSES,
+} from './StatusBadge.constants';
+
+import { SharedUtils } from '../../shared';
+import ThemeProvider from '../../foundations/theme-provider/theme-provider';
+import Grid, { Spacing } from '../../foundations/layout';
+import Text from '../text';
+import Shape from '../../foundations/shape';
 
 <Meta component={StatusBadge} title="Components/StatusBadge" parameters={{ status: 'stable' }} />
 
+<Title>Status Badge</Title>
+
+<Subtitle>
+    Status Badges are used to indicate the status of a particular user and are usually paired with
+    an avatar or username.
+</Subtitle>
+
+### StatusBadge variations
+
+<ThemeProvider>
+    <Grid padding={Spacing.symmetric({ vertical: 150 })} justify={'stretch'}>
+        <Grid
+            row
+            padding={Spacing.symmetric({ vertical: 150, horizontal: 25 })}
+            alignment={'center'}
+            justify={'space-around'}
+        >
+            <Grid justify={'center'} alignment={'center'} flex={1}>
+                <Shape width={200} height={200}>
+                    <Grid justify={'center'} alignment={'center'} flex={1}>
+                        <StatusBadge status={'online'} size={'xl'} />
+                    </Grid>
+                </Shape>
+                <Text weight={'bold'}>online</Text>
+            </Grid>
+            <Grid justify={'center'} alignment={'center'} flex={1}>
+                <Shape width={200} height={200}>
+                    <Grid justify={'center'} alignment={'center'} flex={1}>
+                        <StatusBadge status={'away'} size={'xl'} />
+                    </Grid>
+                </Shape>
+                <Text weight={'bold'}>away</Text>
+            </Grid>
+            <Grid justify={'center'} alignment={'center'} flex={1}>
+                <Shape width={200} height={200}>
+                    <Grid justify={'center'} alignment={'center'} flex={1}>
+                        <StatusBadge status={'dnd'} size={'xl'} />
+                    </Grid>
+                </Shape>
+                <Text weight={'bold'}>do not disturb ('dnd')</Text>
+            </Grid>
+            <Grid justify={'center'} alignment={'center'} flex={1}>
+                <Shape width={200} height={200}>
+                    <Grid justify={'center'} alignment={'center'} flex={1}>
+                        <StatusBadge status={'offline'} size={'xl'} />
+                    </Grid>
+                </Shape>
+                <Text weight={'bold'}>offline</Text>
+            </Grid>
+        </Grid>
+    </Grid>
+</ThemeProvider>
+
+### StatusBadge sizes
+
+<ThemeProvider>
+    <Grid padding={Spacing.symmetric({ vertical: 150 })} justify={'stretch'}>
+        <Grid
+            row
+            padding={Spacing.symmetric({ vertical: 150, horizontal: 25 })}
+            alignment={'center'}
+            justify={'space-around'}
+        >
+            <Grid justify={'center'} alignment={'center'} flex={1}>
+                <Shape width={150} height={150}>
+                    <Grid justify={'center'} alignment={'center'} flex={1}>
+                        <StatusBadge status={'online'} size={'xs'} />
+                    </Grid>
+                </Shape>
+                <Text weight={'bold'}>x-small ('xs')</Text>
+            </Grid>
+            <Grid justify={'center'} alignment={'center'} flex={1}>
+                <Shape width={150} height={150}>
+                    <Grid justify={'center'} alignment={'center'} flex={1}>
+                        <StatusBadge status={'online'} size={'sm'} />
+                    </Grid>
+                </Shape>
+                <Text weight={'bold'}>small ('sm')</Text>
+            </Grid>
+            <Grid justify={'center'} alignment={'center'} flex={1}>
+                <Shape width={150} height={150}>
+                    <Grid justify={'center'} alignment={'center'} flex={1}>
+                        <StatusBadge status={'online'} size={'md'} />
+                    </Grid>
+                </Shape>
+                <Text weight={'bold'}>medium ('md')</Text>
+            </Grid>
+            <Grid justify={'center'} alignment={'center'} flex={1}>
+                <Shape width={150} height={150}>
+                    <Grid justify={'center'} alignment={'center'} flex={1}>
+                        <StatusBadge status={'online'} size={'lg'} />
+                    </Grid>
+                </Shape>
+                <Text weight={'bold'}>large ('lg')</Text>
+            </Grid>
+            <Grid justify={'center'} alignment={'center'} flex={1}>
+                <Shape width={150} height={150}>
+                    <Grid justify={'center'} alignment={'center'} flex={1}>
+                        <StatusBadge status={'online'} size={'xl'} />
+                    </Grid>
+                </Shape>
+                <Text weight={'bold'}>x-large ('xl')</Text>
+            </Grid>
+        </Grid>
+    </Grid>
+</ThemeProvider>
+
+export const argTypes = SharedUtils.hideStyledComponentProperties({
+    status: {
+        control: {
+            type: 'select',
+            options: STATUSBADGE_STATUSES,
+        },
+    },
+    size: {
+        control: {
+            type: 'select',
+            options: STATUSBADGE_SIZES,
+        },
+    },
+    background: {
+        control: 'color',
+    },
+});
+
 <Canvas hidden>
     <Story
-        name="Mention Badges"
-        argTypes={{
-            status: {
-                control: {
-                    type: 'select',
-                    options: ['online', 'away', 'dnd', 'offline'],
-                },
-            },
-            size: {
-                control: {
-                    type: 'select',
-                    options: [14, 16, 18, 24, 32],
-                },
-            },
-        }}
+        name="Status Badge"
+        argTypes={argTypes}
         args={{
             status: 'online',
+            size: DEFAULT_STATUSBADGE_SIZE,
         }}
     >
         {(args) => <StatusBadge {...args} />}
