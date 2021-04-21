@@ -1,3 +1,4 @@
+import { alpha } from '../../../shared';
 import { indigo, green, red, neutral, orange, purple, teal } from '../../colors';
 
 import { TTheme } from './theme.types';
@@ -36,6 +37,12 @@ const themeDark: TTheme = {
             main: indigo[200],
             dark: indigo[300],
         },
+    },
+    badges: {
+        online: green[600],
+        away: orange[400],
+        dnd: red[500],
+        offline: alpha(neutral[350], 0.64),
     },
     action: {
         hover: neutral[0],

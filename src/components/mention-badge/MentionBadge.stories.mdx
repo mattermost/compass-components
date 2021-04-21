@@ -1,11 +1,10 @@
 import { Meta, Story, Canvas, Title, Subtitle } from '@storybook/addon-docs/blocks';
 
-import MentionBadge from './index';
+import StatusBadge from './index';
 
 export const mentionBadgeDefaultArgs = {
     location: 'sidebar',
     mentionCount: 1,
-    width: 'auto',
 };
 
 export const unreadBadgeDefaultArgs = {
@@ -30,18 +29,7 @@ export const mentionBadgeArgTypes = {
     },
 };
 
-export const unreadBadgeArgTypes = {
-    width: {
-        control: {
-            type: 'range',
-            min: 1,
-            max: 100,
-            step: 1,
-        },
-    },
-};
-
-<Meta component={MentionBadge} title="Components/MentionBadge" parameters={{ status: 'stable' }} />
+<Meta component={MentionBadge} title="Components/StatusBadge" parameters={{ status: 'stable' }} />
 
 <Title>Badges</Title>
 
@@ -83,18 +71,8 @@ export const canvasExampleArgs = {
     </Story>
     <Story
         name="Unread Badges"
-        argTypes={unreadBadgeArgTypes}
         args={{
             ...unreadBadgeDefaultArgs,
-        }}
-    >
-        {(args) => <MentionBadge {...args} />}
-    </Story>
-    <Story
-        name="Status Badges"
-        argTypes={mentionBadgeArgTypes}
-        args={{
-            ...canvasExampleArgs,
         }}
     >
         {(args) => <MentionBadge {...args} />}

@@ -1,0 +1,30 @@
+import { Meta, Story, Canvas, Title, Subtitle } from '@storybook/addon-docs/blocks';
+
+import StatusBadge from './index';
+
+<Meta component={StatusBadge} title="Components/StatusBadge" parameters={{ status: 'stable' }} />
+
+<Canvas hidden>
+    <Story
+        name="Mention Badges"
+        argTypes={{
+            status: {
+                control: {
+                    type: 'select',
+                    options: ['online', 'away', 'dnd', 'offline'],
+                },
+            },
+            size: {
+                control: {
+                    type: 'select',
+                    options: [14, 16, 18, 24, 32],
+                },
+            },
+        }}
+        args={{
+            status: 'online',
+        }}
+    >
+        {(args) => <StatusBadge {...args} />}
+    </Story>
+</Canvas>
