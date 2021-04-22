@@ -4,7 +4,7 @@
     "description": "components aligning to the compass design system",
     "main": "index.js",
     "scripts": {
-        "build-storybook": "yarn run build:icons && build-storybook",
+        "build-storybook": "build-storybook",
         "build": "node -v && rimraf ./lib && yarn run build:icons && yarn run build:compile && yarn run build:copy-files",
         "build:icons": "node ./scripts/build-icons.js",
         "build:compile": "tsc --extendedDiagnostics -p \"./tsconfig.build.json\"",
