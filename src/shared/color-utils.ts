@@ -1,6 +1,6 @@
 import { normal } from 'color-blend';
 
-import SharedUtils from './shared.utils';
+import Utils from './utils';
 
 type TColorDefinition = {
     type: string;
@@ -137,7 +137,7 @@ function rgbToHslValues(rgbArray: number[]): number[] {
     }
 
     if (rgbArray[3] || rgbArray[3] === 0) {
-        return [h, s, l, SharedUtils.clamp(rgbArray[3])];
+        return [h, s, l, Utils.clamp(rgbArray[3])];
     }
 
     return [h, s, l];
@@ -273,7 +273,7 @@ function recomposeColorWithShade(color: TColorDefinition, shade: string, darker:
 function alpha(color: string, value: number): string {
     const decomposedColor = decomposeColor(color);
 
-    const clampedValue = SharedUtils.clamp(value);
+    const clampedValue = Utils.clamp(value);
 
     if (decomposedColor.type === 'rgb' || decomposedColor.type === 'hsl') {
         decomposedColor.type += 'a';
@@ -373,7 +373,7 @@ function getRGBString(rgb: string, opacity?: number): string {
     }
 
     if (opacity) {
-        return `rgba(${rgb},${SharedUtils.clamp(opacity)})`;
+        return `rgba(${rgb},${Utils.clamp(opacity)})`;
     }
 
     return `rgb(${rgb})`;

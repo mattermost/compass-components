@@ -3,7 +3,7 @@ import { Description, Meta, Subtitle, Title } from '@storybook/addon-docs/blocks
 import colorStoryParams from './colors/colors.stories.mdx';
 import shapeStoryParams from './shape/Shape.stories.mdx';
 
-import { SharedUtils } from '../shared';
+import { Utils } from '../shared';
 import Shape from './shape';
 import Grid, { Spacing } from './layout';
 import ThemeProvider from './theme-provider/theme-provider';
@@ -35,7 +35,7 @@ import Text from '../components/text';
 
 <Grid row justify={'space-around'}>
     <Grid padding={Spacing.trbl({ top: 75, right: 75, bottom: 75, left: 0 })} flex={1}>
-        <a href={SharedUtils.getStoryDocumentationUrl(colorStoryParams)} target={'_self'}>
+        <a href={Utils.getStoryDocumentationUrl(colorStoryParams)} target={'_self'}>
             <Shape border borderRadius={4} elevation={0} elevationOnHover={2}>
                 <Grid>
                     <img src={colorImg} alt={'foundation-colors'} />
@@ -52,7 +52,7 @@ import Text from '../components/text';
         </a>
     </Grid>
     <Grid padding={Spacing.all(75)} flex={1}>
-        <a href={SharedUtils.getStoryDocumentationUrl(shapeStoryParams)} target={'_self'}>
+        <a href={Utils.getStoryDocumentationUrl(shapeStoryParams)} target={'_self'}>
             <Shape border borderRadius={4} elevation={0} elevationOnHover={2}>
                 <Grid>
                     <img src={shapeImg} alt={'foundation-shape'} />
@@ -69,7 +69,7 @@ import Text from '../components/text';
         </a>
     </Grid>
     <Grid padding={Spacing.trbl({ top: 75, right: 0, bottom: 75, left: 75 })} flex={1}>
-        <a href={SharedUtils.getStoryDocumentationUrl(colorStoryParams)} target={'_self'}>
+        <a href={Utils.getStoryDocumentationUrl(colorStoryParams)} target={'_self'}>
             <Shape border borderRadius={4} elevation={0} elevationOnHover={2}>
                 <Grid>
                     <img src={iconsImg} alt={'foundation-icons'} />

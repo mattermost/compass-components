@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components';
 import { FlattenSimpleInterpolation, ThemedStyledProps } from 'styled-components/ts3.6';
 
 import { TTheme } from '../../foundations/theme-provider/themes/theme.types';
-import { alpha, blendColors, SharedUtils } from '../../shared';
+import { alpha, blendColors, Utils } from '../../shared';
 
 import ButtonBase from './Button.base';
 import { DEFAULT_BUTTON_SIZE, DEFAULT_BUTTON_VARIANT } from './Button.constants';
@@ -16,7 +16,7 @@ const getButtonVariables = ({
     size = DEFAULT_BUTTON_SIZE,
     variant = DEFAULT_BUTTON_VARIANT,
 }: ThemedStyledProps<PButton, TTheme>): FlattenSimpleInterpolation => {
-    const isDisabled = disabled || !SharedUtils.isFunction(onClick);
+    const isDisabled = disabled || !Utils.isFunction(onClick);
 
     let mainColor = destructive ? palette.alert.main : palette.primary.main;
     let hoverColor = action.hover;

@@ -10,7 +10,7 @@ import {
     THeadingElement,
 } from '../../../components/heading';
 import { DEFAULT_TEXT_SIZE, DEFAULT_TEXT_WEIGHT, TEXT_DEFINITIONS } from '../../../components/text';
-import { FONT_TYPE_FAMILIES } from '../../../shared/shared.constants';
+import { FONT_TYPE_FAMILIES } from '../../../shared/constants';
 
 const generateDefaultHeadingStyles = (): FlattenSimpleInterpolation =>
     HEADING_ELEMENTS.map((headingElement: THeadingElement) => {

@@ -1,5 +1,5 @@
-import SharedUtils from './shared.utils';
+import Utils from './utils';
 
-export * from './shared.color-utils';
+export * from './color-utils';
 
-export { SharedUtils };
+export { Utils };
