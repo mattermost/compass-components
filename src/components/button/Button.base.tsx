@@ -9,8 +9,8 @@ import { PButton } from './Button.props';
 
 const ButtonBase: React.FC<PButton> = ({
     label,
-    leadingIcon,
-    trailingIcon,
+    icon,
+    iconPosition,
     size,
     width,
     ...rest
@@ -58,7 +58,7 @@ const ButtonBase: React.FC<PButton> = ({
                 padding={Spacing.symmetric(spacing)}
                 flex={1}
             >
-                {leadingIcon && <Icon glyph={leadingIcon} size={iconSize} />}
+                {icon && iconPosition === 'start' ? <Icon glyph={icon} size={iconSize} /> : null}
                 <Text
                     element={'span'}
                     size={labelSize}
@@ -68,7 +68,7 @@ const ButtonBase: React.FC<PButton> = ({
                 >
                     {label}
                 </Text>
-                {trailingIcon && <Icon glyph={trailingIcon} size={iconSize} />}
+                {icon && iconPosition === 'end' ? <Icon glyph={icon} size={iconSize} /> : null}
             </Grid>
         </Shape>
     );
