@@ -7,4 +7,22 @@ type TFontMargin = 'none' | 'top' | 'bottom' | 'both';
 
 type TFontColor = 'inherit' | keyof TTHemeTextColors;
 
-export type { TFontColor, TFontMargin, TFontWeight };
+// Grid and Shape components
+type TContainerElement =
+    | 'div'
+    | 'span'
+    | 'article'
+    | 'aside'
+    | 'details'
+    | 'figcaption'
+    | 'figure'
+    | 'footer'
+    | 'header'
+    | 'main'
+    | 'mark'
+    | 'nav'
+    | 'section'
+    | 'summary'
+    | 'time';
+
+export type { TFontColor, TFontMargin, TFontWeight, TContainerElement };

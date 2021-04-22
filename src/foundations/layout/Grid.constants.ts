@@ -1,6 +1,22 @@
 import { TGridAlignment, TGridComponent, TGridFlex, TGridJustify } from './Grid.types';
 
-const GRID_COMPONENTS: TGridComponent[] = ['div', 'span', 'section', 'aside'];
+const GRID_COMPONENTS: TGridComponent[] = [
+    'div',
+    'span',
+    'article',
+    'aside',
+    'details',
+    'figcaption',
+    'figure',
+    'footer',
+    'header',
+    'main',
+    'mark',
+    'nav',
+    'section',
+    'summary',
+    'time',
+];
 
 const DEFAULT_GRID_COMPONENT: TGridComponent = 'div';
 

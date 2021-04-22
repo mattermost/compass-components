@@ -16,7 +16,7 @@ const ButtonBase: React.FC<PButton> = ({
     ...rest
 }: PButton) => {
     let labelSize: TTextSizeToken = 100;
-    let iconSize: TIconSize = 18;
+    let iconSize: TIconSize = 16;
     let height = 40;
 
     const spacing: TSpacingTokensSymmetric = {
@@ -27,13 +27,13 @@ const ButtonBase: React.FC<PButton> = ({
     switch (size) {
         case 'large':
             labelSize = 200;
-            iconSize = 24;
+            iconSize = 20;
             height = 48;
             spacing.horizontal = 150;
             break;
         case 'small':
             labelSize = 75;
-            iconSize = 14;
+            iconSize = 12;
             height = 32;
             // line-height on text is 16, so there is no need to adjust paddings
             spacing.horizontal = 100;
@@ -52,6 +52,7 @@ const ButtonBase: React.FC<PButton> = ({
         >
             <Grid
                 row
+                component={'span'}
                 alignment={'center'}
                 justify={'center'}
                 padding={Spacing.symmetric(spacing)}
@@ -67,7 +68,7 @@ const ButtonBase: React.FC<PButton> = ({
                 >
                     {label}
                 </Text>
-                {trailingIcon && <Icon glyph={trailingIcon} />}
+                {trailingIcon && <Icon glyph={trailingIcon} size={iconSize} />}
             </Grid>
         </Shape>
     );

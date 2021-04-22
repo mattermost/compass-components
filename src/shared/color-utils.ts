@@ -270,7 +270,7 @@ function recomposeColorWithShade(color: TColorDefinition, shade: string, darker:
  * @param {number} value - value to set the alpha channel to in the range 0 - 1
  * @returns {string} A CSS color string. Hex input values are returned as rgb
  */
-function alpha(color: string, value: number): string {
+function setAlpha(color: string, value: number): string {
     const decomposedColor = decomposeColor(color);
 
     const clampedValue = Utils.clamp(value);
@@ -380,7 +380,7 @@ function getRGBString(rgb: string, opacity?: number): string {
 }
 
 export {
-    alpha,
+    setAlpha,
     convertToRgb,
     decomposeColor,
     recomposeColor,

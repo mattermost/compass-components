@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components';
 import { FlattenSimpleInterpolation, ThemedStyledProps } from 'styled-components/ts3.6';
 
 import { TTheme } from '../../foundations/theme-provider/themes/theme.types';
-import { alpha, blendColors, Utils } from '../../shared';
+import { setAlpha, blendColors, Utils } from '../../shared';
 
 import ButtonBase from './Button.base';
 import { DEFAULT_BUTTON_SIZE, DEFAULT_BUTTON_VARIANT } from './Button.constants';
@@ -38,7 +38,7 @@ const getButtonVariables = ({
     if (isDisabled) {
         mainColor = action.disabled;
         // texts, icons and borders are slightly opaque with disabled buttons
-        textColor = alpha(mainColor, 0.32);
+        textColor = setAlpha(mainColor, 0.32);
         borderColor = textColor;
     }
 
@@ -51,7 +51,7 @@ const getButtonVariables = ({
         iconMargin = 8;
     }
 
-    const buttonBg = alpha(mainColor, bgOpacity);
+    const buttonBg = setAlpha(mainColor, bgOpacity);
 
     const actionStyles = disabled
         ? null
@@ -59,14 +59,21 @@ const getButtonVariables = ({
               &:hover {
                   background: ${disabled
                       ? buttonBg
-                      : blendColors(buttonBg, alpha(hoverColor, action.hoverOpacity))};
+                      : blendColors(buttonBg, setAlpha(hoverColor, action.hoverOpacity))};
               }
               &:active {
                   background: ${disabled
                       ? buttonBg
-                      : blendColors(buttonBg, alpha(hoverColor, action.activeOpacity))};
+                      : blendColors(buttonBg, setAlpha(hoverColor, action.activeOpacity))};
               }
               &:focus {
+                  box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.32),
+                      inset 0 0 0 2px ${borderColor};
+              }
+              &:focus:not(:focus-visible) {
+                  box-shadow: none;
+              }
+              &:focus-visible {
                   box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.32),
                       inset 0 0 0 2px ${borderColor};
               }
@@ -92,11 +99,12 @@ const getButtonVariables = ({
 
 const Button = styled(ButtonBase)<PButton>`
     align-items: stretch;
+    cursor: pointer;
 
     // define local variables
     ${getButtonVariables};
 
-    transition: all 500ms 0s ease-in-out;
+    transition: box-shadow 150ms 0s ease-in-out;
 `;
 
 export default Button;
