@@ -72,7 +72,7 @@ const getButtonVariables = ({
               }
               &:focus:not(:focus-visible) {
                   box-shadow: ${variant === 'secondary'
-                      ? `inset 0 0 0 2px rgba(255, 255, 255, 0.32), inset 0 0 0 2px ${borderColor}`
+                      ? `inset 0 0 0 1px ${borderColor};`
                       : 'none'};
               }
               &:focus-visible {
