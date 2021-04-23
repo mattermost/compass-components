@@ -1,31 +1,16 @@
 import { useState } from 'react';
 import { Meta, Story, Canvas, Title, Subtitle } from '@storybook/addon-docs/blocks';
-import { SharedUtils } from '../../shared';
+import {
+    DEFAULT_RADIO_SIZE,
+    DEFAULT_RADIO_STATE,
+    RADIO_SIZES,
+    RADIO_STATES,
+} from './Radio.constants';
+import { Utils } from '../../shared';
 
 import Radio from './index';
 
 export const Template = (args) => <Radio {...args} />;
-
-export const defaultArgs = {
-    labelText: 'Public',
-    state: 'on',
-    size: 'md',
-};
-
-export const argTypes = SharedUtils.hideStyledComponentProperties({
-    state: {
-        control: {
-            type: 'select',
-            options: ['on', 'off', 'error', 'disabled'],
-        },
-    },
-    size: {
-        control: {
-            type: 'select',
-            options: ['sm', 'md', 'lg'],
-        },
-    },
-});
 
 <Meta component={Radio} title="Components/Radio" />
 
@@ -51,6 +36,27 @@ Once an item is selected, if the user clicks to select a different item, this au
 ## Animation
 
 ## Sizes
+
+export const defaultArgs = {
+    labelText: 'Public',
+    state: DEFAULT_RADIO_STATE,
+    size: DEFAULT_RADIO_SIZE,
+};
+
+export const argTypes = Utils.hideStyledComponentProperties({
+    state: {
+        control: {
+            type: 'select',
+            options: RADIO_STATES,
+        },
+    },
+    size: {
+        control: {
+            type: 'select',
+            options: RADIO_SIZES,
+        },
+    },
+});
 
 export const canvasExampleArgs = {
     ...defaultArgs,

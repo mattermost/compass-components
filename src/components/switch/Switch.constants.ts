@@ -12,6 +12,7 @@ const DEFAULT_SWITCH_HEIGHT: TSwitchHeights = 24;
 const DEFAULT_SWITCH_WIDTH: TSwitchWidths = 40;
 const DEFAULT_SWITCH_INNER_WIDTH: TSwitchInnerWidths = 20;
 const SWITCH_STATES: TSwitchState[] = ['on', 'off', 'disabled'];
+const SWITCH_SIZES: TSwitchSize[] = ['sm', 'md', 'lg'];
 
 export {
     DEFAULT_SWITCH_SIZE,
@@ -20,4 +21,5 @@ export {
     DEFAULT_SWITCH_WIDTH,
     DEFAULT_SWITCH_INNER_WIDTH,
     SWITCH_STATES,
+    SWITCH_SIZES,
 };

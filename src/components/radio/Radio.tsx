@@ -48,8 +48,6 @@ const getRadioVariables = ({
 
 const Radio = styled(RadioBase)<PRadio>`
     align-items: stretch;
-
-    // define local variables
     input[type='radio'] {
         opacity: 0;
         position: fixed;

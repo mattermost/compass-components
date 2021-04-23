@@ -1,38 +1,19 @@
 import { useState } from 'react';
 import { Meta, Story, Canvas, Title, Subtitle } from '@storybook/addon-docs/blocks';
-import { SharedUtils } from '../../shared';
+import {
+    DEFAULT_SWITCH_SIZE,
+    DEFAULT_SWITCH_STATE,
+    SWITCH_STATES,
+    SWITCH_SIZES,
+} from './Switch.constants';
+import { Utils } from '../../shared';
+import { DEFAULT_ARGUMENT_STABLE_EXCLUSION } from '../../shared/constants';
 
 import Switch from './index';
 
-export const Template = (args) => <Switch {...args} />;
-
-export const defaultArgs = {
-    labelText: 'Public',
-    state: 'on',
-    size: 'md',
-};
-
-export const argTypes = SharedUtils.hideStyledComponentProperties({
-    labelText: {
-        control: {
-            type: 'text',
-        },
-    },
-    state: {
-        control: {
-            type: 'select',
-            options: ['on', 'off', 'disabled'],
-        },
-    },
-    size: {
-        control: {
-            type: 'select',
-            options: ['sm', 'md', 'lg'],
-        },
-    },
-});
-
 <Meta component={Switch} title="Components/Switch" />
+
+export const Template = (args) => <Switch {...args} />;
 
 <Title>Switches</Title>
 
@@ -59,6 +40,12 @@ There are three different sizes for switches: Small, Medium, and Large. The size
 
 ## Animation
 
+export const defaultArgs = {
+    labelText: 'Public',
+    state: DEFAULT_SWITCH_STATE,
+    size: DEFAULT_SWITCH_SIZE,
+};
+
 export const canvasExampleArgs = {
     ...defaultArgs,
 };
@@ -66,7 +53,25 @@ export const canvasExampleArgs = {
 <Canvas hidden>
     <Story
         name="Default"
-        argTypes={argTypes}
+        argTypes={Utils.hideStyledComponentProperties({
+            labelText: {
+                control: {
+                    type: 'text',
+                },
+            },
+            size: {
+                control: {
+                    type: 'select',
+                    options: SWITCH_SIZES,
+                },
+            },
+            state: {
+                control: {
+                    type: 'select',
+                    options: SWITCH_STATES,
+                },
+            },
+        })}
         args={{
             ...canvasExampleArgs,
         }}
