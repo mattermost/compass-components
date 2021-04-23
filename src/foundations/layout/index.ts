@@ -1,10 +1,10 @@
 import Grid from './Grid';
-import GridSpacing from './Grid.spacing';
+import Spacing from './Spacing';
 
 export * from './Grid.props';
 export * from './Grid.types';
-export * from './Grid.spacing';
+export * from './Spacing';
 
-export { GridSpacing };
+export { Spacing };
 
 export default Grid;

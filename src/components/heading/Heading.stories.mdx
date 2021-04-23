@@ -2,7 +2,7 @@ import { Meta, Story, Canvas, ArgsTable, Title, Subtitle } from '@storybook/addo
 
 import Heading from './Heading';
 import {
-    HEADING_SIZES,
+    HEADING_SIZE_TOKENS,
     HEADING_MARGINS,
     HEADING_ELEMENTS,
     HEADING_WEIGHTS,
@@ -10,7 +10,6 @@ import {
     DEFAULT_HEADING_SIZE,
     DEFAULT_HEADING_WEIGHT,
     DEFAULT_HEADING_MARGIN,
-    DEFAULT_HEADING_COLOR,
 } from './Heading.constants';
 import Grid from '../../foundations/layout';
 import Text from '../text';
@@ -116,10 +115,9 @@ export const Template = (args) => {
             size: DEFAULT_HEADING_SIZE,
             weight: DEFAULT_HEADING_WEIGHT,
             margin: DEFAULT_HEADING_MARGIN,
-            color: DEFAULT_HEADING_COLOR,
         }}
         argTypes={{
-            size: { control: { type: 'select', options: HEADING_SIZES } },
+            size: { control: { type: 'select', options: HEADING_SIZE_TOKENS } },
             element: { control: { type: 'select', options: HEADING_ELEMENTS } },
             weight: { control: { type: 'radio', options: HEADING_WEIGHTS } },
             margin: { control: { type: 'radio', options: HEADING_MARGINS } },

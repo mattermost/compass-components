@@ -13,11 +13,23 @@ type TTHemeColors = {
     info: TThemeColorDefinition;
 };
 
+type TTHemeActionColors = {
+    hover: string;
+    hoverOpacity: number;
+    active: string;
+    activeOpacity: number;
+    focus: string;
+    focusOpacity: number;
+    selected: string;
+    disabled: string;
+};
+
 type TTHemeTextColors = {
     primary: string;
     secondary: string;
     disabled: string;
     contrast: string;
+    accent: string;
 };
 
 type TTHemeBackgroundColors = {
@@ -27,7 +39,9 @@ type TTHemeBackgroundColors = {
 
 type TTheme = {
     type: 'light' | 'dark';
+    elevationOpacity: number;
     palette: TTHemeColors;
+    action: TTHemeActionColors;
     text: TTHemeTextColors;
     background: TTHemeBackgroundColors;
 };
@@ -35,6 +49,7 @@ type TTheme = {
 export type {
     TTheme,
     TTHemeColors,
+    TTHemeActionColors,
     TTHemeTextColors,
     TTHemeBackgroundColors,
     TThemeColorDefinition,

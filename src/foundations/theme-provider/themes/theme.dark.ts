@@ -4,6 +4,7 @@ import { TTheme } from './theme.types';
 
 const themeDark: TTheme = {
     type: 'dark',
+    elevationOpacity: 0.32,
     palette: {
         primary: {
             light: purple[300],
@@ -36,11 +37,22 @@ const themeDark: TTheme = {
             dark: indigo[300],
         },
     },
+    action: {
+        hover: neutral[0],
+        hoverOpacity: 0.08,
+        active: neutral[0],
+        activeOpacity: 0.16,
+        focus: neutral[1250],
+        focusOpacity: 0.32,
+        selected: purple[500],
+        disabled: neutral[100],
+    },
     text: {
         primary: neutral[50],
+        accent: neutral[150],
         secondary: neutral[300],
         disabled: neutral[700],
-        contrast: neutral[1000],
+        contrast: neutral[100],
     },
     background: {
         default: neutral[1100],

@@ -1,20 +1,31 @@
 import { ArgsTable, Meta, Story, Canvas, Title, Subtitle } from '@storybook/addon-docs/blocks';
-import { DependenciesTable } from 'storybook-addon-deps/blocks';
+
+import Text from '../../components/text';
+import Grid, { Spacing } from '../layout';
+import { Utils } from '../../shared';
 
 import Shape from './index';
-import Grid, { GridSpacing } from '../layout';
-import Typography from '../typography';
-import Text from '../../components/text';
-import { Utils } from '../../utils';
+import {
+    DEFAULT_SHAPE_BORDER_RADIUS,
+    DEFAULT_SHAPE_ELEMENT,
+    DEFAULT_SHAPE_ELEVATION_LEVEL,
+    SHAPE_BORDER_RADII,
+    SHAPE_ELEMENTS,
+    SHAPE_ELEVATION_LEVELS,
+} from './Shape.constants';
+
+import ThemeProvider from '../theme-provider/theme-provider';
+import { DEFAULT_ARGUMENT_STABLE_EXCLUSION } from '../../shared/constants';
+
+<Meta component={Shape} title="Foundations/Shape" />
 
 export const Template = (args) => <Shape {...args} />;
 
 export const defaultArgs = {
-    borderWidth: 1,
-    borderRadius: 4,
-    elevation: 1,
-    elevationOnHover: 2,
-    component: 'section',
+    borderRadius: DEFAULT_SHAPE_BORDER_RADIUS,
+    elevation: DEFAULT_SHAPE_ELEVATION_LEVEL,
+    elevationOnHover: DEFAULT_SHAPE_ELEVATION_LEVEL,
+    component: DEFAULT_SHAPE_ELEMENT,
     width: 200,
     height: 50,
 };
@@ -23,44 +34,28 @@ export const argTypes = Utils.hideStyledComponentProperties({
     component: {
         control: {
             type: 'select',
-            options: ['div', 'section', 'aside', 'span', 'button'],
+            options: SHAPE_ELEMENTS,
         },
     },
     borderRadius: {
         control: {
             type: 'select',
-            options: [0, 4, 8, 12, 16, 20, 24, 'circle', 'pill'],
+            options: SHAPE_BORDER_RADII,
         },
-    },
-    borderWidth: {
-        control: {
-            type: 'range',
-            min: 0,
-            max: 10,
-            step: 1,
-        },
-    },
-    borderColor: {
-        control: 'color',
     },
     elevation: {
         control: {
             type: 'select',
-            options: [0, 1, 2, 3, 4, 5, 6],
+            options: SHAPE_ELEVATION_LEVELS,
         },
     },
     elevationOnHover: {
         control: {
             type: 'select',
-            options: [0, 1, 2, 3, 4, 5, 6],
+            options: SHAPE_ELEVATION_LEVELS,
         },
     },
-    background: {
-        control: 'color',
-    },
 });
-
-<Meta component={Shape} title="Foundations/Shape" />
 
 <Title>Shape</Title>
 
@@ -73,27 +68,29 @@ export const argTypes = Utils.hideStyledComponentProperties({
 
 There are 4 core shapes used throughout the Mattermost interface:
 
-<Grid padding={GridSpacing.symmetric({ vertical: 150 })} justify={'stretch'}>
-    <Grid
-        row
-        padding={GridSpacing.symmetric({ vertical: 150, horizontal: 25 })}
-        alignment={'center'}
-        justify={'space-around'}
-    >
-        <Grid justify={'center'}>
-            <Shape {...defaultArgs} borderRadius={0} />
-        </Grid>
-        <Grid justify={'center'}>
-            <Shape {...defaultArgs} borderRadius={12} />
-        </Grid>
-        <Grid justify={'center'}>
-            <Shape {...defaultArgs} borderRadius={'pill'} />
-        </Grid>
-        <Grid justify={'center'}>
-            <Shape {...defaultArgs} borderRadius={'circle'} />
+<ThemeProvider>
+    <Grid padding={Spacing.symmetric({ vertical: 150 })} justify={'stretch'}>
+        <Grid
+            row
+            padding={Spacing.symmetric({ vertical: 150, horizontal: 25 })}
+            alignment={'center'}
+            justify={'space-around'}
+        >
+            <Grid justify={'center'}>
+                <Shape {...defaultArgs} borderRadius={0} />
+            </Grid>
+            <Grid justify={'center'}>
+                <Shape {...defaultArgs} borderRadius={12} />
+            </Grid>
+            <Grid justify={'center'}>
+                <Shape {...defaultArgs} borderRadius={'pill'} />
+            </Grid>
+            <Grid justify={'center'}>
+                <Shape {...defaultArgs} borderRadius={'circle'} />
+            </Grid>
         </Grid>
     </Grid>
-</Grid>
+</ThemeProvider>
 
 ## Rectangle
 
@@ -116,73 +113,77 @@ export const radiusExampleArgs = {
     height: 120,
 };
 
-<Grid padding={GridSpacing.symmetric({ vertical: 150 })} justify={'stretch'}>
-    <Grid row alignment={'center'}>
-        <Grid justify={'center'} flex={0}>
-            <Grid padding={GridSpacing.all(150)}>
-                <Shape {...radiusExampleArgs} width={156} height={156} borderRadius={4} />
+<ThemeProvider>
+    <Grid padding={Spacing.symmetric({ vertical: 150 })} justify={'stretch'}>
+        <Grid row alignment={'center'}>
+            <Grid justify={'center'} flex={0}>
+                <Grid padding={Spacing.all(150)}>
+                    <Shape {...radiusExampleArgs} width={156} height={156} borderRadius={4} />
+                </Grid>
+                <br />
+                <Text element={'p'} size={200} margin={'none'}>
+                    <strong>4px</strong>
+                </Text>
             </Grid>
-            <br />
-            <Text element={'p'} size={200} margin={'none'}>
-                <strong>4px</strong>
-            </Text>
         </Grid>
     </Grid>
-</Grid>
+</ThemeProvider>
 
 ###### Other Corner Radiuses
 
 ---
 
-<Grid padding={GridSpacing.symmetric({ vertical: 150 })} justify={'stretch'}>
-    <Grid row justify={'space-between'}>
-        <Grid justify={'center'} flex={0}>
-            <Grid padding={GridSpacing.all(150)}>
-                <Shape {...radiusExampleArgs} borderRadius={8} />
+<ThemeProvider>
+    <Grid padding={Spacing.symmetric({ vertical: 150 })} justify={'stretch'}>
+        <Grid row justify={'space-between'}>
+            <Grid justify={'center'} flex={0}>
+                <Grid padding={Spacing.all(150)}>
+                    <Shape {...radiusExampleArgs} borderRadius={8} />
+                </Grid>
+                <br />
+                <Text element={'p'} size={200} margin={'none'}>
+                    <strong>8px</strong>
+                </Text>
             </Grid>
-            <br />
-            <Text element={'p'} size={200} margin={'none'}>
-                <strong>8px</strong>
-            </Text>
-        </Grid>
-        <Grid justify={'center'} flex={0}>
-            <Grid padding={GridSpacing.all(150)}>
-                <Shape {...radiusExampleArgs} borderRadius={12} />
+            <Grid justify={'center'} flex={0}>
+                <Grid padding={Spacing.all(150)}>
+                    <Shape {...radiusExampleArgs} borderRadius={12} />
+                </Grid>
+                <br />
+                <Text element={'p'} size={200} margin={'none'}>
+                    <strong>12px</strong>
+                </Text>
             </Grid>
-            <br />
-            <Text element={'p'} size={200} margin={'none'}>
-                <strong>12px</strong>
-            </Text>
-        </Grid>
-        <Grid justify={'center'} flex={0}>
-            <Grid padding={GridSpacing.all(150)}>
-                <Shape {...radiusExampleArgs} borderRadius={16} />
+            <Grid justify={'center'} flex={0}>
+                <Grid padding={Spacing.all(150)}>
+                    <Shape {...radiusExampleArgs} borderRadius={16} />
+                </Grid>
+                <br />
+                <Text element={'p'} size={200} margin={'none'}>
+                    <strong>16px</strong>
+                </Text>
             </Grid>
-            <br />
-            <Text element={'p'} size={200} margin={'none'}>
-                <strong>16px</strong>
-            </Text>
-        </Grid>
-        <Grid justify={'center'} flex={0}>
-            <Grid padding={GridSpacing.all(150)}>
-                <Shape {...radiusExampleArgs} borderRadius={20} />
+            <Grid justify={'center'} flex={0}>
+                <Grid padding={Spacing.all(150)}>
+                    <Shape {...radiusExampleArgs} borderRadius={20} />
+                </Grid>
+                <br />
+                <Text element={'p'} size={200} margin={'none'}>
+                    <strong>20px</strong>
+                </Text>
             </Grid>
-            <br />
-            <Text element={'p'} size={200} margin={'none'}>
-                <strong>20px</strong>
-            </Text>
-        </Grid>
-        <Grid justify={'center'} flex={0}>
-            <Grid padding={GridSpacing.all(150)}>
-                <Shape {...radiusExampleArgs} borderRadius={24} />
+            <Grid justify={'center'} flex={0}>
+                <Grid padding={Spacing.all(150)}>
+                    <Shape {...radiusExampleArgs} borderRadius={24} />
+                </Grid>
+                <br />
+                <Text element={'p'} size={200} margin={'none'}>
+                    <strong>24px</strong>
+                </Text>
             </Grid>
-            <br />
-            <Text element={'p'} size={200} margin={'none'}>
-                <strong>24px</strong>
-            </Text>
         </Grid>
     </Grid>
-</Grid>
+</ThemeProvider>
 
 ## Pill Shape
 
@@ -195,7 +196,7 @@ The circle shape is mostly reserved for the Avatar component.
 This helps distinguish users from other UI elements throughout the product.
 There are a few other elements that use the circle shape, like the Unread Badge or the Status Badge.
 
-<ArgsTable of={Shape} exclude={['theme', 'forwardedAs', 'ref', 'as']} />
+<ArgsTable of={Shape} exclude={[...DEFAULT_ARGUMENT_STABLE_EXCLUSION]} />
 
 export const canvasExampleArgs = {
     ...defaultArgs,

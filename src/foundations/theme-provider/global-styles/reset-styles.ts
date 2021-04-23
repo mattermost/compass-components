@@ -136,13 +136,11 @@ export const reset = css`
         border-spacing: 0;
     }
     /* http://www.paulirish.com/2012/box-sizing-border-box-ftw/ (2015/04/28)*/
-    html {
-        box-sizing: border-box;
-    }
+    html,
     *,
     *:before,
     *:after {
-        box-sizing: inherit;
+        box-sizing: border-box;
     }
     /* Additional resets */
     a {

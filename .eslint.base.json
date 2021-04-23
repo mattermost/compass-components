@@ -128,7 +128,7 @@
         "max-depth": "error",
         "max-nested-callbacks": "error",
         "max-params": "error",
-        "max-statements": ["error", 20],
+        "max-statements": "off",
         "new-cap": "error",
         "object-shorthand": "error",
         "operator-assignment": "error",
@@ -207,16 +207,7 @@
         "no-self-assign": ["error", { "props": true }],
         "no-shadow": ["error", { "builtinGlobals": true }],
         "no-undef": ["error", { "typeof": true }],
-        "no-unused-vars": [
-            "error",
-            {
-                "vars": "all",
-                "args": "after-used",
-                "caughtErrors": "all",
-                "varsIgnorePattern": "^ignore$",
-                "argsIgnorePattern": "^ignore$"
-            }
-        ],
+        "no-unused-vars": "off",
         "no-underscore-dangle": ["error", { "enforceInMethodNames": true }],
         "no-unneeded-ternary": ["error", { "defaultAssignment": false }],
         "func-name-matching": ["error", { "considerPropertyDescriptor": true }],

@@ -1,7 +1,7 @@
 import React from 'react';
 
 import Shape from '../../foundations/shape';
-import Grid, { GridSpacing } from '../../foundations/layout';
+import Grid, { Spacing } from '../../foundations/layout';
 import Text from '../text';
 
 import PMentionBadge from './Badges.props';
@@ -16,15 +16,11 @@ const MentionBadge: React.FC<PMentionBadge> = ({
 
     const isUnreadBadge = mentionCount === 0;
 
-    let background = 'var(--shape-background-color)';
-
     switch (location) {
         case 'sidebar':
-            background = 'var(--shape-background-color)';
             color = 'accent';
             break;
         case 'menu':
-            background = 'var(--disabled-text-color)';
             color = 'contrast';
             break;
         default:
@@ -36,7 +32,6 @@ const MentionBadge: React.FC<PMentionBadge> = ({
             borderRadius={isUnreadBadge ? 'circle' : 'pill'}
             elevation={1}
             elevationOnHover={3}
-            background={background}
             width={width}
         >
             {!isUnreadBadge && (
@@ -44,7 +39,7 @@ const MentionBadge: React.FC<PMentionBadge> = ({
                     alignment={'center'}
                     justify={'center'}
                     flex={1}
-                    padding={GridSpacing.symmetric({ vertical: 0, horizontal: 50 })}
+                    padding={Spacing.symmetric({ vertical: 0, horizontal: 50 })}
                 >
                     <Text element={'p'} size={75} color={color} margin={'none'}>
                         <strong>

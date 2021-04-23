@@ -1,55 +1,52 @@
-import clsx from 'clsx';
 import styled, { css } from 'styled-components';
 import { FlattenSimpleInterpolation } from 'styled-components/ts3.6';
 
-import { Utils } from '../../utils';
+import { Utils } from '../../shared';
 
 import { PIcon } from './Icon.props';
-import { TIconSize } from './Icon.types';
-import {
-    DEFAULT_ICON_GLYPH,
-    DEFAULT_ICON_SIZE,
-    ICON_FONT_SIZES,
-    ICON_SIZES,
-} from './Icon.constants';
+import { DEFAULT_ICON_GLYPH, DEFAULT_ICON_SIZE, ICON_FONT_SIZES } from './Icon.constants';
 
-function generateIconFontSizes(iconSize: TIconSize): FlattenSimpleInterpolation {
+function getIconSizes({ size = DEFAULT_ICON_SIZE }: PIcon): FlattenSimpleInterpolation {
     return css`
-        &[data-size='${iconSize}'] {
-            height: ${iconSize}px;
-            width: ${iconSize}px;
+        height: ${size}px;
+        width: ${size}px;
 
-            &::before {
-                font-size: ${ICON_FONT_SIZES[iconSize]}px;
-                letter-spacing: ${ICON_FONT_SIZES[iconSize]}px;
-            }
+        &::before {
+            font-size: ${ICON_FONT_SIZES[size]}px;
+            letter-spacing: ${ICON_FONT_SIZES[size]}px;
         }
     `;
 }
 
 const Icon = styled.i
-    .attrs((props: PIcon) => ({
-        className: clsx(props.className, `icon-${props.glyph || DEFAULT_ICON_GLYPH}`),
-        'aria-label': props.ariaLabel,
-        'data-size': props.size || DEFAULT_ICON_SIZE,
-        'data-glyph': props.glyph || DEFAULT_ICON_GLYPH,
-    }))
+    .attrs(
+        ({
+            size = DEFAULT_ICON_SIZE,
+            glyph = DEFAULT_ICON_GLYPH,
+            className = `icon-${glyph || DEFAULT_ICON_GLYPH}`,
+            ...rest
+        }: PIcon) => ({
+            ...rest,
+            className,
+            size,
+            glyph,
+            'aria-label': rest.ariaLabel,
+        })
+    )
     .withConfig({
         shouldForwardProp: Utils.forwardProperties(),
-    })<PIcon>`
-    // define local variables using global variables and fallbacks
-    --color-foreground: var(--icon-color-foreground, var(--primary-color-dark, black));
-    --animation-speed: var(--animation-speed-shortest, 0.1s);
-
+    })<PIcon>`    
     // element container base styles
-    align-items: center;
-    color: var(--color-foreground);
-    display: inline-flex;
-    height: 20px;
-    justify-content: center;
     position: relative;
-    padding: 0;
+    justify-content: center;
     width: 20px;
+    height: 20px;
+    padding: 0;
+
+    display: inline-flex;
+    align-items: center;
+
+    color: inherit;
 
     // sub elements
     &::before {
@@ -58,9 +55,8 @@ const Icon = styled.i
         letter-spacing: ${ICON_FONT_SIZES[DEFAULT_ICON_SIZE]}px;
         margin: 0; // remove margins added by fontello
     }
-
-    // define sizes
-    ${ICON_SIZES.map((iconSize) => generateIconFontSizes(iconSize))}
+    
+    ${getIconSizes};
 
     // animation
     body.enable-animations & {

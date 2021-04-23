@@ -1,6 +1,6 @@
 import kebabCase from 'lodash.kebabcase';
 
-import { defaultPropertyWhitelist } from './constants';
+import { DEFAULT_PROPERTY_WHITELIST } from './constants';
 
 const isColor = (colorString: string): boolean => {
     const s = new Option().style;
@@ -52,7 +52,7 @@ const forwardProperties = (whitelist: string[] = []): ((property: string | numbe
     // forward the property when it is a `aria-*`attribute
     property.toString().startsWith('aria-') ||
     // always forward the property when it is defined within the property-whitelist
-    defaultPropertyWhitelist.includes(property.toString()) ||
+    DEFAULT_PROPERTY_WHITELIST.includes(property.toString()) ||
     // forward the property when it is defined within the passed property-whitelist
     whitelist.includes(property.toString());
 
@@ -66,11 +66,42 @@ const hideStyledComponentProperties = (
     ...properties,
 });
 
+/* eslint-disable @typescript-eslint/no-explicit-any */
+const isNumber = (x: any): x is number => typeof x === 'number';
+const isString = (x: any): x is string => typeof x === 'string';
+const isFunction = (x: any): x is Function => typeof x === 'function';
+/* eslint-enable @typescript-eslint/no-explicit-any */
+
+const getFontMargin = (fontSize: number, multiplier: number): number =>
+    Math.max(Math.round((fontSize * multiplier) / 4) * 4, 8);
+
+/**
+ * Returns a number whose value is limited to the given range.
+ * @param {number} value The value to be clamped
+ * @param {number} min The lower boundary of the output range
+ * @param {number} max The upper boundary of the output range
+ * @returns {number} A number in the range [min, max]
+ */
+function clamp(value: number, min = 0, max = 1): number {
+    if (value < min || value > max) {
+        throw new Error(
+            `Compass Components: The value provided ${value} is out of range [${min}, ${max}].`
+        );
+    }
+
+    return Math.min(Math.max(min, value), max);
+}
+
 const Utils = {
+    clamp,
     isColor,
+    isNumber,
+    isFunction,
+    isString,
     forwardProperties,
     getStoryDocumentationUrl,
     hideStyledComponentProperties,
+    getFontMargin,
 };
 
 export default Utils;

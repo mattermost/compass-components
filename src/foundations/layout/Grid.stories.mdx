@@ -1,4 +1,4 @@
-import { ArgsTable, Meta, Title, Subtitle, Canvas, Story } from '@storybook/addon-docs/blocks';
+import { ArgsTable, Meta, Title, Subtitle } from '@storybook/addon-docs/blocks';
 
 import Shape from '../shape';
 import Text from '../../components/text';
@@ -10,7 +10,7 @@ import grid4pxImg from '../../assets/images/layout_4px-grid.png';
 import baselineImg from '../../assets/images/layout_baseline.png';
 import anatomyImg from '../../assets/images/layout_grid-anatomy.png';
 
-import Grid, { GridSpacing } from './index';
+import Grid, { Spacing } from './index';
 
 <Meta component={Grid} title="Foundations/Grid" />
 
@@ -38,7 +38,9 @@ export const spacings = {
     8: 50,
     12: 75,
     16: 100,
+    20: 125,
     24: 150,
+    28: 175,
     32: 200,
     40: 250,
     48: 300,
@@ -50,10 +52,10 @@ export const spacings = {
 
 <Grid row alignment={'flex-end'}>
     {Object.keys(spacings).map((s) => (
-        <Grid justify={'center'} padding={GridSpacing.all(75)}>
+        <Grid alignment={'center'} padding={Spacing.all(75)}>
             <Shape borderWidth={1} borderRadius={0} elevation={0}>
                 <Grid
-                    padding={GridSpacing.trbl({
+                    padding={Spacing.trbl({
                         top: spacings[s],
                         right: 0,
                         bottom: 0,
@@ -106,80 +108,3 @@ trustworthy. This kind of organization also helps users scan content and find wh
 <img src={anatomyImg} alt={'example of the horizontal grid anatomy'} />
 
 <ArgsTable of={Grid} />
-
-export const Template = (args) => {
-    const { childCount, padding, margin, colPadding, colMargin, ...rest } = args;
-    const content = new Array(childCount).fill('gridChild');
-    return (
-        <Shape borderWidth={1} width={800} height={400} background={'rgb(240, 210, 180)'}>
-            <Grid margin={GridSpacing.all(margin)} flex={1}>
-                <Shape borderWidth={1} border background={'rgb(210, 240, 180)'}>
-                    <Grid flex={1} padding={GridSpacing.all(padding)} {...rest}>
-                        {content.map((key, i) => (
-                            <Shape key={key + i} borderWidth={1} background={'rgb(240, 210, 180)'}>
-                                <Grid margin={GridSpacing.all(colMargin)} flex={1}>
-                                    <Shape borderWidth={1} background={'rgb(210, 240, 180)'}>
-                                        <Grid flex={1} padding={GridSpacing.all(colPadding)}>
-                                            <Shape borderWidth={1} background={'#F3F3F3'} />
-                                        </Grid>
-                                    </Shape>
-                                </Grid>
-                            </Shape>
-                        ))}
-                    </Grid>
-                </Shape>
-            </Grid>
-        </Shape>
-    );
-};
-
-export const exampleArgs = {
-    row: true,
-    padding: 0,
-    margin: 0,
-    colPadding: 0,
-    colMargin: 0,
-    flex: 1,
-    childCount: 4,
-};
-
-export const exampleArgTypes = {
-    childCount: {
-        control: {
-            type: 'range',
-            min: 1,
-            max: 8,
-            step: 1,
-        },
-    },
-    padding: {
-        control: {
-            type: 'select',
-            options: [0, 25, 50, 75, 100, 150, 200, 250, 300, 350, 400, 450, 500],
-        },
-    },
-    margin: {
-        control: {
-            type: 'select',
-            options: [0, 25, 50, 75, 100, 150, 200, 250, 300, 350, 400, 450, 500],
-        },
-    },
-    colPadding: {
-        control: {
-            type: 'select',
-            options: [0, 25, 50, 75, 100, 150, 200, 250, 300, 350, 400, 450, 500],
-        },
-    },
-    colMargin: {
-        control: {
-            type: 'select',
-            options: [0, 25, 50, 75, 100, 150, 200, 250, 300, 350, 400, 450, 500],
-        },
-    },
-};
-
-<Canvas hidden>
-    <Story name="Grid" argTypes={exampleArgTypes} args={exampleArgs}>
-        {Template.bind({})}
-    </Story>
-</Canvas>

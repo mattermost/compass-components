@@ -1,9 +1,16 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+import { FlattenSimpleInterpolation, ThemedStyledProps } from 'styled-components/ts3.6';
 
-import { Utils } from '../../utils';
-import { getBorderRadius, getElevation } from '../theme-provider/global-styles/globalStyles';
+import { TTheme } from '../theme-provider/themes/theme.types';
+import { Utils } from '../../shared';
 
 import PShape from './Shape.props';
+import {
+    DEFAULT_SHAPE_BORDER_RADIUS,
+    DEFAULT_SHAPE_ELEVATION_LEVEL,
+    SHAPE_ELEVATION_DEFINITIONS,
+} from './Shape.constants';
+import { TShapeBorderRadius, TShapeElevationLevel } from './Shape.types';
 
 const getPxValue = (value: string | number): string =>
     typeof value === 'number' ? `${value}px` : getPercentageValue(value);
@@ -27,39 +34,78 @@ const getShapeDimensions = (props: PShape): string => {
     return width + height;
 };
 
-const getBorderDefinition = (props: PShape): string => {
-    const { borderColor = 'var(--default-border-color)', borderWidth } = props;
-
-    if (borderColor && borderWidth) {
-        return `border: ${borderWidth}px solid ${borderColor}`;
+const getBorderRadius = (radius: TShapeBorderRadius): string => {
+    if (Utils.isString(radius)) {
+        return radius === 'circle' ? '50%' : '10000px';
     }
 
-    return '';
+    return `${radius}px`;
+};
+
+const getElevationValue = (elevation: TShapeElevationLevel, opacity: number): string =>
+    `0 ${SHAPE_ELEVATION_DEFINITIONS[elevation].y}px ${SHAPE_ELEVATION_DEFINITIONS[elevation].blur}px 0 rgba(0,0,0,${opacity})`;
+
+const getElevation = ({
+    elevation,
+    elevationOnHover,
+    theme,
+}: ThemedStyledProps<PShape, TTheme>): FlattenSimpleInterpolation | null => {
+    if (Utils.isNumber(elevation) && Utils.isNumber(elevationOnHover)) {
+        const clampedElevation = Utils.clamp(elevation, 0, 6);
+        const clampedElevationOnHover = Utils.clamp(elevation, 0, 6);
+
+        return css`
+            box-shadow: ${getElevationValue(
+                clampedElevation as TShapeElevationLevel,
+                theme.elevationOpacity
+            )};
+
+            ${elevation === elevationOnHover
+                ? null
+                : `
+                    &:hover {
+                        box-shadow: ${getElevationValue(
+                            clampedElevationOnHover as TShapeElevationLevel,
+                            theme.elevationOpacity
+                        )};
+                    }
+                `}
+        `;
+    }
+
+    return null;
 };
 
 const Shape = styled.div
-    .attrs(({ component, ...rest }: PShape) => ({
-        ...rest,
-        as: component,
-    }))
+    // ignoring the className property prevents duplicate classes to be added to the HTML element
+    .attrs(
+        ({
+            component,
+            borderRadius = DEFAULT_SHAPE_BORDER_RADIUS,
+            elevation = DEFAULT_SHAPE_ELEVATION_LEVEL,
+            elevationOnHover = DEFAULT_SHAPE_ELEVATION_LEVEL,
+            className: ignoreClassName,
+            ...rest
+        }: PShape) => ({
+            as: component,
+            borderRadius,
+            elevation,
+            elevationOnHover,
+            ...rest,
+        })
+    )
     .withConfig({
         shouldForwardProp: Utils.forwardProperties(),
-    })<PShape>`
-    flex: ${(props): string => (props.width ? 'initial' : 'auto')};
+    })<ThemedStyledProps<PShape, TTheme>>`
     display: flex;
-    flex-direction: column;
-    background-color: ${(props): string =>
-        props.background ? props.background : 'var(--shape-background-color)'};
-    border-radius: ${(props): string => getBorderRadius(props.borderRadius)};
-    box-shadow: ${(props): string => getElevation(props.elevation)};
-    ${getBorderDefinition};
-    ${getShapeDimensions};
-    z-index: ${(props): number => props.elevation || 0};
-    transition: box-shadow 500ms ease-in-out;
 
-    &:hover {
-        box-shadow: ${(props): string => getElevation(props.elevationOnHover)};
-    }
+    border-radius: ${(props): string => getBorderRadius(props.borderRadius)};
+    background-color: ${(props): string => props.theme.background.shape};
+
+    ${getShapeDimensions};
+    ${getElevation};
+    
+    z-index: ${(props): number => props.elevation || 0};
 `;
 
 export default Shape;

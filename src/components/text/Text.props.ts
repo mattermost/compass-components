@@ -1,19 +1,25 @@
-import { PTypography } from '../../foundations/typography';
+import React from 'react';
 
-import { TTextSize, TTextElement } from './Text.types';
+import { TTextSizeToken, TTextElement, TTextColor, TTextWeight, TTextMargin } from './Text.types';
 
-export type PText = Pick<PTypography, 'color' | 'margin' | 'weight'> & {
-    className?: string;
+export type PText = {
+    /** which color is the text rendered with */
+    color?: TTextColor;
+    /** define the weight of the rendered font */
+    weight?: TTextWeight;
     /**
-     * the size-token used to render the text size.
-     * @default '100'
+     * Every text-element has its own margin.
+     * With this you can choose which one to render.
      * */
-    size?: TTextSize;
-    /**
-     * for text components the options are `p` and `span`
-     * @default 'p'
-     * */
+    margin?: TTextMargin;
+    /** the size-token used to render the text size. */
+    size?: TTextSizeToken;
+    /** in some cases it is needed to inherit the parents line-height */
+    inheritLineHeight?: boolean;
+    /** which HTML element should be used for rendering */
     element?: TTextElement;
+    className?: string;
+    children?: React.ReactNode | React.ReactNode[];
 };
 
 export default PText;

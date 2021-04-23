@@ -1,3 +1,7 @@
+import { normal } from 'color-blend';
+
+import Utils from './utils';
+
 type TColorDefinition = {
     type: string;
     values: number[];
@@ -22,24 +26,6 @@ const shadeValues: Record<string, number> = {
     700: 0.32,
     800: 0.24,
 };
-
-/**
- * Returns a number whose value is limited to the given range.
- * @param {number} value The value to be clamped
- * @param {number} min The lower boundary of the output range
- * @param {number} max The upper boundary of the output range
- * @returns {number} A number in the range [min, max]
- */
-function clamp(value: number, min = 0, max = 1): number {
-    if (process.env.NODE_ENV !== 'production' && (value < min || value > max)) {
-        // eslint-disable-next-line no-console
-        console.error(
-            `Compass Components: The value provided ${value} is out of range [${min}, ${max}].`
-        );
-    }
-
-    return Math.min(Math.max(min, value), max);
-}
 
 /**
  * Converts a color from CSS hex format to CSS rgb format.
@@ -151,7 +137,7 @@ function rgbToHslValues(rgbArray: number[]): number[] {
     }
 
     if (rgbArray[3] || rgbArray[3] === 0) {
-        return [h, s, l, clamp(rgbArray[3])];
+        return [h, s, l, Utils.clamp(rgbArray[3])];
     }
 
     return [h, s, l];
@@ -284,10 +270,10 @@ function recomposeColorWithShade(color: TColorDefinition, shade: string, darker:
  * @param {number} value - value to set the alpha channel to in the range 0 - 1
  * @returns {string} A CSS color string. Hex input values are returned as rgb
  */
-function alpha(color: string, value: number): string {
+function setAlpha(color: string, value: number): string {
     const decomposedColor = decomposeColor(color);
 
-    const clampedValue = clamp(value);
+    const clampedValue = Utils.clamp(value);
 
     if (decomposedColor.type === 'rgb' || decomposedColor.type === 'hsl') {
         decomposedColor.type += 'a';
@@ -337,8 +323,64 @@ function isValidColor(color: string): boolean {
     return supportedColorTypes.includes(type);
 }
 
+function blendColors(baseColor: string, layerColor: string): string {
+    const decomposedBase = decomposeColor(convertToRgb(baseColor));
+    const decomposedLayer = decomposeColor(convertToRgb(layerColor));
+
+    const base = {
+        r: decomposedBase.values[0],
+        g: decomposedBase.values[1],
+        b: decomposedBase.values[2],
+        a:
+            decomposedBase.values[3] === undefined || Number.isNaN(decomposedBase.values[3])
+                ? 1
+                : decomposedBase.values[3],
+    };
+
+    const layer = {
+        r: decomposedLayer.values[0],
+        g: decomposedLayer.values[1],
+        b: decomposedLayer.values[2],
+        a:
+            decomposedLayer.values[3] === undefined || Number.isNaN(decomposedLayer.values[3])
+                ? 1
+                : decomposedLayer.values[3],
+    };
+
+    const mixed = normal(base, layer);
+
+    return recomposeColor({ type: 'rgba', values: [mixed.r, mixed.g, mixed.b, mixed.a] });
+}
+
+/**
+ * return rgb string to be used in (S)CSS properties
+ * @param {string} rgb - color string
+ * @param {number} opacity - color opacity
+ * @returns {string}
+ */
+function getRGBString(rgb: string, opacity?: number): string {
+    // convert string to numbers-array
+    const values = rgb.split(',').map((value) => Number.parseInt(value.trim(), 10));
+
+    if (values.length !== 3 || values.filter((x) => x && !(x < 0 || x > 255)).length !== 3) {
+        throw new Error(
+            `Compass Components: colorutils - Please provide a valid rgb color string to this function. Reason: ${
+                values.length === 3
+                    ? 'RGB values are not in the range between 0 - 255'
+                    : 'Not all RGB values were provided to the function.'
+            }`
+        );
+    }
+
+    if (opacity) {
+        return `rgba(${rgb},${Utils.clamp(opacity)})`;
+    }
+
+    return `rgb(${rgb})`;
+}
+
 export {
-    alpha,
+    setAlpha,
     convertToRgb,
     decomposeColor,
     recomposeColor,
@@ -349,4 +391,6 @@ export {
     rgbToHsl,
     createColorShades,
     isValidColor,
+    getRGBString,
+    blendColors,
 };
