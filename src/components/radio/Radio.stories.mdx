@@ -1,0 +1,69 @@
+import { useState } from 'react';
+import { Meta, Story, Canvas, Title, Subtitle } from '@storybook/addon-docs/blocks';
+import { SharedUtils } from '../../shared';
+
+import Radio from './index';
+
+export const Template = (args) => <Radio {...args} />;
+
+export const defaultArgs = {
+    labelText: 'Public',
+    state: 'on',
+    size: 'md',
+};
+
+export const argTypes = SharedUtils.hideStyledComponentProperties({
+    state: {
+        control: {
+            type: 'select',
+            options: ['on', 'off', 'error', 'disabled'],
+        },
+    },
+    size: {
+        control: {
+            type: 'select',
+            options: ['sm', 'md', 'lg'],
+        },
+    },
+});
+
+<Meta component={Radio} title="Components/Radio" />
+
+<Title>Radio buttons</Title>
+
+<Subtitle>
+    Radio buttons are recommended for a single selection input, where the user can only select one
+    option at a time.
+</Subtitle>
+
+## Anatomy
+
+Radio buttons are comprised of:
+
+-   Selector
+-   Label
+    Clicking either the Selector or the Label should toggle the state of the radio button.
+
+## States
+
+Once an item is selected, if the user clicks to select a different item, this automatically deselects the initial selection.
+
+## Animation
+
+## Sizes
+
+export const canvasExampleArgs = {
+    ...defaultArgs,
+};
+
+<Canvas hidden>
+    <Story
+        name="Default"
+        argTypes={argTypes}
+        args={{
+            ...canvasExampleArgs,
+        }}
+    >
+        {Template.bind({})}
+    </Story>
+</Canvas>

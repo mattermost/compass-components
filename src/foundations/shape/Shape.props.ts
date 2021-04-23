@@ -27,6 +27,11 @@ type PShape = {
      * */
     component?: TShapeElement;
     /**
+     * If the component is an input, which type
+     * @default 'text'
+     * */
+    type?: 'checkbox' | 'radio';
+    /**
      * set a custom width
      * @default 'auto'
      * */
@@ -39,6 +44,7 @@ type PShape = {
     height?: number | string | 'auto';
     children?: React.ReactNode | React.ReactNode[];
     className?: string;
+    name?: string;
 };
 
 export default PShape;

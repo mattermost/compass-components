@@ -1,0 +1,76 @@
+import { useState } from 'react';
+import { Meta, Story, Canvas, Title, Subtitle } from '@storybook/addon-docs/blocks';
+import { SharedUtils } from '../../shared';
+
+import Switch from './index';
+
+export const Template = (args) => <Switch {...args} />;
+
+export const defaultArgs = {
+    labelText: 'Public',
+    state: 'on',
+    size: 'md',
+};
+
+export const argTypes = SharedUtils.hideStyledComponentProperties({
+    labelText: {
+        control: {
+            type: 'text',
+        },
+    },
+    state: {
+        control: {
+            type: 'select',
+            options: ['on', 'off', 'disabled'],
+        },
+    },
+    size: {
+        control: {
+            type: 'select',
+            options: ['sm', 'md', 'lg'],
+        },
+    },
+});
+
+<Meta component={Switch} title="Components/Switch" />
+
+<Title>Switches</Title>
+
+<Subtitle>
+    Switches are used most frequently in settings, where you are likely to be turning options on or
+    off.
+</Subtitle>
+
+## Anatomy
+
+Switches are comprised of:
+
+-   Selector
+-   Label
+    Clicking either the Selector or the Label should toggle the state of the switch.
+
+## States
+
+When Off, the toggle handle is positioned to the left side and the background track is grey. When On, the toggle handle animates to the right side and the track turns from grey to blue.
+
+## Sizes
+
+There are three different sizes for switches: Small, Medium, and Large. The size of the text label determines the size of the switch that you should use. The small switch correlates with a label that has 12pt font, medium with 14pt font, and large with 16pt font.
+
+## Animation
+
+export const canvasExampleArgs = {
+    ...defaultArgs,
+};
+
+<Canvas hidden>
+    <Story
+        name="Default"
+        argTypes={argTypes}
+        args={{
+            ...canvasExampleArgs,
+        }}
+    >
+        {Template.bind({})}
+    </Story>
+</Canvas>

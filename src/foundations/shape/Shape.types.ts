@@ -1,4 +1,4 @@
-type TShapeElement = 'div' | 'span' | 'section' | 'aside' | 'button';
+type TShapeElement = 'div' | 'span' | 'section' | 'aside' | 'button' | 'input';
 
 type TShapeBorderRadius = 0 | 4 | 8 | 12 | 16 | 20 | 24 | 'circle' | 'pill';
 
