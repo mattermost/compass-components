@@ -71,7 +71,9 @@ const getButtonVariables = ({
                       inset 0 0 0 2px ${borderColor};
               }
               &:focus:not(:focus-visible) {
-                  box-shadow: none;
+                  box-shadow: ${variant === 'secondary'
+                      ? `inset 0 0 0 2px rgba(255, 255, 255, 0.32), inset 0 0 0 2px ${borderColor}`
+                      : 'none'};
               }
               &:focus-visible {
                   box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.32),
@@ -104,7 +106,9 @@ const Button = styled(ButtonBase)<PButton>`
     // define local variables
     ${getButtonVariables};
 
-    transition: box-shadow 150ms 0s ease-in-out;
+    transition-property: box-shadow, background-color, color;
+    transition-duration: 150ms;
+    transition-timing-function: linear;
 `;
 
 export default Button;

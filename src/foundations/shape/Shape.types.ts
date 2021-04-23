@@ -1,7 +1,7 @@
-import { TContainerElement } from '../../shared/types';
+import { TContainerElement, TInteractionElement } from '../../shared/types';
 
 // TODO: maybe move the hard-coded ones to a separate union type (`TActionElement` maybe?)
-type TShapeElement = TContainerElement | 'button' | 'input';
+type TShapeElement = TContainerElement | TInteractionElement;
 
 type TShapeBorderRadius = 0 | 4 | 8 | 12 | 16 | 20 | 24 | 'circle' | 'pill';
 

@@ -25,4 +25,6 @@ type TContainerElement =
     | 'summary'
     | 'time';
 
-export type { TFontColor, TFontMargin, TFontWeight, TContainerElement };
+type TInteractionElement = 'button' | 'input';
+
+export type { TFontColor, TFontMargin, TFontWeight, TContainerElement, TInteractionElement };
