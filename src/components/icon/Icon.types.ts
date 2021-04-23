@@ -4,7 +4,7 @@ import { TTHemeColors } from '../../foundations/theme-provider/themes/theme.type
 
 type TIconGlyph = 'none' | typeof IconGlyphs[number];
 
-type TIconSize = 10 | 12 | 14 | 16 | 18 | 20 | 24 | 28 | 32 | 40 | 52 | 64 | 104;
+type TIconSize = 10 | 12 | 16 | 20 | 28 | 32 | 40 | 52 | 64 | 104;
 
 type TIconColors = keyof TTHemeColors;
 

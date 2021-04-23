@@ -4,4 +4,6 @@ type TButtonWidth = number | 'full' | 'dynamic';
 
 type TButtonVariant = 'primary' | 'secondary' | 'tertiary';
 
-export type { TButtonVariant, TButtonSize, TButtonWidth };
+type TButtonIconPosition = 'start' | 'end';
+
+export type { TButtonVariant, TButtonSize, TButtonWidth, TButtonIconPosition };

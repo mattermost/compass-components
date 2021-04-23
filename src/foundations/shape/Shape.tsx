@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components';
 import { FlattenSimpleInterpolation, ThemedStyledProps } from 'styled-components/ts3.6';
 
 import { TTheme } from '../theme-provider/themes/theme.types';
-import { SharedUtils } from '../../shared';
+import { Utils } from '../../shared';
 
 import PShape from './Shape.props';
 import {
@@ -35,7 +35,7 @@ const getShapeDimensions = (props: PShape): string => {
 };
 
 const getBorderRadius = (radius: TShapeBorderRadius): string => {
-    if (SharedUtils.isString(radius)) {
+    if (Utils.isString(radius)) {
         return radius === 'circle' ? '50%' : '10000px';
     }
 
@@ -50,9 +50,9 @@ const getElevation = ({
     elevationOnHover,
     theme,
 }: ThemedStyledProps<PShape, TTheme>): FlattenSimpleInterpolation | null => {
-    if (SharedUtils.isNumber(elevation) && SharedUtils.isNumber(elevationOnHover)) {
-        const clampedElevation = SharedUtils.clamp(elevation, 0, 6);
-        const clampedElevationOnHover = SharedUtils.clamp(elevation, 0, 6);
+    if (Utils.isNumber(elevation) && Utils.isNumber(elevationOnHover)) {
+        const clampedElevation = Utils.clamp(elevation, 0, 6);
+        const clampedElevationOnHover = Utils.clamp(elevation, 0, 6);
 
         return css`
             box-shadow: ${getElevationValue(
@@ -95,7 +95,7 @@ const Shape = styled.div
         })
     )
     .withConfig({
-        shouldForwardProp: SharedUtils.forwardProperties(),
+        shouldForwardProp: Utils.forwardProperties(),
     })<ThemedStyledProps<PShape, TTheme>>`
     display: flex;
 

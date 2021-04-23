@@ -1,6 +1,6 @@
 import { TIconGlyph } from '../icon';
 
-import { TButtonSize, TButtonVariant, TButtonWidth } from './Button.types';
+import { TButtonIconPosition, TButtonSize, TButtonVariant, TButtonWidth } from './Button.types';
 
 export type PButton = {
     label: string;
@@ -9,8 +9,8 @@ export type PButton = {
     variant?: TButtonVariant;
     width?: TButtonWidth;
     size?: TButtonSize;
-    leadingIcon?: TIconGlyph;
-    trailingIcon?: TIconGlyph;
+    icon?: TIconGlyph;
+    iconPosition?: TButtonIconPosition;
     className?: string;
     onClick: () => void;
 };

@@ -1,4 +1,4 @@
-import { TButtonSize, TButtonVariant, TButtonWidth } from './Button.types';
+import { TButtonIconPosition, TButtonSize, TButtonVariant, TButtonWidth } from './Button.types';
 
 const BUTTON_SIZES: TButtonSize[] = ['small', 'medium', 'large'];
 
@@ -12,6 +12,10 @@ const BUTTON_WIDTHS: TButtonWidth[] = ['full', 'dynamic'];
 
 const DEFAULT_BUTTON_WIDTH: TButtonWidth = 'dynamic';
 
+const BUTTON_ICON_POSITIONS: TButtonIconPosition[] = ['start', 'end'];
+
+const DEFAULT_BUTTON_ICON_POSITION: TButtonIconPosition = 'start';
+
 export {
     BUTTON_SIZES,
     DEFAULT_BUTTON_SIZE,
@@ -19,4 +23,6 @@ export {
     DEFAULT_BUTTON_VARIANT,
     BUTTON_WIDTHS,
     DEFAULT_BUTTON_WIDTH,
+    BUTTON_ICON_POSITIONS,
+    DEFAULT_BUTTON_ICON_POSITION,
 };

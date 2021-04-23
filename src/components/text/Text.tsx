@@ -1,9 +1,9 @@
 import styled, { css } from 'styled-components';
 import { FlattenSimpleInterpolation, ThemedStyledProps } from 'styled-components/ts3.6';
 
-import { SharedUtils } from '../../shared';
+import { Utils } from '../../shared';
 import { TTheme } from '../../foundations/theme-provider/themes/theme.types';
-import { FONT_TYPE_FAMILIES } from '../../shared/shared.constants';
+import { FONT_TYPE_FAMILIES } from '../../shared/constants';
 
 import PText from './Text.props';
 import {
@@ -69,7 +69,7 @@ const Text = styled.p
         as: props.element,
     }))
     .withConfig({
-        shouldForwardProp: SharedUtils.forwardProperties(),
+        shouldForwardProp: Utils.forwardProperties(),
     })<PText>`
     ${getTextVariables}
     

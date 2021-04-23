@@ -1,6 +1,6 @@
 import kebabCase from 'lodash.kebabcase';
 
-import { DEFAULT_PROPERTY_WHITELIST } from './shared.constants';
+import { DEFAULT_PROPERTY_WHITELIST } from './constants';
 
 const isColor = (colorString: string): boolean => {
     const s = new Option().style;
@@ -35,12 +35,12 @@ const getStoryDocumentationUrl = (storyParameters: Record<string, string>): stri
  * ```typescript
  * // pass down `width` and `height` properties
  * const StyledDiv = styled.div.withConfig({
- *   shouldForwardProp: SharedUtils.forwardProperties(['width', 'height']),
+ *   shouldForwardProp: Utils.forwardProperties(['width', 'height']),
  * })<PDiv>` ... `
  *
  * // block all properties from being passed down
  * const StyledSection = styled.section.withConfig({
- *   shouldForwardProp: SharedUtils.forwardProperties(),
+ *   shouldForwardProp: Utils.forwardProperties(),
  * })<PSection>` ... `
  * ```
  * */
@@ -82,7 +82,7 @@ const getFontMargin = (fontSize: number, multiplier: number): number =>
  * @param {number} max The upper boundary of the output range
  * @returns {number} A number in the range [min, max]
  */
-function clamp<T>(value: number, min = 0, max = 1): T | number {
+function clamp(value: number, min = 0, max = 1): number {
     if (value < min || value > max) {
         throw new Error(
             `Compass Components: The value provided ${value} is out of range [${min}, ${max}].`
@@ -92,7 +92,7 @@ function clamp<T>(value: number, min = 0, max = 1): T | number {
     return Math.min(Math.max(min, value), max);
 }
 
-const SharedUtils = {
+const Utils = {
     clamp,
     isColor,
     isNumber,
@@ -104,4 +104,4 @@ const SharedUtils = {
     getFontMargin,
 };
 
-export default SharedUtils;
+export default Utils;
