@@ -13,6 +13,7 @@ const RadioBase: React.FC<PRadio> = ({
     size = DEFAULT_RADIO_SIZE,
     className,
     onClick,
+    hasLabel = true,
     ...rest
 }: PRadio) => {
     let labelSize: TTextSizeToken = 100;
@@ -54,18 +55,23 @@ const RadioBase: React.FC<PRadio> = ({
             flex={1}
             onClick={onClick}
             padding={Spacing.symmetric(spacing)}
+            className={className}
         >
-            <Shape
-                className={className}
-                component={'input'}
-                type={'radio'}
-                borderRadius={'circle'}
-                width={radioSize}
-                {...rest}
-            />
-            <Text element={'label'} size={labelSize} margin={'none'} inheritLineHeight>
-                {labelText}
-            </Text>
+            <span className={'radio__input'}>
+                <input type={'radio'} />
+                <Shape
+                    className={'radio__control'}
+                    component={'span'}
+                    borderRadius={'circle'}
+                    width={radioSize}
+                    {...rest}
+                />
+            </span>
+            {hasLabel && (
+                <Text element={'span'} size={labelSize} margin={'none'}>
+                    {labelText}
+                </Text>
+            )}
         </Grid>
     );
 };

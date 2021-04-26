@@ -1,5 +1,5 @@
 type TRadioSize = 'sm' | 'md' | 'lg';
 
-type TRadioState = 'on' | 'off' | 'error' | 'disabled';
+type TRadioState = 'valid' | 'invalid';
 
 export type { TRadioSize, TRadioState };

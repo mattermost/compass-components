@@ -7,6 +7,9 @@ import {
     RADIO_STATES,
 } from './Radio.constants';
 import { Utils } from '../../shared';
+import radioAnatomyImg from '../../assets/images/example-radio-anatomy.png';
+import radioAnimationGif from '../../assets/images/example-radio-animation.gif';
+import radioImg from '../../assets/images/example-radio.png';
 
 import Radio from './index';
 
@@ -29,13 +32,21 @@ Radio buttons are comprised of:
 -   Label
     Clicking either the Selector or the Label should toggle the state of the radio button.
 
+<img src={radioAnatomyImg} alt={'radio-anatomy'} />
+
 ## States
 
 Once an item is selected, if the user clicks to select a different item, this automatically deselects the initial selection.
 
 ## Animation
 
+<img src={radioAnimationGif} alt={'radio-animation'} />
+
 ## Sizes
+
+## Example
+
+<img src={radioImg} alt={'radio-animation'} />
 
 export const defaultArgs = {
     labelText: 'Public',
@@ -46,14 +57,25 @@ export const defaultArgs = {
 export const argTypes = Utils.hideStyledComponentProperties({
     state: {
         control: {
-            type: 'select',
+            type: 'radio',
             options: RADIO_STATES,
+        },
+    },
+    disabled: {
+        control: {
+            type: 'radio',
+            options: ['true', 'false'],
         },
     },
     size: {
         control: {
             type: 'select',
             options: RADIO_SIZES,
+        },
+    },
+    labelText: {
+        control: {
+            type: 'text',
         },
     },
 });
