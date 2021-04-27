@@ -11,7 +11,7 @@ import { PRadio } from './Radio.props';
 const RadioBase: React.FC<PRadio> = ({
     labelText = 'Public',
     size = DEFAULT_RADIO_SIZE,
-    className,
+    className = 'Radio',
     onClick,
     hasLabel = true,
     ...rest
@@ -55,23 +55,24 @@ const RadioBase: React.FC<PRadio> = ({
             flex={1}
             onClick={onClick}
             padding={Spacing.symmetric(spacing)}
-            className={className}
         >
-            <span className={'radio__input'}>
-                <input type={'radio'} />
+            <Text element={'label'} for="radio__input" className={className}>
+                <Shape className={'hidden'} id="radio__input" component={'input'} type={'radio'} />
                 <Shape
-                    className={'radio__control'}
+                    className={'label'}
                     component={'span'}
-                    borderRadius={'circle'}
+                    type={'radio'}
                     width={radioSize}
+                    height={radioSize}
+                    borderRadius={'circle'}
                     {...rest}
                 />
-            </span>
-            {hasLabel && (
-                <Text element={'span'} size={labelSize} margin={'none'}>
-                    {labelText}
-                </Text>
-            )}
+                {hasLabel && (
+                    <Text element={'span'} size={labelSize} margin={'none'}>
+                        {labelText}
+                    </Text>
+                )}
+            </Text>
         </Grid>
     );
 };

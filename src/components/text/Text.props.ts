@@ -18,6 +18,7 @@ export type PText = {
     inheritLineHeight?: boolean;
     /** which HTML element should be used for rendering */
     element?: TTextElement;
+    for?: string;
     htmlFor?: string;
     className?: string;
     children?: React.ReactNode | React.ReactNode[];

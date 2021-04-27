@@ -22,6 +22,7 @@ type TTHemeActionColors = {
     focusOpacity: number;
     selected: string;
     disabled: string;
+    disabledOpacity: number;
 };
 
 type TTHemeTextColors = {

@@ -46,6 +46,7 @@ const themeDark: TTheme = {
         focusOpacity: 0.32,
         selected: purple[500],
         disabled: neutral[100],
+        disabledOpacity: 0.04,
     },
     text: {
         primary: neutral[50],
