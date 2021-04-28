@@ -1,9 +1,9 @@
 import styled, { css } from 'styled-components';
 import { FlattenSimpleInterpolation, ThemedStyledProps } from 'styled-components/ts3.6';
 
-import { FONT_TYPE_FAMILIES, FONT_WEIGHT_MAP } from '../../shared/shared.constants';
+import { FONT_TYPE_FAMILIES } from '../../shared/constants';
 import { TTheme } from '../../foundations/theme-provider/themes/theme.types';
-import { SharedUtils } from '../../shared';
+import { Utils } from '../../shared';
 
 import {
     DEFAULT_HEADING_ELEMENT,
@@ -52,7 +52,7 @@ const getHeadingVariables = ({
 
     return css`
         font-family: ${size > 300 ? FONT_TYPE_FAMILIES.heading : FONT_TYPE_FAMILIES.body};
-        font-weight: ${FONT_WEIGHT_MAP[weight]};
+        font-weight: ${weight};
         font-size: ${HEADING_DEFINITIONS[size].size}px;
         line-height: ${lineHeight};
 
@@ -69,7 +69,7 @@ const Heading = styled.h6
         as: props.element,
     }))
     .withConfig({
-        shouldForwardProp: SharedUtils.forwardProperties(),
+        shouldForwardProp: Utils.forwardProperties(),
     })<PHeading>`
     ${getHeadingVariables}
     

@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 import { FlattenSimpleInterpolation } from 'styled-components/ts3.6';
 
-import { SharedUtils } from '../../shared';
+import { Utils } from '../../shared';
 
 import { PIcon } from './Icon.props';
 import { DEFAULT_ICON_GLYPH, DEFAULT_ICON_SIZE, ICON_FONT_SIZES } from './Icon.constants';
@@ -34,7 +34,7 @@ const Icon = styled.i
         })
     )
     .withConfig({
-        shouldForwardProp: SharedUtils.forwardProperties(),
+        shouldForwardProp: Utils.forwardProperties(),
     })<PIcon>`    
     // element container base styles
     position: relative;

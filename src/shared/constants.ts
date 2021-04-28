@@ -1,23 +1,17 @@
-import { TFontColor, TFontMargin, TFontWeight } from './shared.types';
+import { TFontColor, TFontMargin, TFontWeight } from './types';
 
 const FONT_TYPE_FAMILIES: Record<'heading' | 'body', string> = {
-    body: "'Open Sans', sans-serif",
+    body: '“Open Sans”, sans-serif',
     heading: 'Metropolis, sans-serif',
 };
 
 const FONT_WEIGHTS: TFontWeight[] = ['light', 'regular', 'bold'];
 
-const FONT_WEIGHT_MAP: Record<TFontWeight, 300 | 400 | 600> = {
-    light: 300,
-    regular: 400,
-    bold: 600,
-};
-
 const FONT_MARGINS: TFontMargin[] = ['none', 'both', 'bottom', 'top'];
 
 const FONT_COLORS: TFontColor[] = ['primary', 'secondary', 'disabled'];
 
-const DEFAULT_ARGUMENTSTABLE_EXCLUSION: string[] = [
+const DEFAULT_ARGUMENT_STABLE_EXCLUSION: string[] = [
     'children',
     'className',
     'as',
@@ -37,11 +31,10 @@ const DEFAULT_PROPERTY_WHITELIST: string[] = [
 ];
 
 export {
-    DEFAULT_ARGUMENTSTABLE_EXCLUSION,
+    DEFAULT_ARGUMENT_STABLE_EXCLUSION,
     DEFAULT_PROPERTY_WHITELIST,
     FONT_TYPE_FAMILIES,
     FONT_COLORS,
     FONT_MARGINS,
     FONT_WEIGHTS,
-    FONT_WEIGHT_MAP,
 };

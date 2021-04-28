@@ -1,4 +1,4 @@
-import { alpha } from '../../../shared';
+import { setAlpha } from '../../../shared';
 import { neutral, green, red, blue, indigo, orange } from '../../colors';
 
 import { TTheme } from './theme.types';
@@ -38,12 +38,6 @@ const lightTheme: TTheme = {
             dark: indigo[300],
         },
     },
-    badges: {
-        online: green[600],
-        away: orange[400],
-        dnd: red[500],
-        offline: alpha(neutral[350], 0.64),
-    },
     action: {
         hover: neutral[1250],
         hoverOpacity: 0.08,
@@ -53,6 +47,12 @@ const lightTheme: TTheme = {
         focusOpacity: 0.32,
         selected: blue[500],
         disabled: neutral[900],
+    },
+    badges: {
+        online: green[600],
+        away: orange[400],
+        dnd: red[500],
+        offline: setAlpha(neutral[350], 0.64),
     },
     text: {
         primary: neutral[1100],

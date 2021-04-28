@@ -1,4 +1,4 @@
-import { SharedUtils } from '../../shared';
+import { Utils } from '../../shared';
 
 import {
     TTextColor,
@@ -55,7 +55,7 @@ const TEXT_DEFINITIONS: TTextDefinitionMap = {
 };
 
 TEXT_SIZES.forEach((sizeToken) => {
-    TEXT_DEFINITIONS[sizeToken].margin = SharedUtils.getFontMargin(
+    TEXT_DEFINITIONS[sizeToken].margin = Utils.getFontMargin(
         TEXT_DEFINITIONS[sizeToken].size,
         0.75
     );

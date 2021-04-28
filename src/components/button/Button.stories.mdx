@@ -1,13 +1,15 @@
 import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 
 import { DEFAULT_ICON_GLYPH, ICON_GLYPHS } from '../icon';
-import { DEFAULT_ARGUMENTSTABLE_EXCLUSION } from '../../shared/shared.constants';
+import { DEFAULT_ARGUMENT_STABLE_EXCLUSION } from '../../shared/constants';
 
 import Button from './Button.tsx';
 import {
+    BUTTON_ICON_POSITIONS,
     BUTTON_SIZES,
     BUTTON_VARIANTS,
     BUTTON_WIDTHS,
+    DEFAULT_BUTTON_ICON_POSITION,
     DEFAULT_BUTTON_SIZE,
     DEFAULT_BUTTON_VARIANT,
     DEFAULT_BUTTON_WIDTH,
@@ -15,7 +17,7 @@ import {
 
 <Meta title={'Components/Button'} />
 
-<ArgsTable of={Button} exclude={[...DEFAULT_ARGUMENTSTABLE_EXCLUSION]} />
+<ArgsTable of={Button} exclude={[...DEFAULT_ARGUMENT_STABLE_EXCLUSION]} />
 
 <Canvas hidden>
     <Story
@@ -27,15 +29,15 @@ import {
             size: DEFAULT_BUTTON_SIZE,
             variant: DEFAULT_BUTTON_VARIANT,
             width: DEFAULT_BUTTON_WIDTH,
-            leadingIcon: null,
-            trailingIcon: null,
+            icon: null,
+            iconPosition: null,
         }}
         argTypes={{
             size: { control: { type: 'select', options: BUTTON_SIZES } },
             variant: { control: { type: 'select', options: BUTTON_VARIANTS } },
             width: { control: { type: 'select', options: [...BUTTON_WIDTHS, 100, 200, 300, 400] } },
-            leadingIcon: { table: { disable: true } },
-            trailingIcon: { table: { disable: true } },
+            icon: { table: { disable: true } },
+            iconPosition: { table: { disable: true } },
             className: { table: { disable: true } },
             onClick: { action: 'clicked' },
         }}
@@ -43,47 +45,23 @@ import {
         {(args) => <Button {...args} />}
     </Story>
     <Story
-        name="Leading Icon"
+        name="Button with icon"
         args={{
-            label: 'leading icon button',
+            label: 'button with icon',
             disabled: false,
             destructive: false,
             size: DEFAULT_BUTTON_SIZE,
             variant: DEFAULT_BUTTON_VARIANT,
             width: DEFAULT_BUTTON_WIDTH,
-            leadingIcon: DEFAULT_ICON_GLYPH,
-            trailingIcon: null,
+            icon: DEFAULT_ICON_GLYPH,
+            iconPosition: DEFAULT_BUTTON_ICON_POSITION,
         }}
         argTypes={{
             size: { control: { type: 'select', options: BUTTON_SIZES } },
             variant: { control: { type: 'select', options: BUTTON_VARIANTS } },
             width: { control: { type: 'select', options: [...BUTTON_WIDTHS, 100, 200, 300, 400] } },
-            leadingIcon: { control: { type: 'select', options: ICON_GLYPHS } },
-            trailingIcon: { table: { disable: true } },
-            className: { table: { disable: true } },
-            onClick: { action: 'clicked' },
-        }}
-    >
-        {(args) => <Button {...args} />}
-    </Story>
-    <Story
-        name="Trailing Icon"
-        args={{
-            label: 'trailing icon button',
-            disabled: false,
-            destructive: false,
-            size: DEFAULT_BUTTON_SIZE,
-            variant: DEFAULT_BUTTON_VARIANT,
-            width: DEFAULT_BUTTON_WIDTH,
-            leadingIcon: null,
-            trailingIcon: DEFAULT_ICON_GLYPH,
-        }}
-        argTypes={{
-            size: { control: { type: 'select', options: BUTTON_SIZES } },
-            variant: { control: { type: 'select', options: BUTTON_VARIANTS } },
-            width: { control: { type: 'select', options: [...BUTTON_WIDTHS, 100, 200, 300, 400] } },
-            leadingIcon: { table: { disable: true } },
-            trailingIcon: { control: { type: 'select', options: ICON_GLYPHS } },
+            icon: { control: { type: 'select', options: ICON_GLYPHS } },
+            iconPosition: { control: { type: 'select', options: BUTTON_ICON_POSITIONS } },
             className: { table: { disable: true } },
             onClick: { action: 'clicked' },
         }}

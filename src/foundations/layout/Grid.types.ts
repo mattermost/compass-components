@@ -1,4 +1,4 @@
-type TGridComponent = 'div' | 'span' | 'section' | 'aside';
+import { TContainerElement } from '../../shared/types';
 
 type TGridAlignment = 'initial' | 'flex-start' | 'center' | 'flex-end' | 'stretch';
 
@@ -59,7 +59,7 @@ type TSpacing = {
 };
 
 export type {
-    TGridComponent,
+    TContainerElement as TGridComponent,
     TGridAlignment,
     TGridJustify,
     TGridFlex,

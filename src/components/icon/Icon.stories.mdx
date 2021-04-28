@@ -2,8 +2,8 @@ import { Meta, Story, Canvas, ArgsTable, Title } from '@storybook/addon-docs/blo
 
 import Icon from './Icon';
 import { DEFAULT_ICON_GLYPH, DEFAULT_ICON_SIZE, ICON_GLYPHS, ICON_SIZES } from './Icon.constants';
-import { SharedUtils } from '../../shared';
-import { DEFAULT_ARGUMENTSTABLE_EXCLUSION } from '../../shared/shared.constants';
+import { Utils } from '../../shared';
+import { DEFAULT_ARGUMENT_STABLE_EXCLUSION } from '../../shared/constants';
 
 <Meta component={Icon} title="Components/Icon" />
 
@@ -13,7 +13,7 @@ import { DEFAULT_ARGUMENTSTABLE_EXCLUSION } from '../../shared/shared.constants'
 
 <ArgsTable
     of={Icon}
-    exclude={[...DEFAULT_ARGUMENTSTABLE_EXCLUSION, 'data-size', 'data-glyph', 'aria-label']}
+    exclude={[...DEFAULT_ARGUMENT_STABLE_EXCLUSION, 'data-size', 'data-glyph', 'aria-label']}
 />
 
 export const Template = (args) => {
