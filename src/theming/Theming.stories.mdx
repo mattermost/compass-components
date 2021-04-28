@@ -1,0 +1,212 @@
+import { Meta, Story, Canvas, ArgsTable, Title } from '@storybook/addon-docs/blocks';
+import Grid, { Spacing } from '../foundations/layout';
+import Shape from '../foundations/shape';
+import Heading from '../components/heading';
+import { SectionThemeProvider } from '../foundations/theme-provider/theme-provider';
+import lightTheme from '../foundations/theme-provider/themes/theme.light';
+import darkTheme from '../foundations/theme-provider/themes/theme.dark';
+import sidebarTheme from '../foundations/theme-provider/themes/theme.sidebar';
+import Button from '../components/button';
+import Text from '../components/text';
+import { createThemeColor } from '../shared';
+import blue from '../foundations/colors/default-colors/blue';
+import indigo from '../foundations/colors/default-colors/indigo';
+
+<Meta title="Theming/SectionTheming" />
+
+<Title>SectionTheming</Title>
+
+export const themes = {
+    lightTheme,
+    darkTheme,
+    sidebarTheme,
+};
+
+<Canvas hidden>
+    <Story
+        name="Default"
+        args={{
+            sectionTheme: lightTheme,
+        }}
+        argTypes={{
+            sectionTheme: {
+                options: Object.keys(themes),
+                mapping: themes,
+                control: {
+                    type: 'select',
+                    labels: {
+                        lightTheme: 'light theme',
+                        darkTheme: 'dark theme',
+                        sidebarTheme: 'sidebar theme',
+                    },
+                },
+            },
+        }}
+    >
+        {(args) => (
+            <Grid row>
+                <SectionThemeProvider theme={args.sectionTheme || lightTheme}>
+                    <Grid width={300} padding={Spacing.all(100)}>
+                        <Shape borderRadius={16}>
+                            <Grid padding={Spacing.all(100)}>
+                                <Heading>This is a sub-section</Heading>
+                                <Text>
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                                    eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+                                    enim ad minim veniam, quis nostrud exercitation ullamco laboris
+                                    nisi ut aliquip ex ea commodo consequat.
+                                </Text>
+                                <Button
+                                    label={'PRIMARY BUTTON'}
+                                    onClick={() => console.log('THIS IS A BUTTON click')}
+                                />
+                                <br />
+                                <Button
+                                    label={'SECONDARY BUTTON'}
+                                    onClick={() => console.log('THIS IS A BUTTON click')}
+                                    variant={'secondary'}
+                                />
+                                <br />
+                                <Button
+                                    label={'TERTIARY BUTTON'}
+                                    onClick={() => console.log('THIS IS A BUTTON click')}
+                                    variant={'tertiary'}
+                                />
+                            </Grid>
+                        </Shape>
+                    </Grid>
+                </SectionThemeProvider>
+                <Grid width={300} padding={Spacing.all(100)}>
+                    <Shape borderRadius={16}>
+                        <Grid padding={Spacing.all(100)}>
+                            <Heading>This is the main-section</Heading>
+                            <Text>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+                                ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                                aliquip ex ea commodo consequat.
+                            </Text>
+                            <Button
+                                label={'PRIMARY BUTTON'}
+                                onClick={() => console.log('THIS IS A BUTTON click')}
+                            />
+                            <br />
+                            <Button
+                                label={'SECONDARY BUTTON'}
+                                onClick={() => console.log('THIS IS A BUTTON click')}
+                                variant={'secondary'}
+                            />
+                            <br />
+                            <Button
+                                label={'TERTIARY BUTTON'}
+                                onClick={() => console.log('THIS IS A BUTTON click')}
+                                variant={'tertiary'}
+                            />
+                        </Grid>
+                    </Shape>
+                </Grid>
+            </Grid>
+        )}
+    </Story>
+    <Story
+        name="Custom Color"
+        args={{
+            sectionTheme: lightTheme,
+            primaryColor: blue[500],
+            secondaryColor: indigo[500],
+        }}
+        argTypes={{
+            primaryColor: {
+                control: {
+                    type: 'color',
+                },
+            },
+            sectionTheme: {
+                options: Object.keys(themes),
+                mapping: themes,
+                control: {
+                    type: 'select',
+                    labels: {
+                        lightTheme: 'light theme',
+                        darkTheme: 'dark theme',
+                        sidebarTheme: 'sidebar theme',
+                    },
+                },
+            },
+        }}
+    >
+        {(args) => {
+            const theme = {
+                ...args.sectionTheme,
+                palette: {
+                    ...args.sectionTheme?.palette,
+                    primary: createThemeColor(args.primaryColor),
+                },
+            };
+            return (
+                <Grid row>
+                    <SectionThemeProvider theme={theme}>
+                        <Grid width={300} padding={Spacing.all(100)}>
+                            <Shape borderRadius={16}>
+                                <Grid padding={Spacing.all(100)}>
+                                    <Heading>This is a sub-section</Heading>
+                                    <Text>
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                                        do eiusmod tempor incididunt ut labore et dolore magna
+                                        aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                                        ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                                    </Text>
+                                    <Button
+                                        label={'PRIMARY BUTTON'}
+                                        onClick={() => console.log('THIS IS A BUTTON click')}
+                                    />
+                                    <br />
+                                    <Button
+                                        label={'SECONDARY BUTTON'}
+                                        onClick={() => console.log('THIS IS A BUTTON click')}
+                                        variant={'secondary'}
+                                    />
+                                    <br />
+                                    <Button
+                                        label={'TERTIARY BUTTON'}
+                                        onClick={() => console.log('THIS IS A BUTTON click')}
+                                        variant={'tertiary'}
+                                    />
+                                </Grid>
+                            </Shape>
+                        </Grid>
+                    </SectionThemeProvider>
+                    <Grid width={300} padding={Spacing.all(100)}>
+                        <Shape borderRadius={16}>
+                            <Grid padding={Spacing.all(100)}>
+                                <Heading>This is the main-section</Heading>
+                                <Text>
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                                    eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+                                    enim ad minim veniam, quis nostrud exercitation ullamco laboris
+                                    nisi ut aliquip ex ea commodo consequat.
+                                </Text>
+                                <Button
+                                    label={'PRIMARY BUTTON'}
+                                    onClick={() => console.log('THIS IS A BUTTON click')}
+                                />
+                                <br />
+                                <Button
+                                    label={'SECONDARY BUTTON'}
+                                    onClick={() => console.log('THIS IS A BUTTON click')}
+                                    variant={'secondary'}
+                                />
+                                <br />
+                                <Button
+                                    label={'TERTIARY BUTTON'}
+                                    onClick={() => console.log('THIS IS A BUTTON click')}
+                                    variant={'tertiary'}
+                                />
+                            </Grid>
+                        </Shape>
+                    </Grid>
+                </Grid>
+            );
+        }}
+    </Story>
+</Canvas>

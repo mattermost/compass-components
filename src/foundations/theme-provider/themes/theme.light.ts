@@ -1,3 +1,4 @@
+import { getContrastText } from '../../../shared';
 import { neutral, green, red, blue, indigo, orange } from '../../colors';
 
 import { TTheme } from './theme.types';
@@ -10,11 +11,15 @@ const lightTheme: TTheme = {
             light: blue[400],
             main: blue[500],
             dark: blue[600],
+            darker: blue[800],
+            contrastText: getContrastText(blue[500]),
         },
         secondary: {
             light: indigo[400],
             main: indigo[500],
             dark: indigo[600],
+            darker: indigo[800],
+            contrastText: getContrastText(indigo[500]),
         },
         alert: {
             light: red[400],

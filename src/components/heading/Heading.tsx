@@ -1,14 +1,14 @@
 import styled, { css } from 'styled-components';
 import { FlattenSimpleInterpolation, ThemedStyledProps } from 'styled-components/ts3.6';
 
-import { FONT_TYPE_FAMILIES } from '../../shared/constants';
 import { TTheme } from '../../foundations/theme-provider/themes/theme.types';
-import { Utils } from '../../shared';
+import { Utils, FONT_TYPE_FAMILIES } from '../../shared';
 
 import {
     DEFAULT_HEADING_ELEMENT,
     DEFAULT_HEADING_MARGIN,
     DEFAULT_HEADING_SIZE,
+    DEFAULT_HEADING_COLOR,
     DEFAULT_HEADING_WEIGHT,
     HEADING_DEFINITIONS,
     HEADING_ELEMENTS,
@@ -16,9 +16,9 @@ import {
 import { PHeading } from './Heading.props';
 
 const getHeadingVariables = ({
-    color,
     theme,
     inheritLineHeight = false,
+    color = DEFAULT_HEADING_COLOR,
     element = DEFAULT_HEADING_ELEMENT,
     margin = DEFAULT_HEADING_MARGIN,
     size = DEFAULT_HEADING_SIZE,

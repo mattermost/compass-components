@@ -9,7 +9,7 @@ import { DEFAULT_BUTTON_SIZE, DEFAULT_BUTTON_VARIANT } from './Button.constants'
 import { PButton } from './Button.props';
 
 const getButtonVariables = ({
-    theme: { palette, action, text },
+    theme: { palette, action },
     onClick,
     disabled = false,
     destructive = false,
@@ -19,19 +19,26 @@ const getButtonVariables = ({
     const isDisabled = disabled || !Utils.isFunction(onClick);
 
     let mainColor = destructive ? palette.alert.main : palette.primary.main;
-    let hoverColor = action.hover;
+    let hoverColor = destructive ? palette.alert.dark : palette.primary.dark;
+    let actionColor = destructive ? palette.alert.darker : palette.primary.darker;
+    let { hoverOpacity, activeOpacity } = action;
+
     let bgOpacity = isDisabled ? 0.08 : 1;
 
-    let textColor = text.contrast;
+    let textColor = destructive ? palette.alert.contrastText : palette.primary.contrastText;
     let borderColor = mainColor;
 
-    if (variant !== 'primary') {
+    if (variant === 'primary') {
+        hoverOpacity = 1;
+        activeOpacity = 1;
+    } else {
         // for variants `secondary` and `tertiary` use the
         // primary color, but set alpha to `0`
         bgOpacity = 0;
         // hoverColor is set to the primary button color
         // for non-`primary` buttons
         hoverColor = mainColor;
+        actionColor = mainColor;
         textColor = mainColor;
     }
 
@@ -59,12 +66,12 @@ const getButtonVariables = ({
               &:hover {
                   background: ${disabled
                       ? buttonBg
-                      : blendColors(buttonBg, setAlpha(hoverColor, action.hoverOpacity))};
+                      : blendColors(buttonBg, setAlpha(hoverColor!, hoverOpacity))};
               }
               &:active {
                   background: ${disabled
                       ? buttonBg
-                      : blendColors(buttonBg, setAlpha(hoverColor, action.activeOpacity))};
+                      : blendColors(buttonBg, setAlpha(actionColor!, activeOpacity))};
               }
               &:focus {
                   box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.32),

@@ -1,24 +1,24 @@
 import { getContrastText } from '../../../shared';
-import { indigo, green, red, neutral, orange, purple, teal } from '../../colors';
+import { blue, indigo, green, red, neutral, orange, purple, teal } from '../../colors';
 
 import { TTheme } from './theme.types';
 
-const darkTheme: TTheme = {
+const sidebarTheme: TTheme = {
     type: 'dark',
     elevationOpacity: 0.32,
     palette: {
         primary: {
-            light: purple[400],
-            main: purple[500],
-            dark: purple[700],
-            darker: purple[800],
-            contrastText: getContrastText(purple[500]),
+            light: green[100],
+            main: green[300],
+            dark: green[500],
+            darker: green[700],
+            contrastText: getContrastText(green[500]),
         },
         secondary: {
             light: teal[300],
             main: teal[500],
             dark: teal[700],
-            darker: teal[800],
+            darker: teal[900],
             contrastText: getContrastText(teal[500]),
         },
         alert: {
@@ -60,9 +60,9 @@ const darkTheme: TTheme = {
         contrast: neutral[100],
     },
     background: {
-        default: neutral[1100],
-        shape: neutral[1000],
+        default: blue[700],
+        shape: blue[500],
     },
 };
 
-export default darkTheme;
+export default sidebarTheme;
