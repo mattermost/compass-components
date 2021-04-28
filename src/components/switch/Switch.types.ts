@@ -1,11 +1,9 @@
 type TSwitchSize = 'sm' | 'md' | 'lg';
 
-type TSwitchState = 'on' | 'off' | 'disabled';
+type TSwitchHeight = 16 | 24 | 32;
 
-type TSwitchHeights = 16 | 24 | 32;
+type TSwitchWidth = 26 | 40 | 52;
 
-type TSwitchWidths = 26 | 40 | 52;
+type TSwitchInnerWidth = 12 | 20 | 26;
 
-type TSwitchInnerWidths = 12 | 20 | 26;
-
-export type { TSwitchSize, TSwitchState, TSwitchHeights, TSwitchWidths, TSwitchInnerWidths };
+export type { TSwitchSize, TSwitchHeight, TSwitchWidth, TSwitchInnerWidth };

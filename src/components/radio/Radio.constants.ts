@@ -1,14 +1,13 @@
-import { TRadioSize, TRadioState } from './Radio.types';
+import { TRadioSize, TRadioSizeToken } from './Radio.types';
 
-const DEFAULT_RADIO_SIZE: TRadioSize = 'md';
-const DEFAULT_RADIO_STATE: TRadioState = 'valid';
+const DEFAULT_RADIO_SIZE: TRadioSizeToken = 'md';
 
-const RADIO_STATES: TRadioState[] = ['valid', 'invalid'];
+const RADIO_SIZES: TRadioSizeToken[] = ['sm', 'md', 'lg'];
 
-const RADIO_SIZES: Record<TRadioSize, number> = {
+const RADIO_SIZE_MAPPING: Record<TRadioSizeToken, TRadioSize> = {
     sm: 12,
     md: 16,
     lg: 20,
 };
 
-export { DEFAULT_RADIO_SIZE, DEFAULT_RADIO_STATE, RADIO_SIZES, RADIO_STATES };
+export { DEFAULT_RADIO_SIZE, RADIO_SIZES, RADIO_SIZE_MAPPING };

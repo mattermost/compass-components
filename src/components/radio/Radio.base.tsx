@@ -2,27 +2,29 @@ import React from 'react';
 
 import Grid, { Spacing, TSpacingTokensSymmetric } from '../../foundations/layout';
 import Shape from '../../foundations/shape';
-import { TIconSize } from '../icon';
 import Text, { TTextSizeToken } from '../text';
+import HiddenComponent from '../hidden_component/HiddenComponent';
+import { Utils } from '../../shared';
 
 import { DEFAULT_RADIO_SIZE } from './Radio.constants';
 import { PRadio } from './Radio.props';
+import { TRadioSize } from './Radio.types';
 
 const RadioBase: React.FC<PRadio> = ({
-    labelText = 'Public',
+    label,
     size = DEFAULT_RADIO_SIZE,
-    className = 'Radio',
     onClick,
-    hasLabel = true,
+    className,
     ...rest
 }: PRadio) => {
     let labelSize: TTextSizeToken = 100;
-    let radioSize: TIconSize = 16;
+    let radioSize: TRadioSize = 16;
 
     const spacing: TSpacingTokensSymmetric = {
         vertical: 0,
         horizontal: 125,
     };
+    const hasLabel = Utils.isString(label) && label.length > 0;
 
     switch (size) {
         case 'lg':
@@ -56,23 +58,25 @@ const RadioBase: React.FC<PRadio> = ({
             onClick={onClick}
             padding={Spacing.symmetric(spacing)}
         >
-            <Text element={'label'} for="radio__input" className={className}>
-                <Shape className={'hidden'} id="radio__input" component={'input'} type={'radio'} />
-                <Shape
-                    className={'label'}
-                    component={'span'}
-                    type={'radio'}
-                    width={radioSize}
-                    height={radioSize}
-                    borderRadius={'circle'}
-                    {...rest}
-                />
-                {hasLabel && (
-                    <Text element={'span'} size={labelSize} margin={'none'}>
-                        {labelText}
-                    </Text>
-                )}
-            </Text>
+            <HiddenComponent
+                componentClass={`${className}--input`}
+                component={'input'}
+                type={'radio'}
+            />
+            <Shape
+                className={`${className}--label`}
+                component={'span'}
+                type={'radio'}
+                width={radioSize}
+                height={radioSize}
+                borderRadius={'circle'}
+                {...rest}
+            />
+            {hasLabel && (
+                <Text element={'span'} size={labelSize} margin={'none'}>
+                    {label}
+                </Text>
+            )}
         </Grid>
     );
 };

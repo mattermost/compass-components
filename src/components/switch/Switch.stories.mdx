@@ -1,19 +1,12 @@
 import { useState } from 'react';
 import { Meta, Story, Canvas, Title, Subtitle } from '@storybook/addon-docs/blocks';
-import {
-    DEFAULT_SWITCH_SIZE,
-    DEFAULT_SWITCH_STATE,
-    SWITCH_STATES,
-    SWITCH_SIZES,
-} from './Switch.constants';
+import { DEFAULT_SWITCH_SIZE, SWITCH_SIZES } from './Switch.constants';
 import { Utils } from '../../shared';
 import { DEFAULT_ARGUMENT_STABLE_EXCLUSION } from '../../shared/constants';
 
 import Switch from './index';
 
 <Meta component={Switch} title="Components/Switch" />
-
-export const Template = (args) => <Switch {...args} />;
 
 <Title>Switches</Title>
 
@@ -41,8 +34,7 @@ There are three different sizes for switches: Small, Medium, and Large. The size
 ## Animation
 
 export const defaultArgs = {
-    labelText: 'Public',
-    state: DEFAULT_SWITCH_STATE,
+    label: 'Public',
     size: DEFAULT_SWITCH_SIZE,
 };
 
@@ -54,7 +46,7 @@ export const canvasExampleArgs = {
     <Story
         name="Default"
         argTypes={Utils.hideStyledComponentProperties({
-            labelText: {
+            label: {
                 control: {
                     type: 'text',
                 },
@@ -65,10 +57,16 @@ export const canvasExampleArgs = {
                     options: SWITCH_SIZES,
                 },
             },
-            state: {
+            disabled: {
                 control: {
-                    type: 'select',
-                    options: SWITCH_STATES,
+                    type: 'radio',
+                    options: ['true', 'false'],
+                },
+            },
+            hasError: {
+                control: {
+                    type: 'radio',
+                    options: ['true', 'false'],
                 },
             },
         })}
@@ -76,6 +74,6 @@ export const canvasExampleArgs = {
             ...canvasExampleArgs,
         }}
     >
-        {Template.bind({})}
+        {(args) => <Switch {...args} />}
     </Story>
 </Canvas>

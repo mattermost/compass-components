@@ -3,8 +3,10 @@ import React from 'react';
 import Grid, { Spacing, TSpacingTokensSymmetric } from '../../foundations/layout';
 import Shape from '../../foundations/shape';
 import Text, { TTextSizeToken } from '../text';
+import HiddenComponent from '../hidden_component/HiddenComponent';
+import { Utils } from '../../shared';
 
-import { TSwitchWidths, TSwitchHeights, TSwitchInnerWidths } from './Switch.types';
+import { TSwitchWidth, TSwitchHeight, TSwitchInnerWidth } from './Switch.types';
 import {
     DEFAULT_SWITCH_HEIGHT,
     DEFAULT_SWITCH_WIDTH,
@@ -14,20 +16,21 @@ import {
 import { PSwitch } from './Switch.props';
 
 const SwitchBase: React.FC<PSwitch> = ({
-    labelText = 'Public',
+    label,
     size = DEFAULT_SWITCH_SIZE,
     className,
     onClick,
-    ...rest
 }: PSwitch) => {
     let labelSize: TTextSizeToken = 100;
-    let switchHeight: TSwitchHeights = DEFAULT_SWITCH_HEIGHT;
-    let switchWidth: TSwitchWidths = DEFAULT_SWITCH_WIDTH;
-    let switchInnerWidth: TSwitchInnerWidths = DEFAULT_SWITCH_INNER_WIDTH;
+    let switchHeight: TSwitchHeight = DEFAULT_SWITCH_HEIGHT;
+    let switchWidth: TSwitchWidth = DEFAULT_SWITCH_WIDTH;
+    let switchInnerWidth: TSwitchInnerWidth = DEFAULT_SWITCH_INNER_WIDTH;
+
+    const hasLabel = Utils.isString(label) && label.length > 0;
 
     const spacing: TSpacingTokensSymmetric = {
         vertical: 0,
-        horizontal: 125,
+        horizontal: 0,
     };
 
     switch (size) {
@@ -61,12 +64,11 @@ const SwitchBase: React.FC<PSwitch> = ({
             padding={Spacing.symmetric(spacing)}
             className={`${className}--toggle`}
         >
-            <Shape
-                className={`${className}--checkbox`}
+            <HiddenComponent
+                componentClass={`${className}--checkbox`}
+                labelClass={`${className}--label`}
                 component={'input'}
                 type={'checkbox'}
-                id={'switch'}
-                {...rest}
             />
             <Shape
                 className={`${className}--background`}
@@ -80,15 +82,11 @@ const SwitchBase: React.FC<PSwitch> = ({
                     className={`${className}--button`}
                 />
             </Shape>
-            <Text
-                element={'label'}
-                htmlFor={'switch'}
-                className={`${className}--label`}
-                size={labelSize}
-                inheritLineHeight
-            >
-                {labelText}
-            </Text>
+            {hasLabel && (
+                <Text element={'span'} size={labelSize} margin={'none'}>
+                    {label}
+                </Text>
+            )}
         </Grid>
     );
 };

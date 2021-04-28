@@ -2,86 +2,99 @@ import styled, { css } from 'styled-components';
 import { FlattenSimpleInterpolation, ThemedStyledProps } from 'styled-components/ts3.6';
 
 import { TTheme } from '../../foundations/theme-provider/themes/theme.types';
+import { blendColors, setAlpha } from '../../shared';
 
 import SwitchBase from './Switch.base';
-import { DEFAULT_SWITCH_STATE } from './Switch.constants';
 import { PSwitch } from './Switch.props';
 
-const baseProperties = ({ state = DEFAULT_SWITCH_STATE }: PSwitch): PSwitch => ({
-    state,
-    className: 'Switch',
-});
-
 const getSwitchVariables = ({
-    theme: { palette, text },
-    state = DEFAULT_SWITCH_STATE,
+    theme: { palette, action, text },
+    hasError,
+    disabled,
 }: ThemedStyledProps<PSwitch, TTheme>): FlattenSimpleInterpolation => {
-    let borderColor = palette.primary.main;
-    let textColor = text.primary;
+    const mainColor = hasError ? palette.alert.main : palette.primary.main;
+    const hoverColor = action.hover;
+    const textColor = text.primary;
 
-    switch (state) {
-        case 'on':
-            borderColor = palette.primary.main;
-            break;
-        case 'off':
-            borderColor = text.secondary;
-            break;
-        case 'disabled':
-            borderColor = text.disabled;
-            textColor = text.disabled;
-            break;
-        default:
-            break;
-    }
+    const actionStyles = disabled
+        ? css`
+              input {
+                  cursor: not-allowed;
+                  opacity: 0.9;
+                  &:checked {
+                      background: ${blendColors(
+                          mainColor,
+                          setAlpha(hoverColor, action.disabledOpacity)
+                      )};
+                  }
+                  & + label {
+                      cursor: not-allowed;
+                  }
+              }
+          `
+        : css`
+              &:hover {
+                  .label:after {
+                      background: ${blendColors(
+                          mainColor,
+                          setAlpha(hoverColor, action.hoverOpacity)
+                      )};
+                      border-color: ${blendColors(
+                          mainColor,
+                          setAlpha(hoverColor, action.hoverOpacity)
+                      )};
+                  }
+              }
+              &:focus {
+                  box-shadow: inset 0 0 0 3px rgba(255, 255, 255, 0.32),
+                      inset 0 0 0 3px ${mainColor};
+              }
+          `;
 
     return css`
-        --var-background-color: ${borderColor};
+        ${actionStyles}
+        --var-background-color: ${mainColor};
         color: ${textColor};
-        --switch-checked-color: ${palette.primary.main};
+        --switch-checked-color: ${mainColor};
     `;
 };
 
-const Switch = styled(SwitchBase).attrs(baseProperties)<PSwitch>`
+const Switch = styled(SwitchBase)<PSwitch>`
     ${getSwitchVariables};
 
-    .Switch--checkbox {
+    &--checkbox {
         height: 0;
         width: 0;
         visibility: hidden;
     }
 
-    .Switch--background {
+    &--background {
         display: flex;
         align-items: center;
         justify-content: space-between;
         cursor: pointer;
         background: var(--var-background-color);
-        border-radius: 100px;
         position: relative;
         transition: background-color 0.2s;
     }
 
-    .Switch--background .Switch--button {
+    &--background,
+    &--button {
         content: '';
-        position: absolute;
-        top: 2px;
-        left: 2px;
-        transition: 0.2s;
-        background: #fff;
         box-shadow: 0 0 2px 0 rgba(10, 10, 10, 0.29);
     }
 
-    .Switch--checkbox:checked + .Switch--background .Switch--button {
+    &--checkbox:checked + &--background &--button {
         background: var(--switch-checked-color);
         left: calc(100% - 2px);
         transform: translateX(-100%);
     }
 
-    .Switch--background:active .Switch--button {
+    &--background:active &--button {
         width: 30px;
     }
 
-    .Switch--label {
+    &--label {
         margin-left: 12px;
     }
 `;

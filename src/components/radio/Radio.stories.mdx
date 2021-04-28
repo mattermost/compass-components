@@ -1,19 +1,12 @@
 import { useState } from 'react';
 import { Meta, Story, Canvas, Title, Subtitle } from '@storybook/addon-docs/blocks';
-import {
-    DEFAULT_RADIO_SIZE,
-    DEFAULT_RADIO_STATE,
-    RADIO_SIZES,
-    RADIO_STATES,
-} from './Radio.constants';
+import { DEFAULT_RADIO_SIZE, RADIO_SIZE_MAPPING, RADIO_SIZES } from './Radio.constants';
 import { Utils } from '../../shared';
 import radioAnatomyImg from '../../assets/images/example-radio-anatomy.png';
 import radioAnimationGif from '../../assets/images/example-radio-animation.gif';
 import radioImg from '../../assets/images/example-radio.png';
 
 import Radio from './index';
-
-export const Template = (args) => <Radio {...args} />;
 
 <Meta component={Radio} title="Components/Radio" />
 
@@ -49,22 +42,14 @@ Once an item is selected, if the user clicks to select a different item, this au
 <img src={radioImg} alt={'radio-animation'} />
 
 export const defaultArgs = {
-    labelText: 'Public',
-    state: DEFAULT_RADIO_STATE,
+    label: 'Public',
     size: DEFAULT_RADIO_SIZE,
 };
 
 export const argTypes = Utils.hideStyledComponentProperties({
-    state: {
+    label: {
         control: {
-            type: 'radio',
-            options: RADIO_STATES,
-        },
-    },
-    disabled: {
-        control: {
-            type: 'radio',
-            options: ['true', 'false'],
+            type: 'text',
         },
     },
     size: {
@@ -73,9 +58,16 @@ export const argTypes = Utils.hideStyledComponentProperties({
             options: RADIO_SIZES,
         },
     },
-    labelText: {
+    hasError: {
         control: {
-            type: 'text',
+            type: 'radio',
+            options: ['true', 'false'],
+        },
+    },
+    disabled: {
+        control: {
+            type: 'radio',
+            options: ['true', 'false'],
         },
     },
 });
@@ -92,6 +84,6 @@ export const canvasExampleArgs = {
             ...canvasExampleArgs,
         }}
     >
-        {Template.bind({})}
+        {(args) => <Radio {...args} />}
     </Story>
 </Canvas>

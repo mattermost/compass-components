@@ -1,12 +1,26 @@
-import { TRadioSize, TRadioState } from './Radio.types';
+import { TRadioSizeToken } from './Radio.types';
 
 export type PRadio = {
-    labelText?: string;
-    state?: TRadioState;
-    size?: TRadioSize;
+    /**
+     * whether the radio button is rendered with a label
+     * @default 'Public'
+     * */
+    label?: string;
+    /**
+     * whether the radio button has an error
+     * @default false
+     * */
+    hasError?: boolean;
+    /**
+     * the size the radio button
+     * @default 16
+     * */
+    size?: TRadioSizeToken;
     className?: string;
-    borderColor?: string;
+    /**
+     * whether the radio button is disabled for interaction
+     * @default false
+     * */
     disabled?: boolean;
-    hasLabel?: boolean;
     onClick?: (event: React.MouseEvent<HTMLElement, MouseEvent>) => void;
 };

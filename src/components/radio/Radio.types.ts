@@ -1,5 +1,7 @@
-type TRadioSize = 'sm' | 'md' | 'lg';
+import { TIconSize } from '../icon';
 
-type TRadioState = 'valid' | 'invalid';
+type TRadioSizeToken = 'sm' | 'md' | 'lg';
 
-export type { TRadioSize, TRadioState };
+type TRadioSize = Extract<TIconSize, 12 | 16 | 20>;
+
+export type { TRadioSizeToken, TRadioSize };

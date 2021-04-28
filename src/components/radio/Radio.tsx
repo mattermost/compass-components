@@ -5,31 +5,32 @@ import { TTheme } from '../../foundations/theme-provider/themes/theme.types';
 import { setAlpha, blendColors } from '../../shared';
 
 import RadioBase from './Radio.base';
-import { DEFAULT_RADIO_STATE } from './Radio.constants';
 import { PRadio } from './Radio.props';
 
 const getRadioVariables = ({
     theme: { palette, action },
-    state = DEFAULT_RADIO_STATE,
-    disabled = false,
+    hasError,
+    disabled,
 }: ThemedStyledProps<PRadio, TTheme>): FlattenSimpleInterpolation => {
-    const isInvalid = state === 'invalid';
-
-    const mainColor = isInvalid ? palette.alert.main : palette.primary.main;
+    const mainColor = hasError ? palette.alert.main : palette.primary.main;
     const hoverColor = action.hover;
 
     const actionStyles = disabled
         ? css`
-            input {
-            cursor: not-allowed;
-            opacity: .9;
-            &:checked {
-                background: ${blendColors(mainColor, setAlpha(hoverColor, action.disabledOpacity))};
-            }
-            & + label {
-              cursor: not-allowed;
-            }
-        `
+              input {
+                  cursor: not-allowed;
+                  opacity: 0.9;
+                  &:checked {
+                      background: ${blendColors(
+                          mainColor,
+                          setAlpha(hoverColor, action.disabledOpacity)
+                      )};
+                  }
+                  & + label {
+                      cursor: not-allowed;
+                  }
+              }
+          `
         : css`
               &:hover {
                   .label:after {
@@ -57,11 +58,17 @@ const getRadioVariables = ({
     `;
 };
 
-const Radio = styled(RadioBase).attrs({ className: 'Radio' })<PRadio>`
+const Radio = styled(RadioBase)<PRadio>`
     ${getRadioVariables};
     cursor: pointer;
 
-    .label {
+    &--input {
+        height: 0;
+        width: 0;
+        visibility: hidden;
+    }
+
+    &--label {
         position: relative;
         border: 2px solid #efefef;
 
@@ -81,17 +88,14 @@ const Radio = styled(RadioBase).attrs({ className: 'Radio' })<PRadio>`
         }
     }
 
-    input[type='radio']:checked + .label {
-        border-color: var(--radio-checked-color);
+    &--input:checked + &--label {
+        background: var(--radio-checked-color);
+
         &:after {
             transform: scale(1);
             transition: all 0.2s cubic-bezier(0.35, 0.9, 0.4, 0.9);
             opacity: 1;
         }
-    }
-
-    .hidden {
-        display: none;
     }
 `;
 
