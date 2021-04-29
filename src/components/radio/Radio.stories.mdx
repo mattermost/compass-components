@@ -1,10 +1,11 @@
 import { useState } from 'react';
-import { Meta, Story, Canvas, Title, Subtitle } from '@storybook/addon-docs/blocks';
+import { Meta, Story, Canvas, Title, Subtitle, ArgsTable } from '@storybook/addon-docs/blocks';
 import { DEFAULT_RADIO_SIZE, RADIO_SIZE_MAPPING, RADIO_SIZES } from './Radio.constants';
 import { Utils } from '../../shared';
 import radioAnatomyImg from '../../assets/images/example-radio-anatomy.png';
 import radioAnimationGif from '../../assets/images/example-radio-animation.gif';
 import radioImg from '../../assets/images/example-radio.png';
+import { DEFAULT_ARGUMENT_STABLE_EXCLUSION } from '../../shared/constants';
 
 import Radio from './index';
 
@@ -40,6 +41,10 @@ Once an item is selected, if the user clicks to select a different item, this au
 ## Example
 
 <img src={radioImg} alt={'radio-animation'} />
+
+## Dependencies
+
+<ArgsTable of={Radio} exclude={[...DEFAULT_ARGUMENT_STABLE_EXCLUSION]} />
 
 export const defaultArgs = {
     label: 'Public',

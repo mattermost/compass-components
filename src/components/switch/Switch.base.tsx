@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Grid, { Spacing, TSpacingTokensSymmetric } from '../../foundations/layout';
+import Grid from '../../foundations/layout';
 import Shape from '../../foundations/shape';
 import Text, { TTextSizeToken } from '../text';
 import HiddenComponent from '../hidden_component/HiddenComponent';
@@ -28,31 +28,37 @@ const SwitchBase: React.FC<PSwitch> = ({
 
     const hasLabel = Utils.isString(label) && label.length > 0;
 
-    const spacing: TSpacingTokensSymmetric = {
-        vertical: 0,
-        horizontal: 0,
-    };
-
     switch (size) {
         case 'lg':
             switchHeight = 32;
             switchWidth = 52;
             switchInnerWidth = 26;
             labelSize = 200;
-            spacing.vertical = 25;
-            spacing.horizontal = 25;
             break;
         case 'sm':
             switchHeight = 16;
             switchWidth = 26;
             switchInnerWidth = 12;
             labelSize = 75;
-            spacing.vertical = 0;
-            spacing.horizontal = 0;
             break;
         default:
             break;
     }
+
+    const children = (
+        <Shape
+            className={`${className}--container`}
+            width={switchWidth}
+            height={switchHeight}
+            borderRadius={'pill'}
+        >
+            <Shape
+                borderRadius={'circle'}
+                width={switchInnerWidth}
+                className={`${className}--toggle`}
+            />
+        </Shape>
+    );
 
     return (
         <Grid
@@ -61,29 +67,21 @@ const SwitchBase: React.FC<PSwitch> = ({
             justify={'center'}
             flex={1}
             onClick={onClick}
-            padding={Spacing.symmetric(spacing)}
-            className={`${className}--toggle`}
+            className={className}
         >
             <HiddenComponent
-                componentClass={`${className}--checkbox`}
-                labelClass={`${className}--label`}
+                componentClass={`${className}--input`}
                 component={'input'}
                 type={'checkbox'}
+                children={children}
             />
-            <Shape
-                className={`${className}--background`}
-                width={switchWidth}
-                height={switchHeight}
-                borderRadius={'pill'}
-            >
-                <Shape
-                    borderRadius={'circle'}
-                    width={switchInnerWidth}
-                    className={`${className}--button`}
-                />
-            </Shape>
             {hasLabel && (
-                <Text element={'span'} size={labelSize} margin={'none'}>
+                <Text
+                    element={'span'}
+                    className={`${className}--label`}
+                    size={labelSize}
+                    margin={'none'}
+                >
                     {label}
                 </Text>
             )}

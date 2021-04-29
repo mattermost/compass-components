@@ -8,69 +8,67 @@ import RadioBase from './Radio.base';
 import { PRadio } from './Radio.props';
 
 const getRadioVariables = ({
-    theme: { palette, action },
+    theme: { palette, action, text },
     hasError,
     disabled,
 }: ThemedStyledProps<PRadio, TTheme>): FlattenSimpleInterpolation => {
-    const mainColor = hasError ? palette.alert.main : palette.primary.main;
+    const checkedColor = hasError ? palette.alert.main : palette.primary.main;
     const hoverColor = action.hover;
+    const mainColor = hasError ? palette.alert.main : text.primary;
 
     const actionStyles = disabled
         ? css`
-              input {
+              &--input {
                   cursor: not-allowed;
-                  opacity: 0.9;
-                  &:checked {
-                      background: ${blendColors(
-                          mainColor,
-                          setAlpha(hoverColor, action.disabledOpacity)
-                      )};
-                  }
-                  & + label {
+                  opacity: 0.5;
+                  &--control {
                       cursor: not-allowed;
                   }
               }
           `
         : css`
               &:hover {
-                  .label:after {
-                      background: ${blendColors(
-                          mainColor,
-                          setAlpha(hoverColor, action.hoverOpacity)
-                      )};
+                  &--control {
                       border-color: ${blendColors(
                           mainColor,
                           setAlpha(hoverColor, action.hoverOpacity)
                       )};
+                      &:after {
+                          background: ${blendColors(
+                              mainColor,
+                              setAlpha(hoverColor, action.hoverOpacity)
+                          )};
+                      }
                   }
               }
               &:focus {
                   box-shadow: inset 0 0 0 3px rgba(255, 255, 255, 0.32),
-                      inset 0 0 0 3px ${mainColor};
+                      inset 0 0 0 3px ${checkedColor};
               }
           `;
 
     return css`
         ${actionStyles}
         color: ${mainColor};
-        --radio-checked-color: ${mainColor};
-        box-shadow: inset 0 0 0 ${mainColor};
+        --radio-checked-color: ${checkedColor};
+        --radio-main-color: ${mainColor};
     `;
 };
 
 const Radio = styled(RadioBase)<PRadio>`
     ${getRadioVariables};
     cursor: pointer;
+    position: relative;
+    margin: 0;
 
     &--input {
-        height: 0;
-        width: 0;
-        visibility: hidden;
+        opacity: 0;
+        position: absolute;
     }
 
-    &--label {
+    &--control {
         position: relative;
-        border: 2px solid #efefef;
+        border: 2px solid var(--radio-main-color);
 
         &:after {
             content: '';
@@ -83,19 +81,20 @@ const Radio = styled(RadioBase)<PRadio>`
             background: var(--radio-checked-color);
             transform: scale(0);
             transition: all 0.2s ease;
-            opacity: 0.08;
-            pointer-events: none;
         }
     }
 
-    &--input:checked + &--label {
-        background: var(--radio-checked-color);
+    &--input:checked + &--control {
+        border-color: var(--radio-checked-color);
 
         &:after {
             transform: scale(1);
             transition: all 0.2s cubic-bezier(0.35, 0.9, 0.4, 0.9);
-            opacity: 1;
         }
+    }
+
+    &--label {
+        margin-left: 8px;
     }
 `;
 

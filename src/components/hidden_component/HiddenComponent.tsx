@@ -9,6 +9,7 @@ type PHiddenComponent = {
     type?: 'checkbox' | 'radio';
     componentClass?: string;
     labelClass?: string;
+    children?: JSX.Element;
 };
 
 const HiddenComponent: React.FC<PHiddenComponent> = ({
@@ -16,11 +17,11 @@ const HiddenComponent: React.FC<PHiddenComponent> = ({
     type,
     componentClass,
     labelClass,
-    ...rest
+    children,
 }: PHiddenComponent) => (
     <Text element={'label'} className={labelClass} for="hidden__input">
         <Shape className={componentClass} id="hidden__input" component={component} type={type} />
-        <Text element={'span'} {...rest} />
+        {children}
     </Text>
 );
 

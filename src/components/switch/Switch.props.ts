@@ -7,11 +7,6 @@ export type PSwitch = {
      * */
     label?: string;
     /**
-     * whether the switch button has an error
-     * @default false
-     * */
-    hasError?: boolean;
-    /**
      * the size of the switch
      * @default 'md'
      * */

@@ -9,32 +9,30 @@ import { PSwitch } from './Switch.props';
 
 const getSwitchVariables = ({
     theme: { palette, action, text },
-    hasError,
     disabled,
 }: ThemedStyledProps<PSwitch, TTheme>): FlattenSimpleInterpolation => {
-    const mainColor = hasError ? palette.alert.main : palette.primary.main;
+    const mainColor = disabled ? text.disabled : text.secondary;
+    const toggledColor = palette.primary.main;
     const hoverColor = action.hover;
     const textColor = text.primary;
 
     const actionStyles = disabled
         ? css`
-              input {
+              &--input,
+              &--label {
                   cursor: not-allowed;
-                  opacity: 0.9;
-                  &:checked {
+                  opacity: 0.5;
+                  &:checked ~ &--background {
                       background: ${blendColors(
                           mainColor,
-                          setAlpha(hoverColor, action.disabledOpacity)
+                          setAlpha(toggledColor, action.disabledOpacity)
                       )};
-                  }
-                  & + label {
-                      cursor: not-allowed;
                   }
               }
           `
         : css`
               &:hover {
-                  .label:after {
+                  &--background {
                       background: ${blendColors(
                           mainColor,
                           setAlpha(hoverColor, action.hoverOpacity)
@@ -55,20 +53,17 @@ const getSwitchVariables = ({
         ${actionStyles}
         --var-background-color: ${mainColor};
         color: ${textColor};
-        --switch-checked-color: ${mainColor};
+        --switch-checked-color: ${toggledColor};
     `;
 };
 
 const Switch = styled(SwitchBase)<PSwitch>`
     ${getSwitchVariables};
 
-    &--checkbox {
-        height: 0;
-        width: 0;
-        visibility: hidden;
+    &--input {
     }
 
-    &--background {
+    &--container {
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -78,20 +73,17 @@ const Switch = styled(SwitchBase)<PSwitch>`
         transition: background-color 0.2s;
     }
 
-    &--background,
-    &--button {
-        content: '';
-        box-shadow: 0 0 2px 0 rgba(10, 10, 10, 0.29);
+    &--toggle {
+        background: white;
     }
 
-    &--checkbox:checked + &--background &--button {
+    &--input:checked ~ &--container {
         background: var(--switch-checked-color);
-        left: calc(100% - 2px);
-        transform: translateX(-100%);
     }
 
-    &--background:active &--button {
-        width: 30px;
+    &--input:checked ~ &--container &--toggle {
+        right: calc(100% - 2px);
+        transform: translateX(100%);
     }
 
     &--label {
