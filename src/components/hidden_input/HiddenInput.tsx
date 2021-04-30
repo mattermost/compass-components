@@ -10,6 +10,8 @@ type PHiddenComponent = {
     componentClass?: string;
     labelClass?: string;
     children?: JSX.Element;
+    checked?: boolean;
+    onChange?: () => void;
 };
 
 const HiddenComponent: React.FC<PHiddenComponent> = ({
@@ -18,9 +20,16 @@ const HiddenComponent: React.FC<PHiddenComponent> = ({
     componentClass,
     labelClass,
     children,
+    checked,
 }: PHiddenComponent) => (
     <Text element={'label'} className={labelClass} for="hidden__input">
-        <Shape className={componentClass} id="hidden__input" component={component} type={type} />
+        <Shape
+            className={componentClass}
+            id="hidden__input"
+            component={component}
+            checked={checked}
+            type={type}
+        />
         {children}
     </Text>
 );

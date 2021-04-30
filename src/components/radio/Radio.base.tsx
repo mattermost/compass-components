@@ -3,7 +3,7 @@ import React from 'react';
 import Grid from '../../foundations/layout';
 import Shape from '../../foundations/shape';
 import Text, { TTextSizeToken } from '../text';
-import HiddenComponent from '../hidden_component/HiddenComponent';
+import HiddenComponent from '../hidden_input/HiddenInput';
 import { Utils } from '../../shared';
 
 import { DEFAULT_RADIO_SIZE } from './Radio.constants';
@@ -15,6 +15,7 @@ const RadioBase: React.FC<PRadio> = ({
     size = DEFAULT_RADIO_SIZE,
     onClick,
     className,
+    checked,
 }: PRadio) => {
     let labelSize: TTextSizeToken = 100;
     let radioSize: TRadioSize = 16;
@@ -56,6 +57,7 @@ const RadioBase: React.FC<PRadio> = ({
                 component={'input'}
                 type={'radio'}
                 children={children}
+                checked={checked}
             />
             {hasLabel && (
                 <Text

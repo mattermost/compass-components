@@ -3,7 +3,7 @@ import React from 'react';
 import Grid from '../../foundations/layout';
 import Shape from '../../foundations/shape';
 import Text, { TTextSizeToken } from '../text';
-import HiddenComponent from '../hidden_component/HiddenComponent';
+import HiddenComponent from '../hidden_input/HiddenInput';
 import { Utils } from '../../shared';
 
 import { TSwitchWidth, TSwitchHeight, TSwitchInnerWidth } from './Switch.types';
@@ -19,6 +19,7 @@ const SwitchBase: React.FC<PSwitch> = ({
     label,
     size = DEFAULT_SWITCH_SIZE,
     className,
+    toggled,
     onClick,
 }: PSwitch) => {
     let labelSize: TTextSizeToken = 100;
@@ -74,6 +75,7 @@ const SwitchBase: React.FC<PSwitch> = ({
                 component={'input'}
                 type={'checkbox'}
                 children={children}
+                checked={toggled}
             />
             {hasLabel && (
                 <Text

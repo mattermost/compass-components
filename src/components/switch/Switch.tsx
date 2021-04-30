@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components';
 import { FlattenSimpleInterpolation, ThemedStyledProps } from 'styled-components/ts3.6';
 
 import { TTheme } from '../../foundations/theme-provider/themes/theme.types';
-import { blendColors, setAlpha } from '../../shared';
+import { blendColors, setAlpha, Utils } from '../../shared';
 
 import SwitchBase from './Switch.base';
 import { PSwitch } from './Switch.props';
@@ -10,8 +10,11 @@ import { PSwitch } from './Switch.props';
 const getSwitchVariables = ({
     theme: { palette, action, text },
     disabled,
+    onClick,
 }: ThemedStyledProps<PSwitch, TTheme>): FlattenSimpleInterpolation => {
-    const mainColor = disabled ? text.disabled : text.secondary;
+    const isDisabled = disabled || !Utils.isFunction(onClick);
+
+    const mainColor = isDisabled ? text.disabled : text.secondary;
     const toggledColor = palette.primary.main;
     const hoverColor = action.hover;
     const textColor = text.primary;

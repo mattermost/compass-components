@@ -31,6 +31,7 @@ export type PSwitch = {
      * @default false
      * */
     disabled?: boolean;
+    toggled?: boolean;
     className?: string;
-    onClick?: (event: React.MouseEvent<HTMLElement, MouseEvent>) => void;
+    onClick?: () => void;
 };

@@ -22,5 +22,6 @@ export type PRadio = {
      * @default false
      * */
     disabled?: boolean;
-    onClick?: (event: React.MouseEvent<HTMLElement, MouseEvent>) => void;
+    checked?: boolean;
+    onClick?: () => void;
 };

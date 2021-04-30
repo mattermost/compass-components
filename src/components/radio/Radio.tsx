@@ -62,7 +62,6 @@ const Radio = styled(RadioBase)<PRadio>`
     margin: 0;
 
     &--input {
-        opacity: 0;
         position: absolute;
     }
 

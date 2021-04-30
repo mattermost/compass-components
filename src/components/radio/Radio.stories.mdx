@@ -81,6 +81,11 @@ export const canvasExampleArgs = {
     ...defaultArgs,
 };
 
+export const CheckedRadio = (args) => {
+    const [isChecked, setChecked] = useState(true);
+    return <Radio {...args} onClick={() => setChecked(!isChecked)} checked={isChecked} />;
+};
+
 <Canvas hidden>
     <Story
         name="Default"
@@ -89,6 +94,6 @@ export const canvasExampleArgs = {
             ...canvasExampleArgs,
         }}
     >
-        {(args) => <Radio {...args} />}
+        {(args) => <CheckedRadio {...args} />}
     </Story>
 </Canvas>

@@ -1,0 +1,85 @@
+import { useState } from 'react';
+import { Meta, Story, Canvas, Title, Subtitle } from '@storybook/addon-docs/blocks';
+import { Utils } from '../../shared';
+import { DEFAULT_ARGUMENT_STABLE_EXCLUSION } from '../../shared/constants';
+
+import Checkbox from './index';
+
+<Meta
+    component={Checkbox}
+    title="Components/Checkbox"
+    parameters={{
+        actions: {
+            handles: ['click .Checkbox'],
+        },
+    }}
+/>
+
+<Title>Checkboxes</Title>
+
+<Subtitle>Checkboxes empower users to make multiple selections.</Subtitle>
+
+## Anatomy
+
+Checkboxes are comprised of:
+
+-   Selector
+-   Label
+    Clicking either the Selector or the Label should toggle the state of the checkbox.
+
+## States
+
+## Animation
+
+## Sizes
+
+<ArgsTable of={Checkbox} exclude={[...DEFAULT_ARGUMENT_STABLE_EXCLUSION]} />
+
+export const defaultArgs = {
+    labelText: 'Public',
+    state: 'on',
+    size: 'md',
+    hideLabel: false,
+};
+
+export const argTypes = Utils.hideStyledComponentProperties({
+    state: {
+        control: {
+            type: 'select',
+            options: ['on', 'off', 'status', 'disabled'],
+        },
+    },
+    size: {
+        control: {
+            type: 'select',
+            options: ['sm', 'md', 'lg'],
+        },
+    },
+    hideLabel: {
+        control: {
+            type: 'radio',
+            options: ['true', 'false'],
+        },
+    },
+});
+
+export const canvasExampleArgs = {
+    ...defaultArgs,
+};
+
+export const CheckedCheckbox = (args) => {
+    const [isChecked, setChecked] = useState(true);
+    return <Checkbox {...args} onClick={() => setChecked(!isChecked)} checked={isChecked} />;
+};
+
+<Canvas hidden>
+    <Story
+        name="Default"
+        argTypes={argTypes}
+        args={{
+            ...canvasExampleArgs,
+        }}
+    >
+        {(args) => <CheckedCheckbox {...args} />}
+    </Story>
+</Canvas>

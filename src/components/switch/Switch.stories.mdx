@@ -46,6 +46,11 @@ export const canvasExampleArgs = {
     ...defaultArgs,
 };
 
+export const ToggledSwitch = (args) => {
+    const [isToggled, setToggled] = useState(true);
+    return <Switch {...args} onClick={() => setToggled(!isToggled)} toggled={isToggled} />;
+};
+
 <Canvas hidden>
     <Story
         name="Default"
@@ -67,11 +72,16 @@ export const canvasExampleArgs = {
                     options: ['true', 'false'],
                 },
             },
+            width: { table: { disable: true } },
+            height: { table: { disable: true } },
+            innerWidth: { table: { disable: true } },
+            className: { table: { disable: true } },
+            onClick: { action: 'clicked' },
         })}
         args={{
             ...canvasExampleArgs,
         }}
     >
-        {(args) => <Switch {...args} />}
+        {(args) => <ToggledSwitch {...args} />}
     </Story>
 </Canvas>

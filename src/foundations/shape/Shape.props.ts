@@ -44,6 +44,7 @@ type PShape = {
     height?: number | string | 'auto';
     children?: React.ReactNode | React.ReactNode[];
     className?: string;
+    checked?: boolean;
 };
 
 export default PShape;
