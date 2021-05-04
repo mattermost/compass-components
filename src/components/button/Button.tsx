@@ -13,7 +13,7 @@ import {
 import { PButton } from './Button.props';
 
 const getButtonVariables = ({
-    theme: { palette, action },
+    theme: { palette, action, background },
     onClick,
     destructive = false,
     inverted = false,
@@ -41,7 +41,7 @@ const getButtonVariables = ({
 
     // handle inverted here before re-assigning colors
     if (inverted && !destructive) {
-        colors.main = palette.primary.contrast;
+        colors.main = background.contrast;
     }
 
     colors.border = colors.main;

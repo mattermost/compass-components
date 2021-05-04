@@ -338,9 +338,13 @@ function getLuminance(color: string): number {
             ? decomposeColor(hslToRgb(color)).values
             : decomposedColor.values;
 
-    rgb = rgb.map((value) =>
-        value <= 0.039_28 ? value / 12.92 : ((value + 0.055) / 1.055) ** 2.4
-    );
+    rgb = rgb.map((value) => {
+        const normalizedValue = value / 255;
+
+        return normalizedValue <= 0.039_28
+            ? normalizedValue / 12.92
+            : ((normalizedValue + 0.055) / 1.055) ** 2.4;
+    });
 
     // Truncate at 3 digits
     return Number((0.2126 * rgb[0] + 0.7152 * rgb[1] + 0.0722 * rgb[2]).toFixed(3));

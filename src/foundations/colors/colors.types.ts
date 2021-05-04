@@ -1,3 +1,15 @@
+type TBaseColorName =
+    | 'blue'
+    | 'cyan'
+    | 'green'
+    | 'indigo'
+    | 'neutral'
+    | 'orange'
+    | 'purple'
+    | 'red'
+    | 'teal'
+    | 'yellow';
+
 type TBaseColorShade = 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800;
 
 type TExtendedColorShade =
@@ -36,4 +48,4 @@ type TExtendedColor = {
     readonly [key in TBaseColorShade]: string;
 };
 
-export type { TBaseColor, TBaseColorShade, TExtendedColor, TExtendedColorShade };
+export type { TBaseColor, TBaseColorName, TBaseColorShade, TExtendedColor, TExtendedColorShade };

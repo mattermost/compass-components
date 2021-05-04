@@ -10,6 +10,7 @@ import Button from '../components/button';
 import Text from '../components/text';
 import { blue, teal, yellow } from '../foundations/colors';
 import { createThemeColor } from '../shared';
+import { COLOR_NAMES, COLOR_SHADES } from '../foundations/colors/colors.constants';
 
 <Meta title="Theming/SectionTheming" />
 
@@ -25,7 +26,7 @@ export const themes = {
     <Story
         name="Default"
         args={{
-            sectionTheme: lightTheme,
+            sectionTheme: 'lightTheme',
         }}
         argTypes={{
             sectionTheme: {
@@ -108,9 +109,13 @@ export const themes = {
         )}
     </Story>
     <Story
-        name="Custom Color"
+        name="Default Color"
         args={{
-            sectionTheme: lightTheme,
+            sectionTheme: 'lightTheme',
+            primaryColor: 'blue',
+            primaryColorShade: 500,
+            // secondaryColor: 'teal',
+            // tertiaryColor: 'purple',
         }}
         argTypes={{
             sectionTheme: {
@@ -125,11 +130,29 @@ export const themes = {
                     },
                 },
             },
+            primaryColor: {
+                control: {
+                    type: 'select',
+                    options: COLOR_NAMES,
+                },
+            },
+            primaryColorShade: {
+                control: {
+                    type: 'select',
+                    options: COLOR_SHADES,
+                },
+            },
         }}
     >
         {(args) => {
             const theme = {
                 ...args.sectionTheme,
+                palette: {
+                    ...args.sectionTheme?.palette,
+                    primary: createThemeColor(args.primaryColor, args.primaryColorShade),
+                    // secondary: createThemeColor(args.secondaryColor),
+                    // tertiary: createThemeColor(args.tertiaryColor),
+                },
             };
             return (
                 <Grid row>

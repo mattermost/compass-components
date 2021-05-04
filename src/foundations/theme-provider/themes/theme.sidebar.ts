@@ -69,6 +69,7 @@ const sidebarTheme: TTheme = {
     background: {
         default: blue[700],
         shape: blue[500],
+        contrast: neutral[50],
     },
 };
 

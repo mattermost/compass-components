@@ -9,7 +9,7 @@ function getContrastText(background: string): string {
     return getContrastRatio('#000000', background) >= 7 ? '#000000' : '#FFFFFF';
 }
 
-function createThemeColor(color: string, shade?: TBaseColorShade): TThemeColorDefinition {
+function createThemeColor(color: string, shade: TBaseColorShade = 500): TThemeColorDefinition {
     if (colors[color] && shade && colors[color][shade]) {
         if (shade <= 200) {
             Utils.warn(

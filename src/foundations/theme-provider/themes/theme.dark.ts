@@ -69,6 +69,7 @@ const darkTheme: TTheme = {
     background: {
         default: neutral[1100],
         shape: neutral[1000],
+        contrast: neutral[50],
     },
 };
 

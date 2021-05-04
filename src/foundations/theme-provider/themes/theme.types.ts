@@ -32,6 +32,7 @@ type TTHemeTextColors = {
 type TTHemeBackgroundColors = {
     default: string;
     shape: string;
+    contrast: string;
 };
 
 type TTheme = {
