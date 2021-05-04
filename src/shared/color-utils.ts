@@ -1,8 +1,6 @@
 import { normal } from 'color-blend';
 
 import { TBaseColorShade } from '../foundations/colors/colors.types';
-import { TThemeColorDefinition } from '../foundations/theme-provider/themes/theme.types';
-import colors from '../foundations/colors';
 
 import Utils from './utils';
 
@@ -20,7 +18,7 @@ const supportedColorTypes = ['rgb', 'rgba', 'hsl', 'hsla'];
  * The property name (100 | 200 | ... | 800) describes the swatch shade.
  * Values stored for each shade are the luminance values for HSL
  */
-const shadeValues: Record<TBaseColorShade, number> = {
+const shadeLuminanceValues: Record<TBaseColorShade, number> = {
     100: 0.8,
     200: 0.72,
     300: 0.64,
@@ -58,6 +56,12 @@ function hexToRgb(color: string): string {
         : '';
 }
 
+/**
+ * convert a int value to the corresponding hex value
+ * e.g. 255 => FF
+ * @param {number} int - the int value in the range of 0-255
+ * @returns {string}
+ */
 function intToHex(int: number): string {
     const hex = int.toString(16);
 
@@ -231,43 +235,55 @@ function recomposeColor(color: TColorDefinition): string {
  * @param {string} color.typography - One of: 'rgb', 'rgba', 'hsl', 'hsla'
  * @param {array} color.values - [n,n,n] or [n,n,n,n]
  * @param {number} shade - 100 | 200 | ... | 800
- * @param {boolean} darker - some colors are best converted to darker shades (starting luminance -16%)
  * @returns {string} A CSS color string
  */
-function recomposeColorWithShade(
-    color: TColorDefinition,
-    shade: TBaseColorShade,
-    darker: boolean
-): string {
+function recomposeColorWithShade(color: TColorDefinition, shade: TBaseColorShade): string {
     const { values, type } = color;
     const hslValues: string[] = [];
 
-    let luminanceCorrection = 0;
-
-    switch (true) {
-        case darker && shade <= 100:
-            luminanceCorrection -= 0.16;
-            break;
-        case darker && shade > 100 && shade <= 600:
-            luminanceCorrection -= 0.24;
-            break;
-        case darker && shade > 600 && shade <= 700:
-            luminanceCorrection -= 0.2;
-            break;
-        case darker && shade > 700:
-            luminanceCorrection -= 0.16;
-            break;
-        default:
-            break;
-    }
-
     hslValues[0] = `${values[0]}`;
     hslValues[1] = `${values[1]}%`;
-    hslValues[2] = `${(shadeValues[shade] + luminanceCorrection) * 100}%`;
+    hslValues[2] = `${shadeLuminanceValues[shade] * 100}%`;
 
     const hslString = `${type}(${hslValues.join(', ')})`;
 
     return hslToRgb(hslString);
+}
+
+/**
+ * Create a full map of all shades for a given color
+ * @param {string} color
+ * @returns {Record<string, string>}
+ */
+function createColorShades(color: string): Record<string, string> {
+    const decomposedColor = decomposeColor(color);
+    const colorShadeMap: Record<string, string> = {};
+
+    if (!decomposedColor.type.includes('hsl')) {
+        decomposedColor.type = 'hsl';
+        decomposedColor.values = rgbToHslValues(decomposedColor.values);
+    }
+
+    for (const key of Object.keys(shadeLuminanceValues)) {
+        colorShadeMap[key] = recomposeColorWithShade(
+            decomposedColor,
+            (key as unknown) as TBaseColorShade
+        );
+    }
+
+    return colorShadeMap;
+}
+
+/**
+ * Converts any given valid and supported color string to rgb
+ * @param {string} color - color string
+ * @returns {string} rgb color string
+ */
+function convertToRgb(color: string): string {
+    const colorString = color.startsWith('hsl') ? hslToRgb(color) : color;
+    const decomposedColor = decomposeColor(colorString);
+
+    return recomposeColor(decomposedColor);
 }
 
 /**
@@ -289,113 +305,6 @@ function setAlpha(color: string, value: number): string {
     decomposedColor.values[3] = clampedValue;
 
     return recomposeColor(decomposedColor);
-}
-
-function createColorShades(color: string, darker = false): Record<string, string> {
-    const decomposedColor = decomposeColor(color);
-    const colorShadeMap: Record<string, string> = {};
-
-    if (!decomposedColor.type.includes('hsl')) {
-        decomposedColor.type = 'hsl';
-        decomposedColor.values = rgbToHslValues(decomposedColor.values);
-    }
-
-    for (const key of Object.keys(shadeValues)) {
-        colorShadeMap[key] = recomposeColorWithShade(
-            decomposedColor,
-            (key as unknown) as TBaseColorShade,
-            darker
-        );
-    }
-
-    return colorShadeMap;
-}
-
-// Use the same logic as
-// Bootstrap: https://github.com/twbs/bootstrap/blob/1d6e3710dd447de1a200f29e8fa521f8a0908f70/scss/_functions.scss#L59
-function getContrastText(background: string): string {
-    return getContrastRatio('#000000', background) >= 7 ? '#000000' : '#FFFFFF';
-}
-
-function createThemeColor(color: string, shade?: TBaseColorShade): TThemeColorDefinition {
-    if (colors[color] && shade && colors[color][shade]) {
-        if (shade <= 200) {
-            Utils.warn(
-                `compass-omponents/createThemeColor: a shade of ${shade} might be insufficient. We will create shades with tonal offset for you, but it might still not be enough. Consider using a higher shade value.`
-            );
-        }
-
-        if (shade >= 700) {
-            Utils.warn(
-                `compass-omponents/createThemeColor: a shade of ${shade} might be insufficient. We will create shades with tonal offset for you, but it might still not be enough. Consider using a higher shade value.`
-            );
-        }
-
-        return {
-            lighter:
-                shade >= 100 ? colors[color][shade - 200] : lighten(colors[color][shade], 0.34),
-            light: shade >= 200 ? colors[color][shade - 100] : lighten(colors[color][shade], 0.17),
-            main: colors[color][shade],
-            dark: shade <= 600 ? colors[color][shade + 100] : darken(colors[color][shade], 0.17),
-            darker: shade <= 700 ? colors[color][shade + 100] : darken(colors[color][shade], 0.34),
-            contrast: getContrastText(colors[color][shade]),
-        };
-    }
-
-    const themeColor: TThemeColorDefinition = {
-        lighter: '',
-        light: lighten(color, 0.17),
-        main: color,
-        dark: darken(color, 0.17),
-        darker: '',
-        contrast: getContrastText(color),
-    };
-
-    themeColor.lighter = lighten(themeColor.light, 0.17);
-    themeColor.darker = darken(themeColor.dark, 0.17);
-
-    return themeColor;
-}
-
-/**
- * Converts any given valid and supported color string to rgb
- * @param {string} color - color string
- * @returns {string} rgb color string
- */
-function convertToRgb(color: string): string {
-    const colorString = color.startsWith('hsl') ? hslToRgb(color) : color;
-    const decomposedColor = decomposeColor(colorString);
-
-    return recomposeColor(decomposedColor);
-}
-
-function blendColors(baseColor: string, layerColor: string): string {
-    const decomposedBase = decomposeColor(convertToRgb(baseColor));
-    const decomposedLayer = decomposeColor(convertToRgb(layerColor));
-
-    const base = {
-        r: decomposedBase.values[0],
-        g: decomposedBase.values[1],
-        b: decomposedBase.values[2],
-        a:
-            decomposedBase.values[3] === undefined || Number.isNaN(decomposedBase.values[3])
-                ? 1
-                : decomposedBase.values[3],
-    };
-
-    const layer = {
-        r: decomposedLayer.values[0],
-        g: decomposedLayer.values[1],
-        b: decomposedLayer.values[2],
-        a:
-            decomposedLayer.values[3] === undefined || Number.isNaN(decomposedLayer.values[3])
-                ? 1
-                : decomposedLayer.values[3],
-    };
-
-    const mixed = normal(base, layer);
-
-    return recomposeColor({ type: 'rgba', values: [mixed.r, mixed.g, mixed.b, mixed.a] });
 }
 
 /**
@@ -480,6 +389,43 @@ function lighten(color: string, coefficient: number): string {
     return recomposeColor(decomposedColor);
 }
 
+/**
+ * Blends to colors in normal mode
+ * @param {string} background - the background color
+ * @param {string} foreground - the foreground color layered on top
+ * @returns {string} rgb color string
+ */
+function blendColors(background: string, foreground: string): string {
+    const decomposedBackground = decomposeColor(convertToRgb(background));
+    const decomposedForeground = decomposeColor(convertToRgb(foreground));
+
+    const base = {
+        r: decomposedBackground.values[0],
+        g: decomposedBackground.values[1],
+        b: decomposedBackground.values[2],
+        a:
+            decomposedBackground.values[3] === undefined ||
+            Number.isNaN(decomposedBackground.values[3])
+                ? 1
+                : decomposedBackground.values[3],
+    };
+
+    const layer = {
+        r: decomposedForeground.values[0],
+        g: decomposedForeground.values[1],
+        b: decomposedForeground.values[2],
+        a:
+            decomposedForeground.values[3] === undefined ||
+            Number.isNaN(decomposedForeground.values[3])
+                ? 1
+                : decomposedForeground.values[3],
+    };
+
+    const mixed = normal(base, layer);
+
+    return recomposeColor({ type: 'rgba', values: [mixed.r, mixed.g, mixed.b, mixed.a] });
+}
+
 export {
     setAlpha,
     convertToRgb,
@@ -495,6 +441,4 @@ export {
     darken,
     lighten,
     getContrastRatio,
-    getContrastText,
-    createThemeColor,
 };
