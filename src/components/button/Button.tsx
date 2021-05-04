@@ -81,6 +81,8 @@ const getButtonVariables = ({
         colors.border = colors.text;
     }
 
+    const backgroundColor = setAlpha(colors.main, opacities.background);
+
     // disabled buttons do not have interactional states
     const actionStyles = isDisabled
         ? css`
@@ -89,13 +91,13 @@ const getButtonVariables = ({
         : css`
               &:hover {
                   background: ${blendColors(
-                      setAlpha(colors.main, opacities.background),
+                      backgroundColor,
                       setAlpha(colors.action, opacities.hover)
                   )};
               }
               &:active {
                   background: ${blendColors(
-                      setAlpha(colors.main, opacities.background),
+                      backgroundColor,
                       setAlpha(colors.action, opacities.active)
                   )};
               }
@@ -115,7 +117,7 @@ const getButtonVariables = ({
           `;
 
     return css`
-        background-color: ${setAlpha(colors.main, opacities.background)};
+        background-color: ${backgroundColor};
         color: ${colors.text};
         ${variant === 'secondary' &&
         css`
