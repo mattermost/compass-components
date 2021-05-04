@@ -105,11 +105,11 @@ export const Template = (args) => {
             margin: DEFAULT_TEXT_MARGIN,
         }}
         argTypes={{
-            size: { control: { type: 'select', options: TEXT_SIZES } },
-            element: { control: { type: 'select', options: TEXT_ELEMENTS } },
-            weight: { control: { type: 'radio', options: TEXT_WEIGHTS } },
-            margin: { control: { type: 'radio', options: TEXT_MARGINS } },
-            color: { control: { type: 'radio', options: TEXT_COLORS } },
+            size: { options: TEXT_SIZES, control: { type: 'select' } },
+            element: { options: TEXT_ELEMENTS, control: { type: 'select' } },
+            weight: { options: TEXT_WEIGHTS, control: { type: 'radio' } },
+            margin: { options: TEXT_MARGINS, control: { type: 'radio' } },
+            color: { options: TEXT_COLORS, control: { type: 'radio' } },
             className: { table: { disable: true } },
         }}
     >

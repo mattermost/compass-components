@@ -33,9 +33,9 @@ import {
             iconPosition: null,
         }}
         argTypes={{
-            size: { control: { type: 'select', options: BUTTON_SIZES } },
-            variant: { control: { type: 'select', options: BUTTON_VARIANTS } },
-            width: { control: { type: 'select', options: [...BUTTON_WIDTHS, 100, 200, 300, 400] } },
+            size: { options: BUTTON_SIZES, control: { type: 'select' } },
+            variant: { options: BUTTON_VARIANTS, control: { type: 'select' } },
+            width: { options: [...BUTTON_WIDTHS, 100, 200, 300, 400], control: { type: 'select' } },
             icon: { table: { disable: true } },
             iconPosition: { table: { disable: true } },
             className: { table: { disable: true } },
@@ -57,11 +57,11 @@ import {
             iconPosition: DEFAULT_BUTTON_ICON_POSITION,
         }}
         argTypes={{
-            size: { control: { type: 'select', options: BUTTON_SIZES } },
-            variant: { control: { type: 'select', options: BUTTON_VARIANTS } },
-            width: { control: { type: 'select', options: [...BUTTON_WIDTHS, 100, 200, 300, 400] } },
-            icon: { control: { type: 'select', options: ICON_GLYPHS } },
-            iconPosition: { control: { type: 'select', options: BUTTON_ICON_POSITIONS } },
+            size: { options: BUTTON_SIZES, control: { type: 'select' } },
+            variant: { options: BUTTON_VARIANTS, control: { type: 'select' } },
+            width: { options: [...BUTTON_WIDTHS, 100, 200, 300, 400], control: { type: 'select' } },
+            icon: { options: ICON_GLYPHS, control: { type: 'select' } },
+            iconPosition: { options: BUTTON_ICON_POSITIONS, control: { type: 'select' } },
             className: { table: { disable: true } },
             onClick: { action: 'clicked' },
         }}

@@ -72,6 +72,27 @@ export const themes = {
                                     onClick={() => console.log('THIS IS A BUTTON click')}
                                     variant={'tertiary'}
                                 />
+                                <br />
+                                <Button
+                                    inverted
+                                    label={'INV. PRIMARY BUTTON'}
+                                    onClick={() => console.log('THIS IS A BUTTON click')}
+                                />
+                                <br />
+                                <Button
+                                    inverted
+                                    label={'INV. SECONDARY BUTTON'}
+                                    onClick={() => console.log('THIS IS A BUTTON click')}
+                                    variant={'secondary'}
+                                />
+                                <br />
+                                <Button
+                                    inverted
+                                    label={'INV. TERTIARY BUTTON'}
+                                    onClick={() => console.log('THIS IS A BUTTON click')}
+                                    variant={'tertiary'}
+                                />
+                                <br />
                             </Grid>
                         </Shape>
                     </Grid>
@@ -114,8 +135,6 @@ export const themes = {
             sectionTheme: 'lightTheme',
             primaryColor: 'blue',
             primaryColorShade: 500,
-            // secondaryColor: 'teal',
-            // tertiaryColor: 'purple',
         }}
         argTypes={{
             sectionTheme: {
@@ -131,15 +150,15 @@ export const themes = {
                 },
             },
             primaryColor: {
+                options: COLOR_NAMES,
                 control: {
                     type: 'select',
-                    options: COLOR_NAMES,
                 },
             },
             primaryColorShade: {
+                options: COLOR_SHADES,
                 control: {
                     type: 'select',
-                    options: COLOR_SHADES,
                 },
             },
         }}
@@ -150,8 +169,6 @@ export const themes = {
                 palette: {
                     ...args.sectionTheme?.palette,
                     primary: createThemeColor(args.primaryColor, args.primaryColorShade),
-                    // secondary: createThemeColor(args.secondaryColor),
-                    // tertiary: createThemeColor(args.tertiaryColor),
                 },
             };
             return (
