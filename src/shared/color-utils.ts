@@ -1,6 +1,8 @@
 import { normal } from 'color-blend';
 
+import { TBaseColorShade } from '../foundations/colors/colors.types';
 import { TThemeColorDefinition } from '../foundations/theme-provider/themes/theme.types';
+import colors from '../foundations/colors';
 
 import Utils from './utils';
 
@@ -18,7 +20,7 @@ const supportedColorTypes = ['rgb', 'rgba', 'hsl', 'hsla'];
  * The property name (100 | 200 | ... | 800) describes the swatch shade.
  * Values stored for each shade are the luminance values for HSL
  */
-const shadeValues: Record<string, number> = {
+const shadeValues: Record<TBaseColorShade, number> = {
     100: 0.8,
     200: 0.72,
     300: 0.64,
@@ -39,14 +41,14 @@ function hexToRgb(color: string): string {
 
     const re = new RegExp(`.{1,${colorValues.length >= 6 ? 2 : 1}}`, 'gu');
 
-    let colors = colorValues.match(re);
+    let splitColors = colorValues.match(re);
 
-    if (colors && colors[0].length === 1) {
-        colors = colors.map((n) => n + n);
+    if (splitColors && splitColors[0].length === 1) {
+        splitColors = splitColors.map((n) => n + n);
     }
 
-    return colors
-        ? `rgb${colors.length === 4 ? 'a' : ''}(${colors
+    return splitColors
+        ? `rgb${splitColors.length === 4 ? 'a' : ''}(${splitColors
               .map((n, index) =>
                   index < 3
                       ? Number.parseInt(n, 16)
@@ -232,24 +234,27 @@ function recomposeColor(color: TColorDefinition): string {
  * @param {boolean} darker - some colors are best converted to darker shades (starting luminance -16%)
  * @returns {string} A CSS color string
  */
-function recomposeColorWithShade(color: TColorDefinition, shade: string, darker: boolean): string {
+function recomposeColorWithShade(
+    color: TColorDefinition,
+    shade: TBaseColorShade,
+    darker: boolean
+): string {
     const { values, type } = color;
     const hslValues: string[] = [];
-    const shadeInt = Number.parseInt(shade, 10);
 
     let luminanceCorrection = 0;
 
     switch (true) {
-        case darker && shadeInt <= 100:
+        case darker && shade <= 100:
             luminanceCorrection -= 0.16;
             break;
-        case darker && shadeInt > 100 && shadeInt <= 600:
+        case darker && shade > 100 && shade <= 600:
             luminanceCorrection -= 0.24;
             break;
-        case darker && shadeInt > 600 && shadeInt <= 700:
+        case darker && shade > 600 && shade <= 700:
             luminanceCorrection -= 0.2;
             break;
-        case darker && shadeInt > 700:
+        case darker && shade > 700:
             luminanceCorrection -= 0.16;
             break;
         default:
@@ -296,7 +301,11 @@ function createColorShades(color: string, darker = false): Record<string, string
     }
 
     for (const key of Object.keys(shadeValues)) {
-        colorShadeMap[key] = recomposeColorWithShade(decomposedColor, key, darker);
+        colorShadeMap[key] = recomposeColorWithShade(
+            decomposedColor,
+            (key as unknown) as TBaseColorShade,
+            darker
+        );
     }
 
     return colorShadeMap;
@@ -305,21 +314,45 @@ function createColorShades(color: string, darker = false): Record<string, string
 // Use the same logic as
 // Bootstrap: https://github.com/twbs/bootstrap/blob/1d6e3710dd447de1a200f29e8fa521f8a0908f70/scss/_functions.scss#L59
 function getContrastText(background: string): string {
-    return getContrastRatio('#FFFFFF', background) >= 4.5 ? '#FFFFFF' : '#000000';
+    return getContrastRatio('#000000', background) >= 7 ? '#000000' : '#FFFFFF';
 }
 
-function createThemeColor(color: string): TThemeColorDefinition {
+function createThemeColor(color: string, shade?: TBaseColorShade): TThemeColorDefinition {
+    if (colors[color] && shade && colors[color][shade]) {
+        if (shade <= 200) {
+            Utils.warn(
+                `compass-omponents/createThemeColor: a shade of ${shade} might be insufficient. We will create shades with tonal offset for you, but it might still not be enough. Consider using a higher shade value.`
+            );
+        }
+
+        if (shade >= 700) {
+            Utils.warn(
+                `compass-omponents/createThemeColor: a shade of ${shade} might be insufficient. We will create shades with tonal offset for you, but it might still not be enough. Consider using a higher shade value.`
+            );
+        }
+
+        return {
+            lighter:
+                shade >= 100 ? colors[color][shade - 200] : lighten(colors[color][shade], 0.34),
+            light: shade >= 200 ? colors[color][shade - 100] : lighten(colors[color][shade], 0.17),
+            main: colors[color][shade],
+            dark: shade <= 600 ? colors[color][shade + 100] : darken(colors[color][shade], 0.17),
+            darker: shade <= 700 ? colors[color][shade + 100] : darken(colors[color][shade], 0.34),
+            contrast: getContrastText(colors[color][shade]),
+        };
+    }
+
     const themeColor: TThemeColorDefinition = {
+        lighter: '',
+        light: lighten(color, 0.17),
         main: color,
+        dark: darken(color, 0.17),
+        darker: '',
+        contrast: getContrastText(color),
     };
 
-    themeColor.light = lighten(themeColor.main, 0.1);
-    themeColor.lighter = lighten(themeColor.light, 0.1);
-
-    themeColor.dark = darken(themeColor.main, 0.1);
-    themeColor.darker = darken(themeColor.dark, 0.1);
-
-    themeColor.contrastText = getContrastText(color);
+    themeColor.lighter = lighten(themeColor.light, 0.17);
+    themeColor.darker = darken(themeColor.dark, 0.17);
 
     return themeColor;
 }
@@ -334,17 +367,6 @@ function convertToRgb(color: string): string {
     const decomposedColor = decomposeColor(colorString);
 
     return recomposeColor(decomposedColor);
-}
-
-/**
- * Checks if a given string is a valid color string
- * @param {string} color - color string
- * @returns {boolean}
- */
-function isValidColor(color: string): boolean {
-    const { type } = decomposeColor(color);
-
-    return supportedColorTypes.includes(type);
 }
 
 function blendColors(baseColor: string, layerColor: string): string {
@@ -427,7 +449,7 @@ function darken(color: string, coefficient: number): string {
 
     if (decomposedColor.type.includes('hsl')) {
         decomposedColor.values[2] *= 1 - clampedCoefficient;
-    } else if (decomposedColor.type.includes('rgb') || decomposedColor.type.includes('color')) {
+    } else if (decomposedColor.type.includes('rgb')) {
         for (let index = 0; index < 3; index += 1) {
             decomposedColor.values[index] *= 1 - clampedCoefficient;
         }
@@ -453,11 +475,6 @@ function lighten(color: string, coefficient: number): string {
             decomposedColor.values[index] +=
                 (255 - decomposedColor.values[index]) * clampedCoefficient;
         }
-    } else if (decomposedColor.type.includes('color')) {
-        for (let index = 0; index < 3; index += 1) {
-            decomposedColor.values[index] +=
-                (1 - decomposedColor.values[index]) * clampedCoefficient;
-        }
     }
 
     return recomposeColor(decomposedColor);
@@ -474,7 +491,6 @@ export {
     rgbToHex,
     rgbToHsl,
     createColorShades,
-    isValidColor,
     blendColors,
     darken,
     lighten,

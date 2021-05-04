@@ -1,10 +1,10 @@
 type TThemeColorDefinition = {
-    lighter?: string;
-    light?: string;
+    lighter: string;
+    light: string;
     main: string;
-    dark?: string;
-    darker?: string;
-    contrastText?: string;
+    dark: string;
+    darker: string;
+    contrast: string;
 };
 
 type TTHemeColors = {
@@ -18,12 +18,6 @@ type TTHemeColors = {
 
 type TTHemeActionColors = {
     hover: string;
-    hoverOpacity: number;
-    active: string;
-    activeOpacity: number;
-    focus: string;
-    focusOpacity: number;
-    selected: string;
     disabled: string;
 };
 

@@ -1,4 +1,4 @@
-import { Meta, Story, Canvas, ArgsTable, Title } from '@storybook/addon-docs/blocks';
+import { Meta, Story, Canvas, Title } from '@storybook/addon-docs/blocks';
 import Grid, { Spacing } from '../foundations/layout';
 import Shape from '../foundations/shape';
 import Heading from '../components/heading';
@@ -8,9 +8,8 @@ import darkTheme from '../foundations/theme-provider/themes/theme.dark';
 import sidebarTheme from '../foundations/theme-provider/themes/theme.sidebar';
 import Button from '../components/button';
 import Text from '../components/text';
+import { blue, teal, yellow } from '../foundations/colors';
 import { createThemeColor } from '../shared';
-import blue from '../foundations/colors/default-colors/blue';
-import indigo from '../foundations/colors/default-colors/indigo';
 
 <Meta title="Theming/SectionTheming" />
 
@@ -112,15 +111,8 @@ export const themes = {
         name="Custom Color"
         args={{
             sectionTheme: lightTheme,
-            primaryColor: blue[500],
-            secondaryColor: indigo[500],
         }}
         argTypes={{
-            primaryColor: {
-                control: {
-                    type: 'color',
-                },
-            },
             sectionTheme: {
                 options: Object.keys(themes),
                 mapping: themes,
@@ -138,10 +130,6 @@ export const themes = {
         {(args) => {
             const theme = {
                 ...args.sectionTheme,
-                palette: {
-                    ...args.sectionTheme?.palette,
-                    primary: createThemeColor(args.primaryColor),
-                },
             };
             return (
                 <Grid row>
@@ -158,20 +146,77 @@ export const themes = {
                                     </Text>
                                     <Button
                                         label={'PRIMARY BUTTON'}
-                                        onClick={() => console.log('THIS IS A BUTTON click')}
+                                        onClick={() =>
+                                            console.log('THIS IS A BUTTON click', blue[500])
+                                        }
+                                        inverted={theme.type === 'dark'}
+                                        destructive
+                                        disabled
                                     />
                                     <br />
                                     <Button
-                                        label={'SECONDARY BUTTON'}
+                                        label={'PRIMARY BUTTON'}
                                         onClick={() => console.log('THIS IS A BUTTON click')}
+                                        inverted={theme.type === 'dark'}
+                                        variant={'secondary'}
+                                        destructive
+                                        disabled
+                                    />
+                                    <br />
+                                    <Button
+                                        label={'PRIMARY BUTTON'}
+                                        onClick={() => console.log('THIS IS A BUTTON click')}
+                                        inverted={theme.type === 'dark'}
+                                        variant={'tertiary'}
+                                        destructive
+                                        disabled
+                                    />
+                                    <br />
+                                    <Button
+                                        label={'PRIMARY BUTTON'}
+                                        onClick={() => console.log('THIS IS A BUTTON click')}
+                                        inverted={theme.type === 'dark'}
+                                        destructive
+                                    />
+                                    <br />
+                                    <Button
+                                        label={'PRIMARY BUTTON'}
+                                        onClick={() => console.log('THIS IS A BUTTON click')}
+                                        inverted={theme.type === 'dark'}
+                                        variant={'secondary'}
+                                        destructive
+                                    />
+                                    <br />
+                                    <Button
+                                        label={'PRIMARY BUTTON'}
+                                        onClick={() => console.log('THIS IS A BUTTON click')}
+                                        inverted={theme.type === 'dark'}
+                                        variant={'tertiary'}
+                                        destructive
+                                    />
+                                    <br />
+                                    <Button
+                                        label={'PRIMARY BUTTON'}
+                                        onClick={() =>
+                                            console.log('THIS IS A BUTTON click', blue[500])
+                                        }
+                                        inverted={theme.type === 'dark'}
+                                    />
+                                    <br />
+                                    <Button
+                                        label={'PRIMARY BUTTON'}
+                                        onClick={() => console.log('THIS IS A BUTTON click')}
+                                        inverted={theme.type === 'dark'}
                                         variant={'secondary'}
                                     />
                                     <br />
                                     <Button
-                                        label={'TERTIARY BUTTON'}
+                                        label={'PRIMARY BUTTON'}
                                         onClick={() => console.log('THIS IS A BUTTON click')}
+                                        inverted={theme.type === 'dark'}
                                         variant={'tertiary'}
                                     />
+                                    <br />
                                 </Grid>
                             </Shape>
                         </Grid>
