@@ -1,0 +1,37 @@
+import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+import Avatar from './Avatar';
+import { DEFAULT_ARGUMENT_STABLE_EXCLUSION } from '../../shared/constants';
+import { AVATAR_SIZE_MAP, AVATAR_SIZES, DEFAULT_AVATAR_SIZE } from './Avatar.constants';
+import { Utils } from '../../shared';
+
+<Meta title={'Components/Avatar'} />
+
+<ArgsTable of={Avatar} exclude={[...DEFAULT_ARGUMENT_STABLE_EXCLUSION]} />
+
+<Canvas hidden>
+    <Story
+        name="default avatar"
+        args={{
+            size: DEFAULT_AVATAR_SIZE,
+            userName: 'john.doe',
+        }}
+        argTypes={Utils.hideStyledComponentProperties({
+            size: {
+                options: AVATAR_SIZES,
+                control: {
+                    type: 'select',
+                    labels: {
+                        xs: 'x-small',
+                        sm: 'small',
+                        md: 'medium',
+                        lg: 'large',
+                        xl: 'x-large',
+                        xxl: 'xx-large',
+                    },
+                },
+            },
+        })}
+    >
+        {(args) => <Avatar {...args} />}
+    </Story>
+</Canvas>
