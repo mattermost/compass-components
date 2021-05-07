@@ -27,7 +27,7 @@ const HiddenComponent: React.FC<PHiddenComponent> = ({
             className={componentClass}
             id="hidden__input"
             component={component}
-            checked={checked}
+            defaultChecked={checked}
             type={type}
         />
         {children}

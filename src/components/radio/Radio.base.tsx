@@ -42,7 +42,7 @@ const RadioBase: React.FC<PRadio> = ({
     const children = (
         <Shape
             component={'span'}
-            className={`${className}--control`}
+            className={'control'}
             width={radioSize}
             height={radioSize}
             borderRadius={'circle'}
@@ -50,22 +50,23 @@ const RadioBase: React.FC<PRadio> = ({
     );
 
     return (
-        <Grid row alignment={'center'} justify={'center'} flex={1} onClick={onClick}>
+        <Grid
+            row
+            alignment={'center'}
+            justify={'center'}
+            flex={1}
+            onClick={onClick}
+            className={className}
+        >
             <HiddenComponent
-                componentClass={`${className}--input`}
-                labelClass={className}
+                componentClass={'input'}
                 component={'input'}
                 type={'radio'}
                 children={children}
                 checked={checked}
             />
             {hasLabel && (
-                <Text
-                    element={'span'}
-                    className={`${className}--label`}
-                    size={labelSize}
-                    margin={'none'}
-                >
+                <Text element={'span'} className={'label'} size={labelSize}>
                     {label}
                 </Text>
             )}

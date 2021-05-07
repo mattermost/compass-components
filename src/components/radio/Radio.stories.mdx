@@ -46,41 +46,6 @@ Once an item is selected, if the user clicks to select a different item, this au
 
 <ArgsTable of={Radio} exclude={[...DEFAULT_ARGUMENT_STABLE_EXCLUSION]} />
 
-export const defaultArgs = {
-    label: 'Public',
-    size: DEFAULT_RADIO_SIZE,
-};
-
-export const argTypes = Utils.hideStyledComponentProperties({
-    label: {
-        control: {
-            type: 'text',
-        },
-    },
-    size: {
-        control: {
-            type: 'select',
-            options: RADIO_SIZES,
-        },
-    },
-    hasError: {
-        control: {
-            type: 'radio',
-            options: ['true', 'false'],
-        },
-    },
-    disabled: {
-        control: {
-            type: 'radio',
-            options: ['true', 'false'],
-        },
-    },
-});
-
-export const canvasExampleArgs = {
-    ...defaultArgs,
-};
-
 export const CheckedRadio = (args) => {
     const [isChecked, setChecked] = useState(true);
     return <Radio {...args} onClick={() => setChecked(!isChecked)} checked={isChecked} />;
@@ -89,9 +54,18 @@ export const CheckedRadio = (args) => {
 <Canvas hidden>
     <Story
         name="Default"
-        argTypes={argTypes}
+        argTypes={Utils.hideStyledComponentProperties({
+            label: { control: { type: 'text' } },
+            size: { control: { type: 'radio', options: RADIO_SIZES } },
+            hasError: { control: { type: 'boolean' } },
+            disabled: { control: { type: 'boolean' } },
+            checked: { control: { type: 'boolean' } },
+            className: { table: { disable: true } },
+            onClick: { action: 'clicked', table: { disable: true } },
+        })}
         args={{
-            ...canvasExampleArgs,
+            label: 'Default Radio',
+            size: DEFAULT_RADIO_SIZE,
         }}
     >
         {(args) => <CheckedRadio {...args} />}

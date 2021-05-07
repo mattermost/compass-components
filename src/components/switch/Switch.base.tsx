@@ -19,7 +19,7 @@ const SwitchBase: React.FC<PSwitch> = ({
     label,
     size = DEFAULT_SWITCH_SIZE,
     className,
-    toggled,
+    toggled = true,
     onClick,
 }: PSwitch) => {
     let labelSize: TTextSizeToken = 100;
@@ -48,16 +48,12 @@ const SwitchBase: React.FC<PSwitch> = ({
 
     const children = (
         <Shape
-            className={`${className}--container`}
+            className={'container'}
             width={switchWidth}
             height={switchHeight}
             borderRadius={'pill'}
         >
-            <Shape
-                borderRadius={'circle'}
-                width={switchInnerWidth}
-                className={`${className}--toggle`}
-            />
+            <Shape borderRadius={'circle'} width={switchInnerWidth} className={'toggle'} />
         </Shape>
     );
 
@@ -71,19 +67,14 @@ const SwitchBase: React.FC<PSwitch> = ({
             className={className}
         >
             <HiddenComponent
-                componentClass={`${className}--input`}
+                componentClass={'input'}
                 component={'input'}
                 type={'checkbox'}
                 children={children}
                 checked={toggled}
             />
             {hasLabel && (
-                <Text
-                    element={'span'}
-                    className={`${className}--label`}
-                    size={labelSize}
-                    margin={'none'}
-                >
+                <Text element={'span'} className={'label'} size={labelSize} margin={'none'}>
                     {label}
                 </Text>
             )}

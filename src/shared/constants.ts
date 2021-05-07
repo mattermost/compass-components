@@ -28,6 +28,8 @@ const DEFAULT_PROPERTY_WHITELIST: string[] = [
     'selected',
     'type',
     'onClick',
+    'checked',
+    'defaultChecked',
 ];
 
 export {

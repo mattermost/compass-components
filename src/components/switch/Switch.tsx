@@ -21,11 +21,11 @@ const getSwitchVariables = ({
 
     const actionStyles = disabled
         ? css`
-              &--input,
-              &--label {
+              .input,
+              .label {
                   cursor: not-allowed;
                   opacity: 0.5;
-                  &:checked ~ &--background {
+                  &:checked ~ .background {
                       background: ${blendColors(
                           mainColor,
                           setAlpha(toggledColor, action.disabledOpacity)
@@ -35,7 +35,7 @@ const getSwitchVariables = ({
           `
         : css`
               &:hover {
-                  &--background {
+                  .background {
                       background: ${blendColors(
                           mainColor,
                           setAlpha(hoverColor, action.hoverOpacity)
@@ -63,10 +63,11 @@ const getSwitchVariables = ({
 const Switch = styled(SwitchBase)<PSwitch>`
     ${getSwitchVariables};
 
-    &--input {
+    .input {
+        display: none;
     }
 
-    &--container {
+    .container {
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -76,20 +77,20 @@ const Switch = styled(SwitchBase)<PSwitch>`
         transition: background-color 0.2s;
     }
 
-    &--toggle {
+    .toggle {
         background: white;
     }
 
-    &--input:checked ~ &--container {
+    .input:checked ~ .container {
         background: var(--switch-checked-color);
     }
 
-    &--input:checked ~ &--container &--toggle {
+    .input:checked ~ .container .toggle {
         right: calc(100% - 2px);
         transform: translateX(100%);
     }
 
-    &--label {
+    .label {
         margin-left: 12px;
     }
 `;

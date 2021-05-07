@@ -9,73 +9,78 @@ import { PRadio } from './Radio.props';
 
 const getRadioVariables = ({
     theme: { palette, action, text },
-    hasError,
-    disabled,
+    hasError = false,
+    disabled = false,
+    checked = false,
 }: ThemedStyledProps<PRadio, TTheme>): FlattenSimpleInterpolation => {
-    const checkedColor = hasError ? palette.alert.main : palette.primary.main;
-    const hoverColor = action.hover;
-    const mainColor = hasError ? palette.alert.main : text.primary;
+    const opacities: Record<string, number> = {
+        background: disabled ? 0.08 : 1,
+        hover: 0.16,
+    };
+
+    const colors: Record<string, string> = {
+        checked: hasError ? palette.alert.main : palette.primary.main,
+        text: text.primary,
+        action: action.hover,
+        border: checked ? palette.primary.main : text.secondary,
+    };
+
+    if (disabled) {
+        colors.checked = setAlpha(colors.checked, 0.32);
+        colors.text = setAlpha(colors.text, 0.16);
+        colors.border = colors.text;
+    }
 
     const actionStyles = disabled
         ? css`
-              &--input {
-                  cursor: not-allowed;
-                  opacity: 0.5;
-                  &--control {
-                      cursor: not-allowed;
-                  }
-              }
+              cursor: not-allowed;
           `
         : css`
+              cursor: pointer;
               &:hover {
-                  &--control {
+                  .control {
                       border-color: ${blendColors(
-                          mainColor,
-                          setAlpha(hoverColor, action.hoverOpacity)
+                          colors.border,
+                          setAlpha(colors.border, opacities.hover)
                       )};
                       &:after {
                           background: ${blendColors(
-                              mainColor,
-                              setAlpha(hoverColor, action.hoverOpacity)
+                              colors.checked,
+                              setAlpha(colors.checked, opacities.background)
                           )};
                       }
                   }
               }
               &:focus {
                   box-shadow: inset 0 0 0 3px rgba(255, 255, 255, 0.32),
-                      inset 0 0 0 3px ${checkedColor};
+                      inset 0 0 0 3px ${colors.checked};
               }
           `;
 
     return css`
         ${actionStyles}
-        color: ${mainColor};
-        --radio-checked-color: ${checkedColor};
-        --radio-main-color: ${mainColor};
+        color: ${colors.text};
+        --radio-checked-color: ${colors.checked};
+        --radio-main-color: ${colors.border};
     `;
 };
 
 const Radio = styled(RadioBase)<PRadio>`
     ${getRadioVariables};
-    cursor: pointer;
-    position: relative;
-    margin: 0;
-
-    &--input {
-        position: absolute;
+    .input {
+        display: none;
     }
 
-    &--control {
-        position: relative;
-        border: 2px solid var(--radio-main-color);
+    .control {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid var(--radio-main-color);
 
         &:after {
             content: '';
-            position: absolute;
-            top: 2px;
-            left: 2px;
-            width: 70%;
-            height: 70%;
+            width: calc(50% + 1px);
+            height: calc(50% + 1px);
             border-radius: 100%;
             background: var(--radio-checked-color);
             transform: scale(0);
@@ -83,7 +88,7 @@ const Radio = styled(RadioBase)<PRadio>`
         }
     }
 
-    &--input:checked + &--control {
+    .input:checked + .control {
         border-color: var(--radio-checked-color);
 
         &:after {
@@ -92,7 +97,7 @@ const Radio = styled(RadioBase)<PRadio>`
         }
     }
 
-    &--label {
+    .label {
         margin-left: 8px;
     }
 `;
