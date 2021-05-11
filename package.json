@@ -29,9 +29,11 @@
     "dependencies": {
         "@etchteam/storybook-addon-status": "^3.0.1",
         "@mattermost/compass-icons": "github:mattermost/compass-icons#5fc43ecf90ba697613e02a6201811894b7b74f60",
+        "@types/axios": "^0.14.0",
         "@types/node": "^12.0.0",
         "@types/react": "^17.0.0",
         "@types/react-dom": "^17.0.0",
+        "axios": "^0.21.1",
         "clsx": "^1.1.1",
         "color-blend": "^3.0.1",
         "lodash.kebabcase": "^4.1.1",
