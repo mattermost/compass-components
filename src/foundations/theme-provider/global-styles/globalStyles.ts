@@ -25,7 +25,8 @@ const GlobalStyle = createGlobalStyle`
     }
     
     ${defaultStyles};
-
+    
+    // TODO@all: these styles need to be extracted (and adjusted) to the Skeleton component once it is ready to be built
     .skeleton {
         display: block;
         flex: 1;
