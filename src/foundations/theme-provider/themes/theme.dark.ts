@@ -1,3 +1,4 @@
+import { setAlpha } from '../../../shared';
 import { indigo, green, red, neutral, orange, purple, teal } from '../../colors';
 
 import { TTheme } from './theme.types';
@@ -47,6 +48,12 @@ const themeDark: TTheme = {
         selected: purple[500],
         disabled: neutral[100],
     },
+    badges: {
+        online: green[600],
+        away: orange[400],
+        dnd: red[500],
+        offline: setAlpha(neutral[350], 0.64),
+    },
     text: {
         primary: neutral[50],
         accent: neutral[150],
@@ -55,6 +62,7 @@ const themeDark: TTheme = {
         contrast: neutral[100],
     },
     background: {
+        badge: neutral[1250],
         default: neutral[1100],
         shape: neutral[1000],
     },

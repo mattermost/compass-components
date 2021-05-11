@@ -31,7 +31,7 @@ const getMargin = (fontSize: number, multiplier: number): number =>
     Math.max(Math.round((fontSize * multiplier) / 4) * 4, 8);
 
 const VFontStyle = css`
-    --body-font-family: “Open Sans”, sans-serif;
+    --body-font-family: 'Open Sans', sans-serif;
     --heading-font-family: Metropolis, sans-serif;
 
     --base-font-size: ${baseSize * 1.75}px;
