@@ -138,4 +138,31 @@ import { STATUSBADGE_STATUSES } from '../status-badge/StatusBadge.constants';
     >
         {(args) => <Avatar {...args} />}
     </Story>
+    <Story
+        name="team"
+        args={{
+            isTeam: true,
+            size: DEFAULT_AVATAR_SIZE,
+            image: 'https://picsum.photos/200/300?random=1',
+            userName: 'john.doe',
+        }}
+        argTypes={Utils.hideStyledComponentProperties({
+            size: {
+                options: AVATAR_SIZES,
+                control: {
+                    type: 'select',
+                    labels: {
+                        xs: 'x-small',
+                        sm: 'small',
+                        md: 'medium',
+                        lg: 'large',
+                        xl: 'x-large',
+                        xxl: 'xx-large',
+                    },
+                },
+            },
+        })}
+    >
+        {(args) => <Avatar {...args} />}
+    </Story>
 </Canvas>

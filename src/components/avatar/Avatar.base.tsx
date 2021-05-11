@@ -8,6 +8,7 @@ import Heading from '../heading';
 import StatusBadge from '../status-badge';
 
 import {
+    AVATAR_CORNER_RADIUS_SIZE_MAP,
     AVATAR_SIZE_MAP,
     AVATAR_STATUS_SIZE_MAP,
     AVATAR_TEXT_SIZE_MAP,
@@ -53,15 +54,21 @@ const LazyAvatarImage = ({ source }: PLazyAvatarImage): JSX.Element => {
 };
 
 const AvatarBase = ({
-    userName,
     size = DEFAULT_AVATAR_SIZE,
+    isTeam = false,
+    userName,
     image,
     className,
     status,
     ...rest
 }: PAvatar): JSX.Element => (
     <div className={className}>
-        <Shape borderRadius={'circle'} width={AVATAR_SIZE_MAP[size]} {...rest}>
+        <Shape
+            borderRadius={isTeam ? AVATAR_CORNER_RADIUS_SIZE_MAP[size] : 'circle'}
+            width={AVATAR_SIZE_MAP[size]}
+            height={AVATAR_SIZE_MAP[size]}
+            {...rest}
+        >
             {image ? (
                 <Grid flex={1} alignment={'stretch'} justify={'stretch'}>
                     <LazyAvatarImage source={image} />

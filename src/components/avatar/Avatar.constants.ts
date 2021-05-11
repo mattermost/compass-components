@@ -1,6 +1,7 @@
 import { cyan, green, indigo, neutral, orange, purple, red, teal } from '../../foundations/colors';
 import { THeadingSizeToken } from '../heading';
 import { TStatusBadgeSizeToken } from '../status-badge/StatusBadge.types';
+import { TShapeBorderRadius } from '../../foundations/shape';
 
 import { TAvatarSizeToken } from './Avatar.types';
 
@@ -35,6 +36,15 @@ const AVATAR_STATUS_SIZE_MAP: Record<TAvatarSizeToken, TStatusBadgeSizeToken> = 
     xxl: 'xl',
 };
 
+const AVATAR_CORNER_RADIUS_SIZE_MAP: Record<TAvatarSizeToken, TShapeBorderRadius> = {
+    xs: 4,
+    sm: 4,
+    md: 8,
+    lg: 12,
+    xl: 16,
+    xxl: 20,
+};
+
 const AVATAR_FALLBACK_COLORS: string[] = [
     orange[400],
     green[700],
@@ -49,8 +59,9 @@ const AVATAR_FALLBACK_COLORS: string[] = [
 export {
     AVATAR_SIZES,
     DEFAULT_AVATAR_SIZE,
-    AVATAR_SIZE_MAP,
     AVATAR_FALLBACK_COLORS,
-    AVATAR_STATUS_SIZE_MAP,
+    AVATAR_SIZE_MAP,
     AVATAR_TEXT_SIZE_MAP,
+    AVATAR_STATUS_SIZE_MAP,
+    AVATAR_CORNER_RADIUS_SIZE_MAP,
 };

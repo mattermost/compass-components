@@ -2,6 +2,7 @@ import { TAvatarSizeToken, TAvatarStatus } from './Avatar.types';
 
 type PAvatar = {
     userName: string;
+    isTeam?: boolean;
     name?: string;
     lastName?: string;
     image?: string;
