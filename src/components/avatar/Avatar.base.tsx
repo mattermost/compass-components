@@ -5,6 +5,7 @@ import Grid from '../../foundations/layout';
 import Shape from '../../foundations/shape';
 import { Utils } from '../../shared';
 import Heading from '../heading';
+import MentionBadge from '../mention-badge';
 import StatusBadge from '../status-badge';
 
 import {
@@ -56,6 +57,7 @@ const LazyAvatarImage = ({ source }: PLazyAvatarImage): JSX.Element => {
 const AvatarBase = ({
     size = DEFAULT_AVATAR_SIZE,
     isTeam = false,
+    mentionCount,
     userName,
     image,
     className,
@@ -87,6 +89,9 @@ const AvatarBase = ({
             )}
         </Shape>
         {status && <StatusBadge status={status} size={AVATAR_STATUS_SIZE_MAP[size]} />}
+        {isTeam && Utils.isNumber(mentionCount) && (
+            <MentionBadge mentionCount={Math.abs(Math.trunc(mentionCount))} />
+        )}
     </div>
 );
 

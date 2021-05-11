@@ -103,6 +103,7 @@ function getBase64(url: string): Promise<string> {
 const isNumber = (x: any): x is number => typeof x === 'number';
 const isString = (x: any): x is string => typeof x === 'string';
 const isFunction = (x: any): x is Function => typeof x === 'function';
+const isInteger = (x: number): boolean => isNumber(x) && x % 1 === 0;
 /* eslint-enable @typescript-eslint/no-explicit-any */
 
 const getFontMargin = (fontSize: number, multiplier: number): number =>
@@ -114,6 +115,7 @@ const Utils = {
     isNumber,
     isFunction,
     isString,
+    isInteger,
     forwardProperties,
     getBase64,
     getStoryDocumentationUrl,

@@ -3,6 +3,7 @@ import random from 'lodash.random';
 
 import Shape from '../../foundations/shape';
 import Heading from '../heading';
+import MentionBadge from '../mention-badge';
 import StatusBadge from '../status-badge';
 
 import AvatarBase from './Avatar.base';
@@ -28,7 +29,11 @@ const Avatar = styled(AvatarBase)<PAvatar>`
         right: -3px;
     }
 
-    ${(props): string => (props.status ? 'clip-path: inset(circle(10px at center));' : '')};
+    ${MentionBadge} {
+        position: absolute;
+        top: -1px;
+        right: -1px;
+    }
 `;
 
 type PAvatarImage = {

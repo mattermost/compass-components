@@ -14,7 +14,11 @@ const MentionBadgeBase: React.FC<PMentionBadge> = ({
     const isUnreadBadge = mentionCount === 0;
 
     return (
-        <Shape {...rest} borderRadius={isUnreadBadge ? 'circle' : 'pill'}>
+        <Shape
+            {...rest}
+            borderRadius={isUnreadBadge ? 'circle' : 'pill'}
+            width={isUnreadBadge ? 12 : 'auto'}
+        >
             {!isUnreadBadge && (
                 <Grid
                     alignment={'center'}

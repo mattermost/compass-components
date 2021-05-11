@@ -165,4 +165,40 @@ import { STATUSBADGE_STATUSES } from '../status-badge/StatusBadge.constants';
     >
         {(args) => <Avatar {...args} />}
     </Story>
+    <Story
+        name="team with mentions"
+        args={{
+            isTeam: true,
+            mentionCount: false,
+            size: DEFAULT_AVATAR_SIZE,
+            image: 'https://picsum.photos/200/300?random=1',
+            userName: 'john.doe',
+        }}
+        argTypes={Utils.hideStyledComponentProperties({
+            size: {
+                options: AVATAR_SIZES,
+                control: {
+                    type: 'select',
+                    labels: {
+                        xs: 'x-small',
+                        sm: 'small',
+                        md: 'medium',
+                        lg: 'large',
+                        xl: 'x-large',
+                        xxl: 'xx-large',
+                    },
+                },
+            },
+            mentionCount: {
+                control: {
+                    type: 'range',
+                    min: 0,
+                    max: 100,
+                    step: 1,
+                },
+            },
+        })}
+    >
+        {(args) => <Avatar {...args} />}
+    </Story>
 </Canvas>
