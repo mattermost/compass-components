@@ -57,6 +57,8 @@ const lightTheme: TTheme = {
     background: {
         default: neutral[50],
         shape: neutral[0],
+        skeleton: neutral[100],
+        shimmer: neutral[0],
     },
 };
 

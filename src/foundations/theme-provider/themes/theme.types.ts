@@ -35,6 +35,8 @@ type TTHemeTextColors = {
 type TTHemeBackgroundColors = {
     default: string;
     shape: string;
+    skeleton: string;
+    shimmer: string;
 };
 
 type TTheme = {

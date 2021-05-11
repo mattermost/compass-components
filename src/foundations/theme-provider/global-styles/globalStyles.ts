@@ -29,7 +29,7 @@ const GlobalStyle = createGlobalStyle`
     .skeleton {
         display: block;
         flex: 1;
-        background: ${(props): string => props.theme.action.disabled};
+        background: ${({ theme }): string => theme.background.skeleton};
         overflow: hidden;
         position: relative;
 
@@ -41,10 +41,11 @@ const GlobalStyle = createGlobalStyle`
             left: 0;
             transform: translateX(-100%);
             background: linear-gradient(
-                    66deg,
-                    ${(props): string => setAlpha(props.theme.action.hover, 0)} 20%,
-                    ${(props): string => setAlpha(props.theme.action.hover, 0.32)} 50%,
-                    ${(props): string => setAlpha(props.theme.action.hover, 0)} 70%
+                    90deg,
+                    ${({ theme }): string => setAlpha(theme.background.shimmer, 0)} 0,
+                    ${({ theme }): string => setAlpha(theme.background.shimmer, 0.25)} 40%,
+                    ${({ theme }): string => setAlpha(theme.background.shimmer, 0.5)} 75%,
+                    ${({ theme }): string => setAlpha(theme.background.shimmer, 0)}
             );
             animation: shimmer 1.5s infinite;
             content: '';

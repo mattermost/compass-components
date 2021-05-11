@@ -57,6 +57,8 @@ const themeDark: TTheme = {
     background: {
         default: neutral[1100],
         shape: neutral[1000],
+        skeleton: neutral[900],
+        shimmer: neutral[800],
     },
 };
 
