@@ -15,14 +15,13 @@ const getStatusStyles = ({
     const color = theme.badges[status];
 
     return css`
-        background-color: ${background};
+        background-color: ${background || theme.background.default};
         color: ${color};
     `;
 };
 
 const StatusBadge = styled(StatusBadgeBase).attrs(
-    ({ background = 'transparent', size = DEFAULT_STATUSBADGE_SIZE, ...rest }: PStatusBadge) => ({
-        background,
+    ({ size = DEFAULT_STATUSBADGE_SIZE, ...rest }: PStatusBadge) => ({
         size,
         ...rest,
     })

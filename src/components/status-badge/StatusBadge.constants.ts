@@ -1,12 +1,15 @@
-import { TComponentSizeToken } from '../../shared/types';
+import {
+    TStatusBadgeSizeMap,
+    TStatusBadgeSizeToken,
+    TStatusBadgeStatus,
+} from './StatusBadge.types';
 
-import { TStatusBadgeSizeMap, TStatusBadgeStatus } from './StatusBadge.types';
+const STATUSBADGE_SIZES: TStatusBadgeSizeToken[] = ['xs', 'sm', 'md', 'lg', 'xl'];
 
-const STATUSBADGE_SIZES: TComponentSizeToken[] = ['xs', 'sm', 'md', 'lg', 'xl'];
-
-const DEFAULT_STATUSBADGE_SIZE: TComponentSizeToken = 'md';
+const DEFAULT_STATUSBADGE_SIZE: TStatusBadgeSizeToken = 'md';
 
 const STATUSBADGE_SIZE_MAP: TStatusBadgeSizeMap = {
+    xxs: 8,
     xs: 10,
     sm: 12,
     md: 16,

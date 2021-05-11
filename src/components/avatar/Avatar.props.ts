@@ -1,11 +1,12 @@
-import { TAvatarSizeToken } from './Avatar.types';
+import { TAvatarSizeToken, TAvatarStatus } from './Avatar.types';
 
 type PAvatar = {
     userName: string;
-    image?: string;
-    size?: TAvatarSizeToken;
     name?: string;
     lastName?: string;
+    image?: string;
+    size?: TAvatarSizeToken;
+    status?: TAvatarStatus;
     className?: string;
 };
 

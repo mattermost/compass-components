@@ -3,6 +3,7 @@ import Avatar from './Avatar';
 import { DEFAULT_ARGUMENT_STABLE_EXCLUSION } from '../../shared/constants';
 import { AVATAR_SIZE_MAP, AVATAR_SIZES, DEFAULT_AVATAR_SIZE } from './Avatar.constants';
 import { Utils } from '../../shared';
+import { STATUSBADGE_STATUSES } from '../status-badge/StatusBadge.constants';
 
 <Meta title={'Components/Avatar'} />
 
@@ -10,7 +11,7 @@ import { Utils } from '../../shared';
 
 <Canvas hidden>
     <Story
-        name="user avatar"
+        name="user"
         args={{
             size: DEFAULT_AVATAR_SIZE,
             image: 'https://picsum.photos/200/300?random=1',
@@ -36,7 +37,7 @@ import { Utils } from '../../shared';
         {(args) => <Avatar {...args} />}
     </Story>
     <Story
-        name="fallback user avatar"
+        name="user fallback"
         args={{
             size: DEFAULT_AVATAR_SIZE,
             userName: 'john.doe',
@@ -53,6 +54,83 @@ import { Utils } from '../../shared';
                         lg: 'large',
                         xl: 'x-large',
                         xxl: 'xx-large',
+                    },
+                },
+            },
+        })}
+    >
+        {(args) => <Avatar {...args} />}
+    </Story>
+    <Story
+        name="user with status"
+        args={{
+            size: DEFAULT_AVATAR_SIZE,
+            status: 'online',
+            image: 'https://picsum.photos/200/300?random=1',
+            userName: 'john.doe',
+        }}
+        argTypes={Utils.hideStyledComponentProperties({
+            size: {
+                options: AVATAR_SIZES,
+                control: {
+                    type: 'select',
+                    labels: {
+                        xs: 'x-small',
+                        sm: 'small',
+                        md: 'medium',
+                        lg: 'large',
+                        xl: 'x-large',
+                        xxl: 'xx-large',
+                    },
+                },
+            },
+            status: {
+                options: STATUSBADGE_STATUSES,
+                control: {
+                    type: 'select',
+                    labels: {
+                        online: 'online',
+                        away: 'away',
+                        dnd: 'do not disturb',
+                        offline: 'offline',
+                    },
+                },
+            },
+        })}
+    >
+        {(args) => <Avatar {...args} />}
+    </Story>
+    <Story
+        name="user fallback with status"
+        args={{
+            size: DEFAULT_AVATAR_SIZE,
+            status: 'online',
+            userName: 'john.doe',
+        }}
+        argTypes={Utils.hideStyledComponentProperties({
+            size: {
+                options: AVATAR_SIZES,
+                control: {
+                    type: 'select',
+                    labels: {
+                        xs: 'x-small',
+                        sm: 'small',
+                        md: 'medium',
+                        lg: 'large',
+                        xl: 'x-large',
+                        xxl: 'xx-large',
+                    },
+                },
+            },
+            status: {
+                options: STATUSBADGE_STATUSES,
+                control: {
+                    type: 'select',
+                    labels: {
+                        online: 'online',
+                        away: 'away',
+                        dnd: 'do not disturb',
+                        offline: 'offline',
                     },
                 },
             },

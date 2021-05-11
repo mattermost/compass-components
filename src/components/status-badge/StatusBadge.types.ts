@@ -2,10 +2,12 @@ import { TComponentSizeToken } from '../../shared/types';
 
 type TStatusBadgeStatus = 'online' | 'away' | 'dnd' | 'offline';
 
-type TStatusBadgeSize = 10 | 12 | 16 | 20 | 32;
+type TStatusBadgeSize = 8 | 10 | 12 | 16 | 20 | 32;
+
+type TStatusBadgeSizeToken = Exclude<TComponentSizeToken, 'xxl'>;
 
 type TStatusBadgeSizeMap = {
-    [key in TComponentSizeToken]: TStatusBadgeSize;
+    [key in TStatusBadgeSizeToken]: TStatusBadgeSize;
 };
 
-export type { TStatusBadgeStatus, TStatusBadgeSize, TStatusBadgeSizeMap };
+export type { TStatusBadgeStatus, TStatusBadgeSize, TStatusBadgeSizeToken, TStatusBadgeSizeMap };

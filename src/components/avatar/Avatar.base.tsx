@@ -5,8 +5,14 @@ import Grid from '../../foundations/layout';
 import Shape from '../../foundations/shape';
 import { Utils } from '../../shared';
 import Heading from '../heading';
+import StatusBadge from '../status-badge';
 
-import { AVATAR_SIZE_MAP, DEFAULT_AVATAR_SIZE } from './Avatar.constants';
+import {
+    AVATAR_SIZE_MAP,
+    AVATAR_STATUS_SIZE_MAP,
+    AVATAR_TEXT_SIZE_MAP,
+    DEFAULT_AVATAR_SIZE,
+} from './Avatar.constants';
 import PAvatar from './Avatar.props';
 
 type PStyledAvatarImage = {
@@ -51,6 +57,7 @@ const AvatarBase = ({
     size = DEFAULT_AVATAR_SIZE,
     image,
     className,
+    status,
     ...rest
 }: PAvatar): JSX.Element => (
     <div className={className}>
@@ -61,12 +68,18 @@ const AvatarBase = ({
                 </Grid>
             ) : (
                 <Grid flex={1} alignment={'center'} justify={'center'}>
-                    <Heading element={'h6'} weight={'bold'} margin={'none'}>
+                    <Heading
+                        element={'h6'}
+                        weight={'bold'}
+                        margin={'none'}
+                        size={AVATAR_TEXT_SIZE_MAP[size]}
+                    >
                         {userName.slice(0, 2)}
                     </Heading>
                 </Grid>
             )}
         </Shape>
+        {status && <StatusBadge status={status} size={AVATAR_STATUS_SIZE_MAP[size]} />}
     </div>
 );
 

@@ -27,7 +27,7 @@ type TContainerElement =
 
 type TInteractionElement = 'button' | 'input';
 
-type TComponentSizeToken = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+type TComponentSizeToken = 'xxs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl';
 
 export type {
     TFontColor,
