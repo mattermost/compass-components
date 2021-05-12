@@ -70,13 +70,6 @@ const Text = styled.p
     }))
     .withConfig({
         shouldForwardProp: Utils.forwardProperties(),
-    })<PText>`
-    ${getTextVariables}
-    
-    // animation
-    body.enable-animations & {
-        transition: color var(--animation-speed-shortest) 0s ease-in-out;
-    }
-`;
+    })<PText>(getTextVariables);
 
 export default Text;

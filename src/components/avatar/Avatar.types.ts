@@ -1,5 +1,4 @@
+import { TComponentSizeToken } from '../../shared/types';
 import { TStatusBadgeStatus } from '../status-badge/StatusBadge.types';
 
-type TAvatarSizeToken = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl';
-
-export type { TAvatarSizeToken, TStatusBadgeStatus as TAvatarStatus };
+export type { TComponentSizeToken as TAvatarSizeToken, TStatusBadgeStatus as TAvatarStatus };

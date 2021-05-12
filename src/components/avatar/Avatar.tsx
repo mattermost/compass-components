@@ -17,6 +17,8 @@ const Avatar = styled(AvatarBase)<PAvatar>`
     ${Shape}:first-child {
         overflow: hidden;
         background-color: ${AVATAR_FALLBACK_COLORS[random(0, 7)]};
+        align-items: center;
+        justify-content: center;
 
         ${Heading}::first-letter {
             text-transform: uppercase;

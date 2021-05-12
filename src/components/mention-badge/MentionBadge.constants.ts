@@ -5,7 +5,7 @@ import { TMentionBadgeSize } from './MentionBadge.types';
 
 const MENTIONBADGE_SIZES: TMentionBadgeSize[] = ['sm', 'md', 'lg'];
 
-const DEFAULT_MENTIONBADGE_SIZE: TMentionBadgeSize = 'md';
+const DEFAULT_MENTIONBADGE_SIZE: TMentionBadgeSize = 'lg';
 
 const MENTIONBADGE_HEIGHT_SIZE_MAP: Record<TMentionBadgeSize, number> = {
     sm: 16,

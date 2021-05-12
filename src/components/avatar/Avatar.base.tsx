@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
-import Grid from '../../foundations/layout';
 import Shape from '../../foundations/shape';
 import { Utils } from '../../shared';
 import Heading from '../heading';
@@ -72,25 +71,24 @@ const AvatarBase = ({
             {...rest}
         >
             {image ? (
-                <Grid flex={1} alignment={'stretch'} justify={'stretch'}>
-                    <LazyAvatarImage source={image} />
-                </Grid>
+                <LazyAvatarImage source={image} />
             ) : (
-                <Grid flex={1} alignment={'center'} justify={'center'}>
-                    <Heading
-                        element={'h6'}
-                        weight={'bold'}
-                        margin={'none'}
-                        size={AVATAR_TEXT_SIZE_MAP[size]}
-                    >
-                        {userName.slice(0, 2)}
-                    </Heading>
-                </Grid>
+                <Heading
+                    element={'h6'}
+                    weight={'bold'}
+                    margin={'none'}
+                    size={AVATAR_TEXT_SIZE_MAP[size]}
+                >
+                    {userName.slice(0, 2)}
+                </Heading>
             )}
         </Shape>
         {status && <StatusBadge status={status} size={AVATAR_STATUS_SIZE_MAP[size]} />}
         {isTeam && Utils.isNumber(mentionCount) && (
-            <MentionBadge mentionCount={Math.abs(Math.trunc(mentionCount))} />
+            <MentionBadge
+                mentionCount={Math.abs(Math.trunc(mentionCount))}
+                size={size === 'xl' ? 'lg' : 'md'}
+            />
         )}
     </div>
 );
