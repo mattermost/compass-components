@@ -2,6 +2,8 @@ name: Storybook Build and Deploy
 on:
     workflow_dispatch:
     push:
+        branches:
+          - master
         paths: ['src/**/*']
 jobs:
     storybook-build-and-deploy:
