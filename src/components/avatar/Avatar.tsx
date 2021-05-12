@@ -31,8 +31,8 @@ const Avatar = styled(AvatarBase)<PAvatar>`
 
     ${MentionBadge} {
         position: absolute;
-        top: -1px;
-        right: -1px;
+        top: -2px;
+        right: -2px;
     }
 `;
 

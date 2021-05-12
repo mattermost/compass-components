@@ -1,7 +1,7 @@
 import { TFontColor, TFontMargin, TFontWeight } from './types';
 
 const FONT_TYPE_FAMILIES: Record<'heading' | 'body', string> = {
-    body: '“Open Sans”, sans-serif',
+    body: 'Open Sans, sans-serif',
     heading: 'Metropolis, sans-serif',
 };
 

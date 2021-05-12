@@ -2,19 +2,19 @@ import {
     TSpacing,
     TSpacingDefinition,
     TSpacingSides,
-    TSpacingTokens,
+    TSpacingToken,
     TSpacingTokensSymmetric,
     TSpacingTokensTRBL,
 } from './Grid.types';
 
 const GridSpacing: TSpacing = {
-    all(spacingToken: TSpacingTokens): TSpacingDefinition {
+    all(spacingToken: TSpacingToken): TSpacingDefinition {
         return [spacingToken, spacingToken, spacingToken, spacingToken];
     },
     trbl({ top = 0, right = 0, bottom = 0, left = 0 }: TSpacingTokensTRBL): TSpacingDefinition {
         return [top, right, bottom, left];
     },
-    only(side: TSpacingSides, spacingToken: TSpacingTokens): TSpacingDefinition {
+    only(side: TSpacingSides, spacingToken: TSpacingToken): TSpacingDefinition {
         const trblDefinition: TSpacingTokensTRBL = {
             top: 0,
             right: 0,

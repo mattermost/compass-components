@@ -14,7 +14,7 @@ type TGridJustify =
 
 type TGridFlex = number | 'auto' | 'initial';
 
-type TSpacingTokens =
+type TSpacingToken =
     | 0
     | 25
     | 50
@@ -36,25 +36,25 @@ type TSpacingSides = 'top' | 'right' | 'bottom' | 'left';
 type TSpacingSymmetricSides = 'vertical' | 'horizontal';
 
 type TSpacingTokensTRBL = {
-    [key in TSpacingSides]?: TSpacingTokens;
+    [key in TSpacingSides]?: TSpacingToken;
 };
 
 type TSpacingTokensSymmetric = {
-    [key in TSpacingSymmetricSides]?: TSpacingTokens;
+    [key in TSpacingSymmetricSides]?: TSpacingToken;
 };
 
 // defining all entries in this Tuple restricts the length to 4
 type TSpacingDefinition = [
-    TSpacingTokens | null,
-    TSpacingTokens | null,
-    TSpacingTokens | null,
-    TSpacingTokens | null
+    TSpacingToken | null,
+    TSpacingToken | null,
+    TSpacingToken | null,
+    TSpacingToken | null
 ];
 
 type TSpacing = {
-    all: (spacingToken: TSpacingTokens) => TSpacingDefinition;
+    all: (spacingToken: TSpacingToken) => TSpacingDefinition;
     trbl: (spacingTokensTRBL: TSpacingTokensTRBL) => TSpacingDefinition;
-    only: (side: TSpacingSides, spacingToken: TSpacingTokens) => TSpacingDefinition;
+    only: (side: TSpacingSides, spacingToken: TSpacingToken) => TSpacingDefinition;
     symmetric: (spacingTokensSymmetric: TSpacingTokensSymmetric) => TSpacingDefinition;
 };
 
@@ -65,7 +65,7 @@ export type {
     TGridFlex,
     TSpacing,
     TSpacingSides,
-    TSpacingTokens,
+    TSpacingToken,
     TSpacingTokensTRBL,
     TSpacingDefinition,
     TSpacingTokensSymmetric,

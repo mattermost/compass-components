@@ -7,21 +7,22 @@ import MentionBadgeBase from './MentionBadge.base';
 import PMentionBadge from './MentionBadge.props';
 
 const getBadgeColors = ({
-    location,
+    inverted,
+    background,
     theme,
 }: ThemedStyledProps<PMentionBadge, TTheme>): FlattenSimpleInterpolation => {
-    if (location === 'sidebar') {
+    if (inverted) {
         return css`
             color: ${theme.palette.primary.main};
             background-color: currentColor;
-            border: 2px solid ${theme.background.shape};
+            border: 2px solid ${background || theme.background.default};
         `;
     }
 
     return css`
         color: ${theme.text.contrast};
         background-color: ${theme.background.badge};
-        border: 2px solid ${theme.background.shape};
+        border: 2px solid ${background || theme.background.default};
     `;
 };
 

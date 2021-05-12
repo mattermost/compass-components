@@ -1,22 +1,33 @@
 import { Meta, Story, Canvas, Title, Subtitle } from '@storybook/addon-docs/blocks';
 
 import StatusBadge from './index';
+import MentionBadge from './index';
+import { MENTIONBADGE_SIZES } from './MentionBadge.constants';
+import { Utils } from '../../shared';
 
 export const mentionBadgeDefaultArgs = {
-    location: 'sidebar',
     mentionCount: 1,
+    size: 'md',
 };
 
 export const unreadBadgeDefaultArgs = {
-    width: 8,
     mentionCount: 0,
+    size: 'md',
 };
 
-export const mentionBadgeArgTypes = {
-    location: {
+export const mentionBadgeArgTypes = Utils.hideStyledComponentProperties({
+    size: {
+        options: MENTIONBADGE_SIZES,
         control: {
             type: 'select',
-            options: ['sidebar', 'menu'],
+            labels: {
+                xs: 'x-small',
+                sm: 'small',
+                md: 'medium',
+                lg: 'large',
+                xl: 'x-large',
+                xxl: 'xx-large',
+            },
         },
     },
     mentionCount: {
@@ -27,7 +38,26 @@ export const mentionBadgeArgTypes = {
             step: 1,
         },
     },
-};
+    mentionLimit: {
+        control: {
+            type: 'range',
+            min: 10,
+            max: 100,
+            step: 10,
+        },
+    },
+    inverted: {
+        control: {
+            type: 'boolean',
+        },
+    },
+    background: {
+        control: {
+            type: 'color',
+        },
+    },
+    width: { table: { disable: true } },
+});
 
 <Meta component={MentionBadge} title="Components/StatusBadge" parameters={{ status: 'stable' }} />
 
@@ -55,26 +85,11 @@ Channel or Team. Unread Badges do not display a count.
 Status Badges are used to indicate the status of a particular user and are usually paired with an avatar
 or username
 
-export const canvasExampleArgs = {
-    ...mentionBadgeDefaultArgs,
-};
-
 <Canvas hidden>
-    <Story
-        name="Mention Badges"
-        argTypes={mentionBadgeArgTypes}
-        args={{
-            ...mentionBadgeDefaultArgs,
-        }}
-    >
+    <Story name="Mention Badges" args={mentionBadgeDefaultArgs} argTypes={mentionBadgeArgTypes}>
         {(args) => <MentionBadge {...args} />}
     </Story>
-    <Story
-        name="Unread Badges"
-        args={{
-            ...unreadBadgeDefaultArgs,
-        }}
-    >
+    <Story name="Unread Badges" args={unreadBadgeDefaultArgs} argTypes={mentionBadgeArgTypes}>
         {(args) => <MentionBadge {...args} />}
     </Story>
 </Canvas>

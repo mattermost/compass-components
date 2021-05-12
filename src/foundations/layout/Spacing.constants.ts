@@ -1,6 +1,6 @@
-import { TSpacingTokens } from './Grid.types';
+import { TSpacingToken } from './Grid.types';
 
-const SIZES: Record<TSpacingTokens, number> = {
+const SIZES: Record<TSpacingToken, number> = {
     0: 0,
     25: 4,
     50: 8,

@@ -45,6 +45,15 @@ const AVATAR_CORNER_RADIUS_SIZE_MAP: Record<TAvatarSizeToken, TShapeBorderRadius
     xxl: 20,
 };
 
+const AVATAR_MENTIONBADGE_SIZE_MAP: Record<TAvatarSizeToken, number> = {
+    xs: 8,
+    sm: 8,
+    md: 12,
+    lg: 16,
+    xl: 20,
+    xxl: 24,
+};
+
 const AVATAR_FALLBACK_COLORS: string[] = [
     orange[400],
     green[700],
@@ -64,4 +73,5 @@ export {
     AVATAR_TEXT_SIZE_MAP,
     AVATAR_STATUS_SIZE_MAP,
     AVATAR_CORNER_RADIUS_SIZE_MAP,
+    AVATAR_MENTIONBADGE_SIZE_MAP,
 };

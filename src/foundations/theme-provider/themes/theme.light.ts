@@ -62,7 +62,7 @@ const lightTheme: TTheme = {
         contrast: neutral[0],
     },
     background: {
-        badge: neutral[1000],
+        badge: neutral[500],
         default: neutral[50],
         shape: neutral[0],
         skeleton: neutral[100],
