@@ -2,63 +2,101 @@ import styled, { css } from 'styled-components';
 import { FlattenSimpleInterpolation, ThemedStyledProps } from 'styled-components/ts3.6';
 
 import { TTheme } from '../../foundations/theme-provider/themes/theme.types';
+import { setAlpha, blendColors } from '../../shared';
 
 import CheckboxBase from './Checkbox.base';
 import PCheckbox from './Checkbox.props';
-import { DEFAULT_CHECKBOX_STATE } from './Checkbox.constants';
-
-const baseProperties = ({ state = DEFAULT_CHECKBOX_STATE }: PCheckbox): PCheckbox => ({
-    state,
-    className: 'Checkbox',
-});
 
 const getCheckboxVariables = ({
-    theme: { palette, background, text },
-    state,
-}: ThemedStyledProps<PCheckbox, TTheme>): FlattenSimpleInterpolation => {
-    let checkmarkColor = 'transparent';
-    let checkboxBg = background.default;
-    let borderColor = text.disabled;
+    theme: { palette, action, text },
+    hasError = false,
+    disabled = false,
+    checked = false,
+    size,
+}: ThemedStyledProps<PRadio, TTheme>): FlattenSimpleInterpolation => {
+    const opacities: Record<string, number> = {
+        hover: 0.16,
+    };
 
-    switch (state) {
-        case 'on':
-            checkmarkColor = text.contrast;
-            checkboxBg = palette.primary.main;
-            borderColor = palette.primary.main;
-            break;
-        case 'off':
-            borderColor = text.secondary;
-            break;
-        case 'status':
-            borderColor = palette.alert.main;
-            break;
-        case 'disabled':
-            checkboxBg = background.default;
-            break;
-        default:
-            break;
+    const colors: Record<string, string> = {
+        checked: hasError ? palette.alert.main : palette.primary.main,
+        text: text.primary,
+        action: action.hover,
+        icon: text.contrast,
+        border: checked ? palette.primary.main : text.secondary,
+    };
+
+    if (disabled) {
+        colors.checked = setAlpha(colors.checked, 0.32);
+        colors.text = setAlpha(colors.text, 0.16);
+        colors.border = colors.text;
     }
 
+    if (hasError) {
+        colors.border = palette.alert.main;
+    }
+
+    // @default: `size === 'medium'`
+    let labelMargin = 10;
+
+    if (size === 'sm') {
+        labelMargin = 8;
+    } else if (size === 'lg') {
+        labelMargin = 12;
+    }
+
+    const actionStyles = disabled
+        ? css`
+              cursor: not-allowed;
+          `
+        : css`
+              cursor: pointer;
+              .control:hover {
+                  border-color: ${blendColors(
+                      colors.border,
+                      setAlpha(colors.border, opacities.hover)
+                  )};
+              }
+              &:focus {
+                  box-shadow: inset 0 0 0 3px rgba(255, 255, 255, 0.32),
+                      inset 0 0 0 3px ${colors.checked};
+              }
+
+              .input:checked + .control {
+                  border-color: ${colors.checked};
+                  background: ${colors.checked};
+
+                  i {
+                      transform: scale(1);
+                  }
+              }
+          `;
+
     return css`
-        --checkbox-bg-color: ${checkboxBg};
-        --checkbox-border-color: ${borderColor};
-        --checkbox-icon-color: ${checkmarkColor};
+        ${actionStyles}
+        color: ${colors.text};
+
+        .control {
+            border: 1px solid ${colors.border};
+            transition: background 0.3s ease;
+
+            i {
+                color: ${colors.icon};
+                transform: scale(0);
+                transition: all 0.3s ease;
+            }
+        }
+
+        .label {
+            margin-left: ${labelMargin}px;
+        }
     `;
 };
 
-const Checkbox = styled(CheckboxBase).attrs(baseProperties)<PCheckbox>`
+const Checkbox = styled(CheckboxBase)<PCheckbox>`
     ${getCheckboxVariables};
-    cursor: pointer;
-    .Checkbox--input {
+    .input {
         display: none;
-    }
-    i {
-        border-radius: 2px;
-        background: var(--checkbox-bg-color);
-        border: 1px solid var(--checkbox-border-color);
-        color: var(--checkbox-icon-color);
-        transition: background-color 200ms 0ms ease-in-out, opacity 200ms 125ms ease-in,
-            scale 2000ms 0ms cubic-bezier(0.17, 0.67, 0.82, 0.28);
     }
 `;
 

@@ -12,7 +12,7 @@ export type PRadio = {
      * */
     hasError?: boolean;
     /**
-     * the size the radio button
+     * the size of the radio button
      * @default 16
      * */
     size?: TRadioSizeToken;

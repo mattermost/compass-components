@@ -1,5 +1,5 @@
-type TCheckboxSizes = 'sm' | 'md' | 'lg';
+type TCheckboxSizeToken = 'sm' | 'md' | 'lg';
 
-type TCheckboxState = 'on' | 'off' | 'status' | 'disabled';
+type TCheckboxSize = Extract<TIconSize, 12 | 16 | 20>;
 
-export type { TCheckboxSizes, TCheckboxState };
+export type { TCheckboxSize, TCheckboxSizeToken };
