@@ -12,6 +12,7 @@ const getRadioVariables = ({
     hasError = false,
     disabled = false,
     checked = false,
+    size,
 }: ThemedStyledProps<PRadio, TTheme>): FlattenSimpleInterpolation => {
     const opacities: Record<string, number> = {
         background: disabled ? 0.08 : 1,
@@ -29,6 +30,19 @@ const getRadioVariables = ({
         colors.checked = setAlpha(colors.checked, 0.32);
         colors.text = setAlpha(colors.text, 0.16);
         colors.border = colors.text;
+    }
+
+    if (hasError) {
+        colors.border = palette.alert.main;
+    }
+
+    // @default: `size === 'medium'`
+    let labelMargin = 10;
+
+    if (size === 'sm') {
+        labelMargin = 8;
+    } else if (size === 'lg') {
+        labelMargin = 12;
     }
 
     const actionStyles = disabled
@@ -55,13 +69,41 @@ const getRadioVariables = ({
                   box-shadow: inset 0 0 0 3px rgba(255, 255, 255, 0.32),
                       inset 0 0 0 3px ${colors.checked};
               }
+
+              .input:checked + .control {
+                  border-color: ${colors.checked};
+
+                  &:after {
+                      transform: scale(1);
+                      transition: all 0.2s cubic-bezier(0.35, 0.9, 0.4, 0.9);
+                  }
+              }
           `;
 
     return css`
         ${actionStyles}
         color: ${colors.text};
-        --radio-checked-color: ${colors.checked};
-        --radio-main-color: ${colors.border};
+
+        .control {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid ${colors.border};
+
+            &:after {
+                content: '';
+                width: calc(50% + 1px);
+                height: calc(50% + 1px);
+                border-radius: 100%;
+                background: ${colors.checked};
+                transform: scale(0);
+                transition: all 0.2s ease;
+            }
+        }
+
+        .label {
+            margin-left: ${labelMargin}px;
+        }
     `;
 };
 
@@ -69,36 +111,6 @@ const Radio = styled(RadioBase)<PRadio>`
     ${getRadioVariables};
     .input {
         display: none;
-    }
-
-    .control {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border: 1px solid var(--radio-main-color);
-
-        &:after {
-            content: '';
-            width: calc(50% + 1px);
-            height: calc(50% + 1px);
-            border-radius: 100%;
-            background: var(--radio-checked-color);
-            transform: scale(0);
-            transition: all 0.2s ease;
-        }
-    }
-
-    .input:checked + .control {
-        border-color: var(--radio-checked-color);
-
-        &:after {
-            transform: scale(1);
-            transition: all 0.2s cubic-bezier(0.35, 0.9, 0.4, 0.9);
-        }
-    }
-
-    .label {
-        margin-left: 8px;
     }
 `;
 

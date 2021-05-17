@@ -3,7 +3,6 @@ import React from 'react';
 import Grid from '../../foundations/layout';
 import Shape from '../../foundations/shape';
 import Text, { TTextSizeToken } from '../text';
-import HiddenComponent from '../hidden_input/HiddenInput';
 import { Utils } from '../../shared';
 
 import { DEFAULT_RADIO_SIZE } from './Radio.constants';
@@ -39,16 +38,6 @@ const RadioBase: React.FC<PRadio> = ({
             break;
     }
 
-    const children = (
-        <Shape
-            component={'span'}
-            className={'control'}
-            width={radioSize}
-            height={radioSize}
-            borderRadius={'circle'}
-        />
-    );
-
     return (
         <Grid
             row
@@ -58,13 +47,16 @@ const RadioBase: React.FC<PRadio> = ({
             onClick={onClick}
             className={className}
         >
-            <HiddenComponent
-                componentClass={'input'}
-                component={'input'}
-                type={'radio'}
-                children={children}
-                checked={checked}
-            />
+            <Text element={'label'} for="hidden__input">
+                <input className={'input'} id="hidden__input" checked={checked} type={'Radio'} />
+                <Shape
+                    component={'span'}
+                    className={'control'}
+                    width={radioSize}
+                    height={radioSize}
+                    borderRadius={'circle'}
+                />
+            </Text>
             {hasLabel && (
                 <Text element={'span'} className={'label'} size={labelSize}>
                     {label}

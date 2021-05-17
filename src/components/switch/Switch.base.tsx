@@ -3,7 +3,6 @@ import React from 'react';
 import Grid from '../../foundations/layout';
 import Shape from '../../foundations/shape';
 import Text, { TTextSizeToken } from '../text';
-import HiddenComponent from '../hidden_input/HiddenInput';
 import { Utils } from '../../shared';
 
 import { TSwitchWidth, TSwitchHeight, TSwitchInnerWidth } from './Switch.types';
@@ -19,7 +18,7 @@ const SwitchBase: React.FC<PSwitch> = ({
     label,
     size = DEFAULT_SWITCH_SIZE,
     className,
-    toggled = true,
+    toggled,
     onClick,
 }: PSwitch) => {
     let labelSize: TTextSizeToken = 100;
@@ -46,17 +45,6 @@ const SwitchBase: React.FC<PSwitch> = ({
             break;
     }
 
-    const children = (
-        <Shape
-            className={'container'}
-            width={switchWidth}
-            height={switchHeight}
-            borderRadius={'pill'}
-        >
-            <Shape borderRadius={'circle'} width={switchInnerWidth} className={'toggle'} />
-        </Shape>
-    );
-
     return (
         <Grid
             row
@@ -66,13 +54,17 @@ const SwitchBase: React.FC<PSwitch> = ({
             onClick={onClick}
             className={className}
         >
-            <HiddenComponent
-                componentClass={'input'}
-                component={'input'}
-                type={'checkbox'}
-                children={children}
-                checked={toggled}
-            />
+            <Text element={'label'} for="hidden__input">
+                <input className={'input'} id="hidden__input" checked={toggled} type={'checkbox'} />
+                <Shape
+                    className={'container'}
+                    width={switchWidth}
+                    height={switchHeight}
+                    borderRadius={'pill'}
+                >
+                    <Shape borderRadius={'circle'} width={switchInnerWidth} className={'toggle'} />
+                </Shape>
+            </Text>
             {hasLabel && (
                 <Text element={'span'} className={'label'} size={labelSize} margin={'none'}>
                     {label}
