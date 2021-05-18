@@ -1,0 +1,162 @@
+import { useState } from 'react';
+import { Meta, Story, Canvas, Title, Subtitle, ArgsTable } from '@storybook/addon-docs/blocks';
+import {
+    DEFAULT_TEXT_INPUT_SIZE,
+    TEXT_INPUT_SIZE_MAPPING,
+    TEXT_INPUT_SIZES,
+} from './TextInput.constants';
+import { Utils } from '../../shared';
+import Grid, { Spacing } from '../../foundations/layout';
+import Text from '../text';
+import { DEFAULT_ARGUMENT_STABLE_EXCLUSION } from '../../shared/constants';
+import textInputAnatomyImg from '../../assets/images/text-input-anatomy.png';
+import TextInput from './index';
+
+export const defaultArgs = {
+    label: 'Label',
+    size: DEFAULT_TEXT_INPUT_SIZE,
+    width: 300,
+};
+
+<Meta component={TextInput} title="Components/TextInput" />
+
+<Title>Text Inputs</Title>
+
+<Subtitle>
+    Text inputs are UI elements that allow users to enter and edit text. They typically appear in
+    forms or modals.
+</Subtitle>
+
+## Text Input Anatomy
+
+Text inputs are composed of the following elements:
+
+-   Container
+-   Label
+-   Leading Icon
+-   Trailing Icon
+-   Placeholder
+-   Value
+
+<img src={textInputAnatomyImg} alt={'text-input-anatomy'} />
+
+### Container
+
+The container creates the bounds of the input, and identifies the area to enter text. The input container has rounded corners with a stroke. The thickness and color of the stroke can change to indicate when the text field is active.
+
+### Label
+
+The label is used to identify the expected input based on the information that is being requested. The label is text that displays by default before a user interacts with it. Labels should be as concise and clear as possible on a single line.
+
+### Leading Icon
+
+Leading icons within text inputs are an optional element that leverage the Icon Component. Leading Icons appear to the left of the text input label, placeholder, or value. Leading icons are typically used as signifiers describing the type of text input field, and they are currently used sparingly.
+
+### Trailing Icon
+
+Trailing icons within text inputs are also optional, and are used more often. Trailing icons can be used to indicate validity, errors, or can be used as a touch indicator of functionality such as clear or dropdown menu.
+
+### Placeholder
+
+The placeholder is an optional element often used to provide a quick sample or help statement of what input may be expected in the text field. The content of a placeholder should not exceed more than a couple of words. Its position sits to the right of the blinking input caret. Once any value is entered by the user, the placeholder is no longer visible.
+
+### Value
+
+Value is the text the user has entered into a text field. Its position sits to the left of blinking input caret.
+
+## Text Input Sizes
+
+Text inputs come in 3 sizes: Small, Medium, and Large. These sizes match the sizes of Buttons as well.
+
+<Grid row={false} justify={'space-between'}>
+    <Grid justify={'center'}>
+        <TextInput label={'Label'} size={'sm'} width={300} />
+        <br />
+        <Text element={'p'} size={200} margin={'none'}>
+            <strong>Small</strong>
+        </Text>
+    </Grid>
+    <Grid justify={'center'}>
+        <TextInput label={'Label'} size={'md'} width={300} />
+        <br />
+        <Text element={'p'} size={200} margin={'none'}>
+            <strong>Medium</strong>
+        </Text>
+    </Grid>
+    <Grid justify={'center'}>
+        <TextInput label={'Label'} size={'lg'} width={300} />
+        <br />
+        <Text element={'p'} size={200} margin={'none'}>
+            <strong>Large</strong>
+        </Text>
+    </Grid>
+</Grid>
+
+## Text Input States
+
+### Standard States
+
+Text Inputs have 5 standard states: Default, Hover, Active, Focus, and Read-only.
+
+<Grid row={false} justify={'space-between'}>
+    <Grid justify={'center'}>
+        <TextInput {...defaultArgs} />
+        <br />
+        <Text element={'p'} size={200} margin={'none'}>
+            <strong>Default</strong>
+        </Text>
+    </Grid>
+    <Grid justify={'center'}>
+        <TextInput {...defaultArgs} active={true} />
+        <br />
+        <Text element={'p'} size={200} margin={'none'}>
+            <strong>Active</strong>
+        </Text>
+    </Grid>
+    <Grid justify={'center'}>
+        <TextInput {...defaultArgs} disabled={true} />
+        <br />
+        <Text element={'p'} size={200} margin={'none'}>
+            <strong>Read-only</strong>
+        </Text>
+    </Grid>
+</Grid>
+
+### Invalid States
+
+The invalid states are used when text inputs return an error as part of the form field validation. The red style provides user feedback on an issue that needs to be addressed. This treatment is coupled with other common elements like help text.
+
+<Grid row={false} justify={'space-between'}>
+    <Grid justify={'center'}>
+        <TextInput {...defaultArgs} hasError={true} />
+        <br />
+        <Text element={'p'} size={200} margin={'none'}>
+            <strong>Invalid</strong>
+        </Text>
+    </Grid>
+</Grid>
+
+## Dependencies
+
+<ArgsTable of={TextInput} exclude={[...DEFAULT_ARGUMENT_STABLE_EXCLUSION]} />
+
+<Canvas hidden>
+    <Story
+        name="Default"
+        argTypes={Utils.hideStyledComponentProperties({
+            label: { control: { type: 'text' } },
+            size: { control: { type: 'radio', options: TEXT_INPUT_SIZES } },
+            hasError: { control: { type: 'boolean' } },
+            disabled: { control: { type: 'boolean' } },
+            active: { control: { type: 'boolean' } },
+            className: { table: { disable: true } },
+            onClick: { action: 'clicked', table: { disable: true } },
+        })}
+        args={{
+            label: 'Default Radio',
+            size: DEFAULT_TEXT_INPUT_SIZE,
+        }}
+    >
+        {(args) => <TextInput {...args} />}
+    </Story>
+</Canvas>
