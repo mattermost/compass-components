@@ -1,16 +1,15 @@
-import { TSwitchSize, TSwitchWidth, TSwitchHeight, TSwitchInnerWidth } from './Switch.types';
+import { TSwitchSizeToken, TSwitchWidth, TSwitchHeight, TSwitchInnerWidth } from './Switch.types';
 
 export type PSwitch = {
     /**
      * whether the switch button is rendered with a label
-     * @default 'Public'
      * */
     label?: string;
     /**
      * the size of the switch
      * @default 'md'
      * */
-    size?: TSwitchSize;
+    size?: TSwitchSizeToken;
     /**
      * the corresponding width of the switch
      * @default 40
@@ -27,11 +26,21 @@ export type PSwitch = {
      * */
     innerWidth?: TSwitchInnerWidth;
     /**
-     * whether the switch button is disabled for interaction
+     * whether the switch is toggled
+     * @default false
+     * */
+    toggled?: boolean;
+    /**
+     * whether the switch is disabled for interaction
      * @default false
      * */
     disabled?: boolean;
-    toggled?: boolean;
-    className?: string;
+    /**
+     * onClick event handler
+     * */
     onClick?: () => void;
+    /**
+     * custom classname
+     * */
+    className?: string;
 };

@@ -5,7 +5,7 @@ import Shape from '../../foundations/shape';
 import Text, { TTextSizeToken } from '../text';
 import { Utils } from '../../shared';
 
-import { DEFAULT_RADIO_SIZE } from './Radio.constants';
+import { DEFAULT_RADIO_SIZE, RADIO_SIZE_MAPPING } from './Radio.constants';
 import { PRadio } from './Radio.props';
 import { TRadioSize } from './Radio.types';
 
@@ -17,7 +17,7 @@ const RadioBase: React.FC<PRadio> = ({
     checked,
 }: PRadio) => {
     let labelSize: TTextSizeToken = 100;
-    let radioSize: TRadioSize = 16;
+    let radioSize: TRadioSize = RADIO_SIZE_MAPPING[size];
 
     const hasLabel = Utils.isString(label) && label.length > 0;
 
@@ -41,22 +41,22 @@ const RadioBase: React.FC<PRadio> = ({
     return (
         <Grid
             row
+            component={'label'}
+            for="hidden__input"
             alignment={'center'}
             justify={'center'}
             flex={1}
             onClick={onClick}
             className={className}
         >
-            <Text element={'label'} for="hidden__input">
-                <input className={'input'} id="hidden__input" checked={checked} type={'Radio'} />
-                <Shape
-                    component={'span'}
-                    className={'control'}
-                    width={radioSize}
-                    height={radioSize}
-                    borderRadius={'circle'}
-                />
-            </Text>
+            <input className={'input'} id="hidden__input" checked={checked} type={'Radio'} />
+            <Shape
+                component={'span'}
+                className={'control'}
+                width={radioSize}
+                height={radioSize}
+                borderRadius={'circle'}
+            />
             {hasLabel && (
                 <Text element={'span'} className={'label'} size={labelSize}>
                     {label}

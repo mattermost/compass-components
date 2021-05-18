@@ -5,6 +5,7 @@ import { TTheme } from '../../foundations/theme-provider/themes/theme.types';
 import { setAlpha, blendColors } from '../../shared';
 
 import RadioBase from './Radio.base';
+import { DEFAULT_RADIO_SIZE } from './Radio.constants';
 import { PRadio } from './Radio.props';
 
 const getRadioVariables = ({
@@ -12,7 +13,7 @@ const getRadioVariables = ({
     hasError = false,
     disabled = false,
     checked = false,
-    size,
+    size = DEFAULT_RADIO_SIZE,
 }: ThemedStyledProps<PRadio, TTheme>): FlattenSimpleInterpolation => {
     const opacities: Record<string, number> = {
         background: disabled ? 0.08 : 1,
@@ -84,6 +85,10 @@ const getRadioVariables = ({
         ${actionStyles}
         color: ${colors.text};
 
+        .input {
+            display: none;
+        }
+
         .control {
             display: flex;
             align-items: center;
@@ -107,11 +112,6 @@ const getRadioVariables = ({
     `;
 };
 
-const Radio = styled(RadioBase)<PRadio>`
-    ${getRadioVariables};
-    .input {
-        display: none;
-    }
-`;
+const Radio = styled(RadioBase)<PRadio>(getRadioVariables);
 
 export default Radio;

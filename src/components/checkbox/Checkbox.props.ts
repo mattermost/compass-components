@@ -3,7 +3,6 @@ import { TCheckboxSizeToken } from './Checkbox.types';
 type PCheckbox = {
     /**
      * whether the checkbox is rendered with a label
-     * @default 'Public'
      * */
     label?: string;
     /**
@@ -26,8 +25,14 @@ type PCheckbox = {
      * @default false
      * */
     disabled?: boolean;
-    className?: string;
+    /**
+     * onClick event handler
+     * */
     onClick?: () => void;
+    /**
+     * custom classname
+     * */
+    className?: string;
 };
 
 export default PCheckbox;

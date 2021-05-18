@@ -7,10 +7,11 @@ import Text, { TTextSizeToken } from '../text';
 import { Utils } from '../../shared';
 
 import PCheckbox from './Checkbox.props';
-import { DEFAULT_CHECKBOX_SIZE } from './Checkbox.constants';
+import { DEFAULT_CHECKBOX_SIZE, CHECKBOX_SIZE_MAPPING } from './Checkbox.constants';
+import { TCheckboxSize } from './Checkbox.types';
 
 const CheckboxBase: React.FC<PCheckbox> = ({
-    label = 'Public',
+    label,
     size = DEFAULT_CHECKBOX_SIZE,
     className,
     onClick,
@@ -18,7 +19,7 @@ const CheckboxBase: React.FC<PCheckbox> = ({
 }: PCheckbox): JSX.Element => {
     let labelSize: TTextSizeToken = 100;
     let iconSize: TIconSize = 12;
-    let checkboxSize: TCheckboxSize = 16;
+    let checkboxSize: TCheckboxSize = CHECKBOX_SIZE_MAPPING[size];
 
     const hasLabel = Utils.isString(label) && label.length > 0;
 
@@ -30,7 +31,7 @@ const CheckboxBase: React.FC<PCheckbox> = ({
             break;
         case 'sm':
             iconSize = 10;
-            checkboxSize = 14;
+            checkboxSize = 12;
             labelSize = 75;
             break;
         default:
@@ -40,24 +41,24 @@ const CheckboxBase: React.FC<PCheckbox> = ({
     return (
         <Grid
             row
+            component={'label'}
+            for="hidden__input"
             alignment={'center'}
             justify={'center'}
             flex={1}
             onClick={onClick}
             className={className}
         >
-            <Text element={'label'} for="hidden__input">
-                <input className={'input'} id="hidden__input" checked={checked} type={'checkbox'} />
-                <Shape
-                    component={'span'}
-                    className={'control'}
-                    width={checkboxSize}
-                    height={checkboxSize}
-                    borderRadius={2}
-                >
-                    <Icon glyph="check" size={iconSize} />
-                </Shape>
-            </Text>
+            <input className={'input'} id="hidden__input" checked={checked} type={'checkbox'} />
+            <Shape
+                component={'span'}
+                className={'control'}
+                width={checkboxSize}
+                height={checkboxSize}
+                borderRadius={2}
+            >
+                <Icon glyph="check" size={iconSize} />
+            </Shape>
             {hasLabel && (
                 <Text element={'span'} className={'label'} size={labelSize}>
                     {label}

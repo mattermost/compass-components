@@ -1,3 +1,5 @@
+import { TIconSize } from '../icon';
+
 type TCheckboxSizeToken = 'sm' | 'md' | 'lg';
 
 type TCheckboxSize = Extract<TIconSize, 12 | 16 | 20>;

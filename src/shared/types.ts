@@ -23,7 +23,8 @@ type TContainerElement =
     | 'nav'
     | 'section'
     | 'summary'
-    | 'time';
+    | 'time'
+    | 'label';
 
 type TInteractionElement = 'button' | 'input';
 

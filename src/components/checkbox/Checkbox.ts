@@ -5,6 +5,7 @@ import { TTheme } from '../../foundations/theme-provider/themes/theme.types';
 import { setAlpha, blendColors } from '../../shared';
 
 import CheckboxBase from './Checkbox.base';
+import { DEFAULT_CHECKBOX_SIZE } from './Checkbox.constants';
 import PCheckbox from './Checkbox.props';
 
 const getCheckboxVariables = ({
@@ -12,8 +13,8 @@ const getCheckboxVariables = ({
     hasError = false,
     disabled = false,
     checked = false,
-    size,
-}: ThemedStyledProps<PRadio, TTheme>): FlattenSimpleInterpolation => {
+    size = DEFAULT_CHECKBOX_SIZE,
+}: ThemedStyledProps<PCheckbox, TTheme>): FlattenSimpleInterpolation => {
     const opacities: Record<string, number> = {
         hover: 0.16,
     };
@@ -76,6 +77,10 @@ const getCheckboxVariables = ({
         ${actionStyles}
         color: ${colors.text};
 
+        .input {
+            display: none;
+        }
+
         .control {
             border: 1px solid ${colors.border};
             transition: background 0.3s ease;
@@ -93,11 +98,6 @@ const getCheckboxVariables = ({
     `;
 };
 
-const Checkbox = styled(CheckboxBase)<PCheckbox>`
-    ${getCheckboxVariables};
-    .input {
-        display: none;
-    }
-`;
+const Checkbox = styled(CheckboxBase)<PCheckbox>(getCheckboxVariables);
 
 export default Checkbox;

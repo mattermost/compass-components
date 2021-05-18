@@ -3,7 +3,6 @@ import { TRadioSizeToken } from './Radio.types';
 export type PRadio = {
     /**
      * whether the radio button is rendered with a label
-     * @default 'Public'
      * */
     label?: string;
     /**
@@ -16,12 +15,22 @@ export type PRadio = {
      * @default 16
      * */
     size?: TRadioSizeToken;
-    className?: string;
+    /**
+     * whether the radio button is checked
+     * @default false
+     * */
+    checked?: boolean;
     /**
      * whether the radio button is disabled for interaction
      * @default false
      * */
     disabled?: boolean;
-    checked?: boolean;
+    /**
+     * onClick event handler
+     * */
     onClick?: () => void;
+    /**
+     * custom classname
+     * */
+    className?: string;
 };

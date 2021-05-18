@@ -17,6 +17,8 @@ export type PGrid = {
     wrap?: boolean;
     /** the HTML tag that is used to render the component */
     component?: TGridComponent;
+    /** if the HTML tag is a label add the for prop */
+    for?: string;
     /** defines the vertical alignment of items inside the component */
     alignment?: TGridAlignment;
     /** defines the horizontal alignment of items inside the component */

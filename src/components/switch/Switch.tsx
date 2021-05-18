@@ -80,6 +80,10 @@ const getSwitchVariables = ({
         ${actionStyles}
         color: ${textColor};
 
+        .input {
+            display: none;
+        }
+
         .container {
             border: 2px solid ${mainColor};
             display: flex;
@@ -101,11 +105,6 @@ const getSwitchVariables = ({
     `;
 };
 
-const Switch = styled(SwitchBase)<PSwitch>`
-    ${getSwitchVariables};
-    .input {
-        display: none;
-    }
-`;
+const Switch = styled(SwitchBase)<PSwitch>(getSwitchVariables);
 
 export default Switch;
