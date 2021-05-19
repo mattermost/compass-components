@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components';
 import { FlattenSimpleInterpolation, ThemedStyledProps } from 'styled-components/ts3.6';
 
 import { TTheme } from '../../foundations/theme-provider/themes/theme.types';
-import { setAlpha, blendColors } from '../../shared';
+import { setAlpha } from '../../shared';
 
 import TextInputBase from './TextInput.base';
 import { PTextInput } from './TextInput.props';
@@ -13,10 +13,6 @@ const getTextInputVariables = ({
     disabled = false,
     active = false,
 }: ThemedStyledProps<PTextInput, TTheme>): FlattenSimpleInterpolation => {
-    const opacities: Record<string, number> = {
-        hover: 0.16,
-    };
-
     const colors: Record<string, string> = {
         active: hasError ? palette.alert.main : palette.primary.main,
         text: text.primary,
@@ -40,15 +36,13 @@ const getTextInputVariables = ({
           `
         : css`
               cursor: pointer;
-              &:hover {
-                  border-color: ${blendColors(
-                      colors.border,
-                      setAlpha(colors.border, opacities.hover)
-                  )};
-              }
-              &:focus {
-                  box-shadow: inset 0 0 0 3px rgba(255, 255, 255, 0.32),
-                      inset 0 0 0 3px ${colors.active};
+              .input__field:focus {
+                  outline: none;
+
+                  & + .input__label {
+                      transform: translate(0.25rem, -65%) scale(0.8);
+                      color: ${colors.active};
+                  }
               }
           `;
 
@@ -56,17 +50,29 @@ const getTextInputVariables = ({
         ${actionStyles}
         color: ${colors.text};
         border: 1px solid ${colors.border};
+
+        .input {
+            position: relative;
+
+            .input__label {
+                position: absolute;
+                padding: calc(0.5rem * 0.75) calc(0.5rem * 0.5);
+                white-space: nowrap;
+                transform: translate(0, 0);
+                background: white;
+                transition: transform 120ms ease-in;
+            }
+
+            .input__field {
+                width: 100%;
+                border: none;
+            }
+        }
     `;
 };
 
 const TextInput = styled(TextInputBase)<PTextInput>`
     ${getTextInputVariables};
-    .input {
-        border: none;
-    }
-    .input:focus {
-        outline: none;
-    }
 `;
 
 export default TextInput;

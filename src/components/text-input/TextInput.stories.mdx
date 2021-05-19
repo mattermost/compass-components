@@ -14,6 +14,7 @@ import TextInput from './index';
 
 export const defaultArgs = {
     label: 'Label',
+    placeholder: 'Placeholder',
     size: DEFAULT_TEXT_INPUT_SIZE,
     width: 300,
 };
@@ -153,8 +154,7 @@ The invalid states are used when text inputs return an error as part of the form
             onClick: { action: 'clicked', table: { disable: true } },
         })}
         args={{
-            label: 'Default Radio',
-            size: DEFAULT_TEXT_INPUT_SIZE,
+            ...defaultArgs,
         }}
     >
         {(args) => <TextInput {...args} />}

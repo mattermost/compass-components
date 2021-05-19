@@ -12,7 +12,8 @@ import {
 import { PTextInput } from './TextInput.props';
 
 const TextInputBase: React.FC<PTextInput> = ({
-    label = 'Placeholder',
+    label,
+    placeholder,
     size = DEFAULT_TEXT_INPUT_SIZE,
     leadingIcon = DEFAULT_LEADING_ICON,
     trailingIcon = DEFAULT_TRAILING_ICON,
@@ -24,19 +25,19 @@ const TextInputBase: React.FC<PTextInput> = ({
 
     const spacing: TSpacingTokensSymmetric = {
         vertical: 0,
-        horizontal: 125,
+        horizontal: 100,
     };
 
     switch (size) {
         case 'lg':
             iconSize = 20;
             height = 48;
-            spacing.horizontal = 150;
+            spacing.horizontal = 100;
             break;
         case 'sm':
             iconSize = 12;
             height = 32;
-            spacing.horizontal = 100;
+            spacing.horizontal = 75;
             break;
         default:
     }
@@ -51,14 +52,15 @@ const TextInputBase: React.FC<PTextInput> = ({
             <Grid
                 row
                 alignment={'center'}
-                className={'container'}
+                className={'input'}
                 justify={'space-between'}
                 padding={Spacing.symmetric(spacing)}
                 flex={1}
             >
-                {leadingIcon && <Icon glyph={leadingIcon} size={iconSize} />}
-                <input className={'input'} placeholder={label} />
-                {trailingIcon && <Icon glyph={trailingIcon} size={iconSize} />}
+                {leadingIcon ? <Icon glyph={leadingIcon} size={iconSize} /> : null}
+                <input className={'input__field'} placeholder={placeholder} />
+                <span className={'input__label'}>{label}</span>
+                {trailingIcon ? <Icon glyph={trailingIcon} size={iconSize} /> : null}
             </Grid>
         </Shape>
     );

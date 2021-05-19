@@ -5,10 +5,13 @@ import { TTextInputSizeToken } from './TextInput.types';
 
 export type PTextInput = {
     /**
-     * The placeholder label for the text input
-     * @default 'Placeholder'
+     * The label for the text input
      * */
     label?: string;
+    /**
+     * The placeholder text for the text input
+     * */
+    placeholder?: string;
     /**
      * whether the text input has an error
      * @default false
