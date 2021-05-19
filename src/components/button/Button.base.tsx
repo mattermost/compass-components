@@ -45,7 +45,7 @@ const ButtonBase: React.FC<PButton> = ({
     return (
         <Shape
             component={'button'}
-            borderRadius={4}
+            radius={4}
             width={width === 'full' ? '100%' : width}
             height={height}
             {...rest}

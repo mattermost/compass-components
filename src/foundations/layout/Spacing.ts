@@ -38,7 +38,7 @@ const Spacing: TSpacing = {
 };
 
 const parseSpacing = (spacing: TSpacingDefinition): string =>
-    spacing.map((s = 0) => `${SIZES[s || 0]}px`).join(' ');
+    spacing.map((s) => `${SIZES[s || 0]}px`).join(' ');
 
 export { parseSpacing };
 
