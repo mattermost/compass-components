@@ -55,6 +55,8 @@ export const argTypes = Utils.hideStyledComponentProperties({
             options: SHAPE_ELEVATION_LEVELS,
         },
     },
+    width: { control: { type: 'range', min: 150, max: 600, step: 25 } },
+    height: { control: { type: 'range', min: 150, max: 600, step: 25 } },
 });
 
 <Title>Shape</Title>
@@ -204,10 +206,6 @@ export const canvasExampleArgs = {
     height: 150,
 };
 
-## Dependencies
-
-<DependenciesTable titleDependencies="Dependencies" titleDependents="Dependents" of={Shape} />
-
 <Canvas hidden>
     <Story
         name="Rectangle"
@@ -218,7 +216,7 @@ export const canvasExampleArgs = {
             elevation: 0,
         }}
     >
-        {Template.bind({})}
+        {(args) => <Shape {...args} />}
     </Story>
     <Story
         name="Rounded Rectangle"
@@ -228,7 +226,7 @@ export const canvasExampleArgs = {
             radius: 16,
         }}
     >
-        {Template.bind({})}
+        {(args) => <Shape {...args} />}
     </Story>
     <Story
         name="Pill"
@@ -239,7 +237,7 @@ export const canvasExampleArgs = {
             elevation: 2,
         }}
     >
-        {Template.bind({})}
+        {(args) => <Shape {...args} />}
     </Story>
     <Story
         name="Circle"
@@ -253,6 +251,6 @@ export const canvasExampleArgs = {
             height: 100,
         }}
     >
-        {Template.bind({})}
+        {(args) => <Shape {...args} />}
     </Story>
 </Canvas>

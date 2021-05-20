@@ -17,11 +17,11 @@ const Shape = styled.div
         shouldForwardProp: Utils.forwardProperties(),
     })<ThemedStyledProps<PShape, TTheme>>(
     ({
-        width,
-        height,
         radius = DEFAULT_SHAPE_BORDER_RADIUS,
         elevation = DEFAULT_SHAPE_ELEVATION_LEVEL,
         elevationOnHover = elevation,
+        width,
+        height,
         theme,
     }: ThemedStyledProps<PShape, TTheme>): FlattenSimpleInterpolation => css`
         display: flex;

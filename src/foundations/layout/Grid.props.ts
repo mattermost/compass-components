@@ -1,12 +1,7 @@
 import React from 'react';
 
-import {
-    TGridAlignment,
-    TGridComponent,
-    TGridFlex,
-    TGridJustify,
-    TSpacingDefinition,
-} from './Grid.types';
+import { TGridAlignment, TGridComponent, TGridFlex, TGridJustify } from './Grid.types';
+import { TSpacingDefinition } from './Spacing.types';
 
 export type PGrid = {
     /** renders the `Grid` component as a row (`flex-direction: row`) */
