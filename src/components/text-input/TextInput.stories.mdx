@@ -146,10 +146,12 @@ The invalid states are used when text inputs return an error as part of the form
         name="Default"
         argTypes={Utils.hideStyledComponentProperties({
             label: { control: { type: 'text' } },
+            placeholder: { control: { type: 'text' } },
             size: { control: { type: 'radio', options: TEXT_INPUT_SIZES } },
             hasError: { control: { type: 'boolean' } },
             disabled: { control: { type: 'boolean' } },
             active: { control: { type: 'boolean' } },
+            width: { table: { disable: true } },
             className: { table: { disable: true } },
             onClick: { action: 'clicked', table: { disable: true } },
         })}

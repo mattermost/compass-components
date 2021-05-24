@@ -48,5 +48,4 @@ export type PTextInput = {
      * */
     active?: boolean;
     className?: string;
-    onClick?: () => void;
 };

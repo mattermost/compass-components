@@ -18,6 +18,7 @@ const getTextInputVariables = ({
         text: text.primary,
         action: action.hover,
         border: active ? palette.primary.main : text.secondary,
+        placeholder: text.disabled,
     };
 
     if (disabled) {
@@ -36,11 +37,19 @@ const getTextInputVariables = ({
           `
         : css`
               cursor: pointer;
+              &:focus {
+                  box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.32),
+                      inset 0 0 0 2px ${colors.active};
+              }
               .input__field:focus {
                   outline: none;
 
+                  &::placeholder {
+                      color: ${colors.placeholder};
+                  }
+
                   & + .input__label {
-                      transform: translate(0.25rem, -65%) scale(0.8);
+                      transform: translate(-1.8rem, -1.4rem) scale(0.7);
                       color: ${colors.active};
                   }
               }
@@ -51,16 +60,21 @@ const getTextInputVariables = ({
         color: ${colors.text};
         border: 1px solid ${colors.border};
 
+        .input__field::placeholder {
+            color: transparent;
+            transition: color 200ms ease-in;
+        }
         .input {
             position: relative;
 
             .input__label {
                 position: absolute;
-                padding: calc(0.5rem * 0.75) calc(0.5rem * 0.5);
+                left: 2rem;
+                padding: 0 4px;
                 white-space: nowrap;
                 transform: translate(0, 0);
                 background: white;
-                transition: transform 120ms ease-in;
+                transition: transform 200ms ease-in;
             }
 
             .input__field {
