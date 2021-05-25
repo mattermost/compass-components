@@ -33,7 +33,7 @@ const StatusBadgeBase: React.FC<PStatusBadge> = ({
     }
 
     return (
-        <Shape {...rest} width={sizeValue + sizeAdjustment} borderRadius={'circle'}>
+        <Shape {...rest} width={sizeValue + sizeAdjustment} radius={'circle'}>
             <Grid flex={1} alignment={'center'} justify={'center'}>
                 <Icon glyph={glyph} size={sizeValue} />
             </Grid>

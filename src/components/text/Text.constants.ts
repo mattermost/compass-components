@@ -25,7 +25,9 @@ const TEXT_MARGINS: TTextMargin[] = ['none', 'both', 'bottom', 'top'];
 
 const DEFAULT_TEXT_MARGIN: TTextMargin = 'both';
 
-const TEXT_COLORS: TTextColor[] = ['primary', 'secondary', 'disabled'];
+const TEXT_COLORS: TTextColor[] = ['primary', 'secondary', 'disabled', 'inherit'];
+
+const DEFAULT_TEXT_COLOR: TTextColor = 'inherit';
 
 const TEXT_DEFINITIONS: TTextDefinitionMap = {
     25: {
@@ -71,5 +73,6 @@ export {
     TEXT_MARGINS,
     DEFAULT_TEXT_MARGIN,
     TEXT_COLORS,
+    DEFAULT_TEXT_COLOR,
     TEXT_DEFINITIONS,
 };
