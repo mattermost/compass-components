@@ -1,3 +1,5 @@
+import { Utils } from '../../shared';
+
 import {
     TSpacing,
     TSpacingDefinition,
@@ -5,7 +7,7 @@ import {
     TSpacingToken,
     TSpacingTokensSymmetric,
     TSpacingTokensTRBL,
-} from './Grid.types';
+} from './Spacing.types';
 import { SIZES } from './Spacing.constants';
 
 const Spacing: TSpacing = {
@@ -38,7 +40,7 @@ const Spacing: TSpacing = {
 };
 
 const parseSpacing = (spacing: TSpacingDefinition): string =>
-    spacing.map((s = 0) => `${SIZES[s || 0]}px`).join(' ');
+    spacing.map((s) => (s ? Utils.getPxValue(SIZES[s]) : 0)).join(' ');
 
 export { parseSpacing };
 

@@ -45,8 +45,9 @@ function getStoryDocumentationUrl(storyParameters: Record<string, string>): stri
  * })<PSection>` ... `
  * ```
  * */
-function forwardProperties(whitelist: string[] = []): (property: string | number) => boolean {
-    return (property: string | number): boolean =>
+const forwardProperties =
+    (whitelist: string[] = []): ((property: string | number) => boolean) =>
+    (property: string | number): boolean =>
         // forward the property when it is a `data-*`attribute
         property.toString().startsWith('data-') ||
         // forward the property when it is a `aria-*`attribute
@@ -55,7 +56,6 @@ function forwardProperties(whitelist: string[] = []): (property: string | number
         DEFAULT_PROPERTY_WHITELIST.includes(property.toString()) ||
         // forward the property when it is defined within the passed property-whitelist
         whitelist.includes(property.toString());
-}
 
 function hideStyledComponentProperties(
     properties: Record<string, unknown>
@@ -68,6 +68,17 @@ function hideStyledComponentProperties(
         ...properties,
     };
 }
+
+/* eslint-disable @typescript-eslint/no-explicit-any */
+const isNumber = (x: any): x is number => typeof x === 'number';
+const isString = (x: any): x is string => typeof x === 'string';
+const isFunction = (x: any): x is Function => typeof x === 'function';
+/* eslint-enable @typescript-eslint/no-explicit-any */
+
+const getFontMargin = (fontSize: number, multiplier: number): number =>
+    Math.max(Math.round((fontSize * multiplier) / 4) * 4, 8);
+
+const getPxValue = (value: string | number): string => (isNumber(value) ? `${value}px` : value);
 
 /**
  * Returns a number whose value is limited to the given range.
@@ -99,28 +110,39 @@ function getBase64(url: string): Promise<string> {
         });
 }
 
-/* eslint-disable @typescript-eslint/no-explicit-any */
-const isNumber = (x: any): x is number => typeof x === 'number';
-const isString = (x: any): x is string => typeof x === 'string';
-const isFunction = (x: any): x is Function => typeof x === 'function';
-const isInteger = (x: any): boolean => isNumber(x) && x % 1 === 0;
-/* eslint-enable @typescript-eslint/no-explicit-any */
+class CompassError extends Error {
+    constructor(message: string) {
+        super(message);
+        this.name = 'CompassError';
+    }
+}
 
-const getFontMargin = (fontSize: number, multiplier: number): number =>
-    Math.max(Math.round((fontSize * multiplier) / 4) * 4, 8);
+/**
+ * Asserts if a certain check is true. If not throw a CompassError with the provided message
+ * @param {boolean} assertion
+ * @param {string} message
+ */
+function assert(assertion: boolean, message: string): void {
+    if (!assertion) {
+        throw new CompassError(message);
+    }
+}
 
 const Utils = {
+    assert,
     clamp,
     isColor,
     isNumber,
     isFunction,
     isString,
-    isInteger,
     forwardProperties,
     getBase64,
     getStoryDocumentationUrl,
     hideStyledComponentProperties,
     getFontMargin,
+    getPxValue,
 };
+
+export { CompassError };
 
 export default Utils;

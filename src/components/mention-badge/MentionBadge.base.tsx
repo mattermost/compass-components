@@ -1,12 +1,10 @@
 import React from 'react';
 
-import Shape from '../../foundations/shape';
 import Grid, { Spacing } from '../../foundations/layout';
 import Text from '../text';
 
 import {
     DEFAULT_MENTIONBADGE_SIZE,
-    MENTIONBADGE_HEIGHT_SIZE_MAP,
     MENTIONBADGE_PADDING_SIZE_MAP,
     MENTIONBADGE_TEXT_SIZE_MAP,
 } from './MentionBadge.constants';
@@ -22,12 +20,7 @@ const MentionBadgeBase: React.FC<PMentionBadge> = ({
     const mentionLength = mentionCount.toString().length;
 
     return (
-        <Shape
-            {...rest}
-            borderRadius={isUnreadBadge ? 'circle' : 'pill'}
-            width={isUnreadBadge ? 12 : 'auto'}
-            height={MENTIONBADGE_HEIGHT_SIZE_MAP[size]}
-        >
+        <div {...rest}>
             {!isUnreadBadge && (
                 <Grid
                     alignment={'center'}
@@ -48,7 +41,7 @@ const MentionBadgeBase: React.FC<PMentionBadge> = ({
                     </Text>
                 </Grid>
             )}
-        </Shape>
+        </div>
     );
 };
 

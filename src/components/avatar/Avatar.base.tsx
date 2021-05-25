@@ -65,7 +65,7 @@ const AvatarBase = ({
 }: PAvatar): JSX.Element => (
     <div className={className}>
         <Shape
-            borderRadius={isTeam ? AVATAR_CORNER_RADIUS_SIZE_MAP[size] : 'circle'}
+            radius={isTeam ? AVATAR_CORNER_RADIUS_SIZE_MAP[size] : 'circle'}
             width={AVATAR_SIZE_MAP[size]}
             height={AVATAR_SIZE_MAP[size]}
             {...rest}
