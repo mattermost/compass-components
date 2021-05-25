@@ -27,11 +27,13 @@ function applyShape({
     // define the variant by checking for string
     const variant: TShapeVariant = Utils.isString(radius) ? radius : 'rectangle';
 
-    // the circle variant has to have numerical width set for it to work
-    Utils.assert(
-        !(variant === 'circle' && Utils.isNumber(width)),
-        'applyShape: When choosing `circle` as value for `radius` the width needs to be of type `number`'
-    );
+    if (variant === 'circle') {
+        // the circle variant has to have numerical width set for it to work
+        Utils.assert(
+            Utils.isNumber(width),
+            'applyShape: When choosing `circle` as value for `radius` the width needs to be of type `number`'
+        );
+    }
 
     // check if the value for border-radius is in the pre-defined range
     Utils.assert(

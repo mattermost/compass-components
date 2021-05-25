@@ -38,12 +38,4 @@ const Avatar = styled(AvatarBase)<PAvatar>`
     }
 `;
 
-type PAvatarImage = {
-    image: string;
-};
-
-export const AvatarImage = styled.div<PAvatarImage>`
-    background: rgb(103, 103, 103);
-`;
-
 export default Avatar;
