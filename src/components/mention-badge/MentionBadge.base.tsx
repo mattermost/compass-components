@@ -1,6 +1,5 @@
 import React from 'react';
 
-import Shape from '../../foundations/shape';
 import Grid, { Spacing } from '../../foundations/layout';
 import Text from '../text';
 
@@ -14,7 +13,7 @@ const MentionBadgeBase: React.FC<PMentionBadge> = ({
     const isUnreadBadge = mentionCount === 0;
 
     return (
-        <Shape {...rest} radius={isUnreadBadge ? 'circle' : 'pill'}>
+        <div {...rest}>
             {!isUnreadBadge && (
                 <Grid
                     alignment={'center'}
@@ -27,7 +26,7 @@ const MentionBadgeBase: React.FC<PMentionBadge> = ({
                     </Text>
                 </Grid>
             )}
-        </Shape>
+        </div>
     );
 };
 

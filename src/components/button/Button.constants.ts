@@ -8,9 +8,9 @@ const BUTTON_VARIANTS: TButtonVariant[] = ['primary', 'secondary', 'tertiary'];
 
 const DEFAULT_BUTTON_VARIANT: TButtonVariant = 'primary';
 
-const BUTTON_WIDTHS: TButtonWidth[] = ['full', 'dynamic'];
+const BUTTON_WIDTHS: TButtonWidth[] = ['full', 'auto'];
 
-const DEFAULT_BUTTON_WIDTH: TButtonWidth = 'dynamic';
+const DEFAULT_BUTTON_WIDTH: TButtonWidth = 'auto';
 
 const BUTTON_ICON_POSITIONS: TButtonIconPosition[] = ['start', 'end'];
 
