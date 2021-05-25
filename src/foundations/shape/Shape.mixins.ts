@@ -3,7 +3,11 @@ import { FlattenSimpleInterpolation } from 'styled-components/ts3.6';
 
 import { Utils } from '../../shared';
 
-import { SHAPE_ELEVATION_DEFINITIONS } from './Shape.constants';
+import {
+    DEFAULT_SHAPE_BORDER_RADIUS,
+    SHAPE_BORDER_RADII,
+    SHAPE_ELEVATION_DEFINITIONS,
+} from './Shape.constants';
 import { PApplyElevation, PApplyShape } from './Shape.props';
 import { TShapeVariant } from './Shape.types';
 
@@ -15,16 +19,27 @@ import { TShapeVariant } from './Shape.types';
  * @param {TShapeBorderRadius} radius
  * @returns {FlattenSimpleInterpolation}
  */
-function applyShape({ width, height, radius }: PApplyShape): FlattenSimpleInterpolation {
+function applyShape({
+    width,
+    height,
+    radius = DEFAULT_SHAPE_BORDER_RADIUS,
+}: PApplyShape): FlattenSimpleInterpolation {
     // define the variant by checking for string
     const variant: TShapeVariant = Utils.isString(radius) ? radius : 'rectangle';
 
     // the circle variant has to have numerical width set for it to work
-    if (variant === 'circle' && !Utils.isNumber(width)) {
-        throw new TypeError(
-            'applyShape: When choosing `circle` as value for `radius` the width needs to be of type `number`'
-        );
-    }
+    Utils.assert(
+        !(variant === 'circle' && Utils.isNumber(width)),
+        'applyShape: When choosing `circle` as value for `radius` the width needs to be of type `number`'
+    );
+
+    // check if the value for border-radius is in the pre-defined range
+    Utils.assert(
+        SHAPE_BORDER_RADII.includes(radius),
+        `applyShape: Please provide a \`radius\` value that meets the requirement. Valid options are: ${SHAPE_BORDER_RADII.join(
+            ', '
+        )}.`
+    );
 
     const RADII: Partial<Record<TShapeVariant, string>> = {
         rectangle: `${radius}px`,
@@ -32,9 +47,9 @@ function applyShape({ width, height, radius }: PApplyShape): FlattenSimpleInterp
         pill: '1000px',
     };
 
-    // checking for width >= 0 is not necesary here, since we might have the
+    // checking for width >= 0 is necesary here, since we might have the
     // possibility of "hidden" shapes (with width = 0 and height = 0)
-    if (variant === 'circle' && width) {
+    if (variant === 'circle' && Utils.isNumber(width) && width >= 0) {
         return css`
             border-radius: ${RADII[variant]};
             width: ${Utils.getPxValue(width)};

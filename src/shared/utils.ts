@@ -94,7 +94,26 @@ function clamp(value: number, min = 0, max = 1): number {
     return Math.min(Math.max(min, value), max);
 }
 
+class CompassError extends Error {
+    constructor(message: string) {
+        super(message);
+        this.name = 'CompassError';
+    }
+}
+
+/**
+ * Asserts if a certain check is true. If not throw a CompassError with the provided message
+ * @param {boolean} assertion
+ * @param {string} message
+ */
+function assert(assertion: boolean, message: string): void {
+    if (!assertion) {
+        throw new CompassError(message);
+    }
+}
+
 const Utils = {
+    assert,
     clamp,
     isColor,
     isNumber,
@@ -106,5 +125,7 @@ const Utils = {
     getFontMargin,
     getPxValue,
 };
+
+export { CompassError };
 
 export default Utils;
