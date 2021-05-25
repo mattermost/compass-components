@@ -6,7 +6,14 @@ import Text, { TTextSizeToken } from '../text';
 
 import { PButton } from './Button.props';
 
-const ButtonBase: React.FC<PButton> = ({ label, icon, iconPosition, size, onClick }: PButton) => {
+const ButtonBase: React.FC<PButton> = ({
+    label,
+    icon,
+    iconPosition,
+    size,
+    onClick,
+    className,
+}: PButton) => {
     let labelSize: TTextSizeToken = 100;
     let iconSize: TIconSize = 16;
 
@@ -32,7 +39,7 @@ const ButtonBase: React.FC<PButton> = ({ label, icon, iconPosition, size, onClic
     }
 
     return (
-        <button onClick={onClick}>
+        <button onClick={onClick} className={className}>
             {icon && iconPosition === 'start' ? <Icon glyph={icon} size={iconSize} /> : null}
             <Text
                 element={'span'}
