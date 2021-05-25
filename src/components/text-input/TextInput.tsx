@@ -34,12 +34,15 @@ const getTextInputVariables = ({
     const actionStyles = disabled
         ? css`
               cursor: not-allowed;
+              .input {
+                  pointer-events: none;
+                  user-select: none;
+              }
           `
         : css`
               cursor: pointer;
-              &:focus {
-                  box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.32),
-                      inset 0 0 0 2px ${colors.active};
+              &:focus-within {
+                  border: 2px solid ${colors.active};
               }
               .input__field:focus {
                   outline: none;
