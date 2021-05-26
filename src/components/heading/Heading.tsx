@@ -11,6 +11,7 @@ import {
     DEFAULT_HEADING_MARGIN,
     DEFAULT_HEADING_SIZE,
     DEFAULT_HEADING_WEIGHT,
+    HEADING_ELEMENTS,
 } from './Heading.constants';
 import { applyHeadingColor, applyHeadingMargin, applyHeadingStyles } from './Heading.mixins';
 
@@ -32,16 +33,25 @@ const Heading = styled.h6
         margin = DEFAULT_HEADING_MARGIN,
         size = DEFAULT_HEADING_SIZE,
         weight = DEFAULT_HEADING_WEIGHT,
-    }: ThemedStyledProps<PHeading, TTheme>): FlattenSimpleInterpolation => css`
-        ${applyHeadingStyles({ inheritLineHeight, element, size, weight })};
-        ${applyHeadingColor({ color, theme })};
-        ${applyHeadingMargin({ margin, size })};
+    }: ThemedStyledProps<PHeading, TTheme>): FlattenSimpleInterpolation => {
+        // Whenever this component is used with an element that is not supported within the headings throw an error!
+        Utils.assert(
+            HEADING_ELEMENTS.includes(element),
+            `Compass Components: Heading component was used with an unsupported element '${element}'.
+                Please provide one from these available options: ${HEADING_ELEMENTS.join(', ')}.`
+        );
 
-        // animation
-        body.enable-animations & {
-            transition: color var(--animation-speed-shortest) 0s ease-in-out;
-        }
-    `
+        return css`
+            ${applyHeadingStyles({ inheritLineHeight, element, size, weight })};
+            ${applyHeadingColor({ color, theme })};
+            ${applyHeadingMargin({ margin, size })};
+
+            // animation
+            body.enable-animations & {
+                transition: color var(--animation-speed-shortest) 0s ease-in-out;
+            }
+        `;
+    }
 );
 
 export default Heading;

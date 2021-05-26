@@ -6,6 +6,7 @@ type PMentionBadge = {
     mentionCount?: number;
     mentionLimit?: number;
     size?: TMentionBadgeSize;
+    className?: string;
 };
 
 export default PMentionBadge;

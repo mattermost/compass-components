@@ -1,19 +1,11 @@
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
-import Shape from '../../foundations/shape';
 import { Utils } from '../../shared';
-import Heading from '../heading';
 import MentionBadge from '../mention-badge';
 import StatusBadge from '../status-badge';
 
-import {
-    AVATAR_CORNER_RADIUS_SIZE_MAP,
-    AVATAR_SIZE_MAP,
-    AVATAR_STATUS_SIZE_MAP,
-    AVATAR_TEXT_SIZE_MAP,
-    DEFAULT_AVATAR_SIZE,
-} from './Avatar.constants';
+import { AVATAR_STATUS_SIZE_MAP, DEFAULT_AVATAR_SIZE } from './Avatar.constants';
 import PAvatar from './Avatar.props';
 
 type PStyledAvatarImage = {
@@ -23,6 +15,7 @@ type PStyledAvatarImage = {
 // TODO@all: not happy with this solution, but it works for now
 const StyledAvatarImage = styled.div<PStyledAvatarImage>`
     flex: 1;
+    align-self: stretch;
     background-image: url(${(props): string => props.image});
     background-position: center center;
     background-repeat: no-repeat;
@@ -53,36 +46,20 @@ const LazyAvatarImage = ({ source }: PLazyAvatarImage): JSX.Element => {
     return <StyledAvatarImage image={image} />;
 };
 
+const capitalizeUsername = (name: string): string =>
+    name.charAt(0).toUpperCase() + name.slice(1, 2);
+
 const AvatarBase = ({
     size = DEFAULT_AVATAR_SIZE,
     isTeam = false,
     mentionCount,
-    userName,
+    name,
     image,
     className,
     status,
-    ...rest
 }: PAvatar): JSX.Element => (
     <div className={className}>
-        <Shape
-            radius={isTeam ? AVATAR_CORNER_RADIUS_SIZE_MAP[size] : 'circle'}
-            width={AVATAR_SIZE_MAP[size]}
-            height={AVATAR_SIZE_MAP[size]}
-            {...rest}
-        >
-            {image ? (
-                <LazyAvatarImage source={image} />
-            ) : (
-                <Heading
-                    element={'h6'}
-                    weight={'bold'}
-                    margin={'none'}
-                    size={AVATAR_TEXT_SIZE_MAP[size]}
-                >
-                    {userName.slice(0, 2)}
-                </Heading>
-            )}
-        </Shape>
+        {image ? <LazyAvatarImage source={image} /> : <div>{capitalizeUsername(name)}</div>}
         {status && <StatusBadge status={status} size={AVATAR_STATUS_SIZE_MAP[size]} />}
         {isTeam && Utils.isNumber(mentionCount) && (
             <MentionBadge

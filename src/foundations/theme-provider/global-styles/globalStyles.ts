@@ -30,6 +30,7 @@ const GlobalStyle = createGlobalStyle`
     .skeleton {
         display: block;
         flex: 1;
+        align-self: stretch;
         background: ${({ theme }): string => theme.background.skeleton};
         overflow: hidden;
         position: relative;
