@@ -1,13 +1,13 @@
 import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 import Avatar from './Avatar';
-import { DEFAULT_ARGUMENT_STABLE_EXCLUSION } from '../../shared/constants';
-import { AVATAR_SIZES, DEFAULT_AVATAR_SIZE } from './Avatar.constants';
+import { DEFAULT_ARGUMENTSTABLE_EXCLUSION } from '../../shared/constants';
+import { AVATAR_SIZE_LABELS, AVATAR_SIZES, DEFAULT_AVATAR_SIZE } from './Avatar.constants';
 import { Utils } from '../../shared';
 import { STATUSBADGE_STATUSES } from '../status-badge/StatusBadge.constants';
 
 <Meta title={'Components/Avatar'} />
 
-<ArgsTable of={Avatar} exclude={[...DEFAULT_ARGUMENT_STABLE_EXCLUSION]} />
+<ArgsTable of={Avatar} exclude={[...DEFAULT_ARGUMENTSTABLE_EXCLUSION]} />
 
 <Canvas hidden>
     <Story
@@ -22,15 +22,7 @@ import { STATUSBADGE_STATUSES } from '../status-badge/StatusBadge.constants';
                 options: AVATAR_SIZES,
                 control: {
                     type: 'select',
-                    labels: {
-                        xxs: 'xx-small',
-                        xs: 'x-small',
-                        sm: 'small',
-                        md: 'medium',
-                        lg: 'large',
-                        xl: 'x-large',
-                        xxl: 'xx-large',
-                    },
+                    labels: AVATAR_SIZE_LABELS,
                 },
             },
         })}
@@ -48,15 +40,7 @@ import { STATUSBADGE_STATUSES } from '../status-badge/StatusBadge.constants';
                 options: AVATAR_SIZES,
                 control: {
                     type: 'select',
-                    labels: {
-                        xxs: 'xx-small',
-                        xs: 'x-small',
-                        sm: 'small',
-                        md: 'medium',
-                        lg: 'large',
-                        xl: 'x-large',
-                        xxl: 'xx-large',
-                    },
+                    labels: AVATAR_SIZE_LABELS,
                 },
             },
         })}
@@ -76,15 +60,7 @@ import { STATUSBADGE_STATUSES } from '../status-badge/StatusBadge.constants';
                 options: AVATAR_SIZES,
                 control: {
                     type: 'select',
-                    labels: {
-                        xxs: 'xx-small',
-                        xs: 'x-small',
-                        sm: 'small',
-                        md: 'medium',
-                        lg: 'large',
-                        xl: 'x-large',
-                        xxl: 'xx-large',
-                    },
+                    labels: AVATAR_SIZE_LABELS,
                 },
             },
             status: {
@@ -115,15 +91,7 @@ import { STATUSBADGE_STATUSES } from '../status-badge/StatusBadge.constants';
                 options: AVATAR_SIZES,
                 control: {
                     type: 'select',
-                    labels: {
-                        xxs: 'xx-small',
-                        xs: 'x-small',
-                        sm: 'small',
-                        md: 'medium',
-                        lg: 'large',
-                        xl: 'x-large',
-                        xxl: 'xx-large',
-                    },
+                    labels: AVATAR_SIZE_LABELS,
                 },
             },
             status: {
@@ -155,15 +123,7 @@ import { STATUSBADGE_STATUSES } from '../status-badge/StatusBadge.constants';
                 options: AVATAR_SIZES,
                 control: {
                     type: 'select',
-                    labels: {
-                        xxs: 'xx-small',
-                        xs: 'x-small',
-                        sm: 'small',
-                        md: 'medium',
-                        lg: 'large',
-                        xl: 'x-large',
-                        xxl: 'xx-large',
-                    },
+                    labels: AVATAR_SIZE_LABELS,
                 },
             },
         })}
@@ -184,15 +144,7 @@ import { STATUSBADGE_STATUSES } from '../status-badge/StatusBadge.constants';
                 options: AVATAR_SIZES,
                 control: {
                     type: 'select',
-                    labels: {
-                        xxs: 'xx-small',
-                        xs: 'x-small',
-                        sm: 'small',
-                        md: 'medium',
-                        lg: 'large',
-                        xl: 'x-large',
-                        xxl: 'xx-large',
-                    },
+                    labels: AVATAR_SIZE_LABELS,
                 },
             },
             mentions: {
@@ -219,15 +171,7 @@ import { STATUSBADGE_STATUSES } from '../status-badge/StatusBadge.constants';
                 options: AVATAR_SIZES,
                 control: {
                     type: 'select',
-                    labels: {
-                        xxs: 'xx-small',
-                        xs: 'x-small',
-                        sm: 'small',
-                        md: 'medium',
-                        lg: 'large',
-                        xl: 'x-large',
-                        xxl: 'xx-large',
-                    },
+                    labels: AVATAR_SIZE_LABELS,
                 },
             },
         })}
@@ -247,15 +191,7 @@ import { STATUSBADGE_STATUSES } from '../status-badge/StatusBadge.constants';
                 options: AVATAR_SIZES,
                 control: {
                     type: 'select',
-                    labels: {
-                        xxs: 'xx-small',
-                        xs: 'x-small',
-                        sm: 'small',
-                        md: 'medium',
-                        lg: 'large',
-                        xl: 'x-large',
-                        xxl: 'xx-large',
-                    },
+                    labels: AVATAR_SIZE_LABELS,
                 },
             },
             mentions: {

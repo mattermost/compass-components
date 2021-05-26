@@ -5,7 +5,7 @@ import { Utils } from '../../shared';
 import MentionBadge from '../mention-badge';
 import StatusBadge from '../status-badge';
 
-import { AVATAR_STATUS_SIZE_MAP, DEFAULT_AVATAR_SIZE } from './Avatar.constants';
+import { AVATAR_SIZE_MAP, DEFAULT_AVATAR_SIZE } from './Avatar.constants';
 import PAvatar from './Avatar.props';
 
 type PStyledAvatarImage = {
@@ -60,7 +60,9 @@ const AvatarBase = ({
 }: PAvatar): JSX.Element => (
     <div className={className}>
         {image ? <LazyAvatarImage source={image} /> : <div>{capitalizeUsername(name)}</div>}
-        {status && <StatusBadge status={status} size={AVATAR_STATUS_SIZE_MAP[size]} />}
+        {size !== 'xxxs' && status && (
+            <StatusBadge status={status} size={AVATAR_SIZE_MAP[size].status.size} />
+        )}
         {isTeam && Utils.isNumber(mentions) && (
             <MentionBadge
                 mentions={Math.abs(Math.trunc(mentions))}

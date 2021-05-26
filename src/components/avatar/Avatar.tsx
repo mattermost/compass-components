@@ -9,13 +9,7 @@ import MentionBadge from '../mention-badge';
 import StatusBadge from '../status-badge';
 
 import AvatarBase from './Avatar.base';
-import {
-    DEFAULT_AVATAR_SIZE,
-    AVATAR_SIZE_MAP,
-    AVATAR_TEXT_SIZE_MAP,
-    AVATAR_CORNER_RADIUS_SIZE_MAP,
-    AVATAR_FALLBACK_COLORS,
-} from './Avatar.constants';
+import { DEFAULT_AVATAR_SIZE, AVATAR_SIZE_MAP, AVATAR_FALLBACK_COLORS } from './Avatar.constants';
 import PAvatar from './Avatar.props';
 
 const Avatar = styled(AvatarBase)<PAvatar>(
@@ -34,14 +28,14 @@ const Avatar = styled(AvatarBase)<PAvatar>(
             justify-content: center;
 
             ${applyShape({
-                width: AVATAR_SIZE_MAP[size],
-                height: AVATAR_SIZE_MAP[size],
-                radius: isTeam ? AVATAR_CORNER_RADIUS_SIZE_MAP[size] : 'circle',
+                width: AVATAR_SIZE_MAP[size].size,
+                height: AVATAR_SIZE_MAP[size].size,
+                radius: isTeam ? AVATAR_SIZE_MAP[size].radius : 'circle',
             })};
 
             ${applyHeadingStyles({
                 element: 'h6',
-                size: AVATAR_TEXT_SIZE_MAP[size],
+                size: AVATAR_SIZE_MAP[size].text,
             })};
 
             ${applyHeadingMargin({ margin: 'none' })};
@@ -49,8 +43,8 @@ const Avatar = styled(AvatarBase)<PAvatar>(
 
         ${StatusBadge} {
             position: absolute;
-            bottom: -3px;
-            right: -3px;
+            bottom: ${AVATAR_SIZE_MAP[size].status.offset}px;
+            right: ${AVATAR_SIZE_MAP[size].status.offset}px;
         }
 
         ${MentionBadge} {

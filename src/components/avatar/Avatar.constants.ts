@@ -5,68 +5,101 @@ import { TShapeBorderRadius } from '../../foundations/shape';
 
 import { TAvatarSizeToken } from './Avatar.types';
 
-const AVATAR_SIZES: TAvatarSizeToken[] = ['xxs', 'xs', 'sm', 'md', 'lg', 'xl', 'xxl'];
+const AVATAR_SIZES: TAvatarSizeToken[] = [
+    'xxxs',
+    'xxs',
+    'xs',
+    'sm',
+    'md',
+    'lg',
+    'xl',
+    'xxl',
+    'xxxl',
+];
+
+const AVATAR_SIZE_LABELS: Record<TAvatarSizeToken, string> = {
+    xxxs: 'xxx-small',
+    xxs: 'xx-small',
+    xs: 'x-small',
+    sm: 'small',
+    md: 'medium',
+    lg: 'large',
+    xl: 'x-large',
+    xxl: 'xx-large',
+    xxxl: 'xxx-large',
+};
 
 const DEFAULT_AVATAR_SIZE: TAvatarSizeToken = 'md';
 
-const AVATAR_SIZE_MAP: Record<TAvatarSizeToken, number> = {
-    xxxs: 16,
-    xxs: 20,
-    xs: 24,
-    sm: 32,
-    md: 40,
-    lg: 48,
-    xl: 72,
-    xxl: 96,
-    xxxl: 120,
+type TAvatarStatusDefinition = {
+    size: TStatusBadgeSizeToken;
+    offset: number;
 };
 
-const AVATAR_TEXT_SIZE_MAP: Record<TAvatarSizeToken, THeadingSizeToken> = {
-    xxxs: 25,
-    xxs: 25,
-    xs: 50,
-    sm: 100,
-    md: 300,
-    lg: 600,
-    xl: 900,
-    xxl: 1000,
-    xxxl: 1000,
+type TAvatarSizeMap = {
+    [key in TAvatarSizeToken]: {
+        size: number;
+        text: THeadingSizeToken;
+        radius: TShapeBorderRadius;
+        status: TAvatarStatusDefinition;
+    };
 };
 
-const AVATAR_STATUS_SIZE_MAP: Record<TAvatarSizeToken, TStatusBadgeSizeToken> = {
-    xxxs: 'xxs',
-    xxs: 'xxs',
-    xs: 'xxs',
-    sm: 'xs',
-    md: 'sm',
-    lg: 'md',
-    xl: 'lg',
-    xxl: 'xl',
-    xxxl: 'xl',
-};
-
-const AVATAR_CORNER_RADIUS_SIZE_MAP: Record<TAvatarSizeToken, TShapeBorderRadius> = {
-    xxxs: 4,
-    xxs: 4,
-    xs: 4,
-    sm: 4,
-    md: 8,
-    lg: 12,
-    xl: 16,
-    xxl: 20,
-    xxxl: 20,
-};
-
-const AVATAR_MENTIONBADGE_SIZE_MAP: Record<TAvatarSizeToken, number> = {
-    xxxs: 8,
-    xxs: 8,
-    xs: 8,
-    sm: 8,
-    md: 12,
-    lg: 16,
-    xl: 20,
-    xxl: 24,
-    xxxl: 24,
+const AVATAR_SIZE_MAP: TAvatarSizeMap = {
+    xxxs: {
+        size: 16,
+        text: 25,
+        radius: 4,
+        status: { size: 'xs', offset: 0 },
+    },
+    xxs: {
+        size: 20,
+        text: 25,
+        radius: 4,
+        status: { size: 'xs', offset: -4 },
+    },
+    xs: {
+        size: 24,
+        text: 50,
+        radius: 4,
+        status: { size: 'sm', offset: -5 },
+    },
+    sm: {
+        size: 32,
+        text: 100,
+        radius: 4,
+        status: { size: 'sm', offset: -3 },
+    },
+    md: {
+        size: 40,
+        text: 300,
+        radius: 8,
+        status: { size: 'sm', offset: -2 },
+    },
+    lg: {
+        size: 48,
+        text: 600,
+        radius: 12,
+        status: { size: 'sm', offset: -1 },
+    },
+    xl: {
+        size: 72,
+        text: 900,
+        radius: 16,
+        status: { size: 'lg', offset: -2 },
+    },
+    xxl: {
+        size: 96,
+        text: 1000,
+        radius: 20,
+        status: { size: 'lg', offset: 0 },
+    },
+    xxxl: {
+        size: 120,
+        text: 1000,
+        radius: 20,
+        status: { size: 'xl', offset: 6 },
+    },
 };
 
 const AVATAR_FALLBACK_COLORS: string[] = [
@@ -82,11 +115,8 @@ const AVATAR_FALLBACK_COLORS: string[] = [
 
 export {
     AVATAR_SIZES,
+    AVATAR_SIZE_LABELS,
     DEFAULT_AVATAR_SIZE,
     AVATAR_FALLBACK_COLORS,
     AVATAR_SIZE_MAP,
-    AVATAR_TEXT_SIZE_MAP,
-    AVATAR_STATUS_SIZE_MAP,
-    AVATAR_CORNER_RADIUS_SIZE_MAP,
-    AVATAR_MENTIONBADGE_SIZE_MAP,
 };

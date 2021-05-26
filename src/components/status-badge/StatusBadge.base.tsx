@@ -14,7 +14,7 @@ const StatusBadgeBase: React.FC<PStatusBadge> = ({
     ...rest
 }: PStatusBadge): JSX.Element => {
     const sizeValue: TStatusBadgeSize = STATUSBADGE_SIZE_MAP[size];
-    const sizeAdjustment = size && STATUSBADGE_SIZE_MAP[size] > 16 ? 8 : 4;
+    const sizeAdjustment = size && STATUSBADGE_SIZE_MAP[size] > 20 ? 8 : 4;
 
     let glyph: TIconGlyph = 'circle-outline';
 
