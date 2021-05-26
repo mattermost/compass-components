@@ -5,13 +5,13 @@
     "main": "index.js",
     "scripts": {
         "build-storybook": "build-storybook",
-        "build": "node -v && rimraf ./lib && yarn run build:icons && yarn run build:compile && yarn run build:copy-files",
+        "build": "node -v && rimraf ./lib && npm run build:icons && npm run build:compile && npm run build:copy-files",
         "build:icons": "node ./scripts/build-icons.js",
         "build:compile": "tsc --extendedDiagnostics -p \"./tsconfig.build.json\"",
         "build:copy-files": "node ./scripts/copy-files.js",
         "lint": "eslint ./src",
         "lint:fix": "eslint --fix --cache ./src",
-        "storybook": "yarn run build:icons && start-storybook -s ./ -p 6006"
+        "storybook": "npm run build:icons && start-storybook -s ./ -p 6006"
     },
     "repository": {
         "type": "git",
