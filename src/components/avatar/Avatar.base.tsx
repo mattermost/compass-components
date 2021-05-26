@@ -52,7 +52,7 @@ const capitalizeUsername = (name: string): string =>
 const AvatarBase = ({
     size = DEFAULT_AVATAR_SIZE,
     isTeam = false,
-    mentionCount,
+    mentions,
     name,
     image,
     className,
@@ -61,9 +61,9 @@ const AvatarBase = ({
     <div className={className}>
         {image ? <LazyAvatarImage source={image} /> : <div>{capitalizeUsername(name)}</div>}
         {status && <StatusBadge status={status} size={AVATAR_STATUS_SIZE_MAP[size]} />}
-        {isTeam && Utils.isNumber(mentionCount) && (
+        {isTeam && Utils.isNumber(mentions) && (
             <MentionBadge
-                mentionCount={Math.abs(Math.trunc(mentionCount))}
+                mentions={Math.abs(Math.trunc(mentions))}
                 size={size === 'xl' ? 'lg' : 'md'}
             />
         )}

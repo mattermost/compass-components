@@ -42,13 +42,13 @@ const getBadgeColors = ({
 
 const MentionBadge = styled(MentionBadgeBase)<PMentionBadge>(
     ({
-        mentionCount = 1,
+        mentions = 1,
         size = DEFAULT_MENTIONBADGE_SIZE,
     }: ThemedStyledProps<PMentionBadge, TTheme>): FlattenInterpolation<
         ThemedStyledProps<PMentionBadge, TTheme>
     > => {
-        const isUnreadBadge = mentionCount === 0;
-        const mentionLength = mentionCount.toString().length;
+        const isUnreadBadge = mentions === 0;
+        const mentionLength = mentions.toString().length;
 
         return css`
             ${getBadgeColors};

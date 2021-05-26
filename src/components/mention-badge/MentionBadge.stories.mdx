@@ -5,12 +5,12 @@ import { MENTIONBADGE_SIZES } from './MentionBadge.constants';
 import { Utils } from '../../shared';
 
 export const mentionBadgeDefaultArgs = {
-    mentionCount: 1,
+    mentions: 1,
     size: 'md',
 };
 
 export const unreadBadgeDefaultArgs = {
-    mentionCount: 0,
+    mentions: 0,
     size: 'md',
 };
 
@@ -29,7 +29,7 @@ export const mentionBadgeArgTypes = Utils.hideStyledComponentProperties({
             },
         },
     },
-    mentionCount: {
+    mentions: {
         control: {
             type: 'range',
             min: 1,

@@ -3,7 +3,7 @@ import { TMentionBadgeSize } from './MentionBadge.types';
 type PMentionBadge = {
     inverted?: boolean;
     background?: string;
-    mentionCount?: number;
+    mentions?: number;
     mentionLimit?: number;
     size?: TMentionBadgeSize;
     className?: string;
