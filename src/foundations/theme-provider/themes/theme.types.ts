@@ -38,6 +38,7 @@ type TTHemeBackgroundColors = {
     default: string;
     badge: string;
     shape: string;
+    shimmer: string;
 };
 
 type TThemeBadges = {

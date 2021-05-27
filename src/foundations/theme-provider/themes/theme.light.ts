@@ -65,6 +65,7 @@ const lightTheme: TTheme = {
         badge: neutral[1000],
         default: neutral[50],
         shape: neutral[0],
+        shimmer: neutral[0],
     },
 };
 
