@@ -6,10 +6,10 @@ import { Utils } from '../../shared';
 
 import PHeading from './Heading.props';
 import {
-    DEFAULT_HEADING_COLOR,
     DEFAULT_HEADING_ELEMENT,
     DEFAULT_HEADING_MARGIN,
     DEFAULT_HEADING_SIZE,
+    DEFAULT_HEADING_COLOR,
     DEFAULT_HEADING_WEIGHT,
     HEADING_ELEMENTS,
 } from './Heading.constants';

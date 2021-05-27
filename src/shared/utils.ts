@@ -69,11 +69,15 @@ function hideStyledComponentProperties(
     };
 }
 
-/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-explicit-any,no-console */
 const isNumber = (x: any): x is number => typeof x === 'number';
 const isString = (x: any): x is string => typeof x === 'string';
 const isFunction = (x: any): x is Function => typeof x === 'function';
-/* eslint-enable @typescript-eslint/no-explicit-any */
+
+function warn(message: string, ...rest: any): void {
+    console.warn(message, ...rest);
+}
+/* eslint-enable @typescript-eslint/no-explicit-any,no-console */
 
 const getFontMargin = (fontSize: number, multiplier: number): number =>
     Math.max(Math.round((fontSize * multiplier) / 4) * 4, 8);
@@ -129,6 +133,7 @@ function assert(assertion: boolean, message: string): void {
 }
 
 const Utils = {
+    warn,
     assert,
     clamp,
     isColor,

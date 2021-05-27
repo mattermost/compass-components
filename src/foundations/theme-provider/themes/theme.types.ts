@@ -1,9 +1,12 @@
 import { TStatusBadgeStatus } from '../../../components/status-badge/StatusBadge.types';
 
 type TThemeColorDefinition = {
-    light?: string;
+    lighter: string;
+    light: string;
     main: string;
-    dark?: string;
+    dark: string;
+    darker: string;
+    contrast: string;
 };
 
 type TTHemeColors = {
@@ -17,12 +20,6 @@ type TTHemeColors = {
 
 type TTHemeActionColors = {
     hover: string;
-    hoverOpacity: number;
-    active: string;
-    activeOpacity: number;
-    focus: string;
-    focusOpacity: number;
-    selected: string;
     disabled: string;
 };
 
@@ -40,6 +37,7 @@ type TTHemeBackgroundColors = {
     shape: string;
     skeleton: string;
     shimmer: string;
+    contrast: string;
 };
 
 type TThemeBadges = {
