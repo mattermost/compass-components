@@ -7,7 +7,7 @@ type PShape = {
      * The border-radius size
      * @default 0
      * */
-    borderRadius?: TShapeBorderRadius;
+    radius?: TShapeBorderRadius;
     /**
      * Elevation refers to the z-index depth that an element sits on.
      * The base Elevation is 0 and has no depth.
@@ -37,7 +37,7 @@ type PShape = {
      * */
     width?: number | string | 'auto';
     /**
-     * set a custom height. When `borderRadius` is set to `'circle'`,
+     * set a custom height. When `radius` is set to `'circle'`,
      * `height` will be set from `width`
      * @default 'auto'
      * */
@@ -47,4 +47,8 @@ type PShape = {
     checked?: boolean;
 };
 
-export default PShape;
+type PApplyShape = Pick<PShape, 'width' | 'height' | 'radius'>;
+
+type PApplyElevation = Required<Pick<PShape, 'elevation' | 'elevationOnHover'>>;
+
+export type { PShape, PApplyShape, PApplyElevation };

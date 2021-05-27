@@ -1,5 +1,7 @@
 import { normal } from 'color-blend';
 
+import { TBaseColorShade } from '../foundations/colors/colors.types';
+
 import Utils from './utils';
 
 type TColorDefinition = {
@@ -16,7 +18,7 @@ const supportedColorTypes = ['rgb', 'rgba', 'hsl', 'hsla'];
  * The property name (100 | 200 | ... | 800) describes the swatch shade.
  * Values stored for each shade are the luminance values for HSL
  */
-const shadeValues: Record<string, number> = {
+const shadeLuminanceValues: Record<TBaseColorShade, number> = {
     100: 0.8,
     200: 0.72,
     300: 0.64,
@@ -37,14 +39,14 @@ function hexToRgb(color: string): string {
 
     const re = new RegExp(`.{1,${colorValues.length >= 6 ? 2 : 1}}`, 'gu');
 
-    let colors = colorValues.match(re);
+    let splitColors = colorValues.match(re);
 
-    if (colors && colors[0].length === 1) {
-        colors = colors.map((n) => n + n);
+    if (splitColors && splitColors[0].length === 1) {
+        splitColors = splitColors.map((n) => n + n);
     }
 
-    return colors
-        ? `rgb${colors.length === 4 ? 'a' : ''}(${colors
+    return splitColors
+        ? `rgb${splitColors.length === 4 ? 'a' : ''}(${splitColors
               .map((n, index) =>
                   index < 3
                       ? Number.parseInt(n, 16)
@@ -54,6 +56,12 @@ function hexToRgb(color: string): string {
         : '';
 }
 
+/**
+ * convert a int value to the corresponding hex value
+ * e.g. 255 => FF
+ * @param {number} int - the int value in the range of 0-255
+ * @returns {string}
+ */
 function intToHex(int: number): string {
     const hex = int.toString(16);
 
@@ -227,36 +235,15 @@ function recomposeColor(color: TColorDefinition): string {
  * @param {string} color.typography - One of: 'rgb', 'rgba', 'hsl', 'hsla'
  * @param {array} color.values - [n,n,n] or [n,n,n,n]
  * @param {number} shade - 100 | 200 | ... | 800
- * @param {boolean} darker - some colors are best converted to darker shades (starting luminance -16%)
  * @returns {string} A CSS color string
  */
-function recomposeColorWithShade(color: TColorDefinition, shade: string, darker: boolean): string {
+function recomposeColorWithShade(color: TColorDefinition, shade: TBaseColorShade): string {
     const { values, type } = color;
     const hslValues: string[] = [];
-    const shadeInt = Number.parseInt(shade, 10);
-
-    let luminanceCorrection = 0;
-
-    switch (true) {
-        case darker && shadeInt <= 100:
-            luminanceCorrection -= 0.16;
-            break;
-        case darker && shadeInt > 100 && shadeInt <= 600:
-            luminanceCorrection -= 0.24;
-            break;
-        case darker && shadeInt > 600 && shadeInt <= 700:
-            luminanceCorrection -= 0.2;
-            break;
-        case darker && shadeInt > 700:
-            luminanceCorrection -= 0.16;
-            break;
-        default:
-            break;
-    }
 
     hslValues[0] = `${values[0]}`;
     hslValues[1] = `${values[1]}%`;
-    hslValues[2] = `${(shadeValues[shade] + luminanceCorrection) * 100}%`;
+    hslValues[2] = `${shadeLuminanceValues[shade] * 100}%`;
 
     const hslString = `${type}(${hslValues.join(', ')})`;
 
@@ -264,27 +251,11 @@ function recomposeColorWithShade(color: TColorDefinition, shade: string, darker:
 }
 
 /**
- * Set the absolute transparency of a color.
- * Any existing alpha values are overwritten.
- * @param {string} color - CSS color, i.e. one of: #nnn, #nnnnnn, rgb(), rgba(), hsl(), hsla(), color()
- * @param {number} value - value to set the alpha channel to in the range 0 - 1
- * @returns {string} A CSS color string. Hex input values are returned as rgb
+ * Create a full map of all shades for a given color
+ * @param {string} color
+ * @returns {Record<string, string>}
  */
-function setAlpha(color: string, value: number): string {
-    const decomposedColor = decomposeColor(color);
-
-    const clampedValue = Utils.clamp(value);
-
-    if (decomposedColor.type === 'rgb' || decomposedColor.type === 'hsl') {
-        decomposedColor.type += 'a';
-    }
-
-    decomposedColor.values[3] = clampedValue;
-
-    return recomposeColor(decomposedColor);
-}
-
-function createColorShades(color: string, darker = false): Record<string, string> {
+function createColorShades(color: string): Record<string, string> {
     const decomposedColor = decomposeColor(color);
     const colorShadeMap: Record<string, string> = {};
 
@@ -293,8 +264,11 @@ function createColorShades(color: string, darker = false): Record<string, string
         decomposedColor.values = rgbToHslValues(decomposedColor.values);
     }
 
-    for (const key of Object.keys(shadeValues)) {
-        colorShadeMap[key] = recomposeColorWithShade(decomposedColor, key, darker);
+    for (const key of Object.keys(shadeLuminanceValues)) {
+        colorShadeMap[key] = recomposeColorWithShade(
+            decomposedColor,
+            (key as unknown) as TBaseColorShade
+        );
     }
 
     return colorShadeMap;
@@ -313,70 +287,147 @@ function convertToRgb(color: string): string {
 }
 
 /**
- * Checks if a given string is a valid color string
- * @param {string} color - color string
- * @returns {boolean}
+ * Set the absolute transparency of a color.
+ * Any existing alpha values are overwritten.
+ * @param {string} color - CSS color, i.e. one of: #nnn, #nnnnnn, rgb(), rgba(), hsl(), hsla()
+ * @param {number} value - value to set the alpha channel to in the range 0 - 1
+ * @returns {string} A CSS color string. Hex input values are returned as rgb
  */
-function isValidColor(color: string): boolean {
-    const { type } = decomposeColor(color);
+function setAlpha(color: string, value: number): string {
+    const decomposedColor = decomposeColor(color);
 
-    return supportedColorTypes.includes(type);
+    const clampedValue = Utils.clamp(value);
+
+    if (decomposedColor.type === 'rgb' || decomposedColor.type === 'hsl') {
+        decomposedColor.type += 'a';
+    }
+
+    decomposedColor.values[3] = clampedValue;
+
+    return recomposeColor(decomposedColor);
 }
 
-function blendColors(baseColor: string, layerColor: string): string {
-    const decomposedBase = decomposeColor(convertToRgb(baseColor));
-    const decomposedLayer = decomposeColor(convertToRgb(layerColor));
+/**
+ * Calculates the contrast ratio between two colors.
+ *
+ * Formula: https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-tests
+ * @param {string} foreground - CSS color, i.e. one of: #nnn, #nnnnnn, rgb(), rgba(), hsl(), hsla()
+ * @param {string} background - CSS color, i.e. one of: #nnn, #nnnnnn, rgb(), rgba(), hsl(), hsla()
+ * @returns {number} A contrast ratio value in the range 0 - 21.
+ */
+function getContrastRatio(foreground: string, background: string): number {
+    const lumA = getLuminance(foreground);
+    const lumB = getLuminance(background);
+
+    return (Math.max(lumA, lumB) + 0.05) / (Math.min(lumA, lumB) + 0.05);
+}
+
+/**
+ * The relative brightness of any point in a color space,
+ * normalized to 0 for darkest black and 1 for lightest white.
+ *
+ * Formula: https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-tests
+ * @param {string} color - CSS color, i.e. one of: #nnn, #nnnnnn, rgb(), rgba(), hsl(), hsla()
+ * @returns {number} The relative brightness of the color in the range 0 - 1
+ */
+function getLuminance(color: string): number {
+    const decomposedColor = decomposeColor(color);
+
+    let rgb =
+        decomposedColor.type === 'hsl'
+            ? decomposeColor(hslToRgb(color)).values
+            : decomposedColor.values;
+
+    rgb = rgb.map((value) => {
+        const normalizedValue = value / 255;
+
+        return normalizedValue <= 0.039_28
+            ? normalizedValue / 12.92
+            : ((normalizedValue + 0.055) / 1.055) ** 2.4;
+    });
+
+    // Truncate at 3 digits
+    return Number((0.2126 * rgb[0] + 0.7152 * rgb[1] + 0.0722 * rgb[2]).toFixed(3));
+}
+
+/**
+ * Darkens a color.
+ * @param {string} color - CSS color, i.e. one of: #nnn, #nnnnnn, rgb(), rgba(), hsl(), hsla()
+ * @param {number} coefficient - multiplier in the range 0 - 1
+ * @returns {string} A CSS color string. Hex input values are returned as rgb
+ */
+function darken(color: string, coefficient: number): string {
+    const decomposedColor = decomposeColor(color);
+    const clampedCoefficient = Utils.clamp(coefficient);
+
+    if (decomposedColor.type.includes('hsl')) {
+        decomposedColor.values[2] *= 1 - clampedCoefficient;
+    } else if (decomposedColor.type.includes('rgb')) {
+        for (let index = 0; index < 3; index += 1) {
+            decomposedColor.values[index] *= 1 - clampedCoefficient;
+        }
+    }
+
+    return recomposeColor(decomposedColor);
+}
+
+/**
+ * Lightens a color.
+ * @param {string} color - CSS color, i.e. one of: #nnn, #nnnnnn, rgb(), rgba(), hsl(), hsla()
+ * @param {number} coefficient - multiplier in the range 0 - 1
+ * @returns {string} A CSS color string. Hex input values are returned as rgb
+ */
+function lighten(color: string, coefficient: number): string {
+    const decomposedColor = decomposeColor(color);
+    const clampedCoefficient = Utils.clamp(coefficient);
+
+    if (decomposedColor.type.includes('hsl')) {
+        decomposedColor.values[2] += (100 - decomposedColor.values[2]) * clampedCoefficient;
+    } else if (decomposedColor.type.includes('rgb')) {
+        for (let index = 0; index < 3; index += 1) {
+            decomposedColor.values[index] +=
+                (255 - decomposedColor.values[index]) * clampedCoefficient;
+        }
+    }
+
+    return recomposeColor(decomposedColor);
+}
+
+/**
+ * Blends to colors in normal mode
+ * @param {string} background - the background color
+ * @param {string} foreground - the foreground color layered on top
+ * @returns {string} rgb color string
+ */
+function blendColors(background: string, foreground: string): string {
+    const decomposedBackground = decomposeColor(convertToRgb(background));
+    const decomposedForeground = decomposeColor(convertToRgb(foreground));
 
     const base = {
-        r: decomposedBase.values[0],
-        g: decomposedBase.values[1],
-        b: decomposedBase.values[2],
+        r: decomposedBackground.values[0],
+        g: decomposedBackground.values[1],
+        b: decomposedBackground.values[2],
         a:
-            decomposedBase.values[3] === undefined || Number.isNaN(decomposedBase.values[3])
+            decomposedBackground.values[3] === undefined ||
+            Number.isNaN(decomposedBackground.values[3])
                 ? 1
-                : decomposedBase.values[3],
+                : decomposedBackground.values[3],
     };
 
     const layer = {
-        r: decomposedLayer.values[0],
-        g: decomposedLayer.values[1],
-        b: decomposedLayer.values[2],
+        r: decomposedForeground.values[0],
+        g: decomposedForeground.values[1],
+        b: decomposedForeground.values[2],
         a:
-            decomposedLayer.values[3] === undefined || Number.isNaN(decomposedLayer.values[3])
+            decomposedForeground.values[3] === undefined ||
+            Number.isNaN(decomposedForeground.values[3])
                 ? 1
-                : decomposedLayer.values[3],
+                : decomposedForeground.values[3],
     };
 
     const mixed = normal(base, layer);
 
     return recomposeColor({ type: 'rgba', values: [mixed.r, mixed.g, mixed.b, mixed.a] });
-}
-
-/**
- * return rgb string to be used in (S)CSS properties
- * @param {string} rgb - color string
- * @param {number} opacity - color opacity
- * @returns {string}
- */
-function getRGBString(rgb: string, opacity?: number): string {
-    // convert string to numbers-array
-    const values = rgb.split(',').map((value) => Number.parseInt(value.trim(), 10));
-
-    if (values.length !== 3 || values.filter((x) => x && !(x < 0 || x > 255)).length !== 3) {
-        throw new Error(
-            `Compass Components: colorutils - Please provide a valid rgb color string to this function. Reason: ${
-                values.length === 3
-                    ? 'RGB values are not in the range between 0 - 255'
-                    : 'Not all RGB values were provided to the function.'
-            }`
-        );
-    }
-
-    if (opacity) {
-        return `rgba(${rgb},${Utils.clamp(opacity)})`;
-    }
-
-    return `rgb(${rgb})`;
 }
 
 export {
@@ -390,7 +441,8 @@ export {
     rgbToHex,
     rgbToHsl,
     createColorShades,
-    isValidColor,
-    getRGBString,
     blendColors,
+    darken,
+    lighten,
+    getContrastRatio,
 };

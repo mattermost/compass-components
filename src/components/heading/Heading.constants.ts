@@ -2,6 +2,7 @@ import { FONT_COLORS, FONT_MARGINS, FONT_WEIGHTS } from '../../shared/constants'
 import { Utils } from '../../shared';
 
 import {
+    THeadingColor,
     THeadingDefinitions,
     THeadingElement,
     THeadingMargin,
@@ -110,7 +111,10 @@ const DEFAULT_HEADING_WEIGHT: THeadingWeight = 'bold';
 
 const DEFAULT_HEADING_MARGIN: THeadingMargin = 'both';
 
+const DEFAULT_HEADING_COLOR: THeadingColor = 'inherit';
+
 export {
+    HEADING_DEFINITIONS,
     HEADING_SIZE_TOKENS,
     DEFAULT_HEADING_SIZE,
     HEADING_ELEMENTS,
@@ -121,5 +125,5 @@ export {
     FONT_MARGINS as HEADING_MARGINS,
     DEFAULT_HEADING_MARGIN,
     FONT_COLORS as HEADING_COLORS,
-    HEADING_DEFINITIONS,
+    DEFAULT_HEADING_COLOR,
 };

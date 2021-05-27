@@ -1,8 +1,10 @@
 import React from 'react';
 
+import { TTheme } from '../../foundations/theme-provider/themes/theme.types';
+
 import { TTextSizeToken, TTextElement, TTextColor, TTextWeight, TTextMargin } from './Text.types';
 
-export type PText = {
+type PText = {
     /** which color is the text rendered with */
     color?: TTextColor;
     /** define the weight of the rendered font */
@@ -22,5 +24,16 @@ export type PText = {
     className?: string;
     children?: React.ReactNode | React.ReactNode[];
 };
+
+type PApplyTextStyles = Required<Pick<PText, 'size' | 'inheritLineHeight' | 'element' | 'weight'>>;
+
+type PApplyTextMargin = Required<Pick<PText, 'size' | 'margin'>>;
+
+type PApplyTextColor = {
+    color: TTextColor;
+    theme: TTheme;
+};
+
+export type { PApplyTextColor, PApplyTextMargin, PApplyTextStyles };
 
 export default PText;

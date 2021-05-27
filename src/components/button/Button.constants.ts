@@ -8,13 +8,19 @@ const BUTTON_VARIANTS: TButtonVariant[] = ['primary', 'secondary', 'tertiary'];
 
 const DEFAULT_BUTTON_VARIANT: TButtonVariant = 'primary';
 
-const BUTTON_WIDTHS: TButtonWidth[] = ['full', 'dynamic'];
+const BUTTON_WIDTHS: TButtonWidth[] = ['full', 'auto'];
 
-const DEFAULT_BUTTON_WIDTH: TButtonWidth = 'dynamic';
+const DEFAULT_BUTTON_WIDTH: TButtonWidth = 'auto';
 
 const BUTTON_ICON_POSITIONS: TButtonIconPosition[] = ['start', 'end'];
 
 const DEFAULT_BUTTON_ICON_POSITION: TButtonIconPosition = 'start';
+
+const BUTTON_ICON_MARGIN_MAP: Record<TButtonSize, number> = {
+    small: 5,
+    medium: 7,
+    large: 8,
+};
 
 export {
     BUTTON_SIZES,
@@ -25,4 +31,5 @@ export {
     DEFAULT_BUTTON_WIDTH,
     BUTTON_ICON_POSITIONS,
     DEFAULT_BUTTON_ICON_POSITION,
+    BUTTON_ICON_MARGIN_MAP,
 };

@@ -29,15 +29,15 @@ export const Template = (args) => {
         }}
         argTypes={Utils.hideStyledComponentProperties({
             size: {
+                options: ICON_SIZES,
                 control: {
                     type: 'select',
-                    options: ICON_SIZES,
                 },
             },
             glyph: {
+                options: ICON_GLYPHS,
                 control: {
                     type: 'select',
-                    options: ICON_GLYPHS,
                 },
             },
             'aria-label': { table: { disable: true } },

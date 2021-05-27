@@ -66,11 +66,17 @@ const hideStyledComponentProperties = (
     ...properties,
 });
 
-/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-explicit-any,no-console */
 const isNumber = (x: any): x is number => typeof x === 'number';
 const isString = (x: any): x is string => typeof x === 'string';
 const isFunction = (x: any): x is Function => typeof x === 'function';
-/* eslint-enable @typescript-eslint/no-explicit-any */
+
+function warn(message: string, ...rest: any): void {
+    console.warn(message, ...rest);
+}
+/* eslint-enable @typescript-eslint/no-explicit-any,no-console */
+
+const getPxValue = (value: string | number): string => (isNumber(value) ? `${value}px` : value);
 
 const getFontMargin = (fontSize: number, multiplier: number): number =>
     Math.max(Math.round((fontSize * multiplier) / 4) * 4, 8);
@@ -92,7 +98,27 @@ function clamp(value: number, min = 0, max = 1): number {
     return Math.min(Math.max(min, value), max);
 }
 
+class CompassError extends Error {
+    constructor(message: string) {
+        super(message);
+        this.name = 'CompassError';
+    }
+}
+
+/**
+ * Asserts if a certain check is true. If not throw a CompassError with the provided message
+ * @param {boolean} assertion
+ * @param {string} message
+ */
+function assert(assertion: boolean, message: string): void {
+    if (!assertion) {
+        throw new CompassError(message);
+    }
+}
+
 const Utils = {
+    warn,
+    assert,
     clamp,
     isColor,
     isNumber,
@@ -102,6 +128,9 @@ const Utils = {
     getStoryDocumentationUrl,
     hideStyledComponentProperties,
     getFontMargin,
+    getPxValue,
 };
+
+export { CompassError };
 
 export default Utils;
