@@ -117,11 +117,11 @@ export const Template = (args) => {
             margin: DEFAULT_HEADING_MARGIN,
         }}
         argTypes={{
-            size: { control: { type: 'select', options: HEADING_SIZE_TOKENS } },
-            element: { control: { type: 'select', options: HEADING_ELEMENTS } },
-            weight: { control: { type: 'radio', options: HEADING_WEIGHTS } },
-            margin: { control: { type: 'radio', options: HEADING_MARGINS } },
-            color: { control: { type: 'radio', options: HEADING_COLORS } },
+            size: { options: HEADING_SIZE_TOKENS, control: { type: 'select' } },
+            element: { options: HEADING_ELEMENTS, control: { type: 'select' } },
+            weight: { options: HEADING_WEIGHTS, control: { type: 'radio' } },
+            margin: { options: HEADING_MARGINS, control: { type: 'radio' } },
+            color: { options: HEADING_COLORS, control: { type: 'radio' } },
             className: { table: { disable: true } },
         }}
     >

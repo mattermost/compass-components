@@ -44,17 +44,17 @@ const getStoryDocumentationUrl = (storyParameters: Record<string, string>): stri
  * })<PSection>` ... `
  * ```
  * */
-const forwardProperties =
-    (whitelist: string[] = []): ((property: string | number) => boolean) =>
-    (property: string | number): boolean =>
-        // forward the property when it is a `data-*`attribute
-        property.toString().startsWith('data-') ||
-        // forward the property when it is a `aria-*`attribute
-        property.toString().startsWith('aria-') ||
-        // always forward the property when it is defined within the property-whitelist
-        DEFAULT_PROPERTY_WHITELIST.includes(property.toString()) ||
-        // forward the property when it is defined within the passed property-whitelist
-        whitelist.includes(property.toString());
+const forwardProperties = (whitelist: string[] = []): ((property: string | number) => boolean) => (
+    property: string | number
+): boolean =>
+    // forward the property when it is a `data-*`attribute
+    property.toString().startsWith('data-') ||
+    // forward the property when it is a `aria-*`attribute
+    property.toString().startsWith('aria-') ||
+    // always forward the property when it is defined within the property-whitelist
+    DEFAULT_PROPERTY_WHITELIST.includes(property.toString()) ||
+    // forward the property when it is defined within the passed property-whitelist
+    whitelist.includes(property.toString());
 
 const hideStyledComponentProperties = (
     properties: Record<string, unknown>
@@ -66,11 +66,15 @@ const hideStyledComponentProperties = (
     ...properties,
 });
 
-/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-explicit-any,no-console */
 const isNumber = (x: any): x is number => typeof x === 'number';
 const isString = (x: any): x is string => typeof x === 'string';
 const isFunction = (x: any): x is Function => typeof x === 'function';
-/* eslint-enable @typescript-eslint/no-explicit-any */
+
+function warn(message: string, ...rest: any): void {
+    console.warn(message, ...rest);
+}
+/* eslint-enable @typescript-eslint/no-explicit-any,no-console */
 
 const getPxValue = (value: string | number): string => (isNumber(value) ? `${value}px` : value);
 
@@ -113,6 +117,7 @@ function assert(assertion: boolean, message: string): void {
 }
 
 const Utils = {
+    warn,
     assert,
     clamp,
     isColor,

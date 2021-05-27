@@ -4,8 +4,9 @@ import { TButtonIconPosition, TButtonSize, TButtonVariant, TButtonWidth } from '
 
 export type PButton = {
     label: string;
-    disabled?: boolean;
     destructive?: boolean;
+    inverted?: boolean;
+    disabled?: boolean;
     variant?: TButtonVariant;
     width?: TButtonWidth;
     size?: TButtonSize;

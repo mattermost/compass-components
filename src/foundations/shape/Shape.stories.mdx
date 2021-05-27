@@ -32,27 +32,27 @@ export const defaultArgs = {
 
 export const argTypes = Utils.hideStyledComponentProperties({
     component: {
+        options: SHAPE_ELEMENTS,
         control: {
             type: 'select',
-            options: SHAPE_ELEMENTS,
         },
     },
     radius: {
+        options: SHAPE_BORDER_RADII,
         control: {
             type: 'select',
-            options: SHAPE_BORDER_RADII,
         },
     },
     elevation: {
+        options: SHAPE_ELEVATION_LEVELS,
         control: {
             type: 'select',
-            options: SHAPE_ELEVATION_LEVELS,
         },
     },
     elevationOnHover: {
+        options: SHAPE_ELEVATION_LEVELS,
         control: {
             type: 'select',
-            options: SHAPE_ELEVATION_LEVELS,
         },
     },
     width: { control: { type: 'range', min: 150, max: 600, step: 25 } },

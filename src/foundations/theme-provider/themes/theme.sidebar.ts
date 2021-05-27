@@ -1,18 +1,17 @@
-import { setAlpha } from '../../../shared';
-import { indigo, green, red, neutral, orange, purple, teal } from '../../colors';
+import { blue, indigo, green, red, neutral, orange, teal } from '../../colors';
 
 import { TTheme } from './theme.types';
 
-const darkTheme: TTheme = {
+const sidebarTheme: TTheme = {
     type: 'dark',
     elevationOpacity: 0.32,
     palette: {
         primary: {
-            lighter: purple[200],
-            light: purple[300],
-            main: purple[500],
-            dark: purple[700],
-            darker: purple[800],
+            lighter: green[100],
+            light: green[200],
+            main: green[400],
+            dark: green[600],
+            darker: green[700],
             contrast: neutral[0],
         },
         secondary: {
@@ -60,26 +59,18 @@ const darkTheme: TTheme = {
         hover: neutral[0],
         disabled: neutral[100],
     },
-    badges: {
-        online: green[600],
-        away: orange[400],
-        dnd: red[500],
-        offline: setAlpha(neutral[350], 0.64),
-    },
     text: {
-        accent: neutral[150],
         primary: neutral[50],
+        accent: neutral[150],
         secondary: neutral[300],
         disabled: neutral[700],
         contrast: neutral[100],
     },
     background: {
-        badge: neutral[1250],
-        default: neutral[1100],
-        shape: neutral[1000],
-        shimmer: neutral[1000],
+        default: blue[700],
+        shape: blue[500],
         contrast: neutral[50],
     },
 };
 
-export default darkTheme;
+export default sidebarTheme;
