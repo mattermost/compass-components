@@ -6,7 +6,7 @@ export type PImage = {
     /**
      * the src of the image
      * */
-    source?: string;
+    source: string;
     /**
      * whether the image is full sized or auto
      * @default auto
@@ -14,17 +14,17 @@ export type PImage = {
     size?: TImageSize;
     /**
      * the shape that the image is cropped in
-     * @default 4px
+     * @default 4
      * */
     radius?: TShapeBorderRadius;
     /**
      * image width
      * */
-    width?: number;
+    width?: number | string;
     /**
      * image height
      * */
-    height?: number;
+    height?: number | string;
     /**
      * image alt
      * */

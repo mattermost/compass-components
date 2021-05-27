@@ -1,20 +1,32 @@
-import React from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 
-import { DEFAULT_IMAGE_SOURCE } from './Image.constants';
 import { PImage } from './Image.props';
 
-const ImageBase: React.FC<PImage> = ({
-    source = DEFAULT_IMAGE_SOURCE,
-    width,
-    height,
-    alt,
-    className,
-}: PImage) => {
+const ImageBase: React.FC<PImage> = ({ source, width, height, alt, className }: PImage) => {
     if (!source) {
-        return <div className={'skeleton'} />;
+        throw new Error('Compass Components: You need to provide image source');
     }
 
-    return <img src={source} alt={alt} width={width} height={height} className={className} />;
+    const [loading, setLoading] = useState(true);
+    const [image, setImage] = useState('');
+
+    const fetchUrl = useCallback(async () => {
+        const response = await fetch(source);
+        const imgUrl = await response.url;
+
+        setLoading(false);
+        setImage(imgUrl);
+    }, [source]);
+
+    useEffect(() => {
+        fetchUrl();
+    }, [source, fetchUrl]);
+
+    return loading ? (
+        <div className={'skeleton'} />
+    ) : (
+        <img src={image} alt={alt} width={width} height={height} className={className} />
+    );
 };
 
 export default ImageBase;

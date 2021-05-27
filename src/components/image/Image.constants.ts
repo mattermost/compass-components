@@ -1,5 +1,4 @@
 import { TShapeBorderRadius } from '../../foundations/shape';
-import exampleImg from '../../assets/images/image-example.png';
 
 import TImageSize from './Image.types';
 
@@ -7,7 +6,7 @@ const DEFAULT_IMAGE_SIZE: TImageSize = 'auto';
 
 const DEFAULT_IMAGE_BORDER_RADIUS: TShapeBorderRadius = 4;
 
-const DEFAULT_IMAGE_SOURCE = exampleImg;
+const DEFAULT_IMAGE_SOURCE = 'http://placekitten.com/200/200';
 
 const IMAGE_SIZES: TImageSize[] = ['auto', 'full'];
 
