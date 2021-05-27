@@ -19,7 +19,7 @@ const applyHeadingStyles = ({
     const lineHeight = inheritLineHeight ? 'inherit' : `${HEADING_DEFINITIONS[size].lineHeight}px`;
 
     return css`
-        font-family: ${FONT_TYPE_FAMILIES.body};
+        font-family: ${FONT_TYPE_FAMILIES.heading};
         font-weight: ${FONT_WEIGHT_MAP[weight]};
         font-size: ${HEADING_DEFINITIONS[size].size}px;
         line-height: ${lineHeight};

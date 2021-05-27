@@ -34,7 +34,6 @@ const Avatar = styled(AvatarBase)<PAvatar>(
             })};
 
             ${applyHeadingStyles({
-                element: 'h6',
                 size: AVATAR_SIZE_MAP[size].text,
             })};
 
@@ -49,8 +48,8 @@ const Avatar = styled(AvatarBase)<PAvatar>(
 
         ${MentionBadge} {
             position: absolute;
-            top: -2px;
-            right: -2px;
+            top: -5px;
+            right: -5px;
         }
     `
 );
