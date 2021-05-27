@@ -44,17 +44,17 @@ const getStoryDocumentationUrl = (storyParameters: Record<string, string>): stri
  * })<PSection>` ... `
  * ```
  * */
-const forwardProperties = (whitelist: string[] = []): ((property: string | number) => boolean) => (
-    property: string | number
-): boolean =>
-    // forward the property when it is a `data-*`attribute
-    property.toString().startsWith('data-') ||
-    // forward the property when it is a `aria-*`attribute
-    property.toString().startsWith('aria-') ||
-    // always forward the property when it is defined within the property-whitelist
-    DEFAULT_PROPERTY_WHITELIST.includes(property.toString()) ||
-    // forward the property when it is defined within the passed property-whitelist
-    whitelist.includes(property.toString());
+const forwardProperties =
+    (whitelist: string[] = []): ((property: string | number) => boolean) =>
+    (property: string | number): boolean =>
+        // forward the property when it is a `data-*`attribute
+        property.toString().startsWith('data-') ||
+        // forward the property when it is a `aria-*`attribute
+        property.toString().startsWith('aria-') ||
+        // always forward the property when it is defined within the property-whitelist
+        DEFAULT_PROPERTY_WHITELIST.includes(property.toString()) ||
+        // forward the property when it is defined within the passed property-whitelist
+        whitelist.includes(property.toString());
 
 const hideStyledComponentProperties = (
     properties: Record<string, unknown>
@@ -76,6 +76,8 @@ function warn(message: string, ...rest: any): void {
 }
 /* eslint-enable @typescript-eslint/no-explicit-any,no-console */
 
+const getPxValue = (value: string | number): string => (isNumber(value) ? `${value}px` : value);
+
 const getFontMargin = (fontSize: number, multiplier: number): number =>
     Math.max(Math.round((fontSize * multiplier) / 4) * 4, 8);
 
@@ -96,8 +98,27 @@ function clamp(value: number, min = 0, max = 1): number {
     return Math.min(Math.max(min, value), max);
 }
 
+class CompassError extends Error {
+    constructor(message: string) {
+        super(message);
+        this.name = 'CompassError';
+    }
+}
+
+/**
+ * Asserts if a certain check is true. If not throw a CompassError with the provided message
+ * @param {boolean} assertion
+ * @param {string} message
+ */
+function assert(assertion: boolean, message: string): void {
+    if (!assertion) {
+        throw new CompassError(message);
+    }
+}
+
 const Utils = {
     warn,
+    assert,
     clamp,
     isColor,
     isNumber,
@@ -107,6 +128,9 @@ const Utils = {
     getStoryDocumentationUrl,
     hideStyledComponentProperties,
     getFontMargin,
+    getPxValue,
 };
+
+export { CompassError };
 
 export default Utils;

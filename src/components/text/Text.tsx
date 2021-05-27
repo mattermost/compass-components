@@ -1,65 +1,18 @@
 import styled, { css } from 'styled-components';
 import { FlattenSimpleInterpolation, ThemedStyledProps } from 'styled-components/ts3.6';
 
-import { Utils, FONT_TYPE_FAMILIES } from '../../shared';
+import { Utils } from '../../shared';
 import { TTheme } from '../../foundations/theme-provider/themes/theme.types';
 
 import PText from './Text.props';
 import {
     DEFAULT_TEXT_MARGIN,
     DEFAULT_TEXT_SIZE,
-    DEFAULT_TEXT_COLOR,
     DEFAULT_TEXT_ELEMENT,
     DEFAULT_TEXT_WEIGHT,
-    TEXT_ELEMENTS,
-    TEXT_DEFINITIONS,
+    DEFAULT_TEXT_COLOR,
 } from './Text.constants';
-
-const getTextVariables = ({
-    theme,
-    inheritLineHeight = false,
-    color = DEFAULT_TEXT_COLOR,
-    element = DEFAULT_TEXT_ELEMENT,
-    margin = DEFAULT_TEXT_MARGIN,
-    size = DEFAULT_TEXT_SIZE,
-    weight = DEFAULT_TEXT_WEIGHT,
-}: ThemedStyledProps<PText, TTheme>): FlattenSimpleInterpolation => {
-    // Whenever this component is used with an element that is not supported within the headings throw an error!
-    if (!TEXT_ELEMENTS.includes(element)) {
-        throw new Error(
-            `Compass Components: Text component was used with an unsupported element '${element}'.
-            Please provide one from these available options: ${TEXT_ELEMENTS.join(', ')}.`
-        );
-    }
-
-    const textColor = color && color !== 'inherit' ? theme.text[color] : color;
-    const lineHeight = inheritLineHeight ? 'inherit' : `${TEXT_DEFINITIONS[size].lineHeight}px`;
-
-    let marginValue = `${TEXT_DEFINITIONS[size].margin}px 0`;
-
-    switch (margin) {
-        case 'none':
-            marginValue = '0';
-            break;
-        case 'bottom':
-            marginValue = `0 0 ${TEXT_DEFINITIONS[size].margin}px`;
-            break;
-        case 'top':
-            marginValue = `${TEXT_DEFINITIONS[size].margin}px 0 0`;
-            break;
-        default:
-    }
-
-    return css`
-        font-family: ${FONT_TYPE_FAMILIES.body};
-        font-weight: ${weight};
-        font-size: ${TEXT_DEFINITIONS[size].size}px;
-        line-height: ${lineHeight};
-
-        margin: ${marginValue};
-        color: ${textColor};
-    `;
-};
+import { applyTextColor, applyTextMargin, applyTextStyles } from './Text.mixins';
 
 const Text = styled.p
     .attrs((props: PText) => ({
@@ -70,13 +23,24 @@ const Text = styled.p
     }))
     .withConfig({
         shouldForwardProp: Utils.forwardProperties(),
-    })<PText>`
-    ${getTextVariables}
-    
-    // animation
-    body.enable-animations & {
-        transition: color var(--animation-speed-shortest) 0s ease-in-out;
-    }
-`;
+    })<PText>(
+    ({
+        theme,
+        inheritLineHeight = false,
+        color = DEFAULT_TEXT_COLOR,
+        element = DEFAULT_TEXT_ELEMENT,
+        margin = DEFAULT_TEXT_MARGIN,
+        size = DEFAULT_TEXT_SIZE,
+        weight = DEFAULT_TEXT_WEIGHT,
+    }: ThemedStyledProps<PText, TTheme>): FlattenSimpleInterpolation => css`
+        ${applyTextStyles({ inheritLineHeight, element, size, weight })};
+        ${applyTextColor({ color, theme })};
+        ${applyTextMargin({ margin, size })};
+
+        body.enable-animations & {
+            transition: color var(--animation-speed-shortest) 0s ease-in-out;
+        }
+    `
+);
 
 export default Text;

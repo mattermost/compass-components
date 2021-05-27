@@ -1,3 +1,5 @@
+import { TStatusBadgeStatus } from '../../../components/status-badge/StatusBadge.types';
+
 type TThemeColorDefinition = {
     lighter: string;
     light: string;
@@ -31,14 +33,20 @@ type TTHemeTextColors = {
 
 type TTHemeBackgroundColors = {
     default: string;
+    badge: string;
     shape: string;
     contrast: string;
+};
+
+type TThemeBadges = {
+    [key in TStatusBadgeStatus]: string;
 };
 
 type TTheme = {
     type: 'light' | 'dark';
     elevationOpacity: number;
     palette: TTHemeColors;
+    badges: TThemeBadges;
     action: TTHemeActionColors;
     text: TTHemeTextColors;
     background: TTHemeBackgroundColors;

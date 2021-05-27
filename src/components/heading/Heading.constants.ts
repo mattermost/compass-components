@@ -24,19 +24,7 @@ const DEFAULT_HEADING_ELEMENT_SIZES: Record<THeadingElement, THeadingSizeToken> 
 };
 
 const HEADING_SIZE_TOKENS: THeadingSizeToken[] = [
-    25,
-    50,
-    75,
-    100,
-    200,
-    300,
-    400,
-    500,
-    600,
-    700,
-    800,
-    900,
-    1000,
+    25, 50, 75, 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000,
 ];
 
 const HEADING_DEFINITIONS: THeadingDefinitions = {
@@ -111,9 +99,10 @@ const DEFAULT_HEADING_WEIGHT: THeadingWeight = 'bold';
 
 const DEFAULT_HEADING_MARGIN: THeadingMargin = 'both';
 
-const DEFAULT_HEADING_COLOR: THeadingColor = 'primary';
+const DEFAULT_HEADING_COLOR: THeadingColor = 'inherit';
 
 export {
+    HEADING_DEFINITIONS,
     HEADING_SIZE_TOKENS,
     DEFAULT_HEADING_SIZE,
     HEADING_ELEMENTS,
@@ -125,5 +114,4 @@ export {
     DEFAULT_HEADING_MARGIN,
     FONT_COLORS as HEADING_COLORS,
     DEFAULT_HEADING_COLOR,
-    HEADING_DEFINITIONS,
 };

@@ -1,6 +1,6 @@
 type TButtonSize = 'small' | 'medium' | 'large';
 
-type TButtonWidth = number | 'full' | 'dynamic';
+type TButtonWidth = number | 'full' | 'auto';
 
 type TButtonVariant = 'primary' | 'secondary' | 'tertiary';
 

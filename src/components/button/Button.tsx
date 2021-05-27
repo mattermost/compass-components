@@ -1,6 +1,9 @@
 import styled, { css } from 'styled-components';
 import { FlattenSimpleInterpolation, ThemedStyledProps } from 'styled-components/ts3.6';
 
+import { Spacing, TSpacingTokensSymmetric } from '../../foundations/layout';
+import { applyPadding } from '../../foundations/layout/Grid.mixins';
+import { applyShape } from '../../foundations/shape/Shape.mixins';
 import { TTheme } from '../../foundations/theme-provider/themes/theme.types';
 import { setAlpha, blendColors, Utils } from '../../shared';
 
@@ -12,7 +15,7 @@ import {
 } from './Button.constants';
 import { PButton } from './Button.props';
 
-const getButtonVariables = ({
+const getButtonStyles = ({
     theme: { palette, action, background },
     onClick,
     destructive = false,
@@ -137,16 +140,46 @@ const getButtonVariables = ({
     `;
 };
 
-const Button = styled(ButtonBase)<PButton>`
-    align-items: stretch;
-    cursor: pointer;
+const Button = styled(ButtonBase)<PButton>(
+    ({ size, width }: ThemedStyledProps<PButton, TTheme>) => {
+        let height = 40;
 
-    // define local variables
-    ${getButtonVariables};
+        const spacing: TSpacingTokensSymmetric = {
+            vertical: 0,
+            horizontal: 125,
+        };
 
-    transition-property: box-shadow, background-color, color;
-    transition-duration: 150ms;
-    transition-timing-function: linear;
-`;
+        switch (size) {
+            case 'large':
+                height = 48;
+                spacing.horizontal = 150;
+                break;
+            case 'small':
+                height = 32;
+                spacing.horizontal = 100;
+                break;
+            case 'medium':
+            default:
+        }
+
+        return css`
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            cursor: pointer;
+
+            ${applyShape({ width: width === 'full' ? '100%' : width, height, radius: 4 })};
+            ${applyPadding(Spacing.symmetric(spacing))};
+
+            // define local variables
+            ${getButtonStyles};
+
+            transition-property: box-shadow, background-color, color;
+            transition-duration: 150ms;
+            transition-timing-function: linear;
+        `;
+    }
+);
 
 export default Button;

@@ -7,6 +7,12 @@ const FONT_TYPE_FAMILIES: Record<'heading' | 'body', string> = {
 
 const FONT_WEIGHTS: TFontWeight[] = ['light', 'regular', 'bold'];
 
+const FONT_WEIGHT_MAP: Record<TFontWeight, number> = {
+    light: 300,
+    regular: 400,
+    bold: 600,
+};
+
 const FONT_MARGINS: TFontMargin[] = ['none', 'both', 'bottom', 'top'];
 
 const FONT_COLORS: TFontColor[] = ['primary', 'secondary', 'disabled', 'inherit'];
@@ -37,4 +43,5 @@ export {
     FONT_COLORS,
     FONT_MARGINS,
     FONT_WEIGHTS,
+    FONT_WEIGHT_MAP,
 };

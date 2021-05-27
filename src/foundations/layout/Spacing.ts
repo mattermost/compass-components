@@ -1,21 +1,23 @@
+import { Utils } from '../../shared';
+
 import {
     TSpacing,
     TSpacingDefinition,
     TSpacingSides,
-    TSpacingTokens,
+    TSpacingToken,
     TSpacingTokensSymmetric,
     TSpacingTokensTRBL,
-} from './Grid.types';
+} from './Spacing.types';
 import { SIZES } from './Spacing.constants';
 
 const Spacing: TSpacing = {
-    all(spacingToken: TSpacingTokens): TSpacingDefinition {
+    all(spacingToken: TSpacingToken): TSpacingDefinition {
         return [spacingToken, spacingToken, spacingToken, spacingToken];
     },
     trbl({ top = 0, right = 0, bottom = 0, left = 0 }: TSpacingTokensTRBL): TSpacingDefinition {
         return [top, right, bottom, left];
     },
-    only(side: TSpacingSides, spacingToken: TSpacingTokens): TSpacingDefinition {
+    only(side: TSpacingSides, spacingToken: TSpacingToken): TSpacingDefinition {
         const trbl: TSpacingTokensTRBL = {
             top: 0,
             right: 0,
@@ -38,7 +40,7 @@ const Spacing: TSpacing = {
 };
 
 const parseSpacing = (spacing: TSpacingDefinition): string =>
-    spacing.map((s = 0) => `${SIZES[s || 0]}px`).join(' ');
+    spacing.map((s) => (s ? Utils.getPxValue(SIZES[s]) : 0)).join(' ');
 
 export { parseSpacing };
 
