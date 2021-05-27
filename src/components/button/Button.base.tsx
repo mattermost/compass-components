@@ -46,6 +46,7 @@ const ButtonBase: React.FC<PButton> = ({
                 size={labelSize}
                 margin={'none'}
                 weight={'bold'}
+                color={'inherit'}
                 inheritLineHeight
             >
                 {label}

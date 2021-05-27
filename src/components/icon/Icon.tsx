@@ -1,6 +1,7 @@
 import styled, { css } from 'styled-components';
-import { FlattenSimpleInterpolation } from 'styled-components/ts3.6';
+import { FlattenSimpleInterpolation, ThemedStyledProps } from 'styled-components/ts3.6';
 
+import { TTheme } from '../../foundations/theme-provider/themes/theme.types';
 import { Utils } from '../../shared';
 
 import { PIcon } from './Icon.props';
@@ -57,6 +58,12 @@ const Icon = styled.i
     }
     
     ${getIconSizes};
+    ${(props: ThemedStyledProps<PIcon, TTheme>): FlattenSimpleInterpolation | null =>
+        props.color
+            ? css`
+                  color: ${props.theme!.palette[props.color!].main};
+              `
+            : null}
 
     // animation
     body.enable-animations & {
