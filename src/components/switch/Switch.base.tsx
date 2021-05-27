@@ -55,13 +55,9 @@ const SwitchBase: React.FC<PSwitch> = ({
                 className={'container'}
                 width={switchDimentions.width}
                 height={switchDimentions.height}
-                borderRadius={'pill'}
+                radius={'pill'}
             >
-                <Shape
-                    borderRadius={'circle'}
-                    width={switchDimentions.innerWidth}
-                    className={'toggle'}
-                />
+                <Shape radius={'circle'} width={switchDimentions.innerWidth} className={'toggle'} />
             </Shape>
             {hasLabel && (
                 <Text element={'span'} className={'label'} size={labelSize} margin={'none'}>

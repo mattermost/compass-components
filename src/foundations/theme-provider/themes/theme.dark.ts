@@ -59,7 +59,6 @@ const darkTheme: TTheme = {
     action: {
         hover: neutral[0],
         disabled: neutral[100],
-        disabledOpacity: 0.04,
     },
     badges: {
         online: green[600],

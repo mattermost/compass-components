@@ -15,6 +15,11 @@ const getSwitchVariables = ({
 }: ThemedStyledProps<PSwitch, TTheme>): FlattenSimpleInterpolation => {
     const isDisabled = disabled || !Utils.isFunction(onClick);
 
+    const opacities: Record<string, number> = {
+        background: disabled ? 0.08 : 1,
+        hover: 0.16,
+    };
+
     const mainColor = isDisabled ? text.disabled : text.secondary;
     const toggledColor = palette.primary.main;
     const hoverColor = action.hover;
@@ -39,7 +44,7 @@ const getSwitchVariables = ({
                   &:checked ~ .background {
                       background: ${blendColors(
                           mainColor,
-                          setAlpha(toggledColor, action.disabledOpacity)
+                          setAlpha(toggledColor, opacities.background)
                       )};
                   }
               }
@@ -47,13 +52,10 @@ const getSwitchVariables = ({
         : css`
               &:hover {
                   .container {
-                      background: ${blendColors(
-                          mainColor,
-                          setAlpha(hoverColor, action.hoverOpacity)
-                      )};
+                      background: ${blendColors(mainColor, setAlpha(hoverColor, opacities.hover))};
                       border-color: ${blendColors(
                           mainColor,
-                          setAlpha(hoverColor, action.hoverOpacity)
+                          setAlpha(hoverColor, opacities.hover)
                       )};
                   }
               }

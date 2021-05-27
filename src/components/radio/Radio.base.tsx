@@ -55,7 +55,7 @@ const RadioBase: React.FC<PRadio> = ({
                 className={'control'}
                 width={radioSize}
                 height={radioSize}
-                borderRadius={'circle'}
+                radius={'circle'}
             />
             {hasLabel && (
                 <Text element={'span'} className={'label'} size={labelSize}>

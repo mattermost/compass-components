@@ -55,7 +55,7 @@ const CheckboxBase: React.FC<PCheckbox> = ({
                 className={'control'}
                 width={checkboxSize}
                 height={checkboxSize}
-                borderRadius={2}
+                radius={2}
             >
                 <Icon glyph="check" size={iconSize} />
             </Shape>

@@ -21,7 +21,6 @@ type TTHemeColors = {
 type TTHemeActionColors = {
     hover: string;
     disabled: string;
-    disabledOpacity: number;
 };
 
 type TTHemeTextColors = {
