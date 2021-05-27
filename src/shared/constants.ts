@@ -15,7 +15,7 @@ const FONT_WEIGHT_MAP: Record<TFontWeight, number> = {
 
 const FONT_MARGINS: TFontMargin[] = ['none', 'both', 'bottom', 'top'];
 
-const FONT_COLORS: TFontColor[] = ['primary', 'secondary', 'disabled'];
+const FONT_COLORS: TFontColor[] = ['primary', 'secondary', 'disabled', 'inherit'];
 
 const DEFAULT_ARGUMENT_STABLE_EXCLUSION: string[] = [
     'children',

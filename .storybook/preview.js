@@ -5,7 +5,7 @@ import { withThemes } from 'storybook-addon-themes/react';
 addDecorator(withThemes);
 
 import lightTheme from '../src/foundations/theme-provider/themes/theme.light';
-import themeDark from '../src/foundations/theme-provider/themes/theme.dark';
+import darkTheme from '../src/foundations/theme-provider/themes/theme.dark';
 import {
     CanvasThemeProvider,
     DocumentationThemeProvider,
@@ -23,8 +23,8 @@ const themes = [
     {
         name: 'dark',
         class: 'compass-dark',
-        color: themeDark.background.default,
-        definition: themeDark,
+        color: darkTheme.background.default,
+        definition: darkTheme,
     },
 ];
 

@@ -1,4 +1,4 @@
-import { Utils } from '../../shared';
+import { Utils, FONT_COLORS } from '../../shared';
 
 import {
     TTextColor,
@@ -24,8 +24,6 @@ const DEFAULT_TEXT_WEIGHT: TTextWeight = 'regular';
 const TEXT_MARGINS: TTextMargin[] = ['none', 'both', 'bottom', 'top'];
 
 const DEFAULT_TEXT_MARGIN: TTextMargin = 'both';
-
-const TEXT_COLORS: TTextColor[] = ['primary', 'secondary', 'disabled', 'inherit'];
 
 const DEFAULT_TEXT_COLOR: TTextColor = 'inherit';
 
@@ -72,7 +70,7 @@ export {
     DEFAULT_TEXT_WEIGHT,
     TEXT_MARGINS,
     DEFAULT_TEXT_MARGIN,
-    TEXT_COLORS,
+    FONT_COLORS as TEXT_COLORS,
     DEFAULT_TEXT_COLOR,
     TEXT_DEFINITIONS,
 };

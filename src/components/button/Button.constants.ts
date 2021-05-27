@@ -16,6 +16,12 @@ const BUTTON_ICON_POSITIONS: TButtonIconPosition[] = ['start', 'end'];
 
 const DEFAULT_BUTTON_ICON_POSITION: TButtonIconPosition = 'start';
 
+const BUTTON_ICON_MARGIN_MAP: Record<TButtonSize, number> = {
+    small: 5,
+    medium: 7,
+    large: 8,
+};
+
 export {
     BUTTON_SIZES,
     DEFAULT_BUTTON_SIZE,
@@ -25,4 +31,5 @@ export {
     DEFAULT_BUTTON_WIDTH,
     BUTTON_ICON_POSITIONS,
     DEFAULT_BUTTON_ICON_POSITION,
+    BUTTON_ICON_MARGIN_MAP,
 };

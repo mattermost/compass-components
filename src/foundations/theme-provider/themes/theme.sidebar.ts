@@ -1,26 +1,25 @@
-import { setAlpha } from '../../../shared';
-import { neutral, green, red, blue, indigo, orange } from '../../colors';
+import { blue, indigo, green, red, neutral, orange, teal } from '../../colors';
 
 import { TTheme } from './theme.types';
 
-const lightTheme: TTheme = {
-    type: 'light',
-    elevationOpacity: 0.08,
+const sidebarTheme: TTheme = {
+    type: 'dark',
+    elevationOpacity: 0.32,
     palette: {
         primary: {
-            lighter: blue[300],
-            light: blue[400],
-            main: blue[500],
-            dark: blue[600],
-            darker: blue[700],
+            lighter: green[100],
+            light: green[200],
+            main: green[400],
+            dark: green[600],
+            darker: green[700],
             contrast: neutral[0],
         },
         secondary: {
-            lighter: indigo[300],
-            light: indigo[400],
-            main: indigo[500],
-            dark: indigo[600],
-            darker: indigo[700],
+            lighter: teal[200],
+            light: teal[300],
+            main: teal[500],
+            dark: teal[700],
+            darker: teal[800],
             contrast: neutral[0],
         },
         alert: {
@@ -58,27 +57,20 @@ const lightTheme: TTheme = {
     },
     action: {
         hover: neutral[0],
-        disabled: neutral[1000],
-    },
-    badges: {
-        online: green[600],
-        away: orange[400],
-        dnd: red[500],
-        offline: setAlpha(neutral[350], 0.64),
+        disabled: neutral[100],
     },
     text: {
-        primary: neutral[1100],
-        accent: neutral[900],
-        secondary: neutral[800],
-        disabled: neutral[500],
-        contrast: neutral[0],
+        primary: neutral[50],
+        accent: neutral[150],
+        secondary: neutral[300],
+        disabled: neutral[700],
+        contrast: neutral[100],
     },
     background: {
-        badge: neutral[1000],
-        default: neutral[50],
-        shape: neutral[0],
-        contrast: neutral[1100],
+        default: blue[700],
+        shape: blue[500],
+        contrast: neutral[50],
     },
 };
 
-export default lightTheme;
+export default sidebarTheme;

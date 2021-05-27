@@ -102,6 +102,10 @@ const DocumentationThemeProvider = ({
     );
 };
 
-export { CanvasThemeProvider, DocumentationThemeProvider };
+export {
+    CanvasThemeProvider,
+    DocumentationThemeProvider,
+    StyledThemeProvider as SectionThemeProvider,
+};
 
 export default ThemeProvider;
