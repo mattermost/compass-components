@@ -16,6 +16,7 @@ const Avatar = styled(AvatarBase)<PAvatar>(
     ({
         size = DEFAULT_AVATAR_SIZE,
         isTeam = false,
+        isActive = false,
         theme,
     }: ThemedStyledProps<PAvatar, TTheme>): FlattenSimpleInterpolation => {
         const scaleFactor = 1 - 6 / AVATAR_SIZE_MAP[size].size;
@@ -42,6 +43,14 @@ const Avatar = styled(AvatarBase)<PAvatar>(
                 })};
 
                 ${applyHeadingMargin({ margin: 'none' })};
+
+                ${isActive &&
+                css`
+                    box-shadow: 0 0 0 3px ${theme.background.default},
+                        0 0 0 6px ${theme.palette.secondary.main};
+
+                    transform: scale(${scaleFactor}, ${scaleFactor});
+                `}
 
                 ${isTeam &&
                 css`

@@ -55,24 +55,29 @@ const capitalizeUsername = (name: string): string =>
 const AvatarBase = ({
     size = DEFAULT_AVATAR_SIZE,
     isTeam = false,
+    onClick,
     mentions,
     name,
     image,
     className,
     status,
-}: PAvatar): JSX.Element => (
-    <div className={className}>
-        {image ? <LazyAvatarImage source={image} /> : <div>{capitalizeUsername(name)}</div>}
-        {size !== 'xxxs' && status && (
-            <StatusBadge status={status} size={AVATAR_SIZE_MAP[size].status.size} />
-        )}
-        {isTeam && Utils.isNumber(mentions) && (
-            <MentionBadge
-                mentions={Math.abs(Math.trunc(mentions))}
-                size={size === 'xl' ? 'lg' : 'md'}
-            />
-        )}
-    </div>
-);
+}: PAvatar): JSX.Element => {
+    const Component = Utils.isFunction(onClick) ? 'button' : 'div';
+
+    return (
+        <Component className={className}>
+            {image ? <LazyAvatarImage source={image} /> : <div>{capitalizeUsername(name)}</div>}
+            {size !== 'xxxs' && status && (
+                <StatusBadge status={status} size={AVATAR_SIZE_MAP[size].status.size} />
+            )}
+            {isTeam && Utils.isNumber(mentions) && (
+                <MentionBadge
+                    mentions={Math.abs(Math.trunc(mentions))}
+                    size={size === 'xl' ? 'lg' : 'md'}
+                />
+            )}
+        </Component>
+    );
+};
 
 export default AvatarBase;

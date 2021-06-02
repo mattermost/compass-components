@@ -206,4 +206,63 @@ import { STATUSBADGE_STATUSES } from '../status-badge/StatusBadge.constants';
     >
         {(args) => <Avatar {...args} />}
     </Story>
+    <Story
+        name="active team with mentions"
+        args={{
+            isTeam: true,
+            isActive: true,
+            mentions: 25,
+            size: DEFAULT_AVATAR_SIZE,
+            image: 'https://picsum.photos/200/300?random=1',
+            name: 'homer.simpson',
+        }}
+        argTypes={Utils.hideStyledComponentProperties({
+            size: {
+                options: AVATAR_SIZES,
+                control: {
+                    type: 'select',
+                    labels: AVATAR_SIZE_LABELS,
+                },
+            },
+            mentions: {
+                control: {
+                    type: 'range',
+                    min: 0,
+                    max: 100,
+                    step: 1,
+                },
+            },
+        })}
+    >
+        {(args) => <Avatar {...args} />}
+    </Story>
+    <Story
+        name="active team fallback with mentions"
+        args={{
+            isTeam: true,
+            isActive: true,
+            size: DEFAULT_AVATAR_SIZE,
+            mentions: 25,
+            name: 'artemis',
+        }}
+        argTypes={Utils.hideStyledComponentProperties({
+            size: {
+                options: AVATAR_SIZES,
+                control: {
+                    type: 'select',
+                    labels: AVATAR_SIZE_LABELS,
+                },
+            },
+            mentions: {
+                control: {
+                    type: 'range',
+                    min: 0,
+                    max: 100,
+                    step: 1,
+                },
+            },
+        })}
+    >
+        {(args) => <Avatar {...args} />}
+    </Story>
 </Canvas>
