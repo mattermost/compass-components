@@ -13,6 +13,7 @@ type PStyledAvatarImage = {
 };
 
 // TODO@all: not happy with this solution, but it works for now
+//           should be replaced when the Image component is ready
 const StyledAvatarImage = styled.div<PStyledAvatarImage>`
     flex: 1;
     align-self: stretch;
@@ -46,6 +47,8 @@ const LazyAvatarImage = ({ source }: PLazyAvatarImage): JSX.Element => {
     return <StyledAvatarImage image={image} />;
 };
 
+// I would have prefered to use a css solution, but the `::first-letter`
+// selector only works on block-level elements
 const capitalizeUsername = (name: string): string =>
     name.charAt(0).toUpperCase() + name.slice(1, 2);
 

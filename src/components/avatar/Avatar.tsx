@@ -16,42 +16,59 @@ const Avatar = styled(AvatarBase)<PAvatar>(
     ({
         size = DEFAULT_AVATAR_SIZE,
         isTeam = false,
-    }: ThemedStyledProps<PAvatar, TTheme>): FlattenSimpleInterpolation => css`
-        color: white;
-        position: relative;
+        theme,
+    }: ThemedStyledProps<PAvatar, TTheme>): FlattenSimpleInterpolation => {
+        const scaleFactor = 1 - 6 / AVATAR_SIZE_MAP[size].size;
 
-        > div:first-child {
-            display: flex;
-            overflow: hidden;
-            background-color: ${AVATAR_FALLBACK_COLORS[random(0, 7)]};
-            align-items: center;
-            justify-content: center;
+        return css`
+            color: white;
+            position: relative;
 
-            ${applyShape({
-                width: AVATAR_SIZE_MAP[size].size,
-                height: AVATAR_SIZE_MAP[size].size,
-                radius: isTeam ? AVATAR_SIZE_MAP[size].radius : 'circle',
-            })};
+            > div:first-child {
+                display: flex;
+                overflow: hidden;
+                background-color: ${AVATAR_FALLBACK_COLORS[random(0, 7)]};
+                align-items: center;
+                justify-content: center;
 
-            ${applyHeadingStyles({
-                size: AVATAR_SIZE_MAP[size].text,
-            })};
+                ${applyShape({
+                    width: AVATAR_SIZE_MAP[size].size,
+                    height: AVATAR_SIZE_MAP[size].size,
+                    radius: isTeam ? AVATAR_SIZE_MAP[size].radius : 'circle',
+                })};
 
-            ${applyHeadingMargin({ margin: 'none' })};
-        }
+                ${applyHeadingStyles({
+                    size: AVATAR_SIZE_MAP[size].text,
+                })};
 
-        ${StatusBadge} {
-            position: absolute;
-            bottom: ${AVATAR_SIZE_MAP[size].status.offset}px;
-            right: ${AVATAR_SIZE_MAP[size].status.offset}px;
-        }
+                ${applyHeadingMargin({ margin: 'none' })};
 
-        ${MentionBadge} {
-            position: absolute;
-            top: -5px;
-            right: -5px;
-        }
-    `
+                ${isTeam &&
+                css`
+                    &:hover {
+                        box-shadow: 0 0 0 3px ${theme.background.default},
+                            0 0 0 6px ${theme.palette.primary.main};
+
+                        transform: scale(${scaleFactor}, ${scaleFactor});
+                    }
+                `}
+
+                transition: box-shadow 500ms ease, transform 500ms ease;
+            }
+
+            ${StatusBadge} {
+                position: absolute;
+                bottom: ${AVATAR_SIZE_MAP[size].status.offset}px;
+                right: ${AVATAR_SIZE_MAP[size].status.offset}px;
+            }
+
+            ${MentionBadge} {
+                position: absolute;
+                top: -5px;
+                right: -5px;
+            }
+        `;
+    }
 );
 
 export default Avatar;

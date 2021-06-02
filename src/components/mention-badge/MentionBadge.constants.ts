@@ -21,7 +21,7 @@ const MENTIONBADGE_TEXT_SIZE_MAP: Record<TMentionBadgeSize, TTextSizeToken> = {
 
 const MENTIONBADGE_PADDING_SIZE_MAP: Record<TMentionBadgeSize, TSpacingToken[]> = {
     sm: [25, 25, 25],
-    md: [50, 50, 50],
+    md: [50, 50, 25],
     lg: [75, 50, 25],
 };
 
