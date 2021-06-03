@@ -5,7 +5,7 @@ import { Utils } from '../../shared';
 import MentionBadge from '../mention-badge';
 import StatusBadge from '../status-badge';
 
-import { AVATAR_SIZE_MAP, DEFAULT_AVATAR_SIZE } from './Avatar.constants';
+import { AVATAR_SIZE_MAP, AVATAR_SIZES, DEFAULT_AVATAR_SIZE } from './Avatar.constants';
 import PAvatar from './Avatar.props';
 
 type PStyledAvatarImage = {
@@ -48,7 +48,7 @@ const LazyAvatarImage = ({ source }: PLazyAvatarImage): JSX.Element => {
 };
 
 // I would have prefered to use a css solution, but the `::first-letter`
-// selector only works on block-level elements
+// selector only works on block-level elements (not in flex)
 const capitalizeUsername = (name: string): string =>
     name.charAt(0).toUpperCase() + name.slice(1, 2);
 
@@ -63,17 +63,19 @@ const AvatarBase = ({
     status,
 }: PAvatar): JSX.Element => {
     const Component = Utils.isFunction(onClick) ? 'button' : 'div';
+    // correctness of index is guaranteed by using a tuple for AVATAR_SIZES
+    const sizeIndex = AVATAR_SIZES.indexOf(size);
 
     return (
         <Component className={className}>
             {image ? <LazyAvatarImage source={image} /> : <div>{capitalizeUsername(name)}</div>}
-            {size !== 'xxxs' && status && (
+            {sizeIndex > 0 && status && (
                 <StatusBadge status={status} size={AVATAR_SIZE_MAP[size].status.size} />
             )}
-            {isTeam && Utils.isNumber(mentions) && (
+            {isTeam && Utils.isNumber(mentions) && sizeIndex >= 4 && (
                 <MentionBadge
                     mentions={Math.abs(Math.trunc(mentions))}
-                    size={size === 'xl' ? 'lg' : 'md'}
+                    size={sizeIndex >= 6 ? 'lg' : 'md'}
                 />
             )}
         </Component>

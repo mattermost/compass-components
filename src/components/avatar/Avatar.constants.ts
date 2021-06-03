@@ -3,19 +3,10 @@ import { THeadingSizeToken } from '../heading';
 import { TStatusBadgeSizeToken } from '../status-badge/StatusBadge.types';
 import { TShapeBorderRadius } from '../../foundations/shape';
 
-import { TAvatarSizeToken } from './Avatar.types';
+import { TAvatarSizes, TAvatarSizeToken } from './Avatar.types';
 
-const AVATAR_SIZES: TAvatarSizeToken[] = [
-    'xxxs',
-    'xxs',
-    'xs',
-    'sm',
-    'md',
-    'lg',
-    'xl',
-    'xxl',
-    'xxxl',
-];
+// by usin a tuple as type we can guarantee that indexes are aways correct when checking for them
+const AVATAR_SIZES: TAvatarSizes = ['xxxs', 'xxs', 'xs', 'sm', 'md', 'lg', 'xl', 'xxl', 'xxxl'];
 
 const AVATAR_SIZE_LABELS: Record<TAvatarSizeToken, string> = {
     xxxs: 'xxx-small',

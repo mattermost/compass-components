@@ -29,11 +29,14 @@ type TInteractionElement = 'button' | 'input';
 
 type TComponentSizeToken = 'xxxs' | 'xxs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl' | 'xxxl';
 
+type TComponentSizes = ['xxxs', 'xxs', 'xs', 'sm', 'md', 'lg', 'xl', 'xxl', 'xxxl'];
+
 export type {
     TFontColor,
     TFontMargin,
     TFontWeight,
     TContainerElement,
     TInteractionElement,
+    TComponentSizes,
     TComponentSizeToken,
 };

@@ -44,7 +44,8 @@ const Avatar = styled(AvatarBase)<PAvatar>(
 
                 ${applyHeadingMargin({ margin: 'none' })};
 
-                ${isActive &&
+                ${isTeam &&
+                isActive &&
                 css`
                     box-shadow: 0 0 0 3px ${theme.background.default},
                         0 0 0 6px ${theme.palette.secondary.main};

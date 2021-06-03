@@ -1,4 +1,8 @@
-import { TComponentSizeToken } from '../../shared/types';
+import { TComponentSizeToken, TComponentSizes } from '../../shared';
 import { TStatusBadgeStatus } from '../status-badge/StatusBadge.types';
 
-export type { TComponentSizeToken as TAvatarSizeToken, TStatusBadgeStatus as TAvatarStatus };
+export type {
+    TComponentSizes as TAvatarSizes,
+    TComponentSizeToken as TAvatarSizeToken,
+    TStatusBadgeStatus as TAvatarStatus,
+};
