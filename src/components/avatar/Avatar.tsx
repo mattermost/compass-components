@@ -9,7 +9,12 @@ import MentionBadge from '../mention-badge';
 import StatusBadge from '../status-badge';
 
 import AvatarBase from './Avatar.base';
-import { DEFAULT_AVATAR_SIZE, AVATAR_SIZE_MAP, AVATAR_FALLBACK_COLORS } from './Avatar.constants';
+import {
+    DEFAULT_AVATAR_SIZE,
+    AVATAR_SIZE_MAP,
+    AVATAR_FALLBACK_COLORS,
+    AVATAR_SIZES,
+} from './Avatar.constants';
 import PAvatar from './Avatar.props';
 
 const Avatar = styled(AvatarBase)<PAvatar>(
@@ -19,7 +24,8 @@ const Avatar = styled(AvatarBase)<PAvatar>(
         isActive = false,
         theme,
     }: ThemedStyledProps<PAvatar, TTheme>): FlattenSimpleInterpolation => {
-        const scaleFactor = 1 - 6 / AVATAR_SIZE_MAP[size].size;
+        const borderSize = AVATAR_SIZES.indexOf(size) > 2 ? 3 : 2;
+        const scaleFactor = (1 - (borderSize * 2) / AVATAR_SIZE_MAP[size].size).toFixed(4);
 
         return css`
             color: white;
@@ -56,8 +62,8 @@ const Avatar = styled(AvatarBase)<PAvatar>(
                 ${isTeam &&
                 css`
                     &:hover {
-                        box-shadow: 0 0 0 3px ${theme.background.default},
-                            0 0 0 6px ${theme.palette.primary.main};
+                        box-shadow: 0 0 0 ${borderSize}px ${theme.background.default},
+                            0 0 0 ${borderSize * 2}px ${theme.palette.primary.main};
 
                         transform: scale(${scaleFactor}, ${scaleFactor});
                     }
