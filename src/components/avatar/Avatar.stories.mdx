@@ -1,9 +1,24 @@
 import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
-import Avatar from './Avatar';
-import { DEFAULT_ARGUMENTSTABLE_EXCLUSION } from '../../shared/constants';
-import { AVATAR_SIZE_LABELS, AVATAR_SIZES, DEFAULT_AVATAR_SIZE } from './Avatar.constants';
-import { Utils } from '../../shared';
+import { Utils, DEFAULT_ARGUMENTSTABLE_EXCLUSION } from '../../shared';
 import { STATUSBADGE_STATUSES } from '../status-badge/StatusBadge.constants';
+
+import Avatar from './Avatar';
+import { AVATAR_SIZE_LABELS, AVATAR_SIZES, DEFAULT_AVATAR_SIZE } from './Avatar.constants';
+
+export const userAvatarArgs = {
+    size: DEFAULT_AVATAR_SIZE,
+    name: 'homer.simpson',
+};
+
+export const userAvatarArgtypes = Utils.hideStyledComponentProperties({
+    size: {
+        options: AVATAR_SIZES,
+        control: {
+            type: 'select',
+            labels: AVATAR_SIZE_LABELS,
+        },
+    },
+});
 
 <Meta title={'Components/Avatar'} />
 
@@ -113,10 +128,11 @@ import { STATUSBADGE_STATUSES } from '../status-badge/StatusBadge.constants';
     <Story
         name="team"
         args={{
-            isTeam: true,
+            hasBorder: true,
             size: DEFAULT_AVATAR_SIZE,
             image: 'https://picsum.photos/200/300?random=1',
-            name: 'homer.simpson',
+            name: 'artemis',
+            variant: 'rounded',
         }}
         argTypes={Utils.hideStyledComponentProperties({
             size: {
@@ -133,11 +149,12 @@ import { STATUSBADGE_STATUSES } from '../status-badge/StatusBadge.constants';
     <Story
         name="team with mentions"
         args={{
-            isTeam: true,
+            hasBorder: true,
             mentions: 25,
             size: DEFAULT_AVATAR_SIZE,
             image: 'https://picsum.photos/200/300?random=1',
-            name: 'homer.simpson',
+            name: 'artemis',
+            variant: 'rounded',
         }}
         argTypes={Utils.hideStyledComponentProperties({
             size: {
@@ -162,9 +179,10 @@ import { STATUSBADGE_STATUSES } from '../status-badge/StatusBadge.constants';
     <Story
         name="team fallback"
         args={{
-            isTeam: true,
+            hasBorder: true,
             size: DEFAULT_AVATAR_SIZE,
             name: 'artemis',
+            variant: 'rounded',
         }}
         argTypes={Utils.hideStyledComponentProperties({
             size: {
@@ -181,10 +199,11 @@ import { STATUSBADGE_STATUSES } from '../status-badge/StatusBadge.constants';
     <Story
         name="team fallback with mentions"
         args={{
-            isTeam: true,
+            hasBorder: true,
             size: DEFAULT_AVATAR_SIZE,
             mentions: 25,
             name: 'artemis',
+            variant: 'rounded',
         }}
         argTypes={Utils.hideStyledComponentProperties({
             size: {
@@ -209,12 +228,13 @@ import { STATUSBADGE_STATUSES } from '../status-badge/StatusBadge.constants';
     <Story
         name="active team with mentions"
         args={{
-            isTeam: true,
+            hasBorder: true,
             isActive: true,
             mentions: 25,
             size: DEFAULT_AVATAR_SIZE,
             image: 'https://picsum.photos/200/300?random=1',
-            name: 'homer.simpson',
+            name: 'artemis',
+            variant: 'rounded',
         }}
         argTypes={Utils.hideStyledComponentProperties({
             size: {
@@ -239,11 +259,12 @@ import { STATUSBADGE_STATUSES } from '../status-badge/StatusBadge.constants';
     <Story
         name="active team fallback with mentions"
         args={{
-            isTeam: true,
+            hasBorder: true,
             isActive: true,
             size: DEFAULT_AVATAR_SIZE,
             mentions: 25,
             name: 'artemis',
+            variant: 'rounded',
         }}
         argTypes={Utils.hideStyledComponentProperties({
             size: {

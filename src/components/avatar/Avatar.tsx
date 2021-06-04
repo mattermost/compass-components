@@ -4,6 +4,7 @@ import { FlattenSimpleInterpolation, ThemedStyledProps } from 'styled-components
 
 import { applyShape } from '../../foundations/shape/Shape.mixins';
 import { TTheme } from '../../foundations/theme-provider/themes/theme.types';
+import { Utils } from '../../shared';
 import { applyHeadingMargin, applyHeadingStyles } from '../heading/Heading.mixins';
 import MentionBadge from '../mention-badge';
 import StatusBadge from '../status-badge';
@@ -17,13 +18,23 @@ import {
 } from './Avatar.constants';
 import PAvatar from './Avatar.props';
 
-const Avatar = styled(AvatarBase)<PAvatar>(
+const Avatar = styled(AvatarBase).withConfig({
+    shouldForwardProp: Utils.forwardProperties(['size', 'mentions', 'name', 'image', 'status']),
+})<PAvatar>(
     ({
         size = DEFAULT_AVATAR_SIZE,
-        isTeam = false,
+        variant = 'circle',
+        hasBorder = false,
         isActive = false,
         theme,
     }: ThemedStyledProps<PAvatar, TTheme>): FlattenSimpleInterpolation => {
+        if (isActive) {
+            Utils.assert(
+                hasBorder,
+                'using `isActive=true` is only possibly together with the prop `hasBorder` set to true'
+            );
+        }
+
         const borderSize = AVATAR_SIZES.indexOf(size) > 2 ? 3 : 2;
         const scaleFactor = (1 - (borderSize * 2) / AVATAR_SIZE_MAP[size].size).toFixed(4);
 
@@ -41,7 +52,7 @@ const Avatar = styled(AvatarBase)<PAvatar>(
                 ${applyShape({
                     width: AVATAR_SIZE_MAP[size].size,
                     height: AVATAR_SIZE_MAP[size].size,
-                    radius: isTeam ? AVATAR_SIZE_MAP[size].radius : 'circle',
+                    radius: variant === 'circle' ? variant : AVATAR_SIZE_MAP[size].radius,
                 })};
 
                 ${applyHeadingStyles({
@@ -50,7 +61,7 @@ const Avatar = styled(AvatarBase)<PAvatar>(
 
                 ${applyHeadingMargin({ margin: 'none' })};
 
-                ${isTeam &&
+                ${hasBorder &&
                 isActive &&
                 css`
                     box-shadow: 0 0 0 3px ${theme.background.default},
@@ -59,7 +70,7 @@ const Avatar = styled(AvatarBase)<PAvatar>(
                     transform: scale(${scaleFactor}, ${scaleFactor});
                 `}
 
-                ${isTeam &&
+                ${hasBorder &&
                 css`
                     &:hover {
                         box-shadow: 0 0 0 ${borderSize}px ${theme.background.default},

@@ -46,8 +46,13 @@ function getStoryDocumentationUrl(storyParameters: Record<string, string>): stri
  * ```
  * */
 const forwardProperties =
-    (whitelist: string[] = []): ((property: string | number) => boolean) =>
-    (property: string | number): boolean =>
+    (
+        whiteList: string[] = []
+    ): ((
+        property: string | number,
+        defaultValidatorFunction: (propertyKey: string | number) => boolean
+    ) => boolean) =>
+    (property: string | number, defaultValidatorFunction): boolean =>
         // forward the property when it is a `data-*`attribute
         property.toString().startsWith('data-') ||
         // forward the property when it is a `aria-*`attribute
@@ -55,7 +60,9 @@ const forwardProperties =
         // always forward the property when it is defined within the property-whitelist
         DEFAULT_PROPERTY_WHITELIST.includes(property.toString()) ||
         // forward the property when it is defined within the passed property-whitelist
-        whitelist.includes(property.toString());
+        (whiteList.includes(property.toString()) &&
+            // in the last step check for the default validation passed down from styled components
+            defaultValidatorFunction(property));
 
 function hideStyledComponentProperties(
     properties: Record<string, unknown>

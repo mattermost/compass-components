@@ -16,15 +16,15 @@ import {
 import { applyHeadingColor, applyHeadingMargin, applyHeadingStyles } from './Heading.mixins';
 
 const Heading = styled.h6
+    .withConfig({
+        shouldForwardProp: Utils.forwardProperties(),
+    })
     .attrs((props: PHeading) => ({
         // it is possible to remap props, so we do not need to pass down the
         // `as` property from styled-components and prevent usage of
         // unsupported HTML tags
         as: props.element,
-    }))
-    .withConfig({
-        shouldForwardProp: Utils.forwardProperties(),
-    })<PHeading>(
+    }))<PHeading>(
     ({
         theme,
         inheritLineHeight = false,

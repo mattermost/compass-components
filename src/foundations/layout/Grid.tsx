@@ -15,6 +15,9 @@ import {
 import { TGridAlignment, TGridFlex, TGridJustify } from './Grid.types';
 
 const Grid = styled.div
+    .withConfig({
+        shouldForwardProp: Utils.forwardProperties(),
+    })
     // ignoring the className property prevents duplicate classes to be added to the HTML element
     .attrs(
         ({
@@ -35,10 +38,7 @@ const Grid = styled.div
             wrap: wrap || DEFAULT_GRID_WRAP,
             ...rest,
         })
-    )
-    .withConfig({
-        shouldForwardProp: Utils.forwardProperties(),
-    })<PGrid>`
+    )<PGrid>`
     display: flex;
     flex: ${(props): TGridFlex => props.flex};
     flex-wrap: ${(props): string => (props.wrap ? 'wrap' : 'nowrap')};
