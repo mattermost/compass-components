@@ -24,9 +24,9 @@ type PText = {
     children?: React.ReactNode | React.ReactNode[];
 };
 
-type PApplyTextStyles = Required<Pick<PText, 'size' | 'inheritLineHeight' | 'element' | 'weight'>>;
+type PApplyTextStyles = Pick<PText, 'size' | 'inheritLineHeight' | 'element' | 'weight'>;
 
-type PApplyTextMargin = Required<Pick<PText, 'size' | 'margin'>>;
+type PApplyTextMargin = Pick<PText, 'size' | 'margin'>;
 
 type PApplyTextColor = {
     color: TTextColor;

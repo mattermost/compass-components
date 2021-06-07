@@ -15,15 +15,15 @@ import {
 import { applyTextColor, applyTextMargin, applyTextStyles } from './Text.mixins';
 
 const Text = styled.p
+    .withConfig({
+        shouldForwardProp: Utils.forwardProperties(),
+    })
     .attrs((props: PText) => ({
         // it is possible to remap props, so we do not need to pass down the
         // `as` property from styled-components and prevent usage of
         // unsupported HTML tags
         as: props.element,
-    }))
-    .withConfig({
-        shouldForwardProp: Utils.forwardProperties(),
-    })<PText>(
+    }))<PText>(
     ({
         theme,
         inheritLineHeight = false,

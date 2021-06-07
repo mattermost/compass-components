@@ -15,7 +15,7 @@ jobs:
                   persist-credentials: false
             - name: Install
               run: |
-                  yarn install
+                  npm install
             - name: Build Icons
               working-directory: ./node_modules/@mattermost/compass-icons
               run: |
@@ -23,7 +23,7 @@ jobs:
                   npm run build
             - name: Build Storybook
               run: |
-                  yarn run build-storybook
+                  npm run build-storybook
             - name: Deploy
               uses: JamesIves/github-pages-deploy-action@3.6.2
               with:

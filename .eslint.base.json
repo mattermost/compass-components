@@ -266,7 +266,7 @@
         "promise/no-return-in-finally": "error",
         "promise/valid-params": "error",
         "promise/no-new-statics": "error",
-        "promise/prefer-await-to-then": "error",
+        "promise/prefer-await-to-then": "off",
 
         "promise/catch-or-return": ["error", { "allowFinally": true }],
 

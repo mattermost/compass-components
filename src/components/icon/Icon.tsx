@@ -20,6 +20,9 @@ function getIconSizes({ size = DEFAULT_ICON_SIZE }: PIcon): FlattenSimpleInterpo
 }
 
 const Icon = styled.i
+    .withConfig({
+        shouldForwardProp: Utils.forwardProperties(),
+    })
     .attrs(
         ({
             size = DEFAULT_ICON_SIZE,
@@ -33,10 +36,7 @@ const Icon = styled.i
             glyph,
             'aria-label': rest.ariaLabel,
         })
-    )
-    .withConfig({
-        shouldForwardProp: Utils.forwardProperties(),
-    })<PIcon>`    
+    )<PIcon>`    
     // element container base styles
     position: relative;
     justify-content: center;

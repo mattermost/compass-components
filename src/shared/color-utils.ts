@@ -267,7 +267,7 @@ function createColorShades(color: string): Record<string, string> {
     for (const key of Object.keys(shadeLuminanceValues)) {
         colorShadeMap[key] = recomposeColorWithShade(
             decomposedColor,
-            (key as unknown) as TBaseColorShade
+            key as unknown as TBaseColorShade
         );
     }
 

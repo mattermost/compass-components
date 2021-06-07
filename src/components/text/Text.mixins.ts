@@ -5,6 +5,7 @@ import { FONT_TYPE_FAMILIES, FONT_WEIGHT_MAP } from '../../shared/constants';
 
 import {
     DEFAULT_TEXT_ELEMENT,
+    DEFAULT_TEXT_MARGIN,
     DEFAULT_TEXT_SIZE,
     DEFAULT_TEXT_WEIGHT,
     TEXT_DEFINITIONS,
@@ -36,13 +37,19 @@ const applyTextStyles = ({
     `;
 };
 
-const applyTextMargin = ({ margin, size }: PApplyTextMargin): FlattenSimpleInterpolation => {
+const applyTextMargin = ({
+    margin = DEFAULT_TEXT_MARGIN,
+    size = DEFAULT_TEXT_SIZE,
+}: PApplyTextMargin): FlattenSimpleInterpolation => {
+    if (margin === 'none') {
+        return css`
+            margin: 0;
+        `;
+    }
+
     let marginValue = `${TEXT_DEFINITIONS[size].margin}px 0`;
 
     switch (margin) {
-        case 'none':
-            marginValue = '0';
-            break;
         case 'bottom':
             marginValue = `0 0 ${TEXT_DEFINITIONS[size].margin}px`;
             break;

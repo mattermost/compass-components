@@ -35,6 +35,8 @@ type TTHemeBackgroundColors = {
     default: string;
     badge: string;
     shape: string;
+    skeleton: string;
+    shimmer: string;
     contrast: string;
 };
 
