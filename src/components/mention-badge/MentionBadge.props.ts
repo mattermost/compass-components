@@ -1,8 +1,12 @@
+import { TMentionBadgeSize } from './MentionBadge.types';
+
 type PMentionBadge = {
-    location?: 'sidebar' | 'menu';
-    mentionCount?: number;
+    inverted?: boolean;
+    background?: string;
+    mentions?: number;
     mentionLimit?: number;
-    width?: number | 'auto';
+    size?: TMentionBadgeSize;
+    className?: string;
 };
 
 export default PMentionBadge;

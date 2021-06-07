@@ -25,7 +25,7 @@ const GlobalStyle = createGlobalStyle`
     }
     
     ${defaultStyles};
-
+    
     // TODO@all: these styles need to be extracted (and adjusted) to the Skeleton component once it is ready to be built
     .skeleton {
         display: block;
@@ -34,6 +34,7 @@ const GlobalStyle = createGlobalStyle`
         background: ${({ theme }): string => theme.background.skeleton};
         overflow: hidden;
         position: relative;
+
         &::after {
             position: absolute;
             top: 0;
@@ -52,6 +53,7 @@ const GlobalStyle = createGlobalStyle`
             content: '';
         }
     }
+
     @keyframes shimmer {
         100% {
             transform: translateX(100%);

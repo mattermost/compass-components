@@ -1,0 +1,102 @@
+import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+import { Utils, DEFAULT_ARGUMENTSTABLE_EXCLUSION } from '../../shared';
+import {
+    STATUSBADGE_STATUS_LABELS,
+    STATUSBADGE_STATUSES,
+} from '../status-badge/StatusBadge.constants';
+
+import Avatar from './Avatar';
+import {
+    AVATAR_SIZE_LABELS,
+    AVATAR_SIZES,
+    AVATAR_VARIANTS,
+    DEFAULT_AVATAR_SIZE,
+} from './Avatar.constants';
+
+export const userAvatarArgs = {
+    size: DEFAULT_AVATAR_SIZE,
+    variant: 'circle',
+    name: 'homer.simpson',
+    image: 'https://picsum.photos/200/300?random=1',
+    status: null,
+    mentions: null,
+    disableHover: true,
+    isActive: false,
+};
+
+export const teamAvatarArgs = {
+    size: DEFAULT_AVATAR_SIZE,
+    variant: 'rounded',
+    image: 'https://picsum.photos/200/300?random=1',
+    name: 'artemis',
+    status: null,
+    mentions: null,
+    disableHover: false,
+    isActive: false,
+};
+
+export const avatarArgtypes = {
+    size: {
+        options: AVATAR_SIZES,
+        control: {
+            type: 'select',
+            labels: AVATAR_SIZE_LABELS,
+        },
+    },
+    variant: {
+        options: AVATAR_VARIANTS,
+        control: {
+            type: 'select',
+        },
+    },
+    ...Utils.hideComponentProperties(['status', 'mentions']),
+};
+
+<Meta title={'Components/Avatar'} />
+
+<ArgsTable of={Avatar} exclude={[...DEFAULT_ARGUMENTSTABLE_EXCLUSION]} />
+
+<Canvas hidden>
+    <Story name="user avatar" args={userAvatarArgs} argTypes={avatarArgtypes}>
+        {(args) => <Avatar {...args} />}
+    </Story>
+    <Story
+        name="user avatar with status"
+        args={{ ...userAvatarArgs, status: 'online' }}
+        argTypes={{
+            ...avatarArgtypes,
+            status: {
+                options: [null, ...STATUSBADGE_STATUSES],
+                control: {
+                    type: 'select',
+                    labels: {
+                        null: 'none',
+                        ...STATUSBADGE_STATUS_LABELS,
+                    },
+                },
+            },
+        }}
+    >
+        {(args) => <Avatar {...args} />}
+    </Story>
+    <Story name="team avatar" args={teamAvatarArgs} argTypes={avatarArgtypes}>
+        {(args) => <Avatar {...args} />}
+    </Story>
+    <Story
+        name="team avatar with mentions"
+        args={{ ...teamAvatarArgs, mentions: 23 }}
+        argTypes={{
+            ...avatarArgtypes,
+            mentions: {
+                control: {
+                    type: 'range',
+                    min: 0,
+                    max: 100,
+                    step: 1,
+                },
+            },
+        }}
+    >
+        {(args) => <Avatar {...args} />}
+    </Story>
+</Canvas>

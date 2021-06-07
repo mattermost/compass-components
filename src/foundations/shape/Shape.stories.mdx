@@ -15,7 +15,7 @@ import {
 } from './Shape.constants';
 
 import ThemeProvider from '../theme-provider/theme-provider';
-import { DEFAULT_ARGUMENT_STABLE_EXCLUSION } from '../../shared/constants';
+import { DEFAULT_ARGUMENTSTABLE_EXCLUSION } from '../../shared/constants';
 
 <Meta component={Shape} title="Foundations/Shape" />
 
@@ -30,7 +30,7 @@ export const defaultArgs = {
     height: 50,
 };
 
-export const argTypes = Utils.hideStyledComponentProperties({
+export const argTypes = {
     component: {
         options: SHAPE_ELEMENTS,
         control: {
@@ -57,7 +57,8 @@ export const argTypes = Utils.hideStyledComponentProperties({
     },
     width: { control: { type: 'range', min: 150, max: 600, step: 25 } },
     height: { control: { type: 'range', min: 150, max: 600, step: 25 } },
-});
+    ...Utils.hideComponentProperties(),
+};
 
 <Title>Shape</Title>
 
@@ -198,7 +199,7 @@ The circle shape is mostly reserved for the Avatar component.
 This helps distinguish users from other UI elements throughout the product.
 There are a few other elements that use the circle shape, like the Unread Badge or the Status Badge.
 
-<ArgsTable of={Shape} exclude={[...DEFAULT_ARGUMENT_STABLE_EXCLUSION]} />
+<ArgsTable of={Shape} exclude={[...DEFAULT_ARGUMENTSTABLE_EXCLUSION]} />
 
 export const canvasExampleArgs = {
     ...defaultArgs,

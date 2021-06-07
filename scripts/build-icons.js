@@ -7,6 +7,6 @@ const { exec } = require('child_process');
 const packagePath = process.cwd();
 const scriptPath = path.join(packagePath, './node_modules/@mattermost/compass-icons');
 
-exec('yarn && yarn run build', {
+exec('npm install && npm run build', {
     cwd: scriptPath,
 });

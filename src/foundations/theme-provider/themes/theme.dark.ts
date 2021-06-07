@@ -77,7 +77,8 @@ const darkTheme: TTheme = {
         badge: neutral[1250],
         default: neutral[1100],
         shape: neutral[1000],
-        shimmer: neutral[1000],
+        skeleton: neutral[900],
+        shimmer: neutral[800],
         contrast: neutral[50],
     },
 };

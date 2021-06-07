@@ -39,11 +39,9 @@ type PHeading = {
     children?: React.ReactNode | React.ReactNode[];
 };
 
-type PApplyHeadingStyles = Required<
-    Pick<PHeading, 'size' | 'inheritLineHeight' | 'element' | 'weight'>
->;
+type PApplyHeadingStyles = Pick<PHeading, 'size' | 'inheritLineHeight' | 'element' | 'weight'>;
 
-type PApplyHeadingMargin = Required<Pick<PHeading, 'size' | 'margin'>>;
+type PApplyHeadingMargin = Pick<PHeading, 'size' | 'margin'>;
 
 type PApplyHeadingColor = {
     color: TTextColor;
