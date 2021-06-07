@@ -122,7 +122,7 @@ import Shape from '../../foundations/shape';
     </Grid>
 </ThemeProvider>
 
-export const argTypes = Utils.hideComponentProperties({
+export const argTypes = {
     status: {
         control: {
             type: 'select',
@@ -138,7 +138,8 @@ export const argTypes = Utils.hideComponentProperties({
     background: {
         control: 'color',
     },
-});
+    ...Utils.hideComponentProperties(),
+};
 
 <Canvas hidden>
     <Story

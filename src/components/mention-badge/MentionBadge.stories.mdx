@@ -14,7 +14,7 @@ export const unreadBadgeDefaultArgs = {
     size: 'md',
 };
 
-export const mentionBadgeArgTypes = Utils.hideComponentProperties({
+export const mentionBadgeArgTypes = {
     size: {
         options: MENTIONBADGE_SIZES,
         control: {
@@ -55,8 +55,8 @@ export const mentionBadgeArgTypes = Utils.hideComponentProperties({
             type: 'color',
         },
     },
-    width: { table: { disable: true } },
-});
+    ...Utils.hideComponentProperties(['width']),
+};
 
 <Meta component={MentionBadge} title="Components/MentionBadge" parameters={{ status: 'stable' }} />
 

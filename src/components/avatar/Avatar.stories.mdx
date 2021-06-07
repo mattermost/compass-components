@@ -35,24 +35,22 @@ export const teamAvatarArgs = {
     isActive: false,
 };
 
-export const avatarArgtypes = Utils.hideComponentProperties(
-    {
-        size: {
-            options: AVATAR_SIZES,
-            control: {
-                type: 'select',
-                labels: AVATAR_SIZE_LABELS,
-            },
-        },
-        variant: {
-            options: AVATAR_VARIANTS,
-            control: {
-                type: 'select',
-            },
+export const avatarArgtypes = {
+    size: {
+        options: AVATAR_SIZES,
+        control: {
+            type: 'select',
+            labels: AVATAR_SIZE_LABELS,
         },
     },
-    ['status', 'mentions']
-);
+    variant: {
+        options: AVATAR_VARIANTS,
+        control: {
+            type: 'select',
+        },
+    },
+    ...Utils.hideComponentProperties(['status', 'mentions']),
+};
 
 <Meta title={'Components/Avatar'} />
 

@@ -30,7 +30,7 @@ export const defaultArgs = {
     height: 50,
 };
 
-export const argTypes = Utils.hideComponentProperties({
+export const argTypes = {
     component: {
         options: SHAPE_ELEMENTS,
         control: {
@@ -57,7 +57,8 @@ export const argTypes = Utils.hideComponentProperties({
     },
     width: { control: { type: 'range', min: 150, max: 600, step: 25 } },
     height: { control: { type: 'range', min: 150, max: 600, step: 25 } },
-});
+    ...Utils.hideComponentProperties(),
+};
 
 <Title>Shape</Title>
 

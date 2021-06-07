@@ -27,7 +27,7 @@ export const Template = (args) => {
             size: DEFAULT_ICON_SIZE,
             glyph: DEFAULT_ICON_GLYPH,
         }}
-        argTypes={Utils.hideComponentProperties({
+        argTypes={{
             size: {
                 options: ICON_SIZES,
                 control: {
@@ -40,8 +40,8 @@ export const Template = (args) => {
                     type: 'select',
                 },
             },
-            'aria-label': { table: { disable: true } },
-        })}
+            ...Utils.hideComponentProperties(['aria-label']),
+        }}
     >
         {Template.bind({})}
     </Story>
