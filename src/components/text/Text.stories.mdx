@@ -105,7 +105,7 @@ export const Template = (args) => {
             weight: DEFAULT_TEXT_WEIGHT,
             margin: DEFAULT_TEXT_MARGIN,
         }}
-        argTypes={Utils.hideStyledComponentProperties({
+        argTypes={Utils.hideComponentProperties({
             size: { options: TEXT_SIZES, control: { type: 'select' } },
             element: { options: TEXT_ELEMENTS, control: { type: 'select' } },
             weight: { options: TEXT_WEIGHTS, control: { type: 'radio' } },

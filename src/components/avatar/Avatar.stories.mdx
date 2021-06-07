@@ -20,7 +20,7 @@ export const userAvatarArgs = {
     image: 'https://picsum.photos/200/300?random=1',
     status: null,
     mentions: null,
-    hasBorder: false,
+    disableHover: true,
     isActive: false,
 };
 
@@ -31,43 +31,28 @@ export const teamAvatarArgs = {
     name: 'artemis',
     status: null,
     mentions: null,
-    hasBorder: true,
+    disableHover: false,
     isActive: false,
 };
 
-export const avatarArgtypes = Utils.hideStyledComponentProperties({
-    size: {
-        options: AVATAR_SIZES,
-        control: {
-            type: 'select',
-            labels: AVATAR_SIZE_LABELS,
+export const avatarArgtypes = Utils.hideComponentProperties(
+    {
+        size: {
+            options: AVATAR_SIZES,
+            control: {
+                type: 'select',
+                labels: AVATAR_SIZE_LABELS,
+            },
         },
-    },
-    status: {
-        options: [null, ...STATUSBADGE_STATUSES],
-        control: {
-            type: 'select',
-            labels: {
-                null: 'none',
-                ...STATUSBADGE_STATUS_LABELS,
+        variant: {
+            options: AVATAR_VARIANTS,
+            control: {
+                type: 'select',
             },
         },
     },
-    variant: {
-        options: AVATAR_VARIANTS,
-        control: {
-            type: 'select',
-        },
-    },
-    mentions: {
-        control: {
-            type: 'range',
-            min: 0,
-            max: 100,
-            step: 1,
-        },
-    },
-});
+    ['status', 'mentions']
+);
 
 <Meta title={'Components/Avatar'} />
 
@@ -77,7 +62,43 @@ export const avatarArgtypes = Utils.hideStyledComponentProperties({
     <Story name="user avatar" args={userAvatarArgs} argTypes={avatarArgtypes}>
         {(args) => <Avatar {...args} />}
     </Story>
+    <Story
+        name="user avatar with status"
+        args={{ ...userAvatarArgs, status: 'online' }}
+        argTypes={{
+            ...avatarArgtypes,
+            status: {
+                options: [null, ...STATUSBADGE_STATUSES],
+                control: {
+                    type: 'select',
+                    labels: {
+                        null: 'none',
+                        ...STATUSBADGE_STATUS_LABELS,
+                    },
+                },
+            },
+        }}
+    >
+        {(args) => <Avatar {...args} />}
+    </Story>
     <Story name="team avatar" args={teamAvatarArgs} argTypes={avatarArgtypes}>
+        {(args) => <Avatar {...args} />}
+    </Story>
+    <Story
+        name="team avatar with mentions"
+        args={{ ...teamAvatarArgs, mentions: 23 }}
+        argTypes={{
+            ...avatarArgtypes,
+            mentions: {
+                control: {
+                    type: 'range',
+                    min: 0,
+                    max: 100,
+                    step: 1,
+                },
+            },
+        }}
+    >
         {(args) => <Avatar {...args} />}
     </Story>
 </Canvas>

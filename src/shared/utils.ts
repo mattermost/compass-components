@@ -57,16 +57,17 @@ const forwardProperties =
         // forward the property when it is defined within the passed property-whitelist
         whiteList.includes(property.toString());
 
-function hideStyledComponentProperties(
-    properties: Record<string, unknown>
+function hideComponentProperties(
+    properties: Record<string, unknown>,
+    blacklist: string[] = []
 ): Record<string, unknown> {
-    return {
+    return blacklist.reduce((o, key) => Object.assign(o, { [key]: { table: { disable: true } } }), {
         forwardedAs: { table: { disable: true } },
         theme: { table: { disable: true } },
         ref: { table: { disable: true } },
         as: { table: { disable: true } },
         ...properties,
-    };
+    });
 }
 
 /* eslint-disable @typescript-eslint/no-explicit-any,no-console */
@@ -143,7 +144,7 @@ const Utils = {
     forwardProperties,
     getBase64,
     getStoryDocumentationUrl,
-    hideStyledComponentProperties,
+    hideComponentProperties,
     getFontMargin,
     getPxValue,
 };

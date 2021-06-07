@@ -8,14 +8,14 @@ type PAvatar = {
      */
     name: string;
     /**
-     * adds a border and hover effect to the avatar
+     * adds a hover effect to the avatar
      * @default false
      */
-    hasBorder?: boolean;
+    disableHover?: boolean;
     /**
-     * in combination with hasBorder. When `isActive` is `true` the border will
-     * display even without the hover state and hovering only changes the color
-     * of the border from secondary main color to primary main color
+     * will display a border even without the hover state and hovering
+     * only changes the color of the border from secondary main color to
+     * primary main color
      * @default false
      */
     isActive?: boolean;

@@ -87,13 +87,13 @@ const AVATAR_SIZE_MAP: TAvatarSizeMap = {
         size: 96,
         text: 1000,
         radius: 20,
-        status: { size: 'lg', offset: 0 },
+        status: { size: 'lg', offset: 2 },
     },
     xxxl: {
         size: 120,
         text: 1000,
         radius: 20,
-        status: { size: 'xl', offset: 6 },
+        status: { size: 'xl', offset: -1 },
     },
 };
 

@@ -4,7 +4,6 @@ import { FlattenSimpleInterpolation, ThemedStyledProps } from 'styled-components
 
 import { applyShape } from '../../foundations/shape/Shape.mixins';
 import { TTheme } from '../../foundations/theme-provider/themes/theme.types';
-import { Utils } from '../../shared';
 import { applyHeadingMargin, applyHeadingStyles } from '../heading/Heading.mixins';
 import MentionBadge from '../mention-badge';
 import StatusBadge from '../status-badge';
@@ -22,18 +21,11 @@ const Avatar = styled(AvatarBase)<PAvatar>(
     ({
         size = DEFAULT_AVATAR_SIZE,
         variant = 'circle',
-        hasBorder = false,
+        disableHover = false,
         isActive = false,
         mentions,
         theme,
     }: ThemedStyledProps<PAvatar, TTheme>): FlattenSimpleInterpolation => {
-        if (isActive) {
-            Utils.assert(
-                hasBorder,
-                'using `isActive=true` is only possibly together with the prop `hasBorder` set to true'
-            );
-        }
-
         const borderSize = AVATAR_SIZES.indexOf(size) > 2 ? 3 : 2;
         const scaleFactor = (1 - (borderSize * 2) / AVATAR_SIZE_MAP[size].size).toFixed(4);
 
@@ -60,8 +52,7 @@ const Avatar = styled(AvatarBase)<PAvatar>(
 
                 ${applyHeadingMargin({ margin: 'none' })};
 
-                ${hasBorder &&
-                isActive &&
+                ${isActive &&
                 css`
                     box-shadow: 0 0 0 3px ${theme.background.default},
                         0 0 0 6px ${theme.palette.secondary.main};
@@ -69,7 +60,7 @@ const Avatar = styled(AvatarBase)<PAvatar>(
                     transform: scale(${scaleFactor}, ${scaleFactor});
                 `}
 
-                ${hasBorder &&
+                ${!disableHover &&
                 css`
                     &:hover {
                         box-shadow: 0 0 0 ${borderSize}px ${theme.background.default},
