@@ -31,6 +31,10 @@ type TComponentSizeToken = 'xxxs' | 'xxs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '
 
 type TComponentSizes = ['xxxs', 'xxs', 'xs', 'sm', 'md', 'lg', 'xl', 'xxl', 'xxxl'];
 
+type THiddenArgtypes = {
+    [x: string]: { table: { disable: boolean } };
+};
+
 export type {
     TFontColor,
     TFontMargin,
@@ -39,4 +43,5 @@ export type {
     TInteractionElement,
     TComponentSizes,
     TComponentSizeToken,
+    THiddenArgtypes,
 };

@@ -2,6 +2,7 @@ import kebabCase from 'lodash.kebabcase';
 import axios from 'axios';
 
 import { DEFAULT_PROPERTY_WHITELIST } from './constants';
+import { THiddenArgtypes } from './types';
 
 function isColor(colorString: string): boolean {
     const s = new Option().style;
@@ -57,17 +58,29 @@ const forwardProperties =
         // forward the property when it is defined within the passed property-whitelist
         whiteList.includes(property.toString());
 
-function hideComponentProperties(
-    properties: Record<string, unknown>,
-    blacklist: string[] = []
-): Record<string, unknown> {
-    return blacklist.reduce((o, key) => Object.assign(o, { [key]: { table: { disable: true } } }), {
+/**
+ * hide the properties that come with the styled component API
+ * @returns {THiddenArgtypes}
+ */
+function hideStyledComponentProperties(): THiddenArgtypes {
+    return {
         forwardedAs: { table: { disable: true } },
         theme: { table: { disable: true } },
         ref: { table: { disable: true } },
         as: { table: { disable: true } },
-        ...properties,
-    });
+    };
+}
+
+/**
+ * hide the components listed in the blacklist array
+ * @param {string[]} [blacklist]
+ * @returns {THiddenArgtypes}
+ */
+function hideComponentProperties(blacklist: string[] = []): THiddenArgtypes {
+    return blacklist.reduce(
+        (o, key) => Object.assign(o, { [key]: { table: { disable: true } } }),
+        hideStyledComponentProperties()
+    );
 }
 
 /* eslint-disable @typescript-eslint/no-explicit-any,no-console */
@@ -145,6 +158,7 @@ const Utils = {
     getBase64,
     getStoryDocumentationUrl,
     hideComponentProperties,
+    hideStyledComponentProperties,
     getFontMargin,
     getPxValue,
 };
