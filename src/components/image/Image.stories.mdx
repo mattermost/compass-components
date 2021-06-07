@@ -1,24 +1,24 @@
 import { Meta, Story, Canvas, ArgsTable, Title } from '@storybook/addon-docs/blocks';
 
 import Image from './Image';
-import { DEFAULT_IMAGE_SOURCE, DEFAULT_IMAGE_SIZE, IMAGE_SIZES } from './Image.constants';
+import { DEFAULT_IMAGE_SIZE, IMAGE_SIZES } from './Image.constants';
 import { Utils } from '../../shared';
-import { DEFAULT_ARGUMENT_STABLE_EXCLUSION } from '../../shared/constants';
+import { DEFAULT_ARGUMENTSTABLE_EXCLUSION } from '../../shared/constants';
 import { SHAPE_BORDER_RADII } from '../../foundations/shape/Shape.constants';
 
 <Meta component={Image} title="Components/Image" />
 
-<ArgsTable of={Image} exclude={[...DEFAULT_ARGUMENT_STABLE_EXCLUSION]} />
+<ArgsTable of={Image} exclude={[...DEFAULT_ARGUMENTSTABLE_EXCLUSION]} />
 
 <Canvas hidden>
     <Story
         name="Default"
         args={{
-            source: DEFAULT_IMAGE_SOURCE,
-            radius: 'circle',
+            source: 'http://placekitten.com/200/200',
+            radius: 'pill',
             size: DEFAULT_IMAGE_SIZE,
         }}
-        argTypes={Utils.hideStyledComponentProperties({
+        argTypes={{
             size: { control: { type: 'select', options: IMAGE_SIZES } },
             width: { control: { type: 'range', min: 1, max: 1000, step: 1 } },
             height: { control: { type: 'range', min: 1, max: 1000, step: 1 } },
@@ -26,8 +26,8 @@ import { SHAPE_BORDER_RADII } from '../../foundations/shape/Shape.constants';
             source: { control: { type: 'text' } },
             thumbnail: { control: { type: 'boolean' } },
             alt: { table: { disable: true } },
-            className: { table: { disable: true } },
-        })}
+            ...Utils.hideComponentProperties(['alt', 'className']),
+        }}
     >
         {(args) => <Image {...args} />}
     </Story>

@@ -20,11 +20,11 @@ export type PImage = {
     /**
      * image width
      * */
-    width?: number | string;
+    width?: number;
     /**
      * image height
      * */
-    height?: number | string;
+    height?: number;
     /**
      * image alt
      * */

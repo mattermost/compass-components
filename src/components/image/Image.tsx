@@ -8,7 +8,7 @@ import ImageBase from './Image.base';
 
 const Image = styled(ImageBase)<PImage>(
     ({
-        theme: { background, text },
+        theme: { background, border },
         size,
         width,
         height,
@@ -19,7 +19,7 @@ const Image = styled(ImageBase)<PImage>(
             ? css`
                   padding: 0.25rem;
                   background-color: ${background.default};
-                  border: 1px solid ${text.disabled};
+                  border: 1px solid ${border.disabled};
                   border-radius: ${radius};
               `
             : null;
@@ -27,8 +27,8 @@ const Image = styled(ImageBase)<PImage>(
         return css`
             display: block;
             margin: auto;
-            width: ${size === 'full' ? '100%' : width};
-            height: ${size === 'full' ? 'auto' : height};
+            width: ${size === 'full' ? '100%' : `${width}px`};
+            height: ${size === 'full' ? 'auto' : `${height}px`};
 
             ${thumbnailStyles}
 
