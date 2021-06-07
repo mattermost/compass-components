@@ -51,6 +51,10 @@ const MentionBadge = styled(MentionBadgeBase)<PMentionBadge>(
         const mentionLength = mentions.toString().length;
 
         return css`
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
             ${getBadgeColors};
 
             ${applyPadding(

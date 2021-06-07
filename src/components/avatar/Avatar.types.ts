@@ -1,7 +1,7 @@
 import { TComponentSizeToken, TComponentSizes } from '../../shared';
 import { TStatusBadgeStatus } from '../status-badge/StatusBadge.types';
 
-type TAvatarVariant = 'circle' | 'rounded' | 'square';
+type TAvatarVariant = 'circle' | 'rounded';
 
 export type {
     TAvatarVariant,

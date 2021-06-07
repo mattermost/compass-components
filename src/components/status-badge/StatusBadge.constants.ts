@@ -18,4 +18,17 @@ const STATUSBADGE_SIZE_MAP: TStatusBadgeSizeMap = {
 
 const STATUSBADGE_STATUSES: TStatusBadgeStatus[] = ['online', 'away', 'dnd', 'offline'];
 
-export { STATUSBADGE_SIZES, DEFAULT_STATUSBADGE_SIZE, STATUSBADGE_SIZE_MAP, STATUSBADGE_STATUSES };
+const STATUSBADGE_STATUS_LABELS: Record<TStatusBadgeStatus, string> = {
+    online: 'online',
+    away: 'away',
+    dnd: 'do not disturb',
+    offline: 'offline',
+};
+
+export {
+    STATUSBADGE_SIZES,
+    DEFAULT_STATUSBADGE_SIZE,
+    STATUSBADGE_SIZE_MAP,
+    STATUSBADGE_STATUSES,
+    STATUSBADGE_STATUS_LABELS,
+};

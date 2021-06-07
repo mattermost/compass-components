@@ -3,7 +3,7 @@ import { THeadingSizeToken } from '../heading';
 import { TStatusBadgeSizeToken } from '../status-badge/StatusBadge.types';
 import { TShapeBorderRadius } from '../../foundations/shape';
 
-import { TAvatarSizes, TAvatarSizeToken } from './Avatar.types';
+import { TAvatarSizes, TAvatarSizeToken, TAvatarVariant } from './Avatar.types';
 
 // by usin a tuple as type we can guarantee that indexes are aways correct when checking for them
 const AVATAR_SIZES: TAvatarSizes = ['xxxs', 'xxs', 'xs', 'sm', 'md', 'lg', 'xl', 'xxl', 'xxxl'];
@@ -21,6 +21,10 @@ const AVATAR_SIZE_LABELS: Record<TAvatarSizeToken, string> = {
 };
 
 const DEFAULT_AVATAR_SIZE: TAvatarSizeToken = 'md';
+
+const AVATAR_VARIANTS: TAvatarVariant[] = ['circle', 'rounded'];
+
+const DEFAULT_AVATAR_VARIANT: TAvatarVariant = 'circle';
 
 type TAvatarStatusDefinition = {
     size: TStatusBadgeSizeToken;
@@ -108,6 +112,8 @@ export {
     AVATAR_SIZES,
     AVATAR_SIZE_LABELS,
     DEFAULT_AVATAR_SIZE,
+    AVATAR_VARIANTS,
+    DEFAULT_AVATAR_VARIANT,
     AVATAR_FALLBACK_COLORS,
     AVATAR_SIZE_MAP,
 };

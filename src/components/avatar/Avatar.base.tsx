@@ -54,6 +54,7 @@ const capitalizeUsername = (name: string): string =>
 
 const AvatarBase = ({
     size = DEFAULT_AVATAR_SIZE,
+    variant,
     onClick,
     mentions,
     name,
@@ -63,15 +64,17 @@ const AvatarBase = ({
 }: PAvatar): JSX.Element => {
     const Component = Utils.isFunction(onClick) ? 'button' : 'div';
     // correctness of index is guaranteed by using a tuple for AVATAR_SIZES
+    // - `MentionBadges` are best to be used at size `md` or above (`sm` is the smallest supported size)
+    // - `StatusBadges` are usable on nearly all sizes (except for `xxs`)
     const sizeIndex = AVATAR_SIZES.indexOf(size);
 
     return (
         <Component className={className} onClick={onClick}>
             {image ? <LazyAvatarImage source={image} /> : <div>{capitalizeUsername(name)}</div>}
-            {sizeIndex > 0 && status && (
+            {variant === 'circle' && sizeIndex > 0 && status && (
                 <StatusBadge status={status} size={AVATAR_SIZE_MAP[size].status.size} />
             )}
-            {Utils.isNumber(mentions) && sizeIndex > 3 && (
+            {variant === 'rounded' && Utils.isNumber(mentions) && sizeIndex > 2 && (
                 <MentionBadge
                     mentions={Math.abs(Math.trunc(mentions))}
                     size={sizeIndex >= 6 ? 'lg' : 'md'}

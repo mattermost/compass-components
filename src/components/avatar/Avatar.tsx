@@ -18,14 +18,13 @@ import {
 } from './Avatar.constants';
 import PAvatar from './Avatar.props';
 
-const Avatar = styled(AvatarBase).withConfig({
-    shouldForwardProp: Utils.forwardProperties(['size', 'mentions', 'name', 'image', 'status']),
-})<PAvatar>(
+const Avatar = styled(AvatarBase)<PAvatar>(
     ({
         size = DEFAULT_AVATAR_SIZE,
         variant = 'circle',
         hasBorder = false,
         isActive = false,
+        mentions,
         theme,
     }: ThemedStyledProps<PAvatar, TTheme>): FlattenSimpleInterpolation => {
         if (isActive) {
@@ -91,8 +90,8 @@ const Avatar = styled(AvatarBase).withConfig({
 
             ${MentionBadge} {
                 position: absolute;
-                top: -5px;
-                right: -5px;
+                top: ${mentions === 0 ? -2 : -3}px;
+                right: ${mentions === 0 ? -2 : -3}px;
             }
         `;
     }

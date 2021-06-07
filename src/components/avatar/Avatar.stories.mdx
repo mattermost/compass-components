@@ -1,21 +1,70 @@
 import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 import { Utils, DEFAULT_ARGUMENTSTABLE_EXCLUSION } from '../../shared';
-import { STATUSBADGE_STATUSES } from '../status-badge/StatusBadge.constants';
+import {
+    STATUSBADGE_STATUS_LABELS,
+    STATUSBADGE_STATUSES,
+} from '../status-badge/StatusBadge.constants';
 
 import Avatar from './Avatar';
-import { AVATAR_SIZE_LABELS, AVATAR_SIZES, DEFAULT_AVATAR_SIZE } from './Avatar.constants';
+import {
+    AVATAR_SIZE_LABELS,
+    AVATAR_SIZES,
+    AVATAR_VARIANTS,
+    DEFAULT_AVATAR_SIZE,
+} from './Avatar.constants';
 
 export const userAvatarArgs = {
     size: DEFAULT_AVATAR_SIZE,
+    variant: 'circle',
     name: 'homer.simpson',
+    image: 'https://picsum.photos/200/300?random=1',
+    status: null,
+    mentions: null,
+    hasBorder: false,
+    isActive: false,
 };
 
-export const userAvatarArgtypes = Utils.hideStyledComponentProperties({
+export const teamAvatarArgs = {
+    size: DEFAULT_AVATAR_SIZE,
+    variant: 'rounded',
+    image: 'https://picsum.photos/200/300?random=1',
+    name: 'artemis',
+    status: null,
+    mentions: null,
+    hasBorder: true,
+    isActive: false,
+};
+
+export const avatarArgtypes = Utils.hideStyledComponentProperties({
     size: {
         options: AVATAR_SIZES,
         control: {
             type: 'select',
             labels: AVATAR_SIZE_LABELS,
+        },
+    },
+    status: {
+        options: [null, ...STATUSBADGE_STATUSES],
+        control: {
+            type: 'select',
+            labels: {
+                null: 'none',
+                ...STATUSBADGE_STATUS_LABELS,
+            },
+        },
+    },
+    variant: {
+        options: AVATAR_VARIANTS,
+        control: {
+            type: 'select',
+        },
+    },
+    mentions: {
+        control: {
+            type: 'range',
+            min: 0,
+            max: 100,
+            step: 1,
         },
     },
 });
@@ -25,265 +74,10 @@ export const userAvatarArgtypes = Utils.hideStyledComponentProperties({
 <ArgsTable of={Avatar} exclude={[...DEFAULT_ARGUMENTSTABLE_EXCLUSION]} />
 
 <Canvas hidden>
-    <Story
-        name="user"
-        args={{
-            size: DEFAULT_AVATAR_SIZE,
-            image: 'https://picsum.photos/200/300?random=1',
-            name: 'homer.simpson',
-        }}
-        argTypes={Utils.hideStyledComponentProperties({
-            size: {
-                options: AVATAR_SIZES,
-                control: {
-                    type: 'select',
-                    labels: AVATAR_SIZE_LABELS,
-                },
-            },
-        })}
-    >
+    <Story name="user avatar" args={userAvatarArgs} argTypes={avatarArgtypes}>
         {(args) => <Avatar {...args} />}
     </Story>
-    <Story
-        name="user fallback"
-        args={{
-            size: DEFAULT_AVATAR_SIZE,
-            name: 'homer.simpson',
-        }}
-        argTypes={Utils.hideStyledComponentProperties({
-            size: {
-                options: AVATAR_SIZES,
-                control: {
-                    type: 'select',
-                    labels: AVATAR_SIZE_LABELS,
-                },
-            },
-        })}
-    >
-        {(args) => <Avatar {...args} />}
-    </Story>
-    <Story
-        name="user with status"
-        args={{
-            size: DEFAULT_AVATAR_SIZE,
-            status: 'online',
-            image: 'https://picsum.photos/200/300?random=1',
-            name: 'homer.simpson',
-        }}
-        argTypes={Utils.hideStyledComponentProperties({
-            size: {
-                options: AVATAR_SIZES,
-                control: {
-                    type: 'select',
-                    labels: AVATAR_SIZE_LABELS,
-                },
-            },
-            status: {
-                options: STATUSBADGE_STATUSES,
-                control: {
-                    type: 'select',
-                    labels: {
-                        online: 'online',
-                        away: 'away',
-                        dnd: 'do not disturb',
-                        offline: 'offline',
-                    },
-                },
-            },
-        })}
-    >
-        {(args) => <Avatar {...args} />}
-    </Story>
-    <Story
-        name="user fallback with status"
-        args={{
-            size: DEFAULT_AVATAR_SIZE,
-            status: 'online',
-            name: 'homer.simpson',
-        }}
-        argTypes={Utils.hideStyledComponentProperties({
-            size: {
-                options: AVATAR_SIZES,
-                control: {
-                    type: 'select',
-                    labels: AVATAR_SIZE_LABELS,
-                },
-            },
-            status: {
-                options: STATUSBADGE_STATUSES,
-                control: {
-                    type: 'select',
-                    labels: {
-                        online: 'online',
-                        away: 'away',
-                        dnd: 'do not disturb',
-                        offline: 'offline',
-                    },
-                },
-            },
-        })}
-    >
-        {(args) => <Avatar {...args} />}
-    </Story>
-    <Story
-        name="team"
-        args={{
-            hasBorder: true,
-            size: DEFAULT_AVATAR_SIZE,
-            image: 'https://picsum.photos/200/300?random=1',
-            name: 'artemis',
-            variant: 'rounded',
-        }}
-        argTypes={Utils.hideStyledComponentProperties({
-            size: {
-                options: AVATAR_SIZES,
-                control: {
-                    type: 'select',
-                    labels: AVATAR_SIZE_LABELS,
-                },
-            },
-        })}
-    >
-        {(args) => <Avatar {...args} />}
-    </Story>
-    <Story
-        name="team with mentions"
-        args={{
-            hasBorder: true,
-            mentions: 25,
-            size: DEFAULT_AVATAR_SIZE,
-            image: 'https://picsum.photos/200/300?random=1',
-            name: 'artemis',
-            variant: 'rounded',
-        }}
-        argTypes={Utils.hideStyledComponentProperties({
-            size: {
-                options: AVATAR_SIZES,
-                control: {
-                    type: 'select',
-                    labels: AVATAR_SIZE_LABELS,
-                },
-            },
-            mentions: {
-                control: {
-                    type: 'range',
-                    min: 0,
-                    max: 100,
-                    step: 1,
-                },
-            },
-        })}
-    >
-        {(args) => <Avatar {...args} />}
-    </Story>
-    <Story
-        name="team fallback"
-        args={{
-            hasBorder: true,
-            size: DEFAULT_AVATAR_SIZE,
-            name: 'artemis',
-            variant: 'rounded',
-        }}
-        argTypes={Utils.hideStyledComponentProperties({
-            size: {
-                options: AVATAR_SIZES,
-                control: {
-                    type: 'select',
-                    labels: AVATAR_SIZE_LABELS,
-                },
-            },
-        })}
-    >
-        {(args) => <Avatar {...args} />}
-    </Story>
-    <Story
-        name="team fallback with mentions"
-        args={{
-            hasBorder: true,
-            size: DEFAULT_AVATAR_SIZE,
-            mentions: 25,
-            name: 'artemis',
-            variant: 'rounded',
-        }}
-        argTypes={Utils.hideStyledComponentProperties({
-            size: {
-                options: AVATAR_SIZES,
-                control: {
-                    type: 'select',
-                    labels: AVATAR_SIZE_LABELS,
-                },
-            },
-            mentions: {
-                control: {
-                    type: 'range',
-                    min: 0,
-                    max: 100,
-                    step: 1,
-                },
-            },
-        })}
-    >
-        {(args) => <Avatar {...args} />}
-    </Story>
-    <Story
-        name="active team with mentions"
-        args={{
-            hasBorder: true,
-            isActive: true,
-            mentions: 25,
-            size: DEFAULT_AVATAR_SIZE,
-            image: 'https://picsum.photos/200/300?random=1',
-            name: 'artemis',
-            variant: 'rounded',
-        }}
-        argTypes={Utils.hideStyledComponentProperties({
-            size: {
-                options: AVATAR_SIZES,
-                control: {
-                    type: 'select',
-                    labels: AVATAR_SIZE_LABELS,
-                },
-            },
-            mentions: {
-                control: {
-                    type: 'range',
-                    min: 0,
-                    max: 100,
-                    step: 1,
-                },
-            },
-        })}
-    >
-        {(args) => <Avatar {...args} />}
-    </Story>
-    <Story
-        name="active team fallback with mentions"
-        args={{
-            hasBorder: true,
-            isActive: true,
-            size: DEFAULT_AVATAR_SIZE,
-            mentions: 25,
-            name: 'artemis',
-            variant: 'rounded',
-        }}
-        argTypes={Utils.hideStyledComponentProperties({
-            size: {
-                options: AVATAR_SIZES,
-                control: {
-                    type: 'select',
-                    labels: AVATAR_SIZE_LABELS,
-                },
-            },
-            mentions: {
-                control: {
-                    type: 'range',
-                    min: 0,
-                    max: 100,
-                    step: 1,
-                },
-            },
-        })}
-    >
+    <Story name="team avatar" args={teamAvatarArgs} argTypes={avatarArgtypes}>
         {(args) => <Avatar {...args} />}
     </Story>
 </Canvas>
