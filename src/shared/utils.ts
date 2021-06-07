@@ -46,17 +46,17 @@ function getStoryDocumentationUrl(storyParameters: Record<string, string>): stri
  * })<PSection>` ... `
  * ```
  * */
-const forwardProperties = (whiteList: string[] = []): ((property: string | number) => boolean) => (
-    property: string | number
-): boolean =>
-    // forward the property when it is a `data-*`attribute
-    property.toString().startsWith('data-') ||
-    // forward the property when it is a `aria-*`attribute
-    property.toString().startsWith('aria-') ||
-    // always forward the property when it is defined within the property-whitelist
-    DEFAULT_PROPERTY_WHITELIST.includes(property.toString()) ||
-    // forward the property when it is defined within the passed property-whitelist
-    whiteList.includes(property.toString());
+const forwardProperties =
+    (whiteList: string[] = []): ((property: string | number) => boolean) =>
+    (property: string | number): boolean =>
+        // forward the property when it is a `data-*`attribute
+        property.toString().startsWith('data-') ||
+        // forward the property when it is a `aria-*`attribute
+        property.toString().startsWith('aria-') ||
+        // always forward the property when it is defined within the property-whitelist
+        DEFAULT_PROPERTY_WHITELIST.includes(property.toString()) ||
+        // forward the property when it is defined within the passed property-whitelist
+        whiteList.includes(property.toString());
 
 /**
  * hide the properties that come with the styled component API
