@@ -73,6 +73,13 @@ const lightTheme: TTheme = {
         disabled: neutral[500],
         contrast: neutral[0],
     },
+    border: {
+        primary: neutral[1100],
+        accent: neutral[900],
+        secondary: neutral[800],
+        disabled: neutral[500],
+        contrast: neutral[0],
+    },
     background: {
         badge: neutral[500],
         default: neutral[50],

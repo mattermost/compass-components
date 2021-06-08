@@ -31,6 +31,14 @@ type TTHemeTextColors = {
     accent: string;
 };
 
+type TThemeBorderColors = {
+    primary: string;
+    secondary: string;
+    disabled: string;
+    contrast: string;
+    accent: string;
+};
+
 type TTHemeBackgroundColors = {
     default: string;
     badge: string;
@@ -51,6 +59,7 @@ type TTheme = {
     badges: TThemeBadges;
     action: TTHemeActionColors;
     text: TTHemeTextColors;
+    border: TThemeBorderColors;
     background: TTHemeBackgroundColors;
 };
 
@@ -59,6 +68,7 @@ export type {
     TTHemeColors,
     TTHemeActionColors,
     TTHemeTextColors,
+    TThemeBorderColors,
     TTHemeBackgroundColors,
     TThemeColorDefinition,
 };
