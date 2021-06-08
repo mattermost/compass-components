@@ -77,7 +77,7 @@ const createFiles = (name, group = 'components') => {
                     disabled: true,
                 },
             ],
-            initial: 2,
+            initial: 0,
         },
         {
             type: 'text',
