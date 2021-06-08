@@ -1,4 +1,4 @@
-import { TFontColor, TFontMargin, TFontWeight } from './types';
+import { TComponentSizes, TFontColor, TFontMargin, TFontWeight } from './types';
 
 const FONT_TYPE_FAMILIES: Record<'heading' | 'body', string> = {
     body: 'Open Sans, sans-serif',
@@ -36,7 +36,20 @@ const DEFAULT_PROPERTY_WHITELIST: string[] = [
     'onClick',
 ];
 
+const COMPONENT_SIZES: TComponentSizes = [
+    'xxxs',
+    'xxs',
+    'xs',
+    'sm',
+    'md',
+    'lg',
+    'xl',
+    'xxl',
+    'xxxl',
+];
+
 export {
+    COMPONENT_SIZES,
     DEFAULT_ARGUMENTSTABLE_EXCLUSION,
     DEFAULT_PROPERTY_WHITELIST,
     FONT_TYPE_FAMILIES,

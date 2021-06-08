@@ -1,7 +1,7 @@
 import { css } from 'styled-components';
 import { FlattenSimpleInterpolation } from 'styled-components/ts3.6';
 
-import { FONT_TYPE_FAMILIES, FONT_WEIGHT_MAP } from '../../shared/constants';
+import { FONT_TYPE_FAMILIES, FONT_WEIGHT_MAP } from '../../shared';
 
 import {
     DEFAULT_HEADING_MARGIN,
