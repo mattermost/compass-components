@@ -73,6 +73,13 @@ const darkTheme: TTheme = {
         disabled: neutral[700],
         contrast: neutral[100],
     },
+    border: {
+        accent: neutral[150],
+        primary: neutral[50],
+        secondary: neutral[300],
+        disabled: neutral[700],
+        contrast: neutral[100],
+    },
     background: {
         badge: neutral[1250],
         default: neutral[1100],
