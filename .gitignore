@@ -217,6 +217,3 @@ storybook-static
 
 # build folder (should be build via CI)
 lib
-
-# docs folder (from storybook)
-docs
