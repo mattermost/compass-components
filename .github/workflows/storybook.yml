@@ -14,6 +14,10 @@ jobs:
               with:
                   persist-credentials: false
             - name: Install
+              uses: actions/setup-node@v2
+              with:
+                node-version: '16'
+                check-latest: true
               # adding --legacy-peer-deps for now until issue in storybook is fixed
               # @see https://github.com/storybookjs/storybook/issues/14119 for reference
               run: |
