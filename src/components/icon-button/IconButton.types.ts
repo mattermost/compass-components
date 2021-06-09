@@ -2,4 +2,6 @@ import { TComponentSizeToken } from '../../shared';
 
 type TIconButtonNumber = number;
 
-export type { TIconButtonNumber, TComponentSizeToken as TIconButtonSizeToken };
+type TIconButtonSizeToken = Exclude<TComponentSizeToken, 'xxxs' | 'xxs' | 'xxl' | 'xxxl'>;
+
+export type { TIconButtonNumber, TIconButtonSizeToken };
