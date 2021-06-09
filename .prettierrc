@@ -11,5 +11,6 @@
     "quoteProps": "as-needed",
     "trailingComma": "es5",
     "eslintIntegration": true,
-    "endOfLine": "lf"
+    "endOfLine": "lf",
+    "parser": "babel"
 }

@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
+import upperFirst from 'lodash.upperfirst';
 
 import { Utils } from '../../shared';
 import MentionBadge from '../mention-badge';
@@ -47,11 +48,6 @@ const LazyAvatarImage = ({ source }: PLazyAvatarImage): JSX.Element => {
     return <StyledAvatarImage image={image} />;
 };
 
-// I would have prefered to use a css solution, but the `::first-letter`
-// selector only works on block-level elements (not in flex)
-const capitalizeUsername = (name: string): string =>
-    name.charAt(0).toUpperCase() + name.slice(1, 2);
-
 const AvatarBase = ({
     size = DEFAULT_AVATAR_SIZE,
     variant,
@@ -70,7 +66,7 @@ const AvatarBase = ({
 
     return (
         <Component className={className} onClick={onClick}>
-            {image ? <LazyAvatarImage source={image} /> : <div>{capitalizeUsername(name)}</div>}
+            {image ? <LazyAvatarImage source={image} /> : <div>{upperFirst(name)}</div>}
             {variant === 'circle' && sizeIndex > 0 && status && (
                 <StatusBadge status={status} size={AVATAR_SIZE_MAP[size].status.size} />
             )}
