@@ -3,12 +3,12 @@ import { Meta, Story, Canvas, ArgsTable, Title } from '@storybook/addon-docs/blo
 import Image from './Image';
 import { DEFAULT_IMAGE_SIZE, IMAGE_SIZES } from './Image.constants';
 import { Utils } from '../../shared';
-import { DEFAULT_ARGUMENTSTABLE_EXCLUSION } from '../../shared/constants';
+import { DEFAULT_ARGUMENTS_TABLE_EXCLUSION } from '../../shared/constants';
 import { SHAPE_BORDER_RADII } from '../../foundations/shape/Shape.constants';
 
 <Meta component={Image} title="Components/Image" />
 
-<ArgsTable of={Image} exclude={[...DEFAULT_ARGUMENTSTABLE_EXCLUSION]} />
+<ArgsTable of={Image} exclude={[...DEFAULT_ARGUMENTS_TABLE_EXCLUSION]} />
 
 <Canvas hidden>
     <Story

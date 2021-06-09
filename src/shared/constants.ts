@@ -17,7 +17,7 @@ const FONT_MARGINS: TFontMargin[] = ['none', 'both', 'bottom', 'top'];
 
 const FONT_COLORS: TFontColor[] = ['primary', 'secondary', 'disabled', 'inherit'];
 
-const DEFAULT_ARGUMENTSTABLE_EXCLUSION: string[] = [
+const DEFAULT_ARGUMENTS_TABLE_EXCLUSION: string[] = [
     'children',
     'className',
     'as',
@@ -50,7 +50,7 @@ const COMPONENT_SIZES: TComponentSizes = [
 
 export {
     COMPONENT_SIZES,
-    DEFAULT_ARGUMENTSTABLE_EXCLUSION,
+    DEFAULT_ARGUMENTS_TABLE_EXCLUSION,
     DEFAULT_PROPERTY_WHITELIST,
     FONT_TYPE_FAMILIES,
     FONT_COLORS,
