@@ -14,8 +14,10 @@ jobs:
               with:
                   persist-credentials: false
             - name: Install
+              # adding --legacy-peer-deps for now until issue in storybook is fixed
+              # @see https://github.com/storybookjs/storybook/issues/14119 for reference
               run: |
-                  npm install
+                  npm install --legacy-peer-deps
             - name: Build Icons
               working-directory: ./node_modules/@mattermost/compass-icons
               run: |

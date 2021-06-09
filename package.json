@@ -28,7 +28,6 @@
     },
     "homepage": "https://github.com/mattermost/compass-components#readme",
     "dependencies": {
-        "@etchteam/storybook-addon-status": "^3.0.1",
         "@mattermost/compass-icons": "github:mattermost/compass-icons#5fc43ecf90ba697613e02a6201811894b7b74f60",
         "axios": "^0.21.1",
         "clsx": "^1.1.1",
@@ -39,15 +38,14 @@
         "lodash.snakecase": "^4.1.1",
         "lodash.toupper": "^4.1.2",
         "lodash.upperfirst": "^4.3.1",
-        "prompts": "^2.4.0",
         "react": "^17.0.1",
         "react-docgen-typescript": "^1.22.0",
         "react-dom": "^17.0.1",
-        "styled-components": "^5.2.1",
-        "typescript": "^4.2.2"
+        "styled-components": "^5.2.1"
     },
     "devDependencies": {
         "@babel/core": "^7.13.8",
+        "@etchteam/storybook-addon-status": "^3.0.1",
         "@storybook/addon-a11y": "^6.2.9",
         "@storybook/addon-actions": "^6.2.9",
         "@storybook/addon-docs": "^6.2.9",
@@ -93,7 +91,9 @@
         "husky": "=4",
         "lint-staged": ">=10",
         "prettier": "^2.2.1",
-        "storybook-addon-themes": "^6.1.0"
+        "prompts": "^2.4.0",
+        "storybook-addon-themes": "^6.1.0",
+        "typescript": "4.2.2"
     },
     "husky": {
         "hooks": {
