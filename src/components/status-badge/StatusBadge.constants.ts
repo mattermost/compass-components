@@ -1,10 +1,12 @@
-import { TComponentSizeToken } from '../../shared/types';
+import {
+    TStatusBadgeSizeMap,
+    TStatusBadgeSizeToken,
+    TStatusBadgeStatus,
+} from './StatusBadge.types';
 
-import { TStatusBadgeSizeMap, TStatusBadgeStatus } from './StatusBadge.types';
+const STATUSBADGE_SIZES: TStatusBadgeSizeToken[] = ['xs', 'sm', 'md', 'lg', 'xl'];
 
-const STATUSBADGE_SIZES: TComponentSizeToken[] = ['xs', 'sm', 'md', 'lg', 'xl'];
-
-const DEFAULT_STATUSBADGE_SIZE: TComponentSizeToken = 'md';
+const DEFAULT_STATUSBADGE_SIZE: TStatusBadgeSizeToken = 'md';
 
 const STATUSBADGE_SIZE_MAP: TStatusBadgeSizeMap = {
     xs: 10,
@@ -16,4 +18,17 @@ const STATUSBADGE_SIZE_MAP: TStatusBadgeSizeMap = {
 
 const STATUSBADGE_STATUSES: TStatusBadgeStatus[] = ['online', 'away', 'dnd', 'offline'];
 
-export { STATUSBADGE_SIZES, DEFAULT_STATUSBADGE_SIZE, STATUSBADGE_SIZE_MAP, STATUSBADGE_STATUSES };
+const STATUSBADGE_STATUS_LABELS: Record<TStatusBadgeStatus, string> = {
+    online: 'online',
+    away: 'away',
+    dnd: 'do not disturb',
+    offline: 'offline',
+};
+
+export {
+    STATUSBADGE_SIZES,
+    DEFAULT_STATUSBADGE_SIZE,
+    STATUSBADGE_SIZE_MAP,
+    STATUSBADGE_STATUSES,
+    STATUSBADGE_STATUS_LABELS,
+};

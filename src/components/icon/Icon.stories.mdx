@@ -3,7 +3,7 @@ import { Meta, Story, Canvas, ArgsTable, Title } from '@storybook/addon-docs/blo
 import Icon from './Icon';
 import { DEFAULT_ICON_GLYPH, DEFAULT_ICON_SIZE, ICON_GLYPHS, ICON_SIZES } from './Icon.constants';
 import { Utils } from '../../shared';
-import { DEFAULT_ARGUMENT_STABLE_EXCLUSION } from '../../shared/constants';
+import { DEFAULT_ARGUMENTSTABLE_EXCLUSION } from '../../shared/constants';
 
 <Meta component={Icon} title="Components/Icon" />
 
@@ -13,7 +13,7 @@ import { DEFAULT_ARGUMENT_STABLE_EXCLUSION } from '../../shared/constants';
 
 <ArgsTable
     of={Icon}
-    exclude={[...DEFAULT_ARGUMENT_STABLE_EXCLUSION, 'data-size', 'data-glyph', 'aria-label']}
+    exclude={[...DEFAULT_ARGUMENTSTABLE_EXCLUSION, 'data-size', 'data-glyph', 'aria-label']}
 />
 
 export const Template = (args) => {
@@ -27,7 +27,7 @@ export const Template = (args) => {
             size: DEFAULT_ICON_SIZE,
             glyph: DEFAULT_ICON_GLYPH,
         }}
-        argTypes={Utils.hideStyledComponentProperties({
+        argTypes={{
             size: {
                 options: ICON_SIZES,
                 control: {
@@ -40,8 +40,8 @@ export const Template = (args) => {
                     type: 'select',
                 },
             },
-            'aria-label': { table: { disable: true } },
-        })}
+            ...Utils.hideComponentProperties(['aria-label']),
+        }}
     >
         {Template.bind({})}
     </Story>

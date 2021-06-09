@@ -28,7 +28,13 @@ type TContainerElement =
 
 type TInteractionElement = 'button' | 'input';
 
-type TComponentSizeToken = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+type TComponentSizeToken = 'xxxs' | 'xxs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl' | 'xxxl';
+
+type TComponentSizes = ['xxxs', 'xxs', 'xs', 'sm', 'md', 'lg', 'xl', 'xxl', 'xxxl'];
+
+type THiddenArgtypes = {
+    [x: string]: { table: { disable: boolean } };
+};
 
 export type {
     TFontColor,
@@ -36,5 +42,7 @@ export type {
     TFontWeight,
     TContainerElement,
     TInteractionElement,
+    TComponentSizes,
     TComponentSizeToken,
+    THiddenArgtypes,
 };

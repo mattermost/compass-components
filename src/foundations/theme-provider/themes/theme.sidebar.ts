@@ -66,10 +66,20 @@ const sidebarTheme: TTheme = {
         disabled: neutral[700],
         contrast: neutral[100],
     },
+    border: {
+        primary: neutral[50],
+        accent: neutral[150],
+        secondary: neutral[300],
+        disabled: neutral[700],
+        contrast: neutral[100],
+    },
     background: {
+        badge: blue[800],
         default: blue[700],
         shape: blue[500],
         contrast: neutral[50],
+        skeleton: neutral[100],
+        shimmer: neutral[0],
     },
 };
 
