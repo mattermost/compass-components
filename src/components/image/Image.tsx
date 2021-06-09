@@ -1,4 +1,5 @@
-import styled, { css, ThemedStyledProps } from 'styled-components/ts3.6';
+import styled, { css } from 'styled-components';
+import { ThemedStyledProps } from 'styled-components/ts3.6';
 
 import { TTheme } from '../../foundations/theme-provider/themes/theme.types';
 import { applyShape } from '../../foundations/shape/Shape.mixins';
