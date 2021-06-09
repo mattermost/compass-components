@@ -1,0 +1,34 @@
+import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+import { Utils, DEFAULT_ARGUMENTSTABLE_EXCLUSION } from '../../shared';
+
+import {
+    ICON_BUTTON_SIZES,
+    ICON_BUTTON_SIZE_LABELS,
+    DEFAULT_ICON_BUTTON_SIZE,
+} from './IconButton.constants';
+import IconButton from './IconButton';
+
+export const iconButtonArgs = {
+    size: DEFAULT_ICON_BUTTON_SIZE,
+};
+
+export const iconButtonArgTypes = {
+    size: {
+        options: ICON_BUTTON_SIZES,
+        control: {
+            type: 'select',
+            labels: ICON_BUTTON_SIZE_LABELS,
+        },
+    },
+    ...Utils.hideComponentProperties(),
+};
+
+<Meta title={'Components/IconButton'} />
+
+<ArgsTable of={IconButton} exclude={[...DEFAULT_ARGUMENTSTABLE_EXCLUSION]} />
+
+<Canvas hidden>
+    <Story name="default" args={iconButtonArgs} argTypes={iconButtonArgTypes}>
+        {(args) => <IconButton {...args} />}
+    </Story>
+</Canvas>
