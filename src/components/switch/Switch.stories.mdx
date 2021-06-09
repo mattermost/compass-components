@@ -106,7 +106,7 @@ There are three different sizes for switches: Small, Medium, and Large. The size
 <Canvas hidden>
     <Story
         name="Default"
-        argTypes={Utils.hideStyledComponentProperties({
+        argTypes={{
             label: {
                 control: {
                     type: 'text',
@@ -133,7 +133,8 @@ There are three different sizes for switches: Small, Medium, and Large. The size
             innerWidth: { table: { disable: true } },
             className: { table: { disable: true } },
             onClick: { action: 'clicked' },
-        })}
+            ...Utils.hideComponentProperties(['width', 'height', 'innerWidth', 'className', 'onClick']),
+        }}
         args={{
             ...defaultArgs,
         }}

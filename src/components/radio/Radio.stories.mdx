@@ -110,15 +110,14 @@ Once an item is selected, if the user clicks to select a different item, this au
 <Canvas hidden>
     <Story
         name="Default"
-        argTypes={Utils.hideStyledComponentProperties({
+        argTypes={{
             label: { control: { type: 'text' } },
             size: { control: { type: 'radio', options: RADIO_SIZES } },
             hasError: { control: { type: 'boolean' } },
             disabled: { control: { type: 'boolean' } },
             checked: { control: { type: 'boolean' } },
-            className: { table: { disable: true } },
-            onClick: { action: 'clicked', table: { disable: true } },
-        })}
+            ...Utils.hideComponentProperties(['onClick', 'className']),
+        }}
         args={{
             label: 'Default Radio',
             size: DEFAULT_RADIO_SIZE,
