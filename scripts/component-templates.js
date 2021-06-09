@@ -43,7 +43,9 @@ const base = (name) => `import React from 'react';
 import { DEFAULT_${toUpper(snakeCase(name))}_SIZE } from './${name}.constants';
 import P${name} from './${name}.props';
 
-const ${name}Base = ({ size = DEFAULT_${toUpper(snakeCase(name))}_SIZE }: P${name}): JSX.Element => (
+const ${name}Base = ({ size = DEFAULT_${toUpper(
+    snakeCase(name)
+)}_SIZE }: P${name}): JSX.Element => (
     <div>Hello 👋, I am a IconButton component with a default size of '{size}'.</div>
 );
 
@@ -78,7 +80,7 @@ export const ${lowerFirst(name)}ArgTypes = {
     ...Utils.hideComponentProperties(),
 };
 
-<Meta title={'Components/Avatar'} />
+<Meta title={'Components/${name}'} />
 
 <ArgsTable of={${name}} exclude={[...DEFAULT_ARGUMENTSTABLE_EXCLUSION]} />
 
