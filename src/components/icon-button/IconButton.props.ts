@@ -1,8 +1,9 @@
 import { TIconGlyph } from '../icon';
 
-import { TIconButtonSizeToken } from './IconButton.types';
+import { TIconButtonElement, TIconButtonSizeToken } from './IconButton.types';
 
 type PIconButton = {
+    element?: TIconButtonElement;
     /**
      * the icon that should be displayed inside the IconButton
      */
@@ -12,16 +13,17 @@ type PIconButton = {
      * @default 'md'
      */
     size?: TIconButtonSizeToken;
-    text?: string;
+    /**
+     * show a label to the right of the Icon
+     */
+    label?: string;
+    toggled?: boolean;
+    destructive?: boolean;
+    disabled?: boolean;
+    inverted?: boolean;
     className?: string;
 };
 
-export type PIconButtonRoot = {
-    /**
-     * the size token to define the IconButton size
-     * @default 'md'
-     */
-    size?: TIconButtonSizeToken;
-};
+export type PIconButtonRoot = Omit<PIconButton, 'element' | 'className' | 'icon' | 'label'>;
 
 export default PIconButton;
