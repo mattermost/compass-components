@@ -16,27 +16,94 @@ const IconButtonRoot = styled.button.withConfig({
 })<PIconButtonRoot>(
     ({
         size = DEFAULT_ICON_BUTTON_SIZE,
-        theme,
+        inverted = false,
+        toggled = false,
+        destructive = false,
+        disabled = false,
+        theme: { palette, action, text },
     }: ThemedStyledProps<PIconButtonRoot, TTheme>): FlattenSimpleInterpolation => {
+        const isDefault = !inverted && !destructive && !toggled;
+        const { main, contrast } = destructive && !toggled ? palette.alert : palette.primary;
+
         const colors: Record<string, string> = {
-            background: theme.palette.primary.main,
-            hover: theme.action.hover,
-            active: theme.palette.primary.main,
-            border: theme.palette.primary.main,
+            background: main,
+            text: toggled ? contrast : text.primary,
         };
 
         const opacities: Record<string, Record<string, number>> = {
-            background: { default: 0, hover: 0.08, active: 0.08 },
-            text: { default: 0.64, hover: 0.72, active: 1 },
+            background: {
+                default: toggled ? 1 : 0,
+                hover: toggled ? 0.92 : 0.08,
+                active: inverted ? 0.16 : 0.08,
+            },
+            text: {
+                default: toggled ? 1 : 0.56,
+                hover: toggled ? 1 : 0.72,
+                active: 1,
+            },
         };
+
+        if (inverted) {
+            colors.background = contrast;
+            colors.text = toggled ? main : contrast;
+        }
+
+        if (destructive && !toggled) {
+            colors.background = main;
+            colors.text = inverted ? contrast : main;
+
+            opacities.background.hover = inverted ? 0.8 : 0.08;
+            opacities.background.active = inverted ? 1 : 0.16;
+        }
+
+        // override some values for disabled icon-buttons
+        if (disabled) {
+            // set colors to the 'disabled'-grey
+            colors.text = action.disabled;
+            // icon and text are slightly opaque with disabled buttons
+            opacities.background.default = 0;
+            opacities.text.default = 0.32;
+        }
+
+        const actionStyles = disabled
+            ? css`
+                  cursor: not-allowed;
+              `
+            : css`
+                  :hover {
+                      background: ${setAlpha(
+                          isDefault ? action.hover : colors.background,
+                          opacities.background.hover
+                      )};
+                      color: ${setAlpha(colors.text, opacities.text.hover)};
+                  }
+
+                  :active {
+                      background: ${setAlpha(colors.background, opacities.background.active)};
+                      color: ${setAlpha(inverted ? contrast : main, opacities.text.active)};
+                  }
+
+                  &:focus {
+                      box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.32),
+                          inset 0 0 0 2px ${destructive ? palette.alert.main : main};
+                  }
+
+                  &:focus:not(:focus-visible) {
+                      box-shadow: none;
+                  }
+
+                  &:focus-visible {
+                      box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.32),
+                          inset 0 0 0 2px ${destructive ? palette.alert.main : main};
+                  }
+              `;
 
         return css`
             display: flex;
             align-items: center;
             justify-content: center;
 
-            color: ${setAlpha(theme.text.primary, opacities.text.default)};
-
+            color: ${setAlpha(colors.text, opacities.text.default)};
             background: ${setAlpha(colors.background, opacities.background.default)};
 
             ${applyShape({ radius: 4 })};
@@ -47,28 +114,14 @@ const IconButtonRoot = styled.button.withConfig({
                 ${applyTextStyles({
                     size: ICON_BUTTON_DEFINITIONS[size].fontSize,
                     weight: 'bold',
+                    inheritLineHeight: true,
                 })};
             }
 
-            :hover {
-                background: ${setAlpha(colors.hover, opacities.background.hover)};
-                color: ${setAlpha(theme.text.primary, opacities.text.hover)};
-            }
-            :active {
-                background: ${setAlpha(colors.active, opacities.background.active)};
-                color: ${setAlpha(theme.palette.primary.main, opacities.text.active)};
-            }
-            &:focus {
-                box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.32),
-                    inset 0 0 0 2px ${colors.border};
-            }
-            &:focus:not(:focus-visible) {
-                box-shadow: none;
-            }
-            &:focus-visible {
-                box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.32),
-                    inset 0 0 0 2px ${colors.border};
-            }
+            ${actionStyles};
+
+            transition: background 250ms ease-in-out, color 250ms ease-in-out,
+                box-shadow 250ms ease-in-out;
         `;
     }
 );
