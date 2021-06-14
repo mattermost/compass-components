@@ -57,7 +57,7 @@ const lightTheme: TTheme = {
         },
     },
     action: {
-        hover: neutral[0],
+        hover: neutral[900],
         disabled: neutral[1000],
     },
     badges: {

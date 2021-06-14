@@ -10,7 +10,7 @@
     "plugins": ["node", "react-hooks", "prettier", "implicit-dependencies", "import"],
     "rules": {
         "import/no-extraneous-dependencies": "error",
-        "prettier/prettier": "error",
+        "prettier/prettier": "warn",
         "block-scoped-var": "error",
         "eqeqeq": "error",
         "no-var": "error",
