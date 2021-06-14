@@ -4,9 +4,10 @@ import { TIconGlyph, TIconSize } from './Icon.types';
 
 const DEFAULT_ICON_SIZE = 20;
 
-const ICON_SIZES: TIconSize[] = [10, 12, 16, 20, 28, 32, 40, 52, 64, 104];
+const ICON_SIZES: TIconSize[] = [8, 10, 12, 16, 20, 28, 32, 40, 52, 64, 104];
 
 const ICON_FONT_SIZES: Record<TIconSize, number> = {
+    8: 10,
     10: 12,
     12: 14,
     16: 18,

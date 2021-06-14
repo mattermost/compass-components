@@ -15,14 +15,14 @@ import {
 } from './Shape.constants';
 
 import ThemeProvider from '../theme-provider/theme-provider';
-import { DEFAULT_ARGUMENT_STABLE_EXCLUSION } from '../../shared/constants';
+import { DEFAULT_ARGUMENTS_TABLE_EXCLUSION } from '../../shared/constants';
 
 <Meta component={Shape} title="Foundations/Shape" />
 
 export const Template = (args) => <Shape {...args} />;
 
 export const defaultArgs = {
-    borderRadius: DEFAULT_SHAPE_BORDER_RADIUS,
+    radius: DEFAULT_SHAPE_BORDER_RADIUS,
     elevation: DEFAULT_SHAPE_ELEVATION_LEVEL,
     elevationOnHover: DEFAULT_SHAPE_ELEVATION_LEVEL,
     component: DEFAULT_SHAPE_ELEMENT,
@@ -30,32 +30,35 @@ export const defaultArgs = {
     height: 50,
 };
 
-export const argTypes = Utils.hideStyledComponentProperties({
+export const argTypes = {
     component: {
+        options: SHAPE_ELEMENTS,
         control: {
             type: 'select',
-            options: SHAPE_ELEMENTS,
         },
     },
-    borderRadius: {
+    radius: {
+        options: SHAPE_BORDER_RADII,
         control: {
             type: 'select',
-            options: SHAPE_BORDER_RADII,
         },
     },
     elevation: {
+        options: SHAPE_ELEVATION_LEVELS,
         control: {
             type: 'select',
-            options: SHAPE_ELEVATION_LEVELS,
         },
     },
     elevationOnHover: {
+        options: SHAPE_ELEVATION_LEVELS,
         control: {
             type: 'select',
-            options: SHAPE_ELEVATION_LEVELS,
         },
     },
-});
+    width: { control: { type: 'range', min: 150, max: 600, step: 25 } },
+    height: { control: { type: 'range', min: 150, max: 600, step: 25 } },
+    ...Utils.hideComponentProperties(),
+};
 
 <Title>Shape</Title>
 
@@ -77,16 +80,16 @@ There are 4 core shapes used throughout the Mattermost interface:
             justify={'space-around'}
         >
             <Grid justify={'center'}>
-                <Shape {...defaultArgs} borderRadius={0} />
+                <Shape {...defaultArgs} radius={0} />
             </Grid>
             <Grid justify={'center'}>
-                <Shape {...defaultArgs} borderRadius={12} />
+                <Shape {...defaultArgs} radius={12} />
             </Grid>
             <Grid justify={'center'}>
-                <Shape {...defaultArgs} borderRadius={'pill'} />
+                <Shape {...defaultArgs} radius={'pill'} />
             </Grid>
             <Grid justify={'center'}>
-                <Shape {...defaultArgs} borderRadius={'circle'} />
+                <Shape {...defaultArgs} radius={'circle'} />
             </Grid>
         </Grid>
     </Grid>
@@ -118,7 +121,7 @@ export const radiusExampleArgs = {
         <Grid row alignment={'center'}>
             <Grid justify={'center'} flex={0}>
                 <Grid padding={Spacing.all(150)}>
-                    <Shape {...radiusExampleArgs} width={156} height={156} borderRadius={4} />
+                    <Shape {...radiusExampleArgs} width={156} height={156} radius={4} />
                 </Grid>
                 <br />
                 <Text element={'p'} size={200} margin={'none'}>
@@ -138,7 +141,7 @@ export const radiusExampleArgs = {
         <Grid row justify={'space-between'}>
             <Grid justify={'center'} flex={0}>
                 <Grid padding={Spacing.all(150)}>
-                    <Shape {...radiusExampleArgs} borderRadius={8} />
+                    <Shape {...radiusExampleArgs} radius={8} />
                 </Grid>
                 <br />
                 <Text element={'p'} size={200} margin={'none'}>
@@ -147,7 +150,7 @@ export const radiusExampleArgs = {
             </Grid>
             <Grid justify={'center'} flex={0}>
                 <Grid padding={Spacing.all(150)}>
-                    <Shape {...radiusExampleArgs} borderRadius={12} />
+                    <Shape {...radiusExampleArgs} radius={12} />
                 </Grid>
                 <br />
                 <Text element={'p'} size={200} margin={'none'}>
@@ -156,7 +159,7 @@ export const radiusExampleArgs = {
             </Grid>
             <Grid justify={'center'} flex={0}>
                 <Grid padding={Spacing.all(150)}>
-                    <Shape {...radiusExampleArgs} borderRadius={16} />
+                    <Shape {...radiusExampleArgs} radius={16} />
                 </Grid>
                 <br />
                 <Text element={'p'} size={200} margin={'none'}>
@@ -165,7 +168,7 @@ export const radiusExampleArgs = {
             </Grid>
             <Grid justify={'center'} flex={0}>
                 <Grid padding={Spacing.all(150)}>
-                    <Shape {...radiusExampleArgs} borderRadius={20} />
+                    <Shape {...radiusExampleArgs} radius={20} />
                 </Grid>
                 <br />
                 <Text element={'p'} size={200} margin={'none'}>
@@ -174,7 +177,7 @@ export const radiusExampleArgs = {
             </Grid>
             <Grid justify={'center'} flex={0}>
                 <Grid padding={Spacing.all(150)}>
-                    <Shape {...radiusExampleArgs} borderRadius={24} />
+                    <Shape {...radiusExampleArgs} radius={24} />
                 </Grid>
                 <br />
                 <Text element={'p'} size={200} margin={'none'}>
@@ -196,7 +199,7 @@ The circle shape is mostly reserved for the Avatar component.
 This helps distinguish users from other UI elements throughout the product.
 There are a few other elements that use the circle shape, like the Unread Badge or the Status Badge.
 
-<ArgsTable of={Shape} exclude={[...DEFAULT_ARGUMENT_STABLE_EXCLUSION]} />
+<ArgsTable of={Shape} exclude={[...DEFAULT_ARGUMENTS_TABLE_EXCLUSION]} />
 
 export const canvasExampleArgs = {
     ...defaultArgs,
@@ -204,55 +207,51 @@ export const canvasExampleArgs = {
     height: 150,
 };
 
-## Dependencies
-
-<DependenciesTable titleDependencies="Dependencies" titleDependents="Dependents" of={Shape} />
-
 <Canvas hidden>
     <Story
         name="Rectangle"
         argTypes={argTypes}
         args={{
             ...canvasExampleArgs,
-            borderRadius: 0,
+            radius: 0,
             elevation: 0,
         }}
     >
-        {Template.bind({})}
+        {(args) => <Shape {...args} />}
     </Story>
     <Story
         name="Rounded Rectangle"
         argTypes={argTypes}
         args={{
             ...canvasExampleArgs,
-            borderRadius: 16,
+            radius: 16,
         }}
     >
-        {Template.bind({})}
+        {(args) => <Shape {...args} />}
     </Story>
     <Story
         name="Pill"
         argTypes={argTypes}
         args={{
             ...canvasExampleArgs,
-            borderRadius: 'pill',
+            radius: 'pill',
             elevation: 2,
         }}
     >
-        {Template.bind({})}
+        {(args) => <Shape {...args} />}
     </Story>
     <Story
         name="Circle"
         argTypes={argTypes}
         args={{
             ...canvasExampleArgs,
-            borderRadius: 'circle',
+            radius: 'circle',
             elevation: 3,
             component: 'section',
             width: 400,
             height: 100,
         }}
     >
-        {Template.bind({})}
+        {(args) => <Shape {...args} />}
     </Story>
 </Canvas>

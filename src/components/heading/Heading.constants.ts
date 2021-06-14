@@ -1,7 +1,7 @@
-import { FONT_COLORS, FONT_MARGINS, FONT_WEIGHTS } from '../../shared/constants';
-import { Utils } from '../../shared';
+import { Utils, FONT_COLORS, FONT_MARGINS, FONT_WEIGHTS } from '../../shared';
 
 import {
+    THeadingColor,
     THeadingDefinitions,
     THeadingElement,
     THeadingMargin,
@@ -23,19 +23,7 @@ const DEFAULT_HEADING_ELEMENT_SIZES: Record<THeadingElement, THeadingSizeToken> 
 };
 
 const HEADING_SIZE_TOKENS: THeadingSizeToken[] = [
-    25,
-    50,
-    75,
-    100,
-    200,
-    300,
-    400,
-    500,
-    600,
-    700,
-    800,
-    900,
-    1000,
+    25, 50, 75, 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000,
 ];
 
 const HEADING_DEFINITIONS: THeadingDefinitions = {
@@ -110,7 +98,10 @@ const DEFAULT_HEADING_WEIGHT: THeadingWeight = 'bold';
 
 const DEFAULT_HEADING_MARGIN: THeadingMargin = 'both';
 
+const DEFAULT_HEADING_COLOR: THeadingColor = 'inherit';
+
 export {
+    HEADING_DEFINITIONS,
     HEADING_SIZE_TOKENS,
     DEFAULT_HEADING_SIZE,
     HEADING_ELEMENTS,
@@ -121,5 +112,5 @@ export {
     FONT_MARGINS as HEADING_MARGINS,
     DEFAULT_HEADING_MARGIN,
     FONT_COLORS as HEADING_COLORS,
-    HEADING_DEFINITIONS,
+    DEFAULT_HEADING_COLOR,
 };

@@ -196,7 +196,7 @@
         "no-nonoctal-decimal-escape": "error",
         "init-declarations": "error",
 
-        "complexity": ["error", { "max": 20 }],
+        "complexity": ["error", { "max": 30 }],
         "func-names": ["error", "as-needed"],
         "one-var": ["error", "never"],
         "no-else-return": ["error", { "allowElseIf": false }],
@@ -266,7 +266,7 @@
         "promise/no-return-in-finally": "error",
         "promise/valid-params": "error",
         "promise/no-new-statics": "error",
-        "promise/prefer-await-to-then": "error",
+        "promise/prefer-await-to-then": "off",
 
         "promise/catch-or-return": ["error", { "allowFinally": true }],
 

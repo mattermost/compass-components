@@ -1,5 +1,8 @@
 import React from 'react';
 
+import { TTheme } from '../../foundations/theme-provider/themes/theme.types';
+import { TTextColor } from '../text';
+
 import {
     THeadingSizeToken,
     THeadingElement,
@@ -8,7 +11,7 @@ import {
     THeadingMargin,
 } from './Heading.types';
 
-export type PHeading = {
+type PHeading = {
     /** in some cases it is needed to inherit the parents line-height */
     inheritLineHeight?: boolean;
     /**
@@ -35,3 +38,16 @@ export type PHeading = {
     className?: string;
     children?: React.ReactNode | React.ReactNode[];
 };
+
+type PApplyHeadingStyles = Pick<PHeading, 'size' | 'inheritLineHeight' | 'element' | 'weight'>;
+
+type PApplyHeadingMargin = Pick<PHeading, 'size' | 'margin'>;
+
+type PApplyHeadingColor = {
+    color: TTextColor;
+    theme: TTheme;
+};
+
+export type { PApplyHeadingColor, PApplyHeadingMargin, PApplyHeadingStyles };
+
+export default PHeading;
