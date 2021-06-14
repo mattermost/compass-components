@@ -2,7 +2,7 @@ import { TIconGlyph } from '../icon';
 
 import { TButtonIconPosition, TButtonSize, TButtonVariant, TButtonWidth } from './Button.types';
 
-export type PButton = {
+type PButton = {
     label: string;
     destructive?: boolean;
     inverted?: boolean;
@@ -15,3 +15,10 @@ export type PButton = {
     className?: string;
     onClick: () => void;
 };
+
+export type PButtonRoot = Pick<
+    PButton,
+    'destructive' | 'inverted' | 'disabled' | 'variant' | 'width' | 'size'
+>;
+
+export default PButton;

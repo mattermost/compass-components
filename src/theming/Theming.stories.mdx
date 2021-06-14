@@ -6,7 +6,7 @@ import { SectionThemeProvider } from '../foundations/theme-provider/theme-provid
 import lightTheme from '../foundations/theme-provider/themes/theme.light';
 import darkTheme from '../foundations/theme-provider/themes/theme.dark';
 import sidebarTheme from '../foundations/theme-provider/themes/theme.sidebar';
-import Button from '../components/button';
+import ButtonRoot from '../components/button';
 import Text from '../components/text';
 import { blue, teal, yellow } from '../foundations/colors';
 import { createThemeColor } from '../shared';
@@ -56,37 +56,37 @@ export const themes = {
                                     enim ad minim veniam, quis nostrud exercitation ullamco laboris
                                     nisi ut aliquip ex ea commodo consequat.
                                 </Text>
-                                <Button
+                                <ButtonRoot
                                     label={'PRIMARY BUTTON'}
                                     onClick={() => console.log('THIS IS A BUTTON click')}
                                 />
                                 <br />
-                                <Button
+                                <ButtonRoot
                                     label={'SECONDARY BUTTON'}
                                     onClick={() => console.log('THIS IS A BUTTON click')}
                                     variant={'secondary'}
                                 />
                                 <br />
-                                <Button
+                                <ButtonRoot
                                     label={'TERTIARY BUTTON'}
                                     onClick={() => console.log('THIS IS A BUTTON click')}
                                     variant={'tertiary'}
                                 />
                                 <br />
-                                <Button
+                                <ButtonRoot
                                     inverted
                                     label={'INV. PRIMARY BUTTON'}
                                     onClick={() => console.log('THIS IS A BUTTON click')}
                                 />
                                 <br />
-                                <Button
+                                <ButtonRoot
                                     inverted
                                     label={'INV. SECONDARY BUTTON'}
                                     onClick={() => console.log('THIS IS A BUTTON click')}
                                     variant={'secondary'}
                                 />
                                 <br />
-                                <Button
+                                <ButtonRoot
                                     inverted
                                     label={'INV. TERTIARY BUTTON'}
                                     onClick={() => console.log('THIS IS A BUTTON click')}
@@ -107,18 +107,18 @@ export const themes = {
                                 ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
                                 aliquip ex ea commodo consequat.
                             </Text>
-                            <Button
+                            <ButtonRoot
                                 label={'PRIMARY BUTTON'}
                                 onClick={() => console.log('THIS IS A BUTTON click')}
                             />
                             <br />
-                            <Button
+                            <ButtonRoot
                                 label={'SECONDARY BUTTON'}
                                 onClick={() => console.log('THIS IS A BUTTON click')}
                                 variant={'secondary'}
                             />
                             <br />
-                            <Button
+                            <ButtonRoot
                                 label={'TERTIARY BUTTON'}
                                 onClick={() => console.log('THIS IS A BUTTON click')}
                                 variant={'tertiary'}
@@ -184,7 +184,7 @@ export const themes = {
                                         aliqua. Ut enim ad minim veniam, quis nostrud exercitation
                                         ullamco laboris nisi ut aliquip ex ea commodo consequat.
                                     </Text>
-                                    <Button
+                                    <ButtonRoot
                                         label={'PRIMARY BUTTON'}
                                         onClick={() =>
                                             console.log('THIS IS A BUTTON click', blue[500])
@@ -194,7 +194,7 @@ export const themes = {
                                         disabled
                                     />
                                     <br />
-                                    <Button
+                                    <ButtonRoot
                                         label={'PRIMARY BUTTON'}
                                         onClick={() => console.log('THIS IS A BUTTON click')}
                                         inverted={theme.type === 'dark'}
@@ -203,7 +203,7 @@ export const themes = {
                                         disabled
                                     />
                                     <br />
-                                    <Button
+                                    <ButtonRoot
                                         label={'PRIMARY BUTTON'}
                                         onClick={() => console.log('THIS IS A BUTTON click')}
                                         inverted={theme.type === 'dark'}
@@ -212,14 +212,14 @@ export const themes = {
                                         disabled
                                     />
                                     <br />
-                                    <Button
+                                    <ButtonRoot
                                         label={'PRIMARY BUTTON'}
                                         onClick={() => console.log('THIS IS A BUTTON click')}
                                         inverted={theme.type === 'dark'}
                                         destructive
                                     />
                                     <br />
-                                    <Button
+                                    <ButtonRoot
                                         label={'PRIMARY BUTTON'}
                                         onClick={() => console.log('THIS IS A BUTTON click')}
                                         inverted={theme.type === 'dark'}
@@ -227,7 +227,7 @@ export const themes = {
                                         destructive
                                     />
                                     <br />
-                                    <Button
+                                    <ButtonRoot
                                         label={'PRIMARY BUTTON'}
                                         onClick={() => console.log('THIS IS A BUTTON click')}
                                         inverted={theme.type === 'dark'}
@@ -235,7 +235,7 @@ export const themes = {
                                         destructive
                                     />
                                     <br />
-                                    <Button
+                                    <ButtonRoot
                                         label={'PRIMARY BUTTON'}
                                         onClick={() =>
                                             console.log('THIS IS A BUTTON click', blue[500])
@@ -243,14 +243,14 @@ export const themes = {
                                         inverted={theme.type === 'dark'}
                                     />
                                     <br />
-                                    <Button
+                                    <ButtonRoot
                                         label={'PRIMARY BUTTON'}
                                         onClick={() => console.log('THIS IS A BUTTON click')}
                                         inverted={theme.type === 'dark'}
                                         variant={'secondary'}
                                     />
                                     <br />
-                                    <Button
+                                    <ButtonRoot
                                         label={'PRIMARY BUTTON'}
                                         onClick={() => console.log('THIS IS A BUTTON click')}
                                         inverted={theme.type === 'dark'}
@@ -271,18 +271,18 @@ export const themes = {
                                     enim ad minim veniam, quis nostrud exercitation ullamco laboris
                                     nisi ut aliquip ex ea commodo consequat.
                                 </Text>
-                                <Button
+                                <ButtonRoot
                                     label={'PRIMARY BUTTON'}
                                     onClick={() => console.log('THIS IS A BUTTON click')}
                                 />
                                 <br />
-                                <Button
+                                <ButtonRoot
                                     label={'SECONDARY BUTTON'}
                                     onClick={() => console.log('THIS IS A BUTTON click')}
                                     variant={'secondary'}
                                 />
                                 <br />
-                                <Button
+                                <ButtonRoot
                                     label={'TERTIARY BUTTON'}
                                     onClick={() => console.log('THIS IS A BUTTON click')}
                                     variant={'tertiary'}
