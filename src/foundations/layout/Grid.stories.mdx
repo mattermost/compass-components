@@ -1,6 +1,6 @@
 import { ArgsTable, Meta, Title, Subtitle } from '@storybook/addon-docs/blocks';
 
-import Shape from '../shape';
+import ShapeRoot from '../shape';
 import Text from '../../components/text';
 
 import measurementImg from '../../assets/images/layout_measurement-units.png';
@@ -53,7 +53,7 @@ export const spacings = {
 <Grid row alignment={'flex-end'}>
     {Object.keys(spacings).map((s) => (
         <Grid alignment={'center'} padding={Spacing.all(75)}>
-            <Shape borderWidth={1} radius={0} elevation={0}>
+            <ShapeRoot borderWidth={1} radius={0} elevation={0}>
                 <Grid
                     padding={Spacing.trbl({
                         top: spacings[s],
@@ -62,7 +62,7 @@ export const spacings = {
                         left: spacings[s],
                     })}
                 />
-            </Shape>
+            </ShapeRoot>
             <Text element={'p'} size={75}>
                 {s}
             </Text>

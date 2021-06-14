@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import Heading from '../../components/heading';
 import Text from '../../components/text';
 import Grid, { Spacing } from '../layout';
-import Shape from '../shape';
+import ShapeRoot from '../shape';
 import { convertToRgb, rgbToHex, rgbToHsl } from '../../shared';
 
 type PSwatch = {
@@ -37,7 +37,7 @@ const SwatchBase: React.FC<PSwatch> = ({
             flex={0}
         >
             <Grid alignment={'flex-end'}>
-                <Shape
+                <ShapeRoot
                     className={'swatch_color'}
                     radius={4}
                     elevation={1}

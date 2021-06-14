@@ -139,9 +139,17 @@ class CompassError extends Error {
  * Asserts if a certain check is true. If not throw a CompassError with the provided message
  * @param {boolean} assertion
  * @param {string} message
+ * @param {boolean} warnOnly
  */
-function assert(assertion: boolean, message: string): void {
+function assert(assertion: boolean, message: string, warnOnly = false): void {
     if (!assertion) {
+        if (warnOnly) {
+            // eslint-disable-next-line no-console
+            console.warn(message);
+
+            return;
+        }
+
         throw new CompassError(message);
     }
 }
