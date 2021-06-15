@@ -20,6 +20,8 @@ const TagRoot = styled(Text).withConfig({
         type = DEFAULT_TAG_TYPE,
         theme,
     }: ThemedStyledProps<PTag, TTheme>): FlattenSimpleInterpolation => {
+        const isMention = type === 'highlight';
+
         const TAG_BACKGROUND_COLOR_MAP: Record<TTagType, TTheme> = {
             general: theme.background.skeleton,
             info: theme.palette.primary.light,
@@ -31,7 +33,7 @@ const TagRoot = styled(Text).withConfig({
 
         const colors: Record<string, string> = {
             background: TAG_BACKGROUND_COLOR_MAP[type],
-            text: type === 'highlight' ? theme.palette.primary.main : theme.text.primary,
+            text: isMention ? theme.palette.primary.main : theme.text.primary,
         };
 
         return css`
@@ -40,7 +42,8 @@ const TagRoot = styled(Text).withConfig({
             justify-content: center;
             background-color: ${colors.background};
             color: ${colors.text};
-            text-transform: ${type === 'highlight' ? 'none' : 'uppercase'};
+            text-transform: ${isMention ? 'none' : 'uppercase'};
+            cursor: ${isMention ? 'pointer' : 'inherit'};
 
             ${applyPadding(
                 Spacing.symmetric({
@@ -55,7 +58,7 @@ const TagRoot = styled(Text).withConfig({
                 height: 'auto',
             })};
             ${applyTextMargin({ margin: 'none' })};
-            ${applyTextStyles({ weight: type === 'highlight' ? 'normal' : 'bold' })};
+            ${applyTextStyles({ weight: isMention ? 'normal' : 'bold' })};
             ${applyTextColor({ color: colors.text, theme })};
         `;
     }
