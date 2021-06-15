@@ -144,7 +144,7 @@ The invalid states are used when text inputs return an error as part of the form
 <Canvas hidden>
     <Story
         name="Default"
-        argTypes={Utils.hideStyledComponentProperties({
+        argTypes={{
             label: { control: { type: 'text' } },
             placeholder: { control: { type: 'text' } },
             size: { control: { type: 'radio', options: TEXT_INPUT_SIZES } },
@@ -154,7 +154,8 @@ The invalid states are used when text inputs return an error as part of the form
             width: { table: { disable: true } },
             className: { table: { disable: true } },
             onClick: { action: 'clicked', table: { disable: true } },
-        })}
+            ...Utils.hideComponentProperties(['onClick', 'width', 'className']),
+        }}
         args={{
             ...defaultArgs,
         }}
