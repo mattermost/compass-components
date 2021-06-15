@@ -1,0 +1,28 @@
+import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+
+import { TAG_TYPES, DEFAULT_TAG_TYPE } from './Tag.constants';
+import Tag from './Tag';
+
+export const TagArgs = {
+    type: DEFAULT_TAG_TYPE,
+    text: 'Lorem Ipsum Dolor',
+};
+
+export const TagArgTypes = {
+    type: {
+        options: TAG_TYPES,
+        control: {
+            type: 'select',
+        },
+    },
+};
+
+<Meta title={'Components/Tag'} />
+
+<ArgsTable of={Tag} />
+
+<Canvas hidden>
+    <Story name="default" args={TagArgs} argTypes={TagArgTypes}>
+        {(args) => <Tag {...args} />}
+    </Story>
+</Canvas>
