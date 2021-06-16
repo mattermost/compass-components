@@ -1,21 +1,16 @@
 import React from 'react';
 
-import { DEFAULT_TEXT_SIZE } from '../text/Text.constants';
+import { Utils } from '../../shared';
 
 import PTag from './Tag.props';
 import TagRoot from './Tag.root';
 
-const Tag = ({ variant, size = DEFAULT_TEXT_SIZE, text, ...rest }: PTag): JSX.Element => {
-    const onClick = (): void => {
-        if (variant === 'highlight') {
-            // eslint-disable-next-line no-console
-            console.log('#### Mention clicked!');
-        }
-    };
+const Tag = ({ variant, size, text, ...rest }: PTag): JSX.Element => {
+    const hasText = Utils.isString(text) && text.length > 0;
 
     return (
-        <TagRoot element={'span'} size={size} variant={variant} onClick={onClick} {...rest}>
-            {text}
+        <TagRoot element={'span'} size={size} variant={variant} {...rest}>
+            {hasText && text}
         </TagRoot>
     );
 };

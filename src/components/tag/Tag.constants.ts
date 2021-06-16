@@ -1,4 +1,4 @@
-import { TTagVariant } from './Tag.types';
+import { TTagVariant, TTagSizeToken } from './Tag.types';
 
 const TAG_VARIANTS: TTagVariant[] = [
     'highlight',
@@ -9,6 +9,10 @@ const TAG_VARIANTS: TTagVariant[] = [
     'success',
 ];
 
+const TAG_SIZES: TTagSizeToken[] = [25, 50, 75, 100, 200, 300];
+
 const DEFAULT_TAG_VARIANT: TTagVariant = 'general';
 
-export { TAG_VARIANTS, DEFAULT_TAG_VARIANT };
+const DEFAULT_TAG_SIZE: TTagSizeToken = 100;
+
+export { TAG_SIZES, TAG_VARIANTS, DEFAULT_TAG_VARIANT, DEFAULT_TAG_SIZE };
