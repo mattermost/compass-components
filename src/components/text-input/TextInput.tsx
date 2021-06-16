@@ -17,8 +17,7 @@ const TextInput: React.FC<PTextInput> = ({
     width,
     ...rest
 }: PTextInput) => {
-    const { iconSize } = TEXT_INPUT_VALUES_MAPPING[size];
-    const { labelSize } = TEXT_INPUT_VALUES_MAPPING[size];
+    const { iconSize, labelSize } = TEXT_INPUT_VALUES_MAPPING[size];
 
     const hasLabel = Utils.isString(label) && label.length > 0;
     const hasPlaceholder = Utils.isString(placeholder) && placeholder.length > 0;

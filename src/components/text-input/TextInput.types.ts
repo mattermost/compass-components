@@ -3,8 +3,6 @@ import { TTextSizeToken } from '../text';
 
 type TTextInputSizeToken = 'sm' | 'md' | 'lg';
 
-type TTextInputSize = Extract<TIconSize, 12 | 16 | 20>;
-
 type TTextInputHeight = 32 | 40 | 48;
 
 type TTextInput = {
@@ -14,4 +12,4 @@ type TTextInput = {
     labelSize: TTextSizeToken;
 };
 
-export type { TTextInputSizeToken, TTextInputSize, TTextInput };
+export type { TTextInputSizeToken, TTextInput };

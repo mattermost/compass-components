@@ -145,7 +145,7 @@ export const argTypes = {
     active: { control: { type: 'boolean' } },
     width: { options: [...BUTTON_WIDTHS, 100, 200, 300, 400], control: { type: 'select' } },
     backgroundColor: { control: { type: 'color' } },
-    ...Utils.hideComponentProperties(['onClick', 'className']),
+    ...Utils.hideComponentProperties(['onClick', 'className', 'value', 'onChange']),
 };
 
 export const defaultArgs = {

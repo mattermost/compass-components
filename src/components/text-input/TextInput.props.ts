@@ -33,12 +33,10 @@ export type PTextInput = {
     backgroundColor?: string;
     /**
      * the leading icon of the input, usually indicating search
-     * @default 'magnify'
      * */
     leadingIcon?: TIconGlyph;
     /**
      * the trailing icon of the input, usually indicating clear
-     * @default 'close-circle'
      * */
     trailingIcon?: TIconGlyph;
     /**
@@ -51,5 +49,16 @@ export type PTextInput = {
      * @default false
      * */
     active?: boolean;
+    /**
+     * custom value
+     * */
+    value?: string;
+    /**
+     * onChange handler
+     * */
+    onChange?: () => void;
+    /**
+     * custom classname
+     * */
     className?: string;
 };
