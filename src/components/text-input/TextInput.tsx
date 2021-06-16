@@ -32,7 +32,7 @@ const TextInput: React.FC<PTextInput> = ({
 
     return (
         <TextInputRoot size={size} width={width} {...rest}>
-            {leadingIcon ? <Icon glyph={leadingIcon} size={iconSize} /> : null}
+            {leadingIcon !== 'none' && <Icon glyph={leadingIcon} size={iconSize} />}
             <input
                 className={'input__field'}
                 value={value}
@@ -44,9 +44,9 @@ const TextInput: React.FC<PTextInput> = ({
                     {label}
                 </Text>
             )}
-            {trailingIcon ? (
+            {trailingIcon !== 'none' && (
                 <Icon glyph={trailingIcon} size={iconSize} onClick={(): void => setValue('')} />
-            ) : null}
+            )}
         </TextInputRoot>
     );
 };
