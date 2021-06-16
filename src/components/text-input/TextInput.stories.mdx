@@ -1,6 +1,11 @@
 import { useState } from 'react';
 import { Meta, Story, Canvas, Title, Subtitle, ArgsTable } from '@storybook/addon-docs/blocks';
-import { DEFAULT_TEXT_INPUT_SIZE, TEXT_INPUT_SIZES } from './TextInput.constants';
+import {
+    DEFAULT_TEXT_INPUT_SIZE,
+    TEXT_INPUT_SIZES,
+    DEFAULT_LEADING_ICON,
+    DEFAULT_TRAILING_ICON,
+} from './TextInput.constants';
 import { BUTTON_WIDTHS } from '../button/Button.constants';
 import { Utils } from '../../shared';
 import Grid, { Spacing } from '../../foundations/layout';
@@ -147,6 +152,8 @@ export const defaultArgs = {
     label: 'Label',
     placeholder: 'Placeholder',
     size: DEFAULT_TEXT_INPUT_SIZE,
+    leadingIcon: DEFAULT_LEADING_ICON,
+    trailingIcon: DEFAULT_TRAILING_ICON,
     width: 300,
 };
 

@@ -4,21 +4,16 @@ import { Utils } from '../../shared';
 import Icon from '../icon';
 import Text from '../text';
 
-import {
-    TEXT_INPUT_VALUES_MAPPING,
-    DEFAULT_TEXT_INPUT_SIZE,
-    DEFAULT_LEADING_ICON,
-    DEFAULT_TRAILING_ICON,
-} from './TextInput.constants';
+import { TEXT_INPUT_VALUES_MAPPING } from './TextInput.constants';
 import TextInputRoot from './TextInput.root';
 import { PTextInput } from './TextInput.props';
 
 const TextInput: React.FC<PTextInput> = ({
     label,
     placeholder,
-    size = DEFAULT_TEXT_INPUT_SIZE,
-    leadingIcon = DEFAULT_LEADING_ICON,
-    trailingIcon = DEFAULT_TRAILING_ICON,
+    size,
+    leadingIcon,
+    trailingIcon,
     width,
     ...rest
 }: PTextInput) => {
