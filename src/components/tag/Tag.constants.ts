@@ -1,7 +1,14 @@
-import { TTagType } from './Tag.types';
+import { TTagVariant } from './Tag.types';
 
-const TAG_TYPES: TTagType[] = ['highlight', 'shortcut', 'general', 'info', 'warning', 'success'];
+const TAG_VARIANTS: TTagVariant[] = [
+    'highlight',
+    'shortcut',
+    'general',
+    'info',
+    'warning',
+    'success',
+];
 
-const DEFAULT_TAG_TYPE: TTagType = 'general';
+const DEFAULT_TAG_VARIANT: TTagVariant = 'general';
 
-export { TAG_TYPES, DEFAULT_TAG_TYPE };
+export { TAG_VARIANTS, DEFAULT_TAG_VARIANT };

@@ -1,16 +1,16 @@
 import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 
-import { TAG_TYPES, DEFAULT_TAG_TYPE } from './Tag.constants';
+import { TAG_VARIANTS, DEFAULT_TAG_VARIANT } from './Tag.constants';
 import Tag from './Tag';
 
 export const TagArgs = {
-    type: DEFAULT_TAG_TYPE,
+    variant: DEFAULT_TAG_VARIANT,
     text: 'Lorem Ipsum Dolor',
 };
 
 export const TagArgTypes = {
-    type: {
-        options: TAG_TYPES,
+    variant: {
+        options: TAG_VARIANTS,
         control: {
             type: 'select',
         },

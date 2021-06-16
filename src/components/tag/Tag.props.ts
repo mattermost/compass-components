@@ -1,13 +1,15 @@
 import { TTextSizeToken } from '../text/Text.types';
 
-import { TTagType } from './Tag.types';
+import { TTagVariant } from './Tag.types';
 
 type PTag = {
-    type: TTagType;
+    variant: TTagVariant;
     text: string;
     size?: TTextSizeToken;
     onClick?: () => void;
     className?: string;
 };
+
+export type PTagRoot = Omit<PTag, 'onClick' | 'className'>;
 
 export default PTag;

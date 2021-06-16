@@ -1,3 +1,3 @@
-type TLabelTagType = 'general' | 'info' | 'warning' | 'success';
+type TLabelTagVariant = 'general' | 'info' | 'warning' | 'success';
 
-export type TTagType = 'highlight' | 'shortcut' | TLabelTagType;
+export type TTagVariant = 'highlight' | 'shortcut' | TLabelTagVariant;
