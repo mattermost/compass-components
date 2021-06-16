@@ -1,95 +1,54 @@
-import styled, { css } from 'styled-components';
-import { FlattenSimpleInterpolation, ThemedStyledProps } from 'styled-components/ts3.6';
+import React, { useState } from 'react';
 
-import { TTheme } from '../../foundations/theme-provider/themes/theme.types';
-import { setAlpha } from '../../shared';
+import { Utils } from '../../shared';
+import Icon from '../icon';
+import Text from '../text';
 
-import TextInputBase from './TextInput.base';
+import {
+    TEXT_INPUT_VALUES_MAPPING,
+    DEFAULT_TEXT_INPUT_SIZE,
+    DEFAULT_LEADING_ICON,
+    DEFAULT_TRAILING_ICON,
+} from './TextInput.constants';
+import TextInputRoot from './TextInput.root';
 import { PTextInput } from './TextInput.props';
 
-const getTextInputVariables = ({
-    theme: { palette, action, text },
-    hasError = false,
-    disabled = false,
-    active = false,
-}: ThemedStyledProps<PTextInput, TTheme>): FlattenSimpleInterpolation => {
-    const colors: Record<string, string> = {
-        active: hasError ? palette.alert.main : palette.primary.main,
-        text: text.primary,
-        action: action.hover,
-        border: active ? palette.primary.main : text.secondary,
-        placeholder: text.disabled,
-    };
+const TextInput: React.FC<PTextInput> = ({
+    label,
+    placeholder,
+    size = DEFAULT_TEXT_INPUT_SIZE,
+    leadingIcon = DEFAULT_LEADING_ICON,
+    trailingIcon = DEFAULT_TRAILING_ICON,
+    width,
+    ...rest
+}: PTextInput) => {
+    const { iconSize } = TEXT_INPUT_VALUES_MAPPING[size];
+    const { labelSize } = TEXT_INPUT_VALUES_MAPPING[size];
 
-    if (disabled) {
-        colors.active = setAlpha(colors.active, 0.32);
-        colors.text = setAlpha(colors.text, 0.16);
-        colors.border = colors.text;
-    }
+    const hasLabel = Utils.isString(label) && label.length > 0;
+    const hasPlaceholder = Utils.isString(placeholder) && placeholder.length > 0;
 
-    if (hasError) {
-        colors.border = palette.alert.main;
-    }
+    const [value, setValue] = useState();
 
-    const actionStyles = disabled
-        ? css`
-              cursor: not-allowed;
-              .input {
-                  pointer-events: none;
-                  user-select: none;
-              }
-          `
-        : css`
-              cursor: pointer;
-              &:focus-within {
-                  border: 2px solid ${colors.active};
-              }
-              .input__field:focus {
-                  outline: none;
-
-                  &::placeholder {
-                      color: ${colors.placeholder};
-                  }
-
-                  & + .input__label {
-                      transform: translate(-1.8rem, -1.4rem) scale(0.7);
-                      color: ${colors.active};
-                  }
-              }
-          `;
-
-    return css`
-        ${actionStyles}
-        color: ${colors.text};
-        border: 1px solid ${colors.border};
-
-        .input__field::placeholder {
-            color: transparent;
-            transition: color 200ms ease-in;
-        }
-        .input {
-            position: relative;
-
-            .input__label {
-                position: absolute;
-                left: 2rem;
-                padding: 0 4px;
-                white-space: nowrap;
-                transform: translate(0, 0);
-                background: white;
-                transition: transform 200ms ease-in;
-            }
-
-            .input__field {
-                width: 100%;
-                border: none;
-            }
-        }
-    `;
+    return (
+        <TextInputRoot size={size} width={width} {...rest}>
+            {leadingIcon ? <Icon glyph={leadingIcon} size={iconSize} /> : null}
+            <input
+                className={'input__field'}
+                value={value}
+                onChange={(event): void => setValue(event.target.value)}
+                placeholder={hasPlaceholder ? placeholder : ''}
+            />
+            {hasLabel && (
+                <Text element={'span'} size={labelSize} className={'input__label'}>
+                    {label}
+                </Text>
+            )}
+            {trailingIcon ? (
+                <Icon glyph={trailingIcon} size={iconSize} onClick={(): void => setValue('')} />
+            ) : null}
+        </TextInputRoot>
+    );
 };
-
-const TextInput = styled(TextInputBase)<PTextInput>`
-    ${getTextInputVariables};
-`;
 
 export default TextInput;

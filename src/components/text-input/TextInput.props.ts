@@ -28,6 +28,10 @@ export type PTextInput = {
      * */
     width?: TButtonWidth;
     /**
+     * custom background color
+     * */
+    backgroundColor?: string;
+    /**
      * the leading icon of the input, usually indicating search
      * @default 'magnify'
      * */

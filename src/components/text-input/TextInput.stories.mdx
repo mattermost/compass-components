@@ -1,23 +1,13 @@
 import { useState } from 'react';
 import { Meta, Story, Canvas, Title, Subtitle, ArgsTable } from '@storybook/addon-docs/blocks';
-import {
-    DEFAULT_TEXT_INPUT_SIZE,
-    TEXT_INPUT_SIZE_MAPPING,
-    TEXT_INPUT_SIZES,
-} from './TextInput.constants';
+import { DEFAULT_TEXT_INPUT_SIZE, TEXT_INPUT_SIZES } from './TextInput.constants';
+import { BUTTON_WIDTHS } from '../button/Button.constants';
 import { Utils } from '../../shared';
 import Grid, { Spacing } from '../../foundations/layout';
 import Text from '../text';
-import { DEFAULT_ARGUMENT_STABLE_EXCLUSION } from '../../shared/constants';
+import { DEFAULT_ARGUMENTS_TABLE_EXCLUSION } from '../../shared/constants';
 import textInputAnatomyImg from '../../assets/images/text-input-anatomy.png';
 import TextInput from './index';
-
-export const defaultArgs = {
-    label: 'Label',
-    placeholder: 'Placeholder',
-    size: DEFAULT_TEXT_INPUT_SIZE,
-    width: 300,
-};
 
 <Meta component={TextInput} title="Components/TextInput" />
 
@@ -139,25 +129,76 @@ The invalid states are used when text inputs return an error as part of the form
 
 ## Dependencies
 
-<ArgsTable of={TextInput} exclude={[...DEFAULT_ARGUMENT_STABLE_EXCLUSION]} />
+<ArgsTable of={TextInput} exclude={[...DEFAULT_ARGUMENTS_TABLE_EXCLUSION]} />
+
+export const argTypes = {
+    label: { control: { type: 'text' } },
+    placeholder: { control: { type: 'text' } },
+    size: { control: { type: 'radio', options: TEXT_INPUT_SIZES } },
+    hasError: { control: { type: 'boolean' } },
+    disabled: { control: { type: 'boolean' } },
+    active: { control: { type: 'boolean' } },
+    width: { options: [...BUTTON_WIDTHS, 100, 200, 300, 400], control: { type: 'select' } },
+    backgroundColor: { control: { type: 'color' } },
+    ...Utils.hideComponentProperties(['onClick', 'className']),
+};
+
+export const defaultArgs = {
+    label: 'Label',
+    placeholder: 'Placeholder',
+    size: DEFAULT_TEXT_INPUT_SIZE,
+    width: 300,
+};
+
+export const noTrailingIconArgs = {
+    ...defaultArgs,
+    trailingIcon: 'null',
+};
+
+export const noLeadingIconArgs = {
+    ...defaultArgs,
+    leadingIcon: 'null',
+};
+
+export const noIconArgs = {
+    ...defaultArgs,
+    leadingIcon: 'null',
+    trailingIcon: 'null',
+};
 
 <Canvas hidden>
     <Story
         name="Default"
-        argTypes={{
-            label: { control: { type: 'text' } },
-            placeholder: { control: { type: 'text' } },
-            size: { control: { type: 'radio', options: TEXT_INPUT_SIZES } },
-            hasError: { control: { type: 'boolean' } },
-            disabled: { control: { type: 'boolean' } },
-            active: { control: { type: 'boolean' } },
-            width: { table: { disable: true } },
-            className: { table: { disable: true } },
-            onClick: { action: 'clicked', table: { disable: true } },
-            ...Utils.hideComponentProperties(['onClick', 'width', 'className']),
-        }}
+        argTypes={argTypes}
         args={{
             ...defaultArgs,
+        }}
+    >
+        {(args) => <TextInput {...args} />}
+    </Story>
+    <Story
+        name="No trailing icon"
+        argTypes={argTypes}
+        args={{
+            ...noTrailingIconArgs,
+        }}
+    >
+        {(args) => <TextInput {...args} />}
+    </Story>
+    <Story
+        name="No leading icon"
+        argTypes={argTypes}
+        args={{
+            ...noLeadingIconArgs,
+        }}
+    >
+        {(args) => <TextInput {...args} />}
+    </Story>
+    <Story
+        name="No icons"
+        argTypes={argTypes}
+        args={{
+            ...noIconArgs,
         }}
     >
         {(args) => <TextInput {...args} />}
