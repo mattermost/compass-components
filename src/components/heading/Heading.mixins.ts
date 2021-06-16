@@ -3,33 +3,38 @@ import { FlattenSimpleInterpolation } from 'styled-components/ts3.6';
 
 import { FONT_TYPE_FAMILIES, FONT_WEIGHT_MAP } from '../../shared';
 
-import {
-    DEFAULT_HEADING_MARGIN,
-    DEFAULT_HEADING_SIZE,
-    DEFAULT_HEADING_WEIGHT,
-    HEADING_DEFINITIONS,
-} from './Heading.constants';
+import { HEADING_DEFINITIONS } from './Heading.constants';
 import { PApplyHeadingColor, PApplyHeadingMargin, PApplyHeadingStyles } from './Heading.props';
 
 const applyHeadingStyles = ({
-    inheritLineHeight = false,
-    size = DEFAULT_HEADING_SIZE,
-    weight = DEFAULT_HEADING_WEIGHT,
-}: PApplyHeadingStyles): FlattenSimpleInterpolation => {
-    const lineHeight = inheritLineHeight ? 'inherit' : `${HEADING_DEFINITIONS[size].lineHeight}px`;
-
-    return css`
-        font-family: ${FONT_TYPE_FAMILIES.heading};
-        font-weight: ${FONT_WEIGHT_MAP[weight]};
-        font-size: ${HEADING_DEFINITIONS[size].size}px;
-        line-height: ${lineHeight};
-    `;
-};
+    inheritLineHeight,
+    size,
+    weight,
+}: PApplyHeadingStyles): FlattenSimpleInterpolation => css`
+    font-family: ${FONT_TYPE_FAMILIES.heading};
+    ${weight
+        ? css`
+              font-weight: ${FONT_WEIGHT_MAP[weight]};
+          `
+        : null};
+    ${size
+        ? css`
+              font-size: ${HEADING_DEFINITIONS[size].size}px;
+              line-height: ${inheritLineHeight
+                  ? 'inherit'
+                  : `${HEADING_DEFINITIONS[size].lineHeight}px`};
+          `
+        : null};
+`;
 
 const applyHeadingMargin = ({
-    margin = DEFAULT_HEADING_MARGIN,
-    size = DEFAULT_HEADING_SIZE,
-}: PApplyHeadingMargin): FlattenSimpleInterpolation => {
+    margin,
+    size,
+}: PApplyHeadingMargin): FlattenSimpleInterpolation | null => {
+    if (!margin || !size) {
+        return null;
+    }
+
     let marginValue = `${HEADING_DEFINITIONS[size].marginTop}px 0 ${HEADING_DEFINITIONS[size].marginBottom}px`;
 
     switch (margin) {

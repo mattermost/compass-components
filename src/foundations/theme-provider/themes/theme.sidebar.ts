@@ -1,3 +1,4 @@
+import { setAlpha } from '../../../shared';
 import { blue, indigo, green, red, neutral, orange, teal } from '../../colors';
 
 import { TTheme } from './theme.types';
@@ -59,6 +60,12 @@ const sidebarTheme: TTheme = {
         hover: neutral[0],
         disabled: neutral[100],
     },
+    badges: {
+        online: green[600],
+        away: orange[400],
+        dnd: red[500],
+        offline: setAlpha(neutral[350], 0.64),
+    },
     text: {
         primary: neutral[50],
         accent: neutral[150],
@@ -80,6 +87,13 @@ const sidebarTheme: TTheme = {
         contrast: neutral[50],
         skeleton: neutral[100],
         shimmer: neutral[0],
+    },
+    animation: {
+        fastest: '100ms',
+        fast: '250ms',
+        normal: '300ms',
+        slow: '450ms',
+        slowest: '600ms',
     },
 };
 

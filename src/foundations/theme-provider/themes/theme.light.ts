@@ -88,6 +88,13 @@ const lightTheme: TTheme = {
         shimmer: neutral[0],
         contrast: neutral[1100],
     },
+    animation: {
+        fastest: '100ms',
+        fast: '250ms',
+        normal: '300ms',
+        slow: '450ms',
+        slowest: '600ms',
+    },
 };
 
 export default lightTheme;

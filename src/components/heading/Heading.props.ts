@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { TTheme } from '../../foundations/theme-provider/themes/theme.types';
 import { TTextColor } from '../text';
 
@@ -36,8 +34,9 @@ type PHeading = {
      * */
     element?: THeadingElement;
     className?: string;
-    children?: React.ReactNode | React.ReactNode[];
 };
+
+type PHeadingRoot = Required<Omit<PHeading, 'className'>>;
 
 type PApplyHeadingStyles = Pick<PHeading, 'size' | 'inheritLineHeight' | 'element' | 'weight'>;
 
@@ -48,6 +47,6 @@ type PApplyHeadingColor = {
     theme: TTheme;
 };
 
-export type { PApplyHeadingColor, PApplyHeadingMargin, PApplyHeadingStyles };
+export type { PHeadingRoot, PApplyHeadingColor, PApplyHeadingMargin, PApplyHeadingStyles };
 
 export default PHeading;

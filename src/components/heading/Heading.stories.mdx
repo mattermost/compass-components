@@ -1,6 +1,6 @@
 import { Meta, Story, Canvas, ArgsTable, Title, Subtitle } from '@storybook/addon-docs/blocks';
 
-import Heading from './Heading';
+import HeadingRoot from './Heading';
 import {
     HEADING_SIZE_TOKENS,
     HEADING_MARGINS,
@@ -14,7 +14,7 @@ import {
 import Grid from '../../foundations/layout';
 import Text from '../text';
 
-<Meta component={Heading} title="Components/Heading" />
+<Meta component={HeadingRoot} title="Components/Heading" />
 
 <Title>Heading</Title>
 
@@ -55,9 +55,9 @@ export const bodySizes = [...smallSizes, { size: 300, fontSize: 18, lineHeight: 
             <hr />
             <Grid justify={'stretch'}>
                 <Grid row>
-                    <Heading element={'h3'} size={300}>
+                    <HeadingRoot element={'h3'} size={300}>
                         {`Heading ${heading.size}${heading.size === 100 ? ' (Base size)' : ''}`}
-                    </Heading>
+                    </HeadingRoot>
                 </Grid>
                 <Grid row>
                     <Grid flex={3}>
@@ -88,9 +88,9 @@ export const bodySizes = [...smallSizes, { size: 300, fontSize: 18, lineHeight: 
                         <Text element={'p'} color={'secondary'} size={50} margin={'none'}>
                             Example
                         </Text>
-                        <Heading element={'h1'} size={heading.size} margin={'bottom'}>
+                        <HeadingRoot element={'h1'} size={heading.size} margin={'bottom'}>
                             The quick brown fox jumps over the lazy dog
-                        </Heading>
+                        </HeadingRoot>
                     </Grid>
                 </Grid>
             </Grid>
@@ -100,11 +100,11 @@ export const bodySizes = [...smallSizes, { size: 300, fontSize: 18, lineHeight: 
 
 ## Component API
 
-<ArgsTable of={Heading} exclude={['as', 'ref', 'forwardedAs', 'theme', 'className']} />
+<ArgsTable of={HeadingRoot} exclude={['as', 'ref', 'forwardedAs', 'theme', 'className']} />
 
 export const Template = (args) => {
     const { text } = args;
-    return <Heading {...args}>{text}</Heading>;
+    return <HeadingRoot {...args}>{text}</HeadingRoot>;
 };
 
 <Canvas hidden>

@@ -52,6 +52,14 @@ type TThemeBadges = {
     [key in TStatusBadgeStatus]: string;
 };
 
+type TThemeAnimations = {
+    fastest: string;
+    fast: string;
+    normal: string;
+    slow: string;
+    slowest: string;
+};
+
 type TTheme = {
     type: 'light' | 'dark';
     elevationOpacity: number;
@@ -61,6 +69,7 @@ type TTheme = {
     text: TTHemeTextColors;
     border: TThemeBorderColors;
     background: TTHemeBackgroundColors;
+    animation: TThemeAnimations;
 };
 
 export type {
