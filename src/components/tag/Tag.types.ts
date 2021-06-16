@@ -1,7 +1,7 @@
-type TLabelTagVariant = 'general' | 'info' | 'warning' | 'success';
+import { TTextSizeToken } from '../text/Text.types';
 
-type TTagSizeToken = 25 | 50 | 75 | 100 | 200 | 300;
+type TLabelTagVariant = 'general' | 'info' | 'warning' | 'success';
 
 type TTagVariant = 'highlight' | 'shortcut' | TLabelTagVariant;
 
-export type { TTagSizeToken, TTagVariant };
+export { TTextSizeToken as TTagSizeToken, TTagVariant };

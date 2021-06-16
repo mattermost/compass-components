@@ -9,13 +9,13 @@ import { applyTextMargin, applyTextStyles, applyTextColor } from '../text/Text.m
 import Text from '../text';
 import { Utils } from '../../shared';
 
-import PTag, { PTagRoot } from './Tag.props';
+import { PTagRoot } from './Tag.props';
 import { TTagVariant } from './Tag.types';
 
 const TagRoot = styled(Text).withConfig({
     shouldForwardProp: Utils.forwardProperties(),
 })<PTagRoot>(
-    ({ variant, size, theme }: ThemedStyledProps<PTag, TTheme>): FlattenSimpleInterpolation => {
+    ({ variant, size, theme }: ThemedStyledProps<PTagRoot, TTheme>): FlattenSimpleInterpolation => {
         const isMention = variant === 'highlight';
 
         const TAG_BACKGROUND_COLOR_MAP: Record<TTagVariant, TTheme> = {

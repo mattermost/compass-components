@@ -25,15 +25,8 @@ export const TagArgTypes = {
 
 <ArgsTable of={Tag} />
 
-export const onClick = (variant) => {
-    if (variant === 'highlight') {
-        // eslint-disable-next-line no-console
-        console.log('#### Mention clicked!');
-    }
-};
-
 <Canvas hidden>
     <Story name="default" args={TagArgs} argTypes={TagArgTypes}>
-        {(args) => <Tag {...args} onClick={onClick(args.variant)} />}
+        {(args) => <Tag {...args} />}
     </Story>
 </Canvas>
