@@ -10,7 +10,7 @@ import {
     THeadingElement,
 } from '../../../components/heading';
 import { DEFAULT_TEXT_SIZE, DEFAULT_TEXT_WEIGHT, TEXT_DEFINITIONS } from '../../../components/text';
-import { FONT_TYPE_FAMILIES } from '../../../shared/constants';
+import { FONT_TYPE_FAMILIES } from '../../../shared';
 
 const generateDefaultHeadingStyles = (): FlattenSimpleInterpolation =>
     HEADING_ELEMENTS.map((headingElement: THeadingElement) => {
@@ -27,11 +27,10 @@ const generateDefaultHeadingStyles = (): FlattenSimpleInterpolation =>
     });
 
 const VDefaultStyles = css`
-    :root {
-        font-size: ${TEXT_DEFINITIONS[DEFAULT_TEXT_SIZE].size}px;
-        font-weight: ${DEFAULT_TEXT_WEIGHT};
-        line-height: ${TEXT_DEFINITIONS[DEFAULT_TEXT_SIZE].lineHeight}px;
-    }
+    font-family: ${FONT_TYPE_FAMILIES.body};
+    font-size: ${TEXT_DEFINITIONS[DEFAULT_TEXT_SIZE].size}px;
+    font-weight: ${DEFAULT_TEXT_WEIGHT};
+    line-height: ${TEXT_DEFINITIONS[DEFAULT_TEXT_SIZE].lineHeight}px;
 
     p,
     span,
