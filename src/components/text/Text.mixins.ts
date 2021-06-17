@@ -1,32 +1,21 @@
 import { css } from 'styled-components';
 import { FlattenSimpleInterpolation } from 'styled-components/ts3.6';
 
-import { FONT_TYPE_FAMILIES, FONT_WEIGHT_MAP } from '../../shared/constants';
+import { FONT_TYPE_FAMILIES, FONT_WEIGHT_MAP } from '../../shared';
 
 import {
-    DEFAULT_TEXT_ELEMENT,
     DEFAULT_TEXT_MARGIN,
     DEFAULT_TEXT_SIZE,
     DEFAULT_TEXT_WEIGHT,
     TEXT_DEFINITIONS,
-    TEXT_ELEMENTS,
 } from './Text.constants';
 import { PApplyTextColor, PApplyTextMargin, PApplyTextStyles } from './Text.props';
 
 const applyTextStyles = ({
     inheritLineHeight = false,
-    element = DEFAULT_TEXT_ELEMENT,
     size = DEFAULT_TEXT_SIZE,
     weight = DEFAULT_TEXT_WEIGHT,
 }: PApplyTextStyles): FlattenSimpleInterpolation => {
-    // Whenever this component is used with an element that is not supported within the headings throw an error!
-    if (!TEXT_ELEMENTS.includes(element)) {
-        throw new Error(
-            `Compass Components: Text component was used with an unsupported element '${element}'.
-            Please provide one from these available options: ${TEXT_ELEMENTS.join(', ')}.`
-        );
-    }
-
     const lineHeight = inheritLineHeight ? 'inherit' : `${TEXT_DEFINITIONS[size].lineHeight}px`;
 
     return css`
