@@ -1,41 +1,52 @@
-import styled, { css } from 'styled-components';
-import { ThemedStyledProps } from 'styled-components/ts3.6';
+import React, { useEffect, useState } from 'react';
 
-import { TTheme } from '../../foundations/theme-provider/themes/theme.types';
-import { applyShape } from '../../foundations/shape/Shape.mixins';
+import { Utils } from '../../shared';
 
-import { PImage } from './Image.props';
-import ImageBase from './Image.base';
+import {
+    DEFAULT_IMAGE_BORDER_RADIUS,
+    DEFAULT_IMAGE_HEIGHT,
+    DEFAULT_IMAGE_WIDTH,
+} from './Image.constants';
+import PImage from './Image.props';
+import ImageRoot from './Image.root';
 
-const Image = styled(ImageBase)<PImage>(
-    ({
-        theme: { background, border },
-        size,
-        width,
-        height,
+const Image: React.FC<PImage> = ({
+    source,
+    alt,
+    className,
+    fullWidth = false,
+    thumbnail = false,
+    radius = DEFAULT_IMAGE_BORDER_RADIUS,
+    width = DEFAULT_IMAGE_WIDTH,
+    height = DEFAULT_IMAGE_HEIGHT,
+    ...rest
+}: PImage) => {
+    Utils.assert(Boolean(source), 'Compass Components - Image: You need to provide image source');
+
+    const [loading, setLoading] = useState(true);
+    const [image, setImage] = useState('');
+
+    useEffect(() => {
+        Utils.getBase64(source)
+            .then((imageString) => {
+                setLoading(false);
+
+                return setImage(imageString);
+            })
+            .catch(() => {});
+    }, [source]);
+
+    const rootProperties = {
+        className,
+        alt,
         radius,
         thumbnail,
-    }: ThemedStyledProps<PImage, TTheme>) => {
-        const thumbnailStyles = thumbnail
-            ? css`
-                  padding: 0.25rem;
-                  background-color: ${background.default};
-                  border: 1px solid ${border.disabled};
-                  border-radius: ${radius};
-              `
-            : null;
+        src: image,
+        width: fullWidth ? '100%' : width,
+        height: fullWidth ? 'auto' : height,
+    };
 
-        return css`
-            display: block;
-            margin: auto;
-            width: ${size === 'full' ? '100%' : `${width}px`};
-            height: ${size === 'full' ? 'auto' : `${height}px`};
-
-            ${thumbnailStyles}
-
-            ${applyShape({ width, height, radius })};
-        `;
-    }
-);
+    return loading ? <div className={'skeleton'} /> : <ImageRoot {...rootProperties} {...rest} />;
+};
 
 export default Image;

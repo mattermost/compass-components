@@ -77,7 +77,7 @@ function applyShape({
  * @returns {FlattenSimpleInterpolation}
  */
 function applyElevation(
-    { elevation, elevationOnHover = elevation }: PApplyElevation,
+    { elevation = 0, elevationOnHover = elevation }: PApplyElevation,
     useDark: boolean
 ): FlattenSimpleInterpolation {
     if (elevation === 0 && elevationOnHover === 0) {
