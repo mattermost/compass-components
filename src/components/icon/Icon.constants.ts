@@ -1,6 +1,6 @@
 import IconGlyphs from '@mattermost/compass-icons/build/IconGlyphs';
 
-import { TIconGlyph, TIconSize } from './Icon.types';
+import { TIconColor, TIconGlyph, TIconSize } from './Icon.types';
 
 const DEFAULT_ICON_SIZE = 20;
 
@@ -27,4 +27,23 @@ const ICON_GLYPHS: TIconGlyph[] = [
 
 const DEFAULT_ICON_GLYPH: TIconGlyph = 'mattermost';
 
-export { ICON_SIZES, DEFAULT_ICON_SIZE, ICON_FONT_SIZES, ICON_GLYPHS, DEFAULT_ICON_GLYPH };
+const ICON_COLORS: TIconColor[] = [
+    'inherit',
+    'primary',
+    'secondary',
+    'alert',
+    'warning',
+    'success',
+];
+
+const DEFAULT_ICON_COLOR: TIconColor = 'inherit';
+
+export {
+    ICON_SIZES,
+    DEFAULT_ICON_SIZE,
+    ICON_FONT_SIZES,
+    ICON_GLYPHS,
+    DEFAULT_ICON_GLYPH,
+    ICON_COLORS,
+    DEFAULT_ICON_COLOR,
+};

@@ -1,9 +1,15 @@
 import { Meta, Story, Canvas, ArgsTable, Title } from '@storybook/addon-docs/blocks';
 
 import Icon from './Icon';
-import { DEFAULT_ICON_GLYPH, DEFAULT_ICON_SIZE, ICON_GLYPHS, ICON_SIZES } from './Icon.constants';
+import {
+    DEFAULT_ICON_GLYPH,
+    DEFAULT_ICON_SIZE,
+    ICON_COLORS,
+    ICON_GLYPHS,
+    ICON_SIZES,
+} from './Icon.constants';
 import { Utils } from '../../shared';
-import { DEFAULT_ARGUMENTSTABLE_EXCLUSION } from '../../shared/constants';
+import { DEFAULT_TEXT_COLOR } from '../text';
 
 <Meta component={Icon} title="Components/Icon" />
 
@@ -11,21 +17,16 @@ import { DEFAULT_ARGUMENTSTABLE_EXCLUSION } from '../../shared/constants';
 
 ## Component API
 
-<ArgsTable
-    of={Icon}
-    exclude={[...DEFAULT_ARGUMENTSTABLE_EXCLUSION, 'data-size', 'data-glyph', 'aria-label']}
-/>
-
-export const Template = (args) => {
-    return <Icon {...args} />;
-};
+<ArgsTable of={Icon} />
 
 <Canvas hidden>
     <Story
-        name="Default"
+        name="default"
         args={{
             size: DEFAULT_ICON_SIZE,
             glyph: DEFAULT_ICON_GLYPH,
+            color: DEFAULT_TEXT_COLOR,
+            ariaLabel: `icon: ${DEFAULT_ICON_GLYPH}`,
         }}
         argTypes={{
             size: {
@@ -40,9 +41,20 @@ export const Template = (args) => {
                     type: 'select',
                 },
             },
-            ...Utils.hideComponentProperties(['aria-label']),
+            color: {
+                options: ICON_COLORS,
+                control: {
+                    type: 'select',
+                },
+            },
+            ariaLabel: {
+                control: {
+                    type: 'text',
+                },
+            },
+            ...Utils.hideComponentProperties(['className']),
         }}
     >
-        {Template.bind({})}
+        {(args) => <Icon {...args} />}
     </Story>
 </Canvas>

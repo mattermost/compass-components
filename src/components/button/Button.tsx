@@ -2,7 +2,7 @@ import React from 'react';
 
 import { TSpacingTokensSymmetric } from '../../foundations/layout';
 import { Utils } from '../../shared';
-import Icon, { TIconSize } from '../icon';
+import IconRoot, { TIconSize } from '../icon';
 import Text, { TTextSizeToken } from '../text';
 
 import { DEFAULT_BUTTON_SIZE, DEFAULT_BUTTON_VARIANT } from './Button.constants';
@@ -57,7 +57,7 @@ const Button: React.FC<PButton> = ({
 
     return (
         <ButtonRoot {...rootProperties}>
-            {icon && iconPosition === 'start' ? <Icon glyph={icon} size={iconSize} /> : null}
+            {icon && iconPosition === 'start' ? <IconRoot glyph={icon} size={iconSize} /> : null}
             <Text
                 element={'span'}
                 size={labelSize}
@@ -68,7 +68,7 @@ const Button: React.FC<PButton> = ({
             >
                 {label}
             </Text>
-            {icon && iconPosition === 'end' ? <Icon glyph={icon} size={iconSize} /> : null}
+            {icon && iconPosition === 'end' ? <IconRoot glyph={icon} size={iconSize} /> : null}
         </ButtonRoot>
     );
 };

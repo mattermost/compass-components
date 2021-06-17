@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Icon, { TIconGlyph } from '../icon';
+import IconRoot, { TIconGlyph } from '../icon';
 
 import PStatusBadge from './StatusBadge.props';
 import { DEFAULT_STATUSBADGE_SIZE, STATUSBADGE_SIZE_MAP } from './StatusBadge.constants';
@@ -28,7 +28,7 @@ const StatusBadgeBase: React.FC<PStatusBadge> = ({
 
     return (
         <div {...rest}>
-            <Icon glyph={glyph} size={STATUSBADGE_SIZE_MAP[size]} />
+            <IconRoot glyph={glyph} size={STATUSBADGE_SIZE_MAP[size]} />
         </div>
     );
 };
