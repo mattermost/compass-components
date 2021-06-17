@@ -9,4 +9,10 @@ type PMentionBadge = {
     className?: string;
 };
 
+export type PMentionBadgeRoot = Required<Pick<PMentionBadge, 'inverted' | 'size'>> &
+    Pick<PMentionBadge, 'background'> & {
+        isUnreadBadge: boolean;
+        mentionStringLength: number;
+    };
+
 export default PMentionBadge;
