@@ -10,7 +10,7 @@ type PText = {
     color?: TTextColor;
     /**
      * define the weight of the rendered font
-     * @default 'normal'
+     * @default 'regular'
      */
     weight?: TTextWeight;
     /**
