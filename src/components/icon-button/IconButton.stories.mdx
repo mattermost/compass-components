@@ -1,0 +1,43 @@
+import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+
+import {
+    ICON_BUTTON_SIZES,
+    ICON_BUTTON_SIZE_LABELS,
+    DEFAULT_ICON_BUTTON_SIZE,
+} from './IconButton.constants';
+import IconButton from './IconButton';
+import { ICON_GLYPHS } from '../icon';
+
+export const iconButtonArgs = {
+    size: DEFAULT_ICON_BUTTON_SIZE,
+    icon: 'mattermost',
+    inverted: false,
+    toggled: false,
+    destructive: false,
+    disabled: false,
+    label: '200',
+};
+
+export const iconButtonArgTypes = {
+    size: {
+        options: ICON_BUTTON_SIZES,
+        control: {
+            type: 'select',
+            labels: ICON_BUTTON_SIZE_LABELS,
+        },
+    },
+    icon: {
+        options: ICON_GLYPHS,
+        control: { type: 'select' },
+    },
+};
+
+<Meta title={'Components/IconButton'} />
+
+<ArgsTable of={IconButton} />
+
+<Canvas hidden>
+    <Story name="default" args={iconButtonArgs} argTypes={iconButtonArgTypes}>
+        {(args) => <IconButton {...args} />}
+    </Story>
+</Canvas>

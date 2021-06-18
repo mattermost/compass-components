@@ -13,7 +13,10 @@ type TSpacingToken =
     | 350
     | 400
     | 450
-    | 500;
+    | 500
+    | 600
+    | 700
+    | 800;
 
 type TSpacingSides = 'top' | 'right' | 'bottom' | 'left';
 
