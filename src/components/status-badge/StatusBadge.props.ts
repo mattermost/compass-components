@@ -1,9 +1,19 @@
 import { TStatusBadgeSizeToken, TStatusBadgeStatus } from './StatusBadge.types';
 
 type PStatusBadge = {
+    /**
+     * the status the StatusBadge will show
+     */
     status: TStatusBadgeStatus;
-    background?: string;
+    /**
+     * size token that defines the sizing for the StatusBadge
+     * @default 'md'
+     */
     size?: TStatusBadgeSizeToken;
+    /**
+     * override the default background
+     */
+    background?: string;
     className?: string;
 };
 

@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components';
 import { FlattenInterpolation, ThemedStyledProps } from 'styled-components/ts3.6';
 
 import { applyShape } from '../../foundations/shape';
-import { TTheme } from '../../utilities/theme/themes/theme.types';
+import { TTheme } from '../../utilities/theme';
 import { Utils } from '../../shared';
 
 import { STATUSBADGE_SIZE_MAP } from './StatusBadge.constants';
