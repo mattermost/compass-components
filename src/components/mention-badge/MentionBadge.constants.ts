@@ -1,25 +1,25 @@
 import { TSpacingToken } from '../../utilities/spacing';
 import { TTextSizeToken } from '../text';
 
-import { TMentionBadgeSize } from './MentionBadge.types';
+import { TMentionBadgeSizeToken } from './MentionBadge.types';
 
-const MENTIONBADGE_SIZES: TMentionBadgeSize[] = ['sm', 'md', 'lg'];
+const MENTIONBADGE_SIZES: TMentionBadgeSizeToken[] = ['sm', 'md', 'lg'];
 
-const DEFAULT_MENTIONBADGE_SIZE: TMentionBadgeSize = 'lg';
+const DEFAULT_MENTIONBADGE_SIZE: TMentionBadgeSizeToken = 'lg';
 
-const MENTIONBADGE_HEIGHT_SIZE_MAP: Record<TMentionBadgeSize, number> = {
+const MENTIONBADGE_HEIGHT_SIZE_MAP: Record<TMentionBadgeSizeToken, number> = {
     sm: 16,
     md: 20,
     lg: 22,
 };
 
-const MENTIONBADGE_TEXT_SIZE_MAP: Record<TMentionBadgeSize, TTextSizeToken> = {
+const MENTIONBADGE_TEXT_SIZE_MAP: Record<TMentionBadgeSizeToken, TTextSizeToken> = {
     sm: 25,
     md: 50,
     lg: 100,
 };
 
-const MENTIONBADGE_PADDING_SIZE_MAP: Record<TMentionBadgeSize, TSpacingToken[]> = {
+const MENTIONBADGE_PADDING_SIZE_MAP: Record<TMentionBadgeSizeToken, TSpacingToken[]> = {
     sm: [25, 25, 25],
     md: [50, 50, 25],
     lg: [75, 50, 25],
