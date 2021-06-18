@@ -23,6 +23,8 @@ function getStoryDocumentationUrl(storyParameters: Record<string, string>): stri
     return `/?path=/docs/${storyPath}--${kebabCase(storyParameters.includeStories[0])}`;
 }
 
+// TODO@michel: for some reason the styled-component API `.withConfig({ shouldForwardProp: ...})` messes with typings.
+//              Therefore we can't use this helper at the moment when we want to pass down children into the component.
 /**
  * this is to prevent all properties to be passed down to the underlying
  * component, except for the ones we want to. (e.g. `type="button"`)
