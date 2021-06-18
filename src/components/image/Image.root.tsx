@@ -1,9 +1,10 @@
 import styled, { css } from 'styled-components';
 import { ThemedStyledProps } from 'styled-components/ts3.6';
 
-import { Spacing, applyPadding } from '../../foundations/layout';
+import { TTheme } from '../../utilities/theme';
+import Spacing from '../../utilities/spacing';
+import { applyPadding } from '../../utilities/layout';
 import { applyShape } from '../../foundations/shape';
-import { TTheme } from '../../foundations/theme-provider/themes/theme.types';
 
 import { PImageRoot } from './Image.props';
 

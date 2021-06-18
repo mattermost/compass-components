@@ -1,5 +1,5 @@
 import { setAlpha } from '../../../shared';
-import { blue, indigo, green, red, neutral, orange, teal } from '../../colors';
+import { blue, indigo, green, red, neutral, orange, teal } from '../../../foundations/colors';
 
 import { TTheme } from './theme.types';
 

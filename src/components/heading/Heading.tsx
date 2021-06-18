@@ -30,13 +30,13 @@ const Heading = ({
     const rootProperties = {
         inheritLineHeight,
         color,
-        element,
         margin,
         size,
         weight,
+        ...rest,
     };
 
-    return <HeadingRoot {...rootProperties} {...rest} />;
+    return <HeadingRoot as={element} {...rootProperties} />;
 };
 
 export default Heading;

@@ -1,7 +1,7 @@
 import { ArgsTable, Meta, Story, Canvas, Title, Subtitle } from '@storybook/addon-docs/blocks';
 
 import Text from '../../components/text';
-import Grid, { Spacing } from '../layout';
+import Grid, { Spacing } from '../../utilities/layout';
 import { DEFAULT_ARGUMENTSTABLE_EXCLUSION } from '../../shared';
 
 import Shape from './index';
@@ -14,7 +14,7 @@ import {
     SHAPE_ELEVATION_LEVELS,
 } from './Shape.constants';
 
-import ThemeProvider from '../theme-provider/theme-provider';
+import ThemeProvider from '../../utilities/theme/theme-provider';
 
 <Meta component={Shape} title="Foundations/Shape" />
 

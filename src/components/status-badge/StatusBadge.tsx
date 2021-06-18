@@ -1,14 +1,15 @@
 import React from 'react';
 
-import Icon, { TIconGlyph } from '../icon';
+import Icon, { TIconGlyph } from '../../foundations/icon';
 
 import PStatusBadge from './StatusBadge.props';
 import { DEFAULT_STATUSBADGE_SIZE, STATUSBADGE_SIZE_MAP } from './StatusBadge.constants';
 import StatusBadgeRoot from './StatusBadge.root';
 
 const StatusBadge: React.FC<PStatusBadge> = ({
-    size = DEFAULT_STATUSBADGE_SIZE,
     status,
+    className = '',
+    size = DEFAULT_STATUSBADGE_SIZE,
     ...rest
 }: PStatusBadge): JSX.Element => {
     let glyph: TIconGlyph = 'circle-outline';
@@ -34,7 +35,7 @@ const StatusBadge: React.FC<PStatusBadge> = ({
     };
 
     return (
-        <StatusBadgeRoot {...rootProperties}>
+        <StatusBadgeRoot {...rootProperties} className={`status-badge ${className}`}>
             <Icon glyph={glyph} size={STATUSBADGE_SIZE_MAP[size]} />
         </StatusBadgeRoot>
     );

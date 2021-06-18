@@ -1,25 +1,21 @@
 import styled, { css } from 'styled-components';
 import { FlattenSimpleInterpolation, ThemedStyledProps } from 'styled-components/ts3.6';
 
-import { TTheme } from '../../foundations/theme-provider/themes/theme.types';
-import { Utils } from '../../shared';
+import { TTheme } from '../../utilities/theme';
 
 import { PHeadingRoot } from './Heading.props';
 import { applyHeadingColor, applyHeadingMargin, applyHeadingStyles } from './Heading.mixins';
 
-const HeadingRoot = styled.h6.withConfig({
-    shouldForwardProp: Utils.forwardProperties(),
-})<PHeadingRoot>(
+const HeadingRoot = styled.h6<PHeadingRoot>(
     ({
         theme,
         inheritLineHeight,
         color,
-        element,
         margin,
         size,
         weight,
     }: ThemedStyledProps<PHeadingRoot, TTheme>): FlattenSimpleInterpolation => css`
-        ${applyHeadingStyles({ inheritLineHeight, element, size, weight })};
+        ${applyHeadingStyles({ inheritLineHeight, size, weight })};
         ${applyHeadingColor({ color, theme })};
         ${applyHeadingMargin({ margin, size })};
 

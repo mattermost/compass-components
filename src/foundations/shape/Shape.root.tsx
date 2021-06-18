@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 import { FlattenSimpleInterpolation, ThemedStyledProps } from 'styled-components/ts3.6';
 
-import { TTheme } from '../theme-provider/themes/theme.types';
+import { TTheme } from '../../utilities/theme/themes/theme.types';
 import { Utils } from '../../shared';
 
 import { applyElevation, applyShape } from './Shape.mixins';

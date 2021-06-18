@@ -1,4 +1,4 @@
-import { TStatusBadgeStatus } from '../../../components/status-badge/StatusBadge.types';
+import { TStatusBadgeStatus } from '../../../components/status-badge';
 
 type TThemeColorDefinition = {
     lighter: string;

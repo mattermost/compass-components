@@ -3,7 +3,8 @@ import styled from 'styled-components';
 
 import Heading from '../../components/heading';
 import Text from '../../components/text';
-import Grid, { Spacing } from '../layout';
+import Grid from '../../utilities/layout';
+import Spacing from '../../utilities/spacing';
 import ShapeRoot from '../shape';
 import { convertToRgb, rgbToHex, rgbToHsl } from '../../shared';
 
@@ -11,7 +12,6 @@ type PSwatch = {
     color: string;
     shade: number;
     colorName?: string;
-    className?: string;
     variant?: 'noText' | 'bottom' | 'right';
 };
 
@@ -19,7 +19,6 @@ const SwatchBase: React.FC<PSwatch> = ({
     color,
     shade,
     colorName,
-    className,
     variant = 'right',
 }: PSwatch): JSX.Element => {
     const rgbString = convertToRgb(color);
@@ -30,7 +29,6 @@ const SwatchBase: React.FC<PSwatch> = ({
 
     return (
         <Grid
-            className={className}
             row={isRow}
             alignment={'stretch'}
             padding={isRow ? Spacing.symmetric({ vertical: 50 }) : Spacing.all(50)}

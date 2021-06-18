@@ -1,8 +1,8 @@
 import React from 'react';
 
-import { TSpacingTokensSymmetric } from '../../foundations/layout';
+import { TSpacingTokensSymmetric } from '../../utilities/spacing';
 import { Utils } from '../../shared';
-import IconRoot, { TIconSize } from '../icon';
+import IconRoot, { TIconSize } from '../../foundations/icon';
 import Text, { TTextSizeToken } from '../text';
 
 import { DEFAULT_BUTTON_SIZE, DEFAULT_BUTTON_VARIANT } from './Button.constants';

@@ -1,15 +1,12 @@
 import styled, { css } from 'styled-components';
 import { FlattenSimpleInterpolation, ThemedStyledProps } from 'styled-components/ts3.6';
 
-import { Utils } from '../../shared';
-import { TTheme } from '../../foundations/theme-provider/themes/theme.types';
+import { TTheme } from '../../utilities/theme';
 
 import { PTextRoot } from './Text.props';
 import { applyTextColor, applyTextMargin, applyTextStyles } from './Text.mixins';
 
-const TextRoot = styled.p.withConfig({
-    shouldForwardProp: Utils.forwardProperties(),
-})<PTextRoot>(
+const TextRoot = styled.p<PTextRoot>(
     ({
         theme,
         inheritLineHeight,

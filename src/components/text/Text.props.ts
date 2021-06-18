@@ -1,4 +1,6 @@
-import { TTheme } from '../../foundations/theme-provider/themes/theme.types';
+import { ReactNode } from 'react';
+
+import { TTheme } from '../../utilities/theme';
 
 import { TTextSizeToken, TTextElement, TTextColor, TTextWeight, TTextMargin } from './Text.types';
 
@@ -35,6 +37,7 @@ type PText = {
      */
     element?: TTextElement;
     className?: string;
+    children: ReactNode | ReactNode[];
 };
 
 type PTextRoot = Required<Omit<PText, 'element' | 'className'>>;

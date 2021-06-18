@@ -5,10 +5,11 @@ import {
     ThemedStyledProps,
 } from 'styled-components/ts3.6';
 
-import { Spacing, applyPadding } from '../../foundations/layout';
+import Spacing from '../../utilities/spacing';
+import { applyPadding } from '../../utilities/layout';
 import { applyShape } from '../../foundations/shape';
-import { TTheme } from '../../foundations/theme-provider/themes/theme.types';
-import { applyTextMargin, applyTextStyles } from '../text/Text.mixins';
+import { TTheme } from '../../utilities/theme';
+import { applyTextMargin, applyTextStyles } from '../text';
 
 import {
     MENTIONBADGE_HEIGHT_SIZE_MAP,

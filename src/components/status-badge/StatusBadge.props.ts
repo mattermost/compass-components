@@ -4,6 +4,7 @@ type PStatusBadge = {
     status: TStatusBadgeStatus;
     background?: string;
     size?: TStatusBadgeSizeToken;
+    className?: string;
 };
 
 export type PStatusBadgeRoot = Required<Pick<PStatusBadge, 'size'>> &

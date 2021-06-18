@@ -1,6 +1,6 @@
 import IconGlyphs from '@mattermost/compass-icons/build/IconGlyphs';
 
-import { TTHemeColors } from '../../foundations/theme-provider/themes/theme.types';
+import { TTHemeColors } from '../../utilities/theme/themes/theme.types';
 
 type TIconGlyph = 'none' | typeof IconGlyphs[number];
 

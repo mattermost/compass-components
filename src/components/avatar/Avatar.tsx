@@ -3,8 +3,6 @@ import styled from 'styled-components';
 import upperFirst from 'lodash.upperfirst';
 
 import { Utils } from '../../shared';
-import MentionBadge from '../mention-badge';
-import StatusBadge from '../status-badge';
 
 import {
     AVATAR_SIZE_MAP,
@@ -13,7 +11,7 @@ import {
     DEFAULT_AVATAR_VARIANT,
 } from './Avatar.constants';
 import PAvatar from './Avatar.props';
-import AvatarRoot from './Avatar.root';
+import AvatarRoot, { AvatarMentionBadgeRoot, AvatarStatusBadgeRoot } from './Avatar.root';
 
 type PStyledAvatarImage = {
     image: string;
@@ -57,6 +55,8 @@ const LazyAvatarImage = ({ source }: PLazyAvatarImage): JSX.Element => {
 const Avatar = ({
     size = DEFAULT_AVATAR_SIZE,
     variant = DEFAULT_AVATAR_VARIANT,
+    disableHover = false,
+    isActive = false,
     onClick,
     mentions,
     name,
@@ -75,6 +75,8 @@ const Avatar = ({
         size,
         variant,
         onClick,
+        disableHover,
+        isActive,
         ...rest,
     };
 
@@ -86,10 +88,10 @@ const Avatar = ({
         >
             {image ? <LazyAvatarImage source={image} /> : <div>{upperFirst(name)}</div>}
             {variant === 'circle' && sizeIndex > 0 && status && (
-                <StatusBadge status={status} size={AVATAR_SIZE_MAP[size].status.size} />
+                <AvatarStatusBadgeRoot status={status} size={AVATAR_SIZE_MAP[size].status.size} />
             )}
             {variant === 'rounded' && Utils.isNumber(mentions) && sizeIndex > 2 && (
-                <MentionBadge
+                <AvatarMentionBadgeRoot
                     mentions={Math.abs(Math.trunc(mentions))}
                     size={sizeIndex >= 6 ? 'lg' : 'md'}
                 />

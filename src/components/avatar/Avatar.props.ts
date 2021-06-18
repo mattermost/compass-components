@@ -50,9 +50,8 @@ type PAvatar = {
     className?: string;
 };
 
-export type PAvatarRoot = Pick<
-    PAvatar,
-    'size' | 'variant' | 'disableHover' | 'isActive' | 'className'
+export type PAvatarRoot = Required<
+    Pick<PAvatar, 'size' | 'variant' | 'disableHover' | 'isActive' | 'className'>
 > & { hasUnreadBadge: boolean };
 
 export default PAvatar;

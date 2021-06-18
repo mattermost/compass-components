@@ -1,4 +1,4 @@
-import { TSpacingToken } from '../../foundations/layout';
+import { TSpacingToken } from '../../utilities/spacing';
 import { TTextSizeToken } from '../text';
 
 import { TMentionBadgeSize } from './MentionBadge.types';

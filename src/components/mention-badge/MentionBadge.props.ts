@@ -1,3 +1,5 @@
+import { ReactNode } from 'react';
+
 import { TMentionBadgeSize } from './MentionBadge.types';
 
 type PMentionBadge = {
@@ -7,6 +9,7 @@ type PMentionBadge = {
     mentionLimit?: number;
     size?: TMentionBadgeSize;
     className?: string;
+    children?: ReactNode;
 };
 
 export type PMentionBadgeRoot = Required<Pick<PMentionBadge, 'inverted' | 'size'>> &

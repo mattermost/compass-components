@@ -1,9 +1,8 @@
 import styled from 'styled-components';
 
 import { Utils } from '../../shared';
+import { parseSpacing } from '../spacing';
 
-import { PGrid } from './Grid.props';
-import { parseSpacing } from './Spacing';
 import {
     DEFAULT_GRID_ALIGNMENT,
     DEFAULT_GRID_COMPONENT,
@@ -12,6 +11,7 @@ import {
     DEFAULT_GRID_ROW,
     DEFAULT_GRID_WRAP,
 } from './Grid.constants';
+import { PGrid } from './Grid.props';
 import { TGridAlignment, TGridFlex, TGridJustify } from './Grid.types';
 
 const Grid = styled.div

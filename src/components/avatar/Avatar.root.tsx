@@ -2,31 +2,45 @@ import random from 'lodash.random';
 import styled, { css } from 'styled-components';
 import { FlattenSimpleInterpolation, ThemedStyledProps } from 'styled-components/ts3.6';
 
-import { applyShape } from '../../foundations/shape/Shape.mixins';
-import { TTheme } from '../../foundations/theme-provider/themes/theme.types';
+import { applyHeadingMargin, applyHeadingStyles } from '../heading';
+import { applyShape } from '../../foundations/shape';
+import { TTheme } from '../../utilities/theme';
 import { Utils } from '../../shared';
-import { applyHeadingMargin, applyHeadingStyles } from '../heading/Heading.mixins';
 import MentionBadge from '../mention-badge';
 import StatusBadge from '../status-badge';
 
-import {
-    DEFAULT_AVATAR_SIZE,
-    AVATAR_SIZE_MAP,
-    AVATAR_FALLBACK_COLORS,
-    AVATAR_SIZES,
-} from './Avatar.constants';
+import { AVATAR_SIZE_MAP, AVATAR_FALLBACK_COLORS, AVATAR_SIZES } from './Avatar.constants';
 import { PAvatarRoot } from './Avatar.props';
+
+const AvatarStatusBadgeRoot = styled(StatusBadge).withConfig({
+    shouldForwardProp: Utils.forwardProperties(),
+})<Required<Pick<PAvatarRoot, 'size'>>>(
+    ({ size }) => css`
+        position: absolute;
+        bottom: ${AVATAR_SIZE_MAP[size].status.offset}px;
+        right: ${AVATAR_SIZE_MAP[size].status.offset}px;
+    `
+);
+
+const AvatarMentionBadgeRoot = styled(MentionBadge).withConfig({
+    shouldForwardProp: Utils.forwardProperties(),
+})<Required<Pick<PAvatarRoot, 'hasUnreadBadge'>>>(
+    ({ hasUnreadBadge }) => css`
+        position: absolute;
+        top: ${hasUnreadBadge ? -2 : -3}px;
+        right: ${hasUnreadBadge ? -2 : -3}px;
+    `
+);
 
 const AvatarRoot = styled.button.withConfig({
     shouldForwardProp: Utils.forwardProperties(),
 })<PAvatarRoot>(
     ({
-        size = DEFAULT_AVATAR_SIZE,
-        variant = 'circle',
-        disableHover = false,
-        isActive = false,
-        hasUnreadBadge,
         theme,
+        size,
+        variant,
+        disableHover,
+        isActive,
     }: ThemedStyledProps<PAvatarRoot, TTheme>): FlattenSimpleInterpolation => {
         const borderSize = AVATAR_SIZES.indexOf(size) > 2 ? 3 : 2;
         const scaleFactor = (1 - (borderSize * 2) / AVATAR_SIZE_MAP[size].size).toFixed(4);
@@ -74,20 +88,10 @@ const AvatarRoot = styled.button.withConfig({
 
                 transition: box-shadow 500ms ease, transform 500ms ease;
             }
-
-            ${StatusBadge} {
-                position: absolute;
-                bottom: ${AVATAR_SIZE_MAP[size].status.offset}px;
-                right: ${AVATAR_SIZE_MAP[size].status.offset}px;
-            }
-
-            ${MentionBadge} {
-                position: absolute;
-                top: ${hasUnreadBadge ? -2 : -3}px;
-                right: ${hasUnreadBadge ? -2 : -3}px;
-            }
         `;
     }
 );
+
+export { AvatarStatusBadgeRoot, AvatarMentionBadgeRoot };
 
 export default AvatarRoot;

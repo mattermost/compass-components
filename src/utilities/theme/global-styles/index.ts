@@ -5,9 +5,7 @@ import '@mattermost/compass-icons';
 import { setAlpha } from '../../../shared';
 import { TTheme } from '../themes/theme.types';
 
-import VElevation from './variables.elevation';
-import VFontFaces from './variables.font-faces';
-import VFontStyle from './variables.font-style';
+import fontFaces from './font-faces';
 import reset from './reset-styles';
 import defaultStyles from './default-styles';
 
@@ -17,15 +15,9 @@ type PGlobalStyles = {
 
 const GlobalStyle = createGlobalStyle`
     ${reset};
-
-    :root {
-        ${VFontFaces}
-        ${VFontStyle}
-        ${VElevation}
-    }
-    
+    ${fontFaces}
     ${defaultStyles};
-    
+
     // TODO@all: these styles need to be extracted (and adjusted) to the Skeleton component once it is ready to be built
     .skeleton {
         display: block;

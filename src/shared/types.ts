@@ -1,5 +1,5 @@
 // shared types for `Heading` and `Text` component
-import { TTHemeTextColors } from '../foundations/theme-provider/themes/theme.types';
+import { TTHemeTextColors } from '../utilities/theme/themes/theme.types';
 
 type TFontWeight = 'light' | 'regular' | 'bold';
 

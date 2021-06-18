@@ -1,10 +1,10 @@
 import styled, { css } from 'styled-components';
 import { FlattenSimpleInterpolation, ThemedStyledProps } from 'styled-components/ts3.6';
 
-import { Spacing, TSpacingTokensSymmetric } from '../../foundations/layout';
-import { applyPadding } from '../../foundations/layout/Grid.mixins';
-import { applyShape } from '../../foundations/shape/Shape.mixins';
-import { TTheme } from '../../foundations/theme-provider/themes/theme.types';
+import Spacing, { TSpacingTokensSymmetric } from '../../utilities/spacing';
+import { applyPadding } from '../../utilities/layout';
+import { applyShape } from '../../foundations/shape';
+import { TTheme } from '../../utilities/theme';
 import { setAlpha, blendColors } from '../../shared';
 
 import {
