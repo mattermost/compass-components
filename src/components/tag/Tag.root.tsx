@@ -37,7 +37,7 @@ const TagRoot = styled(Text).withConfig({
             align-items: center;
             justify-content: center;
             background-color: ${colors.background};
-            color: ${colors.text};
+            color: ${variant === 'highlight' ? theme.palette.primary.main : theme.text.primary};
             text-transform: ${isMention ? 'none' : 'uppercase'};
             cursor: ${Utils.isFunction(onClick) ? 'pointer' : 'inherit'};
 
