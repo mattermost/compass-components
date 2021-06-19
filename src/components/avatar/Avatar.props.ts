@@ -1,4 +1,4 @@
-import { TAvatarSizeToken, TAvatarStatus, TAvatarVariant } from './Avatar.types';
+import { TAvatarElement, TAvatarSizeToken, TAvatarStatus, TAvatarVariant } from './Avatar.types';
 
 type PAvatar = {
     /**
@@ -7,9 +7,10 @@ type PAvatar = {
      */
     name: string;
     /**
-     * URL to fetch an avatar image.
+     * which element should the avatar be rendered with
+     * @default 'div'
      */
-    image?: string;
+    element?: TAvatarElement;
     /**
      * Supported variants are:
      *  'circle' - typically used in user avatars
@@ -44,14 +45,27 @@ type PAvatar = {
      */
     status?: TAvatarStatus;
     /**
+     * URL to fetch an avatar image.
+     */
+    image?: string;
+    /**
      * click event handler
      */
     onClick: () => void;
+    /**
+     * custom className
+     */
     className?: string;
 };
 
-export type PAvatarRoot = Required<
+type PAvatarRoot = Required<
     Pick<PAvatar, 'size' | 'variant' | 'disableHover' | 'isActive' | 'className'>
 > & { hasUnreadBadge: boolean };
+
+type PAvatarStatusBadgeRoot = Required<Pick<PAvatarRoot, 'size'>>;
+
+type PAvatarMentionBadgeRoot = { isUnreadBadge: boolean };
+
+export type { PAvatarRoot, PAvatarStatusBadgeRoot, PAvatarMentionBadgeRoot };
 
 export default PAvatar;

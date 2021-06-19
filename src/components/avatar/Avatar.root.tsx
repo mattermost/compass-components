@@ -10,11 +10,11 @@ import MentionBadge from '../mention-badge';
 import StatusBadge from '../status-badge';
 
 import { AVATAR_SIZE_MAP, AVATAR_FALLBACK_COLORS, AVATAR_SIZES } from './Avatar.constants';
-import { PAvatarRoot } from './Avatar.props';
+import { PAvatarMentionBadgeRoot, PAvatarRoot, PAvatarStatusBadgeRoot } from './Avatar.props';
 
 const AvatarStatusBadgeRoot = styled(StatusBadge).withConfig({
     shouldForwardProp: Utils.forwardProperties(),
-})<Required<Pick<PAvatarRoot, 'size'>>>(
+})<PAvatarStatusBadgeRoot>(
     ({ size }) => css`
         position: absolute;
         bottom: ${AVATAR_SIZE_MAP[size].status.offset}px;
@@ -24,11 +24,11 @@ const AvatarStatusBadgeRoot = styled(StatusBadge).withConfig({
 
 const AvatarMentionBadgeRoot = styled(MentionBadge).withConfig({
     shouldForwardProp: Utils.forwardProperties(),
-})<Required<Pick<PAvatarRoot, 'hasUnreadBadge'>>>(
-    ({ hasUnreadBadge }) => css`
+})<PAvatarMentionBadgeRoot>(
+    ({ isUnreadBadge }) => css`
         position: absolute;
-        top: ${hasUnreadBadge ? -2 : -3}px;
-        right: ${hasUnreadBadge ? -2 : -3}px;
+        top: ${isUnreadBadge ? -2 : -3}px;
+        right: ${isUnreadBadge ? -2 : -3}px;
     `
 );
 

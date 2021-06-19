@@ -5,8 +5,10 @@ import upperFirst from 'lodash.upperfirst';
 import { Utils } from '../../shared';
 
 import {
+    AVATAR_ELEMENTS,
     AVATAR_SIZE_MAP,
     AVATAR_SIZES,
+    DEFAULT_AVATAR_ELEMENT,
     DEFAULT_AVATAR_SIZE,
     DEFAULT_AVATAR_VARIANT,
 } from './Avatar.constants';
@@ -53,6 +55,7 @@ const LazyAvatarImage = ({ source }: PLazyAvatarImage): JSX.Element => {
 };
 
 const Avatar = ({
+    element = DEFAULT_AVATAR_ELEMENT,
     size = DEFAULT_AVATAR_SIZE,
     variant = DEFAULT_AVATAR_VARIANT,
     disableHover = false,
@@ -64,7 +67,11 @@ const Avatar = ({
     status,
     ...rest
 }: PAvatar): JSX.Element => {
-    const element: 'button' | 'div' = Utils.isFunction(onClick) ? 'button' : 'div';
+    Utils.assert(
+        AVATAR_ELEMENTS.includes(element),
+        `Compass Components: Avatar component was used with an unsupported element '${element}'.
+                Please provide one from these available options: ${AVATAR_ELEMENTS.join(', ')}.`
+    );
 
     // correctness of index is guaranteed by using a tuple for AVATAR_SIZES
     // - `MentionBadges` are best to be used at size `md` or above (`sm` is the smallest supported size)
@@ -92,6 +99,7 @@ const Avatar = ({
             )}
             {variant === 'rounded' && Utils.isNumber(mentions) && sizeIndex > 2 && (
                 <AvatarMentionBadgeRoot
+                    isUnreadBadge={mentions === 0}
                     mentions={Math.abs(Math.trunc(mentions))}
                     size={sizeIndex >= 6 ? 'lg' : 'md'}
                 />

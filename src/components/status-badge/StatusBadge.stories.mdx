@@ -3,15 +3,17 @@ import { Meta, Story, Canvas, Title, Subtitle } from '@storybook/addon-docs/bloc
 import StatusBadge from './index';
 import {
     DEFAULT_STATUSBADGE_SIZE,
+    DEFAULT_STATUSBADGE_STATUS,
     STATUSBADGE_SIZES,
     STATUSBADGE_STATUSES,
 } from './StatusBadge.constants';
 
 import { Utils } from '../../shared';
-import ThemeProvider from '../../utilities/theme/theme-provider';
-import Grid, { Spacing } from '../../utilities/layout';
-import Text from '../text';
+import ThemeProvider from '../../utilities/theme';
+import Grid from '../../utilities/layout';
+import Spacing from '../../utilities/spacing';
 import ShapeRoot from '../../foundations/shape';
+import Text from '../text';
 
 <Meta component={StatusBadge} title="Components/StatusBadge" parameters={{ status: 'stable' }} />
 
@@ -146,7 +148,7 @@ export const argTypes = {
         name="Status Badge"
         argTypes={argTypes}
         args={{
-            status: 'online',
+            status: DEFAULT_STATUSBADGE_STATUS,
             size: DEFAULT_STATUSBADGE_SIZE,
         }}
     >
