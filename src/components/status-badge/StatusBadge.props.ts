@@ -12,6 +12,7 @@ type PStatusBadge = {
     size?: TStatusBadgeSizeToken;
     /**
      * override the default background
+     * @default theme.background.default
      */
     background?: string;
     /**
