@@ -39,7 +39,7 @@ const TagRoot = styled(Text).withConfig({
             background-color: ${colors.background};
             color: ${colors.text};
             text-transform: ${isMention ? 'none' : 'uppercase'};
-            cursor: ${isMention ? 'pointer' : 'inherit'};
+            cursor: ${Utils.isFunction(onClick) ? 'pointer' : 'inherit'};
 
             ${applyPadding(
                 Spacing.symmetric({
