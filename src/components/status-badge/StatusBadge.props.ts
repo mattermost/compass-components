@@ -14,6 +14,9 @@ type PStatusBadge = {
      * override the default background
      */
     background?: string;
+    /**
+     * custom className
+     */
     className?: string;
 };
 
