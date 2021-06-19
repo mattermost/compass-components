@@ -11,6 +11,7 @@ type PTag = {
     text: string;
     /**
      * the size of the text rendered in the tag
+     * @default 100
      */
     size?: TTagSizeToken;
     /**
