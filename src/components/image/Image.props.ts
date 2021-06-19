@@ -17,20 +17,26 @@ type PImage = {
     radius?: TImageBorderRadius;
     /**
      * image width
+     * @default 'auto'
      */
     width?: number | string;
     /**
      * image height
+     * @default 'auto'
      */
     height?: number | string;
+    /**
+     * whether the image is a thumbnail
+     * @default false
+     */
+    thumbnail?: boolean;
     /**
      * image alt
      */
     alt?: string;
     /**
-     * whether the image is a thumbnail
+     * custom className
      */
-    thumbnail?: boolean;
     className?: string;
 };
 
