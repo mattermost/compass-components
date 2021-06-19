@@ -5,7 +5,7 @@ import { Spacing } from '../../foundations/layout';
 import { applyPadding } from '../../foundations/layout/Grid.mixins';
 import { applyShape } from '../../foundations/shape/Shape.mixins';
 import { TTheme } from '../../foundations/theme-provider/themes/theme.types';
-import { applyTextMargin, applyTextStyles, applyTextColor } from '../text/Text.mixins';
+import { applyTextMargin, applyTextStyles } from '../text/Text.mixins';
 import Text from '../text';
 import { Utils } from '../../shared';
 
@@ -15,9 +15,12 @@ import { TTagVariant } from './Tag.types';
 const TagRoot = styled(Text).withConfig({
     shouldForwardProp: Utils.forwardProperties(),
 })<PTagRoot>(
-    ({ variant, size, theme }: ThemedStyledProps<PTagRoot, TTheme>): FlattenSimpleInterpolation => {
-        const isMention = variant === 'highlight';
-
+    ({
+        variant,
+        size,
+        onClick,
+        theme,
+    }: ThemedStyledProps<PTagRoot, TTheme>): FlattenSimpleInterpolation => {
         const TAG_BACKGROUND_COLOR_MAP: Record<TTagVariant, TTheme> = {
             general: theme.background.skeleton,
             info: theme.palette.primary.light,
@@ -27,18 +30,13 @@ const TagRoot = styled(Text).withConfig({
             shortcut: theme.background.skeleton,
         };
 
-        const colors: Record<string, string> = {
-            background: TAG_BACKGROUND_COLOR_MAP[variant],
-            text: isMention ? theme.palette.primary.main : theme.text.primary,
-        };
-
         return css`
             display: flex;
             align-items: center;
             justify-content: center;
-            background-color: ${colors.background};
+            background-color: ${TAG_BACKGROUND_COLOR_MAP[variant]};
             color: ${variant === 'highlight' ? theme.palette.primary.main : theme.text.primary};
-            text-transform: ${isMention ? 'none' : 'uppercase'};
+            text-transform: ${variant === 'highlight' ? 'none' : 'uppercase'};
             cursor: ${Utils.isFunction(onClick) ? 'pointer' : 'inherit'};
 
             ${applyPadding(
@@ -54,8 +52,7 @@ const TagRoot = styled(Text).withConfig({
                 height: 'auto',
             })};
             ${applyTextMargin({ margin: 'none' })};
-            ${applyTextStyles({ size, weight: isMention ? 'normal' : 'bold' })};
-            ${applyTextColor({ color: colors.text, theme })};
+            ${applyTextStyles({ size, weight: variant === 'highlight' ? 'normal' : 'bold' })};
         `;
     }
 );
