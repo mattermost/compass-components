@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 'use strict';
 
 const lowerFirst = require('lodash.lowerfirst');

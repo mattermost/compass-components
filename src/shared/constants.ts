@@ -17,14 +17,7 @@ const FONT_MARGINS: TFontMargin[] = ['none', 'both', 'bottom', 'top'];
 
 const FONT_COLORS: TFontColor[] = ['primary', 'secondary', 'disabled', 'inherit'];
 
-const DEFAULT_ARGUMENTS_TABLE_EXCLUSION: string[] = [
-    'children',
-    'className',
-    'as',
-    'forwardedAs',
-    'ref',
-    'theme',
-];
+const DEFAULT_ARGUMENTS_TABLE_EXCLUSION: string[] = ['children'];
 
 const DEFAULT_PROPERTY_WHITELIST: string[] = [
     'children',

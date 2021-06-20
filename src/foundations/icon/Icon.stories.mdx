@@ -1,0 +1,61 @@
+import { Meta, Story, Canvas, ArgsTable, Title } from '@storybook/addon-docs/blocks';
+
+import { Utils } from '../../shared';
+
+import {
+    DEFAULT_ICON_COLOR,
+    DEFAULT_ICON_GLYPH,
+    DEFAULT_ICON_SIZE,
+    ICON_COLORS,
+    ICON_GLYPHS,
+    ICON_SIZES,
+} from './Icon.constants';
+import Icon from './Icon';
+
+<Meta component={Icon} title="Foundations/Icon" />
+
+<Title>Icon</Title>
+
+## Component API
+
+<ArgsTable of={Icon} />
+
+<Canvas hidden>
+    <Story
+        name="default"
+        args={{
+            size: DEFAULT_ICON_SIZE,
+            glyph: DEFAULT_ICON_GLYPH,
+            color: DEFAULT_ICON_COLOR,
+            ariaLabel: `icon: ${DEFAULT_ICON_GLYPH}`,
+        }}
+        argTypes={{
+            size: {
+                options: ICON_SIZES,
+                control: {
+                    type: 'select',
+                },
+            },
+            glyph: {
+                options: ICON_GLYPHS,
+                control: {
+                    type: 'select',
+                },
+            },
+            color: {
+                options: ICON_COLORS,
+                control: {
+                    type: 'select',
+                },
+            },
+            ariaLabel: {
+                control: {
+                    type: 'text',
+                },
+            },
+            ...Utils.hideComponentProperties(['className']),
+        }}
+    >
+        {(args) => <Icon {...args} />}
+    </Story>
+</Canvas>

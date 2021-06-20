@@ -1,4 +1,4 @@
-import { TFontColor, TFontMargin, TFontWeight } from '../../shared/types';
+import { TFontColor, TFontMargin, TFontWeight } from '../../shared';
 
 type TTextSizeToken = 25 | 50 | 75 | 100 | 200 | 300;
 

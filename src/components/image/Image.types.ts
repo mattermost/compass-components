@@ -1,3 +1,3 @@
-type TImageSize = number | 'full' | 'auto';
+import { TShapeBorderRadius } from '../../foundations/shape';
 
-export default TImageSize;
+export type { TShapeBorderRadius as TImageBorderRadius };

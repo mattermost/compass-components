@@ -1,6 +1,6 @@
-import { TComponentSizeToken } from '../../shared/types';
+import { TComponentSizeToken } from '../../shared';
 
-export type TMentionBadgeSize = Exclude<
+export type TMentionBadgeSizeToken = Exclude<
     TComponentSizeToken,
     'xxxs' | 'xxs' | 'xs' | 'xl' | 'xxl' | 'xxxl'
 >;

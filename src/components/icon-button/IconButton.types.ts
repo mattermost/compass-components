@@ -1,4 +1,4 @@
-import { TSpacingToken } from '../../foundations/layout';
+import { TSpacingToken } from '../../utilities/spacing';
 import { TComponentSizeToken } from '../../shared';
 import { TIconSize } from '../icon';
 import { TTextSizeToken } from '../text';

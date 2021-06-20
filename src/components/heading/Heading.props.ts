@@ -1,7 +1,6 @@
-import React from 'react';
+import { ReactNode } from 'react';
 
-import { TTheme } from '../../foundations/theme-provider/themes/theme.types';
-import { TTextColor } from '../text';
+import { TTheme } from '../../utilities/theme';
 
 import {
     THeadingSizeToken,
@@ -36,18 +35,20 @@ type PHeading = {
      * */
     element?: THeadingElement;
     className?: string;
-    children?: React.ReactNode | React.ReactNode[];
+    children: ReactNode | ReactNode[];
 };
+
+type PHeadingRoot = Required<Omit<PHeading, 'className' | 'element'>>;
 
 type PApplyHeadingStyles = Pick<PHeading, 'size' | 'inheritLineHeight' | 'element' | 'weight'>;
 
 type PApplyHeadingMargin = Pick<PHeading, 'size' | 'margin'>;
 
 type PApplyHeadingColor = {
-    color: TTextColor;
+    color: THeadingColor;
     theme: TTheme;
 };
 
-export type { PApplyHeadingColor, PApplyHeadingMargin, PApplyHeadingStyles };
+export type { PHeadingRoot, PApplyHeadingColor, PApplyHeadingMargin, PApplyHeadingStyles };
 
 export default PHeading;

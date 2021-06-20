@@ -4,12 +4,12 @@ import { withThemes } from 'storybook-addon-themes/react';
 
 addDecorator(withThemes);
 
-import lightTheme from '../src/foundations/theme-provider/themes/theme.light';
-import darkTheme from '../src/foundations/theme-provider/themes/theme.dark';
+import lightTheme from '../src/utilities/theme/themes/theme.light';
+import darkTheme from '../src/utilities/theme/themes/theme.dark';
 import {
     CanvasThemeProvider,
     DocumentationThemeProvider,
-} from '../src/foundations/theme-provider/theme-provider';
+} from '../src/utilities/theme/storybook-theme-provider';
 import { DocsContainer } from '@storybook/addon-docs/blocks';
 
 const themes = [

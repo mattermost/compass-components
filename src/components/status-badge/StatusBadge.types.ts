@@ -1,4 +1,4 @@
-import { TComponentSizeToken } from '../../shared/types';
+import { TComponentSizeToken } from '../../shared';
 
 type TStatusBadgeStatus = 'online' | 'away' | 'dnd' | 'offline';
 
