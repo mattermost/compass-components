@@ -3,7 +3,7 @@ import { Meta, Story, Canvas, Title } from '@storybook/addon-docs/blocks';
 import Grid from '../layout';
 import Spacing from '../spacing';
 import { blue, COLOR_NAMES, COLOR_SHADES } from '../../foundations/colors';
-import ShapeRoot from '../../foundations/shape';
+import Shape from '../../foundations/shape';
 import Heading from '../../components/heading';
 import ButtonRoot from '../../components/button';
 import Text from '../../components/text';
@@ -49,7 +49,7 @@ export const themes = {
             <Grid row>
                 <SectionThemeProvider theme={args.sectionTheme || lightTheme}>
                     <Grid width={300} padding={Spacing.all(100)}>
-                        <ShapeRoot borderRadius={16}>
+                        <Shape borderRadius={16}>
                             <Grid padding={Spacing.all(100)}>
                                 <Heading>This is a sub-section</Heading>
                                 <Text>
@@ -96,11 +96,11 @@ export const themes = {
                                 />
                                 <br />
                             </Grid>
-                        </ShapeRoot>
+                        </Shape>
                     </Grid>
                 </SectionThemeProvider>
                 <Grid width={300} padding={Spacing.all(100)}>
-                    <ShapeRoot borderRadius={16}>
+                    <Shape borderRadius={16}>
                         <Grid padding={Spacing.all(100)}>
                             <Heading>This is the main-section</Heading>
                             <Text>
@@ -126,7 +126,7 @@ export const themes = {
                                 variant={'tertiary'}
                             />
                         </Grid>
-                    </ShapeRoot>
+                    </Shape>
                 </Grid>
             </Grid>
         )}
@@ -177,7 +177,7 @@ export const themes = {
                 <Grid row>
                     <SectionThemeProvider theme={theme}>
                         <Grid width={300} padding={Spacing.all(100)}>
-                            <ShapeRoot borderRadius={16}>
+                            <Shape borderRadius={16}>
                                 <Grid padding={Spacing.all(100)}>
                                     <Heading>This is a sub-section</Heading>
                                     <Text>
@@ -260,11 +260,11 @@ export const themes = {
                                     />
                                     <br />
                                 </Grid>
-                            </ShapeRoot>
+                            </Shape>
                         </Grid>
                     </SectionThemeProvider>
                     <Grid width={300} padding={Spacing.all(100)}>
-                        <ShapeRoot borderRadius={16}>
+                        <Shape borderRadius={16}>
                             <Grid padding={Spacing.all(100)}>
                                 <Heading>This is the main-section</Heading>
                                 <Text>
@@ -290,7 +290,7 @@ export const themes = {
                                     variant={'tertiary'}
                                 />
                             </Grid>
-                        </ShapeRoot>
+                        </Shape>
                     </Grid>
                 </Grid>
             );
