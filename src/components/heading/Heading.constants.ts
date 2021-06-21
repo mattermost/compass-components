@@ -1,5 +1,4 @@
-import { FONT_COLORS, FONT_MARGINS, FONT_WEIGHTS } from '../../shared/constants';
-import { Utils } from '../../shared';
+import { Utils, FONT_COLORS, FONT_MARGINS, FONT_WEIGHTS } from '../../shared';
 
 import {
     THeadingColor,

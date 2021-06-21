@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { TShapeBorderRadius, TShapeElement, TShapeElevationLevel } from './Shape.types';
 
 type PShape = {
@@ -22,10 +20,10 @@ type PShape = {
      * */
     elevationOnHover?: TShapeElevationLevel;
     /**
-     * Which component should be used for rendering the Shape
+     * Which element should be used for rendering the Shape
      * @default 'div'
      * */
-    component?: TShapeElement;
+    element?: TShapeElement;
     /**
      * If the component is an input, which type
      * @default 'text'
@@ -42,13 +40,14 @@ type PShape = {
      * @default 'auto'
      * */
     height?: number | string | 'auto';
-    children?: React.ReactNode | React.ReactNode[];
     className?: string;
     checked?: boolean;
 };
 
+type PShapeRoot = Omit<PShape, ''>;
+
 type PApplyShape = Pick<PShape, 'width' | 'height' | 'radius'>;
 
-type PApplyElevation = Required<Pick<PShape, 'elevation' | 'elevationOnHover'>>;
+type PApplyElevation = Pick<PShape, 'elevation' | 'elevationOnHover'>;
 
-export type { PShape, PApplyShape, PApplyElevation };
+export type { PShape, PShapeRoot, PApplyShape, PApplyElevation };

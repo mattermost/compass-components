@@ -1,4 +1,4 @@
-import { TFontColor, TFontMargin, TFontWeight } from './types';
+import { TComponentSizes, TFontColor, TFontMargin, TFontWeight } from './types';
 
 const FONT_TYPE_FAMILIES: Record<'heading' | 'body', string> = {
     body: 'Open Sans, sans-serif',
@@ -17,14 +17,7 @@ const FONT_MARGINS: TFontMargin[] = ['none', 'both', 'bottom', 'top'];
 
 const FONT_COLORS: TFontColor[] = ['primary', 'secondary', 'disabled', 'inherit'];
 
-const DEFAULT_ARGUMENTSTABLE_EXCLUSION: string[] = [
-    'children',
-    'className',
-    'as',
-    'forwardedAs',
-    'ref',
-    'theme',
-];
+const DEFAULT_ARGUMENTS_TABLE_EXCLUSION: string[] = ['children'];
 
 const DEFAULT_PROPERTY_WHITELIST: string[] = [
     'children',
@@ -38,8 +31,21 @@ const DEFAULT_PROPERTY_WHITELIST: string[] = [
     'defaultChecked',
 ];
 
+const COMPONENT_SIZES: TComponentSizes = [
+    'xxxs',
+    'xxs',
+    'xs',
+    'sm',
+    'md',
+    'lg',
+    'xl',
+    'xxl',
+    'xxxl',
+];
+
 export {
-    DEFAULT_ARGUMENTSTABLE_EXCLUSION,
+    COMPONENT_SIZES,
+    DEFAULT_ARGUMENTS_TABLE_EXCLUSION,
     DEFAULT_PROPERTY_WHITELIST,
     FONT_TYPE_FAMILIES,
     FONT_COLORS,

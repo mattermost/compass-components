@@ -196,7 +196,7 @@
         "no-nonoctal-decimal-escape": "error",
         "init-declarations": "error",
 
-        "complexity": ["error", { "max": 20 }],
+        "complexity": ["error", { "max": 30 }],
         "func-names": ["error", "as-needed"],
         "one-var": ["error", "never"],
         "no-else-return": ["error", { "allowElseIf": false }],
@@ -300,7 +300,7 @@
         "import/no-duplicates": "error",
         "import/no-namespace": "error",
         "import/newline-after-import": "error",
-        "import/prefer-default-export": "error",
+        "import/prefer-default-export": "warn",
         "import/max-dependencies": ["error", { "max": 15 }],
         "import/no-unassigned-import": "error",
         "import/no-named-default": "error",

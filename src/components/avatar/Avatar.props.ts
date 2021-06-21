@@ -1,12 +1,28 @@
-import { TAvatarSizeToken, TAvatarStatus, TAvatarVariant } from './Avatar.types';
+import { TAvatarElement, TAvatarSizeToken, TAvatarStatus, TAvatarVariant } from './Avatar.types';
 
 type PAvatar = {
-    variant: TAvatarVariant;
     /**
      * the name to be displayed in the fallback avatar.
      * It gets capitalized and shortened to a maximum of 2 characters
      */
     name: string;
+    /**
+     * which element should the avatar be rendered with
+     * @default 'div'
+     */
+    element?: TAvatarElement;
+    /**
+     * Supported variants are:
+     *  'circle' - typically used in user avatars
+     *  'rounded' - typically used in team avatars
+     * @default 'circle'
+     */
+    variant?: TAvatarVariant;
+    /**
+     * the size token to define the Avatar size
+     * @default 'md'
+     */
+    size?: TAvatarSizeToken;
     /**
      * adds a hover effect to the avatar
      * @default false
@@ -25,23 +41,31 @@ type PAvatar = {
      */
     mentions?: number;
     /**
-     * URL to fetch an avatar image.
-     */
-    image?: string;
-    /**
-     * the size token to define the Avatar size
-     * @default 'md'
-     */
-    size?: TAvatarSizeToken;
-    /**
      * show a `StatusBadge` onm the bottom right of the avatar
      */
     status?: TAvatarStatus;
     /**
+     * URL to fetch an avatar image.
+     */
+    image?: string;
+    /**
      * click event handler
      */
     onClick: () => void;
+    /**
+     * custom className
+     */
     className?: string;
 };
+
+type PAvatarRoot = Required<
+    Pick<PAvatar, 'size' | 'variant' | 'disableHover' | 'isActive' | 'className'>
+> & { hasUnreadBadge: boolean };
+
+type PAvatarStatusBadgeRoot = Required<Pick<PAvatarRoot, 'size'>>;
+
+type PAvatarMentionBadgeRoot = { isUnreadBadge: boolean };
+
+export type { PAvatarRoot, PAvatarStatusBadgeRoot, PAvatarMentionBadgeRoot };
 
 export default PAvatar;

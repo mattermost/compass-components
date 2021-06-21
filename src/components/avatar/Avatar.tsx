@@ -1,91 +1,111 @@
-import random from 'lodash.random';
-import styled, { css } from 'styled-components';
-import { FlattenSimpleInterpolation, ThemedStyledProps } from 'styled-components/ts3.6';
+import { useEffect, useState } from 'react';
+import styled from 'styled-components';
+import upperFirst from 'lodash.upperfirst';
 
-import { applyShape } from '../../foundations/shape/Shape.mixins';
-import { TTheme } from '../../foundations/theme-provider/themes/theme.types';
-import { applyHeadingMargin, applyHeadingStyles } from '../heading/Heading.mixins';
-import MentionBadge from '../mention-badge';
-import StatusBadge from '../status-badge';
+import { Utils } from '../../shared';
 
-import AvatarBase from './Avatar.base';
 import {
-    DEFAULT_AVATAR_SIZE,
+    AVATAR_ELEMENTS,
     AVATAR_SIZE_MAP,
-    AVATAR_FALLBACK_COLORS,
     AVATAR_SIZES,
+    DEFAULT_AVATAR_ELEMENT,
+    DEFAULT_AVATAR_SIZE,
+    DEFAULT_AVATAR_VARIANT,
 } from './Avatar.constants';
 import PAvatar from './Avatar.props';
+import AvatarRoot, { AvatarMentionBadgeRoot, AvatarStatusBadgeRoot } from './Avatar.root';
 
-const Avatar = styled(AvatarBase)<PAvatar>(
-    ({
-        size = DEFAULT_AVATAR_SIZE,
-        variant = 'circle',
-        disableHover = false,
-        isActive = false,
-        mentions,
-        theme,
-    }: ThemedStyledProps<PAvatar, TTheme>): FlattenSimpleInterpolation => {
-        const borderSize = AVATAR_SIZES.indexOf(size) > 2 ? 3 : 2;
-        const scaleFactor = (1 - (borderSize * 2) / AVATAR_SIZE_MAP[size].size).toFixed(4);
+type PStyledAvatarImage = {
+    image: string;
+};
 
-        return css`
-            color: white;
-            position: relative;
+// TODO@all: not happy with this solution, but it works for now
+//           should be replaced when the Image component is ready
+const StyledAvatarImage = styled.div<PStyledAvatarImage>`
+    flex: 1;
+    align-self: stretch;
+    background-image: url(${(props): string => props.image});
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+`;
 
-            > div:first-child {
-                display: flex;
-                overflow: hidden;
-                background-color: ${AVATAR_FALLBACK_COLORS[random(0, 7)]};
-                align-items: center;
-                justify-content: center;
+type PLazyAvatarImage = {
+    source: string;
+};
 
-                ${applyShape({
-                    width: AVATAR_SIZE_MAP[size].size,
-                    height: AVATAR_SIZE_MAP[size].size,
-                    radius: variant === 'circle' ? variant : AVATAR_SIZE_MAP[size].radius,
-                })};
+// TODO@all: equally unhappy with this. For now it is ok, but should be changed
+//           once we find a better solution (create a generic LazyImage component?)
+const LazyAvatarImage = ({ source }: PLazyAvatarImage): JSX.Element => {
+    const [image, setImage] = useState('');
 
-                ${applyHeadingStyles({
-                    size: AVATAR_SIZE_MAP[size].text,
-                })};
+    useEffect(() => {
+        Utils.getBase64(source)
+            .then((imageString) => setImage(imageString))
+            .catch(() => {});
+    }, [source]);
 
-                ${applyHeadingMargin({ margin: 'none' })};
-
-                ${isActive &&
-                css`
-                    box-shadow: 0 0 0 3px ${theme.background.default},
-                        0 0 0 6px ${theme.palette.secondary.main};
-
-                    transform: scale(${scaleFactor}, ${scaleFactor});
-                `}
-
-                ${!disableHover &&
-                css`
-                    &:hover {
-                        box-shadow: 0 0 0 ${borderSize}px ${theme.background.default},
-                            0 0 0 ${borderSize * 2}px ${theme.palette.primary.main};
-
-                        transform: scale(${scaleFactor}, ${scaleFactor});
-                    }
-                `}
-
-                transition: box-shadow 500ms ease, transform 500ms ease;
-            }
-
-            ${StatusBadge} {
-                position: absolute;
-                bottom: ${AVATAR_SIZE_MAP[size].status.offset}px;
-                right: ${AVATAR_SIZE_MAP[size].status.offset}px;
-            }
-
-            ${MentionBadge} {
-                position: absolute;
-                top: ${mentions === 0 ? -2 : -3}px;
-                right: ${mentions === 0 ? -2 : -3}px;
-            }
-        `;
+    if (!image) {
+        // TODO@all: this is a temporary solution and should be replaced with
+        //           a dedicated `Skeleton` component
+        return <div className={'skeleton'} />;
     }
-);
+
+    return <StyledAvatarImage image={image} />;
+};
+
+const Avatar = ({
+    element = DEFAULT_AVATAR_ELEMENT,
+    size = DEFAULT_AVATAR_SIZE,
+    variant = DEFAULT_AVATAR_VARIANT,
+    disableHover = false,
+    isActive = false,
+    onClick,
+    mentions,
+    name,
+    image,
+    status,
+    ...rest
+}: PAvatar): JSX.Element => {
+    Utils.assert(
+        AVATAR_ELEMENTS.includes(element),
+        `Compass Components: Avatar component was used with an unsupported element '${element}'.
+                Please provide one from these available options: ${AVATAR_ELEMENTS.join(', ')}.`
+    );
+
+    // correctness of index is guaranteed by using a tuple for AVATAR_SIZES
+    // - `MentionBadges` are best to be used at size `md` or above (`sm` is the smallest supported size)
+    // - `StatusBadges` are usable on nearly all sizes (except for `xxs` and `xxxs`)
+    const sizeIndex = AVATAR_SIZES.indexOf(size);
+
+    const rootProperties = {
+        size,
+        variant,
+        onClick,
+        disableHover,
+        isActive,
+        ...rest,
+    };
+
+    return (
+        <AvatarRoot
+            as={element}
+            hasUnreadBadge={Utils.isNumber(mentions) && mentions > 0 && sizeIndex > 2}
+            {...rootProperties}
+        >
+            {image ? <LazyAvatarImage source={image} /> : <div>{upperFirst(name)}</div>}
+            {variant === 'circle' && sizeIndex > 0 && status && (
+                <AvatarStatusBadgeRoot status={status} size={AVATAR_SIZE_MAP[size].status.size} />
+            )}
+            {variant === 'rounded' && Utils.isNumber(mentions) && sizeIndex > 2 && (
+                <AvatarMentionBadgeRoot
+                    isUnreadBadge={mentions === 0}
+                    mentions={Math.abs(Math.trunc(mentions))}
+                    size={sizeIndex >= 6 ? 'lg' : 'md'}
+                />
+            )}
+        </AvatarRoot>
+    );
+};
 
 export default Avatar;

@@ -1,0 +1,298 @@
+import { Meta, Story, Canvas, Title } from '@storybook/addon-docs/blocks';
+import Grid from '../layout';
+import Spacing from '../spacing';
+import ShapeRoot from '../../foundations/shape';
+import Heading from '../../components/heading';
+import { SectionThemeProvider } from './theme-provider';
+import lightTheme from './themes/theme.light';
+import darkTheme from './themes/theme.dark';
+import sidebarTheme from './themes/theme.sidebar';
+import ButtonRoot from '../../components/button';
+import Text from '../../components/text';
+import { blue, teal, yellow } from '../../foundations/colors';
+import { createThemeColor } from '../../shared';
+import { COLOR_NAMES, COLOR_SHADES } from '../../foundations/colors/colors.constants';
+
+<Meta title="Theming/SectionTheming" />
+
+<Title>SectionTheming</Title>
+
+export const themes = {
+    lightTheme,
+    darkTheme,
+    sidebarTheme,
+};
+
+<Canvas hidden>
+    <Story
+        name="Default"
+        args={{
+            sectionTheme: 'lightTheme',
+        }}
+        argTypes={{
+            sectionTheme: {
+                options: Object.keys(themes),
+                mapping: themes,
+                control: {
+                    type: 'select',
+                    labels: {
+                        lightTheme: 'light theme',
+                        darkTheme: 'dark theme',
+                        sidebarTheme: 'sidebar theme',
+                    },
+                },
+            },
+        }}
+    >
+        {(args) => (
+            <Grid row>
+                <SectionThemeProvider theme={args.sectionTheme || lightTheme}>
+                    <Grid width={300} padding={Spacing.all(100)}>
+                        <ShapeRoot borderRadius={16}>
+                            <Grid padding={Spacing.all(100)}>
+                                <Heading>This is a sub-section</Heading>
+                                <Text>
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                                    eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+                                    enim ad minim veniam, quis nostrud exercitation ullamco laboris
+                                    nisi ut aliquip ex ea commodo consequat.
+                                </Text>
+                                <ButtonRoot
+                                    label={'PRIMARY BUTTON'}
+                                    onClick={() => console.log('THIS IS A BUTTON click')}
+                                />
+                                <br />
+                                <ButtonRoot
+                                    label={'SECONDARY BUTTON'}
+                                    onClick={() => console.log('THIS IS A BUTTON click')}
+                                    variant={'secondary'}
+                                />
+                                <br />
+                                <ButtonRoot
+                                    label={'TERTIARY BUTTON'}
+                                    onClick={() => console.log('THIS IS A BUTTON click')}
+                                    variant={'tertiary'}
+                                />
+                                <br />
+                                <ButtonRoot
+                                    inverted
+                                    label={'INV. PRIMARY BUTTON'}
+                                    onClick={() => console.log('THIS IS A BUTTON click')}
+                                />
+                                <br />
+                                <ButtonRoot
+                                    inverted
+                                    label={'INV. SECONDARY BUTTON'}
+                                    onClick={() => console.log('THIS IS A BUTTON click')}
+                                    variant={'secondary'}
+                                />
+                                <br />
+                                <ButtonRoot
+                                    inverted
+                                    label={'INV. TERTIARY BUTTON'}
+                                    onClick={() => console.log('THIS IS A BUTTON click')}
+                                    variant={'tertiary'}
+                                />
+                                <br />
+                            </Grid>
+                        </ShapeRoot>
+                    </Grid>
+                </SectionThemeProvider>
+                <Grid width={300} padding={Spacing.all(100)}>
+                    <ShapeRoot borderRadius={16}>
+                        <Grid padding={Spacing.all(100)}>
+                            <Heading>This is the main-section</Heading>
+                            <Text>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+                                ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                                aliquip ex ea commodo consequat.
+                            </Text>
+                            <ButtonRoot
+                                label={'PRIMARY BUTTON'}
+                                onClick={() => console.log('THIS IS A BUTTON click')}
+                            />
+                            <br />
+                            <ButtonRoot
+                                label={'SECONDARY BUTTON'}
+                                onClick={() => console.log('THIS IS A BUTTON click')}
+                                variant={'secondary'}
+                            />
+                            <br />
+                            <ButtonRoot
+                                label={'TERTIARY BUTTON'}
+                                onClick={() => console.log('THIS IS A BUTTON click')}
+                                variant={'tertiary'}
+                            />
+                        </Grid>
+                    </ShapeRoot>
+                </Grid>
+            </Grid>
+        )}
+    </Story>
+    <Story
+        name="Default Color"
+        args={{
+            sectionTheme: 'lightTheme',
+            primaryColor: 'blue',
+            primaryColorShade: 500,
+        }}
+        argTypes={{
+            sectionTheme: {
+                options: Object.keys(themes),
+                mapping: themes,
+                control: {
+                    type: 'select',
+                    labels: {
+                        lightTheme: 'light theme',
+                        darkTheme: 'dark theme',
+                        sidebarTheme: 'sidebar theme',
+                    },
+                },
+            },
+            primaryColor: {
+                options: COLOR_NAMES,
+                control: {
+                    type: 'select',
+                },
+            },
+            primaryColorShade: {
+                options: COLOR_SHADES,
+                control: {
+                    type: 'select',
+                },
+            },
+        }}
+    >
+        {(args) => {
+            const theme = {
+                ...args.sectionTheme,
+                palette: {
+                    ...args.sectionTheme?.palette,
+                    primary: createThemeColor(args.primaryColor, args.primaryColorShade),
+                },
+            };
+            return (
+                <Grid row>
+                    <SectionThemeProvider theme={theme}>
+                        <Grid width={300} padding={Spacing.all(100)}>
+                            <ShapeRoot borderRadius={16}>
+                                <Grid padding={Spacing.all(100)}>
+                                    <Heading>This is a sub-section</Heading>
+                                    <Text>
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                                        do eiusmod tempor incididunt ut labore et dolore magna
+                                        aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                                        ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                                    </Text>
+                                    <ButtonRoot
+                                        label={'PRIMARY BUTTON'}
+                                        onClick={() =>
+                                            console.log('THIS IS A BUTTON click', blue[500])
+                                        }
+                                        inverted={theme.type === 'dark'}
+                                        destructive
+                                        disabled
+                                    />
+                                    <br />
+                                    <ButtonRoot
+                                        label={'PRIMARY BUTTON'}
+                                        onClick={() => console.log('THIS IS A BUTTON click')}
+                                        inverted={theme.type === 'dark'}
+                                        variant={'secondary'}
+                                        destructive
+                                        disabled
+                                    />
+                                    <br />
+                                    <ButtonRoot
+                                        label={'PRIMARY BUTTON'}
+                                        onClick={() => console.log('THIS IS A BUTTON click')}
+                                        inverted={theme.type === 'dark'}
+                                        variant={'tertiary'}
+                                        destructive
+                                        disabled
+                                    />
+                                    <br />
+                                    <ButtonRoot
+                                        label={'PRIMARY BUTTON'}
+                                        onClick={() => console.log('THIS IS A BUTTON click')}
+                                        inverted={theme.type === 'dark'}
+                                        destructive
+                                    />
+                                    <br />
+                                    <ButtonRoot
+                                        label={'PRIMARY BUTTON'}
+                                        onClick={() => console.log('THIS IS A BUTTON click')}
+                                        inverted={theme.type === 'dark'}
+                                        variant={'secondary'}
+                                        destructive
+                                    />
+                                    <br />
+                                    <ButtonRoot
+                                        label={'PRIMARY BUTTON'}
+                                        onClick={() => console.log('THIS IS A BUTTON click')}
+                                        inverted={theme.type === 'dark'}
+                                        variant={'tertiary'}
+                                        destructive
+                                    />
+                                    <br />
+                                    <ButtonRoot
+                                        label={'PRIMARY BUTTON'}
+                                        onClick={() =>
+                                            console.log('THIS IS A BUTTON click', blue[500])
+                                        }
+                                        inverted={theme.type === 'dark'}
+                                    />
+                                    <br />
+                                    <ButtonRoot
+                                        label={'PRIMARY BUTTON'}
+                                        onClick={() => console.log('THIS IS A BUTTON click')}
+                                        inverted={theme.type === 'dark'}
+                                        variant={'secondary'}
+                                    />
+                                    <br />
+                                    <ButtonRoot
+                                        label={'PRIMARY BUTTON'}
+                                        onClick={() => console.log('THIS IS A BUTTON click')}
+                                        inverted={theme.type === 'dark'}
+                                        variant={'tertiary'}
+                                    />
+                                    <br />
+                                </Grid>
+                            </ShapeRoot>
+                        </Grid>
+                    </SectionThemeProvider>
+                    <Grid width={300} padding={Spacing.all(100)}>
+                        <ShapeRoot borderRadius={16}>
+                            <Grid padding={Spacing.all(100)}>
+                                <Heading>This is the main-section</Heading>
+                                <Text>
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                                    eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+                                    enim ad minim veniam, quis nostrud exercitation ullamco laboris
+                                    nisi ut aliquip ex ea commodo consequat.
+                                </Text>
+                                <ButtonRoot
+                                    label={'PRIMARY BUTTON'}
+                                    onClick={() => console.log('THIS IS A BUTTON click')}
+                                />
+                                <br />
+                                <ButtonRoot
+                                    label={'SECONDARY BUTTON'}
+                                    onClick={() => console.log('THIS IS A BUTTON click')}
+                                    variant={'secondary'}
+                                />
+                                <br />
+                                <ButtonRoot
+                                    label={'TERTIARY BUTTON'}
+                                    onClick={() => console.log('THIS IS A BUTTON click')}
+                                    variant={'tertiary'}
+                                />
+                            </Grid>
+                        </ShapeRoot>
+                    </Grid>
+                </Grid>
+            );
+        }}
+    </Story>
+</Canvas>

@@ -4,9 +4,10 @@ import colorStoryParams from './colors/colors.stories.mdx';
 import shapeStoryParams from './shape/Shape.stories.mdx';
 
 import { Utils } from '../shared';
-import Shape from './shape';
-import Grid, { Spacing } from './layout';
-import ThemeProvider from './theme-provider/theme-provider';
+import ShapeRoot from './shape';
+import Grid from '../utilities/layout';
+import Spacing from '../utilities/spacing';
+import ThemeProvider from '../utilities/theme/theme-provider';
 
 import collageImg from '../assets/images/foundation_overview_collage.png';
 import colorImg from '../assets/images/foundation_overview_color.png';
@@ -36,7 +37,7 @@ import Text from '../components/text';
 <Grid row justify={'space-around'}>
     <Grid padding={Spacing.trbl({ top: 75, right: 75, bottom: 75, left: 0 })} flex={1}>
         <a href={Utils.getStoryDocumentationUrl(colorStoryParams)} target={'_self'}>
-            <Shape border radius={4} elevation={0} elevationOnHover={2}>
+            <ShapeRoot border radius={4} elevation={0} elevationOnHover={2}>
                 <Grid>
                     <img src={colorImg} alt={'foundation-colors'} />
                     <Grid padding={Spacing.symmetric({ vertical: 50, horizontal: 100 })}>
@@ -48,12 +49,12 @@ import Text from '../components/text';
                         </Text>
                     </Grid>
                 </Grid>
-            </Shape>
+            </ShapeRoot>
         </a>
     </Grid>
     <Grid padding={Spacing.all(75)} flex={1}>
         <a href={Utils.getStoryDocumentationUrl(shapeStoryParams)} target={'_self'}>
-            <Shape border radius={4} elevation={0} elevationOnHover={2}>
+            <ShapeRoot border radius={4} elevation={0} elevationOnHover={2}>
                 <Grid>
                     <img src={shapeImg} alt={'foundation-shape'} />
                     <Grid padding={Spacing.symmetric({ vertical: 50, horizontal: 100 })}>
@@ -65,12 +66,12 @@ import Text from '../components/text';
                         </Text>
                     </Grid>
                 </Grid>
-            </Shape>
+            </ShapeRoot>
         </a>
     </Grid>
     <Grid padding={Spacing.trbl({ top: 75, right: 0, bottom: 75, left: 75 })} flex={1}>
         <a href={Utils.getStoryDocumentationUrl(colorStoryParams)} target={'_self'}>
-            <Shape border radius={4} elevation={0} elevationOnHover={2}>
+            <ShapeRoot border radius={4} elevation={0} elevationOnHover={2}>
                 <Grid>
                     <img src={iconsImg} alt={'foundation-icons'} />
                     <Grid padding={Spacing.symmetric({ vertical: 50, horizontal: 100 })}>
@@ -82,7 +83,7 @@ import Text from '../components/text';
                         </Text>
                     </Grid>
                 </Grid>
-            </Shape>
+            </ShapeRoot>
         </a>
     </Grid>
 </Grid>

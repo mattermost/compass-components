@@ -1,32 +1,31 @@
 import { Meta, Story, Canvas, ArgsTable, Title } from '@storybook/addon-docs/blocks';
 
 import Image from './Image';
-import { DEFAULT_IMAGE_SIZE, IMAGE_SIZES } from './Image.constants';
 import { Utils } from '../../shared';
-import { DEFAULT_ARGUMENTSTABLE_EXCLUSION } from '../../shared/constants';
 import { SHAPE_BORDER_RADII } from '../../foundations/shape/Shape.constants';
 
 <Meta component={Image} title="Components/Image" />
 
-<ArgsTable of={Image} exclude={[...DEFAULT_ARGUMENTSTABLE_EXCLUSION]} />
+<ArgsTable of={Image} />
 
 <Canvas hidden>
     <Story
         name="Default"
         args={{
-            source: 'http://placekitten.com/200/200',
+            source: 'https://placekitten.com/200/200',
             radius: 'pill',
-            size: DEFAULT_IMAGE_SIZE,
+            thumbnail: false,
+            fullWidth: false,
         }}
         argTypes={{
-            size: { control: { type: 'select', options: IMAGE_SIZES } },
             width: { control: { type: 'range', min: 1, max: 1000, step: 1 } },
             height: { control: { type: 'range', min: 1, max: 1000, step: 1 } },
             radius: { control: { type: 'select', options: SHAPE_BORDER_RADII } },
             source: { control: { type: 'text' } },
             thumbnail: { control: { type: 'boolean' } },
-            alt: { table: { disable: true } },
-            ...Utils.hideComponentProperties(['alt', 'className']),
+            fullWidth: { control: { type: 'boolean' } },
+            alt: { control: { type: 'text' } },
+            ...Utils.hideComponentProperties(['className']),
         }}
     >
         {(args) => <Image {...args} />}
