@@ -1,4 +1,4 @@
-import { TIconGlyph } from '../icon';
+import { TIconGlyph } from '../../foundations/icon';
 
 import { TIconButtonElement, TIconButtonSizeToken } from './IconButton.types';
 

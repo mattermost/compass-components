@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Icon from '../icon';
+import Icon from '../../foundations/icon';
 
 import {
     DEFAULT_ICON_BUTTON_ELEMENT,

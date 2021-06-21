@@ -1,5 +1,5 @@
 import { setAlpha } from '../../../shared';
-import { neutral, green, red, blue, indigo, orange } from '../../../foundations/colors';
+import { neutral, green, red, blue, indigo, orange, yellow } from '../../../foundations/colors';
 
 import { TTheme } from './theme.types';
 
@@ -94,6 +94,9 @@ const lightTheme: TTheme = {
         normal: '300ms',
         slow: '450ms',
         slowest: '600ms',
+    },
+    highlight: {
+        mention: yellow[300],
     },
 };
 
