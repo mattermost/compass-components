@@ -1,4 +1,4 @@
-import { TContainerElement, TInteractionElement } from '../../shared/types';
+import { TContainerElement, TInteractionElement } from '../../shared';
 
 // TODO: maybe move the hard-coded ones to a separate union type (`TActionElement` maybe?)
 type TShapeElement = TContainerElement | TInteractionElement;

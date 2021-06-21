@@ -1,4 +1,4 @@
-import { TContainerElement } from '../../shared/types';
+import { TContainerElement } from '../../shared';
 
 type TGridAlignment = 'initial' | 'flex-start' | 'center' | 'flex-end' | 'stretch';
 
@@ -14,4 +14,4 @@ type TGridJustify =
 
 type TGridFlex = number | 'auto' | 'initial';
 
-export type { TContainerElement as TGridComponent, TGridAlignment, TGridJustify, TGridFlex };
+export type { TContainerElement as TGridElement, TGridAlignment, TGridJustify, TGridFlex };

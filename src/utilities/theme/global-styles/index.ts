@@ -3,7 +3,7 @@ import { createGlobalStyle } from 'styled-components';
 import '@mattermost/compass-icons';
 
 import { setAlpha } from '../../../shared';
-import { TTheme } from '../themes/theme.types';
+import { TTheme } from '../themes';
 
 import fontFaces from './font-faces';
 import reset from './reset-styles';
