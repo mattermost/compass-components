@@ -1,13 +1,12 @@
 import styled, { css } from 'styled-components';
 import { FlattenSimpleInterpolation, ThemedStyledProps } from 'styled-components/ts3.6';
 
-import { Spacing } from '../../foundations/layout';
-import { applyPadding } from '../../foundations/layout/Grid.mixins';
-import { applyShape } from '../../foundations/shape/Shape.mixins';
-import { TTheme } from '../../foundations/theme-provider/themes/theme.types';
-import { applyTextMargin, applyTextStyles } from '../text/Text.mixins';
-import Text from '../text';
+import Text, { applyTextMargin, applyTextStyles } from '../text';
+import { applyShape } from '../../foundations/shape';
 import { Utils } from '../../shared';
+import { applyPadding } from '../../utilities/layout';
+import Spacing from '../../utilities/spacing';
+import { TTheme } from '../../utilities/theme';
 
 import { PTagRoot } from './Tag.props';
 import { TTagVariant } from './Tag.types';
