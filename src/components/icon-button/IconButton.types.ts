@@ -1,4 +1,4 @@
-import { TIconSize, TIconSize } from '../../foundations/icon';
+import { TIconSize } from '../../foundations/icon';
 import { TSpacingToken } from '../../utilities/spacing';
 import { TComponentSizeToken } from '../../shared';
 import { TTextSizeToken } from '../text';
