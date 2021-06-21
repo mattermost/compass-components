@@ -48,6 +48,10 @@ type TTHemeBackgroundColors = {
     contrast: string;
 };
 
+type TThemeHighlightColors = {
+    mention: string;
+};
+
 type TThemeBadges = {
     [key in TStatusBadgeStatus]: string;
 };
@@ -70,6 +74,7 @@ type TTheme = {
     border: TThemeBorderColors;
     background: TTHemeBackgroundColors;
     animation: TThemeAnimations;
+    highlight: TThemeHighlightColors;
 };
 
 export type {

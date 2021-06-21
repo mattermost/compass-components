@@ -95,6 +95,9 @@ const darkTheme: TTheme = {
         slow: '450ms',
         slowest: '600ms',
     },
+    highlight: {
+        mention: red[200],
+    },
 };
 
 export default darkTheme;
