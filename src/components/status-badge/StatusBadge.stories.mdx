@@ -3,15 +3,17 @@ import { Meta, Story, Canvas, Title, Subtitle } from '@storybook/addon-docs/bloc
 import StatusBadge from './index';
 import {
     DEFAULT_STATUSBADGE_SIZE,
+    DEFAULT_STATUSBADGE_STATUS,
     STATUSBADGE_SIZES,
     STATUSBADGE_STATUSES,
 } from './StatusBadge.constants';
 
 import { Utils } from '../../shared';
-import ThemeProvider from '../../foundations/theme-provider/theme-provider';
-import Grid, { Spacing } from '../../foundations/layout';
+import ThemeProvider from '../../utilities/theme';
+import Grid from '../../utilities/layout';
+import Spacing from '../../utilities/spacing';
+import ShapeRoot from '../../foundations/shape';
 import Text from '../text';
-import Shape from '../../foundations/shape';
 
 <Meta component={StatusBadge} title="Components/StatusBadge" parameters={{ status: 'stable' }} />
 
@@ -33,35 +35,35 @@ import Shape from '../../foundations/shape';
             justify={'space-around'}
         >
             <Grid justify={'center'} alignment={'center'} flex={1}>
-                <Shape width={200} height={200}>
+                <ShapeRoot width={200} height={200}>
                     <Grid justify={'center'} alignment={'center'} flex={1}>
                         <StatusBadge status={'online'} size={'xl'} />
                     </Grid>
-                </Shape>
+                </ShapeRoot>
                 <Text weight={'bold'}>online</Text>
             </Grid>
             <Grid justify={'center'} alignment={'center'} flex={1}>
-                <Shape width={200} height={200}>
+                <ShapeRoot width={200} height={200}>
                     <Grid justify={'center'} alignment={'center'} flex={1}>
                         <StatusBadge status={'away'} size={'xl'} />
                     </Grid>
-                </Shape>
+                </ShapeRoot>
                 <Text weight={'bold'}>away</Text>
             </Grid>
             <Grid justify={'center'} alignment={'center'} flex={1}>
-                <Shape width={200} height={200}>
+                <ShapeRoot width={200} height={200}>
                     <Grid justify={'center'} alignment={'center'} flex={1}>
                         <StatusBadge status={'dnd'} size={'xl'} />
                     </Grid>
-                </Shape>
+                </ShapeRoot>
                 <Text weight={'bold'}>do not disturb ('dnd')</Text>
             </Grid>
             <Grid justify={'center'} alignment={'center'} flex={1}>
-                <Shape width={200} height={200}>
+                <ShapeRoot width={200} height={200}>
                     <Grid justify={'center'} alignment={'center'} flex={1}>
                         <StatusBadge status={'offline'} size={'xl'} />
                     </Grid>
-                </Shape>
+                </ShapeRoot>
                 <Text weight={'bold'}>offline</Text>
             </Grid>
         </Grid>
@@ -79,43 +81,43 @@ import Shape from '../../foundations/shape';
             justify={'space-around'}
         >
             <Grid justify={'center'} alignment={'center'} flex={1}>
-                <Shape width={150} height={150}>
+                <ShapeRoot width={150} height={150}>
                     <Grid justify={'center'} alignment={'center'} flex={1}>
                         <StatusBadge status={'online'} size={'xs'} />
                     </Grid>
-                </Shape>
+                </ShapeRoot>
                 <Text weight={'bold'}>x-small ('xs')</Text>
             </Grid>
             <Grid justify={'center'} alignment={'center'} flex={1}>
-                <Shape width={150} height={150}>
+                <ShapeRoot width={150} height={150}>
                     <Grid justify={'center'} alignment={'center'} flex={1}>
                         <StatusBadge status={'online'} size={'sm'} />
                     </Grid>
-                </Shape>
+                </ShapeRoot>
                 <Text weight={'bold'}>small ('sm')</Text>
             </Grid>
             <Grid justify={'center'} alignment={'center'} flex={1}>
-                <Shape width={150} height={150}>
+                <ShapeRoot width={150} height={150}>
                     <Grid justify={'center'} alignment={'center'} flex={1}>
                         <StatusBadge status={'online'} size={'md'} />
                     </Grid>
-                </Shape>
+                </ShapeRoot>
                 <Text weight={'bold'}>medium ('md')</Text>
             </Grid>
             <Grid justify={'center'} alignment={'center'} flex={1}>
-                <Shape width={150} height={150}>
+                <ShapeRoot width={150} height={150}>
                     <Grid justify={'center'} alignment={'center'} flex={1}>
                         <StatusBadge status={'online'} size={'lg'} />
                     </Grid>
-                </Shape>
+                </ShapeRoot>
                 <Text weight={'bold'}>large ('lg')</Text>
             </Grid>
             <Grid justify={'center'} alignment={'center'} flex={1}>
-                <Shape width={150} height={150}>
+                <ShapeRoot width={150} height={150}>
                     <Grid justify={'center'} alignment={'center'} flex={1}>
                         <StatusBadge status={'online'} size={'xl'} />
                     </Grid>
-                </Shape>
+                </ShapeRoot>
                 <Text weight={'bold'}>x-large ('xl')</Text>
             </Grid>
         </Grid>
@@ -146,7 +148,7 @@ export const argTypes = {
         name="Status Badge"
         argTypes={argTypes}
         args={{
-            status: 'online',
+            status: DEFAULT_STATUSBADGE_STATUS,
             size: DEFAULT_STATUSBADGE_SIZE,
         }}
     >

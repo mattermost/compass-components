@@ -39,7 +39,7 @@
         "lodash.toupper": "^4.1.2",
         "lodash.upperfirst": "^4.3.1",
         "react": "^17.0.1",
-        "react-docgen-typescript": "^1.22.0",
+        "react-docgen-typescript": "^2.0.0",
         "react-dom": "^17.0.1",
         "styled-components": "^5.2.1"
     },
@@ -93,7 +93,7 @@
         "prettier": "^2.2.1",
         "prompts": "^2.4.0",
         "storybook-addon-themes": "^6.1.0",
-        "typescript": "4.2.2"
+        "typescript": "^4.3.4"
     },
     "husky": {
         "hooks": {

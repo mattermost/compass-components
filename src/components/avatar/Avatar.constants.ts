@@ -1,9 +1,9 @@
 import { cyan, green, indigo, neutral, orange, purple, red, teal } from '../../foundations/colors';
 import { THeadingSizeToken } from '../heading';
-import { TStatusBadgeSizeToken } from '../status-badge/StatusBadge.types';
+import { TStatusBadgeSizeToken } from '../status-badge';
 import { TShapeBorderRadius } from '../../foundations/shape';
 
-import { TAvatarSizes, TAvatarSizeToken, TAvatarVariant } from './Avatar.types';
+import { TAvatarElement, TAvatarSizes, TAvatarSizeToken, TAvatarVariant } from './Avatar.types';
 
 // by usin a tuple as type we can guarantee that indexes are aways correct when checking for them
 const AVATAR_SIZES: TAvatarSizes = ['xxxs', 'xxs', 'xs', 'sm', 'md', 'lg', 'xl', 'xxl', 'xxxl'];
@@ -25,6 +25,10 @@ const DEFAULT_AVATAR_SIZE: TAvatarSizeToken = 'md';
 const AVATAR_VARIANTS: TAvatarVariant[] = ['circle', 'rounded'];
 
 const DEFAULT_AVATAR_VARIANT: TAvatarVariant = 'circle';
+
+const AVATAR_ELEMENTS: TAvatarElement[] = ['button', 'div', 'span'];
+
+const DEFAULT_AVATAR_ELEMENT: TAvatarElement = 'div';
 
 type TAvatarStatusDefinition = {
     size: TStatusBadgeSizeToken;
@@ -114,6 +118,8 @@ export {
     DEFAULT_AVATAR_SIZE,
     AVATAR_VARIANTS,
     DEFAULT_AVATAR_VARIANT,
+    AVATAR_ELEMENTS,
+    DEFAULT_AVATAR_ELEMENT,
     AVATAR_FALLBACK_COLORS,
     AVATAR_SIZE_MAP,
 };

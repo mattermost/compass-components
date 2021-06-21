@@ -1,37 +1,36 @@
-import styled, { css } from 'styled-components';
-import { FlattenSimpleInterpolation, ThemedStyledProps } from 'styled-components/ts3.6';
-
-import { TTheme } from '../theme-provider/themes/theme.types';
 import { Utils } from '../../shared';
 
-import { applyElevation, applyShape } from './Shape.mixins';
+import ShapeRoot from './Shape.root';
 import { PShape } from './Shape.props';
-import { DEFAULT_SHAPE_BORDER_RADIUS, DEFAULT_SHAPE_ELEVATION_LEVEL } from './Shape.constants';
+import {
+    DEFAULT_SHAPE_BORDER_RADIUS,
+    DEFAULT_SHAPE_ELEMENT,
+    DEFAULT_SHAPE_ELEVATION_LEVEL,
+    SHAPE_ELEMENTS,
+} from './Shape.constants';
 
-const Shape = styled.div
-    .attrs(({ component, ...rest }: PShape) => ({
-        as: component,
-        ...rest,
-    }))
-    .withConfig({
-        shouldForwardProp: Utils.forwardProperties(),
-    })<ThemedStyledProps<PShape, TTheme>>(
-    ({
-        radius = DEFAULT_SHAPE_BORDER_RADIUS,
-        elevation = DEFAULT_SHAPE_ELEVATION_LEVEL,
-        elevationOnHover = elevation,
-        width,
-        height,
-        theme,
-    }: ThemedStyledProps<PShape, TTheme>): FlattenSimpleInterpolation => css`
-        display: flex;
-        background-color: ${theme.background.shape};
+const Shape = ({
+    element = DEFAULT_SHAPE_ELEMENT,
+    radius = DEFAULT_SHAPE_BORDER_RADIUS,
+    elevation = DEFAULT_SHAPE_ELEVATION_LEVEL,
+    elevationOnHover = elevation,
+    ...rest
+}: PShape): JSX.Element => {
+    Utils.assert(
+        SHAPE_ELEMENTS.includes(element),
+        `Compass Components - Shape: used element is unsupported. Please use one supported by the component from this list: ${SHAPE_ELEMENTS.join(
+            ', '
+        )}`,
+        true
+    );
 
-        ${applyShape({ width, height, radius })};
-        ${applyElevation({ elevation, elevationOnHover }, theme.type === 'dark')};
+    const defaultProps = {
+        radius,
+        elevation,
+        elevationOnHover,
+    };
 
-        z-index: ${elevation || 0};
-    `
-);
+    return <ShapeRoot as={element} {...defaultProps} {...rest} />;
+};
 
 export default Shape;
