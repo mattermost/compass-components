@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 import { Utils } from '../../shared';
-import Icon from '../icon';
+import Icon from '../../foundations/icon';
 import Text from '../text';
 
 import { TEXT_INPUT_VALUES_MAPPING } from './TextInput.constants';

@@ -1,12 +1,12 @@
 import styled, { css } from 'styled-components';
 import { FlattenSimpleInterpolation, ThemedStyledProps } from 'styled-components/ts3.6';
 
-import { TTheme } from '../../foundations/theme-provider/themes/theme.types';
+import { applyShape } from '../../foundations/shape';
 import { setAlpha, Utils } from '../../shared';
-import { applyTextStyles } from '../text/Text.mixins';
-import { applyMargin, applyPadding } from '../../foundations/layout/Grid.mixins';
-import { applyShape } from '../../foundations/shape/Shape.mixins';
-import { Spacing } from '../../foundations/layout';
+import { applyMargin, applyPadding } from '../../utilities/layout';
+import { TTheme } from '../../utilities/theme';
+import Spacing from '../../utilities/spacing';
+import { applyTextStyles } from '../text';
 
 import { TEXT_INPUT_VALUES_MAPPING } from './TextInput.constants';
 import { PTextInput } from './TextInput.props';

@@ -1,4 +1,4 @@
-import { TIconGlyph } from '../icon';
+import { TIconGlyph } from '../../foundations/icon';
 import { TButtonWidth } from '../button';
 
 import { TTextInputSizeToken } from './TextInput.types';
