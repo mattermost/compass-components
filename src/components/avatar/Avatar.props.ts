@@ -62,7 +62,7 @@ type PAvatarRoot = Required<
     Pick<PAvatar, 'size' | 'variant' | 'disableHover' | 'isActive' | 'className'>
 > & { hasUnreadBadge: boolean };
 
-type PAvatarStatusBadgeRoot = Required<Pick<PAvatarRoot, 'size'>>;
+type PAvatarStatusBadgeRoot = Required<Pick<PAvatarRoot, 'size'>> & { offset: number };
 
 type PAvatarMentionBadgeRoot = { isUnreadBadge: boolean };
 

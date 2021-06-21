@@ -1,7 +1,7 @@
 import { css } from 'styled-components';
 import { FlattenSimpleInterpolation } from 'styled-components/ts3.6';
 
-import { FONT_TYPE_FAMILIES, FONT_WEIGHT_MAP } from '../../shared';
+import { FONT_TYPE_FAMILIES, FONT_WEIGHT_MAP, Utils } from '../../shared';
 
 import { HEADING_DEFINITIONS } from './Heading.constants';
 import { PApplyHeadingColor, PApplyHeadingMargin, PApplyHeadingStyles } from './Heading.props';
@@ -17,7 +17,7 @@ const applyHeadingStyles = ({
               font-weight: ${FONT_WEIGHT_MAP[weight]};
           `
         : null};
-    ${size
+    ${Utils.isNumber(size)
         ? css`
               font-size: ${HEADING_DEFINITIONS[size].size}px;
               line-height: ${inheritLineHeight
