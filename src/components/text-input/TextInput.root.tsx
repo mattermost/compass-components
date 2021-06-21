@@ -9,11 +9,12 @@ import Spacing from '../../utilities/spacing';
 import { applyTextStyles } from '../text';
 
 import { TEXT_INPUT_VALUES_MAPPING } from './TextInput.constants';
-import { PTextInput } from './TextInput.props';
+import { PTextInputRoot } from './TextInput.props';
+import { TTextInputSizeToken } from './TextInput.types';
 
 const TextInputRoot = styled.div.withConfig({
     shouldForwardProp: Utils.forwardProperties(),
-})<PTextInput>(
+})<PTextInputRoot>(
     ({
         hasError,
         disabled,
@@ -21,8 +22,12 @@ const TextInputRoot = styled.div.withConfig({
         width,
         size,
         backgroundColor,
+        labelAnimation,
+        value,
         theme: { palette, action, text, background },
-    }: ThemedStyledProps<PTextInput, TTheme>): FlattenSimpleInterpolation => {
+    }: ThemedStyledProps<PTextInputRoot, TTheme>): FlattenSimpleInterpolation => {
+        const hasValue = Utils.isString(value) && value.length > 0;
+
         const colors: Record<string, string> = {
             active: hasError ? palette.alert.main : palette.primary.main,
             text: text.primary,
@@ -30,6 +35,12 @@ const TextInputRoot = styled.div.withConfig({
             action: action.hover,
             border: active ? palette.primary.main : text.secondary,
             placeholder: text.disabled,
+        };
+        const labelPositions: Record<TTextInputSizeToken, string> = {
+            sm: '-1.8rem, -1.4rem',
+            md: '-1.8rem, -1.4rem',
+            lg: '-1.8rem, -1.4rem',
+            default: '0, 0',
         };
 
         if (disabled) {
@@ -66,7 +77,9 @@ const TextInputRoot = styled.div.withConfig({
 
                       & + .input__label {
                           background-color: ${colors.background};
-                          transform: translate(-1.8rem, -1.4rem) scale(0.7);
+                          transform: ${labelAnimation
+                              ? `translate(${labelPositions[size]}) scale(0.7)`
+                              : 'display: none'};
                           color: ${colors.active};
                       }
                   }
@@ -100,7 +113,7 @@ const TextInputRoot = styled.div.withConfig({
             .input__label {
                 position: absolute;
                 white-space: nowrap;
-                transform: translate(0, 0);
+                transform: translate(${hasValue ? labelPositions[size] : labelPositions.default});
                 background-color: transparent;
                 transition: transform 200ms ease-in;
                 ${applyPadding(Spacing.symmetric({ vertical: 25, horizontal: 75 }))};

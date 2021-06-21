@@ -24,6 +24,10 @@ type PIcon = {
      * custom className
      */
     className?: string;
+    /**
+     * onClick handler
+     */
+    onClick?: () => void;
 };
 
 export type PIconRoot = Required<Pick<PIcon, 'size' | 'color' | 'glyph'>> &

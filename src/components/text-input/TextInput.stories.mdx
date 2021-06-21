@@ -146,7 +146,7 @@ export const argTypes = {
     active: { control: { type: 'boolean' } },
     width: { options: [...BUTTON_WIDTHS, 100, 200, 300, 400], control: { type: 'select' } },
     backgroundColor: { control: { type: 'color' } },
-    ...Utils.hideComponentProperties(['onClick', 'className', 'value', 'onChange']),
+    ...Utils.hideComponentProperties(['onClick', 'className', 'onChange']),
 };
 
 export const defaultArgs = {
@@ -155,7 +155,26 @@ export const defaultArgs = {
     size: DEFAULT_TEXT_INPUT_SIZE,
     leadingIcon: DEFAULT_LEADING_ICON,
     trailingIcon: DEFAULT_TRAILING_ICON,
+    labelAnimation: true,
     width: 300,
+};
+
+export const ControlledTextInput = (args) => {
+    const [value, setValue] = useState(args.value);
+    console.log(args.value);
+    return (
+        <TextInput
+            {...args}
+            onChange={(event) => {
+                console.log(event);
+                setValue(event.target.value);
+            }}
+            value={value}
+            onClear={() => {
+                console.log('okkkk');
+            }}
+        />
+    );
 };
 
 export const noTrailingIconArgs = {
@@ -182,7 +201,7 @@ export const noIconArgs = {
             ...defaultArgs,
         }}
     >
-        {(args) => <TextInput {...args} />}
+        {(args) => <ControlledTextInput {...args} />}
     </Story>
     <Story
         name="No trailing icon"
@@ -200,7 +219,7 @@ export const noIconArgs = {
             ...noLeadingIconArgs,
         }}
     >
-        {(args) => <TextInput {...args} />}
+        {(args) => <ControlledTextInput {...args} />}
     </Story>
     <Story
         name="No icons"

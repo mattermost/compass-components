@@ -3,7 +3,7 @@ import { TButtonWidth } from '../button';
 
 import { TTextInputSizeToken } from './TextInput.types';
 
-export type PTextInput = {
+type PTextInput = {
     /**
      * The label for the text input
      * */
@@ -50,15 +50,48 @@ export type PTextInput = {
      * */
     active?: boolean;
     /**
+     * whether the label should be animated
+     * @default true
+     * */
+    labelAnimation?: boolean;
+    /**
      * custom value
      * */
     value?: string;
     /**
      * onChange handler
      * */
-    onChange?: () => void;
+    onChange?: (event: React.MouseEvent) => void;
+    /**
+     * onClear handler
+     * */
+    onClear?: () => void;
+    /**
+     * onFocus handler
+     * */
+    onFocus?: () => void;
+    /**
+     * onBlur handler
+     * */
+    onBlur?: () => void;
     /**
      * custom classname
      * */
     className?: string;
 };
+
+export type PTextInputRoot = Required<
+    Pick<
+        PTextInput,
+        | 'hasError'
+        | 'disabled'
+        | 'active'
+        | 'width'
+        | 'size'
+        | 'backgroundColor'
+        | 'labelAnimation'
+        | 'value'
+    >
+>;
+
+export default PTextInput;
