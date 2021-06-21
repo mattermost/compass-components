@@ -1,6 +1,11 @@
-import { Meta, Story, Canvas, ArgsTable, Title } from '@storybook/addon-docs/blocks';
+import { Meta, Story, Canvas, ArgsTable, Title, Subtitle } from '@storybook/addon-docs/blocks';
 
+import Shape from '../shape';
+import { neutral } from '../colors';
 import { Utils } from '../../shared';
+import Text from '../../components/text';
+import Grid from '../../utilities/layout';
+import Spacing from '../../utilities/spacing';
 
 import {
     DEFAULT_ICON_COLOR,
@@ -14,7 +19,55 @@ import Icon from './Icon';
 
 <Meta component={Icon} title="Foundations/Icon" />
 
-<Title>Icon</Title>
+<Title>Iconography</Title>
+
+<Subtitle>Mattermost icons are easy-to-recognize symbols for common actions.</Subtitle>
+
+## UI Icons
+
+Our UI icons are based on the open-source project [Material Design Icons](https://materialdesignicons.com/).
+In some cases, custom icons have been created to fit Mattermost’s needs.
+
+UI Icons should use simple geometry, be easy to understand at a glance and be legible at small sizes.
+Extraneous details should be omitted judiciously.
+
+### Compass Icons Font
+
+All UI icons are compiled in the Compass Icons Font file. Font file coming soon…
+
+### Sizes
+
+UI Icons can be used in the following standard sizes. The sizes noted here refer to the component's container,
+not the font size for the icon font.
+
+<Grid
+    row
+    wrap
+    padding={Spacing.symmetric({ vertical: 150, horizontal: 25 })}
+    alignment={'center'}
+    justify={'start'}
+>
+    {ICON_SIZES.map((s, i) => (
+        <Grid
+            key={s}
+            padding={Spacing.symmetric({ vertical: 50, horizontal: 50 })}
+            alignment={'center'}
+            justify={'center'}
+        >
+            <Shape radius={0} backgroundColor={neutral[0]} width={150} height={150}>
+                <Grid
+                    flex={1}
+                    padding={Spacing.symmetric({ vertical: 200, horizontal: 200 })}
+                    alignment={'center'}
+                    justify={'center'}
+                >
+                    <Icon glyph={'airplane-variant'} size={s} />
+                </Grid>
+            </Shape>
+            <Text>{s}</Text>
+        </Grid>
+    ))}
+</Grid>
 
 ## Component API
 

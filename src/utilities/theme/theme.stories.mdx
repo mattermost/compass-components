@@ -1,16 +1,18 @@
 import { Meta, Story, Canvas, Title } from '@storybook/addon-docs/blocks';
-import Grid, { Spacing } from '../layout';
+
+import Grid from '../layout';
+import Spacing from '../spacing';
+import { blue, COLOR_NAMES, COLOR_SHADES } from '../../foundations/colors';
 import ShapeRoot from '../../foundations/shape';
 import Heading from '../../components/heading';
+import ButtonRoot from '../../components/button';
+import Text from '../../components/text';
+import { createThemeColor } from '../../shared';
+
 import { SectionThemeProvider } from './theme-provider';
 import lightTheme from './themes/theme.light';
 import darkTheme from './themes/theme.dark';
 import sidebarTheme from './themes/theme.sidebar';
-import ButtonRoot from '../../components/button';
-import Text from '../../components/text';
-import { blue, teal, yellow } from '../../foundations/colors';
-import { createThemeColor } from '../../shared';
-import { COLOR_NAMES, COLOR_SHADES } from '../../foundations/colors/colors.constants';
 
 <Meta title="Theming/SectionTheming" />
 

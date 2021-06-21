@@ -1,8 +1,8 @@
 import { ArgsTable, Meta, Story, Canvas, Title, Subtitle } from '@storybook/addon-docs/blocks';
 
 import Text from '../../components/text';
-import Grid, { Spacing } from '../../utilities/layout';
-import { DEFAULT_ARGUMENTSTABLE_EXCLUSION } from '../../shared';
+import Grid from '../../utilities/layout';
+import Spacing from '../../utilities/spacing';
 
 import Shape from './index';
 import {
@@ -14,11 +14,7 @@ import {
     SHAPE_ELEVATION_LEVELS,
 } from './Shape.constants';
 
-import ThemeProvider from '../../utilities/theme/theme-provider';
-
 <Meta component={Shape} title="Foundations/Shape" />
-
-export const Template = (args) => <Shape {...args} />;
 
 export const defaultArgs = {
     className: 'shape',
@@ -70,29 +66,27 @@ export const argTypes = {
 
 There are 4 core shapes used throughout the Mattermost interface:
 
-<ThemeProvider>
-    <Grid padding={Spacing.symmetric({ vertical: 150 })} justify={'stretch'}>
-        <Grid
-            row
-            padding={Spacing.symmetric({ vertical: 150, horizontal: 25 })}
-            alignment={'center'}
-            justify={'space-around'}
-        >
-            <Grid justify={'center'}>
-                <Shape {...defaultArgs} radius={0} />
-            </Grid>
-            <Grid justify={'center'}>
-                <Shape {...defaultArgs} radius={12} />
-            </Grid>
-            <Grid justify={'center'}>
-                <Shape {...defaultArgs} radius={'pill'} />
-            </Grid>
-            <Grid justify={'center'}>
-                <Shape {...defaultArgs} radius={'circle'} />
-            </Grid>
+<Grid padding={Spacing.symmetric({ vertical: 150 })} justify={'stretch'}>
+    <Grid
+        row
+        padding={Spacing.symmetric({ vertical: 150, horizontal: 25 })}
+        alignment={'center'}
+        justify={'space-around'}
+    >
+        <Grid justify={'center'}>
+            <Shape {...defaultArgs} radius={0} />
+        </Grid>
+        <Grid justify={'center'}>
+            <Shape {...defaultArgs} radius={12} />
+        </Grid>
+        <Grid justify={'center'}>
+            <Shape {...defaultArgs} radius={'pill'} />
+        </Grid>
+        <Grid justify={'center'}>
+            <Shape {...defaultArgs} radius={'circle'} />
         </Grid>
     </Grid>
-</ThemeProvider>
+</Grid>
 
 ## Rectangle
 
@@ -198,7 +192,7 @@ The circle shape is mostly reserved for the Avatar component.
 This helps distinguish users from other UI elements throughout the product.
 There are a few other elements that use the circle shape, like the Unread Badge or the Status Badge.
 
-<ArgsTable of={Shape} exclude={[...DEFAULT_ARGUMENTSTABLE_EXCLUSION]} />
+<ArgsTable of={Shape} />
 
 export const canvasExampleArgs = {
     ...defaultArgs,

@@ -1,7 +1,7 @@
 import { Utils } from '../../shared';
 
 import ShapeRoot from './Shape.root';
-import { PShape } from './Shape.props';
+import PShape from './Shape.props';
 import {
     DEFAULT_SHAPE_BORDER_RADIUS,
     DEFAULT_SHAPE_ELEMENT,
@@ -24,13 +24,13 @@ const Shape = ({
         true
     );
 
-    const defaultProps = {
+    const rootProperties = {
         radius,
         elevation,
         elevationOnHover,
     };
 
-    return <ShapeRoot as={element} {...defaultProps} {...rest} />;
+    return <ShapeRoot as={element} {...rootProperties} {...rest} />;
 };
 
 export default Shape;
