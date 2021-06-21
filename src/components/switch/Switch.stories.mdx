@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Meta, Story, Canvas, Title, Subtitle, ArgsTable } from '@storybook/addon-docs/blocks';
-import Grid, { Spacing } from '../../foundations/layout';
+import Grid, { Spacing } from '../../utilities/layout';
 import { DEFAULT_SWITCH_SIZE, SWITCH_SIZES } from './Switch.constants';
 import Text from '../text';
 import { Utils } from '../../shared';
@@ -133,7 +133,13 @@ There are three different sizes for switches: Small, Medium, and Large. The size
             innerWidth: { table: { disable: true } },
             className: { table: { disable: true } },
             onClick: { action: 'clicked' },
-            ...Utils.hideComponentProperties(['width', 'height', 'innerWidth', 'className', 'onClick']),
+            ...Utils.hideComponentProperties([
+                'width',
+                'height',
+                'innerWidth',
+                'className',
+                'onClick',
+            ]),
         }}
         args={{
             ...defaultArgs,

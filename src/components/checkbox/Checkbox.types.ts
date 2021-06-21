@@ -1,4 +1,4 @@
-import { TIconSize } from '../icon';
+import { TIconSize } from '../../foundations/icon';
 
 type TCheckboxSizeToken = 'sm' | 'md' | 'lg';
 

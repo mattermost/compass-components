@@ -1,8 +1,8 @@
 import React from 'react';
 
 import Shape from '../../foundations/shape';
-import Grid from '../../foundations/layout';
-import Icon, { TIconSize } from '../icon';
+import Grid from '../../utilities/layout';
+import Icon, { TIconSize } from '../../foundations/icon';
 import Text, { TTextSizeToken } from '../text';
 import { Utils } from '../../shared';
 

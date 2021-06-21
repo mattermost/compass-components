@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Grid from '../../foundations/layout';
+import Grid from '../../utilities/layout';
 import Shape from '../../foundations/shape';
 import Text, { TTextSizeToken } from '../text';
 import { Utils } from '../../shared';
