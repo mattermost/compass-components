@@ -1,3 +1,5 @@
+import React from 'react';
+
 import { Utils } from '../../shared';
 
 import ShapeRoot from './Shape.root';
