@@ -1,7 +1,7 @@
+import { TIconSize, TIconSize } from '../../foundations/icon';
 import { TSpacingToken } from '../../utilities/spacing';
 import { TComponentSizeToken } from '../../shared';
 import { TTextSizeToken } from '../text';
-import { TIconSize } from '../../foundations/icon';
 
 type TIconButtonDefinition = {
     spacing: TSpacingToken;
