@@ -1,30 +1,66 @@
 import React from 'react';
 
-import { TSpacingDefinition } from '../spacing/Spacing.types';
+import { TSpacingDefinition } from '../spacing';
 
-import { TGridAlignment, TGridComponent, TGridFlex, TGridJustify } from './Grid.types';
+import { TGridAlignment, TGridElement, TGridFlex, TGridJustify } from './Grid.types';
 
-export type PGrid = {
-    /** renders the `Grid` component as a row (`flex-direction: row`) */
-    row?: boolean;
-    /** flex value to use */
+type PGrid = {
+    /**
+     * flex value to use
+     * @default 'initial'
+     */
     flex?: TGridFlex;
-    /** wrap content? */
+    /**
+     * renders the `Grid` component as a row (`flex-direction: row`)
+     * @default false
+     */
+    row?: boolean;
+    /**
+     * wrap content?
+     * @default false
+     */
     wrap?: boolean;
-    /** the HTML tag that is used to render the component */
-    component?: TGridComponent;
-    /** defines the vertical alignment of items inside the component */
+    /**
+     * the HTML tag that is used to render the component
+     * @default 'div'
+     */
+    element?: TGridElement;
+    /**
+     * defines the vertical alignment of items inside the component
+     * @default 'start'
+     */
     alignment?: TGridAlignment;
-    /** defines the horizontal alignment of items inside the component */
+    /**
+     * defines the horizontal alignment of items inside the component
+     * @default 'start'
+     */
     justify?: TGridJustify;
-    /** padding according to `TSpacingDefinition` typography */
+    /**
+     * padding according to `TSpacingDefinition` typography
+     */
     padding?: TSpacingDefinition;
-    /** margin according to `TSpacingDefinition` typography */
+    /**
+     * margin according to `TSpacingDefinition` typography
+     */
     margin?: TSpacingDefinition;
-    /** restrict the width of a `Grid` */
+    /**
+     * restrict the width of a `Grid`
+     */
     width?: number;
-    /** restrict the height of a `Grid` */
+    /**
+     * restrict the height of a `Grid`
+     */
     height?: number;
-    children?: React.ReactNode;
+    /**
+     * custom className
+     */
     className?: string;
+    children?: React.ReactNode;
 };
+
+export type PGridRoot = Required<
+    Omit<PGrid, 'className' | 'children' | 'width' | 'height' | 'padding' | 'margin'>
+> &
+    Pick<PGrid, 'width' | 'height' | 'padding' | 'margin'>;
+
+export default PGrid;

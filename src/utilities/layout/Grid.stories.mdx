@@ -2,6 +2,7 @@ import { ArgsTable, Meta, Title, Subtitle } from '@storybook/addon-docs/blocks';
 
 import ShapeRoot from '../../foundations/shape';
 import Text from '../../components/text';
+import Spacing from '../spacing';
 
 import measurementImg from '../../assets/images/layout_measurement-units.png';
 import paddingImg from '../../assets/images/layout_padding.png';
@@ -31,7 +32,7 @@ measurement for all layout elements. Smaller elements like icons and text can us
 
 ### Spacing
 
-Spacing follows the same standard measurements established above. There are 11 standard spacers that follow
+Spacing follows the same standard measurements established above. There are 14 standard spacers that follow
 this convention.
 
 export const spacings = {
@@ -53,7 +54,7 @@ export const spacings = {
 
 <Grid row alignment={'flex-end'}>
     {Object.keys(spacings).map((s) => (
-        <Grid alignment={'center'} padding={Spacing.all(75)}>
+        <Grid key={s} alignment={'center'} padding={Spacing.all(75)}>
             <ShapeRoot borderWidth={1} radius={0} elevation={0}>
                 <Grid
                     padding={Spacing.trbl({

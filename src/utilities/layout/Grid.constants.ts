@@ -1,6 +1,6 @@
-import { TGridAlignment, TGridComponent, TGridFlex, TGridJustify } from './Grid.types';
+import { TGridAlignment, TGridElement, TGridFlex, TGridJustify } from './Grid.types';
 
-const GRID_COMPONENTS: TGridComponent[] = [
+const GRID_ELEMENTS: TGridElement[] = [
     'div',
     'span',
     'article',
@@ -18,7 +18,7 @@ const GRID_COMPONENTS: TGridComponent[] = [
     'time',
 ];
 
-const DEFAULT_GRID_COMPONENT: TGridComponent = 'div';
+const DEFAULT_GRID_COMPONENT: TGridElement = 'div';
 
 const DEFAULT_GRID_ROW = false;
 
@@ -50,7 +50,7 @@ const GRID_JUSTIFIES: TGridJustify[] = [
 const DEFAULT_GRID_JUSTIFY: TGridJustify = 'initial';
 
 export {
-    GRID_COMPONENTS,
+    GRID_ELEMENTS,
     DEFAULT_GRID_COMPONENT,
     DEFAULT_GRID_ROW,
     DEFAULT_GRID_WRAP,

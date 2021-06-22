@@ -5,95 +5,105 @@ const snakeCase = require('lodash.snakecase');
 const toUpper = require('lodash.toupper');
 
 // component.tsx
-const component = (name) => `import styled, { css } from 'styled-components';
+const component = (names) => `import React from 'react';
+
+import { DEFAULT_${toUpper(snakeCase(names.kebab))}_SIZE } from './${names.pascal}.constants';
+import P${names.pascal} from './${names.pascal}.props';
+import ${names.pascal}Root from './${names.pascal}.root';
+
+const ${names.pascal} = ({ size = DEFAULT_${toUpper(snakeCase(names.kebab))}_SIZE, ...rest }: P${
+    names.pascal
+}): JSX.Element => {
+    const rootProperties = {
+        size,
+        ...rest,
+    };
+
+    return (
+        <${names.pascal}Root {...rootProperties}>Hello 👋, I am a IconButton component with a default size of '{size}'.</${names.pascal}Root>
+    );
+};
+
+export default ${names.pascal};
+`;
+
+// component.root.tsx
+const componentRoot = (names) => `import styled, { css } from 'styled-components';
 import { FlattenSimpleInterpolation, ThemedStyledProps } from 'styled-components/ts3.6';
 
-import { TTheme } from '../../foundations/theme-provider/themes/theme.types';
+import { TTheme } from '../../utilities/theme';
 
-import ${name}Base from './${name}.base';
 import {
-    DEFAULT_${toUpper(snakeCase(name))}_SIZE,
-    ${toUpper(snakeCase(name))}_DEFINITIONS,
-} from './${name}.constants';
-import P${name} from './${name}.props';
+    ${toUpper(snakeCase(names.kebab))}_DEFINITIONS,
+} from './${names.pascal}.constants';
+import { P${names.pascal}Root } from './${names.pascal}.props';
 
-const ${name} = styled(${name}Base)<P${name}>(
+const ${names.pascal} = styled.div<P${names.pascal}Root>(
     ({
-        size = DEFAULT_${toUpper(snakeCase(name))}_SIZE,
+        size,
         theme,
-    }: ThemedStyledProps<P${name}, TTheme>): FlattenSimpleInterpolation => css\`
+    }: ThemedStyledProps<P${names.pascal}Root, TTheme>): FlattenSimpleInterpolation => css\`
         display: flex;
         align-items: center;
         justify-content: center;
 
         color: $\{theme.text.primary};
 
-        width: $\{${toUpper(snakeCase(name))}_DEFINITIONS[size]}px;
-        height: $\{${toUpper(snakeCase(name))}_DEFINITIONS[size]}px;
+        width: $\{${toUpper(snakeCase(names.kebab))}_DEFINITIONS[size]}px;
+        height: $\{${toUpper(snakeCase(names.kebab))}_DEFINITIONS[size]}px;
     \`
 );
 
-export default ${name};
-`;
-
-// component.base.tsx
-const base = (name) => `import React from 'react';
-
-import { DEFAULT_${toUpper(snakeCase(name))}_SIZE } from './${name}.constants';
-import P${name} from './${name}.props';
-
-const ${name}Base = ({ size = DEFAULT_${toUpper(
-    snakeCase(name)
-)}_SIZE }: P${name}): JSX.Element => (
-    <div>Hello 👋, I am a IconButton component with a default size of '{size}'.</div>
-);
-
-export default ${name}Base;
+export default ${names.pascal};
 `;
 
 // component.stories.mdx
 const story = (
-    name
+    names
 ) => `import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
-import { Utils, DEFAULT_ARGUMENTSTABLE_EXCLUSION } from '../../shared';
+import { Utils } from '../../shared';
 
 import {
-    ${toUpper(snakeCase(name))}_SIZES,
-    ${toUpper(snakeCase(name))}_SIZE_LABELS,
-    DEFAULT_${toUpper(snakeCase(name))}_SIZE
-} from './${name}.constants';
-import ${name} from './${name}';
+    ${toUpper(snakeCase(names.kebab))}_SIZES,
+    ${toUpper(snakeCase(names.kebab))}_SIZE_LABELS,
+    DEFAULT_${toUpper(snakeCase(names.kebab))}_SIZE
+} from './${names.pascal}.constants';
+import ${names.pascal} from './${names.pascal}';
 
-export const ${lowerFirst(name)}Args = {
-    size: DEFAULT_${toUpper(snakeCase(name))}_SIZE,
+export const ${lowerFirst(names.pascal)}Args = {
+    size: DEFAULT_${toUpper(snakeCase(names.kebab))}_SIZE,
 };
 
-export const ${lowerFirst(name)}ArgTypes = {
+export const ${lowerFirst(names.pascal)}ArgTypes = {
     size: {
-        options: ${toUpper(snakeCase(name))}_SIZES,
+        options: ${toUpper(snakeCase(names.kebab))}_SIZES,
         control: {
             type: 'select',
-            labels: ${toUpper(snakeCase(name))}_SIZE_LABELS,
+            labels: ${toUpper(snakeCase(names.kebab))}_SIZE_LABELS,
         },
     },
     ...Utils.hideComponentProperties(),
 };
 
-<Meta title={'Components/${name}'} />
+<Meta title={'Components/${names.pascal}'} />
 
-<ArgsTable of={${name}} exclude={[...DEFAULT_ARGUMENTSTABLE_EXCLUSION]} />
+<ArgsTable of={${names.pascal}} />
 
 <Canvas hidden>
-    <Story name="default" args={${lowerFirst(name)}Args} argTypes={${lowerFirst(name)}ArgTypes}>
-        {(args) => <${name} {...args} />}
+    <Story name="default" args={${lowerFirst(names.pascal)}Args} argTypes={${lowerFirst(
+    names.pascal
+)}ArgTypes}>
+        {(args) => <${names.pascal} {...args} />}
     </Story>
 </Canvas>
 `;
 
 // component.constants.ts
-const constants = (name) => `import { T${name}SizeToken, T${name}Number } from './${name}.types';
+const constants = (names) => `import { T${names.pascal}SizeToken, T${
+    names.pascal
+}Number } from './${names.pascal}.types';
 
-const ${toUpper(snakeCase(name))}_SIZES: T${name}SizeToken[] = [
+const ${toUpper(snakeCase(names.kebab))}_SIZES: T${names.pascal}SizeToken[] = [
     'xxxs',
     'xxs',
     'xs',
@@ -105,7 +115,9 @@ const ${toUpper(snakeCase(name))}_SIZES: T${name}SizeToken[] = [
     'xxxl',
 ];
 
-const ${toUpper(snakeCase(name))}_SIZE_LABELS: { [size in T${name}SizeToken]: string } = {
+const ${toUpper(snakeCase(names.kebab))}_SIZE_LABELS: { [size in T${
+    names.pascal
+}SizeToken]: string } = {
     xxxs: 'xxx-small',
     xxs: 'xx-small',
     xs: 'x-small',
@@ -117,9 +129,11 @@ const ${toUpper(snakeCase(name))}_SIZE_LABELS: { [size in T${name}SizeToken]: st
     xxxl: 'xxx-large',
 };
 
-const DEFAULT_${toUpper(snakeCase(name))}_SIZE: T${name}SizeToken = 'md';
+const DEFAULT_${toUpper(snakeCase(names.kebab))}_SIZE: T${names.pascal}SizeToken = 'md';
 
-const ${toUpper(snakeCase(name))}_DEFINITIONS: { [size in T${name}SizeToken]: T${name}Number } = {
+const ${toUpper(snakeCase(names.kebab))}_DEFINITIONS: { [size in T${names.pascal}SizeToken]: T${
+    names.pascal
+}Number } = {
     xxxs: 200,
     xxs: 200,
     xs: 200,
@@ -132,49 +146,51 @@ const ${toUpper(snakeCase(name))}_DEFINITIONS: { [size in T${name}SizeToken]: T$
 };
 
 export {
-    ${toUpper(snakeCase(name))}_SIZES,
-    DEFAULT_${toUpper(snakeCase(name))}_SIZE,
-    ${toUpper(snakeCase(name))}_SIZE_LABELS,
-    ${toUpper(snakeCase(name))}_DEFINITIONS,
+    ${toUpper(snakeCase(names.kebab))}_SIZES,
+    DEFAULT_${toUpper(snakeCase(names.kebab))}_SIZE,
+    ${toUpper(snakeCase(names.kebab))}_SIZE_LABELS,
+    ${toUpper(snakeCase(names.kebab))}_DEFINITIONS,
 };
 `;
 
 // component.types.ts
-const props = (name) => `import { T${name}SizeToken } from './${name}.types';
+const props = (names) => `import { T${names.pascal}SizeToken } from './${names.pascal}.types';
 
-type P${name} = {
+type P${names.pascal} = {
     /**
-     * the size token to define the ${name} size
+     * the size token to define the ${names.pascal} size
      * @default 'md'
      */
-    size?: T${name}SizeToken;
+    size?: T${names.pascal}SizeToken;
     className?: string;
 };
 
-export default P${name};
+export type P${names.pascal}Root = Required<Omit<P${names.pascal}, 'className'>>;
+
+export default P${names.pascal};
 `;
 
 // component.types.ts
-const types = (name) => `import { TComponentSizeToken } from '../../shared';
+const types = (names) => `import { TComponentSizeToken } from '../../shared';
 
-type T${name}Number = number;
+type T${names.pascal}Number = number;
 
-export type { T${name}Number, TComponentSizeToken as T${name}SizeToken };
+export type { T${names.pascal}Number, TComponentSizeToken as T${names.pascal}SizeToken };
 `;
 
 // index.ts
-const barrel = (name) => `import ${name} from './${name}';
+const barrel = (names) => `import ${names.pascal} from './${names.pascal}';
 
-export * from './${name}.constants';
-export * from './${name}.props';
-export * from './${name}.types';
+export * from './${names.pascal}.constants';
+export * from './${names.pascal}.props';
+export * from './${names.pascal}.types';
 
-export default ${name};
+export default ${names.pascal};
 `;
 
 module.exports = {
     component,
-    base,
+    componentRoot,
     constants,
     props,
     types,

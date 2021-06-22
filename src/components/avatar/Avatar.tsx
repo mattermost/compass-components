@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import upperFirst from 'lodash.upperfirst';
 
@@ -93,9 +93,13 @@ const Avatar = ({
             hasUnreadBadge={Utils.isNumber(mentions) && mentions > 0 && sizeIndex > 2}
             {...rootProperties}
         >
-            {image ? <LazyAvatarImage source={image} /> : <div>{upperFirst(name)}</div>}
+            {image ? <LazyAvatarImage source={image} /> : <div>{upperFirst(name).slice(0, 2)}</div>}
             {variant === 'circle' && sizeIndex > 0 && status && (
-                <AvatarStatusBadgeRoot status={status} size={AVATAR_SIZE_MAP[size].status.size} />
+                <AvatarStatusBadgeRoot
+                    status={status}
+                    size={AVATAR_SIZE_MAP[size].status.size}
+                    offset={AVATAR_SIZE_MAP[size].status.offset}
+                />
             )}
             {variant === 'rounded' && Utils.isNumber(mentions) && sizeIndex > 2 && (
                 <AvatarMentionBadgeRoot

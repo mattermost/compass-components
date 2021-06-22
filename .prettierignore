@@ -7,3 +7,4 @@ server
 docs
 *.test.*
 *.d.ts
+scripts/component-templates.js

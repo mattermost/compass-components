@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 import { FlattenSimpleInterpolation, ThemedStyledProps } from 'styled-components/ts3.6';
 
-import { TTheme } from '../../utilities/theme/themes/theme.types';
+import { TTheme } from '../../utilities/theme';
 import { Utils } from '../../shared';
 
 import { PIconRoot } from './Icon.props';

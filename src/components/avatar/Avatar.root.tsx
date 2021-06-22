@@ -2,7 +2,7 @@ import random from 'lodash.random';
 import styled, { css } from 'styled-components';
 import { FlattenSimpleInterpolation, ThemedStyledProps } from 'styled-components/ts3.6';
 
-import { applyHeadingMargin, applyHeadingStyles } from '../heading';
+import { applyHeadingStyles } from '../heading';
 import { applyShape } from '../../foundations/shape';
 import { TTheme } from '../../utilities/theme';
 import { Utils } from '../../shared';
@@ -12,19 +12,15 @@ import StatusBadge from '../status-badge';
 import { AVATAR_SIZE_MAP, AVATAR_FALLBACK_COLORS, AVATAR_SIZES } from './Avatar.constants';
 import { PAvatarMentionBadgeRoot, PAvatarRoot, PAvatarStatusBadgeRoot } from './Avatar.props';
 
-const AvatarStatusBadgeRoot = styled(StatusBadge).withConfig({
-    shouldForwardProp: Utils.forwardProperties(),
-})<PAvatarStatusBadgeRoot>(
-    ({ size }) => css`
+const AvatarStatusBadgeRoot = styled(StatusBadge)<PAvatarStatusBadgeRoot>(
+    ({ offset }) => css`
         position: absolute;
-        bottom: ${AVATAR_SIZE_MAP[size].status.offset}px;
-        right: ${AVATAR_SIZE_MAP[size].status.offset}px;
+        bottom: ${offset}px;
+        right: ${offset}px;
     `
 );
 
-const AvatarMentionBadgeRoot = styled(MentionBadge).withConfig({
-    shouldForwardProp: Utils.forwardProperties(),
-})<PAvatarMentionBadgeRoot>(
+const AvatarMentionBadgeRoot = styled(MentionBadge)<PAvatarMentionBadgeRoot>(
     ({ isUnreadBadge }) => css`
         position: absolute;
         top: ${isUnreadBadge ? -2 : -3}px;
@@ -64,9 +60,8 @@ const AvatarRoot = styled.button.withConfig({
 
                 ${applyHeadingStyles({
                     size: AVATAR_SIZE_MAP[size].text,
+                    weight: 'bold',
                 })};
-
-                ${applyHeadingMargin({ margin: 'none' })};
 
                 ${isActive &&
                 css`

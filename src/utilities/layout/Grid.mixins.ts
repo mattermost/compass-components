@@ -1,8 +1,7 @@
 import { css } from 'styled-components';
 import { FlattenSimpleInterpolation } from 'styled-components/ts3.6';
 
-import { TSpacingDefinition } from '../spacing/Spacing.types';
-import { parseSpacing } from '../spacing/Spacing';
+import { TSpacingDefinition, parseSpacing } from '../spacing';
 
 function applyPadding(spacing: TSpacingDefinition): FlattenSimpleInterpolation {
     return css`
