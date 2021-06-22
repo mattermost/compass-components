@@ -64,3 +64,13 @@ jobs:
             - name: Build Component Library
               run: |
                   npm run build
+            - name: Commit files
+              run: |
+                git config --local user.email "jsnerdic@gmail.com"
+                git config --local user.name "Michel Engelen"
+                git commit -m "Adding new build" -a
+            - name: Push changes
+              uses: ad-m/github-push-action@master
+              with:
+                github_token: ${{ secrets.STORYBOOK_ACTION_GITHUB_TOKEN }}
+                branch: ${{ github.ref }}
