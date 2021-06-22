@@ -3,7 +3,7 @@ import { FlattenSimpleInterpolation, ThemedStyledProps } from 'styled-components
 
 import { applyTextStyles } from '../text';
 import { applyShape } from '../../foundations/shape';
-import { setAlpha, Utils } from '../../shared';
+import { setAlpha } from '../../shared';
 import { applyMargin, applyPadding } from '../../utilities/layout';
 import Spacing from '../../utilities/spacing';
 import { TTheme } from '../../utilities/theme';
@@ -11,9 +11,7 @@ import { TTheme } from '../../utilities/theme';
 import { DEFAULT_ICON_BUTTON_SIZE, ICON_BUTTON_DEFINITIONS } from './IconButton.constants';
 import { PIconButtonRoot } from './IconButton.props';
 
-const IconButtonRoot = styled.button.withConfig({
-    shouldForwardProp: Utils.forwardProperties(),
-})<PIconButtonRoot>(
+const IconButtonRoot = styled.button<PIconButtonRoot>(
     ({
         size = DEFAULT_ICON_BUTTON_SIZE,
         inverted = false,

@@ -1,0 +1,25 @@
+import { useRef, useState } from 'react';
+import { Canvas, Meta, Story } from '@storybook/addon-docs';
+
+import IconButton from '../../components/icon-button';
+import Popover from './Popover';
+
+<Meta title={'Utilities/Popover'} />
+
+<Canvas hidden>
+    <Story name="default">
+        {() => {
+            const [show, setShow] = useState(false);
+            const buttonRef = useRef(null);
+            function handleClick() {
+                setShow(!show);
+            }
+            return (
+                <div>
+                    <IconButton icon={'menu'} onClick={handleClick} ref={buttonRef} />
+                    <Popover show={show} anchor={buttonRef.current} />
+                </div>
+            );
+        }}
+    </Story>
+</Canvas>

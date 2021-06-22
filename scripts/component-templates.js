@@ -55,7 +55,7 @@ export default ${name}Base;
 const story = (
     name
 ) => `import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
-import { Utils, DEFAULT_ARGUMENTSTABLE_EXCLUSION } from '../../shared';
+import { Utils } from '../../shared';
 
 import {
     ${toUpper(snakeCase(name))}_SIZES,

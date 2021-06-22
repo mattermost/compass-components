@@ -2,6 +2,7 @@
 
 const fs = require('fs');
 
+// eslint-disable-next-line node/no-unpublished-require,import/no-extraneous-dependencies
 const prompts = require('prompts');
 const kebabCase = require('lodash.kebabcase');
 const upperFirst = require('lodash.upperfirst');
@@ -74,7 +75,11 @@ const createFiles = (name, group = 'components') => {
                     title: 'Pattern',
                     description: 'a complex structure built from the components',
                     value: 'patterns',
-                    disabled: true,
+                },
+                {
+                    title: 'Utility',
+                    description: 'component that adds dynamic behoviour, styling, etc.',
+                    value: 'utilities',
                 },
             ],
             initial: 0,
