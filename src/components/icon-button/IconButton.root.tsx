@@ -1,12 +1,12 @@
 import styled, { css } from 'styled-components';
 import { FlattenSimpleInterpolation, ThemedStyledProps } from 'styled-components/ts3.6';
 
-import { applyTextStyles } from '../text';
-import { applyShape } from '../../foundations/shape';
 import { setAlpha } from '../../shared';
-import { applyMargin, applyPadding } from '../../utilities/layout';
-import Spacing from '../../utilities/spacing';
 import { TTheme } from '../../utilities/theme';
+import Spacing from '../../utilities/spacing';
+import { applyMargin, applyPadding } from '../../utilities/layout';
+import { applyShape } from '../../foundations/shape';
+import { applyTextStyles } from '../text';
 
 import { DEFAULT_ICON_BUTTON_SIZE, ICON_BUTTON_DEFINITIONS } from './IconButton.constants';
 import { PIconButtonRoot } from './IconButton.props';

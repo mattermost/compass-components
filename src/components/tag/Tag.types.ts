@@ -1,7 +1,7 @@
-import { TTextSizeToken } from '../text/Text.types';
+import { TTextSizeToken } from '../text';
 
 type TLabelTagVariant = 'general' | 'info' | 'warning' | 'success';
 
 type TTagVariant = 'highlight' | 'shortcut' | TLabelTagVariant;
 
-export { TTextSizeToken as TTagSizeToken, TTagVariant };
+export type { TTextSizeToken as TTagSizeToken, TTagVariant };

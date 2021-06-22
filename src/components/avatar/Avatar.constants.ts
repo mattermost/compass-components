@@ -47,7 +47,7 @@ type TAvatarSizeMap = {
 const AVATAR_SIZE_MAP: TAvatarSizeMap = {
     xxxs: {
         size: 16,
-        text: 25,
+        text: 0,
         radius: 4,
         status: { size: 'xs', offset: 0 },
     },

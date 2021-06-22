@@ -8,7 +8,6 @@ import StatusBadgeRoot from './StatusBadge.root';
 
 const StatusBadge: React.FC<PStatusBadge> = ({
     status,
-    className = '',
     size = DEFAULT_STATUSBADGE_SIZE,
     ...rest
 }: PStatusBadge): JSX.Element => {
@@ -35,7 +34,7 @@ const StatusBadge: React.FC<PStatusBadge> = ({
     };
 
     return (
-        <StatusBadgeRoot {...rootProperties} className={`status-badge ${className}`}>
+        <StatusBadgeRoot {...rootProperties}>
             <Icon glyph={glyph} size={STATUSBADGE_SIZE_MAP[size]} />
         </StatusBadgeRoot>
     );

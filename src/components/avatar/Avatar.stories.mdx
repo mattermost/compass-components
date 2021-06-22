@@ -1,9 +1,6 @@
 import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
-import { Utils, DEFAULT_ARGUMENTS_TABLE_EXCLUSION } from '../../shared';
-import {
-    STATUSBADGE_STATUS_LABELS,
-    STATUSBADGE_STATUSES,
-} from '../status-badge/StatusBadge.constants';
+import { Utils } from '../../shared';
+import { STATUSBADGE_STATUS_LABELS, STATUSBADGE_STATUSES } from '../status-badge';
 
 import Avatar from './Avatar';
 import {
@@ -16,8 +13,8 @@ import {
 export const userAvatarArgs = {
     size: DEFAULT_AVATAR_SIZE,
     variant: 'circle',
-    name: 'homer.simpson',
-    image: 'https://picsum.photos/200/300?random=1',
+    name: 'lennart',
+    image: '',
     status: null,
     mentions: null,
     disableHover: true,

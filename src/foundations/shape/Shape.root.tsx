@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 import { FlattenSimpleInterpolation, ThemedStyledProps } from 'styled-components/ts3.6';
 
-import { TTheme } from '../../utilities/theme/themes/theme.types';
+import { TTheme } from '../../utilities/theme';
 import { Utils } from '../../shared';
 
 import { applyElevation, applyShape } from './Shape.mixins';
@@ -17,9 +17,10 @@ const ShapeRoot = styled.div.withConfig({
         width,
         height,
         theme,
+        backgroundColor = theme.background.shape,
     }: ThemedStyledProps<PShapeRoot, TTheme>): FlattenSimpleInterpolation => css`
         display: flex;
-        background-color: ${theme.background.shape};
+        background-color: ${backgroundColor};
 
         ${applyShape({ width, height, radius })};
         ${applyElevation({ elevation, elevationOnHover }, theme.type === 'dark')};

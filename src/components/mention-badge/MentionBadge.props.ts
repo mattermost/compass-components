@@ -1,5 +1,3 @@
-import { ReactNode } from 'react';
-
 import { TMentionBadgeSizeToken } from './MentionBadge.types';
 
 type PMentionBadge = {
@@ -8,15 +6,6 @@ type PMentionBadge = {
      * @default false
      */
     inverted?: boolean;
-    /**
-     * override the background color
-     */
-    background?: string;
-    /**
-     * the number of mentions ot display.
-     * If set to zero the MentionBadge will show as UnreadBadge
-     */
-    mentions?: number;
     /**
      * the limit, which defines the maximum of mentions that can be displayed
      * @default 99
@@ -27,12 +16,24 @@ type PMentionBadge = {
      * @default 'lg'
      */
     size?: TMentionBadgeSizeToken;
+    /**
+     * override the border color (to fake the transparent border/punch-out)
+     * @default theme.background.default
+     */
+    borderColor?: string;
+    /**
+     * the number of mentions ot display.
+     * If set to zero the MentionBadge will show as UnreadBadge
+     */
+    mentions?: number;
+    /**
+     * custom className
+     */
     className?: string;
-    children?: ReactNode | ReactNode[];
 };
 
 export type PMentionBadgeRoot = Required<Pick<PMentionBadge, 'inverted' | 'size'>> &
-    Pick<PMentionBadge, 'background'> & {
+    Pick<PMentionBadge, 'borderColor'> & {
         /**
          * should the MentionBadgeRoot be rendered as UnreadBadge
          * @default false
