@@ -1,23 +1,24 @@
 import styled, { css } from 'styled-components';
 import { FlattenSimpleInterpolation, ThemedStyledProps } from 'styled-components/ts3.6';
 
+import { applyTextMargin, applyTextStyles } from '../text';
 import { applyShape } from '../../foundations/shape';
 import { setAlpha, blendColors, Utils } from '../../shared';
 import { TTheme } from '../../utilities/theme';
 
 import { RADIO_VALUES_MAPPING } from './Radio.constants';
-import { PRadio } from './Radio.props';
+import { PRadioRoot } from './Radio.props';
 
 const RadioRoot = styled.label.withConfig({
     shouldForwardProp: Utils.forwardProperties(),
-})<PRadio>(
+})<PRadioRoot>(
     ({
         theme: { palette, action, text },
         hasError,
         disabled,
         checked,
         size,
-    }: ThemedStyledProps<PRadio, TTheme>): FlattenSimpleInterpolation => {
+    }: ThemedStyledProps<PRadioRoot, TTheme>): FlattenSimpleInterpolation => {
         const opacities: Record<string, number> = {
             background: disabled ? 0.08 : 1,
             hover: 0.16,
@@ -30,14 +31,14 @@ const RadioRoot = styled.label.withConfig({
             border: checked ? palette.primary.main : text.secondary,
         };
 
+        if (hasError) {
+            colors.border = palette.alert.main;
+        }
+
         if (disabled) {
             colors.checked = setAlpha(colors.checked, 0.32);
             colors.text = setAlpha(colors.text, 0.16);
             colors.border = colors.text;
-        }
-
-        if (hasError) {
-            colors.border = palette.alert.main;
         }
 
         // @default: `size === 'medium'`
@@ -118,6 +119,11 @@ const RadioRoot = styled.label.withConfig({
             }
 
             .label {
+                ${applyTextStyles({
+                    inheritLineHeight: true,
+                    size: RADIO_VALUES_MAPPING[size].labelSize,
+                })};
+                ${applyTextMargin({ margin: 'none' })};
                 margin-left: ${labelMargin}px;
             }
         `;

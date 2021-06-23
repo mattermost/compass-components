@@ -1,6 +1,6 @@
 import { TRadioSizeToken } from './Radio.types';
 
-export type PRadio = {
+type PRadio = {
     /**
      * whether the radio button is rendered with a label
      * */
@@ -34,3 +34,7 @@ export type PRadio = {
      * */
     className?: string;
 };
+
+export type PRadioRoot = Required<Pick<PRadio, 'hasError' | 'disabled' | 'size' | 'checked'>>;
+
+export default PRadio;

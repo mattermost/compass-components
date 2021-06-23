@@ -3,8 +3,8 @@ import React from 'react';
 import Text from '../text';
 import { Utils } from '../../shared';
 
-import { DEFAULT_RADIO_SIZE, RADIO_VALUES_MAPPING } from './Radio.constants';
-import { PRadio } from './Radio.props';
+import { DEFAULT_RADIO_SIZE } from './Radio.constants';
+import PRadio from './Radio.props';
 import RadioRoot from './Radio.root';
 
 const Radio: React.FC<PRadio> = ({
@@ -21,11 +21,7 @@ const Radio: React.FC<PRadio> = ({
             <input className={'input'} id="hidden__input" checked={checked} type={'Radio'} />
             <span className={'control'} />
             {hasLabel && (
-                <Text
-                    element={'span'}
-                    className={'label'}
-                    size={RADIO_VALUES_MAPPING[size].labelSize}
-                >
+                <Text element={'span'} className={'label'}>
                     {label}
                 </Text>
             )}
