@@ -1,24 +1,24 @@
 import styled, { css } from 'styled-components';
 import { FlattenSimpleInterpolation, ThemedStyledProps } from 'styled-components/ts3.6';
 
-import { applyTextMargin } from '../text';
+import { applyTextMargin, applyTextStyles } from '../text';
 import { applyShape } from '../../foundations/shape';
 import { setAlpha, blendColors, Utils } from '../../shared';
 import { TTheme } from '../../utilities/theme';
 
 import { CHECKBOX_VALUES_MAPPING } from './Checkbox.constants';
-import PCheckbox from './Checkbox.props';
+import { PCheckboxRoot } from './Checkbox.props';
 
 const CheckboxRoot = styled.label.withConfig({
     shouldForwardProp: Utils.forwardProperties(),
-})<PCheckbox>(
+})<PCheckboxRoot>(
     ({
         theme: { palette, action, text },
         hasError,
         disabled,
         checked,
         size,
-    }: ThemedStyledProps<PCheckbox, TTheme>): FlattenSimpleInterpolation => {
+    }: ThemedStyledProps<PCheckboxRoot, TTheme>): FlattenSimpleInterpolation => {
         const opacities: Record<string, number> = {
             hover: 0.16,
         };
@@ -31,23 +31,23 @@ const CheckboxRoot = styled.label.withConfig({
             border: checked ? palette.primary.main : text.secondary,
         };
 
+        if (hasError) {
+            colors.border = palette.alert.main;
+        }
+
         if (disabled) {
             colors.checked = setAlpha(colors.checked, 0.32);
             colors.text = setAlpha(colors.text, 0.16);
             colors.border = colors.text;
         }
 
-        if (hasError) {
-            colors.border = palette.alert.main;
-        }
-
         // @default: `size === 'medium'`
-        let labelMargin = '0 10 0 0';
+        let labelMargin = '10';
 
         if (size === 'sm') {
-            labelMargin = '0 8 0 0';
+            labelMargin = '8';
         } else if (size === 'lg') {
-            labelMargin = '0 12 0 0';
+            labelMargin = '12';
         }
 
         const actionStyles = disabled
@@ -94,6 +94,8 @@ const CheckboxRoot = styled.label.withConfig({
                     width: CHECKBOX_VALUES_MAPPING[size].checkboxSize,
                     height: CHECKBOX_VALUES_MAPPING[size].checkboxSize,
                 })};
+                display: flex;
+                align-items: center;
                 border: 1px solid ${colors.border};
                 transition: background 0.3s ease;
 
@@ -105,7 +107,12 @@ const CheckboxRoot = styled.label.withConfig({
             }
 
             .label {
-                ${applyTextMargin({ margin: labelMargin })};
+                ${applyTextStyles({
+                    inheritLineHeight: true,
+                    size: CHECKBOX_VALUES_MAPPING[size].labelSize,
+                })};
+                ${applyTextMargin({ margin: 'none' })};
+                margin-left: ${labelMargin}px;
             }
         `;
     }

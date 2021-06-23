@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 import { FlattenSimpleInterpolation, ThemedStyledProps } from 'styled-components/ts3.6';
 
-import { applyTextMargin, applyTextStyles, applyTextColor } from '../text';
+import { applyTextMargin, applyTextStyles } from '../text';
 import { applyShape } from '../../foundations/shape';
 import { setAlpha, blendColors, Utils } from '../../shared';
 import { TTheme } from '../../utilities/theme';
@@ -92,7 +92,7 @@ const SwitchRoot = styled.label.withConfig({
             display: flex;
             justify-content: center;
             align-items: center;
-            ${applyTextColor({ color: textColor, theme })};
+
             .input {
                 display: none;
             }

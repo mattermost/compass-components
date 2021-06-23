@@ -35,4 +35,6 @@ type PCheckbox = {
     className?: string;
 };
 
+export type PCheckboxRoot = Required<Pick<PCheckbox, 'hasError' | 'disabled' | 'size' | 'checked'>>;
+
 export default PCheckbox;
