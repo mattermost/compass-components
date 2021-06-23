@@ -1,6 +1,6 @@
 import colors from '../foundations/colors';
 import { TBaseColorShade } from '../foundations/colors/colors.types';
-import { TThemeColorDefinition } from '../utilities/theme/themes/theme.types';
+import { TThemeColorDefinition } from '../utilities/theme';
 
 import { darken, getContrastRatio, lighten } from './color-utils';
 import Utils from './utils';

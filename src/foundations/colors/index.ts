@@ -24,4 +24,6 @@ const colors: Record<string, Record<string, string>> = {
 
 export { blue, cyan, green, indigo, neutral, orange, purple, red, teal, yellow };
 
+export * from './colors.constants';
+
 export default colors;

@@ -1,3 +1,7 @@
+import React from 'react';
+
+import { Utils } from '../../shared';
+
 import {
     DEFAULT_TEXT_COLOR,
     DEFAULT_TEXT_ELEMENT,
@@ -19,12 +23,11 @@ const Text = ({
     ...rest
 }: PText): JSX.Element => {
     // Whenever this component is used with an element that is not supported within the headings throw an error!
-    if (!TEXT_ELEMENTS.includes(element)) {
-        throw new Error(
-            `Compass Components: Text component was used with an unsupported element '${element}'.
+    Utils.assert(
+        TEXT_ELEMENTS.includes(element),
+        `Compass Components - Text: component was used with an unsupported element '${element}'.
             Please provide one from these available options: ${TEXT_ELEMENTS.join(', ')}.`
-        );
-    }
+    );
 
     const rootProperties = {
         inheritLineHeight,
