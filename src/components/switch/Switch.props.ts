@@ -1,6 +1,6 @@
 import { TSwitchSizeToken, TSwitchWidth, TSwitchHeight, TSwitchInnerWidth } from './Switch.types';
 
-export type PSwitch = {
+type PSwitch = {
     /**
      * whether the switch button is rendered with a label
      * */
@@ -40,7 +40,15 @@ export type PSwitch = {
      * */
     onClick?: () => void;
     /**
+     * onChane event handler
+     * */
+    onChange?: () => void;
+    /**
      * custom classname
      * */
     className?: string;
 };
+
+export type PSwitchRoot = Required<Pick<PSwitch, 'disabled' | 'size' | 'onClick'>>;
+
+export default PSwitch;

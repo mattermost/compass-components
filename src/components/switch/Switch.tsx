@@ -3,32 +3,34 @@ import React from 'react';
 import Text from '../text';
 import { Utils } from '../../shared';
 
-import { DEFAULT_SWITCH_SIZE, SWITCH_VALUES_MAPPING } from './Switch.constants';
-import { PSwitch } from './Switch.props';
+import { DEFAULT_SWITCH_SIZE } from './Switch.constants';
+import PSwitch from './Switch.props';
 import SwitchRoot from './Switch.root';
 
 const Switch: React.FC<PSwitch> = ({
     label,
-    hasError,
-    disabled,
+    disabled = false,
     size = DEFAULT_SWITCH_SIZE,
-    toggled,
+    toggled = true,
+    oChange,
 }: PSwitch) => {
     const hasLabel = Utils.isString(label) && label.length > 0;
 
     return (
-        <SwitchRoot for="hidden__input" hasError={hasError} size={size} disabled={disabled}>
-            <input className={'input'} id="hidden__input" checked={toggled} type={'checkbox'} />
+        <SwitchRoot for="hidden__input" size={size} disabled={disabled}>
+            <input
+                className={'input'}
+                id="hidden__input"
+                checked={toggled}
+                defaultChecked={toggled}
+                type={'checkbox'}
+                onChange={oChange}
+            />
             <div className={'container'}>
                 <div className={'toggle'} />
             </div>
             {hasLabel && (
-                <Text
-                    element={'span'}
-                    className={'label'}
-                    size={SWITCH_VALUES_MAPPING[size].labelSize}
-                    margin={'none'}
-                >
+                <Text element={'span'} className={'label'}>
                     {label}
                 </Text>
             )}

@@ -1,22 +1,23 @@
 import styled, { css } from 'styled-components';
 import { FlattenSimpleInterpolation, ThemedStyledProps } from 'styled-components/ts3.6';
 
+import { applyTextMargin, applyTextStyles, applyTextColor } from '../text';
 import { applyShape } from '../../foundations/shape';
 import { setAlpha, blendColors, Utils } from '../../shared';
 import { TTheme } from '../../utilities/theme';
 
-import { PSwitch } from './Switch.props';
+import { PSwitchRoot } from './Switch.props';
 import { SWITCH_VALUES_MAPPING } from './Switch.constants';
 
 const SwitchRoot = styled.label.withConfig({
     shouldForwardProp: Utils.forwardProperties(),
-})<PSwitch>(
+})<PSwitchRoot>(
     ({
-        theme: { palette, action, text },
+        theme,
         disabled,
         size,
         onClick,
-    }: ThemedStyledProps<PSwitch, TTheme>): FlattenSimpleInterpolation => {
+    }: ThemedStyledProps<PSwitchRoot, TTheme>): FlattenSimpleInterpolation => {
         const isDisabled = disabled || !Utils.isFunction(onClick);
 
         const opacities: Record<string, number> = {
@@ -24,11 +25,11 @@ const SwitchRoot = styled.label.withConfig({
             hover: 0.16,
         };
 
-        const mainColor = isDisabled ? text.disabled : text.secondary;
-        const toggledColor = palette.primary.main;
-        const hoverColor = action.hover;
-        const focusColor = palette.primary.light;
-        const textColor = text.primary;
+        const mainColor = isDisabled ? theme.text.disabled : theme.text.secondary;
+        const toggledColor = theme.palette.primary.main;
+        const hoverColor = theme.action.hover;
+        const focusColor = theme.palette.primary.light;
+        const textColor = theme.text.primary;
 
         // @default: `size === 'medium'`
         let labelMargin = 10;
@@ -91,7 +92,7 @@ const SwitchRoot = styled.label.withConfig({
             display: flex;
             justify-content: center;
             align-items: center;
-
+            ${applyTextColor({ color: textColor, theme })};
             .input {
                 display: none;
             }
@@ -122,6 +123,11 @@ const SwitchRoot = styled.label.withConfig({
             }
 
             .label {
+                ${applyTextStyles({
+                    inheritLineHeight: true,
+                    size: SWITCH_VALUES_MAPPING[size].labelSize,
+                })};
+                ${applyTextMargin({ margin: 'none' })};
                 margin-left: ${labelMargin}px;
             }
         `;
