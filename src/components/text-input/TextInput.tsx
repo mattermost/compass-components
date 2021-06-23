@@ -26,7 +26,7 @@ const TextInput: React.FC<PTextInput> = ({
     const onClearInput = (): void => (isClearable ? onClear : null);
 
     return (
-        <TextInputRoot size={size} width={width} {...rest}>
+        <TextInputRoot size={size} width={width} leadingIcon={leadingIcon} {...rest}>
             {leadingIcon !== 'none' && <Icon glyph={leadingIcon} size={iconSize} />}
             <input className={'input__field'} placeholder={hasPlaceholder ? placeholder : ''} />
             {hasLabel && (

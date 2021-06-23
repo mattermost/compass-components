@@ -23,6 +23,7 @@ const TextInputRoot = styled.div.withConfig({
         size,
         backgroundColor,
         labelAnimation,
+        leadingIcon,
         value,
         theme: { palette, action, text, background },
     }: ThemedStyledProps<PTextInputRoot, TTheme>): FlattenSimpleInterpolation => {
@@ -37,11 +38,14 @@ const TextInputRoot = styled.div.withConfig({
             placeholder: text.disabled,
         };
         const labelPositions: Record<TTextInputSizeToken, string> = {
-            sm: '-1.8rem, -1.4rem',
-            md: '-1.8rem, -1.4rem',
-            lg: '-1.8rem, -1.4rem',
-            default: '0, 0',
+            sm: '-1.4rem, -1rem',
+            md: '-1.6rem, -1.2rem',
+            lg: '-2rem, -1.4rem',
         };
+
+        if (hasError) {
+            colors.border = palette.alert.main;
+        }
 
         if (disabled) {
             colors.active = setAlpha(colors.active, 0.32);
@@ -52,10 +56,6 @@ const TextInputRoot = styled.div.withConfig({
 
         if (active) {
             colors.background = setAlpha(colors.active, 0.16);
-        }
-
-        if (hasError) {
-            colors.border = palette.alert.main;
         }
 
         const actionStyles = disabled
@@ -97,7 +97,7 @@ const TextInputRoot = styled.div.withConfig({
             ${applyShape({
                 radius: 4,
                 width: width === 'full' ? '100%' : `${width}px`,
-                height: TEXT_INPUT_VALUES_MAPPING[size],
+                height: TEXT_INPUT_VALUES_MAPPING[size].height,
             })};
             ${applyPadding(
                 Spacing.symmetric({
@@ -113,11 +113,16 @@ const TextInputRoot = styled.div.withConfig({
             .input__label {
                 position: absolute;
                 white-space: nowrap;
-                transform: translate(${hasValue ? labelPositions[size] : labelPositions.default});
+                transform: translate(${hasValue ? labelPositions[size] : '0, 0'});
                 background-color: transparent;
                 transition: transform 200ms ease-in;
                 ${applyPadding(Spacing.symmetric({ vertical: 25, horizontal: 75 }))};
-                ${applyMargin(Spacing.only('left', TEXT_INPUT_VALUES_MAPPING[size].labelMargin))};
+                ${applyMargin(
+                    Spacing.only(
+                        'left',
+                        leadingIcon === 'none' ? 0 : TEXT_INPUT_VALUES_MAPPING[size].labelMargin
+                    )
+                )};
                 ${applyTextStyles({
                     size: TEXT_INPUT_VALUES_MAPPING[size].labelSize,
                     inheritLineHeight: true,

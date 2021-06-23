@@ -91,6 +91,7 @@ export type PTextInputRoot = Required<
         | 'backgroundColor'
         | 'labelAnimation'
         | 'value'
+        | 'leadingIcon'
     >
 >;
 

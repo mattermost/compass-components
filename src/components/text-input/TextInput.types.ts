@@ -1,4 +1,5 @@
-import { TIconSize } from '../icon';
+import { TSpacingToken } from '../../utilities/spacing';
+import { TIconSize } from '../foundations/icon';
 import { TTextSizeToken } from '../text';
 
 type TTextInputSizeToken = 'sm' | 'md' | 'lg';
@@ -10,6 +11,7 @@ type TTextInput = {
     iconSize: TIconSize;
     height: TTextInputHeight;
     labelSize: TTextSizeToken;
+    labelMargin: TSpacingToken;
 };
 
 export type { TTextInputSizeToken, TTextInput };
