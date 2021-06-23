@@ -1,6 +1,6 @@
 {
     "name": "compass-components",
-    "version": "1.0.0",
+    "version": "0.0.1",
     "description": "components aligning to the compass design system",
     "main": "index.js",
     "scripts": {
