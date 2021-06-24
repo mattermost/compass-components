@@ -22,9 +22,13 @@ jobs:
                   node-version: '16'
                   check-latest: true
                   registry-url: 'https://registry.npmjs.org'
+                  scope: '@mattermost'
             - name: install dependencies
               run: npm install
             - name: build component library
               run: npm run build
-            - name: check build directory
-              run: ls -la ./lib
+            - name: publish to npm
+              working-directory: ./lib
+              run: npm publish --access public
+              env:
+                  NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
