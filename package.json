@@ -1,5 +1,5 @@
 {
-    "name": "compass-components",
+    "name": "@mattermost/compass-components",
     "version": "0.0.2-9",
     "description": "components aligning to the compass design system",
     "scripts": {
