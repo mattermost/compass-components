@@ -3,8 +3,8 @@ name: npm publish
 
 # This action will trigger on every release get created
 on:
-    release:
-        types: [created]
+    create:
+        tag: [created]
 
 # Job will run on a ubuntu instance
 jobs:
@@ -33,7 +33,7 @@ jobs:
               working-directory: ./lib
               run: |
                   echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > .npmrc
-                  echo "scope=${{ secrets.NPM_SCOPE }}"
+                  echo "scope=${{ secrets.NPM_SCOPE }}" >> .npmrc
             - name: Publish to npm
               working-directory: ./lib
               run: npm publish --access public
