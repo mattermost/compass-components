@@ -8,7 +8,7 @@ const glob = require('glob');
 
 const packagePath = process.cwd();
 const buildPath = path.join(packagePath, './lib');
-const sourcePath = path.join(packagePath, './src/packages');
+const sourcePath = path.join(packagePath, './src');
 
 async function createModulePackages({ from, to }) {
     const directoryPackages = glob.sync('*/index.js', { cwd: from }).map(path.dirname);
@@ -43,13 +43,10 @@ async function filesCopy({ from, to }) {
     }
 
     const files = glob.sync('**/*.d.ts', { cwd: from });
-    const fonts = glob.sync('**/*.ttf', { cwd: from });
-    const images = glob.sync('**/*.png', { cwd: from });
-    const jsons = glob.sync('**/*.json', { cwd: from });
-    const scss = glob.sync('**/*.scss', { cwd: from });
+    const fonts = glob.sync('**/*.woff2', { cwd: from });
 
     const cmds = []
-        .concat(files, fonts, images, jsons, scss)
+        .concat(files, fonts)
         .map((file) => fse.copy(path.resolve(from, file), path.resolve(to, file)));
 
     return Promise.all(cmds);

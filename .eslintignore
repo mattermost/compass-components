@@ -9,3 +9,4 @@ docs
 *.test.*
 *.stories.*
 *.d.ts
+lib
