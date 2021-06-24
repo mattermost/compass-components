@@ -12,29 +12,27 @@ jobs:
     build:
         runs-on: ubuntu-latest
         steps:
-            - name: Checkout
+            - name: checkout package repo
               uses: actions/checkout@v2
               with:
                   persist-credentials: false
-            - name: Setup Node
+            - name: setup node
               uses: actions/setup-node@v2
               with:
                   node-version: '16'
                   check-latest: true
                   registry-url: 'https://registry.npmjs.org'
-                  scope: '@mattermost'
-            - name: Install
+              run: npm config set scope "@mattermost"
+            - name: install dependencies
               run: npm install
-            - name: Build Icons
+            - name: build compass-icons
               working-directory: ./node_modules/@mattermost/compass-icons
               run: |
                   npm install
                   npm run build
-            - name: Build Component Library
+            - name: build component library
               run: npm run build
-            - name: checking npm configs
-              run: npm config ls -l
-            - name: Publish to npm
+            - name: publish to npm
               working-directory: ./lib
               run: npm publish --access public
               env:
