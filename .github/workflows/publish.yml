@@ -24,17 +24,7 @@ jobs:
                   registry-url: 'https://registry.npmjs.org'
             - name: install dependencies
               run: npm install
-            - name: build compass-icons
-              working-directory: ./node_modules/@mattermost/compass-icons
-              run: |
-                  npm install
-                  npm run build
             - name: build component library
               run: npm run build
-            - name: publish to npm
-              working-directory: ./lib
-              run: |
-                npm config set scope "@mattermost"
-                npm publish --access public
-              env:
-                  NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+            - name: check build directory
+              run: ls -la ./lib
