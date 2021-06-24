@@ -21,7 +21,7 @@ jobs:
                   node-version: '16'
                   check-latest: true
                   registry-url: 'https://registry.npmjs.org'
-                  scope: ${{ secrets.NPM_SCOPE }}
+                  scope: '@mattermost'
             - name: Install
               run: npm install
             - name: Build Icons
