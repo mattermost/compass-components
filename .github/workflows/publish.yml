@@ -32,7 +32,7 @@ jobs:
             - name: Build .npmrc file
               working-directory: ./lib
               run: |
-                  echo "//registry.npmjs.org/:authToken=${{ secrets.NPM_TOKEN }}" > .npmrc
+                  echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > .npmrc
                   echo "scope=${{ secrets.NPM_SCOPE }}"
             - name: Publish to npm
               working-directory: ./lib
