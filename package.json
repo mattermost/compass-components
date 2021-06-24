@@ -1,6 +1,6 @@
 {
     "name": "@mattermost/compass-components",
-    "version": "0.0.2-11",
+    "version": "0.0.2-12",
     "description": "components aligning to the compass design system",
     "scripts": {
         "build-storybook": "build-storybook",
