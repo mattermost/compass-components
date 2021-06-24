@@ -1,8 +1,9 @@
 # NPM Publish is the name for this action
-name: npm publish
+name: build and publish
 
 # This action will trigger on every release get created
 on:
+    workflow_dispatch:
     create:
         tag: [created]
 
@@ -37,4 +38,4 @@ jobs:
               working-directory: ./lib
               run: npm publish --access public
               env:
-                NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+                  NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
