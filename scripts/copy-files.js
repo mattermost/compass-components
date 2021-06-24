@@ -1,4 +1,4 @@
-/* eslint-disable no-console,no-process-exit,import/no-extraneous-dependencies,node/no-unpublished-require */
+/* eslint-disable no-console,no-process-exit,import/no-extraneous-dependencies */
 'use strict';
 
 const path = require('path');
@@ -57,9 +57,16 @@ async function filesCopy({ from, to }) {
 
 async function createPackageFile() {
     const packageData = await fse.readFile(path.resolve(packagePath, './package.json'), 'utf8');
-    const { nyc, scripts, devDependencies, husky, workspaces, ...packageDataOther } = JSON.parse(
-        packageData
-    );
+    const {
+        nyc,
+        scripts,
+        devDependencies,
+        husky,
+        workspaces,
+        'lint-staged': lintStaged,
+        files,
+        ...packageDataOther
+    } = JSON.parse(packageData);
 
     const newPackageData = {
         ...packageDataOther,
