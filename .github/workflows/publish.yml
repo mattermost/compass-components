@@ -32,8 +32,8 @@ jobs:
             - name: Build .npmrc file
               working-directory: ./lib
               run: |
-                  echo "//registry.npmjs.org/:authToken=${{ secrets.NPM_TOKEN }}" > ~/project/.npmrc
-                  echo "scope=${{ secrets.NPM_SCOPE }}"
+                  echo "//registry.npmjs.org/:authToken=${{ secrets.NPM_TOKEN }}" > .npmrc
+                  npm config set scope ${{ secrets.NPM_SCOPE }}"
             - name: Publish to npm
               working-directory: ./lib
               run: npm publish --access public
