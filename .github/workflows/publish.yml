@@ -22,7 +22,6 @@ jobs:
                   node-version: '16'
                   check-latest: true
                   registry-url: 'https://registry.npmjs.org'
-              run: npm config set scope "@mattermost"
             - name: install dependencies
               run: npm install
             - name: build compass-icons
@@ -34,6 +33,8 @@ jobs:
               run: npm run build
             - name: publish to npm
               working-directory: ./lib
-              run: npm publish --access public
+              run: |
+                npm config set scope "@mattermost"
+                npm publish --access public
               env:
                   NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
