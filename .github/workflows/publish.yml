@@ -11,19 +11,29 @@ jobs:
     build:
         runs-on: ubuntu-latest
         steps:
-            # Checkout the code
-            - uses: actions/checkout@v2
-            # Setup node with version 12.x and NPM registry url
-            - uses: actions/setup-node@v1
+            - name: Checkout
+              uses: actions/checkout@v2
               with:
-                  node-version: '12.x'
-                  registry-url: 'https://registry.npmjs.org'
-            # Run yarn install to install project packages
-            - run: yarn install
-            # yarn build to build the project
-            - run: yarn build
-            # publish the files to NPM
-            - run: npm publish --access public
-              # for publishing, npm need authorization. We add the NPM token to the environment which will take care of authorization to publish to the package
-              env:
-                  NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+                  persist-credentials: false
+            - name: Setup Node
+              uses: actions/setup-node@v2
+              with:
+                  node-version: '16'
+                  check-latest: true
+            - name: Install
+              run: npm install
+            - name: Build Icons
+              working-directory: ./node_modules/@mattermost/compass-icons
+              run: |
+                  npm install
+                  npm run build
+            - name: Build Component Library
+              run: npm run build
+            - name: Build .npmrc file
+              working-directory: ./lib
+              run: |
+                  echo "//registry.npmjs.org/:authToken=${{ secrets.NPM_TOKEN }}" > ~/project/.npmrc
+                  echo "scope=${{ secrets.NPM_SCOPE }}"
+            - name: Publish to npm
+              working-directory: ./lib
+              run: npm publish --access public

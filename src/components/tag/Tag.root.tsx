@@ -40,8 +40,8 @@ const TagRoot = styled(Text).withConfig({
 
             ${applyPadding(
                 Spacing.symmetric({
-                    vertical: 25,
-                    horizontal: 25,
+                    vertical: 0,
+                    horizontal: 50,
                 })
             )};
 
@@ -50,6 +50,7 @@ const TagRoot = styled(Text).withConfig({
                 width: 'auto',
                 height: 'auto',
             })};
+
             ${applyTextMargin({ margin: 'none' })};
             ${applyTextStyles({ size, weight: variant === 'highlight' ? 'regular' : 'bold' })};
         `;

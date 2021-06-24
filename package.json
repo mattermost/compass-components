@@ -2,7 +2,6 @@
     "name": "compass-components",
     "version": "0.0.2-0",
     "description": "components aligning to the compass design system",
-    "main": "index.js",
     "scripts": {
         "build-storybook": "build-storybook",
         "build": "node -v && rimraf ./lib && npm run build:icons && npm run build:compile && npm run build:copy-files",
@@ -19,7 +18,8 @@
         "type": "git",
         "url": "git+https://github.com/mattermost/compass-components.git"
     },
-    "author": "",
+    "files": ["lib"],
+    "author": "Mattermost",
     "license": "ISC",
     "bugs": {
         "url": "https://github.com/mattermost/compass-components/issues"
