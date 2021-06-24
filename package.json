@@ -1,6 +1,6 @@
 {
     "name": "compass-components",
-    "version": "0.0.2-6",
+    "version": "0.0.2-7",
     "description": "components aligning to the compass design system",
     "scripts": {
         "build-storybook": "build-storybook",
