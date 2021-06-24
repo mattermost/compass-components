@@ -2,23 +2,26 @@ import React from 'react';
 
 import { Utils } from '../../shared';
 import Icon from '../../foundations/icon';
-import Text from '../text';
 
-import { TEXT_INPUT_VALUES_MAPPING } from './TextInput.constants';
+import { DEFAULT_TEXT_INPUT_SIZE, TEXT_INPUT_VALUES_MAPPING } from './TextInput.constants';
 import TextInputRoot from './TextInput.root';
+import InputRoot from './Input.root';
 import PTextInput from './TextInput.props';
+import LabelRoot from './Label.root';
 
 const TextInput: React.FC<PTextInput> = ({
     label,
     placeholder,
-    size,
+    size = DEFAULT_TEXT_INPUT_SIZE,
+    value,
     leadingIcon,
     trailingIcon,
-    width,
+    active,
     onClear,
+    onChange,
     ...rest
 }: PTextInput) => {
-    const { iconSize, labelSize } = TEXT_INPUT_VALUES_MAPPING[size];
+    const { iconSize } = TEXT_INPUT_VALUES_MAPPING[size];
 
     const hasLabel = Utils.isString(label) && label.length > 0;
     const hasPlaceholder = Utils.isString(placeholder) && placeholder.length > 0;
@@ -26,15 +29,19 @@ const TextInput: React.FC<PTextInput> = ({
     const onClearInput = (): void => (isClearable ? onClear : null);
 
     return (
-        <TextInputRoot size={size} width={width} leadingIcon={leadingIcon} {...rest}>
-            {leadingIcon !== 'none' && <Icon glyph={leadingIcon} size={iconSize} />}
-            <input className={'input__field'} placeholder={hasPlaceholder ? placeholder : ''} />
+        <TextInputRoot size={size} active={active} {...rest}>
+            {leadingIcon && leadingIcon !== 'none' && <Icon glyph={leadingIcon} size={iconSize} />}
+            <InputRoot
+                value={value}
+                placeholder={hasPlaceholder ? placeholder : ''}
+                onChange={onChange}
+            />
             {hasLabel && (
-                <Text element={'span'} size={labelSize} className={'input__label'}>
+                <LabelRoot size={size} {...rest}>
                     {label}
-                </Text>
+                </LabelRoot>
             )}
-            {trailingIcon !== 'none' && (
+            {trailingIcon && trailingIcon !== 'none' && (
                 <Icon glyph={trailingIcon} size={iconSize} onClick={onClearInput} />
             )}
         </TextInputRoot>

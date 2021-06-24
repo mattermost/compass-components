@@ -155,24 +155,23 @@ export const defaultArgs = {
     size: DEFAULT_TEXT_INPUT_SIZE,
     leadingIcon: DEFAULT_LEADING_ICON,
     trailingIcon: DEFAULT_TRAILING_ICON,
-    labelAnimation: true,
+    animatedLabel: true,
+    value: '',
     width: 300,
 };
 
 export const ControlledTextInput = (args) => {
     const [value, setValue] = useState(args.value);
-    console.log(args.value);
+    const onChange = (event) => {
+        setValue(event.target.value);
+    };
     return (
         <TextInput
             {...args}
             onChange={(event) => {
-                console.log(event);
                 setValue(event.target.value);
             }}
             value={value}
-            onClear={() => {
-                console.log('okkkk');
-            }}
         />
     );
 };

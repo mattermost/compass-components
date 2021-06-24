@@ -53,7 +53,7 @@ type PTextInput = {
      * whether the label should be animated
      * @default true
      * */
-    labelAnimation?: boolean;
+    animatedLabel?: boolean;
     /**
      * custom value
      * */
@@ -69,30 +69,29 @@ type PTextInput = {
     /**
      * onFocus handler
      * */
-    onFocus?: () => void;
+    onFocus?: (event: React.MouseEvent) => void;
     /**
      * onBlur handler
      * */
-    onBlur?: () => void;
+    onBlur?: (event: React.MouseEvent) => void;
     /**
      * custom classname
      * */
     className?: string;
 };
 
-export type PTextInputRoot = Required<
+type PTextInputRoot = Required<
+    Pick<PTextInput, 'hasError' | 'disabled' | 'active' | 'width' | 'size' | 'backgroundColor'>
+>;
+
+type PLabelRoot = Required<
     Pick<
         PTextInput,
-        | 'hasError'
-        | 'disabled'
-        | 'active'
-        | 'width'
-        | 'size'
-        | 'backgroundColor'
-        | 'labelAnimation'
-        | 'value'
-        | 'leadingIcon'
+        'active' | 'size' | 'value' | 'backgroundColor' | 'animatedLabel' | 'leadingIcon'
     >
 >;
 
+type PInputRoot = Required<Pick<PTextInput, 'placeholder' | 'value' | 'onChange'>>;
+
 export default PTextInput;
+export type { PTextInputRoot, PLabelRoot, PInputRoot };
