@@ -31,6 +31,8 @@ jobs:
                   npm run build
             - name: Build Component Library
               run: npm run build
+            - name: checking npm configs
+              run: npm config ls -l
             - name: Publish to npm
               working-directory: ./lib
               run: npm publish --access public
