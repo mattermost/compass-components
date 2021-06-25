@@ -1,7 +1,6 @@
 import styled, { css } from 'styled-components';
 import { FlattenSimpleInterpolation, ThemedStyledProps } from 'styled-components/ts3.6';
 
-import { applyTextMargin, applyTextStyles } from '../text';
 import { applyShape } from '../../foundations/shape';
 import { setAlpha, blendColors, Utils } from '../../shared';
 import { TTheme } from '../../utilities/theme';
@@ -41,15 +40,6 @@ const RadioRoot = styled.label.withConfig({
             colors.border = colors.text;
         }
 
-        // @default: `size === 'medium'`
-        let labelMargin = 10;
-
-        if (size === 'sm') {
-            labelMargin = 8;
-        } else if (size === 'lg') {
-            labelMargin = 12;
-        }
-
         const actionStyles = disabled
             ? css`
                   cursor: not-allowed;
@@ -57,7 +47,7 @@ const RadioRoot = styled.label.withConfig({
             : css`
                   cursor: pointer;
                   &:hover {
-                      .control {
+                      span {
                           border-color: ${blendColors(
                               colors.border,
                               setAlpha(colors.border, opacities.hover)
@@ -75,7 +65,7 @@ const RadioRoot = styled.label.withConfig({
                           inset 0 0 0 3px ${colors.checked};
                   }
 
-                  .input:checked + .control {
+                  input:checked + span {
                       border-color: ${colors.checked};
 
                       &:after {
@@ -92,11 +82,11 @@ const RadioRoot = styled.label.withConfig({
             justify-content: center;
             align-items: center;
 
-            .input {
+            input {
                 display: none;
             }
 
-            .control {
+            span {
                 ${applyShape({
                     radius: 'circle',
                     width: RADIO_VALUES_MAPPING[size].radioSize,
@@ -116,15 +106,6 @@ const RadioRoot = styled.label.withConfig({
                     transform: scale(0);
                     transition: all 0.2s ease;
                 }
-            }
-
-            .label {
-                ${applyTextStyles({
-                    inheritLineHeight: true,
-                    size: RADIO_VALUES_MAPPING[size].labelSize,
-                })};
-                ${applyTextMargin({ margin: 'none' })};
-                margin-left: ${labelMargin}px;
             }
         `;
     }

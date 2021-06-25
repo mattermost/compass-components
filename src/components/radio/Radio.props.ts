@@ -35,6 +35,10 @@ type PRadio = {
     className?: string;
 };
 
-export type PRadioRoot = Required<Pick<PRadio, 'hasError' | 'disabled' | 'size' | 'checked'>>;
+type PRadioRoot = Required<Pick<PRadio, 'hasError' | 'disabled' | 'size' | 'checked'>>;
+
+type PRadioLabel = Required<Pick<PRadio, 'size'>>;
 
 export default PRadio;
+
+export type { PRadioRoot, PRadioLabel };

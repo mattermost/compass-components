@@ -1,30 +1,20 @@
 import React from 'react';
 
-import Text from '../text';
 import { Utils } from '../../shared';
 
 import { DEFAULT_RADIO_SIZE } from './Radio.constants';
 import PRadio from './Radio.props';
 import RadioRoot from './Radio.root';
+import RadioLabelRoot from './RadioLabel.root';
 
-const Radio: React.FC<PRadio> = ({
-    label,
-    hasError,
-    disabled,
-    size = DEFAULT_RADIO_SIZE,
-    checked,
-}: PRadio) => {
+const Radio: React.FC<PRadio> = ({ label, size = DEFAULT_RADIO_SIZE, ...rest }: PRadio) => {
     const hasLabel = Utils.isString(label) && label.length > 0;
 
     return (
-        <RadioRoot hasError={hasError} disabled={disabled} checked={checked} size={size}>
-            <input className={'input'} id="hidden__input" checked={checked} type={'Radio'} />
-            <span className={'control'} />
-            {hasLabel && (
-                <Text element={'span'} className={'label'}>
-                    {label}
-                </Text>
-            )}
+        <RadioRoot size={size} {...rest}>
+            <input id="hidden__input" type={'radio'} />
+            <span />
+            {hasLabel && <RadioLabelRoot size={size}>{label}</RadioLabelRoot>}
         </RadioRoot>
     );
 };
