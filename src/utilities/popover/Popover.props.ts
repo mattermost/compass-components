@@ -1,18 +1,13 @@
 import { ReactNode } from 'react';
-import { Placement, VirtualElement } from '@popperjs/core';
 
-import { TPopoverSizeToken } from './Popover.types';
+import { TPopoverAnchorElement, TPopoverOffset, TPopoverPlacement } from './Popover.types';
 
 type PPopover = {
     children: ReactNode | ReactNode[];
-    anchor: Element | VirtualElement;
-    placement?: Placement;
+    anchor: TPopoverAnchorElement;
+    placement?: TPopoverPlacement;
+    offset?: TPopoverOffset;
     show?: boolean;
-    /**
-     * the size token to define the Popover size
-     * @default 'md'
-     */
-    size?: TPopoverSizeToken;
     className?: string;
 };
 

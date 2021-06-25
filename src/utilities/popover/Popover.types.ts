@@ -1,5 +1,7 @@
-import { TComponentSizeToken } from '../../shared';
+import { Placement, VirtualElement } from '@popperjs/core';
 
-type TPopoverNumber = number;
+type TPopoverOffset = [number, number];
 
-export type { TPopoverNumber, TComponentSizeToken as TPopoverSizeToken };
+type TPopoverAnchorElement = Element | VirtualElement;
+
+export type { TPopoverOffset, TPopoverAnchorElement, Placement as TPopoverPlacement };
