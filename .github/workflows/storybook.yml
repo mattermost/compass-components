@@ -23,11 +23,6 @@ jobs:
               # @see https://github.com/storybookjs/storybook/issues/14119 for reference
               run: |
                   npm install --legacy-peer-deps
-            - name: Build Icons
-              working-directory: ./node_modules/@mattermost/compass-icons
-              run: |
-                  npm install
-                  npm run build
             - name: Build Storybook
               run: |
                   npm run build-storybook
