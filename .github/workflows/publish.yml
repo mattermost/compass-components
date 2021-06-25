@@ -1,4 +1,3 @@
-# NPM Publish is the name for this action
 name: build and publish
 
 # This action will trigger on every release get created
