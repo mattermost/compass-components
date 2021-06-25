@@ -7,8 +7,7 @@
     "license": "MIT",
     "scripts": {
         "build-storybook": "build-storybook",
-        "build": "node -v && rimraf ./lib && npm run build:icons && npm run build:compile && npm run build:copy-files",
-        "build:icons": "node ./scripts/build-icons.js",
+        "build": "node -v && rimraf ./lib && npm run build:compile && npm run build:copy-files",
         "build:compile": "tsc --extendedDiagnostics -p \"./tsconfig.build.json\"",
         "build:copy-files": "node ./scripts/copy-files.js",
         "lint": "eslint ./src",
@@ -28,7 +27,7 @@
         "node": ">=12.0.0"
     },
     "dependencies": {
-        "@mattermost/compass-icons": "^0.1.1-1",
+        "@mattermost/compass-icons": "^0.1.1-2",
         "@popperjs/core": "^2.9.2",
         "axios": "^0.21.1",
         "clsx": "^1.1.1",
