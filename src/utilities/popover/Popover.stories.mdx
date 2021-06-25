@@ -3,6 +3,10 @@ import { Canvas, Meta, Story } from '@storybook/addon-docs';
 
 import IconButton from '../../components/icon-button';
 import Popover from './Popover';
+import Shape from '../../foundations/shape';
+import Grid from '../layout';
+import Icon from '../../foundations/icon';
+import Spacing from '../spacing';
 
 <Meta title={'Utilities/Popover'} />
 
@@ -16,8 +20,26 @@ import Popover from './Popover';
             }
             return (
                 <div>
-                    <IconButton icon={'menu'} onClick={handleClick} ref={buttonRef} />
-                    <Popover show={show} anchor={buttonRef.current} />
+                    <IconButton
+                        icon={'menu'}
+                        onClick={handleClick}
+                        ref={buttonRef}
+                        toggled={show}
+                    />
+                    <Popover show={show} anchor={buttonRef.current} placement={'bottom-start'}>
+                        <Shape elevation={3}>
+                            <Grid element={'ul'} justify={'stretch'} padding={Spacing.all(100)}>
+                                <li>
+                                    <Icon glyph={'message-check'} />
+                                    Message
+                                </li>
+                                <li>
+                                    <Icon glyph={'check-circle'} />
+                                    Check
+                                </li>
+                            </Grid>
+                        </Shape>
+                    </Popover>
                 </div>
             );
         }}

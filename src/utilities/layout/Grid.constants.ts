@@ -16,6 +16,8 @@ const GRID_ELEMENTS: TGridElement[] = [
     'section',
     'summary',
     'time',
+    'ul',
+    'li',
 ];
 
 const DEFAULT_GRID_COMPONENT: TGridElement = 'div';

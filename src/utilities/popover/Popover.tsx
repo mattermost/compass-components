@@ -3,24 +3,30 @@ import { usePopper } from 'react-popper';
 
 import PPopover from './Popover.props';
 
-const Popover = ({ anchor, show = false }: PPopover): JSX.Element | null => {
+const Popover = ({
+    anchor,
+    children,
+    show = false,
+    placement = 'bottom',
+}: PPopover): JSX.Element | null => {
     const popperReference = useRef(null);
     const { styles, attributes } = usePopper(anchor, popperReference.current, {
+        placement,
         modifiers: [
             {
                 name: 'offset',
                 options: {
-                    offset: [10, 50],
+                    offset: [0, 10],
                 },
             },
         ],
     });
 
-    return show ? (
+    return (
         <div ref={popperReference} style={styles.popper} {...attributes.popper}>
-            Popper element
+            {show && children}
         </div>
-    ) : null;
+    );
 };
 
 export default Popover;

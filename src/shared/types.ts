@@ -13,6 +13,8 @@ type TContainerElement =
     | 'span'
     | 'article'
     | 'aside'
+    | 'ul'
+    | 'li'
     | 'details'
     | 'figcaption'
     | 'figure'
