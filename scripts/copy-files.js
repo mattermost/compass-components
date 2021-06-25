@@ -1,4 +1,4 @@
-/* eslint-disable no-console,no-process-exit,import/no-extraneous-dependencies */
+/* eslint-disable no-console,no-process-exit */
 'use strict';
 
 const path = require('path');

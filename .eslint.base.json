@@ -313,7 +313,7 @@
         "import/no-extraneous-dependencies": [
             "error",
             {
-                "devDependencies": ["test/**", "tests/**", "**/*.test.js", "**/*.spec.js"],
+                "devDependencies": ["test/**", "tests/**", "**/*.test.js", "**/*.spec.js", "scripts/**.js"],
                 "optionalDependencies": false,
                 "peerDependencies": false,
                 "bundledDependencies": false
