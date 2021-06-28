@@ -1,0 +1,35 @@
+name: build and publish
+
+# This action will trigger on every release get created
+on:
+    workflow_dispatch:
+    create:
+        tag: [created]
+
+# Job will run on a ubuntu instance
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        steps:
+            - name: checkout package repo
+              uses: actions/checkout@v2
+              with:
+                  persist-credentials: false
+            - name: setup node
+              uses: actions/setup-node@v2
+              with:
+                  node-version: '16'
+                  check-latest: true
+                  registry-url: 'https://registry.npmjs.org'
+                  scope: '@mattermost'
+            - name: install dependencies
+              # adding --legacy-peer-deps for now until issue in storybook is fixed
+              # @see https://github.com/storybookjs/storybook/issues/14119 for reference
+              run: npm install --legacy-peer-deps
+            - name: build component library
+              run: npm run build
+            - name: publish to npm
+              working-directory: ./lib
+              run: npm publish --access public
+              env:
+                  NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
