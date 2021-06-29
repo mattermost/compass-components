@@ -27,6 +27,8 @@ const DEFAULT_PROPERTY_WHITELIST: string[] = [
     'selected',
     'type',
     'onClick',
+    'checked',
+    'defaultChecked',
 ];
 
 const COMPONENT_SIZES: TComponentSizes = [

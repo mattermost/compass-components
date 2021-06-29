@@ -1,4 +1,4 @@
-/* eslint-disable no-console,no-process-exit,import/no-extraneous-dependencies */
+/* eslint-disable node/no-unpublished-require,no-console,no-process-exit,import/no-extraneous-dependencies */
 'use strict';
 
 const path = require('path');
