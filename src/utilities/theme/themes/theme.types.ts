@@ -56,12 +56,10 @@ type TThemeBadges = {
     [key in TStatusBadgeStatus]: string;
 };
 
+type TThemeAnimationSpeed = 'fastest' | 'fast' | 'normal' | 'slow' | 'slowest';
+
 type TThemeAnimations = {
-    fastest: string;
-    fast: string;
-    normal: string;
-    slow: string;
-    slowest: string;
+    [key in TThemeAnimationSpeed]: string;
 };
 
 type TTheme = {
@@ -85,4 +83,5 @@ export type {
     TThemeBorderColors,
     TTHemeBackgroundColors,
     TThemeColorDefinition,
+    TThemeAnimationSpeed,
 };

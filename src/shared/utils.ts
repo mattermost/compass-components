@@ -156,6 +156,12 @@ function assert(assertion: boolean, message: string, warnOnly = false): void {
     }
 }
 
+/**
+ * This LITERALLY deos NOTHING! :D
+ * @returns {void}
+ */
+function noop(): void {}
+
 const Utils = {
     warn,
     assert,
@@ -171,6 +177,7 @@ const Utils = {
     hideStyledComponentProperties,
     getFontMargin,
     getPxValue,
+    noop,
 };
 
 export { CompassError };

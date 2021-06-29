@@ -1,13 +1,13 @@
-import { ReactNode } from 'react';
+import { MutableRefObject, ReactNode } from 'react';
 
-import { TPopoverAnchorElement, TPopoverOffset, TPopoverPlacement } from './Popover.types';
+import { TPopoverOffset, TPopoverPlacement } from './Popover.types';
 
 type PPopover = {
     children: ReactNode | ReactNode[];
-    anchor: TPopoverAnchorElement;
+    anchorReference: MutableRefObject<null>;
+    isVisible: boolean;
     placement?: TPopoverPlacement;
     offset?: TPopoverOffset;
-    show?: boolean;
     className?: string;
 };
 

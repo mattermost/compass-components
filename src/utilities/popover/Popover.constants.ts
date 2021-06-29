@@ -1,41 +1,11 @@
-import { TPopoverSizeToken, TPopoverNumber } from './Popover.types';
+import { SIZES } from '../spacing';
 
-const POPOVER_SIZES: TPopoverSizeToken[] = [
-    'xxxs',
-    'xxs',
-    'xs',
-    'sm',
-    'md',
-    'lg',
-    'xl',
-    'xxl',
-    'xxxl',
+import { TPopoverOffset, TPopoverOffsetToken } from './Popover.types';
+
+const POPOVER_OFFSET_TOKEN: TPopoverOffsetToken[] = [
+    0, 25, 50, 75, 100, 125, 150, 175, 200, 250, 300, 350, 400, 450, 500, 600, 700, 800,
 ];
 
-const POPOVER_SIZE_LABELS: { [size in TPopoverSizeToken]: string } = {
-    xxxs: 'xxx-small',
-    xxs: 'xx-small',
-    xs: 'x-small',
-    sm: 'small',
-    md: 'medium',
-    lg: 'large',
-    xl: 'x-large',
-    xxl: 'xx-large',
-    xxxl: 'xxx-large',
-};
+const DEFAULT_POPOVER_OFFSET: TPopoverOffset = [0, 0];
 
-const DEFAULT_POPOVER_SIZE: TPopoverSizeToken = 'md';
-
-const POPOVER_DEFINITIONS: { [size in TPopoverSizeToken]: TPopoverNumber } = {
-    xxxs: 200,
-    xxs: 200,
-    xs: 200,
-    sm: 200,
-    md: 200,
-    lg: 200,
-    xl: 200,
-    xxl: 200,
-    xxxl: 200,
-};
-
-export { POPOVER_SIZES, DEFAULT_POPOVER_SIZE, POPOVER_SIZE_LABELS, POPOVER_DEFINITIONS };
+export { DEFAULT_POPOVER_OFFSET, POPOVER_OFFSET_TOKEN, SIZES as POPOVER_OFFSET_VALUES };

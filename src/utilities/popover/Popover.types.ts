@@ -1,7 +1,7 @@
-import { Placement, VirtualElement } from '@popperjs/core';
+import { Placement } from '@popperjs/core';
 
-type TPopoverOffset = [number, number];
+import { TSpacingToken as TPopoverOffsetToken } from '../spacing';
 
-type TPopoverAnchorElement = Element | VirtualElement;
+type TPopoverOffset = [TPopoverOffsetToken, TPopoverOffsetToken];
 
-export type { TPopoverOffset, TPopoverAnchorElement, Placement as TPopoverPlacement };
+export type { TPopoverOffset, Placement as TPopoverPlacement, TPopoverOffsetToken };

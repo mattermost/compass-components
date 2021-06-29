@@ -13,20 +13,24 @@ import Spacing from '../spacing';
 <Canvas hidden>
     <Story name="default">
         {() => {
-            const [show, setShow] = useState(false);
-            const buttonRef = useRef(null);
+            const [isVisible, setIsVisible] = useState(false);
+            const buttonReference = useRef(null);
             function handleClick() {
-                setShow(!show);
+                setIsVisible(!isVisible);
             }
             return (
                 <div>
                     <IconButton
                         icon={'menu'}
                         onClick={handleClick}
-                        ref={buttonRef}
-                        toggled={show}
+                        ref={buttonReference}
+                        toggled={isVisible}
                     />
-                    <Popover show={show} anchor={buttonRef.current} placement={'bottom-start'}>
+                    <Popover
+                        isVisible={isVisible}
+                        anchorReference={buttonReference}
+                        placement={'bottom-start'}
+                    >
                         <Shape elevation={3}>
                             <Grid element={'ul'} justify={'stretch'} padding={Spacing.all(100)}>
                                 <li>

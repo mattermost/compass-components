@@ -21,16 +21,7 @@ const IconButton = React.forwardRef(
         }: PIconButton,
         reference: ForwardedRef<HTMLButtonElement>
     ): JSX.Element => (
-        <IconButtonRoot
-            ref={reference}
-            as={element}
-            size={size}
-            onClick={(): void => {
-                // eslint-disable-next-line no-console
-                console.log('#### IconButton clicked!');
-            }}
-            {...rest}
-        >
+        <IconButtonRoot ref={reference} as={element} size={size} {...rest}>
             <Icon glyph={icon} size={ICON_BUTTON_DEFINITIONS[size].iconSize} />
             {label && <span>{label}</span>}
         </IconButtonRoot>
