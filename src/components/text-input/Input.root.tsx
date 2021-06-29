@@ -1,14 +1,11 @@
 import styled, { css } from 'styled-components';
 import { FlattenSimpleInterpolation, ThemedStyledProps } from 'styled-components/ts3.6';
 
-import { Utils } from '../../shared';
 import { TTheme } from '../../utilities/theme';
 
 import { PInputRoot } from './TextInput.props';
 
-const InputRoot = styled.input.withConfig({
-    shouldForwardProp: Utils.forwardProperties(),
-})<PInputRoot>(
+const InputRoot = styled.input<PInputRoot>(
     ({ theme: { text } }: ThemedStyledProps<PInputRoot, TTheme>): FlattenSimpleInterpolation => {
         const colors: Record<string, string> = {
             placeholder: text.disabled,

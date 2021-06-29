@@ -1,3 +1,5 @@
+import { ChangeEventHandler, FocusEventHandler, ReactNode, ReactNodeArray } from 'react';
+
 import { TIconGlyph } from '../../foundations/icon';
 import { TButtonWidth } from '../button';
 
@@ -24,11 +26,12 @@ type PTextInput = {
     size?: TTextInputSizeToken;
     /**
      * the width of the text input
-     * @default '100%'
+     * @default 'full'
      * */
     width?: TButtonWidth;
     /**
      * custom background color
+     * @default theme.background.default
      * */
     backgroundColor?: string;
     /**
@@ -61,7 +64,7 @@ type PTextInput = {
     /**
      * onChange handler
      * */
-    onChange?: (event: React.MouseEvent) => void;
+    onChange?: ChangeEventHandler<HTMLInputElement>;
     /**
      * onClear handler
      * */
@@ -69,27 +72,25 @@ type PTextInput = {
     /**
      * onFocus handler
      * */
-    onFocus?: (event: React.MouseEvent) => void;
+    onFocus?: FocusEventHandler<HTMLDivElement>;
     /**
      * onBlur handler
      * */
-    onBlur?: (event: React.MouseEvent) => void;
+    onBlur?: FocusEventHandler<HTMLDivElement>;
     /**
      * custom classname
      * */
     className?: string;
+    children: ReactNode | ReactNodeArray;
 };
 
 type PTextInputRoot = Required<
-    Pick<PTextInput, 'hasError' | 'disabled' | 'active' | 'width' | 'size' | 'backgroundColor'>
->;
+    Pick<PTextInput, 'hasError' | 'disabled' | 'active' | 'width' | 'size'>
+> &
+    Pick<PTextInput, 'backgroundColor'>;
 
-type PLabelRoot = Required<
-    Pick<
-        PTextInput,
-        'active' | 'size' | 'value' | 'backgroundColor' | 'animatedLabel' | 'leadingIcon'
-    >
->;
+type PLabelRoot = Required<Pick<PTextInput, 'active' | 'size' | 'value' | 'animatedLabel'>> &
+    Pick<PTextInput, 'backgroundColor' | 'leadingIcon' | 'children'>;
 
 type PInputRoot = Required<Pick<PTextInput, 'placeholder' | 'value' | 'onChange'>>;
 

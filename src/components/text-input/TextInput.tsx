@@ -12,32 +12,53 @@ import LabelRoot from './Label.root';
 const TextInput: React.FC<PTextInput> = ({
     label,
     placeholder,
-    size = DEFAULT_TEXT_INPUT_SIZE,
     value,
     leadingIcon,
     trailingIcon,
-    active,
-    onClear,
-    onChange,
+    size = DEFAULT_TEXT_INPUT_SIZE,
+    width = 'full',
+    active = false,
+    hasError = false,
+    disabled = false,
+    animatedLabel = true,
+    onClear = Utils.noop,
+    onFocus = Utils.noop,
+    onChange = Utils.noop,
     ...rest
 }: PTextInput) => {
     const { iconSize } = TEXT_INPUT_VALUES_MAPPING[size];
 
     const hasLabel = Utils.isString(label) && label.length > 0;
-    const hasPlaceholder = Utils.isString(placeholder) && placeholder.length > 0;
-    const isClearable = Utils.isFunction(onClear);
-    const onClearInput = (): void => (isClearable ? onClear : null);
+    const onClearInput: () => void = Utils.isFunction(onClear) ? onClear : (): void => {};
+
+    const rootProperties = {
+        size,
+        active,
+        hasError,
+        disabled,
+        animatedLabel,
+        width,
+        onFocus,
+    };
 
     return (
-        <TextInputRoot size={size} active={active} {...rest}>
+        <TextInputRoot {...rootProperties} {...rest}>
             {leadingIcon && leadingIcon !== 'none' && <Icon glyph={leadingIcon} size={iconSize} />}
             <InputRoot
-                value={value}
-                placeholder={hasPlaceholder ? placeholder : ''}
+                value={value || ''}
+                placeholder={
+                    Utils.isString(placeholder) && placeholder.length > 0 ? placeholder : ''
+                }
                 onChange={onChange}
             />
             {hasLabel && (
-                <LabelRoot size={size} {...rest}>
+                <LabelRoot
+                    size={size}
+                    value={value || ''}
+                    leadingIcon={leadingIcon}
+                    active={active}
+                    animatedLabel={animatedLabel}
+                >
                     {label}
                 </LabelRoot>
             )}

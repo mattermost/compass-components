@@ -1,6 +1,6 @@
 import { TSpacingToken } from '../../utilities/spacing';
-import { TIconSize } from '../foundations/icon';
 import { TTextSizeToken } from '../text';
+import { TIconSize } from '../../foundations/icon';
 
 type TTextInputSizeToken = 'sm' | 'md' | 'lg';
 

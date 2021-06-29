@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components';
 import { FlattenSimpleInterpolation, ThemedStyledProps } from 'styled-components/ts3.6';
 
 import { applyShape } from '../../foundations/shape';
-import { setAlpha, Utils } from '../../shared';
+import { setAlpha } from '../../shared';
 import { applyPadding } from '../../utilities/layout';
 import { TTheme } from '../../utilities/theme';
 import Spacing from '../../utilities/spacing';
@@ -10,17 +10,15 @@ import Spacing from '../../utilities/spacing';
 import { TEXT_INPUT_VALUES_MAPPING } from './TextInput.constants';
 import { PTextInputRoot } from './TextInput.props';
 
-const TextInputRoot = styled.div.withConfig({
-    shouldForwardProp: Utils.forwardProperties(),
-})<PTextInputRoot>(
+const TextInputRoot = styled.div<PTextInputRoot>(
     ({
+        theme: { palette, action, text, background },
         hasError,
         disabled,
         active,
         width,
         size,
-        backgroundColor,
-        theme: { palette, action, text, background },
+        backgroundColor = background.default,
     }: ThemedStyledProps<PTextInputRoot, TTheme>): FlattenSimpleInterpolation => {
         const colors: Record<string, string> = {
             active: hasError ? palette.alert.main : palette.primary.main,
@@ -58,7 +56,7 @@ const TextInputRoot = styled.div.withConfig({
               `;
 
         return css`
-            ${actionStyles}
+            ${actionStyles};
             color: ${colors.text};
             border: 1px solid ${colors.border};
             position: relative;
