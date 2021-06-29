@@ -30,6 +30,12 @@ const Transition = ({
     exit = true,
     speed = DEFAULT_TRANSITION_SPEED,
     onTransitionEnd = Utils.noop,
+    onEnter = Utils.noop,
+    onEntering = Utils.noop,
+    onEntered = Utils.noop,
+    onExit = Utils.noop,
+    onExiting = Utils.noop,
+    onExited = Utils.noop,
 }: PTransition): JSX.Element => {
     const types = Utils.isString(type) ? [type] : type;
 
@@ -39,6 +45,12 @@ const Transition = ({
         duration: theme.animation[speed],
         enter,
         exit,
+        onEnter,
+        onEntering,
+        onEntered,
+        onExit,
+        onExiting,
+        onExited,
     };
 
     return (
