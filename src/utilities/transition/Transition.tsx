@@ -26,17 +26,23 @@ const Transition = ({
     children,
     theme,
     type,
+    enter = true,
+    exit = true,
     speed = DEFAULT_TRANSITION_SPEED,
     onTransitionEnd = Utils.noop,
 }: PTransition): JSX.Element => {
     const types = Utils.isString(type) ? [type] : type;
 
+    const rootProperties = {
+        in: isVisible,
+        addEndListener: onTransitionEnd,
+        duration: theme.animation[speed],
+        enter,
+        exit,
+    };
+
     return (
-        <TransitionRoot
-            in={isVisible}
-            addEndListener={onTransitionEnd}
-            duration={theme.animation[speed]}
-        >
+        <TransitionRoot {...rootProperties}>
             {(state): JSX.Element => (
                 <Animation state={state} types={types} duration={theme.animation[speed]}>
                     {children}
