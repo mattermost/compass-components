@@ -13,17 +13,19 @@ import { TTextInputSizeToken } from './TextInput.types';
 
 const LabelRoot = styled.label<PLabelRoot>(
     ({
-        theme: { background },
+        theme: { background, palette },
         active,
         size,
         value,
         animatedLabel,
+        hasError,
         leadingIcon,
         backgroundColor = background.default,
     }: ThemedStyledProps<PLabelRoot, TTheme>): FlattenSimpleInterpolation => {
         const hasValue = Utils.isString(value) && value.length > 0;
 
         const colors: Record<string, string> = {
+            active: hasError ? palette.alert.main : palette.primary.main,
             background: backgroundColor || background.shape,
         };
         const labelPositions: Record<TTextInputSizeToken, string> = {
@@ -37,12 +39,11 @@ const LabelRoot = styled.label<PLabelRoot>(
         }
 
         const actionStyles = css`
-                input:focus + & {
-                    background-color: ${colors.background};
-                    transform: ${
-                        animatedLabel ? `translate(${labelPositions[size]}) scale(0.7)` : 'scale(0)'
-                    };
-                }
+            input:focus + & {
+                background-color: ${colors.background};
+                ${animatedLabel
+                    ? `transform: translate(${labelPositions[size]}) scale(0.7);`
+                    : 'transform: scale(0); opacity: 0;'};
             }
         `;
 
@@ -51,8 +52,9 @@ const LabelRoot = styled.label<PLabelRoot>(
             position: absolute;
             white-space: nowrap;
             transform: translate(${hasValue ? labelPositions[size] : '0, 0'});
+            opacity: 1;
             background-color: transparent;
-            transition: transform 200ms ease-in;
+            transition: all 200ms ease-in;
 
             ${applyPadding(Spacing.symmetric({ vertical: 25, horizontal: 75 }))};
             ${applyMargin(

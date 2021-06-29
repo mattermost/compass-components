@@ -142,11 +142,20 @@ export const argTypes = {
     placeholder: { control: { type: 'text' } },
     size: { control: { type: 'radio', options: TEXT_INPUT_SIZES } },
     hasError: { control: { type: 'boolean' } },
+    animatedLabel: { control: { type: 'boolean' } },
     disabled: { control: { type: 'boolean' } },
     active: { control: { type: 'boolean' } },
     width: { options: [...BUTTON_WIDTHS, 100, 200, 300, 400], control: { type: 'select' } },
     backgroundColor: { control: { type: 'color' } },
-    ...Utils.hideComponentProperties(['onClick', 'className', 'onChange']),
+    ...Utils.hideComponentProperties([
+        'onClick',
+        'className',
+        'onChange',
+        'onClear',
+        'onFocus',
+        'onBlur',
+        'value',
+    ]),
 };
 
 export const defaultArgs = {
@@ -155,21 +164,22 @@ export const defaultArgs = {
     size: DEFAULT_TEXT_INPUT_SIZE,
     leadingIcon: DEFAULT_LEADING_ICON,
     trailingIcon: DEFAULT_TRAILING_ICON,
-    animatedLabel: true,
     value: '',
     width: 300,
 };
 
 export const ControlledTextInput = (args) => {
     const [value, setValue] = useState(args.value);
-    const onChange = (event) => {
-        setValue(event.target.value);
-    };
     return (
         <TextInput
             {...args}
             onChange={(event) => {
+                console.log('#### EVENT:', event);
                 setValue(event.target.value);
+            }}
+            onClear={(event) => {
+                console.log('#### EVENT:', event);
+                setValue('');
             }}
             value={value}
         />
@@ -200,19 +210,7 @@ export const noIconArgs = {
             ...defaultArgs,
         }}
     >
-        {(args) => {
-            const [value, setValue] = useState(args.value);
-            return (
-                <TextInput
-                    {...args}
-                    onChange={(event) => {
-                        console.log('#### EVENT:', event);
-                        setValue(event.target.value);
-                    }}
-                    value={value}
-                />
-            );
-        }}
+        {(args) => <ControlledTextInput {...args} />}
     </Story>
     <Story
         name="No trailing icon"

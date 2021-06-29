@@ -57,6 +57,7 @@ const TextInput: React.FC<PTextInput> = ({
                     value={value || ''}
                     leadingIcon={leadingIcon}
                     active={active}
+                    hasError={hasError}
                     animatedLabel={animatedLabel}
                 >
                     {label}
