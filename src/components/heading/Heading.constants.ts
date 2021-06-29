@@ -23,22 +23,14 @@ const DEFAULT_HEADING_ELEMENT_SIZES: Record<THeadingElement, THeadingSizeToken> 
 };
 
 const HEADING_SIZE_TOKENS: THeadingSizeToken[] = [
-    25,
-    50,
-    75,
-    100,
-    200,
-    300,
-    400,
-    500,
-    600,
-    700,
-    800,
-    900,
-    1000,
+    0, 25, 50, 75, 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000,
 ];
 
 const HEADING_DEFINITIONS: THeadingDefinitions = {
+    0: {
+        size: 8,
+        lineHeight: 14,
+    },
     25: {
         size: 10,
         lineHeight: 16,

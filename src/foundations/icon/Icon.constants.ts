@@ -1,4 +1,4 @@
-import IconGlyphs from '@mattermost/compass-icons/build/IconGlyphs';
+import IconGlyphs from '@mattermost/compass-icons/IconGlyphs';
 
 import { TIconColor, TIconGlyph, TIconSize } from './Icon.types';
 

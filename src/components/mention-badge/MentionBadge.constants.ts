@@ -20,9 +20,9 @@ const MENTIONBADGE_TEXT_SIZE_MAP: Record<TMentionBadgeSizeToken, TTextSizeToken>
 };
 
 const MENTIONBADGE_PADDING_SIZE_MAP: Record<TMentionBadgeSizeToken, TSpacingToken[]> = {
-    sm: [25, 25, 25],
-    md: [50, 50, 25],
-    lg: [75, 50, 25],
+    sm: [50, 50, 50],
+    md: [75, 75, 50],
+    lg: [100, 75, 50],
 };
 
 const DEFAULT_MENTIONBAGDE_MENTIONS = 1;

@@ -14,7 +14,6 @@ const MentionBadge: React.FC<PMentionBadge> = ({
     size = DEFAULT_MENTIONBADGE_SIZE,
     inverted = false,
     className,
-    children,
     ...rest
 }: PMentionBadge): JSX.Element => {
     const isUnreadBadge = mentions === 0;
@@ -30,7 +29,6 @@ const MentionBadge: React.FC<PMentionBadge> = ({
     return (
         <MentionBadgeRoot {...rootProperties} {...rest}>
             {!isUnreadBadge && (mentions > mentionLimit ? `${mentionLimit}+` : mentions)}
-            {children}
         </MentionBadgeRoot>
     );
 };

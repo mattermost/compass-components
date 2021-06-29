@@ -40,14 +40,24 @@ type PShape = {
      * @default 'auto'
      * */
     height?: number | string | 'auto';
+    /**
+     * custom background color
+     * @default theme.background.shape
+     */
+    backgroundColor?: string;
+    /**
+     * custom className
+     */
     className?: string;
     checked?: boolean;
 };
 
-type PShapeRoot = Omit<PShape, ''>;
+type PShapeRoot = Omit<PShape, 'className'>;
 
 type PApplyShape = Pick<PShape, 'width' | 'height' | 'radius'>;
 
 type PApplyElevation = Pick<PShape, 'elevation' | 'elevationOnHover'>;
 
-export type { PShape, PShapeRoot, PApplyShape, PApplyElevation };
+export type { PShapeRoot, PApplyShape, PApplyElevation };
+
+export default PShape;

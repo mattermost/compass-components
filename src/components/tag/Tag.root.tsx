@@ -20,7 +20,7 @@ const TagRoot = styled(Text).withConfig({
         onClick,
         theme,
     }: ThemedStyledProps<PTagRoot, TTheme>): FlattenSimpleInterpolation => {
-        const TAG_BACKGROUND_COLOR_MAP: Record<TTagVariant, TTheme> = {
+        const TAG_BACKGROUND_COLOR_MAP: Record<TTagVariant, string> = {
             general: theme.background.skeleton,
             info: theme.palette.primary.light,
             warning: theme.palette.alert.light,
@@ -40,8 +40,8 @@ const TagRoot = styled(Text).withConfig({
 
             ${applyPadding(
                 Spacing.symmetric({
-                    vertical: 25,
-                    horizontal: 25,
+                    vertical: 0,
+                    horizontal: 50,
                 })
             )};
 
@@ -50,8 +50,9 @@ const TagRoot = styled(Text).withConfig({
                 width: 'auto',
                 height: 'auto',
             })};
+
             ${applyTextMargin({ margin: 'none' })};
-            ${applyTextStyles({ size, weight: variant === 'highlight' ? 'normal' : 'bold' })};
+            ${applyTextStyles({ size, weight: variant === 'highlight' ? 'regular' : 'bold' })};
         `;
     }
 );

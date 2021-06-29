@@ -1,11 +1,10 @@
 import React from 'react';
-import styled from 'styled-components';
 
 import Heading from '../../components/heading';
 import Text from '../../components/text';
 import Grid from '../../utilities/layout';
 import Spacing from '../../utilities/spacing';
-import ShapeRoot from '../shape';
+import Shape from '../shape';
 import { convertToRgb, rgbToHex, rgbToHsl } from '../../shared';
 
 type PSwatch = {
@@ -15,7 +14,7 @@ type PSwatch = {
     variant?: 'noText' | 'bottom' | 'right';
 };
 
-const SwatchBase: React.FC<PSwatch> = ({
+const Swatch: React.FC<PSwatch> = ({
     color,
     shade,
     colorName,
@@ -35,13 +34,14 @@ const SwatchBase: React.FC<PSwatch> = ({
             flex={0}
         >
             <Grid alignment={'flex-end'}>
-                <ShapeRoot
+                <Shape
                     className={'swatch_color'}
                     radius={4}
                     elevation={1}
                     elevationOnHover={3}
                     width={140}
                     height={100}
+                    backgroundColor={rgbString}
                 />
             </Grid>
             {hasText && (
@@ -67,16 +67,5 @@ const SwatchBase: React.FC<PSwatch> = ({
         </Grid>
     );
 };
-
-const Swatch = styled(SwatchBase).attrs(
-    (props: PSwatch): PSwatch => ({
-        ...props,
-        color: convertToRgb(props.color),
-    })
-)`
-    .swatch_color {
-        background-color: ${(props: PSwatch): string => props.color};
-    }
-`;
 
 export default Swatch;

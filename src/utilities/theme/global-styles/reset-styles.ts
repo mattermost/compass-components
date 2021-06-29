@@ -1,7 +1,7 @@
 import { css } from 'styled-components';
 
 export const reset = css`
-    /* http://meyerweb.com/eric/tools/css/reset/
+    /* https://meyerweb.com/eric/tools/css/reset/
     v4.0 | 20180602
     License: none (public domain)
   */
@@ -135,7 +135,7 @@ export const reset = css`
         border-collapse: collapse;
         border-spacing: 0;
     }
-    /* http://www.paulirish.com/2012/box-sizing-border-box-ftw/ (2015/04/28)*/
+    /* https://www.paulirish.com/2012/box-sizing-border-box-ftw/ (2015/04/28)*/
     html,
     *,
     *:before,
