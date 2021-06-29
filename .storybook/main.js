@@ -13,7 +13,7 @@ module.exports = {
     typescript: {
         check: false,
         checkOptions: {},
-        reactDocgen: 'react-docgen',
+        reactDocgen: 'react-docgen-typescript',
         reactDocgenTypescriptOptions: {
             shouldExtractValuesFromUnion: true,
             shouldRemoveUndefinedFromOptional: true,
