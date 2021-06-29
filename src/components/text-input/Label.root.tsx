@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 import { FlattenSimpleInterpolation, ThemedStyledProps } from 'styled-components/ts3.6';
 
-import Text, { applyTextStyles } from '../text';
+import { applyTextStyles } from '../text';
 import { setAlpha, Utils } from '../../shared';
 import { applyMargin, applyPadding } from '../../utilities/layout';
 import { TTheme } from '../../utilities/theme';
@@ -11,17 +11,15 @@ import { TEXT_INPUT_VALUES_MAPPING } from './TextInput.constants';
 import { PLabelRoot } from './TextInput.props';
 import { TTextInputSizeToken } from './TextInput.types';
 
-const LabelRoot = styled(Text).withConfig({
-    shouldForwardProp: Utils.forwardProperties(),
-})<PLabelRoot>(
+const LabelRoot = styled.label<PLabelRoot>(
     ({
+        theme: { background },
         active,
         size,
         value,
-        backgroundColor,
         animatedLabel,
         leadingIcon,
-        theme: { background },
+        backgroundColor = background.default,
     }: ThemedStyledProps<PLabelRoot, TTheme>): FlattenSimpleInterpolation => {
         const hasValue = Utils.isString(value) && value.length > 0;
 
