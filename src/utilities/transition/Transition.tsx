@@ -13,7 +13,6 @@ import PTransition, { PAnimation } from './Transition.props';
 
 const Animation = styled.div<PAnimation>(
     ({ duration, state, types }: PAnimation) => css`
-        transition: all ${duration} ease-in-out;
         transition: ${types
             .map((type) => `${TRANSITION_TYPE_PROPERTY_MAP[type]} ${duration} ease-in-out`)
             .join(', ')};

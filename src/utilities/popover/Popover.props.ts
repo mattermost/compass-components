@@ -16,6 +16,11 @@ type PPopover = {
      */
     isVisible: boolean;
     /**
+     * renders Popover without animation
+     * @default false
+     */
+    noAnimation?: boolean;
+    /**
      * where should the Popover be placed acording to the anchor element
      * @default 'bottom'
      */

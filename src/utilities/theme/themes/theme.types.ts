@@ -56,7 +56,7 @@ type TThemeBadges = {
     [key in TStatusBadgeStatus]: string;
 };
 
-type TThemeAnimationSpeed = 'fastest' | 'fast' | 'normal' | 'slow' | 'slowest';
+type TThemeAnimationSpeed = 'instant' | 'fastest' | 'fast' | 'normal' | 'slow' | 'slowest';
 
 type TThemeAnimations = {
     [key in TThemeAnimationSpeed]: string;

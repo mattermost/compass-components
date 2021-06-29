@@ -4,7 +4,14 @@ import { TThemeAnimationSpeed } from '../theme';
 
 import { TTransitionType, TTransitionTypeStatusMap } from './Transition.types';
 
-const TRANSITION_SPEEDS: TThemeAnimationSpeed[] = ['fastest', 'fast', 'normal', 'slow', 'slowest'];
+const TRANSITION_SPEEDS: TThemeAnimationSpeed[] = [
+    'instant',
+    'fastest',
+    'fast',
+    'normal',
+    'slow',
+    'slowest',
+];
 
 const DEFAULT_TRANSITION_SPEED: TThemeAnimationSpeed = 'normal';
 
@@ -45,7 +52,7 @@ const TRANSITION_TYPE_DEFINITIONS: TTransitionTypeStatusMap = {
             transform: scale(0.5);
         `,
         unmounted: css`
-            transform: scale(0.5);
+            transform: scale(1);
         `,
     },
 };

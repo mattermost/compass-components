@@ -7,17 +7,57 @@ import Shape from '../../foundations/shape';
 import Grid from '../layout';
 import Icon from '../../foundations/icon';
 import Spacing from '../spacing';
+import {
+    DEFAULT_POPOVER_PLACEMENT,
+    POPOVER_OFFSET_TOKENS,
+    POPOVER_PLACEMENTS,
+} from './Popover.constants';
 
 <Meta title={'Utilities/Popover'} />
 
+export const popoverARgTypes = {
+    placement: {
+        options: POPOVER_PLACEMENTS,
+        control: {
+            type: 'select',
+        },
+    },
+    offsetX: {
+        name: 'cross-axis-offset',
+        description:
+            'adds an offset to the cross axis. e.g. adds offset to the left, when placement is `bottom`',
+        options: POPOVER_OFFSET_TOKENS,
+        control: {
+            type: 'select',
+        },
+    },
+    offsetY: {
+        name: 'main-axis-offset',
+        description:
+            'adds an offset to the main axis. e.g. adds offset to the top, when placement is `bottom`',
+        options: POPOVER_OFFSET_TOKENS,
+        control: {
+            type: 'select',
+        },
+    },
+};
+
+export const popoverArgs = {
+    placement: DEFAULT_POPOVER_PLACEMENT,
+    offsetX: 0,
+    offsetY: 0,
+    noAnimation: false,
+};
+
 <Canvas hidden>
-    <Story name="default">
-        {() => {
+    <Story name="default" argTypes={popoverARgTypes} args={popoverArgs}>
+        {({ offsetX, offsetY, placement }) => {
             const [isVisible, setIsVisible] = useState(false);
             const buttonReference = useRef(null);
             function handleClick() {
                 setIsVisible(!isVisible);
             }
+            const offset = [offsetX, offsetY];
             return (
                 <div>
                     <IconButton
@@ -29,18 +69,50 @@ import Spacing from '../spacing';
                     <Popover
                         isVisible={isVisible}
                         anchorReference={buttonReference}
-                        placement={'bottom-start'}
+                        placement={placement}
+                        offset={offset}
                     >
-                        <Shape elevation={3}>
-                            <Grid element={'ul'} justify={'stretch'} padding={Spacing.all(100)}>
-                                <li>
-                                    <Icon glyph={'message-check'} />
-                                    Message
-                                </li>
-                                <li>
-                                    <Icon glyph={'check-circle'} />
-                                    Check
-                                </li>
+                        <Shape elevation={3} width={200}>
+                            <Grid justify={'stretch'} padding={Spacing.all(100)}>
+                                <div>Message</div>
+                                <div>Check</div>
+                            </Grid>
+                        </Shape>
+                    </Popover>
+                </div>
+            );
+        }}
+    </Story>
+    <Story
+        name="w/ animation"
+        argTypes={popoverARgTypes}
+        args={{ ...popoverArgs, noAnimation: true }}
+    >
+        {({ offsetX, offsetY, ...rest }) => {
+            const [isVisible, setIsVisible] = useState(false);
+            const buttonReference = useRef(null);
+            function handleClick() {
+                setIsVisible(!isVisible);
+            }
+            const offset = [offsetX, offsetY];
+            return (
+                <div>
+                    <IconButton
+                        icon={'menu'}
+                        onClick={handleClick}
+                        ref={buttonReference}
+                        toggled={isVisible}
+                    />
+                    <Popover
+                        {...rest}
+                        isVisible={isVisible}
+                        anchorReference={buttonReference}
+                        offset={offset}
+                    >
+                        <Shape elevation={3} width={200}>
+                            <Grid justify={'stretch'} padding={Spacing.all(100)}>
+                                <div>Message</div>
+                                <div>Check</div>
                             </Grid>
                         </Shape>
                     </Popover>

@@ -1,43 +1,46 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useRef } from 'react';
 import { usePopper } from 'react-popper';
 
 import Transition from '../transition/Transition';
 
+import {
+    DEFAULT_POPOVER_OFFSET,
+    DEFAULT_POPOVER_PLACEMENT,
+    POPOVER_OFFSET_VALUES,
+} from './Popover.constants';
 import PPopover from './Popover.props';
 
 const Popover = ({
     anchorReference,
     children,
     isVisible,
-    placement = 'bottom',
+    noAnimation = false,
+    placement = DEFAULT_POPOVER_PLACEMENT,
+    offset = DEFAULT_POPOVER_OFFSET,
 }: PPopover): JSX.Element | null => {
     const popperReference = useRef(null);
-    const { styles, attributes, update } = usePopper(
-        anchorReference.current,
-        popperReference.current,
-        {
-            placement,
-            modifiers: [
-                {
-                    name: 'offset',
-                    options: {
-                        offset: [0, 10],
-                    },
+    const { styles, attributes } = usePopper(anchorReference.current, popperReference.current, {
+        placement,
+        modifiers: [
+            {
+                name: 'offset',
+                options: {
+                    offset: [POPOVER_OFFSET_VALUES[offset[0]], POPOVER_OFFSET_VALUES[offset[1]]],
                 },
-            ],
-        }
-    );
-
-    useEffect(() => {
-        update?.();
-    }, [update, popperReference]);
+            },
+        ],
+    });
 
     return (
-        <Transition isVisible={isVisible} type={['fade', 'scale']}>
-            <div ref={popperReference} style={styles.popper} {...attributes.popper}>
+        <div ref={popperReference} style={styles.popper} {...attributes.popper}>
+            <Transition
+                isVisible={isVisible}
+                type={['fade', 'scale']}
+                speed={noAnimation ? 'instant' : 'normal'}
+            >
                 {children}
-            </div>
-        </Transition>
+            </Transition>
+        </div>
     );
 };
 

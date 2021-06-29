@@ -89,6 +89,7 @@ const lightTheme: TTheme = {
         contrast: neutral[1100],
     },
     animation: {
+        instant: '0ms',
         fastest: '100ms',
         fast: '250ms',
         normal: '300ms',
