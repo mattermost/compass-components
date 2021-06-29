@@ -1,0 +1,123 @@
+import { useState } from 'react';
+import { Meta, Story, Canvas, Title, Subtitle, ArgsTable } from '@storybook/addon-docs/blocks';
+import { DEFAULT_CHECKBOX_SIZE, CHECKBOX_SIZES } from './Checkbox.constants';
+import { Utils } from '../../shared';
+import Grid, { Spacing } from '../../utilities/layout';
+import Text from '../text';
+import CheckboxAnatomyImg from '../../assets/images/example-checkbox-anatomy.png';
+import CheckboxAnimationGif from '../../assets/images/example-checkbox-animation.gif';
+import CheckboxImg from '../../assets/images/example-checkbox.png';
+import { DEFAULT_ARGUMENTS_TABLE_EXCLUSION } from '../../shared/constants';
+import Checkbox from './index';
+
+export const defaultArgs = {
+    label: 'Label',
+    size: DEFAULT_CHECKBOX_SIZE,
+};
+
+<Meta component={Checkbox} title="Components/Checkbox" />
+
+<Title>Checkboxes</Title>
+
+<Subtitle>Checkboxes empower users to make multiple selections.</Subtitle>
+
+## Anatomy
+
+Checkboxes are comprised of:
+
+-   Selector
+-   Label
+    Clicking either the Selector or the Label should toggle the state of the checkbox.
+
+<img src={CheckboxAnatomyImg} alt={'checkbox-anatomy'} />
+
+## States
+
+<Grid row justify={'space-between'}>
+    <Grid justify={'center'}>
+        <Checkbox {...defaultArgs} disabled={true} />
+        <br />
+        <Text element={'p'} size={200} margin={'none'}>
+            <strong>Disabled</strong>
+        </Text>
+    </Grid>
+    <Grid justify={'center'}>
+        <Checkbox {...defaultArgs} hasError={true} />
+        <br />
+        <Text element={'p'} size={200} margin={'none'}>
+            <strong>Error</strong>
+        </Text>
+    </Grid>
+    <Grid justify={'center'}>
+        <Checkbox {...defaultArgs} />
+        <br />
+        <Text element={'p'} size={200} margin={'none'}>
+            <strong>Off</strong>
+        </Text>
+    </Grid>
+    <Grid justify={'center'}>
+        <Checkbox {...defaultArgs} checked={true} />
+        <br />
+        <Text element={'p'} size={200} margin={'none'}>
+            <strong>On</strong>
+        </Text>
+    </Grid>
+</Grid>
+
+## Animation
+
+<img src={CheckboxAnimationGif} alt={'checkbox-animation'} />
+
+## Sizes
+
+<Grid row justify={'space-between'}>
+    <Grid justify={'center'}>
+        <Checkbox label={'Label'} size={'sm'} checked={true} />
+        <br />
+        <Text element={'p'} size={200} margin={'none'}>
+            <strong>Small</strong>
+        </Text>
+    </Grid>
+    <Grid justify={'center'}>
+        <Checkbox label={'Label'} size={'md'} checked={true} />
+        <br />
+        <Text element={'p'} size={200} margin={'none'}>
+            <strong>Medium</strong>
+        </Text>
+    </Grid>
+    <Grid justify={'center'}>
+        <Checkbox label={'Label'} size={'lg'} checked={true} />
+        <br />
+        <Text element={'p'} size={200} margin={'none'}>
+            <strong>Large</strong>
+        </Text>
+    </Grid>
+</Grid>
+
+## Example
+
+<img src={CheckboxImg} alt={'checkbox-example'} />
+
+## Dependencies
+
+<ArgsTable of={Checkbox} exclude={[...DEFAULT_ARGUMENTS_TABLE_EXCLUSION]} />
+
+<Canvas hidden>
+    <Story
+        name="Default"
+        argTypes={{
+            label: { control: { type: 'text' } },
+            size: { control: { type: 'radio', options: CHECKBOX_SIZES } },
+            hasError: { control: { type: 'boolean' } },
+            disabled: { control: { type: 'boolean' } },
+            checked: { control: { type: 'boolean' } },
+            ...Utils.hideComponentProperties(['onClick', 'className']),
+        }}
+        args={{
+            label: 'Default Checkbox',
+            size: DEFAULT_CHECKBOX_SIZE,
+        }}
+    >
+        {(args) => <Checkbox {...args} />}
+    </Story>
+</Canvas>

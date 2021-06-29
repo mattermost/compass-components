@@ -25,6 +25,11 @@ type PShape = {
      * */
     element?: TShapeElement;
     /**
+     * If the component is an input, which type
+     * @default 'text'
+     * */
+    type?: 'checkbox' | 'radio';
+    /**
      * set a custom width
      * @default 'auto'
      * */
@@ -44,6 +49,7 @@ type PShape = {
      * custom className
      */
     className?: string;
+    checked?: boolean;
 };
 
 type PShapeRoot = Omit<PShape, 'className'>;
