@@ -12,6 +12,7 @@ import {
     POPOVER_OFFSET_TOKENS,
     POPOVER_PLACEMENTS,
 } from './Popover.constants';
+import Text from '../../components/text';
 
 <Meta title={'Utilities/Popover'} />
 
@@ -73,9 +74,8 @@ export const popoverArgs = {
                         offset={offset}
                     >
                         <Shape elevation={3} width={200}>
-                            <Grid justify={'stretch'} padding={Spacing.all(100)}>
-                                <div>Message</div>
-                                <div>Check</div>
+                            <Grid justify={'center'} padding={Spacing.all(100)}>
+                                <Text margin={'none'}>this is a popover</Text>
                             </Grid>
                         </Shape>
                     </Popover>
@@ -110,9 +110,8 @@ export const popoverArgs = {
                         offset={offset}
                     >
                         <Shape elevation={3} width={200}>
-                            <Grid justify={'stretch'} padding={Spacing.all(100)}>
-                                <div>Message</div>
-                                <div>Check</div>
+                            <Grid justify={'center'} padding={Spacing.all(100)}>
+                                <Text margin={'none'}>this is a popover</Text>
                             </Grid>
                         </Shape>
                     </Popover>
