@@ -3,7 +3,11 @@ import React from 'react';
 import { Utils } from '../../shared';
 import Icon from '../../foundations/icon';
 
-import { DEFAULT_TEXT_INPUT_SIZE, TEXT_INPUT_VALUES_MAPPING } from './TextInput.constants';
+import {
+    DEFAULT_TEXT_INPUT_SIZE,
+    TEXT_INPUT_VALUES_MAPPING,
+    DEFAULT_TEXT_INPUT_WIDTH,
+} from './TextInput.constants';
 import TextInputRoot from './TextInput.root';
 import InputRoot from './Input.root';
 import PTextInput from './TextInput.props';
@@ -16,7 +20,7 @@ const TextInput: React.FC<PTextInput> = ({
     leadingIcon,
     trailingIcon,
     size = DEFAULT_TEXT_INPUT_SIZE,
-    width = 'full',
+    width = DEFAULT_TEXT_INPUT_WIDTH,
     active = false,
     hasError = false,
     disabled = false,
@@ -56,8 +60,6 @@ const TextInput: React.FC<PTextInput> = ({
                     size={size}
                     value={value || ''}
                     leadingIcon={leadingIcon}
-                    active={active}
-                    hasError={hasError}
                     animatedLabel={animatedLabel}
                 >
                     {label}

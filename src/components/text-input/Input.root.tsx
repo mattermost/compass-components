@@ -6,34 +6,23 @@ import { TTheme } from '../../utilities/theme';
 import { PInputRoot } from './TextInput.props';
 
 const InputRoot = styled.input<PInputRoot>(
-    ({ theme: { text } }: ThemedStyledProps<PInputRoot, TTheme>): FlattenSimpleInterpolation => {
-        const colors: Record<string, string> = {
-            placeholder: text.disabled,
-        };
+    ({ theme: { text } }: ThemedStyledProps<PInputRoot, TTheme>): FlattenSimpleInterpolation => css`
+        width: 100%;
+        height: 100%;
+        border: none;
+        background-color: transparent;
 
-        const actionStyles = css`
-            &:focus {
-                outline: none;
-
-                &::placeholder {
-                    color: ${colors.placeholder};
-                }
-            }
-        `;
-
-        return css`
-            ${actionStyles};
-            width: 100%;
-            height: 100%;
-            border: none;
-            background-color: transparent;
-
+        &::placeholder {
+            color: transparent;
+            transition: color 200ms ease-in;
+        }
+        &:focus {
+            outline: none;
             &::placeholder {
-                color: transparent;
-                transition: color 200ms ease-in;
+                color: ${text.disabled};
             }
-        `;
-    }
+        }
+    `
 );
 
 export default InputRoot;

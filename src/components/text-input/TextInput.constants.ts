@@ -1,4 +1,5 @@
 import { TIconGlyph } from '../../foundations/icon';
+import { TButtonWidth } from '../button';
 
 import { TTextInputSizeToken, TTextInput } from './TextInput.types';
 
@@ -9,6 +10,8 @@ const TEXT_INPUT_SIZES: TTextInputSizeToken[] = ['sm', 'md', 'lg'];
 const DEFAULT_LEADING_ICON: TIconGlyph = 'magnify';
 
 const DEFAULT_TRAILING_ICON: TIconGlyph = 'close-circle';
+
+const DEFAULT_TEXT_INPUT_WIDTH: TButtonWidth = 'full';
 
 const TEXT_INPUT_VALUES_MAPPING: { [size in TTextInputSizeToken]: TTextInput } = {
     sm: {
@@ -34,10 +37,18 @@ const TEXT_INPUT_VALUES_MAPPING: { [size in TTextInputSizeToken]: TTextInput } =
     },
 };
 
+const LABEL_POSITIONS: Record<TTextInputSizeToken, string> = {
+    sm: '-22px, -16px',
+    md: '-26px, -20px',
+    lg: '-32px, -22px',
+};
+
 export {
     DEFAULT_TEXT_INPUT_SIZE,
     TEXT_INPUT_SIZES,
     TEXT_INPUT_VALUES_MAPPING,
+    LABEL_POSITIONS,
     DEFAULT_LEADING_ICON,
     DEFAULT_TRAILING_ICON,
+    DEFAULT_TEXT_INPUT_WIDTH,
 };
