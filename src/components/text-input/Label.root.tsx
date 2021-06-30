@@ -17,12 +17,12 @@ const LabelRoot = styled.label<PLabelRoot>(
         value,
         animatedLabel,
         leadingIcon,
-        backgroundColor = background.default,
+        backgroundColor,
     }: ThemedStyledProps<PLabelRoot, TTheme>): FlattenSimpleInterpolation => {
         const hasValue = Utils.isString(value) && value.length > 0;
 
         const colors: Record<string, string> = {
-            background: backgroundColor || background.shape,
+            background: backgroundColor || background.default,
         };
 
         return css`

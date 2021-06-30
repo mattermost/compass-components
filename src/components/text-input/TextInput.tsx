@@ -19,6 +19,7 @@ const TextInput: React.FC<PTextInput> = ({
     value,
     leadingIcon,
     trailingIcon,
+    backgroundColor,
     size = DEFAULT_TEXT_INPUT_SIZE,
     width = DEFAULT_TEXT_INPUT_WIDTH,
     active = false,
@@ -41,6 +42,7 @@ const TextInput: React.FC<PTextInput> = ({
         hasError,
         disabled,
         animatedLabel,
+        backgroundColor,
         width,
         onFocus,
     };
@@ -61,6 +63,7 @@ const TextInput: React.FC<PTextInput> = ({
                     value={value || ''}
                     leadingIcon={leadingIcon}
                     animatedLabel={animatedLabel}
+                    backgroundColor={backgroundColor}
                 >
                     {label}
                 </LabelRoot>
