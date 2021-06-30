@@ -36,6 +36,7 @@ type PText = {
      * @default 'p'
      */
     element?: TTextElement;
+    for?: string;
     className?: string;
     children: ReactNode | ReactNode[];
 };
