@@ -20,12 +20,11 @@ function getIconSizes({ size }: PIconRoot): FlattenSimpleInterpolation {
 }
 
 const IconRoot = styled.i
-    .withConfig({
+    .withConfig<PIconRoot>({
         shouldForwardProp: Utils.forwardProperties(),
     })
-    .attrs((props: PIconRoot) => ({
-        className: `icon-${props.glyph}`,
-        'aria-label': props.ariaLabel,
+    .attrs(({ glyph }: PIconRoot) => ({
+        className: `icon-${glyph}`,
     }))<ThemedStyledProps<PIconRoot, TTheme>>(
     ({ theme, color }: ThemedStyledProps<PIconRoot, TTheme>) => css`
         // element container base styles
