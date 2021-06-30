@@ -49,7 +49,7 @@ function getStoryDocumentationUrl(storyParameters: Record<string, string>): stri
  * ```
  * */
 const forwardProperties =
-    (whiteList: string[] = []): ((property: string | number) => boolean) =>
+    (whiteList: (string | number)[] = []): ((property: string | number) => boolean) =>
     (property: string | number): boolean =>
         // forward the property when it is a `data-*`attribute
         property.toString().startsWith('data-') ||

@@ -58,9 +58,9 @@ type PAvatar = {
     className?: string;
 };
 
-type PAvatarRoot = Required<
-    Pick<PAvatar, 'size' | 'variant' | 'disableHover' | 'isActive' | 'className'>
-> & { hasUnreadBadge: boolean };
+type PAvatarRoot = Required<Pick<PAvatar, 'size' | 'variant' | 'disableHover' | 'isActive'>> & {
+    hasUnreadBadge: boolean;
+};
 
 type PAvatarStatusBadgeRoot = Required<Pick<PAvatarRoot, 'size'>> & { offset: number };
 

@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { FlattenInterpolation, ThemedStyledProps } from 'styled-components/ts3.6';
+import { FlattenSimpleInterpolation, ThemedStyledProps } from 'styled-components/ts3.6';
 
 import { applyShape } from '../../foundations/shape';
 import { TTheme } from '../../utilities/theme';
@@ -8,21 +8,15 @@ import { Utils } from '../../shared';
 import { STATUSBADGE_SIZE_MAP } from './StatusBadge.constants';
 import { PStatusBadgeRoot } from './StatusBadge.props';
 
-const StatusBadgeRoot = styled.div
-    .withConfig({
-        shouldForwardProp: Utils.forwardProperties(),
-    })
-    .attrs(({ theme }: ThemedStyledProps<PStatusBadgeRoot, TTheme>) => ({
-        background: theme.background.default,
-    }))<ThemedStyledProps<PStatusBadgeRoot, TTheme>>(
+const StatusBadgeRoot = styled.div.withConfig({
+    shouldForwardProp: Utils.forwardProperties(),
+})(
     ({
+        theme,
         size,
         status,
-        background,
-        theme,
-    }: ThemedStyledProps<PStatusBadgeRoot, TTheme>): FlattenInterpolation<
-        ThemedStyledProps<PStatusBadgeRoot, TTheme>
-    > => {
+        background = theme.background.default,
+    }: ThemedStyledProps<PStatusBadgeRoot, TTheme>): FlattenSimpleInterpolation => {
         const color = theme.badges[status];
 
         return css`

@@ -5,9 +5,10 @@ import {
     ThemedStyledProps,
 } from 'styled-components/ts3.6';
 
-import Spacing from '../../utilities/spacing';
-import { applyPadding } from '../../utilities/layout';
+import { Utils } from '../../shared';
 import { applyShape } from '../../foundations/shape';
+import { applyPadding } from '../../utilities/layout';
+import Spacing from '../../utilities/spacing';
 import { TTheme } from '../../utilities/theme';
 import { applyTextMargin, applyTextStyles } from '../text';
 
@@ -38,7 +39,9 @@ const getBadgeColors = ({
     `;
 };
 
-const MentionBadgeRoot = styled.div<PMentionBadgeRoot>(
+const MentionBadgeRoot = styled.div.withConfig<PMentionBadgeRoot>({
+    shouldForwardProp: Utils.forwardProperties(),
+})(
     ({
         size,
         isUnreadBadge,

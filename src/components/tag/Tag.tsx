@@ -14,9 +14,14 @@ const Tag = ({
 }: PTag): JSX.Element => {
     const hasText = Utils.isString(text) && text.length > 0;
 
+    Utils.assert(
+        hasText,
+        'Compass Components - Tag: This component is intended to be used with text. Please provide a string to it for correct usage.'
+    );
+
     return (
         <TagRoot element={'span'} size={size} variant={variant} {...rest}>
-            {hasText && text}
+            {text}
         </TagRoot>
     );
 };
