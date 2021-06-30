@@ -1,3 +1,5 @@
+import { MouseEventHandler } from 'react';
+
 import { TSwitchSizeToken, TSwitchWidth, TSwitchHeight, TSwitchInnerWidth } from './Switch.types';
 
 type PSwitch = {
@@ -38,9 +40,9 @@ type PSwitch = {
     /**
      * onClick event handler
      * */
-    onClick?: () => void;
+    onClick?: MouseEventHandler<HTMLLabelElement>;
     /**
-     * onChane event handler
+     * onChange event handler
      * */
     onChange?: () => void;
     /**

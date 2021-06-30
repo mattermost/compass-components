@@ -1,4 +1,4 @@
-import React, { ForwardedRef } from 'react';
+import React from 'react';
 
 import Icon from '../../foundations/icon';
 
@@ -10,22 +10,17 @@ import {
 import PIconButton from './IconButton.props';
 import IconButtonRoot from './IconButton.root';
 
-const IconButton = React.forwardRef(
-    (
-        {
-            element = DEFAULT_ICON_BUTTON_ELEMENT,
-            size = DEFAULT_ICON_BUTTON_SIZE,
-            icon,
-            label,
-            ...rest
-        }: PIconButton,
-        reference: ForwardedRef<HTMLButtonElement>
-    ): JSX.Element => (
-        <IconButtonRoot ref={reference} as={element} size={size} {...rest}>
-            <Icon glyph={icon} size={ICON_BUTTON_DEFINITIONS[size].iconSize} />
-            {label && <span>{label}</span>}
-        </IconButtonRoot>
-    )
+const IconButton = ({
+    element = DEFAULT_ICON_BUTTON_ELEMENT,
+    size = DEFAULT_ICON_BUTTON_SIZE,
+    icon,
+    label,
+    ...rest
+}: PIconButton): JSX.Element => (
+    <IconButtonRoot as={element} size={size} {...rest}>
+        <Icon glyph={icon} size={ICON_BUTTON_DEFINITIONS[size].iconSize} />
+        {label && <span>{label}</span>}
+    </IconButtonRoot>
 );
 
 export default IconButton;

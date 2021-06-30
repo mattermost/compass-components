@@ -48,7 +48,10 @@ function getStoryDocumentationUrl(storyParameters: Record<string, string>): stri
  * })<PSection>` ... `
  * ```
  * */
-const blockProperty = (property: string | number, blackList: (string | number)[] = []): boolean =>
+const blockProperty = (
+    property: string | number | symbol,
+    blackList: (string | number | symbol)[] = []
+): boolean =>
     // forward the property when it is a `data-*`attribute
     property.toString().startsWith('data-') ||
     // forward the property when it is a `aria-*`attribute

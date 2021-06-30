@@ -12,19 +12,20 @@ const Switch: React.FC<PSwitch> = ({
     disabled = false,
     size = DEFAULT_SWITCH_SIZE,
     toggled = true,
-    oChange,
+    onClick = Utils.noop,
+    onChange = Utils.noop,
 }: PSwitch) => {
     const hasLabel = Utils.isString(label) && label.length > 0;
 
     return (
-        <SwitchRoot for="hidden__input" size={size} disabled={disabled}>
+        <SwitchRoot htmlFor="hidden__input" size={size} disabled={disabled} onClick={onClick}>
             <input
                 className={'input'}
                 id="hidden__input"
                 checked={toggled}
                 defaultChecked={toggled}
                 type={'checkbox'}
-                onChange={oChange}
+                onChange={onChange}
             />
             <div className={'container'}>
                 <div className={'toggle'} />
