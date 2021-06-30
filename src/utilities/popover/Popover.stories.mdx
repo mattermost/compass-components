@@ -83,6 +83,36 @@ export const popoverArgs = {
             );
         }}
     </Story>
+    <Story name="hover" argTypes={popoverARgTypes} args={popoverArgs}>
+        {({ offsetX, offsetY, placement }) => {
+            const [isVisible, setIsVisible] = useState(false);
+            const buttonReference = useRef(null);
+            const offset = [offsetX, offsetY];
+            return (
+                <div>
+                    <IconButton
+                        icon={'menu'}
+                        onMouseEnter={() => setIsVisible(true)}
+                        onMouseLeave={() => setIsVisible(false)}
+                        ref={buttonReference}
+                        toggled={isVisible}
+                    />
+                    <Popover
+                        isVisible={isVisible}
+                        anchorReference={buttonReference}
+                        placement={placement}
+                        offset={offset}
+                    >
+                        <Shape elevation={3} width={200}>
+                            <Grid justify={'center'} padding={Spacing.all(100)}>
+                                <Text margin={'none'}>this is a popover</Text>
+                            </Grid>
+                        </Shape>
+                    </Popover>
+                </div>
+            );
+        }}
+    </Story>
     <Story
         name="w/ animation"
         argTypes={popoverARgTypes}

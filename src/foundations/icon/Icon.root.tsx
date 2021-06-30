@@ -21,7 +21,8 @@ function getIconSizes({ size }: PIconRoot): FlattenSimpleInterpolation {
 
 const IconRoot = styled.i
     .withConfig<PIconRoot>({
-        shouldForwardProp: Utils.forwardProperties(),
+        shouldForwardProp: (property, validator) =>
+            Utils.blockProperty(property) && validator(property),
     })
     .attrs(({ glyph }: PIconRoot) => ({
         className: `icon-${glyph}`,

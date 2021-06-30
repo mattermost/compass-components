@@ -10,7 +10,8 @@ import { applyShape } from '../../foundations/shape';
 import { PImageRoot } from './Image.props';
 
 const ImageRoot = styled.img.withConfig<PImageRoot>({
-    shouldForwardProp: Utils.forwardProperties(),
+    shouldForwardProp: (property, validator) =>
+        Utils.blockProperty(property) && validator(property),
 })(
     ({
         theme: { background, border },

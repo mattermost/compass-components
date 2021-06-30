@@ -40,7 +40,8 @@ const getBadgeColors = ({
 };
 
 const MentionBadgeRoot = styled.div.withConfig<PMentionBadgeRoot>({
-    shouldForwardProp: Utils.forwardProperties(),
+    shouldForwardProp: (property, validator) =>
+        Utils.blockProperty(property) && validator(property),
 })(
     ({
         size,

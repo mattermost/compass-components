@@ -12,7 +12,8 @@ import { DEFAULT_ICON_BUTTON_SIZE, ICON_BUTTON_DEFINITIONS } from './IconButton.
 import { PIconButtonRoot } from './IconButton.props';
 
 const IconButtonRoot = styled.button.withConfig<PIconButtonRoot>({
-    shouldForwardProp: Utils.forwardProperties(),
+    shouldForwardProp: (property, validator) =>
+        Utils.blockProperty(property) && validator(property),
 })(
     ({
         size = DEFAULT_ICON_BUTTON_SIZE,

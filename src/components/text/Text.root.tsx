@@ -8,7 +8,8 @@ import { PTextRoot } from './Text.props';
 import { applyTextColor, applyTextMargin, applyTextStyles } from './Text.mixins';
 
 const TextRoot = styled.p.withConfig<PTextRoot>({
-    shouldForwardProp: Utils.forwardProperties(),
+    shouldForwardProp: (property, validator) =>
+        Utils.blockProperty(property) && validator(property),
 })(
     ({
         theme,

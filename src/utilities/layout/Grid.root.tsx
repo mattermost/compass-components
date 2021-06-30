@@ -6,7 +6,16 @@ import { parseSpacing } from '../spacing';
 import { PGridRoot } from './Grid.props';
 
 const GridRoot = styled.div.withConfig<PGridRoot>({
-    shouldForwardProp: Utils.forwardProperties(),
+    shouldForwardProp: (property, validator) =>
+        Utils.blockProperty(property, [
+            'flex',
+            'wrap',
+            'row',
+            'padding',
+            'margin',
+            'width',
+            'height',
+        ]) && validator(property),
 })(
     ({ flex, wrap, row, justify, alignment, padding, margin, width, height }: PGridRoot) => css`
         display: flex;

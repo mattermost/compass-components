@@ -29,7 +29,8 @@ const AvatarMentionBadgeRoot = styled(MentionBadge)<PAvatarMentionBadgeRoot>(
 );
 
 const AvatarRoot = styled.button.withConfig<PAvatarRoot>({
-    shouldForwardProp: Utils.forwardProperties(),
+    shouldForwardProp: (property, validator) =>
+        Utils.blockProperty(property) && validator(property),
 })(
     ({
         theme,

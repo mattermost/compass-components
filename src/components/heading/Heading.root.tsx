@@ -8,7 +8,8 @@ import { PHeadingRoot } from './Heading.props';
 import { applyHeadingColor, applyHeadingMargin, applyHeadingStyles } from './Heading.mixins';
 
 const HeadingRoot = styled.h6.withConfig<PHeadingRoot>({
-    shouldForwardProp: Utils.forwardProperties(),
+    shouldForwardProp: (property, validator) =>
+        Utils.blockProperty(property) && validator(property),
 })(
     ({
         theme,

@@ -9,7 +9,8 @@ import { STATUSBADGE_SIZE_MAP } from './StatusBadge.constants';
 import { PStatusBadgeRoot } from './StatusBadge.props';
 
 const StatusBadgeRoot = styled.div.withConfig({
-    shouldForwardProp: Utils.forwardProperties(),
+    shouldForwardProp: (property, validator) =>
+        Utils.blockProperty(property) && validator(property),
 })(
     ({
         theme,

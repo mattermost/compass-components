@@ -12,7 +12,8 @@ import { PTagRoot } from './Tag.props';
 import { TTagVariant } from './Tag.types';
 
 const TagRoot = styled(Text).withConfig<PTagRoot>({
-    shouldForwardProp: Utils.forwardProperties(),
+    shouldForwardProp: (property, validator) =>
+        Utils.blockProperty(property) && validator(property),
 })(
     ({
         variant,

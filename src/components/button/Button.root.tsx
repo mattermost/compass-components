@@ -11,7 +11,8 @@ import { BUTTON_ICON_MARGIN_MAP } from './Button.constants';
 import { PButtonRoot } from './Button.props';
 
 const ButtonRoot = styled.button.withConfig<PButtonRoot>({
-    shouldForwardProp: Utils.forwardProperties(),
+    shouldForwardProp: (property, validator) =>
+        Utils.blockProperty(property) && validator(property),
 })(
     ({
         theme: { palette, action, background },
