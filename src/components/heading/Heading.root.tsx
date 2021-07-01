@@ -1,12 +1,16 @@
 import styled, { css } from 'styled-components';
 import { FlattenSimpleInterpolation, ThemedStyledProps } from 'styled-components/ts3.6';
 
+import { Utils } from '../../shared';
 import { TTheme } from '../../utilities/theme';
 
 import { PHeadingRoot } from './Heading.props';
 import { applyHeadingColor, applyHeadingMargin, applyHeadingStyles } from './Heading.mixins';
 
-const HeadingRoot = styled.h6<PHeadingRoot>(
+const HeadingRoot = styled.h6.withConfig<PHeadingRoot>({
+    shouldForwardProp: (property, validator) =>
+        Utils.blockProperty(property) && validator(property),
+})(
     ({
         theme,
         inheritLineHeight,

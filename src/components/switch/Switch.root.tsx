@@ -10,7 +10,8 @@ import { PSwitchRoot } from './Switch.props';
 import { SWITCH_VALUES_MAPPING } from './Switch.constants';
 
 const SwitchRoot = styled.label.withConfig({
-    shouldForwardProp: Utils.forwardProperties(),
+    shouldForwardProp: (property, validator) =>
+        Utils.blockProperty(property) && validator(property),
 })<PSwitchRoot>(
     ({
         theme,
@@ -87,7 +88,7 @@ const SwitchRoot = styled.label.withConfig({
               `;
 
         return css`
-            ${actionStyles}
+            ${actionStyles};
             color: ${textColor};
             display: flex;
             justify-content: center;

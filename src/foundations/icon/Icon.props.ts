@@ -27,6 +27,6 @@ type PIcon = {
 };
 
 export type PIconRoot = Required<Pick<PIcon, 'size' | 'color' | 'glyph'>> &
-    Pick<PIcon, 'ariaLabel'>;
+    Pick<PIcon, 'ariaLabel' | 'className'>;
 
 export default PIcon;

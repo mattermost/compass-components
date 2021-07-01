@@ -8,9 +8,10 @@ import { TTheme } from '../../utilities/theme';
 import { RADIO_VALUES_MAPPING } from './Radio.constants';
 import { PRadioRoot } from './Radio.props';
 
-const RadioRoot = styled.label.withConfig({
-    shouldForwardProp: Utils.forwardProperties(),
-})<PRadioRoot>(
+const RadioRoot = styled.label.withConfig<PRadioRoot>({
+    shouldForwardProp: (property, validator) =>
+        Utils.blockProperty(property) && validator(property),
+})(
     ({
         theme: { palette, action, text },
         hasError,
@@ -76,7 +77,7 @@ const RadioRoot = styled.label.withConfig({
               `;
 
         return css`
-            ${actionStyles}
+            ${actionStyles};
             color: ${colors.text};
             display: flex;
             justify-content: center;

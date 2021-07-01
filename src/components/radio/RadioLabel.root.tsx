@@ -1,23 +1,26 @@
 import styled, { css } from 'styled-components';
 import { FlattenSimpleInterpolation, ThemedStyledProps } from 'styled-components/ts3.6';
 
-import Text, { applyTextMargin, applyTextStyles } from '../text';
+import Spacing, { TSpacingToken } from '../../utilities/spacing';
+import { applyMargin } from '../../utilities/layout';
+import { applyTextMargin, applyTextStyles } from '../text';
 import { Utils } from '../../shared';
 import { TTheme } from '../../utilities/theme';
 
 import { RADIO_VALUES_MAPPING } from './Radio.constants';
 import { PRadioLabel } from './Radio.props';
 
-const RadioLabelRoot = styled(Text).withConfig({
-    shouldForwardProp: Utils.forwardProperties(),
-})<PRadioLabel>(({ size }: ThemedStyledProps<PRadioLabel, TTheme>): FlattenSimpleInterpolation => {
-    // @default: `size === 'medium'`
-    let labelMargin = 10;
+const RadioLabelRoot = styled.span.withConfig<PRadioLabel>({
+    shouldForwardProp: (property, validator) =>
+        Utils.blockProperty(property) && validator(property),
+})(({ size }: ThemedStyledProps<PRadioLabel, TTheme>): FlattenSimpleInterpolation => {
+    // @default: `size === 'md'`
+    let labelMargin: TSpacingToken = 125;
 
     if (size === 'sm') {
-        labelMargin = 8;
+        labelMargin = 100;
     } else if (size === 'lg') {
-        labelMargin = 12;
+        labelMargin = 150;
     }
 
     return css`
@@ -26,7 +29,7 @@ const RadioLabelRoot = styled(Text).withConfig({
             size: RADIO_VALUES_MAPPING[size].labelSize,
         })};
         ${applyTextMargin({ margin: 'none' })};
-        margin-left: ${labelMargin}px;
+        ${applyMargin(Spacing.only('left', labelMargin))};
     `;
 });
 

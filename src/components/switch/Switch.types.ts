@@ -15,4 +15,4 @@ type TSwitchDefinition = {
     labelSize: TTextSizeToken;
 };
 
-export type { TSwitchSizeToken, TSwitchDefinition };
+export type { TSwitchSizeToken, TSwitchDefinition, TSwitchWidth, TSwitchHeight, TSwitchInnerWidth };

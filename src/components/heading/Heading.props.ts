@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { ReactNode, ReactNodeArray } from 'react';
 
 import { TTheme } from '../../utilities/theme';
 
@@ -35,7 +35,7 @@ type PHeading = {
      * */
     element?: THeadingElement;
     className?: string;
-    children: ReactNode | ReactNode[];
+    children: ReactNode | ReactNodeArray;
 };
 
 type PHeadingRoot = Required<Omit<PHeading, 'className' | 'element'>>;

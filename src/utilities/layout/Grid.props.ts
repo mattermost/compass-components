@@ -1,4 +1,4 @@
-import React from 'react';
+import { ReactNode, ReactNodeArray } from 'react';
 
 import { TSpacingDefinition } from '../spacing';
 
@@ -55,7 +55,7 @@ type PGrid = {
      * custom className
      */
     className?: string;
-    children?: React.ReactNode;
+    children?: ReactNode | ReactNodeArray;
 };
 
 export type PGridRoot = Required<

@@ -10,7 +10,8 @@ import { CHECKBOX_VALUES_MAPPING } from './Checkbox.constants';
 import { PCheckboxRoot } from './Checkbox.props';
 
 const CheckboxRoot = styled.label.withConfig({
-    shouldForwardProp: Utils.forwardProperties(),
+    shouldForwardProp: (property, validator) =>
+        Utils.blockProperty(property) && validator(property),
 })<PCheckboxRoot>(
     ({
         theme: { palette, action, text },
@@ -78,7 +79,7 @@ const CheckboxRoot = styled.label.withConfig({
               `;
 
         return css`
-            ${actionStyles}
+            ${actionStyles};
             color: ${colors.text};
             display: flex;
             justify-content: center;

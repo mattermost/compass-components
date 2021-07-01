@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { ReactNode, ReactNodeArray } from 'react';
 
 import { TTheme } from '../../utilities/theme';
 
@@ -36,9 +36,8 @@ type PText = {
      * @default 'p'
      */
     element?: TTextElement;
-    for?: string;
     className?: string;
-    children: ReactNode | ReactNode[];
+    children: ReactNode | ReactNodeArray;
 };
 
 type PTextRoot = Required<Omit<PText, 'element' | 'className'>>;
