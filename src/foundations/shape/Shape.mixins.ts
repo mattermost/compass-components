@@ -3,12 +3,8 @@ import { FlattenSimpleInterpolation } from 'styled-components/ts3.6';
 
 import { Utils } from '../../shared';
 
-import {
-    DEFAULT_SHAPE_BORDER_RADIUS,
-    SHAPE_BORDER_RADII,
-    SHAPE_ELEVATION_DEFINITIONS,
-} from './Shape.constants';
-import { PApplyElevation, PApplyShape } from './Shape.props';
+import { DEFAULT_SHAPE_BORDER_RADIUS, SHAPE_BORDER_RADII } from './Shape.constants';
+import { PApplyShape } from './Shape.props';
 import { TShapeVariant } from './Shape.types';
 
 /**
@@ -19,7 +15,7 @@ import { TShapeVariant } from './Shape.types';
  * @param {TShapeBorderRadius} radius
  * @returns {FlattenSimpleInterpolation}
  */
-function applyShape({
+export function applyShape({
     width,
     height,
     radius = DEFAULT_SHAPE_BORDER_RADIUS,
@@ -66,42 +62,4 @@ function applyShape({
     `;
 }
 
-/**
- * Apply elevation styles to a styled component.
- * When the elevationOnHover is not the same as the elevation value
- * it will create hover styles as well.
- *
- * @param {number} elevation
- * @param {number} elevationOnHover
- * @param {boolean} useDark
- * @returns {FlattenSimpleInterpolation}
- */
-function applyElevation(
-    { elevation = 0, elevationOnHover = elevation }: PApplyElevation,
-    useDark: boolean
-): FlattenSimpleInterpolation {
-    if (elevation === 0 && elevationOnHover === 0) {
-        // elevation of 0 has no depth and therefore we do not set any values
-        return css``;
-    }
-
-    const { y, blur: b } = SHAPE_ELEVATION_DEFINITIONS[elevation];
-    const alpha = useDark ? 0.32 : 0.08;
-
-    if (elevation !== elevationOnHover) {
-        const { y: yHover, blur: bHover } = SHAPE_ELEVATION_DEFINITIONS[elevationOnHover];
-
-        return css`
-            box-shadow: 0 ${y}px ${b}px rgba(0, 0, 0, ${alpha});
-            &:hover {
-                box-shadow: 0 ${yHover}px ${bHover}px rgba(0, 0, 0, ${alpha});
-            }
-        `;
-    }
-
-    return css`
-        box-shadow: 0 ${y}px ${b}px rgba(0, 0, 0, ${alpha});
-    `;
-}
-
-export { applyShape, applyElevation };
+export default applyShape;

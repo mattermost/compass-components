@@ -1,0 +1,145 @@
+import { ArgsTable, Meta, Title, Subtitle } from '@storybook/addon-docs/blocks';
+
+import Text from '../../components/text';
+import Shape from '../../foundations/shape';
+import { Utils } from '../../shared';
+
+import Spacing from '../spacing';
+import Grid from '../layout';
+
+import elevationExampleImg from '../../assets/images/elevation-example.png';
+import elevationMenuExampleImg from '../../assets/images/elevation-menu-example.png';
+import {
+    DEFAULT_ELEVATION_LEVEL,
+    ELEVATION_LEVELS,
+} from './Elevation.constants';
+
+<Meta component={Shape} title="Utilities/Elevation" />
+
+export const defaultArgs = {
+    width: 100,
+    height: 100,
+    radius: 4,
+    elevation: DEFAULT_ELEVATION_LEVEL,
+    elevationOnHover: DEFAULT_ELEVATION_LEVEL,
+};
+
+export const argTypes = {
+    elevation: {
+        options: ELEVATION_LEVELS,
+        control: {
+            type: 'select',
+        },
+    },
+    elevationOnHover: {
+        options: ELEVATION_LEVELS,
+        control: {
+            type: 'select',
+        },
+    },
+    ...Utils.hideComponentProperties(['width', 'height', 'radius', 'element', 'type', 'backgroundColor', 'className']),
+};
+
+<Canvas hidden>
+    <Story
+        name="Default"
+        argTypes={argTypes}
+        args={defaultArgs}
+    >
+        {(args) => <Shape {...args} />}
+    </Story>
+</Canvas>
+
+<Title>Elevation</Title>
+
+<Subtitle>
+    Elevation is the relative distance between objects along the z-axis.
+</Subtitle>
+
+Elevation refers to the z-index depth that an element sits on. The base Elevation is 0 and has no depth.
+Subsequent layers increment this Elevation value. In total, there are 6 Elevation levels, not including the base level 0.
+
+<Grid row justify={'space-between'} padding={Spacing.all(400)}>
+    <Grid justify={'center'}>
+        <Shape {...defaultArgs} elevation={1} />
+        <br />
+        <Text element={'p'} margin={'none'}>
+            <strong>Elevation 1</strong>
+        </Text>
+    </Grid>
+    <Grid justify={'center'}>
+        <Shape {...defaultArgs} elevation={2} />
+        <br />
+        <Text element={'p'} margin={'none'}>
+            <strong>Elevation 2</strong>
+        </Text>
+    </Grid>
+    <Grid justify={'center'}>
+        <Shape {...defaultArgs} elevation={3}/>
+        <br />
+        <Text element={'p'} margin={'none'}>
+            <strong>Elevation 3</strong>
+        </Text>
+    </Grid>
+    <Grid justify={'center'}>
+        <Shape {...defaultArgs} elevation={4} />
+        <br />
+        <Text element={'p'} margin={'none'}>
+            <strong>Elevation 4</strong>
+        </Text>
+    </Grid>
+    <Grid justify={'center'}>
+        <Shape {...defaultArgs} elevation={5} />
+        <br />
+        <Text element={'p'} margin={'none'}>
+            <strong>Elevation 5</strong>
+        </Text>
+    </Grid>
+    <Grid justify={'center'}>
+        <Shape {...defaultArgs} elevation={6} />
+        <br />
+        <Text element={'p'} margin={'none'}>
+            <strong>Elevation 6</strong>
+        </Text>
+    </Grid>
+</Grid>
+
+### Elevation Examples
+
+<img src={elevationExampleImg} alt={'elevation example'} />
+Popover menus 
+
+<img src={elevationMenuExampleImg} alt={'elevation menu example'} />
+
+### Elevations Values
+
+#### Elevation 1
+- Message Hover Actions
+- Message Attachments
+- Cards
+
+#### Elevation 2
+- Message Attachments Hover
+- Cards Hover
+
+#### Elevation 3
+- Tooltip
+
+#### Elevation 4
+- Popover Parent Menu
+- Channel Member Popover
+- Profile Popover
+- Status Popover
+- Emoji Popover
+- Autocomplete Popover Menus
+
+#### Elevation 5
+- Popover Child Menu
+
+#### Elevation 6
+- Modals
+
+### Elevations & Dark Themes
+The Elevation shadows don't show up as well on dark themes, so the shadow styles need to be updated 
+to increase the opacity values by 4x. For example, Elevation 1 normally has a shadow with an opacity of 8%,
+but in dark themes, it has an opacity of 32%.

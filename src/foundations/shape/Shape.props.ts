@@ -1,4 +1,6 @@
-import { TShapeBorderRadius, TShapeElement, TShapeElevationLevel } from './Shape.types';
+import { TElevationLevel } from '../../utilities/elevation';
+
+import { TShapeBorderRadius, TShapeElement } from './Shape.types';
 
 type PShape = {
     /**
@@ -13,12 +15,12 @@ type PShape = {
      * In total, there are 6 Elevation levels, not including the base level 0.
      * @default 0
      * */
-    elevation?: TShapeElevationLevel;
+    elevation?: TElevationLevel;
     /**
      * If a hover-state should require a higher (or lower) elevation
      * @default 0
      * */
-    elevationOnHover?: TShapeElevationLevel;
+    elevationOnHover?: TElevationLevel;
     /**
      * Which element should be used for rendering the Shape
      * @default 'div'
@@ -49,15 +51,12 @@ type PShape = {
      * custom className
      */
     className?: string;
-    checked?: boolean;
 };
 
 type PShapeRoot = Omit<PShape, 'className'>;
 
 type PApplyShape = Pick<PShape, 'width' | 'height' | 'radius'>;
 
-type PApplyElevation = Pick<PShape, 'elevation' | 'elevationOnHover'>;
-
-export type { PShapeRoot, PApplyShape, PApplyElevation };
+export type { PShapeRoot, PApplyShape };
 
 export default PShape;
