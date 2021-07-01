@@ -5,7 +5,11 @@ import { Utils } from '../../shared';
 import IconRoot, { TIconSize } from '../../foundations/icon';
 import Text, { TTextSizeToken } from '../text';
 
-import { DEFAULT_BUTTON_SIZE, DEFAULT_BUTTON_VARIANT } from './Button.constants';
+import {
+    DEFAULT_BUTTON_SIZE,
+    DEFAULT_BUTTON_VARIANT,
+    DEFAULT_BUTTON_WIDTH,
+} from './Button.constants';
 import PButton from './Button.props';
 import ButtonRoot from './Button.root';
 
@@ -15,6 +19,7 @@ const Button: React.FC<PButton> = ({
     disabled = false,
     size = DEFAULT_BUTTON_SIZE,
     variant = DEFAULT_BUTTON_VARIANT,
+    width = DEFAULT_BUTTON_WIDTH,
     label,
     icon,
     iconPosition,
@@ -47,6 +52,7 @@ const Button: React.FC<PButton> = ({
 
     const rootProperties = {
         disabled: disabled || !Utils.isFunction(onClick),
+        width,
         destructive,
         inverted,
         size,

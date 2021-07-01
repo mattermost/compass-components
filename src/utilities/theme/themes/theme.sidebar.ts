@@ -89,6 +89,7 @@ const sidebarTheme: TTheme = {
         shimmer: neutral[0],
     },
     animation: {
+        instant: '0ms',
         fastest: '100ms',
         fast: '250ms',
         normal: '300ms',

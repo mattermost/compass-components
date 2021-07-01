@@ -5,15 +5,15 @@ import Text from '../text';
 import { Utils } from '../../shared';
 
 import PCheckbox from './Checkbox.props';
-import { CHECKBOX_VALUES_MAPPING } from './Checkbox.constants';
+import { CHECKBOX_VALUES_MAPPING, DEFAULT_CHECKBOX_SIZE } from './Checkbox.constants';
 import CheckboxRoot from './Checkbox.root';
 
 const Checkbox: React.FC<PCheckbox> = ({
     label,
-    size,
-    checked,
-    disabled,
-    hasError,
+    size = DEFAULT_CHECKBOX_SIZE,
+    checked = false,
+    disabled = false,
+    hasError = false,
 }: PCheckbox): JSX.Element => {
     const hasLabel = Utils.isString(label) && label.length > 0;
 

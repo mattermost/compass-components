@@ -7,8 +7,9 @@ import { Utils } from '../../shared';
 import { applyElevation, applyShape } from './Shape.mixins';
 import { PShapeRoot } from './Shape.props';
 
-const ShapeRoot = styled.div.withConfig({
-    shouldForwardProp: Utils.forwardProperties(),
+const ShapeRoot = styled.div.withConfig<PShapeRoot>({
+    shouldForwardProp: (property, validator) =>
+        Utils.blockProperty(property) && validator(property),
 })<ThemedStyledProps<PShapeRoot, TTheme>>(
     ({
         radius,

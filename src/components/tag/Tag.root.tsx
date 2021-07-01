@@ -11,9 +11,10 @@ import { TTheme } from '../../utilities/theme';
 import { PTagRoot } from './Tag.props';
 import { TTagVariant } from './Tag.types';
 
-const TagRoot = styled(Text).withConfig({
-    shouldForwardProp: Utils.forwardProperties(),
-})<PTagRoot>(
+const TagRoot = styled(Text).withConfig<PTagRoot>({
+    shouldForwardProp: (property, validator) =>
+        Utils.blockProperty(property) && validator(property),
+})(
     ({
         variant,
         size,

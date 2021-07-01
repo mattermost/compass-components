@@ -59,9 +59,8 @@ type PButton = {
     onClick: () => void;
 };
 
-export type PButtonRoot = Pick<
-    PButton,
-    'destructive' | 'inverted' | 'disabled' | 'variant' | 'width' | 'size'
+export type PButtonRoot = Required<
+    Pick<PButton, 'destructive' | 'inverted' | 'disabled' | 'variant' | 'width' | 'size'>
 >;
 
 export default PButton;

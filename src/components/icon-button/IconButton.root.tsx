@@ -11,9 +11,10 @@ import { applyTextStyles } from '../text';
 import { DEFAULT_ICON_BUTTON_SIZE, ICON_BUTTON_DEFINITIONS } from './IconButton.constants';
 import { PIconButtonRoot } from './IconButton.props';
 
-const IconButtonRoot = styled.button.withConfig({
-    shouldForwardProp: Utils.forwardProperties(),
-})<PIconButtonRoot>(
+const IconButtonRoot = styled.button.withConfig<PIconButtonRoot>({
+    shouldForwardProp: (property, validator) =>
+        Utils.blockProperty(property) && validator(property),
+})(
     ({
         size = DEFAULT_ICON_BUTTON_SIZE,
         inverted = false,

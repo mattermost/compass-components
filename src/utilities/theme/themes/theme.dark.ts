@@ -89,6 +89,7 @@ const darkTheme: TTheme = {
         contrast: neutral[50],
     },
     animation: {
+        instant: '0ms',
         fastest: '100ms',
         fast: '250ms',
         normal: '300ms',

@@ -15,6 +15,7 @@ const Icon = ({
     glyph = DEFAULT_ICON_GLYPH,
     size = DEFAULT_ICON_SIZE,
     color = DEFAULT_ICON_COLOR,
+    className = '',
     ...rest
 }: PIcon): JSX.Element => {
     Utils.assert(
@@ -28,6 +29,7 @@ const Icon = ({
         size,
         color,
         glyph,
+        className: `${className} icon-${glyph}`,
     };
 
     return <IconRoot {...rootProperties} {...rest} />;

@@ -7,11 +7,26 @@ import PRadio from './Radio.props';
 import RadioRoot from './Radio.root';
 import RadioLabelRoot from './RadioLabel.root';
 
-const Radio: React.FC<PRadio> = ({ label, size = DEFAULT_RADIO_SIZE, ...rest }: PRadio) => {
+const Radio: React.FC<PRadio> = ({
+    label,
+    size = DEFAULT_RADIO_SIZE,
+    hasError = false,
+    disabled = false,
+    checked = false,
+    ...rest
+}: PRadio) => {
     const hasLabel = Utils.isString(label) && label.length > 0;
 
+    const rootProperties = {
+        size,
+        hasError,
+        disabled,
+        checked,
+        ...rest,
+    };
+
     return (
-        <RadioRoot size={size} {...rest}>
+        <RadioRoot {...rootProperties}>
             <input id="hidden__input" type={'radio'} />
             <span />
             {hasLabel && <RadioLabelRoot size={size}>{label}</RadioLabelRoot>}

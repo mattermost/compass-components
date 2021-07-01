@@ -1,3 +1,5 @@
+import { ReactNode, ReactNodeArray } from 'react';
+
 import { TRadioSizeToken } from './Radio.types';
 
 type PRadio = {
@@ -33,9 +35,10 @@ type PRadio = {
      * custom classname
      * */
     className?: string;
+    children: ReactNode | ReactNodeArray;
 };
 
-type PRadioRoot = Required<Pick<PRadio, 'hasError' | 'disabled' | 'size' | 'checked'>>;
+type PRadioRoot = Required<Pick<PRadio, 'hasError' | 'disabled' | 'size' | 'checked' | 'children'>>;
 
 type PRadioLabel = Required<Pick<PRadio, 'size'>>;
 

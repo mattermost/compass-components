@@ -83,7 +83,11 @@ const createFiles = (names, group = 'components') => {
                     title: 'Pattern',
                     description: 'a complex structure built from the components',
                     value: 'patterns',
-                    disabled: true,
+                },
+                {
+                    title: 'Utility',
+                    description: 'component that adds dynamic behoviour, styling, etc.',
+                    value: 'utilities',
                 },
             ],
             initial: 0,

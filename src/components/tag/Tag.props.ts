@@ -24,6 +24,6 @@ type PTag = {
     className?: string;
 };
 
-export type PTagRoot = Required<Pick<PTag, 'variant' | 'text' | 'size' | 'onClick'>>;
+export type PTagRoot = Required<Pick<PTag, 'variant' | 'size'>> & Pick<PTag, 'onClick'>;
 
 export default PTag;

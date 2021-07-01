@@ -23,13 +23,11 @@ function getStoryDocumentationUrl(storyParameters: Record<string, string>): stri
     return `/?path=/docs/${storyPath}--${kebabCase(storyParameters.includeStories[0])}`;
 }
 
-// TODO@michel: for some reason the styled-component API `.withConfig({ shouldForwardProp: ...})` messes with typings.
-//              Therefore we can't use this helper at the moment when we want to pass down children into the component.
 /**
  * this is to prevent all properties to be passed down to the underlying
  * component, except for the ones we want to. (e.g. `type="button"`)
- * Leave the whitelist empty or do not pass a value to block all properties,
- * except for the default ones.
+ * Leave the blackList empty or do not pass a value to allow all properties
+ * to be passed dow.
  *
  * `data-*` and `aria-*` attributes are always passed down.
  *
@@ -39,26 +37,29 @@ function getStoryDocumentationUrl(storyParameters: Record<string, string>): stri
  * ```typescript
  * // pass down `width` and `height` properties
  * const StyledDiv = styled.div.withConfig({
- *   shouldForwardProp: Utils.forwardProperties(['width', 'height']),
+ *   shouldForwardProp: (property, validator) =>
+ *     Utils.blockProperty(property, ['width', 'height']) && validator(property),
  * })<PDiv>` ... `
  *
- * // block all properties from being passed down
+ * // allow all properties to be passed down
  * const StyledSection = styled.section.withConfig({
- *   shouldForwardProp: Utils.forwardProperties(),
+ *   shouldForwardProp: (property, validator) =>
+ *     Utils.blockProperty(property) && validator(property),
  * })<PSection>` ... `
  * ```
  * */
-const forwardProperties =
-    (whiteList: string[] = []): ((property: string | number) => boolean) =>
-    (property: string | number): boolean =>
-        // forward the property when it is a `data-*`attribute
-        property.toString().startsWith('data-') ||
-        // forward the property when it is a `aria-*`attribute
-        property.toString().startsWith('aria-') ||
-        // always forward the property when it is defined within the property-whitelist
-        DEFAULT_PROPERTY_WHITELIST.includes(property.toString()) ||
-        // forward the property when it is defined within the passed property-whitelist
-        whiteList.includes(property.toString());
+const blockProperty = (
+    property: string | number | symbol,
+    blackList: (string | number | symbol)[] = []
+): boolean =>
+    // forward the property when it is a `data-*`attribute
+    property.toString().startsWith('data-') ||
+    // forward the property when it is a `aria-*`attribute
+    property.toString().startsWith('aria-') ||
+    // always forward the property when it is defined within the property-whitelist
+    DEFAULT_PROPERTY_WHITELIST.includes(property.toString()) ||
+    // forward the property when it is defined within the passed property-whitelist
+    !blackList.includes(property.toString());
 
 /**
  * hide the properties that come with the styled component API
@@ -156,6 +157,10 @@ function assert(assertion: boolean, message: string, warnOnly = false): void {
     }
 }
 
+/**
+ * This LITERALLY does NOTHING! :D
+ * @returns {void}
+ */
 function noop(): void {}
 
 const Utils = {
@@ -166,7 +171,7 @@ const Utils = {
     isNumber,
     isFunction,
     isString,
-    forwardProperties,
+    blockProperty,
     getBase64,
     getStoryDocumentationUrl,
     hideComponentProperties,
