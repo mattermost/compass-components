@@ -58,6 +58,7 @@ const ButtonRoot = styled.button.withConfig<PButtonRoot>({
             action: action.hover,
             // border will be set afterwards, since it is influenced by other props
             border: '',
+            background: '',
         };
 
         // handle inverted here before re-assigning colors
@@ -102,7 +103,7 @@ const ButtonRoot = styled.button.withConfig<PButtonRoot>({
             colors.border = colors.text;
         }
 
-        const backgroundColor = setAlpha(colors.main, opacities.background);
+        colors.background = setAlpha(colors.main, opacities.background);
 
         // disabled buttons do not have interactional states
         const actionStyles = disabled
@@ -112,13 +113,13 @@ const ButtonRoot = styled.button.withConfig<PButtonRoot>({
             : css`
                   &:hover {
                       background: ${blendColors(
-                          backgroundColor,
+                          colors.background,
                           setAlpha(colors.action, opacities.hover)
                       )};
                   }
                   &:active {
                       background: ${blendColors(
-                          backgroundColor,
+                          colors.background,
                           setAlpha(colors.action, opacities.active)
                       )};
                   }
@@ -147,7 +148,7 @@ const ButtonRoot = styled.button.withConfig<PButtonRoot>({
             ${applyShape({ width: width === 'full' ? '100%' : width, height, radius: 4 })};
             ${applyPadding(Spacing.symmetric(spacing))};
 
-            background-color: ${backgroundColor};
+            background-color: ${colors.background};
             color: ${colors.text};
             ${variant === 'secondary' &&
             css`
