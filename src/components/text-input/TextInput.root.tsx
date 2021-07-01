@@ -18,12 +18,12 @@ const TextInputRoot = styled.div<PTextInputRoot>(
         active,
         width,
         size,
-        backgroundColor,
+        backgroundColor = background.default,
     }: ThemedStyledProps<PTextInputRoot, TTheme>): FlattenSimpleInterpolation => {
         const colors: Record<string, string> = {
             active: hasError ? palette.alert.main : palette.primary.main,
             text: text.primary,
-            background: backgroundColor || background.default,
+            background: backgroundColor,
             action: action.hover,
             border: active ? palette.primary.main : text.secondary,
         };

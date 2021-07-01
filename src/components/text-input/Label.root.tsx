@@ -17,18 +17,14 @@ const LabelRoot = styled.label<PLabelRoot>(
         value,
         animatedLabel,
         leadingIcon,
-        backgroundColor,
+        backgroundColor = background.default,
     }: ThemedStyledProps<PLabelRoot, TTheme>): FlattenSimpleInterpolation => {
         const hasValue = Utils.isString(value) && value.length > 0;
-
-        const colors: Record<string, string> = {
-            background: backgroundColor || background.default,
-        };
 
         return css`
             position: absolute;
             white-space: nowrap;
-            background-color: ${hasValue ? colors.background : 'transparent'};
+            background-color: ${hasValue ? backgroundColor : 'transparent'};
             opacity: 1;
             transform: translate(${hasValue ? LABEL_POSITIONS[size] : '0, 0'})
                 scale(${hasValue ? '0.7' : '1'});
@@ -46,7 +42,7 @@ const LabelRoot = styled.label<PLabelRoot>(
             })};
 
             input:focus + & {
-                background-color: ${colors.background};
+                background-color: ${backgroundColor};
                 ${animatedLabel
                     ? `transform: translate(${LABEL_POSITIONS[size]}) scale(0.7);`
                     : 'transform: scale(0); opacity: 0;'};

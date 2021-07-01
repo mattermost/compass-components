@@ -34,8 +34,6 @@ const TextInput: React.FC<PTextInput> = ({
     const { iconSize } = TEXT_INPUT_VALUES_MAPPING[size];
 
     const hasLabel = Utils.isString(label) && label.length > 0;
-    const onClearInput: () => void = Utils.isFunction(onClear) ? onClear : (): void => {};
-
     const rootProperties = {
         size,
         active,
@@ -69,7 +67,7 @@ const TextInput: React.FC<PTextInput> = ({
                 </LabelRoot>
             )}
             {trailingIcon && trailingIcon !== 'none' && (
-                <Icon glyph={trailingIcon} size={iconSize} onClick={onClearInput} />
+                <Icon glyph={trailingIcon} size={iconSize} onClick={onClear} />
             )}
         </TextInputRoot>
     );
