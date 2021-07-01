@@ -1,6 +1,13 @@
+import { MouseEventHandler } from 'react';
+
 import { TIconGlyph } from '../../foundations/icon';
 
-import { TButtonIconPosition, TButtonSize, TButtonVariant, TButtonWidth } from './Button.types';
+import {
+    TButtonIconPosition,
+    TButtonSizeToken,
+    TButtonVariant,
+    TButtonWidth,
+} from './Button.types';
 
 type PButton = {
     /**
@@ -8,6 +15,10 @@ type PButton = {
      * as the 'aria-label' attribute id no 'aria-label' is added as property
      */
     label: string;
+    /**
+     * click-event handler
+     */
+    onClick: MouseEventHandler<HTMLButtonElement | HTMLAnchorElement>;
     /**
      * when pushing a button is potentially harmful use this property to show a
      * visual hint to that (button turns red/to the defined alert color)
@@ -45,22 +56,31 @@ type PButton = {
      * sizing for the buttons. 'sm' (small), 'md' (medium) and 'lg' (large)
      * @default 'md'
      */
-    size?: TButtonSize;
-    /**
-     * when you want to use a Icon in the button pass the iconglyph (name) here
-     */
-    icon?: TIconGlyph;
+    size?: TButtonSizeToken;
     /**
      * where should the icon be positioned?
      * @default 'start'
      */
     iconPosition?: TButtonIconPosition;
+    /**
+     * when you want to use a Icon in the button pass the iconglyph (name) here
+     */
+    icon?: TIconGlyph;
+    /**
+     * custom className
+     */
     className?: string;
-    onClick: () => void;
 };
 
-export type PButtonRoot = Required<
+type PButtonRoot = Required<
     Pick<PButton, 'destructive' | 'inverted' | 'disabled' | 'variant' | 'width' | 'size'>
 >;
+
+type PButtonIconRoot = {
+    margin: number;
+    marginPosition: 'left' | 'right';
+};
+
+export type { PButtonRoot, PButtonIconRoot };
 
 export default PButton;

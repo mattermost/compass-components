@@ -1,54 +1,47 @@
 import React from 'react';
 
-import { TSpacingTokensSymmetric } from '../../utilities/spacing';
 import { Utils } from '../../shared';
-import IconRoot, { TIconSize } from '../../foundations/icon';
-import Text, { TTextSizeToken } from '../text';
 
 import {
+    BUTTON_SIZE_MAP,
+    BUTTON_SIZES,
+    BUTTON_VARIANTS,
+    DEFAULT_BUTTON_ICON_POSITION,
     DEFAULT_BUTTON_SIZE,
     DEFAULT_BUTTON_VARIANT,
     DEFAULT_BUTTON_WIDTH,
 } from './Button.constants';
 import PButton from './Button.props';
-import ButtonRoot from './Button.root';
+import ButtonRoot, { ButtonIconRoot } from './Button.root';
 
 const Button: React.FC<PButton> = ({
-    destructive = false,
-    inverted = false,
-    disabled = false,
+    label,
+    onClick,
+    icon,
+    iconPosition = DEFAULT_BUTTON_ICON_POSITION,
     size = DEFAULT_BUTTON_SIZE,
     variant = DEFAULT_BUTTON_VARIANT,
     width = DEFAULT_BUTTON_WIDTH,
-    label,
-    icon,
-    iconPosition,
-    onClick,
+    destructive = false,
+    inverted = false,
+    disabled = false,
     ...rest
 }: PButton) => {
-    let labelSize: TTextSizeToken = 100;
-    let iconSize: TIconSize = 16;
+    Utils.assert(
+        BUTTON_VARIANTS.includes(variant),
+        `Compass Components - Button: The Button component was used with an invalid 'variant' property. Please choose from the following options: ${BUTTON_VARIANTS.join(
+            ', '
+        )}`,
+        true
+    );
 
-    const spacing: TSpacingTokensSymmetric = {
-        vertical: 0,
-        horizontal: 125,
-    };
-
-    switch (size) {
-        case 'large':
-            labelSize = 200;
-            iconSize = 20;
-            spacing.horizontal = 150;
-            break;
-        case 'small':
-            labelSize = 75;
-            iconSize = 12;
-            // line-height on text is 16, so there is no need to adjust paddings
-            spacing.horizontal = 100;
-            break;
-        case 'medium':
-        default:
-    }
+    Utils.assert(
+        BUTTON_SIZES.includes(size),
+        `Compass Components - Button: The Button component was used with an invalid 'size' property. Please choose from the following options: ${BUTTON_SIZES.join(
+            ', '
+        )}`,
+        true
+    );
 
     const rootProperties = {
         disabled: disabled || !Utils.isFunction(onClick),
@@ -63,18 +56,23 @@ const Button: React.FC<PButton> = ({
 
     return (
         <ButtonRoot {...rootProperties}>
-            {icon && iconPosition === 'start' ? <IconRoot glyph={icon} size={iconSize} /> : null}
-            <Text
-                element={'span'}
-                size={labelSize}
-                margin={'none'}
-                weight={'bold'}
-                color={'inherit'}
-                inheritLineHeight
-            >
-                {label}
-            </Text>
-            {icon && iconPosition === 'end' ? <IconRoot glyph={icon} size={iconSize} /> : null}
+            {icon && iconPosition === 'start' && (
+                <ButtonIconRoot
+                    glyph={icon}
+                    size={BUTTON_SIZE_MAP[size].iconSize}
+                    margin={BUTTON_SIZE_MAP[size].iconMargin}
+                    marginPosition={'right'}
+                />
+            )}
+            {label}
+            {icon && iconPosition === 'end' && (
+                <ButtonIconRoot
+                    glyph={icon}
+                    size={BUTTON_SIZE_MAP[size].iconSize}
+                    margin={BUTTON_SIZE_MAP[size].iconMargin}
+                    marginPosition={'left'}
+                />
+            )}
         </ButtonRoot>
     );
 };

@@ -1,6 +1,7 @@
-import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+import { ArgsTable, Canvas, Meta, Story, Title, Subtitle } from '@storybook/addon-docs/blocks';
 
 import { DEFAULT_ICON_GLYPH, ICON_GLYPHS } from '../../foundations/icon';
+import buttonAnatomyImg from '../../assets/images/button_anatomy.png';
 
 import Button from './Button.tsx';
 import {
@@ -13,8 +14,348 @@ import {
     DEFAULT_BUTTON_VARIANT,
     DEFAULT_BUTTON_WIDTH,
 } from './Button.constants';
+import Grid from '../../utilities/layout';
+import Spacing from '../../utilities/spacing';
+import Shape from '../../foundations/shape';
+import { Utils } from '../../shared';
+import Text from '../text';
+import colors from '../../foundations/colors';
+import ThemeProvider, { darkTheme } from '../../utilities/theme';
+
+export const defaultArgs = {
+    label: 'Button',
+    disabled: false,
+    destructive: false,
+    size: DEFAULT_BUTTON_SIZE,
+    variant: DEFAULT_BUTTON_VARIANT,
+    width: DEFAULT_BUTTON_WIDTH,
+    onClick: Utils.noop,
+};
+
+export const boxMargin = Spacing.symmetric({ vertical: 100, horizontal: 100 });
+export const boxPadding = Spacing.symmetric({ vertical: 150, horizontal: 150 });
 
 <Meta title={'Components/Button'} />
+
+<Title>Buttons</Title>
+
+<Subtitle>
+    Buttons enable users to take actions or make decisions with a single tap or click. They are used
+    for core actions within the product like saving data in a form, sending a message, or confirming
+    something in a dialog. There are many Button Variants, as described below, but all have a
+    cohesive look and feel.
+</Subtitle>
+
+## Button Anatomy
+
+Buttons are composed of the following elements:
+
+-   Container
+-   Label
+-   Leading Icon
+-   Trailing Icon
+
+<img src={buttonAnatomyImg} alt={'button anatomy'} />
+
+### Container
+
+Depending on the Button Variation, the container can have different properties. It may be filled in with the primary
+button color, outlined, or invisible. See Button Variations below.
+
+### Label
+
+Button labels should describe the action as concisely as possible and should be limited to 4 words or less. Depending on
+the Button Variant, the label has different visual properties. See Button Variations below.
+
+### Leading Icon
+
+Leading icons within buttons are an optional element and leverage the Icon Component. Leading Icons appear to the left
+of the Button Label. In most cases, we favor the use of leading icons vs. trailing icons.
+
+### Trailing Icon
+
+Trailing icons within buttons are also optional and are used much more sparingly. There are cases where it makes more
+sense to place the icon to the right rather than to the left.
+
+## Button Sizes
+
+Buttons come in 4 sizes: X-Small, Small, Medium, and Large. These sizes match the sizes of Input fields as well. The
+Medium Button size is used as the default button size for the web application, while the Large Button size is used
+as the default for mobile.
+
+<Grid padding={Spacing.symmetric({ vertical: 25 })} justify={'stretch'}>
+    <Grid
+        row
+        padding={Spacing.symmetric({ vertical: 150, horizontal: 25 })}
+        alignment={'flex-start'}
+    >
+        <Grid justify={'center'} alignment={'center'} margin={boxMargin}>
+            <Shape backgroundColor={colors.neutral[100]} width={150} height={150}>
+                <Grid flex={1} justify={'center'} alignment={'center'} padding={boxPadding}>
+                    <Button {...defaultArgs} size={'xs'} />
+                </Grid>
+            </Shape>
+            <Text weight={'bold'} size={200}>
+                X-Small
+            </Text>
+        </Grid>
+        <Grid justify={'center'} alignment={'center'} margin={boxMargin}>
+            <Shape backgroundColor={colors.neutral[100]} width={150} height={150}>
+                <Grid flex={1} justify={'center'} alignment={'center'} padding={boxPadding}>
+                    <Button {...defaultArgs} size={'sm'} />
+                </Grid>
+            </Shape>
+            <Text weight={'bold'} size={200}>
+                Small
+            </Text>
+        </Grid>
+        <Grid justify={'center'} alignment={'center'} margin={boxMargin}>
+            <Shape backgroundColor={colors.neutral[100]} width={150} height={150}>
+                <Grid flex={1} justify={'center'} alignment={'center'} padding={boxPadding}>
+                    <Button {...defaultArgs} size={'md'} />
+                </Grid>
+            </Shape>
+            <Text weight={'bold'} size={200}>
+                Medium
+            </Text>
+        </Grid>
+        <Grid justify={'center'} alignment={'center'} margin={boxMargin}>
+            <Shape backgroundColor={colors.neutral[100]} width={150} height={150}>
+                <Grid flex={1} justify={'center'} alignment={'center'} padding={boxPadding}>
+                    <Button {...defaultArgs} size={'lg'} />
+                </Grid>
+            </Shape>
+            <Text weight={'bold'} size={200}>
+                Large
+            </Text>
+        </Grid>
+    </Grid>
+</Grid>
+
+## Button Emphasis
+
+### Primary Buttons (High Emphasis)
+
+Primary Buttons are used to highlight the strongest call to action on a page. They should only appear once per screen
+(not including the application header or within a modal dialog) to ensure the user is guided through the screen on what
+the most important action is. Not every screen needs a primary button. In a group of Buttons, Primary Buttons should be
+paired with Tertiary Buttons.
+
+### Secondary Buttons (Medium Emphasis)
+
+Secondary Buttons are treated like Primary Buttons, but should be used in cases where you may not want the same level of
+visual disruption that a Primary Button provides. If a group of Buttons already has a Primary Button, don’t use
+Secondary Buttons—Use Tertiary Buttons instead.
+
+### Tertiary Buttons (Low Emphasis)
+
+Tertiary Buttons occupy the same space and visual properties as Secondary Buttons, but don’t have an outlined or
+contained shape that is visible. In a group of Buttons, Tertiary Buttons should be used by default.
+
+## Button States
+
+Buttons have 6 different states: Default, Hover, Focus, Active, Disabled, and Loading.
+
+## Button Variations
+
+### Inverted Style
+
+When buttons are used on backgrounds where contrast is compromised, the inverted style can be used.
+
+<ThemeProvider theme={darkTheme}>
+    <Grid padding={Spacing.symmetric({ vertical: 150 })} justify={'stretch'}>
+        <Grid
+            row
+            padding={Spacing.symmetric({ vertical: 150, horizontal: 25 })}
+            alignment={'center'}
+        >
+            <Grid justify={'center'} alignment={'center'} margin={boxMargin}>
+                <Shape backgroundColor={colors.blue[400]} width={150} height={150}>
+                    <Grid flex={1} justify={'center'} alignment={'center'} padding={boxPadding}>
+                        <Button {...defaultArgs} inverted />
+                    </Grid>
+                </Shape>
+                <Text weight={'bold'} size={200}>
+                    Primary
+                </Text>
+            </Grid>
+            <Grid justify={'center'} alignment={'center'} margin={boxMargin}>
+                <Shape backgroundColor={colors.blue[400]} width={150} height={150}>
+                    <Grid flex={1} justify={'center'} alignment={'center'} padding={boxPadding}>
+                        <Button {...defaultArgs} inverted variant={'secondary'} />
+                    </Grid>
+                </Shape>
+                <Text weight={'bold'} size={200}>
+                    Secondary
+                </Text>
+            </Grid>
+            <Grid justify={'center'} alignment={'center'} margin={boxMargin}>
+                <Shape backgroundColor={colors.blue[400]} width={150} height={150}>
+                    <Grid flex={1} justify={'center'} alignment={'center'} padding={boxPadding}>
+                        <Button {...defaultArgs} inverted variant={'tertiary'} />
+                    </Grid>
+                </Shape>
+                <Text weight={'bold'} size={200}>
+                    Tertiary
+                </Text>
+            </Grid>
+        </Grid>
+    </Grid>
+</ThemeProvider>
+
+### Destructive Buttons
+
+When buttons are used for actions that might be destructive or difficult to reverse, the destructive variant can be used.
+
+<Grid padding={Spacing.symmetric({ vertical: 150 })} justify={'stretch'}>
+    <Grid
+        row
+        padding={Spacing.symmetric({ vertical: 150, horizontal: 25 })}
+        alignment={'flex-start'}
+    >
+        <Grid justify={'center'} alignment={'center'} margin={boxMargin}>
+            <Shape backgroundColor={colors.neutral[100]} width={150} height={150}>
+                <Grid flex={1} justify={'center'} alignment={'center'} padding={boxPadding}>
+                    <Button {...defaultArgs} destructive />
+                </Grid>
+            </Shape>
+            <Text weight={'bold'} size={200}>
+                Primary
+            </Text>
+        </Grid>
+        <Grid justify={'center'} alignment={'center'} margin={boxMargin}>
+            <Shape backgroundColor={colors.neutral[100]} width={150} height={150}>
+                <Grid flex={1} justify={'center'} alignment={'center'} padding={boxPadding}>
+                    <Button {...defaultArgs} destructive variant={'secondary'} />
+                </Grid>
+            </Shape>
+            <Text weight={'bold'} size={200}>
+                Secondary
+            </Text>
+        </Grid>
+        <Grid justify={'center'} alignment={'center'} margin={boxMargin}>
+            <Shape backgroundColor={colors.neutral[100]} width={150} height={150}>
+                <Grid flex={1} justify={'center'} alignment={'center'} padding={boxPadding}>
+                    <Button {...defaultArgs} destructive variant={'tertiary'} />
+                </Grid>
+            </Shape>
+            <Text weight={'bold'} size={200}>
+                Tertiary
+            </Text>
+        </Grid>
+    </Grid>
+</Grid>
+
+### Dynamic-Width Buttons (Default)
+
+By default, buttons should expand and contract based on the width of the content within them.
+
+<Grid padding={Spacing.symmetric({ vertical: 150 })} justify={'stretch'}>
+    <Grid
+        row
+        padding={Spacing.symmetric({ vertical: 150, horizontal: 25 })}
+        alignment={'flex-start'}
+    >
+        <Grid justify={'center'} alignment={'center'} margin={boxMargin}>
+            <Shape backgroundColor={colors.neutral[100]} width={350} height={150}>
+                <Grid flex={1} justify={'center'} alignment={'center'} padding={boxPadding}>
+                    <Button {...defaultArgs} />
+                </Grid>
+            </Shape>
+            <Text weight={'bold'} size={200}>
+                Dynamic width Button
+            </Text>
+        </Grid>
+        <Grid justify={'center'} alignment={'center'} margin={boxMargin}>
+            <Shape backgroundColor={colors.neutral[100]} width={350} height={150}>
+                <Grid flex={1} justify={'center'} alignment={'center'} padding={boxPadding}>
+                    <Button {...defaultArgs} icon={'mattermost'} />
+                </Grid>
+            </Shape>
+            <Text weight={'bold'} size={200}>
+                Dynamic width Button
+                <br />
+                (with Icon)
+            </Text>
+        </Grid>
+    </Grid>
+</Grid>
+
+### Fixed-Width Buttons
+
+There are some cases where, for aesthetic reasons, a Button needs to maintain a fixed width. A use case for this might
+be in a table row where buttons are repeated row after row.
+
+NOTE: When Leading or Trailing icons are used in a Fixed-Width Button, the icon's position is anchored to the Label.
+
+<Grid padding={Spacing.symmetric({ vertical: 150 })} justify={'stretch'}>
+    <Grid
+        row
+        padding={Spacing.symmetric({ vertical: 150, horizontal: 25 })}
+        alignment={'flex-start'}
+    >
+        <Grid justify={'center'} alignment={'center'} margin={boxMargin}>
+            <Shape backgroundColor={colors.neutral[100]} width={350} height={150}>
+                <Grid flex={1} justify={'center'} alignment={'center'} padding={boxPadding}>
+                    <Button {...defaultArgs} width={200} />
+                </Grid>
+            </Shape>
+            <Text weight={'bold'} size={200}>
+                Fixed-width Button
+            </Text>
+        </Grid>
+        <Grid justify={'center'} alignment={'center'} margin={boxMargin}>
+            <Shape backgroundColor={colors.neutral[100]} width={350} height={150}>
+                <Grid flex={1} justify={'center'} alignment={'center'} padding={boxPadding}>
+                    <Button {...defaultArgs} width={200} icon={'mattermost'} />
+                </Grid>
+            </Shape>
+            <Text weight={'bold'} size={200}>
+                Fixed-width Button
+                <br />
+                (with Icon)
+            </Text>
+        </Grid>
+    </Grid>
+</Grid>
+
+### Full-Width Buttons
+
+There are some cases where a Button needs to expand to fit the width of its parent container. Use cases for this may be
+in various mobile screens or a login screen. Full-Width Buttons may be Primary, Secondary, or Tertiary Buttons.
+
+NOTE: When Leading or Trailing icons are used in a Full-Width Button, the icon's position is anchored to the Label.
+
+<Grid padding={Spacing.symmetric({ vertical: 150 })} justify={'stretch'}>
+    <Grid
+        row
+        padding={Spacing.symmetric({ vertical: 150, horizontal: 25 })}
+        alignment={'flex-start'}
+    >
+        <Grid justify={'center'} alignment={'center'} margin={boxMargin}>
+            <Shape backgroundColor={colors.neutral[100]} width={350} height={150}>
+                <Grid flex={1} justify={'center'} alignment={'center'} padding={boxPadding}>
+                    <Button {...defaultArgs} width={'full'} />
+                </Grid>
+            </Shape>
+            <Text weight={'bold'} size={200}>
+                Full-width Button
+            </Text>
+        </Grid>
+        <Grid justify={'center'} alignment={'center'} margin={boxMargin}>
+            <Shape backgroundColor={colors.neutral[100]} width={350} height={150}>
+                <Grid flex={1} justify={'center'} alignment={'center'} padding={boxPadding}>
+                    <Button {...defaultArgs} width={'full'} icon={'mattermost'} />
+                </Grid>
+            </Shape>
+            <Text weight={'bold'} size={200}>
+                Full-width Button
+                <br />
+                (with Icon)
+            </Text>
+        </Grid>
+    </Grid>
+</Grid>
 
 <ArgsTable of={Button} />
 
