@@ -158,7 +158,7 @@ function assert(assertion: boolean, message: string, warnOnly = false): void {
 }
 
 /**
- * This LITERALLY deos NOTHING! :D
+ * This LITERALLY does NOTHING! :D
  * @returns {void}
  */
 function noop(): void {}
