@@ -27,10 +27,10 @@ jobs:
               run: |
                   npm run build-storybook
             - name: Deploy
-              uses: JamesIves/github-pages-deploy-action@3.6.2
+              uses: JamesIves/github-pages-deploy-action@4.1.4
               with:
                   GITHUB_TOKEN: ${{ secrets.STORYBOOK_ACTION_GITHUB_TOKEN }}
-                  BRANCH: master
+                  BRANCH: gh-pages
                   FOLDER: storybook-static
                   CLEAN: true
                   TARGET_FOLDER: docs
