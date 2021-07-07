@@ -1,10 +1,11 @@
 import styled, { css } from 'styled-components';
 import { FlattenSimpleInterpolation, ThemedStyledProps } from 'styled-components/ts3.6';
 
+import applyElevation from '../../utilities/elevation';
 import { TTheme } from '../../utilities/theme';
 import { Utils } from '../../shared';
 
-import { applyElevation, applyShape } from './Shape.mixins';
+import applyShape from './Shape.mixins';
 import { PShapeRoot } from './Shape.props';
 
 const ShapeRoot = styled.div.withConfig<PShapeRoot>({
@@ -25,8 +26,6 @@ const ShapeRoot = styled.div.withConfig<PShapeRoot>({
 
         ${applyShape({ width, height, radius })};
         ${applyElevation({ elevation, elevationOnHover }, theme.type === 'dark')};
-
-        z-index: ${elevation || 0};
     `
 );
 

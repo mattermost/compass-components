@@ -1,6 +1,7 @@
 import { ArgsTable, Meta, Story, Canvas, Title, Subtitle } from '@storybook/addon-docs/blocks';
 
 import Text from '../../components/text';
+import { Utils } from '../../shared';
 import Grid from '../../utilities/layout';
 import Spacing from '../../utilities/spacing';
 
@@ -8,10 +9,8 @@ import Shape from './index';
 import {
     DEFAULT_SHAPE_BORDER_RADIUS,
     DEFAULT_SHAPE_ELEMENT,
-    DEFAULT_SHAPE_ELEVATION_LEVEL,
     SHAPE_BORDER_RADII,
     SHAPE_ELEMENTS,
-    SHAPE_ELEVATION_LEVELS,
 } from './Shape.constants';
 
 <Meta component={Shape} title="Foundations/Shape" />
@@ -19,8 +18,6 @@ import {
 export const defaultArgs = {
     className: 'shape',
     radius: DEFAULT_SHAPE_BORDER_RADIUS,
-    elevation: DEFAULT_SHAPE_ELEVATION_LEVEL,
-    elevationOnHover: DEFAULT_SHAPE_ELEVATION_LEVEL,
     element: DEFAULT_SHAPE_ELEMENT,
     width: 200,
     height: 50,
@@ -35,18 +32,6 @@ export const argTypes = {
     },
     radius: {
         options: SHAPE_BORDER_RADII,
-        control: {
-            type: 'select',
-        },
-    },
-    elevation: {
-        options: SHAPE_ELEVATION_LEVELS,
-        control: {
-            type: 'select',
-        },
-    },
-    elevationOnHover: {
-        options: SHAPE_ELEVATION_LEVELS,
         control: {
             type: 'select',
         },

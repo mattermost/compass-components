@@ -5,9 +5,9 @@ import { Utils } from '../../shared';
 import ShapeRoot from './Shape.root';
 import PShape from './Shape.props';
 import {
+    DEFAULT_SHAPE_ELEVATION_LEVEL,
     DEFAULT_SHAPE_BORDER_RADIUS,
     DEFAULT_SHAPE_ELEMENT,
-    DEFAULT_SHAPE_ELEVATION_LEVEL,
     SHAPE_ELEMENTS,
 } from './Shape.constants';
 
@@ -15,7 +15,7 @@ const Shape = ({
     element = DEFAULT_SHAPE_ELEMENT,
     radius = DEFAULT_SHAPE_BORDER_RADIUS,
     elevation = DEFAULT_SHAPE_ELEVATION_LEVEL,
-    elevationOnHover = elevation,
+    elevationOnHover,
     ...rest
 }: PShape): JSX.Element => {
     Utils.assert(
