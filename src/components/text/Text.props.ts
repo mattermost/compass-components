@@ -48,7 +48,7 @@ type PApplyTextMargin = Pick<PText, 'size' | 'margin'>;
 
 type PApplyTextColor = {
     color: TTextColor;
-    theme: TTheme;
+    theme?: TTheme;
 };
 
 export type { PTextRoot, PApplyTextColor, PApplyTextMargin, PApplyTextStyles };

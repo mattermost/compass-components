@@ -53,8 +53,16 @@ const applyTextMargin = ({
     `;
 };
 
-const applyTextColor = ({ color, theme }: PApplyTextColor): FlattenSimpleInterpolation => css`
-    color: ${color && color !== 'inherit' ? theme.text[color] : color};
-`;
+const applyTextColor = ({ color, theme }: PApplyTextColor): FlattenSimpleInterpolation => {
+    if (color === 'inherit' || !theme) {
+        return css`
+            color: inherit;
+        `;
+    }
+
+    return css`
+        color: ${theme.text[color] || color};
+    `;
+};
 
 export { applyTextStyles, applyTextColor, applyTextMargin };

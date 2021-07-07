@@ -62,6 +62,34 @@ const blockProperty = (
     !blackList.includes(property.toString());
 
 /**
+ * this function "force-forwards" a property.
+ * it is especially helpful when you need to pass properties from an extended
+ * root component to the component it inherits from
+ *
+ * in this example we want to force-forward (pass) properties to the
+ * Icon component ButtonIconRoot is extending from, but since the default
+ * validator function from styled-components does not handle 'glyph' and 'size'
+ * as standard HTML attributes it blocks them fropm being passed on
+ *
+ * @example
+ * ```typescript
+ * const ButtonIconRoot = styled(Icon).withConfig<PButtonIconRoot>({
+ *   shouldForwardProp: (property, validator) =>
+ *       Utils.forceForwardProperty(property, ['glyph', 'size']) ||
+ *       (Utils.blockProperty(property, ['width']) && validator(property)),
+ * })(
+ *   ({ margin, marginPosition }) => css`
+ *       margin-${marginPosition}: ${margin}px;
+ *     `
+ * );
+ * ```
+ */
+const forceForwardProperty = (
+    property: string | number | symbol,
+    whitelist: (string | number | symbol)[] = []
+): boolean => whitelist.includes(property.toString());
+
+/**
  * hide the properties that come with the styled component API
  * @returns {THiddenArgtypes}
  */
@@ -172,6 +200,7 @@ const Utils = {
     isFunction,
     isString,
     blockProperty,
+    forceForwardProperty,
     getBase64,
     getStoryDocumentationUrl,
     hideComponentProperties,
