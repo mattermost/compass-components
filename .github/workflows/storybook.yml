@@ -29,8 +29,7 @@ jobs:
             - name: Deploy
               uses: JamesIves/github-pages-deploy-action@4.1.4
               with:
-                  GITHUB_TOKEN: ${{ secrets.STORYBOOK_ACTION_GITHUB_TOKEN }}
-                  BRANCH: gh-pages
-                  FOLDER: storybook-static
-                  CLEAN: true
-                  TARGET_FOLDER: docs
+                  token: ${{ secrets.STORYBOOK_ACTION_GITHUB_TOKEN }}
+                  branch: gh-pages
+                  folder: storybook-static
+                  target-folder: docs
