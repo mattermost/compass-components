@@ -1,3 +1,5 @@
+import { MouseEventHandler } from 'react';
+
 import { TIconGlyph } from '../../foundations/icon';
 
 import { TIconButtonElement, TIconButtonSizeToken } from './IconButton.types';
@@ -17,6 +19,11 @@ type PIconButton = {
      * @default 'md'
      */
     size?: TIconButtonSizeToken;
+    /**
+     * render the compact version with reduced padding (-4px on both axis)
+     * @default false
+     */
+    compact?: boolean;
     /**
      * define if the icon is in toggled state
      * @default false
@@ -42,11 +49,17 @@ type PIconButton = {
      */
     label?: string;
     /**
+     * click-event handler
+     */
+    onClick?: MouseEventHandler<HTMLButtonElement | HTMLAnchorElement>;
+    /**
      * custom className
      */
     className?: string;
 };
 
-export type PIconButtonRoot = Omit<PIconButton, 'element' | 'className' | 'icon' | 'label'>;
+export type PIconButtonRoot = Required<
+    Omit<PIconButton, 'element' | 'className' | 'icon' | 'label' | 'onClick'>
+>;
 
 export default PIconButton;

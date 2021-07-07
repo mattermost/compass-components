@@ -6,6 +6,7 @@ import { TTheme } from './theme.types';
 const darkTheme: TTheme = {
     type: 'dark',
     elevationOpacity: 0.32,
+    noStyleReset: false,
     palette: {
         primary: {
             lighter: purple[200],

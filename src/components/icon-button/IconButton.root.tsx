@@ -3,12 +3,12 @@ import { FlattenSimpleInterpolation, ThemedStyledProps } from 'styled-components
 
 import { setAlpha, Utils } from '../../shared';
 import { TTheme } from '../../utilities/theme';
-import Spacing from '../../utilities/spacing';
+import Spacing, { SPACING_TOKENS } from '../../utilities/spacing';
 import { applyMargin, applyPadding } from '../../utilities/layout';
 import { applyShape } from '../../foundations/shape';
 import { applyTextStyles } from '../text';
 
-import { DEFAULT_ICON_BUTTON_SIZE, ICON_BUTTON_DEFINITIONS } from './IconButton.constants';
+import { ICON_BUTTON_DEFINITIONS } from './IconButton.constants';
 import { PIconButtonRoot } from './IconButton.props';
 
 const IconButtonRoot = styled.button.withConfig<PIconButtonRoot>({
@@ -16,15 +16,24 @@ const IconButtonRoot = styled.button.withConfig<PIconButtonRoot>({
         Utils.blockProperty(property) && validator(property),
 })(
     ({
-        size = DEFAULT_ICON_BUTTON_SIZE,
-        inverted = false,
-        toggled = false,
-        destructive = false,
-        disabled = false,
-        theme: { palette, action, text },
+        size,
+        compact,
+        inverted,
+        toggled,
+        destructive,
+        disabled,
+        theme: { palette, action, text, animation },
     }: ThemedStyledProps<PIconButtonRoot, TTheme>): FlattenSimpleInterpolation => {
         const isDefault = !inverted && !destructive && !toggled;
         const { main, contrast } = destructive && !toggled ? palette.alert : palette.primary;
+
+        // this solution is not ideal and should probably be refactored in the
+        // `applyPadding` and `applyMargin` mixin-function
+        let spacingTokenIndex = SPACING_TOKENS.indexOf(ICON_BUTTON_DEFINITIONS[size].spacing);
+
+        if (compact && spacingTokenIndex > 0) {
+            spacingTokenIndex -= 1;
+        }
 
         const colors: Record<string, string> = {
             background: main,
@@ -108,7 +117,7 @@ const IconButtonRoot = styled.button.withConfig<PIconButtonRoot>({
             background: ${setAlpha(colors.background, opacities.background.default)};
 
             ${applyShape({ radius: 4 })};
-            ${applyPadding(Spacing.all(ICON_BUTTON_DEFINITIONS[size].spacing))};
+            ${applyPadding(Spacing.all(SPACING_TOKENS[spacingTokenIndex]))};
 
             span {
                 ${applyMargin(Spacing.only('left', 75))};
@@ -121,8 +130,8 @@ const IconButtonRoot = styled.button.withConfig<PIconButtonRoot>({
 
             ${actionStyles};
 
-            transition: background 250ms ease-in-out, color 250ms ease-in-out,
-                box-shadow 250ms ease-in-out;
+            transition: background ${animation.fast} ease-in-out,
+                color ${animation.fast} ease-in-out, box-shadow ${animation.fast} ease-in-out;
         `;
     }
 );

@@ -4,14 +4,13 @@ import {
     TIconButtonElement,
 } from './IconButton.types';
 
-const ICON_BUTTON_SIZES: TIconButtonSizeToken[] = ['xs', 'sm', 'md', 'lg', 'xl'];
+const ICON_BUTTON_SIZES: TIconButtonSizeToken[] = ['xs', 'sm', 'md', 'lg'];
 
 const ICON_BUTTON_SIZE_LABELS: { [size in TIconButtonSizeToken]: string } = {
     xs: 'x-small',
     sm: 'small',
     md: 'medium',
     lg: 'large',
-    xl: 'x-large',
 };
 
 const DEFAULT_ICON_BUTTON_SIZE: TIconButtonSizeToken = 'md';
@@ -27,24 +26,19 @@ const ICON_BUTTON_DEFINITIONS: { [size in TIconButtonSizeToken]: TIconButtonDefi
         fontSize: 75,
     },
     sm: {
-        spacing: 75,
-        iconSize: 16,
-        fontSize: 100,
-    },
-    md: {
         spacing: 100,
         iconSize: 16,
         fontSize: 100,
     },
-    lg: {
+    md: {
         spacing: 125,
         iconSize: 20,
-        fontSize: 200,
+        fontSize: 100,
     },
-    xl: {
+    lg: {
         spacing: 125,
         iconSize: 28,
-        fontSize: 300,
+        fontSize: 200,
     },
 };
 

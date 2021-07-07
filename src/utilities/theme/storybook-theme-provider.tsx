@@ -2,6 +2,8 @@
 import React, { useEffect, useState } from 'react';
 import { createGlobalStyle } from 'styled-components';
 
+import { setAlpha } from '../../shared';
+
 import ThemeProvider, { PThemeProvider } from './theme-provider';
 import { lightTheme, TTheme } from './themes';
 import { PGlobalStyles } from './global-styles';
@@ -23,32 +25,34 @@ const CanvasGlobalStyles = createGlobalStyle`
 // storybook canvas- & docs-pages style overrides
 const DocumentationGlobalStyles = createGlobalStyle`
     body.sb-show-main {
-        background-color: ${(props: PGlobalStyles): string => props.theme.background.default};
+        background-color: ${({ theme }: PGlobalStyles): string => theme.background.default};
         align-items: stretch;
 
         .sbdocs-wrapper {
-            background-color: ${(props: PGlobalStyles): string =>
-                props.theme.type === 'dark' ? 'transparent' : props.theme.background.default};
+            background-color: ${({ theme }: PGlobalStyles): string =>
+                theme.type === 'dark' ? 'transparent' : theme.background.default};
 
             td {
-                background-color: ${(props: PGlobalStyles): string =>
-                    props.theme.type === 'dark' ? props.theme.background.shape : '#FFF'};
+                background-color: ${({ theme }: PGlobalStyles): string =>
+                    theme.type === 'dark' ? theme.background.shape : '#FFF'};
             }
             
             h1, h2, h3, h4, h5, h6, p, th, td {
-                color: ${(props: PGlobalStyles): string => props.theme.text.primary};
+                color: ${({ theme }: PGlobalStyles): string => theme.text.primary};
             }
             
             h2 {
                 opacity: 0.75;
             
                 &:not(.sbdocs-subtitle) {
-                    border-bottom: 1px solid rgba(255,255,255,0.75);
+                    border-bottom: 1px solid ${({ theme }: PGlobalStyles): string =>
+                        setAlpha(theme.background.contrast, 0.25)};
                 }
             }
             
             hr {
-                border-top: 1px solid rgba(255,255,255,0.75);
+                border-top: 1px solid ${({ theme }: PGlobalStyles): string =>
+                    setAlpha(theme.background.contrast, 0.25)};
             }
         }
     }

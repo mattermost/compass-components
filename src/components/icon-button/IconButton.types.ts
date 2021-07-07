@@ -11,6 +11,6 @@ type TIconButtonDefinition = {
 
 type TIconButtonElement = 'div' | 'button' | 'checkbox';
 
-type TIconButtonSizeToken = Exclude<TComponentSizeToken, 'xxxs' | 'xxs' | 'xxl' | 'xxxl'>;
+type TIconButtonSizeToken = Exclude<TComponentSizeToken, 'xxxs' | 'xxs' | 'xl' | 'xxl' | 'xxxl'>;
 
 export type { TIconButtonDefinition, TIconButtonElement, TIconButtonSizeToken };

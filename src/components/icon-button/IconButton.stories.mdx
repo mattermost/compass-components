@@ -1,4 +1,4 @@
-import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+import { ArgsTable, Canvas, Meta, Story, Subtitle, Title } from '@storybook/addon-docs/blocks';
 
 import {
     ICON_BUTTON_SIZES,
@@ -7,15 +7,24 @@ import {
 } from './IconButton.constants';
 import IconButton from './IconButton';
 import { ICON_GLYPHS } from '../../foundations/icon';
+import Grid from '../../utilities/layout';
+import Spacing from '../../utilities/spacing';
+import Shape from '../../foundations/shape';
+import colors from '../../foundations/colors';
+import Text from '../text';
+import { Utils } from '../../shared';
+import ThemeProvider, { darkTheme } from '../../utilities/theme';
 
 export const iconButtonArgs = {
     size: DEFAULT_ICON_BUTTON_SIZE,
     icon: 'mattermost',
+    compact: false,
     inverted: false,
     toggled: false,
     destructive: false,
     disabled: false,
-    label: '200',
+    label: '',
+    onClick: Utils.noop,
 };
 
 export const iconButtonArgTypes = {
@@ -32,7 +41,207 @@ export const iconButtonArgTypes = {
     },
 };
 
+export const boxMargin = Spacing.symmetric({ vertical: 100, horizontal: 100 });
+export const boxPadding = Spacing.symmetric({ vertical: 150, horizontal: 150 });
+
 <Meta title={'Components/IconButton'} />
+
+<Title>Icon Buttons</Title>
+
+<Subtitle>
+    Icon Buttons are smaller buttons used when real estate is confined or where less emphasis is
+    needed for an action.
+</Subtitle>
+
+Icon Buttons aren’t highly emphasized as they are typically used for secondary actions for things
+like closing modals or triggering menus.
+
+## Sizes
+
+There are 4 different sizes for icon buttons.
+
+<Grid padding={Spacing.symmetric({ vertical: 25 })} justify={'stretch'}>
+    <Grid
+        row
+        padding={Spacing.symmetric({ vertical: 150, horizontal: 25 })}
+        alignment={'flex-start'}
+    >
+        <Grid justify={'center'} alignment={'center'} margin={boxMargin}>
+            <Shape backgroundColor={colors.neutral[100]} width={150} height={150}>
+                <Grid flex={1} justify={'center'} alignment={'center'} padding={boxPadding}>
+                    <IconButton {...iconButtonArgs} size={'xs'} />
+                </Grid>
+            </Shape>
+            <Text weight={'bold'} size={200}>
+                X-Small
+            </Text>
+        </Grid>
+        <Grid justify={'center'} alignment={'center'} margin={boxMargin}>
+            <Shape backgroundColor={colors.neutral[100]} width={150} height={150}>
+                <Grid flex={1} justify={'center'} alignment={'center'} padding={boxPadding}>
+                    <IconButton {...iconButtonArgs} size={'sm'} />
+                </Grid>
+            </Shape>
+            <Text weight={'bold'} size={200}>
+                Small
+            </Text>
+        </Grid>
+        <Grid justify={'center'} alignment={'center'} margin={boxMargin}>
+            <Shape backgroundColor={colors.neutral[100]} width={150} height={150}>
+                <Grid flex={1} justify={'center'} alignment={'center'} padding={boxPadding}>
+                    <IconButton {...iconButtonArgs} size={'md'} />
+                </Grid>
+            </Shape>
+            <Text weight={'bold'} size={200}>
+                Medium
+            </Text>
+        </Grid>
+        <Grid justify={'center'} alignment={'center'} margin={boxMargin}>
+            <Shape backgroundColor={colors.neutral[100]} width={150} height={150}>
+                <Grid flex={1} justify={'center'} alignment={'center'} padding={boxPadding}>
+                    <IconButton {...iconButtonArgs} size={'lg'} />
+                </Grid>
+            </Shape>
+            <Text weight={'bold'} size={200}>
+                Large
+            </Text>
+        </Grid>
+    </Grid>
+</Grid>
+
+## Variants
+
+<Grid padding={Spacing.symmetric({ vertical: 25 })} justify={'stretch'}>
+    <Grid
+        row
+        padding={Spacing.symmetric({ vertical: 150, horizontal: 25 })}
+        alignment={'flex-start'}
+    >
+        <Grid justify={'center'} alignment={'center'} margin={boxMargin}>
+            <Shape backgroundColor={colors.neutral[100]} width={150} height={150}>
+                <Grid flex={1} justify={'center'} alignment={'center'} padding={boxPadding}>
+                    <IconButton {...iconButtonArgs} />
+                </Grid>
+            </Shape>
+            <Text weight={'bold'} size={200}>
+                No Label
+            </Text>
+        </Grid>
+        <Grid justify={'center'} alignment={'center'} margin={boxMargin}>
+            <Shape backgroundColor={colors.neutral[100]} width={150} height={150}>
+                <Grid flex={1} justify={'center'} alignment={'center'} padding={boxPadding}>
+                    <IconButton {...iconButtonArgs} label={'425'} />
+                </Grid>
+            </Shape>
+            <Text weight={'bold'} size={200}>
+                with Label
+            </Text>
+        </Grid>
+    </Grid>
+</Grid>
+
+## Toggled
+
+Icon buttons can be used as toggles to turn something on or off. When used in this manner,
+the 'Toggled On' state is given more emphasis than the standard 'Active' state.
+
+<Grid padding={Spacing.symmetric({ vertical: 25 })} justify={'stretch'}>
+    <Grid
+        row
+        padding={Spacing.symmetric({ vertical: 150, horizontal: 25 })}
+        alignment={'flex-start'}
+    >
+        <Grid justify={'center'} alignment={'center'} margin={boxMargin}>
+            <Shape backgroundColor={colors.neutral[100]} width={150} height={150}>
+                <Grid flex={1} justify={'center'} alignment={'center'} padding={boxPadding}>
+                    <IconButton {...iconButtonArgs} />
+                </Grid>
+            </Shape>
+            <Text weight={'bold'} size={200}>
+                toggled off
+            </Text>
+        </Grid>
+        <Grid justify={'center'} alignment={'center'} margin={boxMargin}>
+            <Shape backgroundColor={colors.neutral[100]} width={150} height={150}>
+                <Grid flex={1} justify={'center'} alignment={'center'} padding={boxPadding}>
+                    <IconButton {...iconButtonArgs} toggled />
+                </Grid>
+            </Shape>
+            <Text weight={'bold'} size={200}>
+                toggled on
+            </Text>
+        </Grid>
+    </Grid>
+</Grid>
+
+## Destructive
+
+Icon Buttons may perform actions that are destructive in nature. For these cases,
+the Icon Button's style is modified to communicate the destructive action.
+
+<Grid padding={Spacing.symmetric({ vertical: 25 })} justify={'stretch'}>
+    <Grid
+        row
+        padding={Spacing.symmetric({ vertical: 150, horizontal: 25 })}
+        alignment={'flex-start'}
+    >
+        <Grid justify={'center'} alignment={'center'} margin={boxMargin}>
+            <Shape backgroundColor={colors.neutral[100]} width={150} height={150}>
+                <Grid flex={1} justify={'center'} alignment={'center'} padding={boxPadding}>
+                    <IconButton {...iconButtonArgs} destructive />
+                </Grid>
+            </Shape>
+            <Text weight={'bold'} size={200}>
+                destructive
+            </Text>
+        </Grid>
+    </Grid>
+</Grid>
+
+## Inverted
+
+In cases where the contrast or legibility of an Icon Button is compromised, the Inverted style can be used.
+
+<ThemeProvider theme={darkTheme}>
+    <Grid padding={Spacing.symmetric({ vertical: 150 })} justify={'stretch'}>
+        <Grid
+            row
+            padding={Spacing.symmetric({ vertical: 150, horizontal: 25 })}
+            alignment={'center'}
+        >
+            <Grid justify={'center'} alignment={'center'} margin={boxMargin}>
+                <Shape backgroundColor={colors.blue[400]} width={150} height={150}>
+                    <Grid flex={1} justify={'center'} alignment={'center'} padding={boxPadding}>
+                        <IconButton {...iconButtonArgs} inverted />
+                    </Grid>
+                </Shape>
+                <Text weight={'bold'} size={200}>
+                    default
+                </Text>
+            </Grid>
+            <Grid justify={'center'} alignment={'center'} margin={boxMargin}>
+                <Shape backgroundColor={colors.blue[400]} width={150} height={150}>
+                    <Grid flex={1} justify={'center'} alignment={'center'} padding={boxPadding}>
+                        <IconButton {...iconButtonArgs} inverted toggled />
+                    </Grid>
+                </Shape>
+                <Text weight={'bold'} size={200}>
+                    toggled
+                </Text>
+            </Grid>
+            <Grid justify={'center'} alignment={'center'} margin={boxMargin}>
+                <Shape backgroundColor={colors.blue[400]} width={150} height={150}>
+                    <Grid flex={1} justify={'center'} alignment={'center'} padding={boxPadding}>
+                        <IconButton {...iconButtonArgs} inverted disabled />
+                    </Grid>
+                </Shape>
+                <Text weight={'bold'} size={200}>
+                    disabled
+                </Text>
+            </Grid>
+        </Grid>
+    </Grid>
+</ThemeProvider>
 
 <ArgsTable of={IconButton} />
 
