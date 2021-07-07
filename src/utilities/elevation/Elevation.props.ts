@@ -11,7 +11,7 @@ type PElevation = {
     elevation?: TElevationLevel;
     /**
      * If a hover-state should require a higher (or lower) elevation
-     * @default 0
+     * @default elevation
      * */
     elevationOnHover?: TElevationLevel;
 };

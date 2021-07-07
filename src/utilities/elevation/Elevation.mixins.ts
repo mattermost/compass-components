@@ -17,9 +17,9 @@ import PElevation from './Elevation.props';
 function applyElevation(
     { elevation = 0, elevationOnHover = elevation }: PElevation,
     darkTheme: boolean
-): FlattenSimpleInterpolation {
+): FlattenSimpleInterpolation | null {
     if (elevation === 0 && elevationOnHover === 0) {
-        return css``;
+        return null;
     }
 
     const { offsetY, blurRadius } = ELEVATION_DEFINITIONS[elevation];
@@ -35,7 +35,6 @@ function applyElevation(
 
             &:hover {
                 box-shadow: 0 ${hoverOffsetY}px ${hoverBlurRadius}px rgba(0, 0, 0, ${opacity});
-                z-index: ${elevationOnHover || 0};
             }
         `;
     }

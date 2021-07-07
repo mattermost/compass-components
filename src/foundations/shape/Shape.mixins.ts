@@ -15,7 +15,7 @@ import { TShapeVariant } from './Shape.types';
  * @param {TShapeBorderRadius} radius
  * @returns {FlattenSimpleInterpolation}
  */
-export function applyShape({
+function applyShape({
     width,
     height,
     radius = DEFAULT_SHAPE_BORDER_RADIUS,
