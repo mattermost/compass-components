@@ -1,18 +1,30 @@
 import styled, { css } from 'styled-components';
 import { FlattenSimpleInterpolation, ThemedStyledProps } from 'styled-components/ts3.6';
 
-import Spacing, { TSpacingTokensSymmetric } from '../../utilities/spacing';
+import Icon from '../../foundations/icon';
+import Spacing from '../../utilities/spacing';
 import { applyPadding } from '../../utilities/layout';
 import { applyShape } from '../../foundations/shape';
 import { TTheme } from '../../utilities/theme';
 import { setAlpha, blendColors, Utils } from '../../shared';
+import { applyTextMargin, applyTextStyles } from '../text';
 
-import { BUTTON_ICON_MARGIN_MAP } from './Button.constants';
-import { PButtonRoot } from './Button.props';
+import { BUTTON_SIZE_MAP } from './Button.constants';
+import { PButtonIconRoot, PButtonRoot } from './Button.props';
+
+const ButtonIconRoot = styled(Icon).withConfig<PButtonIconRoot>({
+    shouldForwardProp: (property, validator) =>
+        Utils.forceForwardProperty(property, ['glyph', 'size']) ||
+        (Utils.blockProperty(property, ['width']) && validator(property)),
+})(
+    ({ margin, marginPosition }) => css`
+              margin-${marginPosition}: ${margin}px;
+          `
+);
 
 const ButtonRoot = styled.button.withConfig<PButtonRoot>({
     shouldForwardProp: (property, validator) =>
-        Utils.blockProperty(property) && validator(property),
+        Utils.blockProperty(property, ['width']) && validator(property),
 })(
     ({
         theme: { palette, action, background },
@@ -23,26 +35,7 @@ const ButtonRoot = styled.button.withConfig<PButtonRoot>({
         inverted,
         disabled,
     }: ThemedStyledProps<PButtonRoot, TTheme>): FlattenSimpleInterpolation => {
-        let height = 40;
-
-        const spacing: TSpacingTokensSymmetric = {
-            vertical: 0,
-            horizontal: 125,
-        };
-
-        switch (size) {
-            case 'large':
-                height = 48;
-                spacing.horizontal = 150;
-                break;
-            case 'small':
-                height = 32;
-                spacing.horizontal = 100;
-                break;
-            case 'medium':
-            default:
-        }
-
+        const { height, spacing, labelSize } = BUTTON_SIZE_MAP[size];
         const isInverted = inverted && !destructive;
 
         // get default opacities for 'primary' or 'inverted primnary' buttons
@@ -70,17 +63,17 @@ const ButtonRoot = styled.button.withConfig<PButtonRoot>({
 
         switch (variant) {
             case 'tertiary':
-                opacities.background = 0.04;
-                opacities.hover = 0.08;
-                opacities.active = 0.12;
+                opacities.background = isInverted ? 0.12 : 0.08;
+                opacities.hover = isInverted ? 0.16 : 0.12;
+                opacities.active = isInverted ? 0.24 : 0.16;
 
                 colors.text = colors.main;
                 colors.action = colors.main;
                 break;
             case 'secondary':
                 opacities.background = 0;
-                opacities.hover = 0.04;
-                opacities.active = 0.08;
+                opacities.hover = 0.08;
+                opacities.active = 0.16;
 
                 colors.text = colors.main;
                 colors.action = colors.main;
@@ -148,23 +141,18 @@ const ButtonRoot = styled.button.withConfig<PButtonRoot>({
             ${applyShape({ width: width === 'full' ? '100%' : width, height, radius: 4 })};
             ${applyPadding(Spacing.symmetric(spacing))};
 
+            ${applyTextStyles({ inheritLineHeight: true, size: labelSize, weight: 'bold' })};
+            ${applyTextMargin({ margin: 'none' })};
+
             background-color: ${colors.background};
             color: ${colors.text};
+
             ${variant === 'secondary' &&
             css`
                 box-shadow: inset 0 0 0 1px ${colors.border};
-            `}
+            `};
 
-            ${actionStyles}
-
-        i {
-                &:first-child {
-                    margin-right: ${BUTTON_ICON_MARGIN_MAP[size]}px;
-                }
-                &:last-child {
-                    margin-left: ${BUTTON_ICON_MARGIN_MAP[size]}px;
-                }
-            }
+            ${actionStyles};
 
             transition-property: box-shadow, background-color, color;
             transition-duration: 150ms;
@@ -172,5 +160,7 @@ const ButtonRoot = styled.button.withConfig<PButtonRoot>({
         `;
     }
 );
+
+export { ButtonIconRoot };
 
 export default ButtonRoot;
