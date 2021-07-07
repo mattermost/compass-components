@@ -31,4 +31,5 @@ jobs:
               with:
                   token: ${{ secrets.STORYBOOK_ACTION_GITHUB_TOKEN }}
                   branch: gh-pages
-                  folder: docs
+                  folder: storybook-static
+                  target-folder: docs
