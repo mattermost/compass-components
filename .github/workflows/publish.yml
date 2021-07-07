@@ -3,8 +3,9 @@ name: build and publish
 # This action will trigger on every release get created
 on:
     workflow_dispatch:
-    create:
-        tag: [created]
+    release:
+        types:
+            - published
 
 # Job will run on a ubuntu instance
 jobs:
@@ -24,7 +25,7 @@ jobs:
                   scope: '@mattermost'
             - name: install dependencies
               # adding --legacy-peer-deps for now until issue in storybook is fixed
-              # @see https://github.com/storybookjs/storybook/issues/14119 for reference
+              # @see https://github.com/storybookjs/storybook/issues/14119 for ref  erence
               run: npm install --legacy-peer-deps
             - name: build component library
               run: npm run build
