@@ -1,0 +1,28 @@
+import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+import { Utils } from '../../shared';
+
+import MenuItem from './MenuItem';
+import Icon from '../../foundations/icon';
+
+export const menuItemArgs = {
+    label: 'Menu Item',
+    destructive: false,
+    leadingElement: <Icon glyph={'none'} />,
+    trailingElement: <Icon glyph={'chevron-right'} />,
+    trailingElementLabel: 'Details',
+    description: 'Menu Item Description',
+};
+
+export const menuItemArgTypes = {
+    ...Utils.hideComponentProperties(['decorator']),
+};
+
+<Meta title={'Components/MenuItem'} />
+
+<ArgsTable of={MenuItem} />
+
+<Canvas hidden>
+    <Story name="default" args={menuItemArgs} argTypes={menuItemArgTypes}>
+        {(args) => <MenuItem {...args} />}
+    </Story>
+</Canvas>

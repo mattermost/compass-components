@@ -20,7 +20,7 @@ const ${names.pascal} = ({ size = DEFAULT_${toUpper(snakeCase(names.kebab))}_SIZ
     };
 
     return (
-        <${names.pascal}Root {...rootProperties}>Hello 👋, I am a IconButton component with a default size of '{size}'.</${names.pascal}Root>
+        <${names.pascal}Root {...rootProperties}>Hello 👋, I am a ${names.pascal} component with a default size of '{size}'.</${names.pascal}Root>
     );
 };
 
