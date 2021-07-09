@@ -53,7 +53,7 @@ export const bodySizes = [...smallSizes, { size: 300, fontSize: 18, lineHeight: 
     {headingSizes.map((heading) => (
         <div key={`heading_${heading.size}`}>
             <hr />
-            <Grid justify={'stretch'}>
+            <Grid justifyItems={'stretch'}>
                 <Grid row>
                     <Heading element={'h3'} size={300}>
                         {`Heading ${heading.size}${heading.size === 100 ? ' (Base size)' : ''}`}

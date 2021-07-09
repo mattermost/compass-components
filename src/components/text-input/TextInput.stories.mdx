@@ -65,22 +65,22 @@ Value is the text the user has entered into a text field. Its position sits to t
 
 Text inputs come in 3 sizes: Small, Medium, and Large. These sizes match the sizes of Buttons as well.
 
-<Grid row={false} justify={'space-between'}>
-    <Grid justify={'center'}>
+<Grid row={false} justifyItems={'space-between'}>
+    <Grid justifyItems={'center'}>
         <TextInput label={'Label'} size={'sm'} width={300} />
         <br />
         <Text element={'p'} size={200} margin={'none'}>
             <strong>Small</strong>
         </Text>
     </Grid>
-    <Grid justify={'center'}>
+    <Grid justifyItems={'center'}>
         <TextInput label={'Label'} size={'md'} width={300} />
         <br />
         <Text element={'p'} size={200} margin={'none'}>
             <strong>Medium</strong>
         </Text>
     </Grid>
-    <Grid justify={'center'}>
+    <Grid justifyItems={'center'}>
         <TextInput label={'Label'} size={'lg'} width={300} />
         <br />
         <Text element={'p'} size={200} margin={'none'}>
@@ -95,22 +95,22 @@ Text inputs come in 3 sizes: Small, Medium, and Large. These sizes match the siz
 
 Text Inputs have 5 standard states: Default, Hover, Active, Focus, and Read-only.
 
-<Grid row={false} justify={'space-between'}>
-    <Grid justify={'center'}>
+<Grid row={false} justifyItems={'space-between'}>
+    <Grid justifyItems={'center'}>
         <TextInput {...defaultArgs} />
         <br />
         <Text element={'p'} size={200} margin={'none'}>
             <strong>Default</strong>
         </Text>
     </Grid>
-    <Grid justify={'center'}>
+    <Grid justifyItems={'center'}>
         <TextInput {...defaultArgs} active={true} />
         <br />
         <Text element={'p'} size={200} margin={'none'}>
             <strong>Active</strong>
         </Text>
     </Grid>
-    <Grid justify={'center'}>
+    <Grid justifyItems={'center'}>
         <TextInput {...defaultArgs} disabled={true} />
         <br />
         <Text element={'p'} size={200} margin={'none'}>
@@ -123,8 +123,8 @@ Text Inputs have 5 standard states: Default, Hover, Active, Focus, and Read-only
 
 The invalid states are used when text inputs return an error as part of the form field validation. The red style provides user feedback on an issue that needs to be addressed. This treatment is coupled with other common elements like help text.
 
-<Grid row={false} justify={'space-between'}>
-    <Grid justify={'center'}>
+<Grid row={false} justifyItems={'space-between'}>
+    <Grid justifyItems={'center'}>
         <TextInput {...defaultArgs} hasError={true} />
         <br />
         <Text element={'p'} size={200} margin={'none'}>

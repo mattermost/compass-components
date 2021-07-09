@@ -44,22 +44,22 @@ not the font size for the icon font.
     row
     wrap
     padding={Spacing.symmetric({ vertical: 150, horizontal: 25 })}
-    alignment={'center'}
-    justify={'start'}
+    alignItems={'center'}
+    justifyItems={'start'}
 >
     {ICON_SIZES.map((s) => (
         <Grid
             key={s}
             padding={Spacing.symmetric({ vertical: 50, horizontal: 50 })}
-            alignment={'center'}
-            justify={'center'}
+            alignItems={'center'}
+            justifyItems={'center'}
         >
             <Shape radius={0} backgroundColor={neutral[0]} width={150} height={150}>
                 <Grid
                     flex={1}
                     padding={Spacing.symmetric({ vertical: 200, horizontal: 200 })}
-                    alignment={'center'}
-                    justify={'center'}
+                    alignItems={'center'}
+                    justifyItems={'center'}
                 >
                     <Icon glyph={'airplane-variant'} size={s} />
                 </Grid>

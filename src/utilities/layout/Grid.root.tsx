@@ -17,13 +17,33 @@ const GridRoot = styled.div.withConfig<PGridRoot>({
             'height',
         ]) && validator(property),
 })(
-    ({ flex, wrap, row, justify, alignment, padding, margin, width, height }: PGridRoot) => css`
+    ({
+        flex,
+        wrap,
+        row,
+        alignItems,
+        justifyItems,
+        alignSelf,
+        justifySelf,
+        padding,
+        margin,
+        width,
+        height,
+    }: PGridRoot) => css`
         display: flex;
         flex: ${flex};
         flex-wrap: ${wrap ? 'wrap' : 'nowrap'};
         flex-direction: ${row ? 'row' : 'column'};
-        align-items: ${alignment};
-        justify-content: ${justify};
+        align-items: ${alignItems};
+        justify-content: ${justifyItems};
+        ${alignSelf &&
+        css`
+            align-self: ${alignSelf};
+        `}
+        ${justifySelf &&
+        css`
+            justify-self: ${justifySelf};
+        `}
         padding: ${padding ? parseSpacing(padding) : '0'};
         margin: ${margin ? parseSpacing(margin) : '0'};
         ${(Utils.isNumber(width) || Utils.isString(width)) &&

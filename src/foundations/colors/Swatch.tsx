@@ -29,11 +29,11 @@ const Swatch: React.FC<PSwatch> = ({
     return (
         <Grid
             row={isRow}
-            alignment={'stretch'}
+            alignItems={'stretch'}
             padding={isRow ? Spacing.symmetric({ vertical: 50 }) : Spacing.all(50)}
             flex={0}
         >
-            <Grid alignment={'flex-end'}>
+            <Grid alignItems={'flex-end'}>
                 <Shape
                     className={'swatch_color'}
                     radius={4}

@@ -18,22 +18,22 @@ import GridRoot from './Grid.root';
 
 const Grid = ({
     element = DEFAULT_GRID_COMPONENT,
-    alignment = DEFAULT_GRID_ALIGNMENT,
-    justify = DEFAULT_GRID_JUSTIFY,
+    alignItems = DEFAULT_GRID_ALIGNMENT,
+    justifyItems = DEFAULT_GRID_JUSTIFY,
     flex = DEFAULT_GRID_FLEX,
     row = DEFAULT_GRID_ROW,
     wrap = DEFAULT_GRID_WRAP,
     ...rest
 }: PGrid): JSX.Element => {
     Utils.assert(
-        GRID_ALIGNMENTS.includes(alignment),
+        GRID_ALIGNMENTS.includes(alignItems),
         `Compass Components - Grid: incompatible alignment property set on Grid component. Please choose from the following: ${GRID_ALIGNMENTS.join(
             ', '
         )}`
     );
 
     Utils.assert(
-        GRID_JUSTIFIES.includes(justify),
+        GRID_JUSTIFIES.includes(justifyItems),
         `Compass Components - Grid: incompatible justify property set on Grid component. Please choose from the following: ${GRID_JUSTIFIES.join(
             ', '
         )}`
@@ -48,8 +48,8 @@ const Grid = ({
 
     const rootProperties = {
         element,
-        alignment,
-        justify,
+        alignItems,
+        justifyItems,
         flex,
         row,
         wrap,
