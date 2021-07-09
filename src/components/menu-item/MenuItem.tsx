@@ -9,23 +9,35 @@ import MenuItemRoot, { MenuItemLabelRoot, MenuItemDescriptionRoot } from './Menu
 const MenuItem = ({
     label,
     description,
+    inlineDescription = false,
     destructive = false,
+    disabled = false,
     leadingElement = null,
     trailingElementLabel = null,
     trailingElement = null,
 }: PMenuItem): JSX.Element => {
     const rootProperties = {
         destructive,
+        disabled,
     };
 
     return (
         <MenuItemRoot {...rootProperties}>
-            {leadingElement}
-            <Grid flex={1} padding={Spacing.only('left', leadingElement ? 125 : 0)}>
+            <Grid alignItems={'center'}>{leadingElement}</Grid>
+            <Grid
+                flex={1}
+                row={inlineDescription}
+                alignItems={inlineDescription ? 'center' : 'initial'}
+                padding={Spacing.only('left', leadingElement ? 125 : 0)}
+            >
                 <MenuItemLabelRoot>{label}</MenuItemLabelRoot>
-                {description && <MenuItemDescriptionRoot>{description}</MenuItemDescriptionRoot>}
+                {description && (
+                    <MenuItemDescriptionRoot withMargin={!inlineDescription}>
+                        {description}
+                    </MenuItemDescriptionRoot>
+                )}
             </Grid>
-            <Grid row alignment={'center'}>
+            <Grid row alignItems={'center'} justifyItems={'flex-start'} alignSelf={'flex-start'}>
                 {trailingElement && trailingElementLabel && (
                     <MenuItemDescriptionRoot>{trailingElementLabel}</MenuItemDescriptionRoot>
                 )}

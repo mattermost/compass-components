@@ -1,25 +1,161 @@
-import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+import { ArgsTable, Canvas, Meta, Story, Subtitle, Title } from '@storybook/addon-docs/blocks';
 import { Utils } from '../../shared';
+import menuItemAnatomyImg from '../../assets/images/menu-item_anatomy.png';
 
 import MenuItem from './MenuItem';
 import Icon from '../../foundations/icon';
+import Avatar from '../avatar';
+import colors, { green } from '../../foundations/colors';
+import Grid from '../../utilities/layout';
+import Spacing from '../../utilities/spacing';
+import Shape from '../../foundations/shape';
+import Text from '../text';
 
 export const menuItemArgs = {
     label: 'Menu Item',
+    description: '',
+    inlineDescription: false,
     destructive: false,
-    leadingElement: <Icon glyph={'none'} />,
-    trailingElement: <Icon glyph={'chevron-right'} />,
-    trailingElementLabel: 'Details',
-    description: 'Menu Item Description',
+    disabled: false,
+    leadingElement: null,
+    trailingElement: null,
+    trailingElementLabel: '',
 };
 
-export const menuItemArgTypes = {
-    ...Utils.hideComponentProperties(['decorator']),
+export const leadingElementOptions = {
+    icon: <Icon glyph={'check-circle'} />,
+    hiddenIcon: <Icon glyph={'none'} />,
+    channel: <Icon glyph={'globe'} />,
+    avatar: (
+        <Avatar
+            disableHover
+            name={'homer.simpson'}
+            onClick={Utils.noop}
+            size={'xs'}
+            image={'https://picsum.photos/200/300?random=1'}
+        />
+    ),
+    avatarWithStatus: (
+        <Avatar
+            disableHover
+            name={'homer.simpson'}
+            status={'online'}
+            onClick={Utils.noop}
+            size={'xs'}
+            image={'https://picsum.photos/200/300?random=1'}
+        />
+    ),
 };
+
+export const trailingElementOptions = {
+    icon: <Icon glyph={'check'} color={'info'} />,
+    meta: <Icon glyph={'chevron-right'} />,
+};
+
+export const boxMargin = Spacing.symmetric({ vertical: 100, horizontal: 100 });
+export const boxPadding = Spacing.symmetric({ vertical: 150, horizontal: 150 });
 
 <Meta title={'Components/MenuItem'} />
 
+<Title>Menu Items</Title>
+
+<Subtitle>
+    A Menu Item is used in various places across the app to offer selections within a Menu. There
+    are many variants of the Menu Item as described below.
+</Subtitle>
+
+## Anatomy
+
+<img src={menuItemAnatomyImg} alt={'menu item anatomy'} />
+
+The Menu Item Component is made up of 4 key elements:
+
+-   Label
+-   Supporting Visual
+-   Secondary Label
+-   Metadata
+
+### Label
+
+This is the only required element of the Menu item. The label describes the action or selection and should be as concise
+as possible.
+
+### Leading Element (optional)
+
+The leading Element (supporting visual) is used to offer quicker recognition of the menu item. Types of visuals here
+could be an icon, avatar image, or an emoji. This is an optional element. See Variants below for visual references.
+
+<Grid padding={Spacing.symmetric({ vertical: 25 })} alignItems={'flex-start'}>
+    <Grid row justifyItems={'center'} alignItems={'center'} margin={boxMargin}>
+        <Shape backgroundColor={colors.neutral[100]} width={500} height={100}>
+            <Grid flex={1} justifyItems={'center'} alignItems={'center'} padding={boxPadding}>
+                <MenuItem {...menuItemArgs} leadingElement={leadingElementOptions.icon} />
+            </Grid>
+        </Shape>
+        <Grid flex={1} justifyItems={'center'} alignItems={'center'} padding={boxPadding}>
+            <Text weight={'bold'} size={200}>
+                Icon
+            </Text>
+        </Grid>
+    </Grid>
+    <Grid row justifyItems={'center'} alignItems={'center'} margin={boxMargin}>
+        <Shape backgroundColor={colors.neutral[100]} width={500} height={100}>
+            <Grid flex={1} justifyItems={'center'} alignItems={'center'} padding={boxPadding}>
+                <MenuItem {...menuItemArgs} leadingElement={leadingElementOptions.channel} />
+            </Grid>
+        </Shape>
+        <Grid flex={1} justifyItems={'center'} alignItems={'center'} padding={boxPadding}>
+            <Text weight={'bold'} size={200}>
+                Channel
+            </Text>
+        </Grid>
+    </Grid>
+    <Grid row justifyItems={'center'} alignItems={'center'} margin={boxMargin}>
+        <Shape backgroundColor={colors.neutral[100]} width={500} height={100}>
+            <Grid flex={1} justifyItems={'center'} alignItems={'center'} padding={boxPadding}>
+                <MenuItem
+                    {...menuItemArgs}
+                    leadingElement={leadingElementOptions.avatarWithStatus}
+                />
+            </Grid>
+        </Shape>
+        <Grid flex={1} justifyItems={'center'} alignItems={'center'} padding={boxPadding}>
+            <Text weight={'bold'} size={200}>
+                Avatar
+            </Text>
+        </Grid>
+    </Grid>
+</Grid>
+
 <ArgsTable of={MenuItem} />
+
+export const menuItemArgTypes = {
+    leadingElement: {
+        options: Object.keys(leadingElementOptions), // An array of serializable values
+        mapping: leadingElementOptions, // Maps serializable option values to complex arg values
+        control: {
+            type: 'select', // Type 'select' is automatically inferred when 'options' is defined
+            labels: {
+                icon: 'Icon',
+                hiddenIcon: 'hidden Icon',
+                channel: 'Channel',
+                avatar: 'Avatar',
+                avatarWithStatus: 'Avatar with status',
+            },
+        },
+    },
+    trailingElement: {
+        options: Object.keys(trailingElementOptions), // An array of serializable values
+        mapping: trailingElementOptions, // Maps serializable option values to complex arg values
+        control: {
+            type: 'select', // Type 'select' is automatically inferred when 'options' is defined
+            labels: {
+                icon: 'Icon',
+                meta: 'Submenu',
+            },
+        },
+    },
+};
 
 <Canvas hidden>
     <Story name="default" args={menuItemArgs} argTypes={menuItemArgTypes}>
