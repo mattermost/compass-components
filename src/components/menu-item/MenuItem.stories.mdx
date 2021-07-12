@@ -10,17 +10,7 @@ import Grid from '../../utilities/layout';
 import Spacing from '../../utilities/spacing';
 import Shape from '../../foundations/shape';
 import Text from '../text';
-
-export const menuItemArgs = {
-    label: 'Menu Item',
-    description: '',
-    inlineDescription: false,
-    destructive: false,
-    disabled: false,
-    leadingElement: null,
-    trailingElement: null,
-    trailingElementLabel: '',
-};
+import MentionBadge from '../mention-badge';
 
 export const leadingElementOptions = {
     icon: <Icon glyph={'check-circle'} />,
@@ -47,9 +37,54 @@ export const leadingElementOptions = {
     ),
 };
 
+export const leadingElementOptionLabels = {
+    icon: 'Icon',
+    hiddenIcon: 'hidden Icon',
+    channel: 'Channel',
+    avatar: 'Avatar',
+    avatarWithStatus: 'Avatar with status',
+};
+
 export const trailingElementOptions = {
     icon: <Icon glyph={'check'} color={'info'} />,
     meta: <Icon glyph={'chevron-right'} />,
+    badge: <MentionBadge mentions={61} />,
+};
+
+export const trailingElementOptionLabels = {
+    icon: 'Icon',
+    meta: 'Submenu',
+    badge: 'Badge',
+};
+
+export const menuItemArgs = {
+    label: 'Menu Item',
+    description: '',
+    inlineDescription: false,
+    destructive: false,
+    disabled: false,
+    leadingElement: null,
+    trailingElement: null,
+    trailingElementLabel: '',
+};
+
+export const menuItemArgTypes = {
+    leadingElement: {
+        options: Object.keys(leadingElementOptions),
+        mapping: leadingElementOptions,
+        control: {
+            type: 'select',
+            labels: leadingElementOptionLabels,
+        },
+    },
+    trailingElement: {
+        options: Object.keys(trailingElementOptions),
+        mapping: trailingElementOptions,
+        control: {
+            type: 'select',
+            labels: trailingElementOptionLabels,
+        },
+    },
 };
 
 export const boxMargin = Spacing.symmetric({ vertical: 100, horizontal: 100 });
@@ -128,34 +163,6 @@ could be an icon, avatar image, or an emoji. This is an optional element. See Va
 </Grid>
 
 <ArgsTable of={MenuItem} />
-
-export const menuItemArgTypes = {
-    leadingElement: {
-        options: Object.keys(leadingElementOptions), // An array of serializable values
-        mapping: leadingElementOptions, // Maps serializable option values to complex arg values
-        control: {
-            type: 'select', // Type 'select' is automatically inferred when 'options' is defined
-            labels: {
-                icon: 'Icon',
-                hiddenIcon: 'hidden Icon',
-                channel: 'Channel',
-                avatar: 'Avatar',
-                avatarWithStatus: 'Avatar with status',
-            },
-        },
-    },
-    trailingElement: {
-        options: Object.keys(trailingElementOptions), // An array of serializable values
-        mapping: trailingElementOptions, // Maps serializable option values to complex arg values
-        control: {
-            type: 'select', // Type 'select' is automatically inferred when 'options' is defined
-            labels: {
-                icon: 'Icon',
-                meta: 'Submenu',
-            },
-        },
-    },
-};
 
 <Canvas hidden>
     <Story name="default" args={menuItemArgs} argTypes={menuItemArgTypes}>

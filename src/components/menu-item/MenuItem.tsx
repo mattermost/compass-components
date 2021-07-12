@@ -23,11 +23,14 @@ const MenuItem = ({
 
     return (
         <MenuItemRoot {...rootProperties}>
-            <Grid alignItems={'center'}>{leadingElement}</Grid>
+            <Grid alignItems={'center'} alignSelf={'stretch'}>
+                {leadingElement}
+            </Grid>
             <Grid
                 flex={1}
                 row={inlineDescription}
                 alignItems={inlineDescription ? 'center' : 'initial'}
+                alignSelf={'center'}
                 padding={Spacing.only('left', leadingElement ? 125 : 0)}
             >
                 <MenuItemLabelRoot>{label}</MenuItemLabelRoot>
