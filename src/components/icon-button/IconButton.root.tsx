@@ -3,7 +3,7 @@ import { FlattenSimpleInterpolation, ThemedStyledProps } from 'styled-components
 
 import { setAlpha, Utils } from '../../shared';
 import { TTheme } from '../../utilities/theme';
-import Spacing, { SPACING_TOKENS } from '../../utilities/spacing';
+import Spacing from '../../utilities/spacing';
 import { applyMargin, applyPadding } from '../../utilities/layout';
 import { applyShape } from '../../foundations/shape';
 import { applyTextStyles } from '../text';
@@ -26,14 +26,7 @@ const IconButtonRoot = styled.button.withConfig<PIconButtonRoot>({
     }: ThemedStyledProps<PIconButtonRoot, TTheme>): FlattenSimpleInterpolation => {
         const isDefault = !inverted && !destructive && !toggled;
         const { main, contrast } = destructive && !toggled ? palette.alert : palette.primary;
-
-        // this solution is not ideal and should probably be refactored in the
-        // `applyPadding` and `applyMargin` mixin-function
-        let spacingTokenIndex = SPACING_TOKENS.indexOf(ICON_BUTTON_DEFINITIONS[size].spacing);
-
-        if (compact && spacingTokenIndex > 0) {
-            spacingTokenIndex -= 1;
-        }
+        const { spacing, compactSpacing, fontSize } = ICON_BUTTON_DEFINITIONS[size];
 
         const colors: Record<string, string> = {
             background: main,
@@ -117,12 +110,12 @@ const IconButtonRoot = styled.button.withConfig<PIconButtonRoot>({
             background: ${setAlpha(colors.background, opacities.background.default)};
 
             ${applyShape({ radius: 4 })};
-            ${applyPadding(Spacing.all(SPACING_TOKENS[spacingTokenIndex]))};
+            ${applyPadding(Spacing.all(compact ? compactSpacing : spacing))};
 
             span {
                 ${applyMargin(Spacing.only('left', 75))};
                 ${applyTextStyles({
-                    size: ICON_BUTTON_DEFINITIONS[size].fontSize,
+                    size: fontSize,
                     weight: 'bold',
                     inheritLineHeight: true,
                 })};

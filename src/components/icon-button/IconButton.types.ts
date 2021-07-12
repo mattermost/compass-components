@@ -4,6 +4,7 @@ import { TComponentSizeToken } from '../../shared';
 import { TTextSizeToken } from '../text';
 
 type TIconButtonDefinition = {
+    compactSpacing: TSpacingToken;
     spacing: TSpacingToken;
     iconSize: TIconSize;
     fontSize: TTextSizeToken;
