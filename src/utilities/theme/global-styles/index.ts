@@ -1,6 +1,7 @@
 import { createGlobalStyle } from 'styled-components';
 // eslint-disable-next-line import/no-unassigned-import
 import '@mattermost/compass-icons';
+import { FlattenSimpleInterpolation } from 'styled-components/ts3.6';
 
 import { setAlpha } from '../../../shared';
 import { TTheme } from '../themes';
@@ -14,7 +15,8 @@ type PGlobalStyles = {
 };
 
 const GlobalStyle = createGlobalStyle`
-    ${reset};
+    ${({ theme }: PGlobalStyles): FlattenSimpleInterpolation | null =>
+        theme.noStyleReset ? null : reset};
     ${fontFaces}
     ${defaultStyles};
 

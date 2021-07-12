@@ -16,10 +16,6 @@ type PButton = {
      */
     label: string;
     /**
-     * click-event handler
-     */
-    onClick: MouseEventHandler<HTMLButtonElement | HTMLAnchorElement>;
-    /**
      * when pushing a button is potentially harmful use this property to show a
      * visual hint to that (button turns red/to the defined alert color)
      * @default false
@@ -66,6 +62,10 @@ type PButton = {
      * when you want to use a Icon in the button pass the iconglyph (name) here
      */
     icon?: TIconGlyph;
+    /**
+     * click-event handler
+     */
+    onClick?: MouseEventHandler<HTMLButtonElement | HTMLAnchorElement>;
     /**
      * custom className
      */
