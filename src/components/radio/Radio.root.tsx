@@ -48,7 +48,7 @@ const RadioRoot = styled.label.withConfig<PRadioRoot>({
             : css`
                   cursor: pointer;
                   &:hover {
-                      span {
+                      div {
                           border-color: ${blendColors(
                               colors.border,
                               setAlpha(colors.border, opacities.hover)
@@ -61,12 +61,12 @@ const RadioRoot = styled.label.withConfig<PRadioRoot>({
                           }
                       }
                   }
-                  &:focus {
+                  &:focus-within {
                       box-shadow: inset 0 0 0 3px rgba(255, 255, 255, 0.32),
                           inset 0 0 0 3px ${colors.checked};
                   }
 
-                  input:checked + span {
+                  input:checked + div {
                       border-color: ${colors.checked};
 
                       &:after {
@@ -87,7 +87,7 @@ const RadioRoot = styled.label.withConfig<PRadioRoot>({
                 display: none;
             }
 
-            span {
+            div {
                 ${applyShape({
                     radius: 'circle',
                     width: RADIO_VALUES_MAPPING[size].radioSize,

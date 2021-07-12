@@ -1,4 +1,4 @@
-import { ReactNode, ReactNodeArray } from 'react';
+import { ReactNode, ReactNodeArray, MouseEventHandler } from 'react';
 
 import { TRadioSizeToken } from './Radio.types';
 
@@ -30,11 +30,18 @@ type PRadio = {
     /**
      * onClick event handler
      * */
-    onClick?: () => void;
+    onClick?: MouseEventHandler<HTMLLabelElement>;
+    /**
+     * onChange event handler
+     * */
+    onChange?: () => void;
     /**
      * custom classname
      * */
     className?: string;
+    /**
+     * child nodes
+     * */
     children: ReactNode | ReactNodeArray;
 };
 

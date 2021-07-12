@@ -13,6 +13,7 @@ const Radio: React.FC<PRadio> = ({
     hasError = false,
     disabled = false,
     checked = false,
+    onChange = Utils.noop,
     ...rest
 }: PRadio) => {
     const hasLabel = Utils.isString(label) && label.length > 0;
@@ -27,8 +28,8 @@ const Radio: React.FC<PRadio> = ({
 
     return (
         <RadioRoot {...rootProperties}>
-            <input id="hidden__input" type={'radio'} />
-            <span />
+            <input type={'checkbox'} checked={checked} onChange={onChange} />
+            <div />
             {hasLabel && <RadioLabelRoot size={size}>{label}</RadioLabelRoot>}
         </RadioRoot>
     );

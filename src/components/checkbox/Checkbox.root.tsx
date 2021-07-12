@@ -57,7 +57,7 @@ const CheckboxRoot = styled.label.withConfig({
               `
             : css`
                   cursor: pointer;
-                  .control:hover {
+                  div:hover {
                       border-color: ${blendColors(
                           colors.border,
                           setAlpha(colors.border, opacities.hover)
@@ -68,7 +68,7 @@ const CheckboxRoot = styled.label.withConfig({
                           inset 0 0 0 3px ${colors.checked};
                   }
 
-                  .input:checked + .control {
+                  input:checked + div {
                       border-color: ${colors.checked};
                       background: ${colors.checked};
 
@@ -85,11 +85,11 @@ const CheckboxRoot = styled.label.withConfig({
             justify-content: center;
             align-items: center;
 
-            .input {
+            input {
                 display: none;
             }
 
-            .control {
+            div {
                 ${applyShape({
                     radius: 2,
                     width: CHECKBOX_VALUES_MAPPING[size].checkboxSize,
@@ -97,6 +97,7 @@ const CheckboxRoot = styled.label.withConfig({
                 })};
                 display: flex;
                 align-items: center;
+                justify-content: center;
                 border: 1px solid ${colors.border};
                 transition: background 0.3s ease;
 
@@ -107,7 +108,7 @@ const CheckboxRoot = styled.label.withConfig({
                 }
             }
 
-            .label {
+            span {
                 ${applyTextStyles({
                     inheritLineHeight: true,
                     size: CHECKBOX_VALUES_MAPPING[size].labelSize,
