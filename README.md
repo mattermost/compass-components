@@ -31,7 +31,40 @@ The intention behind the püackage is to create a unified look and feel across t
     import Text from '@mattermost/compass-components/components/Text';
     ```
 
-### running storybook for development
+### Example
+
+This is just a basic exmaple how the `ThemeProvider` can be used to provide a theme and toggle between two themes
+
+```typescript jsx
+import { useState } from 'react';
+import ThemeProvider, {
+    lightTheme,
+    darkTheme,
+} from '@mattermost/compass-components/utilities/theme';
+import Button from '@mattermost/compass-components/components/button';
+
+function App() {
+    const [themeIndex, setThemeIndex] = useState(0);
+    const themes = [lightTheme, darkTheme];
+
+    const handleClick = () => setThemeIndex(themeIndex === 0 ? 1 : 0);
+
+    return (
+        <ThemeProvider theme={themes[themeIndex]}>
+            <Button
+                icon={'mattermost'}
+                iconPosition={'start'}
+                label={'TESTBUTTON'}
+                onClick={handleClick}
+            />
+        </ThemeProvider>
+    );
+}
+
+export default App;
+```
+
+### Running storybook for development
 
 1. Fork/Checkout this repository to a folder on your computer (we will use the user folder in this example)
 
