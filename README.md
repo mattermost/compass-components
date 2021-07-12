@@ -69,7 +69,7 @@ export default App;
 1. Fork/Checkout this repository to a folder on your computer (we will use the user folder in this example)
 
     ```bash
-    cs path/to/your/projects/folder
+    cd path/to/your/projects/folder
     git clone https://github.com/<YOUR_GITHUB_USERNAME>/compass-components.git
     ```
 
