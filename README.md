@@ -1,6 +1,7 @@
 # Compass Components
 
-The compass components package is the implementation of the [compass design system](https://zeroheight.com/29be2c109/p/995619-compass-design-system) meant (but not limited) to be used in the mattermost products: Messaging, Playbooks and Focalboard.
+The compass components package is the implementation of the [compass design system](https://zeroheight.com/29be2c109/p/995619-compass-design-system)
+meant (but not limited) to be used in the mattermost products: Messaging, Playbooks and Focalboard.
 
 The intention behind the püackage is to create a unified look and feel across the products.
 
@@ -72,3 +73,36 @@ The intention behind the püackage is to create a unified look and feel across t
 
 -   node version 16.x
 -   npm version 7.x
+
+### Creating a new component
+
+For ease of use we created a convenience `generate component` function to create a boilerplate template for new
+components.
+
+Simply run
+
+```bash
+npm run gc
+```
+
+You will be asked which kind of component you would like to create:
+
+-   `Foundation`
+    (_Atomic component_) - will go into the `src/foundations` folder
+-   `Component`
+    (_Molecule component_) - will go into the `src/components` folder
+-   `Utility`
+    (_Utility component_) - will go into the `src/utilities` folder
+
+The function will create a component structure like this:
+
+```
+ComponentName/
+├── ComponentName.constants.ts
+├── ComponentName.props.ts
+├── ComponentName.root.ts
+├── ComponentName.stories.mdx
+├── ComponentName.tsx
+├── ComponentName.types.ts
+└── index.ts
+```
