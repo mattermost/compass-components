@@ -86,10 +86,6 @@ const MenuItem = styled.div<PMenuItemRoot>(
             ${applyShape({ radius: 0, width: '100%' })};
             ${applyPadding(Spacing.trbl({ top: 100, right: 175, bottom: 100, left: 200 }))};
 
-            ${MenuItemLabelRoot} {
-                color: ${destructive ? 'inherit' : text.primary};
-            }
-
             ${actionStyles};
 
             transition: background 250ms ease-in-out, color 250ms ease-in-out,

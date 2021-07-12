@@ -25,6 +25,15 @@ export const leadingElementOptions = {
             image={'https://picsum.photos/200/300?random=1'}
         />
     ),
+    bigAvatar: (
+        <Avatar
+            disableHover
+            name={'homer.simpson'}
+            onClick={Utils.noop}
+            size={'lg'}
+            image={'https://picsum.photos/200/300?random=1'}
+        />
+    ),
     avatarWithStatus: (
         <Avatar
             disableHover
@@ -42,6 +51,7 @@ export const leadingElementOptionLabels = {
     hiddenIcon: 'hidden Icon',
     channel: 'Channel',
     avatar: 'Avatar',
+    bigAvatar: 'Big Avatar',
     avatarWithStatus: 'Avatar with status',
 };
 
