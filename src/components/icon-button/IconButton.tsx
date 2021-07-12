@@ -35,6 +35,12 @@ const IconButton = React.forwardRef(
         }: PIconButton,
         reference: ForwardedRef<HTMLButtonElement>
     ): JSX.Element => {
+        Utils.assert(
+            (!destructive && !toggled) || (destructive && !toggled) || (toggled && !destructive),
+            'Compass Components: IconButton component was used with both `destructive` and `toggled` properties set to true. Please use only one of the options',
+            true
+        );
+
         const isDisabled = disabled || !Utils.isFunction(onClick);
 
         const rootProperties = {
