@@ -1,11 +1,11 @@
 import { useRef, useState } from 'react';
 import { Canvas, Meta, Story } from '@storybook/addon-docs';
+import { css } from 'styled-components';
 
 import IconButton from '../../components/icon-button';
 import Popover from './Popover';
 import Shape from '../../foundations/shape';
 import Grid from '../layout';
-import Icon from '../../foundations/icon';
 import Spacing from '../spacing';
 import {
     DEFAULT_POPOVER_PLACEMENT,
@@ -13,6 +13,7 @@ import {
     POPOVER_PLACEMENTS,
 } from './Popover.constants';
 import Text from '../../components/text';
+import Transition from '../transition/Transition';
 
 <Meta title={'Utilities/Popover'} />
 
@@ -74,8 +75,10 @@ export const popoverArgs = {
                         offset={offset}
                     >
                         <Shape elevation={3} width={200}>
-                            <Grid justify={'center'} padding={Spacing.all(100)}>
-                                <Text margin={'none'}>this is a popover</Text>
+                            <Grid flex={1}>
+                                <Grid alignItems={'center'} padding={Spacing.all(100)} flex={1}>
+                                    <Text margin={'none'}>this is a popover</Text>
+                                </Grid>
                             </Grid>
                         </Shape>
                     </Popover>

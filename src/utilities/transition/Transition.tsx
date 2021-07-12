@@ -12,9 +12,12 @@ import {
 import PTransition, { PAnimation } from './Transition.props';
 
 const Animation = styled.div<PAnimation>(
-    ({ duration, state, types }: PAnimation) => css`
+    ({ duration, state, types, delay }: PAnimation) => css`
         transition: ${types
-            .map((type) => `${TRANSITION_TYPE_PROPERTY_MAP[type]} ${duration} ease-in-out`)
+            .map(
+                (type) =>
+                    `${TRANSITION_TYPE_PROPERTY_MAP[type]} ${duration}ms ease-in-out ${delay}ms`
+            )
             .join(', ')};
         ${types.map((type) => TRANSITION_TYPE_DEFINITIONS[type][state])}
     `
@@ -28,6 +31,8 @@ const Transition = ({
     enter = true,
     exit = true,
     speed = DEFAULT_TRANSITION_SPEED,
+    delayIn = 0,
+    delayOut = 0,
     onTransitionEnd = Utils.noop,
     onEnter = Utils.noop,
     onEntering = Utils.noop,
@@ -55,7 +60,12 @@ const Transition = ({
     return (
         <TransitionRoot {...rootProperties}>
             {(state): JSX.Element => (
-                <Animation state={state} types={types} duration={theme.animation[speed]}>
+                <Animation
+                    state={state}
+                    types={types}
+                    duration={theme.animation[speed]}
+                    delay={state === 'entering' || state === 'entered' ? delayIn : delayOut}
+                >
                     {children}
                 </Animation>
             )}

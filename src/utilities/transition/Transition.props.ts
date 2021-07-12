@@ -27,6 +27,8 @@ type PTransition = {
      * @default 'normal'
      */
     speed?: TTransitionSpeed;
+    delayIn?: number;
+    delayOut?: number;
     /**
      * Enable or disable enter transitions.
      * @default true
@@ -82,7 +84,8 @@ type PTransition = {
 type PAnimation = {
     types: TTransitionType[];
     state: TransitionStatus;
-    duration: string;
+    duration: number;
+    delay?: number;
 };
 
 export type { PAnimation };
