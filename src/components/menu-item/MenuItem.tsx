@@ -12,9 +12,9 @@ const MenuItem = ({
     inlineDescription = false,
     destructive = false,
     disabled = false,
-    leadingElement = null,
-    trailingElementLabel = null,
-    trailingElement = null,
+    leadingElement,
+    trailingElementLabel,
+    trailingElement,
 }: PMenuItem): JSX.Element => {
     const rootProperties = {
         destructive,
