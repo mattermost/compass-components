@@ -31,12 +31,13 @@ const MenuItem = styled.div<PMenuItemRoot>(
         theme: { background, palette, action, text },
     }: ThemedStyledProps<PMenuItemRoot, TTheme>): FlattenSimpleInterpolation => {
         const { main, contrast } = destructive ? palette.alert : palette.primary;
+
         const colors = {
             hover: destructive ? main : blendColors(background.shape, setAlpha(action.hover, 0.08)),
             active: destructive
                 ? blendColors(main, setAlpha(action.hover, 0.16))
                 : blendColors(background.shape, setAlpha(main, 0.08)),
-            text: destructive ? main : setAlpha(text.primary, 0.56),
+            text: setAlpha(text.primary, 0.56),
         };
 
         const actionStyles = disabled
@@ -49,35 +50,50 @@ const MenuItem = styled.div<PMenuItemRoot>(
             : css`
                   :hover {
                       background: ${colors.hover};
-                      color: ${destructive ? contrast : setAlpha(colors.text, 0.72)};
+                      color: ${destructive
+                          ? setAlpha(contrast, 0.64)
+                          : setAlpha(colors.text, 0.72)};
                   }
 
                   :active {
                       background: ${colors.active};
-                      color: ${destructive ? contrast : colors.text};
+                      color: ${destructive ? setAlpha(contrast, 0.64) : colors.text};
                   }
 
-                  &:focus {
+                  :focus {
                       background: ${destructive ? main : background.shape};
                       box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.32), inset 0 0 0 2px ${main};
-                      color: ${destructive ? contrast : colors.text};
+                      color: ${destructive ? setAlpha(contrast, 0.64) : colors.text};
                   }
 
-                  &:focus:not(:focus-visible) {
+                  :focus:not(:focus-visible) {
                       box-shadow: none;
                   }
 
-                  &:focus-visible {
+                  :focus-visible {
                       outline: none;
                       background: ${destructive ? main : background.shape};
                       box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.32), inset 0 0 0 2px ${main};
-                      color: ${destructive ? contrast : colors.text};
+                      color: ${destructive ? setAlpha(contrast, 0.64) : colors.text};
+                  }
+
+                  :hover,
+                  :active,
+                  :focus,
+                  :focus-visible {
+                      > i {
+                          color: ${destructive && !disabled ? contrast : 'inherit'};
+                      }
+
+                      ${MenuItemLabelRoot} {
+                          color: ${destructive && !disabled ? contrast : setAlpha(colors.text, 1)};
+                      }
                   }
               `;
 
         return css`
             display: flex;
-            align-items: stretch;
+            align-items: flex-start;
             justify-content: flex-start;
 
             background-color: ${background.shape};
@@ -85,6 +101,15 @@ const MenuItem = styled.div<PMenuItemRoot>(
 
             ${applyShape({ radius: 0, width: '100%' })};
             ${applyPadding(Spacing.trbl({ top: 100, right: 175, bottom: 100, left: 200 }))};
+
+            // Text and leading Icons (not all elements) should have the error color when in default state
+            > i {
+                color: ${destructive && !disabled ? main : colors.text};
+            }
+
+            ${MenuItemLabelRoot} {
+                color: ${destructive && !disabled ? main : setAlpha(colors.text, 1)};
+            }
 
             ${actionStyles};
 
