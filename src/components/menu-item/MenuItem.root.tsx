@@ -44,10 +44,19 @@ const MenuItem = styled.div<PMenuItemRoot>(
             ? css`
                   cursor: not-allowed;
                   > * {
+                      color: ${text.primary};
                       opacity: 0.32;
                   }
               `
             : css`
+                  // Text and leading Icons (not all elements) should have the error color when in default state
+                  > i {
+                      color: ${destructive && !disabled ? main : colors.text};
+                  }
+
+                  ${MenuItemLabelRoot} {
+                      color: ${destructive && !disabled ? main : setAlpha(colors.text, 1)};
+                  }
                   :hover {
                       background: ${colors.hover};
                       color: ${destructive
@@ -77,6 +86,8 @@ const MenuItem = styled.div<PMenuItemRoot>(
                       color: ${destructive ? setAlpha(contrast, 0.64) : colors.text};
                   }
 
+                  // setting the values created higher specificity for them,
+                  // so we need to set the correct values here for the action states
                   :hover,
                   :active,
                   :focus,
@@ -101,15 +112,6 @@ const MenuItem = styled.div<PMenuItemRoot>(
 
             ${applyShape({ radius: 0, width: '100%' })};
             ${applyPadding(Spacing.trbl({ top: 100, right: 175, bottom: 100, left: 200 }))};
-
-            // Text and leading Icons (not all elements) should have the error color when in default state
-            > i {
-                color: ${destructive && !disabled ? main : colors.text};
-            }
-
-            ${MenuItemLabelRoot} {
-                color: ${destructive && !disabled ? main : setAlpha(colors.text, 1)};
-            }
 
             ${actionStyles};
 
