@@ -3,9 +3,8 @@ import { FlattenSimpleInterpolation, ThemedStyledProps } from 'styled-components
 
 import { applyShape } from '../../foundations/shape';
 import { setAlpha } from '../../shared';
-import { applyPadding } from '../../utilities/layout';
+import Spacing, { applyPadding } from '../../utilities/spacing';
 import { TTheme } from '../../utilities/theme';
-import Spacing from '../../utilities/spacing';
 
 import { TEXT_INPUT_VALUES_MAPPING } from './TextInput.constants';
 import { PTextInputRoot } from './TextInput.props';

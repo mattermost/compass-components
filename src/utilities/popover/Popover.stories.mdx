@@ -4,7 +4,7 @@ import { Canvas, Meta, Story } from '@storybook/addon-docs';
 import IconButton from '../../components/icon-button';
 import Popover from './Popover';
 import Shape from '../../foundations/shape';
-import Grid from '../layout';
+import Flex from '../layout';
 import Icon from '../../foundations/icon';
 import Spacing from '../spacing';
 import {
@@ -56,11 +56,12 @@ export const popoverArgs = {
             const [isVisible, setIsVisible] = useState(false);
             const buttonReference = useRef(null);
             function handleClick() {
+                console.log('#### handle click');
                 setIsVisible(!isVisible);
             }
             const offset = [offsetX, offsetY];
             return (
-                <div>
+                <>
                     <IconButton
                         icon={'menu'}
                         onClick={handleClick}
@@ -73,13 +74,17 @@ export const popoverArgs = {
                         placement={placement}
                         offset={offset}
                     >
-                        <Shape elevation={3} width={200}>
-                            <Grid justify={'center'} padding={Spacing.all(100)}>
-                                <Text margin={'none'}>this is a popover</Text>
-                            </Grid>
-                        </Shape>
+                        <Flex
+                            justify={'center'}
+                            padding={Spacing.all(100)}
+                            element={Shape}
+                            elevation={3}
+                            width={200}
+                        >
+                            <Text margin={'none'}>this is a popover</Text>
+                        </Flex>
                     </Popover>
-                </div>
+                </>
             );
         }}
     </Story>
@@ -104,9 +109,9 @@ export const popoverArgs = {
                         offset={offset}
                     >
                         <Shape elevation={3} width={200}>
-                            <Grid justify={'center'} padding={Spacing.all(100)}>
+                            <Flex justify={'center'} padding={Spacing.all(100)}>
                                 <Text margin={'none'}>this is a popover</Text>
-                            </Grid>
+                            </Flex>
                         </Shape>
                     </Popover>
                 </div>
@@ -140,9 +145,9 @@ export const popoverArgs = {
                         offset={offset}
                     >
                         <Shape elevation={3} width={200}>
-                            <Grid justify={'center'} padding={Spacing.all(100)}>
+                            <Flex justify={'center'} padding={Spacing.all(100)}>
                                 <Text margin={'none'}>this is a popover</Text>
-                            </Grid>
+                            </Flex>
                         </Shape>
                     </Popover>
                 </div>

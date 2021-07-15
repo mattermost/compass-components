@@ -122,6 +122,14 @@ const isFunction = (x: any): x is Function => typeof x === 'function';
 function warn(message: string, ...rest: any): void {
     console.warn(message, ...rest);
 }
+
+/**
+ * check if the provided component is classified as functional component
+ * @param {*} component
+ * @returns {boolean}
+ */
+const isFunctionalComponent = (component: any): boolean =>
+    isFunction(component) && !(component.prototype && component.prototype.isReactComponent);
 /* eslint-enable @typescript-eslint/no-explicit-any,no-console */
 
 const getFontMargin = (fontSize: number, multiplier: number): number =>
@@ -199,12 +207,12 @@ const Utils = {
     isNumber,
     isFunction,
     isString,
+    isFunctionalComponent,
     blockProperty,
     forceForwardProperty,
     getBase64,
     getStoryDocumentationUrl,
     hideComponentProperties,
-    hideStyledComponentProperties,
     getFontMargin,
     getPxValue,
     noop,
