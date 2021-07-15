@@ -56,6 +56,7 @@ export const popoverArgs = {
             const [isVisible, setIsVisible] = useState(false);
             const buttonReference = useRef(null);
             function handleClick() {
+                console.log('#### handle click');
                 setIsVisible(!isVisible);
             }
             const offset = [offsetX, offsetY];
