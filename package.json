@@ -113,7 +113,7 @@
             "tsc-files --noEmit"
         ],
         "*.{js,jsx,ts,tsx,md,mdx}": [
-            "eslint --cache --fix",
+            "eslint --cache --fix .",
             "prettier --write"
         ]
     }
