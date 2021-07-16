@@ -167,12 +167,19 @@ class CompassError extends Error {
 }
 
 /**
- * Asserts if a certain check is true. If not throw a CompassError with the provided message
+ * Asserts if a certain check is true. If not throw a CompassError with the
+ * provided message or warn in the console.
+ *
+ * When in production it will never throw, but instead warn the user.
  * @param {boolean} assertion
  * @param {string} message
  * @param {boolean} warnOnly
  */
-function assert(assertion: boolean, message: string, warnOnly = false): void {
+function assert(
+    assertion: boolean,
+    message: string,
+    warnOnly = process.env.NODE_ENV !== 'production'
+): void {
     if (!assertion) {
         if (warnOnly) {
             // eslint-disable-next-line no-console
