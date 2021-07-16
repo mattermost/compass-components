@@ -16,7 +16,7 @@ const Tag = ({
 
     Utils.assert(
         hasText,
-        'Compass Components - Tag: This component is intended to be used with text. Please provide a string to it for correct usage.'
+        'Tag: This component is intended to be used with text. Please provide a string to it for correct usage.'
     );
 
     return (

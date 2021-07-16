@@ -25,7 +25,7 @@ const Heading = ({
     // Whenever this component is used with an element that is not supported within the headings throw an error!
     Utils.assert(
         HEADING_ELEMENTS.includes(element),
-        `Compass Components: Heading component was used with an unsupported element '${element}'.
+        `Heading: component was used with an unsupported element '${element}'.
                 Please provide one from these available options: ${HEADING_ELEMENTS.join(', ')}.`
     );
 

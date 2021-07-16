@@ -176,7 +176,7 @@ function assert(assertion: boolean, message: string, warnOnly = false): void {
     if (!assertion) {
         if (warnOnly) {
             // eslint-disable-next-line no-console
-            console.warn(message);
+            console.warn(`Compass Components - ${message}`);
 
             return;
         }

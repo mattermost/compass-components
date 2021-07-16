@@ -21,7 +21,7 @@ const Image: React.FC<PImage> = ({
     height = DEFAULT_IMAGE_HEIGHT,
     ...rest
 }: PImage) => {
-    Utils.assert(Boolean(source), 'Compass Components - Image: You need to provide image source');
+    Utils.assert(Boolean(source), 'Image: You need to provide a valid image source');
 
     const [loading, setLoading] = useState(true);
     const [image, setImage] = useState('');

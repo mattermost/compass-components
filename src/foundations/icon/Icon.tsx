@@ -20,7 +20,7 @@ const Icon = ({
 }: PIcon): JSX.Element => {
     Utils.assert(
         ICON_GLYPHS.includes(glyph),
-        `Compass Components - Icon: please provide a valid option for the \`iconGlyph\` property. Choose from the following: ${ICON_GLYPHS.join(
+        `Icon: please provide a valid option for the \`iconGlyph\` property. Choose from the following: ${ICON_GLYPHS.join(
             ', '
         )}.`
     );

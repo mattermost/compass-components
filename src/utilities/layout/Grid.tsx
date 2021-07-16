@@ -27,21 +27,21 @@ const Grid = ({
 }: PGrid): JSX.Element => {
     Utils.assert(
         GRID_ALIGNMENTS.includes(alignment),
-        `Compass Components - Grid: incompatible alignment property set on Grid component. Please choose from the following: ${GRID_ALIGNMENTS.join(
+        `Grid: incompatible alignment property set on Grid component. Please choose from the following: ${GRID_ALIGNMENTS.join(
             ', '
         )}`
     );
 
     Utils.assert(
         GRID_JUSTIFIES.includes(justify),
-        `Compass Components - Grid: incompatible justify property set on Grid component. Please choose from the following: ${GRID_JUSTIFIES.join(
+        `Grid: incompatible justify property set on Grid component. Please choose from the following: ${GRID_JUSTIFIES.join(
             ', '
         )}`
     );
 
     Utils.assert(
         GRID_ELEMENTS.includes(element),
-        `Compass Components - Grid: incompatible element property set on Grid component. Please choose from the following: ${GRID_ELEMENTS.join(
+        `Grid: incompatible element property set on Grid component. Please choose from the following: ${GRID_ELEMENTS.join(
             ', '
         )}`
     );

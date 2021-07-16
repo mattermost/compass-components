@@ -37,7 +37,7 @@ const IconButton = React.forwardRef(
     ): JSX.Element => {
         Utils.assert(
             (!destructive && !toggled) || (destructive && !toggled) || (toggled && !destructive),
-            'Compass Components: IconButton component was used with both `destructive` and `toggled` properties set to true. Please use only one of the options',
+            'IconButton: component was used with both `destructive` and `toggled` properties set to true. Please use only one of the options',
             true
         );
 
