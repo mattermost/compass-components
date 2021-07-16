@@ -32,6 +32,12 @@ type PPopover = {
      */
     offset?: TPopoverOffset;
     /**
+     * handle clicking away from the popover and anchor references (refs).
+     * this is very useful for setting isVisible state, or perform other actions
+     * when clicking away.
+     */
+    onClickAway?: () => void;
+    /**
      * custom className
      */
     className?: string;
