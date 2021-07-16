@@ -4,14 +4,10 @@ import axios from 'axios';
 import { DEFAULT_PROPERTY_WHITELIST } from './constants';
 import { THiddenArgtypes } from './types';
 
-function isColor(colorString: string): boolean {
-    const s = new Option().style;
-
-    s.color = colorString;
-
-    return s.color === colorString;
-}
-
+/**
+ * pass in a story(Parameters) and get the correct URL to directly link to it
+ * @param {object} storyParameters
+ */
 function getStoryDocumentationUrl(storyParameters: Record<string, string>): string {
     const storyPathParts = storyParameters.title.split('/');
     const storyPath = storyPathParts.map((part) => kebabCase(part)).join('-');
@@ -115,14 +111,26 @@ function hideComponentProperties(blacklist: string[] = []): THiddenArgtypes {
 }
 
 /* eslint-disable @typescript-eslint/no-explicit-any,no-console */
-const isNumber = (x: any): x is number => typeof x === 'number';
-const isString = (x: any): x is string => typeof x === 'string';
-const isFunction = (x: any): x is Function => typeof x === 'function';
-
 function warn(message: string, ...rest: any): void {
     console.warn(message, ...rest);
 }
+
+const isNumber = (x: any): x is number => typeof x === 'number';
+const isString = (x: any): x is string => typeof x === 'string';
+const isFunction = (x: any): x is Function => typeof x === 'function';
 /* eslint-enable @typescript-eslint/no-explicit-any,no-console */
+
+/**
+ * check if a given string is a valid color value for CSS
+ * @param {string} colorString
+ */
+function isColor(colorString: string): boolean {
+    const s = new Option().style;
+
+    s.color = colorString;
+
+    return s.color === colorString;
+}
 
 const getFontMargin = (fontSize: number, multiplier: number): number =>
     Math.max(Math.round((fontSize * multiplier) / 4) * 4, 8);
@@ -146,6 +154,10 @@ function clamp(value: number, min = 0, max = 1): number {
     return Math.min(Math.max(min, value), max);
 }
 
+/**
+ * will return a base64 value from a image endpoint or image source
+ * @param {string} url
+ */
 function getBase64(url: string): Promise<string> {
     return axios
         .get(url, {
@@ -159,6 +171,9 @@ function getBase64(url: string): Promise<string> {
         });
 }
 
+/**
+ * custom error class to throw for compass components
+ */
 class CompassError extends Error {
     constructor(message: string) {
         super(message);
@@ -211,7 +226,6 @@ const Utils = {
     getBase64,
     getStoryDocumentationUrl,
     hideComponentProperties,
-    hideStyledComponentProperties,
     getFontMargin,
     getPxValue,
     noop,
