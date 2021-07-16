@@ -2,11 +2,13 @@ import { RefObject, useEffect } from 'react';
 
 const EVENTS = ['mousedown', 'touchstart'];
 
-export type OnClickAwayCallback = (event: Event) => void;
+type TonClickAwayCallback = (event: Event) => void;
+
+type TuseClickAwayReferences = Array<RefObject<HTMLElement | null>>;
 
 export const useClickAway = (
-    references: Array<RefObject<HTMLElement | null>>,
-    onClickAway?: OnClickAwayCallback
+    references: TuseClickAwayReferences,
+    onClickAway?: TonClickAwayCallback
 ): void => {
     useEffect(() => {
         const handler = (event: Event): void => {
@@ -38,3 +40,5 @@ export const useClickAway = (
         };
     }, [onClickAway, references]);
 };
+
+export type { TonClickAwayCallback, TuseClickAwayReferences };
