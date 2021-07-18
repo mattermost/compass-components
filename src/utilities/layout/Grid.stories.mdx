@@ -51,9 +51,9 @@ export const spacings = {
     80: 500,
 };
 
-<Grid row alignment={'flex-end'}>
+<Grid row alignItems={'flex-end'}>
     {Object.keys(spacings).map((s) => (
-        <Grid key={s} alignment={'center'} padding={Spacing.all(75)}>
+        <Grid key={s} alignItems={'center'} padding={Spacing.all(75)}>
             <ShapeRoot borderWidth={1} radius={0} elevation={0}>
                 <Grid
                     padding={Spacing.trbl({

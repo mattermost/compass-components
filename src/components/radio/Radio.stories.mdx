@@ -39,29 +39,29 @@ Radio buttons are comprised of:
 
 ## States
 
-<Grid row justify={'space-between'}>
-    <Grid justify={'center'}>
+<Grid row justifyItems={'space-between'}>
+    <Grid justifyItems={'center'}>
         <Radio {...defaultArgs} disabled={true} />
         <br />
         <Text element={'p'} size={200} margin={'none'}>
             <strong>Disabled</strong>
         </Text>
     </Grid>
-    <Grid justify={'center'}>
+    <Grid justifyItems={'center'}>
         <Radio {...defaultArgs} hasError={true} />
         <br />
         <Text element={'p'} size={200} margin={'none'}>
             <strong>Error</strong>
         </Text>
     </Grid>
-    <Grid justify={'center'}>
+    <Grid justifyItems={'center'}>
         <Radio {...defaultArgs} />
         <br />
         <Text element={'p'} size={200} margin={'none'}>
             <strong>Off</strong>
         </Text>
     </Grid>
-    <Grid justify={'center'}>
+    <Grid justifyItems={'center'}>
         <Radio {...defaultArgs} checked={true} />
         <br />
         <Text element={'p'} size={200} margin={'none'}>
@@ -78,22 +78,22 @@ Once an item is selected, if the user clicks to select a different item, this au
 
 ## Sizes
 
-<Grid row justify={'space-between'}>
-    <Grid justify={'center'}>
+<Grid row justifyItems={'space-between'}>
+    <Grid justifyItems={'center'}>
         <Radio label={'Label'} size={'sm'} checked={true} />
         <br />
         <Text element={'p'} size={200} margin={'none'}>
             <strong>Small</strong>
         </Text>
     </Grid>
-    <Grid justify={'center'}>
+    <Grid justifyItems={'center'}>
         <Radio label={'Label'} size={'md'} checked={true} />
         <br />
         <Text element={'p'} size={200} margin={'none'}>
             <strong>Medium</strong>
         </Text>
     </Grid>
-    <Grid justify={'center'}>
+    <Grid justifyItems={'center'}>
         <Radio label={'Label'} size={'lg'} checked={true} />
         <br />
         <Text element={'p'} size={200} margin={'none'}>

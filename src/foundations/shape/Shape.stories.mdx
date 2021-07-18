@@ -51,23 +51,23 @@ export const argTypes = {
 
 There are 4 core shapes used throughout the Mattermost interface:
 
-<Grid padding={Spacing.symmetric({ vertical: 150 })} justify={'stretch'}>
+<Grid padding={Spacing.symmetric({ vertical: 150 })} justifyItems={'stretch'}>
     <Grid
         row
         padding={Spacing.symmetric({ vertical: 150, horizontal: 25 })}
-        alignment={'center'}
-        justify={'space-around'}
+        alignItems={'center'}
+        justifyItems={'space-around'}
     >
-        <Grid justify={'center'}>
+        <Grid justifyItems={'center'}>
             <Shape {...defaultArgs} radius={0} />
         </Grid>
-        <Grid justify={'center'}>
+        <Grid justifyItems={'center'}>
             <Shape {...defaultArgs} radius={12} />
         </Grid>
-        <Grid justify={'center'}>
+        <Grid justifyItems={'center'}>
             <Shape {...defaultArgs} radius={'pill'} />
         </Grid>
-        <Grid justify={'center'}>
+        <Grid justifyItems={'center'}>
             <Shape {...defaultArgs} radius={'circle'} />
         </Grid>
     </Grid>
@@ -94,9 +94,9 @@ export const radiusExampleArgs = {
     height: 120,
 };
 
-<Grid padding={Spacing.symmetric({ vertical: 150 })} justify={'stretch'}>
-    <Grid row alignment={'center'}>
-        <Grid justify={'center'} flex={0}>
+<Grid padding={Spacing.symmetric({ vertical: 150 })} justifyItems={'stretch'}>
+    <Grid row alignItems={'center'}>
+        <Grid justifyItems={'center'} flex={0}>
             <Grid padding={Spacing.all(150)}>
                 <Shape {...radiusExampleArgs} width={156} height={156} radius={4} />
             </Grid>
@@ -112,9 +112,9 @@ export const radiusExampleArgs = {
 
 ---
 
-<Grid padding={Spacing.symmetric({ vertical: 150 })} justify={'stretch'}>
-    <Grid row justify={'space-between'}>
-        <Grid justify={'center'} flex={0}>
+<Grid padding={Spacing.symmetric({ vertical: 150 })} justifyItems={'stretch'}>
+    <Grid row justifyItems={'space-between'}>
+        <Grid justifyItems={'center'} flex={0}>
             <Grid padding={Spacing.all(150)}>
                 <Shape {...radiusExampleArgs} radius={8} />
             </Grid>
@@ -123,7 +123,7 @@ export const radiusExampleArgs = {
                 <strong>8px</strong>
             </Text>
         </Grid>
-        <Grid justify={'center'} flex={0}>
+        <Grid justifyItems={'center'} flex={0}>
             <Grid padding={Spacing.all(150)}>
                 <Shape {...radiusExampleArgs} radius={12} />
             </Grid>
@@ -132,7 +132,7 @@ export const radiusExampleArgs = {
                 <strong>12px</strong>
             </Text>
         </Grid>
-        <Grid justify={'center'} flex={0}>
+        <Grid justifyItems={'center'} flex={0}>
             <Grid padding={Spacing.all(150)}>
                 <Shape {...radiusExampleArgs} radius={16} />
             </Grid>
@@ -141,7 +141,7 @@ export const radiusExampleArgs = {
                 <strong>16px</strong>
             </Text>
         </Grid>
-        <Grid justify={'center'} flex={0}>
+        <Grid justifyItems={'center'} flex={0}>
             <Grid padding={Spacing.all(150)}>
                 <Shape {...radiusExampleArgs} radius={20} />
             </Grid>
@@ -150,7 +150,7 @@ export const radiusExampleArgs = {
                 <strong>20px</strong>
             </Text>
         </Grid>
-        <Grid justify={'center'} flex={0}>
+        <Grid justifyItems={'center'} flex={0}>
             <Grid padding={Spacing.all(150)}>
                 <Shape {...radiusExampleArgs} radius={24} />
             </Grid>

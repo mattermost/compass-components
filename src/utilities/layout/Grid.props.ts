@@ -29,12 +29,20 @@ type PGrid = {
      * defines the vertical alignment of items inside the component
      * @default 'start'
      */
-    alignment?: TGridAlignment;
+    alignItems?: TGridAlignment;
     /**
      * defines the horizontal alignment of items inside the component
      * @default 'start'
      */
-    justify?: TGridJustify;
+    justifyItems?: TGridJustify;
+    /**
+     * defines the vertical alignment of items inside the component
+     */
+    alignSelf?: TGridAlignment;
+    /**
+     * defines the horizontal alignment of items inside the component
+     */
+    justifySelf?: TGridJustify;
     /**
      * padding according to `TSpacingDefinition` typography
      */
@@ -59,8 +67,18 @@ type PGrid = {
 };
 
 export type PGridRoot = Required<
-    Omit<PGrid, 'className' | 'children' | 'width' | 'height' | 'padding' | 'margin'>
+    Omit<
+        PGrid,
+        | 'className'
+        | 'children'
+        | 'width'
+        | 'height'
+        | 'padding'
+        | 'margin'
+        | 'alignSelf'
+        | 'justifySelf'
+    >
 > &
-    Pick<PGrid, 'width' | 'height' | 'padding' | 'margin'>;
+    Pick<PGrid, 'width' | 'height' | 'padding' | 'margin' | 'alignSelf' | 'justifySelf'>;
 
 export default PGrid;

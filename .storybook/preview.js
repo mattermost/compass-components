@@ -52,7 +52,7 @@ addParameters({
         storySort: (a, b) => {
             if (a[0].toLocaleLowerCase().includes('overview')) return -1;
             if (b[0].toLocaleLowerCase().includes('overview')) return 1;
-            return 0;
+            return a[0].localeCompare(b[0]);
         },
     },
     backgrounds: {

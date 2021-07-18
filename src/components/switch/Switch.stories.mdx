@@ -39,22 +39,22 @@ Clicking either the Selector or the Label should toggle the state of the switch.
 
 When Off, the toggle handle is positioned to the left side and the background track is grey. When On, the toggle handle animates to the right side and the track turns from grey to blue.
 
-<Grid row justify={'space-between'}>
-    <Grid justify={'center'}>
+<Grid row justifyItems={'space-between'}>
+    <Grid justifyItems={'center'}>
         <Switch {...defaultArgs} disabled={true} />
         <br />
         <Text element={'p'} size={200} margin={'none'}>
             <strong>Disabled</strong>
         </Text>
     </Grid>
-    <Grid justify={'center'}>
+    <Grid justifyItems={'center'}>
         <Switch {...defaultArgs} />
         <br />
         <Text element={'p'} size={200} margin={'none'}>
             <strong>Off</strong>
         </Text>
     </Grid>
-    <Grid justify={'center'}>
+    <Grid justifyItems={'center'}>
         <Switch {...defaultArgs} toggled={true} />
         <br />
         <Text element={'p'} size={200} margin={'none'}>
@@ -67,22 +67,22 @@ When Off, the toggle handle is positioned to the left side and the background tr
 
 There are three different sizes for switches: Small, Medium, and Large. The size of the text label determines the size of the switch that you should use. The small switch correlates with a label that has 12pt font, medium with 14pt font, and large with 16pt font.
 
-<Grid row justify={'space-between'}>
-    <Grid justify={'center'}>
+<Grid row justifyItems={'space-between'}>
+    <Grid justifyItems={'center'}>
         <Switch label={'Label'} size={'sm'} />
         <br />
         <Text element={'p'} size={200} margin={'none'}>
             <strong>Small</strong>
         </Text>
     </Grid>
-    <Grid justify={'center'}>
+    <Grid justifyItems={'center'}>
         <Switch label={'Label'} size={'md'} />
         <br />
         <Text element={'p'} size={200} margin={'none'}>
             <strong>Medium</strong>
         </Text>
     </Grid>
-    <Grid justify={'center'}>
+    <Grid justifyItems={'center'}>
         <Switch label={'Label'} size={'lg'} />
         <br />
         <Text element={'p'} size={200} margin={'none'}>

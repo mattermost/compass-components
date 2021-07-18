@@ -41,7 +41,7 @@ export const bodySizes = [
     {bodySizes.map((body) => (
         <div key={`body_${body.size}`}>
             <hr />
-            <Grid justify={'stretch'}>
+            <Grid justifyItems={'stretch'}>
                 <Grid row>
                     <Heading element={'h3'} size={300}>
                         {`Body ${body.size}${body.size === 100 ? ' (Base size)' : ''}`}
