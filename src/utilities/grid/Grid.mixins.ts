@@ -3,6 +3,16 @@ import { FlattenSimpleInterpolation } from 'styled-components/ts3.6';
 
 import { Utils } from '../../shared';
 
+import {
+    DEFAULT_GRID_AREAS_TEMPLATE,
+    DEFAULT_GRID_COLUMNS_TEMPLATE,
+    DEFAULT_GRID_GAP,
+    DEFAULT_GRID_ITEM_COLUMNS,
+    DEFAULT_GRID_ITEM_ROWS,
+    DEFAULT_GRID_PLACE_CONTENT,
+    DEFAULT_GRID_PLACE_ITEMS,
+    DEFAULT_GRID_ROWS_TEMPLATE,
+} from './Grid.constants';
 import { PApplyGrid, PApplyGridItem } from './Grid.props';
 
 /**
@@ -71,12 +81,12 @@ import { PApplyGrid, PApplyGridItem } from './Grid.props';
  * ```
  */
 const applyGrid = ({
-    columnsTemplate = 'none',
-    rowsTemplate = 'none',
-    areasTemplate = 'none',
-    gap = { column: 'normal', row: 'normal' },
-    placeItems = { alignItems: 'initial', justifyItems: 'initial' },
-    placeContent = { alignContent: 'initial', justifyContent: 'initial' },
+    columnsTemplate = DEFAULT_GRID_COLUMNS_TEMPLATE,
+    rowsTemplate = DEFAULT_GRID_ROWS_TEMPLATE,
+    areasTemplate = DEFAULT_GRID_AREAS_TEMPLATE,
+    gap = DEFAULT_GRID_GAP,
+    placeItems = DEFAULT_GRID_PLACE_ITEMS,
+    placeContent = DEFAULT_GRID_PLACE_CONTENT,
 }: PApplyGrid): FlattenSimpleInterpolation => css`
     display: grid;
 
@@ -84,13 +94,23 @@ const applyGrid = ({
     grid-template-columns: ${rowsTemplate};
     grid-template-areas: ${areasTemplate};
 
-    column-gap: ${Utils.isNumber(gap) || Utils.isString(gap) ? gap : gap.column};
-    row-gap: ${Utils.isNumber(gap) || Utils.isString(gap) ? gap : gap.row};
+    column-gap: ${Utils.isNumber(gap) || Utils.isString(gap)
+        ? gap
+        : gap.column || DEFAULT_GRID_GAP.column};
+    row-gap: ${Utils.isNumber(gap) || Utils.isString(gap) ? gap : gap.row || DEFAULT_GRID_GAP.row};
 
-    align-items: ${Utils.isString(placeItems) ? placeItems : placeItems.alignItems};
-    justify-items: ${Utils.isString(placeItems) ? placeItems : placeItems.justifyItems};
-    align-content: ${Utils.isString(placeContent) ? placeContent : placeContent.alignContent};
-    justify-content: ${Utils.isString(placeContent) ? placeContent : placeContent.justifyContent};
+    align-items: ${Utils.isString(placeItems)
+        ? placeItems
+        : placeItems.alignItems || DEFAULT_GRID_PLACE_ITEMS.alignItems};
+    justify-items: ${Utils.isString(placeItems)
+        ? placeItems
+        : placeItems.justifyItems || DEFAULT_GRID_PLACE_ITEMS.justifyItems};
+    align-content: ${Utils.isString(placeContent)
+        ? placeContent
+        : placeContent.alignContent || DEFAULT_GRID_PLACE_CONTENT.alignContent};
+    justify-content: ${Utils.isString(placeContent)
+        ? placeContent
+        : placeContent.justifyContent || DEFAULT_GRID_PLACE_CONTENT.justifyContent};
 `;
 
 /**
@@ -118,13 +138,16 @@ const applyGrid = ({
  * ```
  */
 const applyGridItem = ({
-    columns = 'initial',
-    rows = 'initial',
+    columns = DEFAULT_GRID_ITEM_COLUMNS,
+    rows = DEFAULT_GRID_ITEM_ROWS,
     area,
 }: PApplyGridItem): FlattenSimpleInterpolation => css`
     grid-column: ${columns};
     grid-row: ${rows};
-    grid-area: ${area};
+    ${area &&
+    css`
+        grid-area: ${area};
+    `};
 `;
 
 export { applyGrid, applyGridItem };
