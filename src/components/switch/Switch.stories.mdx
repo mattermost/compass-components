@@ -10,11 +10,6 @@ import switchExampleImg from '../../assets/images/example-switch.png';
 import { DEFAULT_SWITCH_SIZE, SWITCH_SIZES } from './Switch.constants';
 import Switch from './index';
 
-export const defaultArgs = {
-    label: 'Label',
-    size: DEFAULT_SWITCH_SIZE,
-};
-
 <Meta component={Switch} title="Components/Switch" />
 
 <Title>Switches</Title>
@@ -103,48 +98,38 @@ There are three different sizes for switches: Small, Medium, and Large. The size
 
 <ArgsTable of={Switch} exclude={[...DEFAULT_ARGUMENTS_TABLE_EXCLUSION]} />
 
+export const defaultArgs = {
+    label: 'Label',
+    size: DEFAULT_SWITCH_SIZE,
+    toggled: false,
+    disabled: false,
+};
+
+export const ControlledSwitch = (args) => {
+    const [toggled, setToggled] = useState(false);
+    return (
+        <Switch
+            {...args}
+            onChange={(event) => {
+                console.log('#### EVENT:', event);
+                setToggled(!toggled);
+            }}
+            toggled={toggled}
+        />
+    );
+};
+
 <Canvas hidden>
     <Story
         name="Default"
         argTypes={{
-            label: {
-                control: {
-                    type: 'text',
-                },
-            },
-            size: {
-                control: {
-                    type: 'select',
-                    options: SWITCH_SIZES,
-                },
-            },
-            disabled: {
-                control: {
-                    type: 'boolean',
-                },
-            },
-            toggled: {
-                control: {
-                    type: 'boolean',
-                },
-            },
-            width: { table: { disable: true } },
-            height: { table: { disable: true } },
-            innerWidth: { table: { disable: true } },
-            className: { table: { disable: true } },
-            onClick: { action: 'clicked' },
-            ...Utils.hideComponentProperties([
-                'width',
-                'height',
-                'innerWidth',
-                'className',
-                'onClick',
-            ]),
+            label: { control: { type: 'text' } },
+            size: { control: { type: 'select', options: SWITCH_SIZES } },
+            disabled: { control: { type: 'boolean' } },
+            ...Utils.hideComponentProperties(['width', 'height', 'innerWidth', 'className', 'onClick', 'onChange', 'toggled']),
         }}
-        args={{
-            ...defaultArgs,
-        }}
+        args={defaultArgs}
     >
-        {(args) => <Switch {...args} />}
+        {(args) => <ControlledSwitch {...args} />}
     </Story>
 </Canvas>
