@@ -8,6 +8,7 @@ import {
     DEFAULT_GRID_COLUMNS_TEMPLATE,
     DEFAULT_GRID_GAP,
     DEFAULT_GRID_ITEM_COLUMNS,
+    DEFAULT_GRID_ITEM_PLACE_SELF,
     DEFAULT_GRID_ITEM_ROWS,
     DEFAULT_GRID_PLACE_CONTENT,
     DEFAULT_GRID_PLACE_ITEMS,
@@ -96,21 +97,26 @@ const applyGrid = ({
 
     column-gap: ${Utils.isNumber(gap) || Utils.isString(gap)
         ? gap
-        : gap.column || DEFAULT_GRID_GAP.column};
-    row-gap: ${Utils.isNumber(gap) || Utils.isString(gap) ? gap : gap.row || DEFAULT_GRID_GAP.row};
+        : gap.column || DEFAULT_GRID_GAP};
+    row-gap: ${Utils.isNumber(gap) || Utils.isString(gap) ? gap : gap.row || DEFAULT_GRID_GAP};
 
-    align-items: ${Utils.isString(placeItems)
-        ? placeItems
-        : placeItems.alignItems || DEFAULT_GRID_PLACE_ITEMS.alignItems};
-    justify-items: ${Utils.isString(placeItems)
-        ? placeItems
-        : placeItems.justifyItems || DEFAULT_GRID_PLACE_ITEMS.justifyItems};
-    align-content: ${Utils.isString(placeContent)
-        ? placeContent
-        : placeContent.alignContent || DEFAULT_GRID_PLACE_CONTENT.alignContent};
-    justify-content: ${Utils.isString(placeContent)
-        ? placeContent
-        : placeContent.justifyContent || DEFAULT_GRID_PLACE_CONTENT.justifyContent};
+    ${Utils.isString(placeItems)
+        ? css`
+              place-items: ${placeItems};
+          `
+        : css`
+              align-items: ${placeItems.alignItems || DEFAULT_GRID_PLACE_ITEMS};
+              justify-items: ${placeItems.justifyItems || DEFAULT_GRID_PLACE_ITEMS};
+          `};
+
+    ${Utils.isString(placeContent)
+        ? css`
+              place-content: ${placeContent};
+          `
+        : css`
+              align-content: ${placeContent.alignContent || DEFAULT_GRID_PLACE_CONTENT};
+              justify-content: ${placeContent.justifyContent || DEFAULT_GRID_PLACE_CONTENT};
+          `};
 `;
 
 /**
@@ -140,6 +146,7 @@ const applyGrid = ({
 const applyGridItem = ({
     columns = DEFAULT_GRID_ITEM_COLUMNS,
     rows = DEFAULT_GRID_ITEM_ROWS,
+    placeSelf = DEFAULT_GRID_ITEM_PLACE_SELF,
     area,
 }: PApplyGridItem): FlattenSimpleInterpolation => css`
     grid-column: ${columns};
@@ -148,6 +155,15 @@ const applyGridItem = ({
     css`
         grid-area: ${area};
     `};
+
+    ${Utils.isString(placeSelf)
+        ? css`
+              place-items: ${placeSelf};
+          `
+        : css`
+              align-items: ${placeSelf.alignItems || DEFAULT_GRID_ITEM_PLACE_SELF};
+              justify-items: ${placeSelf.justifyItems || DEFAULT_GRID_ITEM_PLACE_SELF};
+          `};
 `;
 
 export { applyGrid, applyGridItem };

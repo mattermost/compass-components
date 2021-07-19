@@ -16,4 +16,16 @@ type TGridPlaceContentProperty =
 
 type TGridGapProperty = Property.Gap | { column?: Property.ColumnGap; row?: Property.RowGap };
 
-export type { TGridPlaceItemsProperty, TGridPlaceContentProperty, TGridGapProperty };
+type TGridItemPlaceSelfProperty =
+    | Property.PlaceSelf
+    | {
+          alignItems?: Property.AlignSelf;
+          justifyItems?: Property.JustifySelf;
+      };
+
+export type {
+    TGridPlaceItemsProperty,
+    TGridPlaceContentProperty,
+    TGridGapProperty,
+    TGridItemPlaceSelfProperty,
+};

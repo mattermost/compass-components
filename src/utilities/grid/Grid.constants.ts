@@ -1,31 +1,22 @@
 import { Property } from 'csstype';
 
-import { TGridGapProperty, TGridPlaceContentProperty, TGridPlaceItemsProperty } from './Grid.types';
-
 const DEFAULT_GRID_COLUMNS_TEMPLATE: Property.GridTemplateColumns = 'none';
 
 const DEFAULT_GRID_ROWS_TEMPLATE: Property.GridTemplateRows = 'none';
 
 const DEFAULT_GRID_AREAS_TEMPLATE: Property.GridTemplateAreas = 'none';
 
-const DEFAULT_GRID_GAP: Exclude<TGridGapProperty, Property.Gap> = {
-    column: 'normal',
-    row: 'normal',
-};
+const DEFAULT_GRID_GAP: Property.Gap = 'normal';
 
-const DEFAULT_GRID_PLACE_ITEMS: Exclude<TGridPlaceItemsProperty, Property.PlaceItems> = {
-    alignItems: 'initial',
-    justifyItems: 'initial',
-};
+const DEFAULT_GRID_PLACE_ITEMS: Property.PlaceItems = 'initial';
 
-const DEFAULT_GRID_PLACE_CONTENT: Exclude<TGridPlaceContentProperty, Property.PlaceContent> = {
-    alignContent: 'initial',
-    justifyContent: 'initial',
-};
+const DEFAULT_GRID_PLACE_CONTENT: Property.PlaceContent = 'initial';
 
 const DEFAULT_GRID_ITEM_COLUMNS: Property.GridColumn = 'initial';
 
 const DEFAULT_GRID_ITEM_ROWS: Property.GridRow = 'initial';
+
+const DEFAULT_GRID_ITEM_PLACE_SELF: Property.PlaceSelf = 'initial';
 
 export {
     DEFAULT_GRID_COLUMNS_TEMPLATE,
@@ -36,4 +27,5 @@ export {
     DEFAULT_GRID_PLACE_CONTENT,
     DEFAULT_GRID_ITEM_COLUMNS,
     DEFAULT_GRID_ITEM_ROWS,
+    DEFAULT_GRID_ITEM_PLACE_SELF,
 };
