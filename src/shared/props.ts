@@ -11,7 +11,7 @@ type PAriaWidgetAttributes = {
     /**
      * Indicates whether user input completion suggestions are provided.
      */
-    'aria-autocomplete': boolean;
+    'aria-autocomplete': 'inline' | 'list' | 'both' | 'none';
     /**
      * Indicates the current "checked" state of checkboxes, radio buttons, and
      * other widgets.
@@ -34,7 +34,7 @@ type PAriaWidgetAttributes = {
      * @global
      * Indicates that the element has a popup context menu or sub-level menu.
      */
-    'aria-haspopup': boolean;
+    'aria-haspopup': boolean | 'menu' | 'dialog' | 'listbox' | 'grid' | 'false' | 'true' | 'tree';
     /**
      * @global
      * Indicates that the element and all of its descendants are not visible or
@@ -53,11 +53,11 @@ type PAriaWidgetAttributes = {
      * Defines a string value that labels the current element.
      * @see related aria-labelledby.
      */
-    'aria-label': boolean;
+    'aria-label': string;
     /**
      * Defines the hierarchical level of an element within a structure.
      */
-    'aria-level': boolean;
+    'aria-level': number;
     /**
      * Indicates whether a text box accepts multiple lines of input or only a
      * single line.
@@ -71,7 +71,7 @@ type PAriaWidgetAttributes = {
     /**
      * Indicates whether the element and orientation is horizontal or vertical.
      */
-    'aria-orientation': boolean;
+    'aria-orientation': 'vertical' | 'horizontal';
     /**
      * Indicates the current "pressed" state of toggle buttons.
      * @see related aria-checked and aria-selected.
@@ -96,25 +96,25 @@ type PAriaWidgetAttributes = {
      * Indicates if items in a table or grid are sorted in ascending or
      * descending order.
      */
-    'aria-sort': boolean;
+    'aria-sort': 'none' | 'ascending' | 'descending' | 'other';
     /**
      * Defines the maximum allowed value for a range widget.
      */
-    'aria-valuemax': boolean;
+    'aria-valuemax': number;
     /**
      * Defines the minimum allowed value for a range widget.
      */
-    'aria-valuemin': boolean;
+    'aria-valuemin': number;
     /**
      * Defines the current value for a range widget.
      * @see related aria-valuetext.
      */
-    'aria-valuenow': boolean;
+    'aria-valuenow': number;
     /**
      * Defines the human readable text alternative of aria-valuenow for a range
      * widget.
      */
-    'aria-valuetext': boolean;
+    'aria-valuetext': string;
 };
 
 /**
@@ -149,14 +149,24 @@ type PAriaLiveRegionAttributes = {
      * updates the user agents, assistive technologies, and user can expect from
      * the live region.
      */
-    'aria-live': boolean;
+    'aria-live': 'off' | 'assertive' | 'polite';
     /**
      * @global
      * Indicates what user agent change notifications (additions, removals, etc.)
      * assistive technologies will receive within a live region.
      * @see related aria-atomic.
      */
-    'aria-relevant': boolean;
+    'aria-relevant':
+        | 'text'
+        | 'all'
+        | 'additions'
+        | 'additions removals'
+        | 'additions text'
+        | 'removals'
+        | 'removals additions'
+        | 'removals text'
+        | 'text additions'
+        | 'text removals';
 };
 
 /**
@@ -177,7 +187,7 @@ type PAriaDragAndDropAttributes = {
      * operation as the drop effect functions available are dependent on the
      * object being dragged.
      */
-    'aria-dropeffect': boolean;
+    'aria-dropeffect': 'none' | 'link' | 'copy' | 'move' | 'execute' | 'popup';
     /**
      * @global
      * Indicates an element's "grabbed" state in a drag-and-drop operation.
@@ -189,33 +199,33 @@ type PAriaRelationshipAttributes = {
     /**
      * Identifies the currently active descendant of a composite widget.
      */
-    'aria-activedescendant': boolean;
+    'aria-activedescendant': string;
     /**
      * @global
      * Identifies the element (or elements) whose contents or presence are
      * controlled by the current element.
      * @see related aria-owns.
      */
-    'aria-controls': boolean;
+    'aria-controls': string;
     /**
      * @global
      * Identifies the element (or elements) that describes the object.
      * @see related aria-labelledby.
      */
-    'aria-describedby': boolean;
+    'aria-describedby': string;
     /**
      * @global
      * Identifies the next element (or elements) in an alternate reading order
      * of content which, at the user's discretion, allows assistive technology
      * to override the general default of reading in document source order.
      */
-    'aria-flowto': boolean;
+    'aria-flowto': string;
     /**
      * @global
      * Identifies the element (or elements) that labels the current element.
      * @see related aria-label and aria-describedby.
      */
-    'aria-labelledby': boolean;
+    'aria-labelledby': string;
     /**
      * @global
      * Identifies an element (or elements) in order to define a visual,
@@ -223,19 +233,19 @@ type PAriaRelationshipAttributes = {
      * where the DOM hierarchy cannot be used to represent the relationship.
      * @see related aria-controls.
      */
-    'aria-owns': boolean;
+    'aria-owns': string;
     /**
      * Defines an element's number or position in the current set of listitems or
      * treeitems. Not required if all elements in the set are present in the DOM.
      * @see related aria-setsize.
      */
-    'aria-posinset': boolean;
+    'aria-posinset': number;
     /**
      * Defines the number of items in the current set of listitems or treeitems.
      * Not required if all elements in the set are present in the DOM.
      * @see related aria-posinset.
      */
-    'aria-setsize': boolean;
+    'aria-setsize': number;
 };
 
 type PAriaAllAttributes = PAriaWidgetAttributes &

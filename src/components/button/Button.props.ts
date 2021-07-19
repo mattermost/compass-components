@@ -1,6 +1,7 @@
 import { MouseEventHandler } from 'react';
 
 import { TIconGlyph } from '../../foundations/icon';
+import PAriaAllAttributes from '../../shared/props';
 
 import {
     TButtonIconPosition,
@@ -9,10 +10,10 @@ import {
     TButtonWidth,
 } from './Button.types';
 
-type PButton = {
+type PButton = Partial<PAriaAllAttributes> & {
     /**
      * the label to be shown for the button. This will be normalized and used
-     * as the 'aria-label' attribute id no 'aria-label' is added as property
+     * as the 'aria-label' attribute if no 'aria-label' is added as property
      */
     label: string;
     /**
