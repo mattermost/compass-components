@@ -72,6 +72,7 @@ export const popoverArgs = {
                         anchorReference={buttonReference}
                         placement={placement}
                         offset={offset}
+                        onClickAway={() => setIsVisible(false)}
                     >
                         <Shape elevation={3} width={200}>
                             <Grid justify={'center'} padding={Spacing.all(100)}>
