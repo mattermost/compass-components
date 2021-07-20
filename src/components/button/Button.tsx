@@ -25,7 +25,6 @@ const Button: React.FC<PButton> = ({
     destructive = false,
     inverted = false,
     disabled = false,
-    'aria-label': ariaLabel,
     ...rest
 }: PButton) => {
     Utils.assert(
@@ -46,14 +45,13 @@ const Button: React.FC<PButton> = ({
 
     const rootProperties = {
         disabled: disabled || !Utils.isFunction(onClick),
+        role: 'button',
         width,
         destructive,
         inverted,
         size,
         variant,
         onClick,
-        role: 'button',
-        'aria-label': ariaLabel || label,
         ...rest,
     };
 
