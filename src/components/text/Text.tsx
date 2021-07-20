@@ -22,7 +22,6 @@ const Text = ({
     weight = DEFAULT_TEXT_WEIGHT,
     ...rest
 }: PText): JSX.Element => {
-    // Whenever this component is used with an element that is not supported within the headings throw an error!
     Utils.assert(
         TEXT_ELEMENTS.includes(element),
         `Compass Components - Text: component was used with an unsupported element '${element}'.

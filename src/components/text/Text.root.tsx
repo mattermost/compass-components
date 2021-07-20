@@ -9,7 +9,7 @@ import { applyTextColor, applyTextMargin, applyTextStyles } from './Text.mixins'
 
 const TextRoot = styled.p.withConfig<PTextRoot>({
     shouldForwardProp: (property, validator) =>
-        Utils.blockProperty(property) && validator(property),
+        Utils.blockProperty(property, ['color', 'size']) && validator(property),
 })(
     ({
         theme,
