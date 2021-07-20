@@ -1,0 +1,49 @@
+name: build-preview-environment
+
+on:
+  pull_request:
+    types: [assigned, opened, reopened, synchronize]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        if: github.event.pull_request.head.repo.full_name == github.repository
+        with:
+          submodules: true
+          fetch-depth: 0
+
+      - name: Setup Node
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+          check-latest: true
+
+      - name: Install
+        # adding --legacy-peer-deps for now until issue in storybook is fixed
+        # @see https://github.com/storybookjs/storybook/issues/14119 for reference
+        run: |
+          npm install --legacy-peer-deps
+      - name: Build Storybook
+        run: |
+          npm run build-storybook
+
+      - uses: shallwefootball/s3-upload-action@master
+        name: Upload Preview Env
+        if: github.event.pull_request.head.repo.full_name == github.repository
+        with:
+          aws_key_id: ${{ secrets.AWS_KEY_ID }}
+          aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws_bucket: ${{ secrets.AWS_BUCKET }}
+          source_dir: ./storybook-static
+          destination_dir: ${{ github.event.number }}
+
+      - name: Add comment to PR
+        if: github.event.pull_request.head.repo.full_name == github.repository
+        uses: peter-evans/create-or-update-comment@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          issue-number: ${{ github.event.number }}
+          body: |
+            Newest code from ${{ github.actor }} has been published to [preview environment](http://mattermost-compass-preview-pull.s3-website-us-east-1.amazonaws.com/${{ github.event.number }}) for Git SHA ${{ github.event.pull_request.head.sha }}
