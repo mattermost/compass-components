@@ -11,8 +11,7 @@ import {
 
 type PButton = {
     /**
-     * the label to be shown for the button. This will be normalized and used
-     * as the 'aria-label' attribute if no 'aria-label' is added as property
+     * the label to be shown for the button.
      */
     label: string;
     /**
