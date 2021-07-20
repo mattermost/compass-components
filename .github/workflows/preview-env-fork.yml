@@ -99,7 +99,7 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           issue-number: ${{ steps.pr.outputs.id }}
           body: |
-            Newest code from ${{ github.actor }} has been published to [preview environment](http://http://mattermost-compass-preview-pull.s3-website-us-east-1.amazonaws.com/${{ steps.pr.outputs.id }}) for Git SHA ${{ github.event.workflow_run.head_sha }}
+            Newest code from ${{ github.actor }} has been published to [preview environment](http://mattermost-compass-preview-pull.s3-website-us-east-1.amazonaws.com/${{ steps.pr.outputs.id }}) for Git SHA ${{ github.event.workflow_run.head_sha }}
 
       - name: The job has failed
         if: ${{ failure() && github.event.workflow_run.conclusion == 'success' && steps.label-checker.outputs.result == 'true' }}
