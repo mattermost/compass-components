@@ -58,6 +58,7 @@ async function createPackageFile() {
         nyc,
         scripts,
         devDependencies,
+        dependencies,
         husky,
         workspaces,
         'lint-staged': lintStaged,
@@ -65,8 +66,12 @@ async function createPackageFile() {
         ...packageDataOther
     } = JSON.parse(packageData);
 
+    delete dependencies.react;
+    delete dependencies['react-dom'];
+
     const newPackageData = {
         ...packageDataOther,
+        dependencies,
         private: false,
     };
 

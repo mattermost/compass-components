@@ -29,6 +29,9 @@
     "files": [
         "lib"
     ],
+    "publishConfig": {
+        "access": "public"
+    },
     "dependencies": {
         "@mattermost/compass-icons": "^0.1.1-2",
         "@popperjs/core": "^2.9.2",
@@ -38,11 +41,15 @@
         "lodash.kebabcase": "^4.1.1",
         "lodash.random": "^3.2.0",
         "lodash.upperfirst": "^4.3.1",
-        "react": "^17.0.1",
-        "react-dom": "^17.0.1",
+        "react": "16.13.1 || ^17.0.1",
+        "react-dom": "16.13.1 || ^17.0.1",
         "react-popper": "^2.2.5",
         "react-transition-group": "^4.4.2",
         "styled-components": "^5.2.1"
+    },
+    "peerDependencies": {
+        "react": "16.13.1 || ^17.0.1",
+        "react-dom": "16.13.1 || ^17.0.1"
     },
     "devDependencies": {
         "@babel/core": "^7.13.8",
