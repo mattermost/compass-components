@@ -10,6 +10,7 @@
         "build": "node -v && rimraf ./lib && npm run build:compile && npm run build:copy-files",
         "build:compile": "tsc --extendedDiagnostics -p \"./tsconfig.build.json\"",
         "build:copy-files": "node ./scripts/copy-files.js",
+        "pack": "node ./scripts/pack.js",
         "lint": "eslint ./src",
         "lint:fix": "eslint --fix --cache ./src",
         "nuke": "rm -rf node_modules package-lock.json",
