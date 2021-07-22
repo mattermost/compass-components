@@ -144,7 +144,6 @@ export const argTypes = {
     hasError: { control: { type: 'boolean' } },
     animatedLabel: { control: { type: 'boolean' } },
     disabled: { control: { type: 'boolean' } },
-    active: { control: { type: 'boolean' } },
     width: { options: [...BUTTON_WIDTHS, 100, 200, 300, 400], control: { type: 'select' } },
     backgroundColor: { control: { type: 'color' } },
     ...Utils.hideComponentProperties([
@@ -155,6 +154,7 @@ export const argTypes = {
         'onFocus',
         'onBlur',
         'value',
+        'active',
     ]),
 };
 

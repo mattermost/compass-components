@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components';
 import { FlattenSimpleInterpolation, ThemedStyledProps } from 'styled-components/ts3.6';
 
 import { applyShape } from '../../foundations/shape';
-import { setAlpha } from '../../shared';
+import { setAlpha, blendColors } from '../../shared';
 import { applyPadding } from '../../utilities/layout';
 import { TTheme } from '../../utilities/theme';
 import Spacing from '../../utilities/spacing';
@@ -25,15 +25,11 @@ const TextInputRoot = styled.div<PTextInputRoot>(
             text: text.primary,
             background: backgroundColor,
             action: action.hover,
-            border: active ? palette.primary.main : text.secondary,
+            border: active ? palette.primary.main : text.disabled,
         };
 
         if (hasError) {
             colors.border = palette.alert.main;
-        }
-
-        if (active) {
-            colors.background = setAlpha(colors.active, 0.16);
         }
 
         if (disabled) {
@@ -50,6 +46,13 @@ const TextInputRoot = styled.div<PTextInputRoot>(
                   user-select: none;
               `
             : css`
+                  &:hover {
+                      border-color: ${blendColors(colors.border, setAlpha(colors.action, 0.32))};
+                  }
+                  &:active {
+                      border-color: ${colors.active};
+                      background-color: ${setAlpha(colors.active, 0.16)};
+                  }
                   &:focus-within {
                       border: 2px solid ${colors.active};
                   }
@@ -58,6 +61,7 @@ const TextInputRoot = styled.div<PTextInputRoot>(
         return css`
             ${actionStyles};
             color: ${colors.text};
+            box-sizing: content-box;
             border: 1px solid ${colors.border};
             position: relative;
             display: flex;

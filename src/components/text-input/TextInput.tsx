@@ -62,6 +62,8 @@ const TextInput: React.FC<PTextInput> = ({
                     leadingIcon={leadingIcon}
                     animatedLabel={animatedLabel}
                     backgroundColor={backgroundColor}
+                    hasError={hasError}
+                    disabled={disabled}
                 >
                     {label}
                 </LabelRoot>

@@ -92,8 +92,8 @@ type PTextInputRoot = Required<
 > &
     Pick<PTextInput, 'backgroundColor'>;
 
-type PLabelRoot = Required<Pick<PTextInput, 'size' | 'value' | 'animatedLabel'>> &
-    Pick<PTextInput, 'backgroundColor' | 'leadingIcon' | 'children'>;
+type PLabelRoot = Required<Pick<PTextInput, 'size' | 'value' | 'animatedLabel' | 'hasError'>> &
+    Pick<PTextInput, 'backgroundColor' | 'leadingIcon' | 'children' | 'disabled'>;
 
 type PInputRoot = Required<Pick<PTextInput, 'placeholder' | 'value' | 'onChange'>>;
 
