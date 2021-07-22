@@ -107,6 +107,11 @@ export default App;
 -   node version 16.x
 -   npm version 7.x
 
+## How to contriute
+
+As we are a company committed to open-source we welcome every contribution from the wider community.
+This section should outline the very basic steps to contribute to the project.
+
 ### Creating a new component
 
 For ease of use we created a convenience `generate component` function to create a boilerplate template for new
@@ -139,3 +144,27 @@ ComponentName/
 ├── ComponentName.types.ts
 └── index.ts
 ```
+
+### Naming convention
+
+we mainly use 3 different types of namings:
+
+---
+
+`PascalCase` is being used for
+
+-   component names (example: `const MenuItem: React.FC = (): JSX.Element => { ... }`)
+-   props definitions (example: `type PMenuItem = { ... `)
+-   types definitions (example: `type TMenuItemSize = { ... }`)
+
+---
+
+`UPPER_CASE` is being used for
+
+-   constant variables (example: `const MENU_ITEM_SIZES = ...`)
+
+---
+
+`camelCase` is being used for
+
+-   all other variables
