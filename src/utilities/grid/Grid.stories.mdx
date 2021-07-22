@@ -1,0 +1,25 @@
+import { Meta, Title, Canvas, Story } from '@storybook/addon-docs/blocks';
+import Grid, { GridItem } from './Grid';
+import Shape from '../../foundations/shape';
+
+<Meta title="Utilities/Layout/Grid" />
+
+<Title>Grid</Title>
+
+export const GridDemo = () => (
+    <Grid rowsTemplate={'auto 1fr auto'} element={Shape} width={400} height={400}>
+        <GridItem colums={'1 / span 2'} element={Shape} radius={8}>
+            Item 1
+        </GridItem>
+        <GridItem colums={'3'} element={Shape} radius={8}>
+            Item 2
+        </GridItem>
+        <GridItem rows={'2'} element={Shape} radius={8}>
+            Item 3
+        </GridItem>
+    </Grid>
+);
+
+<Canvas hidden>
+    <Story name="default">{(args) => <GridDemo {...args} />}</Story>
+</Canvas>

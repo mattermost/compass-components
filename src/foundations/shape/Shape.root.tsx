@@ -10,7 +10,8 @@ import { PShapeRoot } from './Shape.props';
 
 const ShapeRoot = styled.div.withConfig<PShapeRoot>({
     shouldForwardProp: (property, validator) =>
-        Utils.blockProperty(property) && validator(property),
+        Utils.blockProperty(property, ['width', 'height', 'radius', 'elevation', 'element']) &&
+        validator(property),
 })<ThemedStyledProps<PShapeRoot, TTheme>>(
     ({
         radius,

@@ -2,8 +2,7 @@ import styled, { css } from 'styled-components';
 import { FlattenSimpleInterpolation, ThemedStyledProps } from 'styled-components/ts3.6';
 
 import Icon from '../../foundations/icon';
-import Spacing from '../../utilities/spacing';
-import { applyPadding } from '../../utilities/layout';
+import Spacing, { applyPadding } from '../../utilities/spacing';
 import { applyShape } from '../../foundations/shape';
 import { TTheme } from '../../utilities/theme';
 import { setAlpha, blendColors, Utils } from '../../shared';

@@ -1,7 +1,6 @@
-import Grid from './Grid';
+import Flex from './Flex';
 
-export * from './Grid.mixins';
-export * from './Grid.props';
-export * from './Grid.types';
+export * from './Flex.props';
+export * from './Flex.types';
 
-export default Grid;
+export default Flex;
