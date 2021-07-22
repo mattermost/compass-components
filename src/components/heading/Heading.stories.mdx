@@ -2,7 +2,7 @@ import { Meta, Story, Canvas, ArgsTable, Title } from '@storybook/addon-docs/blo
 
 import Heading from './Heading';
 import {
-    HEADING_SIZE_TOKENS,
+    HEADING_SIZES,
     HEADING_MARGINS,
     HEADING_ELEMENTS,
     HEADING_WEIGHTS,
@@ -117,7 +117,7 @@ export const Template = (args) => {
             margin: DEFAULT_HEADING_MARGIN,
         }}
         argTypes={{
-            size: { options: HEADING_SIZE_TOKENS, control: { type: 'select' } },
+            size: { options: HEADING_SIZES, control: { type: 'select' } },
             element: { options: HEADING_ELEMENTS, control: { type: 'select' } },
             weight: { options: HEADING_WEIGHTS, control: { type: 'radio' } },
             margin: { options: HEADING_MARGINS, control: { type: 'radio' } },
