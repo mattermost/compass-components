@@ -45,6 +45,7 @@ const Button: React.FC<PButton> = ({
 
     const rootProperties = {
         disabled: disabled || !Utils.isFunction(onClick),
+        role: 'button',
         width,
         destructive,
         inverted,
