@@ -107,6 +107,11 @@ export default App;
 -   node version 16.x
 -   npm version 7.x
 
+## How to contriute
+
+As we are a company committed to open-source we welcome every contribution from the wider community.
+This section should outline the very basic steps to contribute to the project.
+
 ### Creating a new component
 
 For ease of use we created a convenience `generate component` function to create a boilerplate template for new
@@ -139,3 +144,15 @@ ComponentName/
 ├── ComponentName.types.ts
 └── index.ts
 ```
+
+### Naming convention
+
+we mainly use 3 different types of namings and each one has their own use-case:
+
+| naming style | used for          | example                                 |
+| ------------ | ----------------- | --------------------------------------- |
+| `PascalCase` | component names   | `MenuItem`                              |
+|              | props definitions | `type PMenuItem = { ... }`              |
+|              | types definitions | `type TMenuItemSize = { ... }`          |
+| `UPPER_CASE` | constants         | `const MENU_ITEM_SIZES = ...`           |
+| `camelCase`  | everything else   | `const setMenuItemSize = () => { ... }` |
