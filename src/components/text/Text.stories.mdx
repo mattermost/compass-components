@@ -1,5 +1,10 @@
 import { Meta, Story, Canvas, ArgsTable, Title } from '@storybook/addon-docs/blocks';
 
+import textMarginVisual from '../../assets/images/text_margin_visual.png';
+import Flex from '../../utilities/layout';
+import { Utils } from '../../shared';
+import Heading from '../heading';
+
 import Text from './Text';
 import {
     DEFAULT_TEXT_MARGIN,
@@ -11,10 +16,8 @@ import {
     TEXT_SIZES,
     TEXT_ELEMENTS,
     TEXT_WEIGHTS,
+    TEXT_DEFINITIONS,
 } from './Text.constants';
-import Flex from '../../utilities/layout';
-import Heading from '../heading';
-import { Utils } from '../../shared';
 
 <Meta component={Text} title="Components/Text" />
 
@@ -22,61 +25,77 @@ import { Utils } from '../../shared';
 
 ### Font Weights
 
-Body always uses the regular font-weight, but where emphasis is needed, the semi-bold weight can be used.
+Body Copy always uses the regular font-weight, but where emphasis is needed, the semi-bold weight can be used. In
+special cases, bold weights can be used to help legibility with body copy that is at 50 or 25 size (see sizes below).
 
 ### Body Sizes
 
 The chart below shows all the body copy sizes where Body 100 is the base font size.
 
-export const bodySizes = [
-    { size: 25, fontSize: 10, lineHeight: 16 },
-    { size: 50, fontSize: 11, lineHeight: 16 },
-    { size: 75, fontSize: 12, lineHeight: 16 },
-    { size: 100, fontSize: 14, lineHeight: 20 },
-    { size: 200, fontSize: 16, lineHeight: 24 },
-    { size: 300, fontSize: 18, lineHeight: 28 },
-];
-
 <>
-    {bodySizes.map((body) => (
-        <div key={`body_${body.size}`}>
+    {TEXT_SIZES.map((size) => (
+        <div key={`body_${size}`}>
             <hr />
             <Flex justify={'stretch'}>
                 <Flex row>
-                    <Heading element={'h3'} size={300}>
-                        {`Body ${body.size}${body.size === 100 ? ' (Base size)' : ''}`}
+                    <Heading element={'h3'} size={200}>
+                        {`Body ${size}${size === 100 ? ' (Base size)' : ''}`}
                     </Heading>
                 </Flex>
                 <Flex row>
                     <Flex flex={3}>
-                        <Text element={'p'} color={'secondary'} size={50} margin={'none'}>
+                        <Text
+                            element={'p'}
+                            color={'disabled'}
+                            weight={'bold'}
+                            size={25}
+                            margin={'none'}
+                        >
                             Family
                         </Text>
-                        <Text element={'p'} size={200} margin={'bottom'}>
+                        <Text element={'p'} size={100} margin={'bottom'}>
                             OpenSans (400)
                         </Text>
                     </Flex>
                     <Flex flex={2}>
-                        <Text element={'p'} color={'secondary'} size={50} margin={'none'}>
+                        <Text
+                            element={'p'}
+                            color={'disabled'}
+                            weight={'bold'}
+                            size={25}
+                            margin={'none'}
+                        >
                             Size
                         </Text>
-                        <Text element={'p'} size={200} margin={'bottom'}>
-                            {`${body.fontSize}px`}
+                        <Text element={'p'} size={100} margin={'bottom'}>
+                            {`${TEXT_DEFINITIONS[size].size}px`}
                         </Text>
                     </Flex>
                     <Flex flex={2}>
-                        <Text element={'p'} color={'secondary'} size={50} margin={'none'}>
+                        <Text
+                            element={'p'}
+                            color={'disabled'}
+                            weight={'bold'}
+                            size={25}
+                            margin={'none'}
+                        >
                             Line Height
                         </Text>
-                        <Text element={'p'} size={200} margin={'bottom'}>
-                            {`${body.lineHeight}px`}
+                        <Text element={'p'} size={100} margin={'bottom'}>
+                            {`${TEXT_DEFINITIONS[size].lineHeight}px`}
                         </Text>
                     </Flex>
                     <Flex flex={6}>
-                        <Text element={'p'} color={'secondary'} size={50} margin={'none'}>
+                        <Text
+                            element={'p'}
+                            color={'disabled'}
+                            weight={'bold'}
+                            size={25}
+                            margin={'none'}
+                        >
                             Example
                         </Text>
-                        <Text element={'p'} size={body.size} margin={'bottom'}>
+                        <Text element={'p'} size={size} margin={'bottom'}>
                             The quick brown fox jumps over the lazy dog
                         </Text>
                     </Flex>
@@ -86,14 +105,40 @@ export const bodySizes = [
     ))}
 </>
 
+## Margins
+
+Margin refers to the space surrounding an object. Below are the guidelines for margins related to text elements. These
+can be overridden if needed, but the margins outlined below are defaults for a good typographic starting point.
+
+### Collapsing margins
+
+Top and bottom margins of text elements are collapsed into a single margin that is equal to the largest of the two
+margins.
+
+### Margins for Body Copy
+
+#### Top Margins
+
+Top margins for Body Copy are equal to the font-size multiplied by 0.75 rounded to the nearest multiple of 4 with a minimum of 8px.
+
+#### Bottom Margins
+
+Bottom margins for Body Copy are equal to the font-size multiplied by 0.75 rounded to the nearest multiple of 4 with a minimum of 8px.
+
+<img src={textMarginVisual} alt={'visual represnetation of text margins'} />
+
+### Font Stack
+
+In cases where standard typefaces are not available, the following font stacks should be used for fallback so the device uses the system standard sans-serif typeface.
+
+```
+font-family: Metropolis, sans-serif;
+font-family: “Open Sans”, sans-serif;
+```
+
 ## Component API
 
-<ArgsTable of={Text} exclude={['as', 'ref', 'forwardedAs', 'theme']} />
-
-export const Template = (args) => {
-    const { text } = args;
-    return <Text {...args}>{text}</Text>;
-};
+<ArgsTable of={Text} />
 
 <Canvas hidden>
     <Story
@@ -115,6 +160,9 @@ export const Template = (args) => {
             ...Utils.hideComponentProperties(['className']),
         }}
     >
-        {Template.bind({})}
+        {(args) => {
+            const { text } = args;
+            return <Text {...args}>{text}</Text>;
+        }}
     </Story>
 </Canvas>
