@@ -90,12 +90,12 @@ const sidebarTheme: TTheme = {
         shimmer: neutral[0],
     },
     animation: {
-        instant: '0ms',
-        fastest: '100ms',
-        fast: '250ms',
-        normal: '300ms',
-        slow: '450ms',
-        slowest: '600ms',
+        instant: 0,
+        fastest: 100,
+        fast: 250,
+        normal: 300,
+        slow: 450,
+        slowest: 600,
     },
     highlight: {
         mention: red[200],

@@ -126,7 +126,15 @@ export const ControlledSwitch = (args) => {
             label: { control: { type: 'text' } },
             size: { control: { type: 'select', options: SWITCH_SIZES } },
             disabled: { control: { type: 'boolean' } },
-            ...Utils.hideComponentProperties(['width', 'height', 'innerWidth', 'className', 'onClick', 'onChange', 'toggled']),
+            ...Utils.hideComponentProperties([
+                'width',
+                'height',
+                'innerWidth',
+                'className',
+                'onClick',
+                'onChange',
+                'toggled',
+            ]),
         }}
         args={defaultArgs}
     >

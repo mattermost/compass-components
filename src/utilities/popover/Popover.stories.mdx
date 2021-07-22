@@ -1,11 +1,11 @@
 import { useRef, useState } from 'react';
 import { Canvas, Meta, Story } from '@storybook/addon-docs';
+import { css } from 'styled-components';
 
 import IconButton from '../../components/icon-button';
 import Popover from './Popover';
 import Shape from '../../foundations/shape';
 import Flex from '../layout';
-import Icon from '../../foundations/icon';
 import Spacing from '../spacing';
 import {
     DEFAULT_POPOVER_PLACEMENT,
@@ -13,6 +13,7 @@ import {
     POPOVER_PLACEMENTS,
 } from './Popover.constants';
 import Text from '../../components/text';
+import Transition from '../transition/Transition';
 
 <Meta title={'Utilities/Popover'} />
 
