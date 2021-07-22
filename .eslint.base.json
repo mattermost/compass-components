@@ -392,7 +392,11 @@
 
         "unicorn/filename-case": [
             "error",
-            { "cases": { "kebabCase": true, "camelCase": true, "pascalCase": true } }
+            { "cases": { "kebabCase": true, "camelCase": true, "pascalCase": true },
+                "ignore": [
+                    "(README|CHANGELOG)\\.md"
+                ]
+            }
         ],
         "unicorn/import-index": ["error", { "ignoreImports": true }],
         "unicorn/prevent-abbreviations": [

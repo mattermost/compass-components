@@ -1,5 +1,7 @@
 import { MutableRefObject, ReactNode } from 'react';
 
+import { TonClickAwayCallback } from '../../shared';
+
 import { TPopoverOffset, TPopoverPlacement } from './Popover.types';
 
 type PPopover = {
@@ -31,6 +33,12 @@ type PPopover = {
      * @default [0, 0]
      */
     offset?: TPopoverOffset;
+    /**
+     * handle clicking away from the popover and anchor references (refs).
+     * this is very useful for setting isVisible state, or perform other actions
+     * when clicking away.
+     */
+    onClickAway?: TonClickAwayCallback;
     /**
      * custom className
      */

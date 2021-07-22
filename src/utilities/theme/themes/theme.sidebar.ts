@@ -6,6 +6,7 @@ import { TTheme } from './theme.types';
 const sidebarTheme: TTheme = {
     type: 'dark',
     elevationOpacity: 0.32,
+    noStyleReset: false,
     palette: {
         primary: {
             lighter: green[100],

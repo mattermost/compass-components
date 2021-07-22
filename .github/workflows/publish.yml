@@ -25,7 +25,7 @@ jobs:
                   scope: '@mattermost'
             - name: install dependencies
               # adding --legacy-peer-deps for now until issue in storybook is fixed
-              # @see https://github.com/storybookjs/storybook/issues/14119 for ref  erence
+              # @see https://github.com/storybookjs/storybook/issues/14119 for reference
               run: npm install --legacy-peer-deps
             - name: build component library
               run: npm run build

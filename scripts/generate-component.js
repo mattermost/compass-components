@@ -2,7 +2,6 @@
 
 const fs = require('fs');
 
-// eslint-disable-next-line node/no-unpublished-require,import/no-extraneous-dependencies
 const prompts = require('prompts');
 const kebabCase = require('lodash.kebabcase');
 const upperFirst = require('lodash.upperfirst');
@@ -79,11 +78,11 @@ const createFiles = (names, group = 'components') => {
                     description: 'a Component build from the foundations',
                     value: 'components',
                 },
-                {
-                    title: 'Pattern',
-                    description: 'a complex structure built from the components',
-                    value: 'patterns',
-                },
+                // {
+                //     title: 'Pattern',
+                //     description: 'a complex structure built from the components',
+                //     value: 'patterns',
+                // },
                 {
                     title: 'Utility',
                     description: 'component that adds dynamic behoviour, styling, etc.',
@@ -103,7 +102,7 @@ const createFiles = (names, group = 'components') => {
 
     const nameParts = name.replace(/\W/gmu, ';').split(';');
     const pascalName = nameParts.map((s) => upperFirst(s)).join('');
-    const kebabName = nameParts.join('-');
+    const kebabName = kebabCase(pascalName);
 
     const names = {
         natural: name,

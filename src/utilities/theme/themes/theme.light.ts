@@ -6,6 +6,7 @@ import { TTheme } from './theme.types';
 const lightTheme: TTheme = {
     type: 'light',
     elevationOpacity: 0.08,
+    noStyleReset: false,
     palette: {
         primary: {
             lighter: blue[300],
