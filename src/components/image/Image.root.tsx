@@ -3,8 +3,7 @@ import { ThemedStyledProps } from 'styled-components/ts3.6';
 
 import { Utils } from '../../shared';
 import { TTheme } from '../../utilities/theme';
-import Spacing from '../../utilities/spacing';
-import { applyPadding } from '../../utilities/layout';
+import Spacing, { applyPadding } from '../../utilities/spacing';
 import { applyShape } from '../../foundations/shape';
 
 import { PImageRoot } from './Image.props';

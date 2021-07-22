@@ -1,6 +1,7 @@
 import React, { useRef } from 'react';
 import { usePopper } from 'react-popper';
 
+import { useClickAway } from '../../shared';
 import Transition from '../transition/Transition';
 
 import {
@@ -14,6 +15,7 @@ const Popover = ({
     anchorReference,
     children,
     isVisible,
+    onClickAway,
     noAnimation = false,
     placement = DEFAULT_POPOVER_PLACEMENT,
     offset = DEFAULT_POPOVER_OFFSET,
@@ -30,6 +32,10 @@ const Popover = ({
             },
         ],
     });
+
+    // when a onClickAway callback is provided it will fire when the user clicks
+    // away from the button or the popover (basically everything else)
+    useClickAway([popperReference, anchorReference], onClickAway);
 
     return (
         <div ref={popperReference} style={styles.popper} {...attributes.popper}>

@@ -50,6 +50,7 @@ const IconButton = React.forwardRef(
             toggled,
             destructive,
             disabled: isDisabled,
+            onClick,
         };
 
         return (

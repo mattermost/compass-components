@@ -1,5 +1,5 @@
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
-import Grid from '../../utilities/layout/Grid';
+import Flex from '../../utilities/layout/Flex';
 
 import { createColorShades } from '../../shared';
 import Swatch from './Swatch';
@@ -28,19 +28,19 @@ import greenColors from './default-colors/green';
 Our Primary Palette is comprised of blue, indigo, and neutral tones to bring trust and boldness to our brand. We use
 these colors in logical ways to guide the eye and highlight important information.
 
-<Grid row justify={'flex-start'}>
+<Flex row justify={'flex-start'}>
     <Swatch color={blueColors[500]} colorName={'Blue'} shade={500} variant={'bottom'} />
     <Swatch color={indigoColors[500]} colorName={'Indigo'} shade={500} variant={'bottom'} />
     <Swatch color={neutralColors[1150]} colorName={'Neutral'} shade={1150} variant={'bottom'} />
     <Swatch color={neutralColors[0]} colorName={'Neutral'} shade={0} variant={'bottom'} />
-</Grid>
+</Flex>
 
 ### Secondary Palette
 
 Our secondary palette has a variety of colors to keep things fresh and interesting. We add warmer colors throughout to
 soften the experience and to impart confidence and optimism.
 
-<Grid row justify={'flex-start'}>
+<Flex row justify={'flex-start'}>
     <Swatch color={cyanColors[400]} colorName={'Cyan'} shade={400} variant={'bottom'} />
     <Swatch color={purpleColors[400]} colorName={'Purple'} shade={400} variant={'bottom'} />
     <Swatch color={tealColors[400]} colorName={'Teal'} shade={400} variant={'bottom'} />
@@ -48,7 +48,7 @@ soften the experience and to impart confidence and optimism.
     <Swatch color={orangeColors[400]} colorName={'Orange'} shade={400} variant={'bottom'} />
     <Swatch color={yellowColors[400]} colorName={'Yellow'} shade={400} variant={'bottom'} />
     <Swatch color={redColors[400]} colorName={'Red'} shade={400} variant={'bottom'} />
-</Grid>
+</Flex>
 
 ## Semantic Colors
 
@@ -57,12 +57,12 @@ The consistent use of color keeps the cognitive load low and makes for a unified
 
 > **NOTE:** These colors are shades of the corresponding Secondary Palette above.
 
-<Grid justify={'flex-start'}>
+<Flex justify={'flex-start'}>
     <Swatch color={redColors[500]} colorName={'Alert: Red'} shade={500} />
     <Swatch color={orangeColors[500]} colorName={'Warning: Orange'} shade={500} />
     <Swatch color={greenColors[600]} colorName={'Success: Green'} shade={600} />
     <Swatch color={purpleColors[600]} colorName={'Info: Purple'} shade={600} />
-</Grid>
+</Flex>
 
 ## Shades
 
@@ -75,7 +75,7 @@ Neutral colors have an increased level of variance to be used for text, elevatio
 neutrals when we don't want to draw too much attention to a particular touchpoint or convey information such as a
 disabled option.
 
-<Grid justify={'flex-start'}>
+<Flex justify={'flex-start'}>
     {Object.keys(neutralColors).map((shade) => (
         <Swatch
             key={`neutralColor_${shade}`}
@@ -84,27 +84,27 @@ disabled option.
             shade={shade}
         />
     ))}
-</Grid>
+</Flex>
 
 ### Blue
 
-<Grid justify={'flex-start'}>
+<Flex justify={'flex-start'}>
     {Object.keys(blueColors).map((shade) => (
         <Swatch key={`blue_${shade}`} color={blueColors[shade]} colorName={'Blue'} shade={shade} />
     ))}
-</Grid>
+</Flex>
 
 ### Cyan
 
-<Grid justify={'flex-start'}>
+<Flex justify={'flex-start'}>
     {Object.keys(cyanColors).map((shade) => (
         <Swatch key={`blue_${shade}`} color={cyanColors[shade]} colorName={'Cyan'} shade={shade} />
     ))}
-</Grid>
+</Flex>
 
 ### Indigo
 
-<Grid justify={'flex-start'}>
+<Flex justify={'flex-start'}>
     {Object.keys(indigoColors).map((shade) => (
         <Swatch
             key={`blue_${shade}`}
@@ -113,11 +113,11 @@ disabled option.
             shade={shade}
         />
     ))}
-</Grid>
+</Flex>
 
 ### Purple
 
-<Grid justify={'flex-start'}>
+<Flex justify={'flex-start'}>
     {Object.keys(purpleColors).map((shade) => (
         <Swatch
             key={`blue_${shade}`}
@@ -126,19 +126,19 @@ disabled option.
             shade={shade}
         />
     ))}
-</Grid>
+</Flex>
 
 ### Teal
 
-<Grid justify={'flex-start'}>
+<Flex justify={'flex-start'}>
     {Object.keys(tealColors).map((shade) => (
         <Swatch key={`blue_${shade}`} color={tealColors[shade]} colorName={'Teal'} shade={shade} />
     ))}
-</Grid>
+</Flex>
 
 ### Green
 
-<Grid justify={'flex-start'}>
+<Flex justify={'flex-start'}>
     {Object.keys(greenColors).map((shade) => (
         <Swatch
             key={`blue_${shade}`}
@@ -147,19 +147,19 @@ disabled option.
             shade={shade}
         />
     ))}
-</Grid>
+</Flex>
 
 ### Red
 
-<Grid justify={'flex-start'}>
+<Flex justify={'flex-start'}>
     {Object.keys(redColors).map((shade) => (
         <Swatch key={`blue_${shade}`} color={redColors[shade]} colorName={'Red'} shade={shade} />
     ))}
-</Grid>
+</Flex>
 
 ### Orange
 
-<Grid justify={'flex-start'}>
+<Flex justify={'flex-start'}>
     {Object.keys(orangeColors).map((shade) => (
         <Swatch
             key={`blue_${shade}`}
@@ -168,11 +168,11 @@ disabled option.
             shade={shade}
         />
     ))}
-</Grid>
+</Flex>
 
 ### Yellow
 
-<Grid justify={'flex-start'}>
+<Flex justify={'flex-start'}>
     {Object.keys(yellowColors).map((shade) => (
         <Swatch
             key={`blue_${shade}`}
@@ -181,7 +181,7 @@ disabled option.
             shade={shade}
         />
     ))}
-</Grid>
+</Flex>
 
 export const argTypes = {
     color: {
@@ -202,7 +202,7 @@ export const Template = (args) => {
         colors = createColorShades(args.color);
     }
     return (
-        <Grid width={400}>
+        <Flex width={400}>
             {colors &&
                 Object.keys(colors).map((shade) => (
                     <Swatch
@@ -212,7 +212,7 @@ export const Template = (args) => {
                         shade={shade}
                     />
                 ))}
-        </Grid>
+        </Flex>
     );
 };
 

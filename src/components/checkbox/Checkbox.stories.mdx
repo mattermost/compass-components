@@ -2,14 +2,13 @@ import { useState } from 'react';
 import { Meta, Story, Canvas, Title, Subtitle, ArgsTable } from '@storybook/addon-docs/blocks';
 import { DEFAULT_CHECKBOX_SIZE, CHECKBOX_SIZES } from './Checkbox.constants';
 import { Utils } from '../../shared';
-import Grid, { Spacing } from '../../utilities/layout';
+import Flex, { Spacing } from '../../utilities/layout';
 import Text from '../text';
 import CheckboxAnatomyImg from '../../assets/images/example-checkbox-anatomy.png';
 import CheckboxAnimationGif from '../../assets/images/example-checkbox-animation.gif';
 import CheckboxImg from '../../assets/images/example-checkbox.png';
 import { DEFAULT_ARGUMENTS_TABLE_EXCLUSION } from '../../shared/constants';
 import Checkbox from './index';
-
 
 <Meta component={Checkbox} title="Components/Checkbox" />
 
@@ -29,36 +28,36 @@ Checkboxes are comprised of:
 
 ## States
 
-<Grid row justify={'space-between'}>
-    <Grid justify={'center'}>
+<Flex row justify={'space-between'}>
+    <Flex justify={'center'}>
         <Checkbox {...defaultArgs} disabled={true} />
         <br />
         <Text element={'p'} size={200} margin={'none'}>
             <strong>Disabled</strong>
         </Text>
-    </Grid>
-    <Grid justify={'center'}>
+    </Flex>
+    <Flex justify={'center'}>
         <Checkbox {...defaultArgs} hasError={true} />
         <br />
         <Text element={'p'} size={200} margin={'none'}>
             <strong>Error</strong>
         </Text>
-    </Grid>
-    <Grid justify={'center'}>
+    </Flex>
+    <Flex justify={'center'}>
         <Checkbox {...defaultArgs} />
         <br />
         <Text element={'p'} size={200} margin={'none'}>
             <strong>Off</strong>
         </Text>
-    </Grid>
-    <Grid justify={'center'}>
+    </Flex>
+    <Flex justify={'center'}>
         <Checkbox {...defaultArgs} />
         <br />
         <Text element={'p'} size={200} margin={'none'}>
             <strong>On</strong>
         </Text>
-    </Grid>
-</Grid>
+    </Flex>
+</Flex>
 
 ## Animation
 
@@ -66,29 +65,29 @@ Checkboxes are comprised of:
 
 ## Sizes
 
-<Grid row justify={'space-between'}>
-    <Grid justify={'center'}>
+<Flex row justify={'space-between'}>
+    <Flex justify={'center'}>
         <Checkbox {...defaultArgs} size={'sm'} />
         <br />
         <Text element={'p'} size={200} margin={'none'}>
             <strong>Small</strong>
         </Text>
-    </Grid>
-    <Grid justify={'center'}>
+    </Flex>
+    <Flex justify={'center'}>
         <Checkbox {...defaultArgs} size={'md'} />
         <br />
         <Text element={'p'} size={200} margin={'none'}>
             <strong>Medium</strong>
         </Text>
-    </Grid>
-    <Grid justify={'center'}>
+    </Flex>
+    <Flex justify={'center'}>
         <Checkbox {...defaultArgs} size={'lg'} />
         <br />
         <Text element={'p'} size={200} margin={'none'}>
             <strong>Large</strong>
         </Text>
-    </Grid>
-</Grid>
+    </Flex>
+</Flex>
 
 ## Example
 

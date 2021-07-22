@@ -18,6 +18,9 @@ import {
     TEXT_WEIGHTS,
     TEXT_DEFINITIONS,
 } from './Text.constants';
+import Flex from '../../utilities/layout';
+import Heading from '../heading';
+import { Utils } from '../../shared';
 
 <Meta component={Text} title="Components/Text" />
 
@@ -36,14 +39,14 @@ The chart below shows all the body copy sizes where Body 100 is the base font si
     {TEXT_SIZES.map((size) => (
         <div key={`body_${size}`}>
             <hr />
-            <Grid justify={'stretch'}>
-                <Grid row>
+            <Flex justify={'stretch'}>
+                <Flex row>
                     <Heading element={'h3'} size={200}>
                         {`Body ${size}${size === 100 ? ' (Base size)' : ''}`}
                     </Heading>
-                </Grid>
-                <Grid row>
-                    <Grid flex={3}>
+                </Flex>
+                <Flex row>
+                    <Flex flex={3}>
                         <Text
                             element={'p'}
                             color={'disabled'}
@@ -56,8 +59,8 @@ The chart below shows all the body copy sizes where Body 100 is the base font si
                         <Text element={'p'} size={100} margin={'bottom'}>
                             OpenSans (400)
                         </Text>
-                    </Grid>
-                    <Grid flex={2}>
+                    </Flex>
+                    <Flex flex={2}>
                         <Text
                             element={'p'}
                             color={'disabled'}
@@ -70,8 +73,8 @@ The chart below shows all the body copy sizes where Body 100 is the base font si
                         <Text element={'p'} size={100} margin={'bottom'}>
                             {`${TEXT_DEFINITIONS[size].size}px`}
                         </Text>
-                    </Grid>
-                    <Grid flex={2}>
+                    </Flex>
+                    <Flex flex={2}>
                         <Text
                             element={'p'}
                             color={'disabled'}
@@ -84,8 +87,8 @@ The chart below shows all the body copy sizes where Body 100 is the base font si
                         <Text element={'p'} size={100} margin={'bottom'}>
                             {`${TEXT_DEFINITIONS[size].lineHeight}px`}
                         </Text>
-                    </Grid>
-                    <Grid flex={6}>
+                    </Flex>
+                    <Flex flex={6}>
                         <Text
                             element={'p'}
                             color={'disabled'}
@@ -98,9 +101,9 @@ The chart below shows all the body copy sizes where Body 100 is the base font si
                         <Text element={'p'} size={size} margin={'bottom'}>
                             The quick brown fox jumps over the lazy dog
                         </Text>
-                    </Grid>
-                </Grid>
-            </Grid>
+                    </Flex>
+                </Flex>
+            </Flex>
         </div>
     ))}
 </>

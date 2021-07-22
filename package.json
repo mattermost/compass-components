@@ -1,6 +1,6 @@
 {
     "name": "@mattermost/compass-components",
-    "version": "0.1.0",
+    "version": "0.2.1",
     "description": "components aligning to the compass design system",
     "homepage": "https://github.com/mattermost/compass-components#readme",
     "author": "Mattermost",
@@ -29,20 +29,28 @@
     "files": [
         "lib"
     ],
+    "publishConfig": {
+        "access": "public"
+    },
     "dependencies": {
         "@mattermost/compass-icons": "^0.1.1-2",
         "@popperjs/core": "^2.9.2",
         "axios": "^0.21.1",
         "clsx": "^1.1.1",
         "color-blend": "^3.0.1",
+        "csstype": "^3.0.8",
         "lodash.kebabcase": "^4.1.1",
         "lodash.random": "^3.2.0",
         "lodash.upperfirst": "^4.3.1",
-        "react": "^17.0.1",
-        "react-dom": "^17.0.1",
+        "react": "16.13.1 || ^17.0.1",
+        "react-dom": "16.13.1 || ^17.0.1",
         "react-popper": "^2.2.5",
         "react-transition-group": "^4.4.2",
         "styled-components": "^5.2.1"
+    },
+    "peerDependencies": {
+        "react": "16.13.1 || ^17.0.1",
+        "react-dom": "16.13.1 || ^17.0.1"
     },
     "devDependencies": {
         "@babel/core": "^7.13.8",
@@ -112,7 +120,7 @@
             "tsc-files --noEmit"
         ],
         "*.{js,jsx,ts,tsx,md,mdx}": [
-            "eslint --cache --fix",
+            "eslint --cache --fix ./src",
             "prettier --write"
         ]
     }

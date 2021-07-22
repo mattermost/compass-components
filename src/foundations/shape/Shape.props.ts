@@ -1,3 +1,5 @@
+import { ReactNode, ReactNodeArray } from 'react';
+
 import { TElevationLevel } from '../../utilities/elevation';
 
 import { TShapeBorderRadius, TShapeElement } from './Shape.types';
@@ -51,6 +53,10 @@ type PShape = {
      * custom className
      */
     className?: string;
+    /**
+     * component children
+     */
+    children?: ReactNode | ReactNodeArray;
 };
 
 type PShapeRoot = Omit<PShape, 'className'>;
