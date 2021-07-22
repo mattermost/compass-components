@@ -55,8 +55,22 @@ const applyHeadingMargin = ({
     `;
 };
 
-const applyHeadingColor = ({ color, theme }: PApplyHeadingColor): FlattenSimpleInterpolation => css`
-    color: ${color && color !== 'inherit' ? theme.text[color] : color};
-`;
+const applyHeadingColor = ({ color, theme }: PApplyHeadingColor): FlattenSimpleInterpolation => {
+    if (color === 'inherit') {
+        return css`
+            color: inherit;
+        `;
+    }
+
+    if (Utils.isColor(color)) {
+        return css`
+            color: ${color};
+        `;
+    }
+
+    return css`
+        color: ${theme?.text[color] || 'inherit'};
+    `;
+};
 
 export { applyHeadingStyles, applyHeadingColor, applyHeadingMargin };
