@@ -38,6 +38,7 @@
         "axios": "^0.21.1",
         "clsx": "^1.1.1",
         "color-blend": "^3.0.1",
+        "csstype": "^3.0.8",
         "lodash.kebabcase": "^4.1.1",
         "lodash.random": "^3.2.0",
         "lodash.upperfirst": "^4.3.1",
@@ -119,7 +120,7 @@
             "tsc-files --noEmit"
         ],
         "*.{js,jsx,ts,tsx,md,mdx}": [
-            "eslint --cache --fix",
+            "eslint --cache --fix ./src",
             "prettier --write"
         ]
     }

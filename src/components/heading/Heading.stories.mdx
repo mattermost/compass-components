@@ -11,7 +11,7 @@ import {
     DEFAULT_HEADING_WEIGHT,
     DEFAULT_HEADING_MARGIN,
 } from './Heading.constants';
-import Grid from '../../utilities/layout';
+import Flex from '../../utilities/layout';
 import Text from '../text';
 
 <Meta component={Heading} title="Components/Heading" />
@@ -53,47 +53,47 @@ export const bodySizes = [...smallSizes, { size: 300, fontSize: 18, lineHeight: 
     {headingSizes.map((heading) => (
         <div key={`heading_${heading.size}`}>
             <hr />
-            <Grid justify={'stretch'}>
-                <Grid row>
+            <Flex justify={'stretch'}>
+                <Flex row>
                     <Heading element={'h3'} size={300}>
                         {`Heading ${heading.size}${heading.size === 100 ? ' (Base size)' : ''}`}
                     </Heading>
-                </Grid>
-                <Grid row>
-                    <Grid flex={3}>
+                </Flex>
+                <Flex row>
+                    <Flex flex={3}>
                         <Text element={'p'} color={'secondary'} size={50} margin={'none'}>
                             Family
                         </Text>
                         <Text element={'p'} size={200} margin={'bottom'}>
                             {heading.size > 300 ? 'Metropolis (600)' : 'OpenSans (600)'}
                         </Text>
-                    </Grid>
-                    <Grid flex={2}>
+                    </Flex>
+                    <Flex flex={2}>
                         <Text element={'p'} color={'secondary'} size={50} margin={'none'}>
                             Size
                         </Text>
                         <Text element={'p'} size={200} margin={'bottom'}>
                             {`${heading.fontSize}px`}
                         </Text>
-                    </Grid>
-                    <Grid flex={2}>
+                    </Flex>
+                    <Flex flex={2}>
                         <Text element={'p'} color={'secondary'} size={50} margin={'none'}>
                             Line Height
                         </Text>
                         <Text element={'p'} size={200} margin={'bottom'}>
                             {`${heading.lineHeight}px`}
                         </Text>
-                    </Grid>
-                    <Grid flex={6}>
+                    </Flex>
+                    <Flex flex={6}>
                         <Text element={'p'} color={'secondary'} size={50} margin={'none'}>
                             Example
                         </Text>
                         <Heading element={'h1'} size={heading.size} margin={'bottom'}>
                             The quick brown fox jumps over the lazy dog
                         </Heading>
-                    </Grid>
-                </Grid>
-            </Grid>
+                    </Flex>
+                </Flex>
+            </Flex>
         </div>
     ))}
 </>

@@ -1,13 +1,13 @@
-import { useState } from 'react';
 import { Meta, Story, Canvas, Title, Subtitle, ArgsTable } from '@storybook/addon-docs/blocks';
-import Grid from '../../utilities/layout';
-import { DEFAULT_SWITCH_SIZE, SWITCH_SIZES } from './Switch.constants';
+
+import Flex from '../../utilities/layout';
 import Text from '../text';
-import { Utils } from '../../shared';
+import { Utils, DEFAULT_ARGUMENTS_TABLE_EXCLUSION } from '../../shared';
 import switchAnatomyImg from '../../assets/images/example-switch-anatomy.png';
 import switchAnimationGif from '../../assets/images/example-switch-animation.gif';
 import switchExampleImg from '../../assets/images/example-switch.png';
-import { DEFAULT_ARGUMENTS_TABLE_EXCLUSION } from '../../shared/constants';
+
+import { DEFAULT_SWITCH_SIZE, SWITCH_SIZES } from './Switch.constants';
 import Switch from './index';
 
 <Meta component={Switch} title="Components/Switch" />
@@ -34,57 +34,57 @@ Clicking either the Selector or the Label should toggle the state of the switch.
 
 When Off, the toggle handle is positioned to the left side and the background track is grey. When On, the toggle handle animates to the right side and the track turns from grey to blue.
 
-<Grid row justify={'space-between'}>
-    <Grid justify={'center'}>
+<Flex row justify={'space-between'}>
+    <Flex justify={'center'}>
         <Switch {...defaultArgs} disabled={true} />
         <br />
         <Text element={'p'} size={200} margin={'none'}>
             <strong>Disabled</strong>
         </Text>
-    </Grid>
-    <Grid justify={'center'}>
+    </Flex>
+    <Flex justify={'center'}>
         <Switch {...defaultArgs} />
         <br />
         <Text element={'p'} size={200} margin={'none'}>
             <strong>Off</strong>
         </Text>
-    </Grid>
-    <Grid justify={'center'}>
+    </Flex>
+    <Flex justify={'center'}>
         <Switch {...defaultArgs} toggled={true} />
         <br />
         <Text element={'p'} size={200} margin={'none'}>
             <strong>On</strong>
         </Text>
-    </Grid>
-</Grid>
+    </Flex>
+</Flex>
 
 ## Sizes
 
 There are three different sizes for switches: Small, Medium, and Large. The size of the text label determines the size of the switch that you should use. The small switch correlates with a label that has 12pt font, medium with 14pt font, and large with 16pt font.
 
-<Grid row justify={'space-between'}>
-    <Grid justify={'center'}>
+<Flex row justify={'space-between'}>
+    <Flex justify={'center'}>
         <Switch label={'Label'} size={'sm'} />
         <br />
         <Text element={'p'} size={200} margin={'none'}>
             <strong>Small</strong>
         </Text>
-    </Grid>
-    <Grid justify={'center'}>
+    </Flex>
+    <Flex justify={'center'}>
         <Switch label={'Label'} size={'md'} />
         <br />
         <Text element={'p'} size={200} margin={'none'}>
             <strong>Medium</strong>
         </Text>
-    </Grid>
-    <Grid justify={'center'}>
+    </Flex>
+    <Flex justify={'center'}>
         <Switch label={'Label'} size={'lg'} />
         <br />
         <Text element={'p'} size={200} margin={'none'}>
             <strong>Large</strong>
         </Text>
-    </Grid>
-</Grid>
+    </Flex>
+</Flex>
 
 ## Animation
 
@@ -126,7 +126,15 @@ export const ControlledSwitch = (args) => {
             label: { control: { type: 'text' } },
             size: { control: { type: 'select', options: SWITCH_SIZES } },
             disabled: { control: { type: 'boolean' } },
-            ...Utils.hideComponentProperties(['width', 'height', 'innerWidth', 'className', 'onClick', 'onChange', 'toggled']),
+            ...Utils.hideComponentProperties([
+                'width',
+                'height',
+                'innerWidth',
+                'className',
+                'onClick',
+                'onChange',
+                'toggled',
+            ]),
         }}
         args={defaultArgs}
     >

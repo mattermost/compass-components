@@ -2,14 +2,14 @@ import { ReactNode, ReactNodeArray } from 'react';
 
 import { TSpacingDefinition } from '../spacing';
 
-import { TGridAlignment, TGridElement, TGridFlex, TGridJustify } from './Grid.types';
+import { TFlexAlignment, TFlexElement, TFlexFlex, TFlexJustify } from './Flex.types';
 
-type PGrid = {
+type PFlex = {
     /**
      * flex value to use
      * @default 'initial'
      */
-    flex?: TGridFlex;
+    flex?: TFlexFlex;
     /**
      * renders the `Grid` component as a row (`flex-direction: row`)
      * @default false
@@ -24,17 +24,17 @@ type PGrid = {
      * the HTML tag that is used to render the component
      * @default 'div'
      */
-    element?: TGridElement;
+    element?: TFlexElement;
     /**
      * defines the vertical alignment of items inside the component
      * @default 'start'
      */
-    alignment?: TGridAlignment;
+    alignment?: TFlexAlignment;
     /**
      * defines the horizontal alignment of items inside the component
      * @default 'start'
      */
-    justify?: TGridJustify;
+    justify?: TFlexJustify;
     /**
      * padding according to `TSpacingDefinition` typography
      */
@@ -58,9 +58,9 @@ type PGrid = {
     children?: ReactNode | ReactNodeArray;
 };
 
-export type PGridRoot = Required<
-    Omit<PGrid, 'className' | 'children' | 'width' | 'height' | 'padding' | 'margin'>
+export type PFlexRoot = Required<
+    Omit<PFlex, 'element' | 'className' | 'children' | 'width' | 'height' | 'padding' | 'margin'>
 > &
-    Pick<PGrid, 'width' | 'height' | 'padding' | 'margin'>;
+    Pick<PFlex, 'width' | 'height' | 'padding' | 'margin'>;
 
-export default PGrid;
+export default PFlex;
