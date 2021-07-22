@@ -147,24 +147,12 @@ ComponentName/
 
 ### Naming convention
 
-we mainly use 3 different types of namings:
+we mainly use 3 different types of namings and each one has their own use-case:
 
----
-
-`PascalCase` is being used for
-
--   component names (example: `const MenuItem: React.FC = (): JSX.Element => { ... }`)
--   props definitions (example: `type PMenuItem = { ... `)
--   types definitions (example: `type TMenuItemSize = { ... }`)
-
----
-
-`UPPER_CASE` is being used for
-
--   constant variables (example: `const MENU_ITEM_SIZES = ...`)
-
----
-
-`camelCase` is being used for
-
--   all other variables
+| naming style | used for          | example                                 |
+| ------------ | ----------------- | --------------------------------------- |
+| `PascalCase` | component names   | `MenuItem`                              |
+|              | props definitions | `type PMenuItem = { ... }`              |
+|              | types definitions | `type TMenuItemSize = { ... }`          |
+| `UPPER_CASE` | constants         | `const MENU_ITEM_SIZES = ...`           |
+| `camelCase`  | everything else   | `const setMenuItemSize = () => { ... }` |
