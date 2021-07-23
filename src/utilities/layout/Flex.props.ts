@@ -1,10 +1,8 @@
-import { ReactNode, ReactNodeArray } from 'react';
-
-import { TSpacingDefinition } from '../spacing';
+import { PGlobals } from '../../shared/props';
 
 import { TFlexAlignment, TFlexElement, TFlexFlex, TFlexJustify } from './Flex.types';
 
-type PFlex = {
+type PFlex = PGlobals & {
     /**
      * flex value to use
      * @default 'initial'
@@ -36,14 +34,6 @@ type PFlex = {
      */
     justify?: TFlexJustify;
     /**
-     * padding according to `TSpacingDefinition` typography
-     */
-    padding?: TSpacingDefinition;
-    /**
-     * margin according to `TSpacingDefinition` typography
-     */
-    margin?: TSpacingDefinition;
-    /**
      * restrict the width of a `Grid`
      */
     width?: number;
@@ -51,11 +41,6 @@ type PFlex = {
      * restrict the height of a `Grid`
      */
     height?: number;
-    /**
-     * custom className
-     */
-    className?: string;
-    children?: ReactNode | ReactNodeArray;
 };
 
 export type PFlexRoot = Required<
