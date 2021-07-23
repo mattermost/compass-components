@@ -11,7 +11,7 @@ The intention behind the püackage is to create a unified look and feel across t
 
     in your project run
 
-    ```bash
+    ```shell
     npm i @mattermost/compass-components
     ```
 
@@ -68,7 +68,7 @@ export default App;
 
 1. Fork/Checkout this repository to a folder on your computer (we will use the user folder in this example)
 
-    ```bash
+    ```shell
     cd path/to/your/projects/folder
     git clone https://github.com/<YOUR_GITHUB_USERNAME>/compass-components.git
     ```
@@ -79,13 +79,13 @@ export default App;
 
     go to the project folder:
 
-    ```bash
+    ```shell
     cd compass-components
     ```
 
     and install dependencies with `npm`:
 
-    ```bash
+    ```shell
     npm install --legacy-peer-deps
     ```
 
@@ -96,7 +96,7 @@ export default App;
 
     once all packages are installed you can run storybook:
 
-    ```bash
+    ```shell
     npm run storybook
     ```
 
@@ -107,6 +107,11 @@ export default App;
 -   node version 16.x
 -   npm version 7.x
 
+## How to contriute
+
+As we are a company committed to open-source we welcome every contribution from the wider community.
+This section should outline the very basic steps to contribute to the project.
+
 ### Creating a new component
 
 For ease of use we created a convenience `generate component` function to create a boilerplate template for new
@@ -114,7 +119,7 @@ components.
 
 Simply run
 
-```bash
+```shell
 npm run gc
 ```
 
@@ -139,3 +144,40 @@ ComponentName/
 ├── ComponentName.types.ts
 └── index.ts
 ```
+
+### Naming convention
+
+we mainly use 3 different types of namings and each one has their own use-case:
+
+| naming style | used for          | example                                 |
+| ------------ | ----------------- | --------------------------------------- |
+| `PascalCase` | component names   | `MenuItem`                              |
+|              | props definitions | `type PMenuItem = { ... }`              |
+|              | types definitions | `type TMenuItemSize = { ... }`          |
+| `UPPER_CASE` | constants         | `const MENU_ITEM_SIZES = ...`           |
+| `camelCase`  | everything else   | `const setMenuItemSize = () => { ... }` |
+
+### Testing the package in your local project
+
+for an easier way to test this package in your locally running project we added a script to build, pack and save it.
+
+Simply run the following command in the compass-component package root and it will perform all the actions, except for
+installing it in your project (but it will give you a command to do so :D)
+
+```shell
+npm run pack
+```
+
+after the scrpt finishes it gives you a command to run in your project root, that should look simething like this:
+
+```shell
+npm install -S "$COMPASS_COMPONENTS_PACKAGE_PATH"
+```
+
+> **INFO:**
+>
+> the script will export a variable `COMPASS_COMPONENTS_PACKAGE_PATH` to your shell. This is not ultimately needed
+> and is being set only for convenience. You can still install the package directly using a path (absolute or relative
+> to your projects folder).
+>
+> the installable tarball is saved to the compass-component root folder (`<PATH_TO_COMPASS_COMPONENTS>/packed.tgz`)
