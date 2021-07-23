@@ -1,5 +1,7 @@
 import { Property } from 'csstype';
 
+const DEFAULT_GRID_ELEMENT = 'div';
+
 const DEFAULT_GRID_COLUMNS_TEMPLATE: Property.GridTemplateColumns = 'none';
 
 const DEFAULT_GRID_ROWS_TEMPLATE: Property.GridTemplateRows = 'none';
@@ -19,6 +21,8 @@ const DEFAULT_GRID_ITEM_ROWS: Property.GridRow = 'initial';
 const DEFAULT_GRID_ITEM_PLACE_SELF: Property.PlaceSelf = 'initial';
 
 export {
+    DEFAULT_GRID_ELEMENT,
+    DEFAULT_GRID_ELEMENT as DEFAULT_GRID_ITEM_ELEMENT,
     DEFAULT_GRID_COLUMNS_TEMPLATE,
     DEFAULT_GRID_ROWS_TEMPLATE,
     DEFAULT_GRID_AREAS_TEMPLATE,
