@@ -36,6 +36,15 @@ const pack = async () => {
     console.log('--> finished packing');
 };
 
+// pack the
+const setPackagePathVariable = async (pathToFile) => {
+    console.log('--> setting ENV variable for compass components package');
+    await execWithPromise(`export COMPASS_COMPONENTS_PACKAGE_PATH=${pathToFile}`);
+    console.log('--> variable has been set');
+    console.log('INFO: to install the local package in your project run this command:');
+    console.log('npm install -S "$COMPASS_COMPONENTS_PACKAGE_PATH"');
+};
+
 const movePack = async () => {
     // read the current package.json file
     const packageData = await fse.readFile(path.resolve(packagePath, './package.json'), 'utf8');
@@ -48,9 +57,12 @@ const movePack = async () => {
 
     // copy the files to the root folder
     await fse.copy(path.join(buildPath, fileName), path.join(packagePath, 'packed.tgz'));
+
+    return path.join(buildPath, fileName);
 };
 
 build()
     .then(() => pack())
     .then(() => movePack())
+    .then((pathToFile) => setPackagePathVariable(pathToFile))
     .catch((error) => console.log('!!! SOMETHING WENT WRONG !!!', error));
