@@ -59,7 +59,7 @@ type TThemeBadges = {
 type TThemeAnimationSpeed = 'instant' | 'fastest' | 'fast' | 'normal' | 'slow' | 'slowest';
 
 type TThemeAnimations = {
-    [key in TThemeAnimationSpeed]: string;
+    [key in TThemeAnimationSpeed]: number;
 };
 
 type TTheme = {

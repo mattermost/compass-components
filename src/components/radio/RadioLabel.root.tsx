@@ -1,8 +1,7 @@
 import styled, { css } from 'styled-components';
 import { FlattenSimpleInterpolation, ThemedStyledProps } from 'styled-components/ts3.6';
 
-import Spacing, { TSpacingToken } from '../../utilities/spacing';
-import { applyMargin } from '../../utilities/layout';
+import Spacing, { TSpacingToken, applyMargin } from '../../utilities/spacing';
 import { applyTextMargin, applyTextStyles } from '../text';
 import { Utils } from '../../shared';
 import { TTheme } from '../../utilities/theme';

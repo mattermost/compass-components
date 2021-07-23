@@ -10,6 +10,7 @@
         "build": "node -v && rimraf ./lib && npm run build:compile && npm run build:copy-files",
         "build:compile": "tsc --extendedDiagnostics -p \"./tsconfig.build.json\"",
         "build:copy-files": "node ./scripts/copy-files.js",
+        "pack": "node ./scripts/pack.js",
         "lint": "eslint ./src",
         "lint:fix": "eslint --fix --cache ./src",
         "nuke": "rm -rf node_modules package-lock.json",
@@ -38,6 +39,7 @@
         "axios": "^0.21.1",
         "clsx": "^1.1.1",
         "color-blend": "^3.0.1",
+        "csstype": "^3.0.8",
         "lodash.kebabcase": "^4.1.1",
         "lodash.random": "^3.2.0",
         "lodash.upperfirst": "^4.3.1",
@@ -119,7 +121,7 @@
             "tsc-files --noEmit"
         ],
         "*.{js,jsx,ts,tsx,md,mdx}": [
-            "eslint --cache --fix",
+            "eslint --cache --fix ./src",
             "prettier --write"
         ]
     }

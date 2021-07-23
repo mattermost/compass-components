@@ -19,9 +19,13 @@ const Popover = ({
     noAnimation = false,
     placement = DEFAULT_POPOVER_PLACEMENT,
     offset = DEFAULT_POPOVER_OFFSET,
+    zIndex = 1,
 }: PPopover): JSX.Element | null => {
     const popperReference = useRef(null);
-    const { styles, attributes } = usePopper(anchorReference.current, popperReference.current, {
+    const {
+        styles: { popper },
+        attributes,
+    } = usePopper(anchorReference.current, popperReference.current, {
         placement,
         modifiers: [
             {
@@ -37,8 +41,13 @@ const Popover = ({
     // away from the button or the popover (basically everything else)
     useClickAway([popperReference, anchorReference], onClickAway);
 
+    const style = {
+        ...popper,
+        zIndex,
+    };
+
     return (
-        <div ref={popperReference} style={styles.popper} {...attributes.popper}>
+        <div ref={popperReference} style={style} {...attributes.popper}>
             <Transition
                 isVisible={isVisible}
                 type={['fade', 'scale']}

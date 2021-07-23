@@ -1,8 +1,7 @@
 import styled, { css } from 'styled-components';
 import { FlattenSimpleInterpolation, ThemedStyledProps } from 'styled-components/ts3.6';
 
-import { applyPadding } from '../../utilities/layout';
-import Spacing from '../../utilities/spacing';
+import Spacing, { applyPadding } from '../../utilities/spacing';
 import { TTheme } from '../../utilities/theme';
 
 import { PInputRoot } from './TextInput.props';

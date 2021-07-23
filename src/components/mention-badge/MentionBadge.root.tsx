@@ -7,8 +7,7 @@ import {
 
 import { Utils } from '../../shared';
 import { applyShape } from '../../foundations/shape';
-import { applyPadding } from '../../utilities/layout';
-import Spacing from '../../utilities/spacing';
+import Spacing, { applyPadding } from '../../utilities/spacing';
 import { TTheme } from '../../utilities/theme';
 import { applyTextMargin, applyTextStyles } from '../text';
 

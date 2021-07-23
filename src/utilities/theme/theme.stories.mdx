@@ -1,6 +1,6 @@
 import { Meta, Story, Canvas, Title } from '@storybook/addon-docs/blocks';
 
-import Grid from '../layout';
+import Flex from '../layout';
 import Spacing from '../spacing';
 import { blue, COLOR_NAMES, COLOR_SHADES } from '../../foundations/colors';
 import Shape from '../../foundations/shape';
@@ -44,11 +44,11 @@ export const themes = {
         }}
     >
         {(args) => (
-            <Grid row>
+            <Flex row>
                 <SectionThemeProvider theme={args.sectionTheme || lightTheme}>
-                    <Grid width={300} padding={Spacing.all(100)}>
+                    <Flex width={300} padding={Spacing.all(100)}>
                         <Shape borderRadius={16}>
-                            <Grid padding={Spacing.all(100)}>
+                            <Flex padding={Spacing.all(100)}>
                                 <Heading>This is a sub-section</Heading>
                                 <Text>
                                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -93,13 +93,13 @@ export const themes = {
                                     variant={'tertiary'}
                                 />
                                 <br />
-                            </Grid>
+                            </Flex>
                         </Shape>
-                    </Grid>
+                    </Flex>
                 </SectionThemeProvider>
-                <Grid width={300} padding={Spacing.all(100)}>
+                <Flex width={300} padding={Spacing.all(100)}>
                     <Shape borderRadius={16}>
-                        <Grid padding={Spacing.all(100)}>
+                        <Flex padding={Spacing.all(100)}>
                             <Heading>This is the main-section</Heading>
                             <Text>
                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -123,10 +123,10 @@ export const themes = {
                                 onClick={() => console.log('THIS IS A BUTTON click')}
                                 variant={'tertiary'}
                             />
-                        </Grid>
+                        </Flex>
                     </Shape>
-                </Grid>
-            </Grid>
+                </Flex>
+            </Flex>
         )}
     </Story>
     <Story
@@ -172,11 +172,11 @@ export const themes = {
                 },
             };
             return (
-                <Grid row>
+                <Flex row>
                     <SectionThemeProvider theme={theme}>
-                        <Grid width={300} padding={Spacing.all(100)}>
+                        <Flex width={300} padding={Spacing.all(100)}>
                             <Shape borderRadius={16}>
-                                <Grid padding={Spacing.all(100)}>
+                                <Flex padding={Spacing.all(100)}>
                                     <Heading>This is a sub-section</Heading>
                                     <Text>
                                         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
@@ -257,13 +257,13 @@ export const themes = {
                                         variant={'tertiary'}
                                     />
                                     <br />
-                                </Grid>
+                                </Flex>
                             </Shape>
-                        </Grid>
+                        </Flex>
                     </SectionThemeProvider>
-                    <Grid width={300} padding={Spacing.all(100)}>
+                    <Flex width={300} padding={Spacing.all(100)}>
                         <Shape borderRadius={16}>
-                            <Grid padding={Spacing.all(100)}>
+                            <Flex padding={Spacing.all(100)}>
                                 <Heading>This is the main-section</Heading>
                                 <Text>
                                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -287,10 +287,10 @@ export const themes = {
                                     onClick={() => console.log('THIS IS A BUTTON click')}
                                     variant={'tertiary'}
                                 />
-                            </Grid>
+                            </Flex>
                         </Shape>
-                    </Grid>
-                </Grid>
+                    </Flex>
+                </Flex>
             );
         }}
     </Story>

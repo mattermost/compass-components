@@ -1,7 +1,7 @@
 import { css } from 'styled-components';
 import { FlattenSimpleInterpolation } from 'styled-components/ts3.6';
 
-import { FONT_TYPE_FAMILIES, FONT_WEIGHT_MAP } from '../../shared';
+import { FONT_TYPE_FAMILIES, FONT_WEIGHT_MAP, Utils } from '../../shared';
 
 import {
     DEFAULT_TEXT_MARGIN,
@@ -54,14 +54,20 @@ const applyTextMargin = ({
 };
 
 const applyTextColor = ({ color, theme }: PApplyTextColor): FlattenSimpleInterpolation => {
-    if (color === 'inherit' || !theme) {
+    if (color === 'inherit') {
         return css`
             color: inherit;
         `;
     }
 
+    if (Utils.isColor(color)) {
+        return css`
+            color: ${color};
+        `;
+    }
+
     return css`
-        color: ${theme.text[color] || color};
+        color: ${theme?.text[color] || 'inherit'};
     `;
 };
 
