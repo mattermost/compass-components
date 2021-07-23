@@ -88,14 +88,11 @@ type PTextInput = {
 };
 
 type PTextInputRoot = Required<
-    Pick<PTextInput, 'hasError' | 'disabled' | 'active' | 'width' | 'size'>
+    Pick<PTextInput, 'hasError' | 'disabled' | 'active' | 'width' | 'size' | 'onClear'>
 > &
-    Pick<PTextInput, 'backgroundColor'>;
-
-type PLabelRoot = Required<Pick<PTextInput, 'size' | 'value' | 'animatedLabel' | 'hasError'>> &
-    Pick<PTextInput, 'backgroundColor' | 'leadingIcon' | 'children' | 'disabled'>;
+    Pick<PTextInput, 'backgroundColor' | 'animatedLabel' | 'value' | 'leadingIcon'>;
 
 type PInputRoot = Required<Pick<PTextInput, 'placeholder' | 'value' | 'onChange'>>;
 
 export default PTextInput;
-export type { PTextInputRoot, PLabelRoot, PInputRoot };
+export type { PTextInputRoot, PInputRoot };
