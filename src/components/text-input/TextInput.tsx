@@ -42,6 +42,7 @@ const TextInput: React.FC<PTextInput> = ({
         animatedLabel,
         backgroundColor,
         width,
+        leadingIcon,
         onClear,
         value,
         onFocus,

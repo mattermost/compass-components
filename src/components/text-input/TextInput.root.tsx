@@ -26,7 +26,6 @@ const TextInputRoot = styled.div<PTextInputRoot>(
     }: ThemedStyledProps<PTextInputRoot, TTheme>): FlattenSimpleInterpolation => {
         const hasValue = Utils.isString(value) && value.length > 0;
         const isClearable = Utils.isFunction(onClear);
-
         const colors: Record<string, string> = {
             active: hasError ? palette.alert.main : palette.primary.main,
             text: text.primary,
