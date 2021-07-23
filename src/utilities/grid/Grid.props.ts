@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactNode, ReactNodeArray } from 'react';
 import { Property } from 'csstype';
 
 import {
@@ -8,9 +8,27 @@ import {
     TGridPlaceItemsProperty,
 } from './Grid.types';
 
-type PGrid = PApplyGrid & { element: string | React.FC };
+type PGrid = PApplyGrid & {
+    /**
+     * the element the Grid should be rendered with
+     */
+    element?: string | React.FC;
+    /**
+     * component children
+     */
+    children?: ReactNode | ReactNodeArray;
+};
 
-type PGridItem = PApplyGridItem & { element: string | React.FC };
+type PGridItem = PApplyGridItem & {
+    /**
+     * the element the Grid should be rendered with
+     */
+    element?: string | React.FC;
+    /**
+     * component children
+     */
+    children?: ReactNode | ReactNodeArray;
+};
 
 type PApplyGrid = {
     /**
