@@ -114,7 +114,7 @@ const TextInputRoot = styled.div<PTextInputRoot>(
                     inheritLineHeight: true,
                 })};
 
-                transition: all ${animation.fastest} ease-in-out;
+                transition: all ${animation.fastest}ms linear;
             }
 
             .clear {

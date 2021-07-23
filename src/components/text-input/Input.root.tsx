@@ -18,7 +18,7 @@ const InputRoot = styled.input<PInputRoot>(
 
         &::placeholder {
             color: transparent;
-            transition: color ${animation.fastest} ease-in;
+            transition: color ${animation.fastest}ms linear;
         }
         &:focus {
             outline: none;
