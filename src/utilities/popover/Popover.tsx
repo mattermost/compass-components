@@ -43,7 +43,9 @@ const Popover = ({
 
     const style = {
         ...popper,
-        zIndex,
+        // when the Popover is not visible set zIndex to -1 to prevent it from
+        // covering up the action element and make it unclickable
+        zIndex: isVisible ? zIndex : -1,
     };
 
     return (
