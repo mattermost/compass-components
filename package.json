@@ -1,6 +1,6 @@
 {
     "name": "@mattermost/compass-components",
-    "version": "0.2.1",
+    "version": "0.2.2",
     "description": "components aligning to the compass design system",
     "homepage": "https://github.com/mattermost/compass-components#readme",
     "author": "Mattermost",
