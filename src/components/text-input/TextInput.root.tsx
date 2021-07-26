@@ -105,7 +105,7 @@ const TextInputRoot = styled.div<PTextInputRoot>(
                 ${applyMargin(
                     Spacing.only(
                         'left',
-                        leadingIcon === 'none' ? 0 : TEXT_INPUT_VALUES_MAPPING[size].labelMargin
+                        leadingIcon ? TEXT_INPUT_VALUES_MAPPING[size].labelMargin : 0
                     )
                 )};
                 ${applyTextStyles({
@@ -116,7 +116,7 @@ const TextInputRoot = styled.div<PTextInputRoot>(
                 transition: all ${animation.fastest}ms linear;
             }
 
-            .clear {
+            .trailing-icon {
                 cursor: ${isClearable ? 'pointer' : 'none'};
             }
         `;

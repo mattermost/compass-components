@@ -60,7 +60,12 @@ const TextInput: React.FC<PTextInput> = ({
             />
             {hasLabel && <Text element={'span'}>{label}</Text>}
             {trailingIcon && trailingIcon !== 'none' && (
-                <Icon glyph={trailingIcon} className={'clear'} size={iconSize} onClick={onClear} />
+                <Icon
+                    glyph={trailingIcon}
+                    className={'trailing-icon'}
+                    size={iconSize}
+                    onClick={onClear}
+                />
             )}
         </TextInputRoot>
     );
