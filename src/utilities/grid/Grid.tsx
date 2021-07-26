@@ -26,9 +26,16 @@ const GridRoot = styled.div.withConfig({
     `
 );
 
-const Grid = ({ element = DEFAULT_GRID_ELEMENT, ...rest }: PGrid): JSX.Element => (
-    <GridRoot {...rest} as={element} />
-);
+const Grid = <T extends {}>({
+    element = DEFAULT_GRID_ELEMENT,
+    ...rest
+}: PGrid & T): JSX.Element => {
+    if (Utils.isFunctionalComponent(element)) {
+        return <GridRoot {...rest} forwardedAs={element} />;
+    }
+
+    return <GridRoot {...rest} as={element} />;
+};
 
 const GridItemRoot = styled.div.withConfig({
     shouldForwardProp: (property, validator) =>
@@ -41,9 +48,10 @@ const GridItemRoot = styled.div.withConfig({
     `
 );
 
-const GridItem = ({ element = DEFAULT_GRID_ITEM_ELEMENT, ...rest }: PGridItem): JSX.Element => (
-    <GridItemRoot {...rest} as={element} />
-);
+const GridItem = <T extends {}>({
+    element = DEFAULT_GRID_ITEM_ELEMENT,
+    ...rest
+}: PGridItem & T): JSX.Element => <GridItemRoot {...rest} as={element} />;
 
 export { GridItem };
 
