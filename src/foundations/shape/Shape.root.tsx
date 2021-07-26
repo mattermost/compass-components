@@ -2,6 +2,7 @@ import styled, { css } from 'styled-components';
 import { FlattenSimpleInterpolation, ThemedStyledProps } from 'styled-components/ts3.6';
 
 import applyElevation from '../../utilities/elevation';
+import { applyMargin, applyPadding } from '../../utilities/spacing';
 import { TTheme } from '../../utilities/theme';
 import { Utils } from '../../shared';
 
@@ -10,7 +11,8 @@ import { PShapeRoot } from './Shape.props';
 
 const ShapeRoot = styled.div.withConfig<PShapeRoot>({
     shouldForwardProp: (property, validator) =>
-        Utils.blockProperty(property) && validator(property),
+        Utils.blockProperty(property, ['width', 'height', 'radius', 'elevation', 'element']) &&
+        validator(property),
 })<ThemedStyledProps<PShapeRoot, TTheme>>(
     ({
         radius,
@@ -19,6 +21,8 @@ const ShapeRoot = styled.div.withConfig<PShapeRoot>({
         width,
         height,
         theme,
+        padding,
+        margin,
         backgroundColor = theme.background.shape,
     }: ThemedStyledProps<PShapeRoot, TTheme>): FlattenSimpleInterpolation => css`
         display: flex;
@@ -26,6 +30,9 @@ const ShapeRoot = styled.div.withConfig<PShapeRoot>({
 
         ${applyShape({ width, height, radius })};
         ${applyElevation({ elevation, elevationOnHover }, theme.type === 'dark')};
+
+        ${padding && applyPadding(padding)};
+        ${margin && applyMargin(margin)};
     `
 );
 

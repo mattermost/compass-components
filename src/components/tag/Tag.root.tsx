@@ -4,8 +4,7 @@ import { FlattenSimpleInterpolation, ThemedStyledProps } from 'styled-components
 import Text, { applyTextMargin, applyTextStyles } from '../text';
 import { applyShape } from '../../foundations/shape';
 import { Utils } from '../../shared';
-import { applyPadding } from '../../utilities/layout';
-import Spacing from '../../utilities/spacing';
+import Spacing, { applyPadding } from '../../utilities/spacing';
 import { TTheme } from '../../utilities/theme';
 
 import { PTagRoot } from './Tag.props';

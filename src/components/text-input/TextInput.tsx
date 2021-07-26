@@ -2,6 +2,7 @@ import React from 'react';
 
 import { Utils } from '../../shared';
 import Icon from '../../foundations/icon';
+import Text from '../text';
 
 import {
     DEFAULT_TEXT_INPUT_SIZE,
@@ -11,7 +12,6 @@ import {
 import TextInputRoot from './TextInput.root';
 import InputRoot from './Input.root';
 import PTextInput from './TextInput.props';
-import LabelRoot from './Label.root';
 
 const TextInput: React.FC<PTextInput> = ({
     label,
@@ -42,6 +42,9 @@ const TextInput: React.FC<PTextInput> = ({
         animatedLabel,
         backgroundColor,
         width,
+        leadingIcon,
+        onClear,
+        value,
         onFocus,
     };
 
@@ -55,19 +58,14 @@ const TextInput: React.FC<PTextInput> = ({
                 }
                 onChange={onChange}
             />
-            {hasLabel && (
-                <LabelRoot
-                    size={size}
-                    value={value || ''}
-                    leadingIcon={leadingIcon}
-                    animatedLabel={animatedLabel}
-                    backgroundColor={backgroundColor}
-                >
-                    {label}
-                </LabelRoot>
-            )}
+            {hasLabel && <Text element={'span'}>{label}</Text>}
             {trailingIcon && trailingIcon !== 'none' && (
-                <Icon glyph={trailingIcon} size={iconSize} onClick={onClear} />
+                <Icon
+                    glyph={trailingIcon}
+                    className={'trailing-icon'}
+                    size={iconSize}
+                    onClick={onClear}
+                />
             )}
         </TextInputRoot>
     );

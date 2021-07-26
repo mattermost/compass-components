@@ -4,7 +4,7 @@ import Shape from '../shape';
 import { neutral } from '../colors';
 import { Utils } from '../../shared';
 import Text from '../../components/text';
-import Grid from '../../utilities/layout';
+import Flex from '../../utilities/layout';
 import Spacing from '../../utilities/spacing';
 
 import {
@@ -40,7 +40,7 @@ All UI icons are compiled in the Compass Icons Font file. Font file coming soonâ
 UI Icons can be used in the following standard sizes. The sizes noted here refer to the component's container,
 not the font size for the icon font.
 
-<Grid
+<Flex
     row
     wrap
     padding={Spacing.symmetric({ vertical: 150, horizontal: 25 })}
@@ -48,26 +48,26 @@ not the font size for the icon font.
     justify={'start'}
 >
     {ICON_SIZES.map((s) => (
-        <Grid
+        <Flex
             key={s}
             padding={Spacing.symmetric({ vertical: 50, horizontal: 50 })}
             alignment={'center'}
             justify={'center'}
         >
             <Shape radius={0} backgroundColor={neutral[0]} width={150} height={150}>
-                <Grid
+                <Flex
                     flex={1}
                     padding={Spacing.symmetric({ vertical: 200, horizontal: 200 })}
                     alignment={'center'}
                     justify={'center'}
                 >
                     <Icon glyph={'airplane-variant'} size={s} />
-                </Grid>
+                </Flex>
             </Shape>
             <Text>{s}</Text>
-        </Grid>
+        </Flex>
     ))}
-</Grid>
+</Flex>
 
 ## Component API
 
