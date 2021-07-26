@@ -26,16 +26,31 @@ const GridRoot = styled.div.withConfig({
     `
 );
 
+/**
+ * adding a generic Type here allows for safe typing when using elements other
+ * than basic HTML (e.g. a `Shape` component)
+ *
+ * @example
+ * ```typescript
+ * <Grid<PShape>
+ *   element={Shape}
+ *   columnsTemplate={'auto 1fr auto'}
+ *   placeItems={{alignItems: 'center'}}
+ *   padding={Spacing.trbl({top: 75, right: 200, bottom: 75, left: 100})}
+ *   width={'100%'}
+ *   height={40}
+ *   radius={0}
+ * >
+ * ```
+ *
+ * In this example neither `width`, `height` nor `radius` are properties of the
+ * Grid component, but by using `<PShape>` we safely type those props in, when
+ * using the `Shape` component in the `element` prop
+ */
 const Grid = <T extends {}>({
     element = DEFAULT_GRID_ELEMENT,
     ...rest
-}: PGrid & T): JSX.Element => {
-    if (Utils.isFunctionalComponent(element)) {
-        return <GridRoot {...rest} forwardedAs={element} />;
-    }
-
-    return <GridRoot {...rest} as={element} />;
-};
+}: PGrid & T): JSX.Element => <GridRoot {...rest} as={element} />;
 
 const GridItemRoot = styled.div.withConfig({
     shouldForwardProp: (property, validator) =>
