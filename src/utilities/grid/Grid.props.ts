@@ -1,5 +1,7 @@
-import React, { ReactNode, ReactNodeArray } from 'react';
+import React from 'react';
 import { Property } from 'csstype';
+
+import { PGlobals, PGlobalsLayout } from '../../shared/props';
 
 import {
     TGridGapProperty,
@@ -8,29 +10,23 @@ import {
     TGridPlaceItemsProperty,
 } from './Grid.types';
 
-type PGrid = PApplyGrid & {
-    /**
-     * the element the Grid should be rendered with
-     */
-    element?: string | React.FC;
-    /**
-     * component children
-     */
-    children?: ReactNode | ReactNodeArray;
-};
+type PGrid = PApplyGrid &
+    PGlobals & {
+        /**
+         * the element the Grid should be rendered with
+         */
+        element?: string | React.FC;
+    };
 
-type PGridItem = PApplyGridItem & {
-    /**
-     * the element the Grid should be rendered with
-     */
-    element?: string | React.FC;
-    /**
-     * component children
-     */
-    children?: ReactNode | ReactNodeArray;
-};
+type PGridItem = PApplyGridItem &
+    PGlobals & {
+        /**
+         * the element the Grid should be rendered with
+         */
+        element?: string | React.FC;
+    };
 
-type PApplyGrid = {
+type PApplyGrid = PGlobalsLayout & {
     /**
      * possible values align with the corresponding CSS property for
      * `grid-columns-template`
@@ -84,7 +80,7 @@ type PApplyGrid = {
     placeContent?: TGridPlaceContentProperty;
 };
 
-type PApplyGridItem = {
+type PApplyGridItem = PGlobalsLayout & {
     /**
      * possible values align with the corresponding CSS property
      * `grid-column`

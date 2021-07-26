@@ -91,8 +91,8 @@ const applyGrid = ({
 }: PApplyGrid): FlattenSimpleInterpolation => css`
     display: grid;
 
-    grid-template-rows: ${columnsTemplate};
-    grid-template-columns: ${rowsTemplate};
+    grid-template-columns: ${columnsTemplate};
+    grid-template-rows: ${rowsTemplate};
     grid-template-areas: ${areasTemplate};
 
     column-gap: ${Utils.isNumber(gap) || Utils.isString(gap)
