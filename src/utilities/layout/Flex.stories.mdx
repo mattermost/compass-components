@@ -1,6 +1,6 @@
 import { ArgsTable, Meta, Title, Subtitle } from '@storybook/addon-docs/blocks';
 
-import ShapeRoot from '../../foundations/shape';
+import Shape from '../../foundations/shape';
 import Text from '../../components/text';
 import Spacing from '../../utilities/spacing';
 
@@ -11,11 +11,11 @@ import grid4pxImg from '../../assets/images/layout_4px-grid.png';
 import baselineImg from '../../assets/images/layout_baseline.png';
 import anatomyImg from '../../assets/images/layout_grid-anatomy.png';
 
-import Grid from './index';
+import Flex from './index';
 
-<Meta component={Grid} title="Utilities/Grid" />
+<Meta component={Flex} title="Utilities/Layout/Flex" />
 
-<Title>Grid</Title>
+<Title>Flex</Title>
 
 <Subtitle>
     The following layout guidelines help maintain consistency across platforms and screen sizes by
@@ -51,11 +51,11 @@ export const spacings = {
     80: 500,
 };
 
-<Grid row alignment={'flex-end'}>
+<Flex row alignment={'flex-end'}>
     {Object.keys(spacings).map((s) => (
-        <Grid key={s} alignment={'center'} padding={Spacing.all(75)}>
-            <ShapeRoot borderWidth={1} radius={0} elevation={0}>
-                <Grid
+        <Flex key={s} alignment={'center'} padding={Spacing.all(75)}>
+            <Shape borderWidth={1} radius={0} elevation={0}>
+                <Flex
                     padding={Spacing.trbl({
                         top: spacings[s],
                         right: 0,
@@ -63,13 +63,13 @@ export const spacings = {
                         left: spacings[s],
                     })}
                 />
-            </ShapeRoot>
+            </Shape>
             <Text element={'p'} size={75}>
                 {s}
             </Text>
-        </Grid>
+        </Flex>
     ))}
-</Grid>
+</Flex>
 
 ### Padding
 
@@ -108,4 +108,4 @@ trustworthy. This kind of organization also helps users scan content and find wh
 
 <img src={anatomyImg} alt={'example of the horizontal grid anatomy'} />
 
-<ArgsTable of={Grid} />
+<ArgsTable of={Flex} />
