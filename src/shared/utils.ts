@@ -118,6 +118,14 @@ function warn(message: string, ...rest: any): void {
 const isNumber = (x: any): x is number => typeof x === 'number';
 const isString = (x: any): x is string => typeof x === 'string';
 const isFunction = (x: any): x is Function => typeof x === 'function';
+
+/**
+ * check if the provided component is classified as functional component
+ * @param {*} component
+ * @returns {boolean}
+ */
+const isFunctionalComponent = (component: any): boolean =>
+    isFunction(component) && !(component.prototype && component.prototype.isReactComponent);
 /* eslint-enable @typescript-eslint/no-explicit-any,no-console */
 
 /**
@@ -221,6 +229,7 @@ const Utils = {
     isNumber,
     isFunction,
     isString,
+    isFunctionalComponent,
     blockProperty,
     forceForwardProperty,
     getBase64,

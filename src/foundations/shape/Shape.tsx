@@ -19,8 +19,8 @@ const Shape = ({
     ...rest
 }: PShape): JSX.Element => {
     Utils.assert(
-        SHAPE_ELEMENTS.includes(element),
-        `Shape: used element is unsupported. Please use one supported by the component from this list: ${SHAPE_ELEMENTS.join(
+        SHAPE_ELEMENTS.includes(element) || Utils.isFunctionalComponent(element),
+        `Shape: used element ${element} is unsupported. Please use one supported by the component from this list: ${SHAPE_ELEMENTS.join(
             ', '
         )}`,
         true
