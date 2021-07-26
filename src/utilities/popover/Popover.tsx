@@ -51,6 +51,8 @@ const Popover = ({
     return (
         <div ref={popperReference} style={style} {...attributes.popper}>
             <Transition
+                mountOnEnter
+                unmountOnExit
                 isVisible={isVisible}
                 type={['fade', 'scale']}
                 speed={noAnimation ? 'instant' : 'normal'}

@@ -1,4 +1,4 @@
-import { ReactNode, ReactNodeArray } from 'react';
+import { ReactNode, ReactNodeArray, CSSProperties } from 'react';
 import { TransitionStatus } from 'react-transition-group';
 
 import { TTheme } from '../theme';
@@ -89,6 +89,25 @@ type PTransition = {
      * Callback fired after the "exited" status is applied.
      */
     onExited?: (node: HTMLElement) => void;
+    /**
+     * By default the child component is mounted immediately along with the
+     * parent Transition component. If you want to "lazy mount" the component on
+     * the first `in={true}` you can set `mountOnEnter`. After the first enter
+     * transition the component will stay mounted, even on `exited`, unless you
+     * also specify `unmountOnExit`.
+     */
+    mountOnEnter?: boolean;
+    /**
+     * By default the child component stays mounted after it reaches the
+     * `exited` state. Set `unmountOnExit` if you'd prefer to unmount the
+     * component after it finishes exiting.
+     */
+    unmountOnExit?: boolean;
+    /**
+     * HTML style attribute in object notation according to the
+     * React.CSSProperties type
+     */
+    style?: CSSProperties;
 };
 
 type PAnimation = {
