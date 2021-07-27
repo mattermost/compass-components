@@ -16,7 +16,7 @@ import {
 import PFlex from './Flex.props';
 import FlexRoot from './Flex.root';
 
-const Flex = <T extends {}>({
+const Flex = function <T>({
     element = DEFAULT_FLEX_COMPONENT,
     alignment = DEFAULT_FLEX_ALIGNMENT,
     justify = DEFAULT_FLEX_JUSTIFY,
@@ -24,7 +24,7 @@ const Flex = <T extends {}>({
     row = DEFAULT_FLEX_ROW,
     wrap = DEFAULT_FLEX_WRAP,
     ...rest
-}: PFlex & T): JSX.Element => {
+}: PFlex & T): JSX.Element {
     Utils.assert(
         FLEX_ALIGNMENTS.includes(alignment),
         `Compass Components - Flex: incompatible alignment property (${alignment}) set on Flex component. Please choose from the following: ${FLEX_ALIGNMENTS.join(
