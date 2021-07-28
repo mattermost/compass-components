@@ -3,6 +3,7 @@ import { FlattenSimpleInterpolation, ThemedStyledProps } from 'styled-components
 
 import { setAlpha, Utils } from '../../shared';
 import { TTheme } from '../../utilities/theme';
+import { resetButton } from '../../utilities/theme/global-styles/reset-styles';
 import Spacing, { applyMargin, applyPadding } from '../../utilities/spacing';
 import { applyShape } from '../../foundations/shape';
 import { applyTextStyles } from '../text';
@@ -21,7 +22,7 @@ const IconButtonRoot = styled.button.withConfig<PIconButtonRoot>({
         toggled,
         destructive,
         disabled,
-        theme: { palette, action, text, animation },
+        theme: { palette, action, text, animation, noStyleReset },
     }: ThemedStyledProps<PIconButtonRoot, TTheme>): FlattenSimpleInterpolation => {
         const isDefault = !inverted && !destructive && !toggled;
         const { main, contrast } = destructive && !toggled ? palette.alert : palette.primary;
@@ -101,9 +102,13 @@ const IconButtonRoot = styled.button.withConfig<PIconButtonRoot>({
               `;
 
         return css`
+            ${noStyleReset && resetButton}
+
             display: flex;
             align-items: center;
             justify-content: center;
+
+            cursor: pointer;
 
             color: ${setAlpha(colors.text, opacities.text.default)};
             background: ${setAlpha(colors.background, opacities.background.default)};

@@ -1,6 +1,21 @@
 import { css } from 'styled-components';
 
-export const reset = css`
+const resetButton = css`
+    border: none;
+    margin: 0;
+    padding: 0;
+    width: auto;
+    overflow: visible;
+    background: transparent;
+    color: inherit;
+    font: inherit;
+    text-align: inherit;
+    outline: none;
+    line-height: inherit;
+    -webkit-appearance: none;
+`;
+
+const reset = css`
     /* https://meyerweb.com/eric/tools/css/reset/
     v4.0 | 20180602
     License: none (public domain)
@@ -148,18 +163,7 @@ export const reset = css`
         color: inherit;
     }
     button {
-        border: none;
-        margin: 0;
-        padding: 0;
-        width: auto;
-        overflow: visible;
-        background: transparent;
-        color: inherit;
-        font: inherit;
-        text-align: inherit;
-        outline: none;
-        line-height: inherit;
-        -webkit-appearance: none;
+        ${resetButton}
     }
     /* Fix antialiasing */
     *,
@@ -196,4 +200,5 @@ export const reset = css`
     }
 `;
 
+export { resetButton };
 export default reset;
