@@ -1,7 +1,7 @@
 import { createGlobalStyle } from 'styled-components';
 // eslint-disable-next-line import/no-unassigned-import
-import '@mattermost/compass-icons';
 import { FlattenSimpleInterpolation } from 'styled-components/ts3.6';
+import '@mattermost/compass-icons/css/compass-icons.css';
 
 import { setAlpha } from '../../../shared';
 import { TTheme } from '../themes';
