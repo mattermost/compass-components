@@ -7,6 +7,8 @@ const sidebarTheme: TTheme = {
     type: 'dark',
     elevationOpacity: 0.32,
     noStyleReset: false,
+    noFontFaces: false,
+    noDefaultStyle: false,
     palette: {
         primary: {
             lighter: green[100],

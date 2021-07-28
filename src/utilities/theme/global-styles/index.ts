@@ -1,7 +1,11 @@
 import { createGlobalStyle } from 'styled-components';
 // eslint-disable-next-line import/no-unassigned-import
-import { FlattenSimpleInterpolation } from 'styled-components/ts3.6';
 import '@mattermost/compass-icons/css/compass-icons.css';
+import {
+    FlattenSimpleInterpolation,
+    FlattenInterpolation,
+    ThemeProps,
+} from 'styled-components/ts3.6';
 
 import { setAlpha } from '../../../shared';
 import { TTheme } from '../themes';
@@ -17,8 +21,10 @@ type PGlobalStyles = {
 const GlobalStyle = createGlobalStyle`
     ${({ theme }: PGlobalStyles): FlattenSimpleInterpolation | null =>
         theme.noStyleReset ? null : reset};
-    ${fontFaces}
-    ${defaultStyles};
+    ${({ theme }: PGlobalStyles): FlattenSimpleInterpolation | null =>
+        theme.noFontFaces ? null : fontFaces};
+    ${({ theme }: PGlobalStyles): FlattenInterpolation<ThemeProps<TTheme>> | null =>
+        theme.noDefaultStyle ? null : defaultStyles};
 
     // TODO@all: these styles need to be extracted (and adjusted) to the Skeleton component once it is ready to be built
     .skeleton {
