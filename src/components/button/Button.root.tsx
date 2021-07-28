@@ -5,6 +5,7 @@ import Icon from '../../foundations/icon';
 import Spacing, { applyPadding } from '../../utilities/spacing';
 import { applyShape } from '../../foundations/shape';
 import { TTheme } from '../../utilities/theme';
+import { resetButton } from '../../utilities/theme/global-styles/reset-styles';
 import { setAlpha, blendColors, Utils } from '../../shared';
 import { applyTextMargin, applyTextStyles } from '../text';
 
@@ -26,7 +27,7 @@ const ButtonRoot = styled.button.withConfig<PButtonRoot>({
         Utils.blockProperty(property, ['width']) && validator(property),
 })(
     ({
-        theme: { palette, action, background },
+        theme: { palette, action, background, noStyleReset },
         size,
         width,
         variant,
@@ -131,6 +132,8 @@ const ButtonRoot = styled.button.withConfig<PButtonRoot>({
               `;
 
         return css`
+            ${noStyleReset && resetButton}
+
             display: flex;
             align-items: center;
             justify-content: center;

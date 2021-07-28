@@ -65,6 +65,8 @@ type TThemeAnimations = {
 type TTheme = {
     type: 'light' | 'dark';
     noStyleReset: boolean;
+    noFontFaces: boolean;
+    noDefaultStyle: boolean;
     elevationOpacity: number;
     palette: TTHemeColors;
     badges: TThemeBadges;
