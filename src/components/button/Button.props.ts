@@ -16,6 +16,11 @@ type PButton = {
      */
     label: string;
     /**
+     * define if the icon is in (forced) active state
+     * @default false
+     */
+    active?: boolean;
+    /**
      * when pushing a button is potentially harmful use this property to show a
      * visual hint to that (button turns red/to the defined alert color)
      * @default false
@@ -73,7 +78,7 @@ type PButton = {
 };
 
 type PButtonRoot = Required<
-    Pick<PButton, 'destructive' | 'inverted' | 'disabled' | 'variant' | 'width' | 'size'>
+    Pick<PButton, 'active' | 'destructive' | 'inverted' | 'disabled' | 'variant' | 'width' | 'size'>
 >;
 
 type PButtonIconRoot = {
