@@ -20,6 +20,7 @@ const IconButtonRoot = styled.button.withConfig<PIconButtonRoot>({
         compact,
         inverted,
         toggled,
+        active,
         destructive,
         disabled,
         theme: { palette, action, text, animation, noStyleReset },
@@ -68,6 +69,11 @@ const IconButtonRoot = styled.button.withConfig<PIconButtonRoot>({
             opacities.text.default = 0.32;
         }
 
+        const activeStyles = css`
+            background: ${setAlpha(colors.background, opacities.background.active)};
+            color: ${setAlpha(inverted ? contrast : main, opacities.text.active)};
+        `;
+
         const actionStyles = disabled
             ? css`
                   cursor: not-allowed;
@@ -82,8 +88,7 @@ const IconButtonRoot = styled.button.withConfig<PIconButtonRoot>({
                   }
 
                   :active {
-                      background: ${setAlpha(colors.background, opacities.background.active)};
-                      color: ${setAlpha(inverted ? contrast : main, opacities.text.active)};
+                      ${activeStyles};
                   }
 
                   &:focus {
@@ -126,6 +131,8 @@ const IconButtonRoot = styled.button.withConfig<PIconButtonRoot>({
             }
 
             ${actionStyles};
+
+            ${active && activeStyles}
 
             transition: background ${animation.fast} ease-in-out,
                 color ${animation.fast} ease-in-out, box-shadow ${animation.fast} ease-in-out;
