@@ -30,6 +30,11 @@ type PIconButton = {
      */
     toggled?: boolean;
     /**
+     * define if the icon is in (forced) active state
+     * @default false
+     */
+    active?: boolean;
+    /**
      * define if the icons action is destructive
      * @default false
      */
