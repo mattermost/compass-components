@@ -22,6 +22,7 @@ const Button: React.FC<PButton> = ({
     size = DEFAULT_BUTTON_SIZE,
     variant = DEFAULT_BUTTON_VARIANT,
     width = DEFAULT_BUTTON_WIDTH,
+    active = false,
     destructive = false,
     inverted = false,
     disabled = false,
@@ -46,6 +47,7 @@ const Button: React.FC<PButton> = ({
     const rootProperties = {
         disabled: disabled || !Utils.isFunction(onClick),
         width,
+        active,
         destructive,
         inverted,
         size,

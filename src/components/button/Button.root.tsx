@@ -31,6 +31,7 @@ const ButtonRoot = styled.button.withConfig<PButtonRoot>({
         size,
         width,
         variant,
+        active,
         destructive,
         inverted,
         disabled,
@@ -98,6 +99,13 @@ const ButtonRoot = styled.button.withConfig<PButtonRoot>({
 
         colors.background = setAlpha(colors.main, opacities.background);
 
+        const activeStyles = css`
+            background: ${blendColors(
+                colors.background,
+                setAlpha(colors.action, opacities.active)
+            )};
+        `;
+
         // disabled buttons do not have interactional states
         const actionStyles = disabled
             ? css`
@@ -111,10 +119,7 @@ const ButtonRoot = styled.button.withConfig<PButtonRoot>({
                       )};
                   }
                   &:active {
-                      background: ${blendColors(
-                          colors.background,
-                          setAlpha(colors.action, opacities.active)
-                      )};
+                      ${activeStyles};
                   }
                   &:focus {
                       box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.32),
@@ -155,6 +160,8 @@ const ButtonRoot = styled.button.withConfig<PButtonRoot>({
             `};
 
             ${actionStyles};
+
+            ${active && activeStyles}
 
             transition-property: box-shadow, background-color, color;
             transition-duration: 150ms;
