@@ -1,5 +1,4 @@
 import { TUserStatus } from '../../shared';
+import { TIconSize } from '../../foundations/icon';
 
-type TStatusIconSize = 8 | 10 | 12 | 16 | 20 | 32;
-
-export type { TUserStatus as TStatusIconStatus, TStatusIconSize };
+export type { TUserStatus as TStatusIconStatus, TIconSize as TStatusIconSize };
