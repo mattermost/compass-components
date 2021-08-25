@@ -15,23 +15,17 @@ const StatusBadgeRoot = styled.div.withConfig({
     ({
         theme,
         size,
-        status,
         background = theme.background.default,
-    }: ThemedStyledProps<PStatusBadgeRoot, TTheme>): FlattenSimpleInterpolation => {
-        const color = theme.badges[status];
+    }: ThemedStyledProps<PStatusBadgeRoot, TTheme>): FlattenSimpleInterpolation => css`
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
 
-        return css`
-            flex: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        background-color: ${background};
 
-            background-color: ${background};
-            color: ${color};
-
-            ${applyShape({ width: STATUSBADGE_SIZE_MAP[size] + 4, radius: 'circle' })};
-        `;
-    }
+        ${applyShape({ width: STATUSBADGE_SIZE_MAP[size] + 4, radius: 'circle' })};
+    `
 );
 
 export default StatusBadgeRoot;

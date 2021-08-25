@@ -22,6 +22,6 @@ type PStatusBadge = {
 };
 
 export type PStatusBadgeRoot = Required<Pick<PStatusBadge, 'size'>> &
-    Pick<PStatusBadge, 'background' | 'status'>;
+    Pick<PStatusBadge, 'background'>;
 
 export default PStatusBadge;

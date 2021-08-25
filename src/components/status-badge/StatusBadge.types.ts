@@ -1,6 +1,4 @@
-import { TComponentSizeToken } from '../../shared';
-
-type TStatusBadgeStatus = 'online' | 'away' | 'dnd' | 'offline';
+import { TComponentSizeToken, TUserStatus } from '../../shared';
 
 type TStatusBadgeSize = 8 | 10 | 12 | 16 | 20 | 32;
 
@@ -10,4 +8,9 @@ type TStatusBadgeSizeMap = {
     [key in TStatusBadgeSizeToken]: TStatusBadgeSize;
 };
 
-export type { TStatusBadgeStatus, TStatusBadgeSize, TStatusBadgeSizeToken, TStatusBadgeSizeMap };
+export type {
+    TUserStatus as TStatusBadgeStatus,
+    TStatusBadgeSize,
+    TStatusBadgeSizeToken,
+    TStatusBadgeSizeMap,
+};
