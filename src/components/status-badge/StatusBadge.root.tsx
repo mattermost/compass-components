@@ -1,11 +1,11 @@
 import styled, { css } from 'styled-components';
 import { FlattenSimpleInterpolation, ThemedStyledProps } from 'styled-components/ts3.6';
 
+import { STATUSICON_SIZE_MAP } from '../status-icon';
 import { applyShape } from '../../foundations/shape';
 import { TTheme } from '../../utilities/theme';
 import { Utils } from '../../shared';
 
-import { STATUSBADGE_SIZE_MAP } from './StatusBadge.constants';
 import { PStatusBadgeRoot } from './StatusBadge.props';
 
 const StatusBadgeRoot = styled.div.withConfig({
@@ -24,7 +24,7 @@ const StatusBadgeRoot = styled.div.withConfig({
 
         background-color: ${background};
 
-        ${applyShape({ width: STATUSBADGE_SIZE_MAP[size] + 4, radius: 'circle' })};
+        ${applyShape({ width: STATUSICON_SIZE_MAP[size] + 4, radius: 'circle' })};
     `
 );
 

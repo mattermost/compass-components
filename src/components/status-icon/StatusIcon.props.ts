@@ -1,4 +1,4 @@
-import { TStatusIconSize, TStatusIconStatus } from './StatusIcon.types';
+import { TStatusIconSize, TStatusIconSizeToken, TStatusIconStatus } from './StatusIcon.types';
 
 type PStatusIcon = {
     /**
@@ -7,15 +7,15 @@ type PStatusIcon = {
     status: TStatusIconStatus;
     /**
      * size token that defines the sizing for the StatusIcon
-     * @default 16
+     * @default 'md'
      */
-    size?: TStatusIconSize;
+    size?: TStatusIconSizeToken;
     /**
      * custom className
      */
     className?: string;
 };
 
-export type PStatusIconRoot = Required<Pick<PStatusIcon, 'size'>> & Pick<PStatusIcon, 'status'>;
+export type PStatusIconRoot = Pick<PStatusIcon, 'status'> & { size: TStatusIconSize };
 
 export default PStatusIcon;

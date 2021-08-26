@@ -3,7 +3,7 @@ import React from 'react';
 import { TIconGlyph } from '../../foundations/icon';
 
 import PStatusIcon from './StatusIcon.props';
-import { DEFAULT_STATUSICON_SIZE } from './StatusIcon.constants';
+import { DEFAULT_STATUSICON_SIZE, STATUSICON_SIZE_MAP } from './StatusIcon.constants';
 import StatusIconRoot from './StatusIcon.root';
 
 const StatusIcon: React.FC<PStatusIcon> = ({
@@ -30,7 +30,7 @@ const StatusIcon: React.FC<PStatusIcon> = ({
     const rootProperties = {
         status,
         glyph,
-        size,
+        size: STATUSICON_SIZE_MAP[size],
         ...rest,
     };
 

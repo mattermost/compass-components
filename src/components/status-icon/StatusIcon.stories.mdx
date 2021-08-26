@@ -1,6 +1,6 @@
 import { Meta, Story, Canvas, Title, Subtitle } from '@storybook/addon-docs/blocks';
 
-import StatusIcon from './index';
+import StatusIcon, { STATUSICON_SIZE_LABELS, STATUSICON_STATUS_LABELS } from './index';
 import {
     DEFAULT_STATUSICON_SIZE,
     DEFAULT_STATUSICON_STATUS,
@@ -134,15 +134,17 @@ import Text from '../text';
 
 export const argTypes = {
     status: {
+        options: STATUSICON_STATUSES,
         control: {
             type: 'select',
-            options: STATUSICON_STATUSES,
+            labels: STATUSICON_STATUS_LABELS,
         },
     },
     size: {
+        options: STATUSICON_SIZES,
         control: {
             type: 'select',
-            options: STATUSICON_SIZES,
+            labels: STATUSICON_SIZE_LABELS,
         },
     },
     ...Utils.hideComponentProperties(['className']),

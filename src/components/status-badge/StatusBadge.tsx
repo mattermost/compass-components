@@ -3,7 +3,7 @@ import React from 'react';
 import StatusIcon from '../status-icon';
 
 import PStatusBadge from './StatusBadge.props';
-import { DEFAULT_STATUSBADGE_SIZE, STATUSBADGE_SIZE_MAP } from './StatusBadge.constants';
+import { DEFAULT_STATUSBADGE_SIZE } from './StatusBadge.constants';
 import StatusBadgeRoot from './StatusBadge.root';
 
 const StatusBadge: React.FC<PStatusBadge> = ({
@@ -19,7 +19,7 @@ const StatusBadge: React.FC<PStatusBadge> = ({
 
     return (
         <StatusBadgeRoot {...rootProperties}>
-            <StatusIcon status={status} size={STATUSBADGE_SIZE_MAP[size]} />
+            <StatusIcon status={status} size={size} />
         </StatusBadgeRoot>
     );
 };
