@@ -50,14 +50,23 @@ function applyShape({
     if (variant === 'circle' && Utils.isNumber(width) && width >= 0) {
         return css`
             border-radius: ${RADII[variant]};
+
             width: ${Utils.getPxValue(width)};
             height: ${Utils.getPxValue(width)};
+
+            flex-basis: ${Utils.getPxValue(width)}; // adding this in for flex: 0 elements
         `;
     }
 
     return css`
         border-radius: ${RADII[variant]};
-        width: ${width ? Utils.getPxValue(width) : null};
+
+        ${width
+            ? css`
+                  width: ${Utils.getPxValue(width)};
+                  flex-basis: ${Utils.getPxValue(width)};
+              `
+            : null};
         height: ${height ? Utils.getPxValue(height) : null};
     `;
 }
