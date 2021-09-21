@@ -28,7 +28,7 @@ const Text = ({
 }: PText): JSX.Element => {
     Utils.assert(
         TEXT_ELEMENTS.includes(element) || React.isValidElement(element),
-        `Compass Components - Text: component was used with an unsupported element '${element}'.
+        `Text: component was used with an unsupported element '${element}'.
             Please provide one from these available options: ${TEXT_ELEMENTS.join(
                 ', '
             )}, or a valid \`ReactElement\``,
@@ -37,7 +37,7 @@ const Text = ({
 
     Utils.assert(
         TEXT_COLORS.includes(color) || Utils.isColor(color),
-        `Compass Components - Text: component was used with an unsupported color '${color}'.
+        `Text: component was used with an unsupported color '${color}'.
             Please provide one from these available options: ${TEXT_WEIGHTS.join(
                 ', '
             )}, or a valid CSS color value`,
@@ -46,21 +46,21 @@ const Text = ({
 
     Utils.assert(
         TEXT_SIZES.includes(size),
-        `Compass Components - Text: component was used with an unsupported size '${size}'.
+        `Text: component was used with an unsupported size '${size}'.
             Please provide one from these available options: ${TEXT_SIZES.join(', ')}.`,
         true
     );
 
     Utils.assert(
         TEXT_MARGINS.includes(margin),
-        `Compass Components - Text: component was used with an unsupported margin '${margin}'.
+        `Text: component was used with an unsupported margin '${margin}'.
             Please provide one from these available options: ${TEXT_MARGINS.join(', ')}.`,
         true
     );
 
     Utils.assert(
         TEXT_WEIGHTS.includes(weight),
-        `Compass Components - Text: component was used with an unsupported weight '${weight}'.
+        `Text: component was used with an unsupported weight '${weight}'.
             Please provide one from these available options: ${TEXT_WEIGHTS.join(', ')}.`,
         true
     );

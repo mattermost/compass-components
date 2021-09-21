@@ -30,7 +30,7 @@ const Button: React.FC<PButton> = ({
 }: PButton) => {
     Utils.assert(
         BUTTON_VARIANTS.includes(variant),
-        `Compass Components - Button: The Button component was used with an invalid 'variant' property. Please choose from the following options: ${BUTTON_VARIANTS.join(
+        `Button: The Button component was used with an invalid 'variant' property. Please choose from the following options: ${BUTTON_VARIANTS.join(
             ', '
         )}`,
         true
@@ -38,7 +38,7 @@ const Button: React.FC<PButton> = ({
 
     Utils.assert(
         BUTTON_SIZES.includes(size),
-        `Compass Components - Button: The Button component was used with an invalid 'size' property. Please choose from the following options: ${BUTTON_SIZES.join(
+        `Button: The Button component was used with an invalid 'size' property. Please choose from the following options: ${BUTTON_SIZES.join(
             ', '
         )}`,
         true

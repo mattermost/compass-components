@@ -69,7 +69,7 @@ const Avatar = ({
 }: PAvatar): JSX.Element => {
     Utils.assert(
         AVATAR_ELEMENTS.includes(element),
-        `Compass Components: Avatar component was used with an unsupported element '${element}'.
+        `Avatar: component was used with an unsupported element '${element}'.
                 Please provide one from these available options: ${AVATAR_ELEMENTS.join(', ')}.`
     );
 

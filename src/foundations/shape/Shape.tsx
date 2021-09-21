@@ -20,7 +20,7 @@ const Shape = ({
 }: PShape): JSX.Element => {
     Utils.assert(
         SHAPE_ELEMENTS.includes(element) || Utils.isFunctionalComponent(element),
-        `Compass Components - Shape: used element ${element} is unsupported. Please use one supported by the component from this list: ${SHAPE_ELEMENTS.join(
+        `Shape: used element ${element} is unsupported. Please use one supported by the component from this list: ${SHAPE_ELEMENTS.join(
             ', '
         )}`,
         true
