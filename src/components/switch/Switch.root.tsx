@@ -4,9 +4,9 @@ import type { FlattenSimpleInterpolation, ThemedStyledProps } from 'styled-compo
 import { applyTextMargin, applyTextStyles } from '../text';
 import { applyShape } from '../../foundations/shape';
 import { setAlpha, blendColors, Utils } from '../../shared';
-import { TTheme } from '../../utilities/theme';
+import type { TTheme } from '../../utilities/theme';
 
-import { PSwitchRoot } from './Switch.props';
+import type { PSwitchRoot } from './Switch.props';
 import { SWITCH_VALUES_MAPPING } from './Switch.constants';
 
 const SwitchRoot = styled.label.withConfig({

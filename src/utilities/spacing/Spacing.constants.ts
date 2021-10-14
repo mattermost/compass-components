@@ -1,4 +1,4 @@
-import { TSpacingToken } from './Spacing.types';
+import type { TSpacingToken } from './Spacing.types';
 
 const SIZES: Record<TSpacingToken, number> = {
     0: 0,

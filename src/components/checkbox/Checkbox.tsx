@@ -4,7 +4,7 @@ import Icon from '../../foundations/icon';
 import Text from '../text';
 import { Utils } from '../../shared';
 
-import PCheckbox from './Checkbox.props';
+import type PCheckbox from './Checkbox.props';
 import { CHECKBOX_VALUES_MAPPING, DEFAULT_CHECKBOX_SIZE } from './Checkbox.constants';
 import CheckboxRoot from './Checkbox.root';
 

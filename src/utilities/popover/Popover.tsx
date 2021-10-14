@@ -9,7 +9,7 @@ import {
     DEFAULT_POPOVER_PLACEMENT,
     POPOVER_OFFSET_VALUES,
 } from './Popover.constants';
-import PPopover from './Popover.props';
+import type PPopover from './Popover.props';
 
 const Popover = ({
     anchorReference,

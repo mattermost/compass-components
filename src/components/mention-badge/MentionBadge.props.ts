@@ -1,4 +1,4 @@
-import { TMentionBadgeSizeToken } from './MentionBadge.types';
+import type { TMentionBadgeSizeToken } from './MentionBadge.types';
 
 type PMentionBadge = {
     /**

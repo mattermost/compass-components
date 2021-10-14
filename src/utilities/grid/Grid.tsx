@@ -1,7 +1,8 @@
 import React from 'react';
 
 import { DEFAULT_GRID_ELEMENT, DEFAULT_GRID_ITEM_ELEMENT } from './Grid.constants';
-import PGrid, { PGridItem } from './Grid.props';
+import type PGrid from './Grid.props';
+import type { PGridItem } from './Grid.props';
 import { GridRoot, GridItemRoot } from './Grid.root';
 
 /**

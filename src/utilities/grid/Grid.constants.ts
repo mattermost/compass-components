@@ -1,4 +1,4 @@
-import { Property } from 'csstype';
+import type { Property } from 'csstype';
 
 const DEFAULT_GRID_ELEMENT = 'div';
 

@@ -1,6 +1,6 @@
-import { ReactNode, ReactNodeArray } from 'react';
+import type { ReactNode, ReactNodeArray } from 'react';
 
-import { TSpacingDefinition } from '../utilities/spacing';
+import type { TSpacingDefinition } from '../utilities/spacing';
 
 /**
  * This section contains attributes specific to common user interface elements

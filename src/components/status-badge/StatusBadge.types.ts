@@ -1,4 +1,4 @@
-import { TComponentSizeToken, TUserStatus } from '../../shared';
+import type { TComponentSizeToken, TUserStatus } from '../../shared';
 
 type TStatusBadgeSizeToken = Exclude<TComponentSizeToken, 'xxxs' | 'xxs' | 'xxl' | 'xxxl'>;
 

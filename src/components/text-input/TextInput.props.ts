@@ -1,9 +1,9 @@
-import { ChangeEventHandler, FocusEventHandler, ReactNode, ReactNodeArray } from 'react';
+import type { ChangeEventHandler, FocusEventHandler, ReactNode, ReactNodeArray } from 'react';
 
-import { TIconGlyph } from '../../foundations/icon';
-import { TButtonWidth } from '../button';
+import type { TIconGlyph } from '../../foundations/icon';
+import type { TButtonWidth } from '../button';
 
-import { TTextInputSizeToken } from './TextInput.types';
+import type { TTextInputSizeToken } from './TextInput.types';
 
 type PTextInput = {
     /**

@@ -7,8 +7,8 @@ import {
     DEFAULT_HEADING_WEIGHT,
     HEADING_DEFINITIONS,
     HEADING_ELEMENTS,
-    THeadingElement,
 } from '../../../components/heading';
+import type { THeadingElement } from '../../../components/heading';
 import { DEFAULT_TEXT_SIZE, DEFAULT_TEXT_WEIGHT, TEXT_DEFINITIONS } from '../../../components/text';
 import { FONT_TYPE_FAMILIES } from '../../../shared';
 

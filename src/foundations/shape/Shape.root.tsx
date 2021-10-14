@@ -3,11 +3,11 @@ import type { FlattenSimpleInterpolation, ThemedStyledProps } from 'styled-compo
 
 import applyElevation from '../../utilities/elevation';
 import { applyMargin, applyPadding } from '../../utilities/spacing';
-import { TTheme } from '../../utilities/theme';
+import type { TTheme } from '../../utilities/theme';
 import { Utils } from '../../shared';
 
 import applyShape from './Shape.mixins';
-import { PShapeRoot } from './Shape.props';
+import type { PShapeRoot } from './Shape.props';
 
 const ShapeRoot = styled.div.withConfig<PShapeRoot>({
     shouldForwardProp: (property, validator) =>

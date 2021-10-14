@@ -1,7 +1,7 @@
 import type { TransitionStatus } from 'react-transition-group';
 import type { FlattenSimpleInterpolation } from 'styled-components';
 
-import { TThemeAnimationSpeed } from '../theme';
+import type { TThemeAnimationSpeed } from '../theme';
 
 type TTransitionType = 'fade' | 'scale';
 

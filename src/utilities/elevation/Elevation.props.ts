@@ -1,4 +1,4 @@
-import { TElevationLevel } from './Elevation.types';
+import type { TElevationLevel } from './Elevation.types';
 
 type PElevation = {
     /**

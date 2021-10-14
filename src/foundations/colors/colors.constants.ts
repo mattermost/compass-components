@@ -1,4 +1,4 @@
-import { TBaseColorName, TBaseColorShade } from './colors.types';
+import type { TBaseColorName, TBaseColorShade } from './colors.types';
 
 const COLOR_NAMES: TBaseColorName[] = [
     'blue',

@@ -4,13 +4,13 @@ import type { FlattenSimpleInterpolation, ThemedStyledProps } from 'styled-compo
 
 import { applyHeadingStyles } from '../heading';
 import { applyShape } from '../../foundations/shape';
-import { TTheme } from '../../utilities/theme';
+import type { TTheme } from '../../utilities/theme';
 import { Utils } from '../../shared';
 import MentionBadge from '../mention-badge';
 import StatusBadge from '../status-badge';
 
 import { AVATAR_SIZE_MAP, AVATAR_FALLBACK_COLORS, AVATAR_SIZES } from './Avatar.constants';
-import { PAvatarMentionBadgeRoot, PAvatarRoot, PAvatarStatusBadgeRoot } from './Avatar.props';
+import type { PAvatarMentionBadgeRoot, PAvatarRoot, PAvatarStatusBadgeRoot } from './Avatar.props';
 
 const AvatarStatusBadgeRoot = styled(StatusBadge)<PAvatarStatusBadgeRoot>(
     ({ offset }) => css`

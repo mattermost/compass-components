@@ -4,8 +4,8 @@ import type { FlattenSimpleInterpolation } from 'styled-components';
 import { Utils } from '../../shared';
 
 import { DEFAULT_SHAPE_BORDER_RADIUS, SHAPE_BORDER_RADII } from './Shape.constants';
-import { PApplyShape } from './Shape.props';
-import { TShapeVariant } from './Shape.types';
+import type { PApplyShape } from './Shape.props';
+import type { TShapeVariant } from './Shape.types';
 
 /**
  * apply a shape to a given element without the use of an additional wrapping Shape component.

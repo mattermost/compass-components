@@ -5,10 +5,10 @@ import Text, { applyTextMargin, applyTextStyles } from '../text';
 import { applyShape } from '../../foundations/shape';
 import { Utils } from '../../shared';
 import Spacing, { applyPadding } from '../../utilities/spacing';
-import { TTheme } from '../../utilities/theme';
+import type { TTheme } from '../../utilities/theme';
 
-import { PTagRoot } from './Tag.props';
-import { TTagVariant } from './Tag.types';
+import type { PTagRoot } from './Tag.props';
+import type { TTagVariant } from './Tag.types';
 
 const TagRoot = styled(Text).withConfig<PTagRoot>({
     shouldForwardProp: (property, validator) =>

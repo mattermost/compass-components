@@ -3,10 +3,10 @@ import type { FlattenSimpleInterpolation, ThemedStyledProps } from 'styled-compo
 
 import { STATUSICON_SIZE_MAP } from '../status-icon';
 import { applyShape } from '../../foundations/shape';
-import { TTheme } from '../../utilities/theme';
+import type { TTheme } from '../../utilities/theme';
 import { Utils } from '../../shared';
 
-import { PStatusBadgeRoot } from './StatusBadge.props';
+import type { PStatusBadgeRoot } from './StatusBadge.props';
 
 const StatusBadgeRoot = styled.div.withConfig({
     shouldForwardProp: (property, validator) =>

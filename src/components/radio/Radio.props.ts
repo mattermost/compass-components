@@ -1,6 +1,6 @@
-import { ReactNode, ReactNodeArray, MouseEventHandler } from 'react';
+import type { ReactNode, ReactNodeArray, MouseEventHandler } from 'react';
 
-import { TRadioSizeToken } from './Radio.types';
+import type { TRadioSizeToken } from './Radio.types';
 
 type PRadio = {
     /**

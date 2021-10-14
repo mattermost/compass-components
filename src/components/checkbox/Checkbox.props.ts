@@ -1,6 +1,6 @@
-import { MouseEventHandler } from 'react';
+import type { MouseEventHandler } from 'react';
 
-import { TCheckboxSizeToken } from './Checkbox.types';
+import type { TCheckboxSizeToken } from './Checkbox.types';
 
 type PCheckbox = {
     /**

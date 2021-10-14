@@ -1,6 +1,6 @@
 import { Utils, FONT_COLORS } from '../../shared';
 
-import {
+import type {
     TTextColor,
     TTextDefinitionMap,
     TTextElement,

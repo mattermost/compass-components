@@ -7,7 +7,7 @@ import {
     DEFAULT_IMAGE_HEIGHT,
     DEFAULT_IMAGE_WIDTH,
 } from './Image.constants';
-import PImage from './Image.props';
+import type PImage from './Image.props';
 import ImageRoot from './Image.root';
 
 const Image: React.FC<PImage> = ({

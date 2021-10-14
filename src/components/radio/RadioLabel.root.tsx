@@ -1,13 +1,14 @@
 import styled, { css } from 'styled-components';
 import type { FlattenSimpleInterpolation, ThemedStyledProps } from 'styled-components';
 
-import Spacing, { TSpacingToken, applyMargin } from '../../utilities/spacing';
+import Spacing, { applyMargin } from '../../utilities/spacing';
+import type { TSpacingToken } from '../../utilities/spacing';
 import { applyTextMargin, applyTextStyles } from '../text';
 import { Utils } from '../../shared';
-import { TTheme } from '../../utilities/theme';
+import type { TTheme } from '../../utilities/theme';
 
 import { RADIO_VALUES_MAPPING } from './Radio.constants';
-import { PRadioLabel } from './Radio.props';
+import type { PRadioLabel } from './Radio.props';
 
 const RadioLabelRoot = styled.span.withConfig<PRadioLabel>({
     shouldForwardProp: (property, validator) =>

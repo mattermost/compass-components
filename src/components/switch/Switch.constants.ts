@@ -1,4 +1,4 @@
-import { TSwitchSizeToken, TSwitchDefinition } from './Switch.types';
+import type { TSwitchSizeToken, TSwitchDefinition } from './Switch.types';
 
 const DEFAULT_SWITCH_SIZE: TSwitchSizeToken = 'md';
 

@@ -6,7 +6,7 @@ import type {
 } from 'styled-components';
 
 import { setAlpha } from '../../../shared';
-import { TTheme } from '../themes';
+import type { TTheme } from '../themes';
 
 import fontFaces from './font-faces';
 import reset from './reset-styles';

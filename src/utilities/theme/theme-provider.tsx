@@ -2,7 +2,8 @@ import React from 'react';
 import { ThemeProvider as StyledThemeProvider } from 'styled-components';
 
 import GlobalStyle from './global-styles';
-import { TTheme, lightTheme } from './themes';
+import { lightTheme } from './themes';
+import type { TTheme } from './themes';
 
 type PThemeProvider = {
     theme?: TTheme;

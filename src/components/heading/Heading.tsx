@@ -14,7 +14,7 @@ import {
     HEADING_SIZES,
     HEADING_WEIGHTS,
 } from './Heading.constants';
-import PHeading from './Heading.props';
+import type PHeading from './Heading.props';
 import HeadingRoot from './Heading.root';
 
 const Heading = ({

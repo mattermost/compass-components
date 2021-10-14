@@ -1,8 +1,14 @@
-import { ReactNode, ReactNodeArray } from 'react';
+import type { ReactNode, ReactNodeArray } from 'react';
 
-import { TTheme } from '../../utilities/theme';
+import type { TTheme } from '../../utilities/theme';
 
-import { TTextSizeToken, TTextElement, TTextColor, TTextWeight, TTextMargin } from './Text.types';
+import type {
+    TTextSizeToken,
+    TTextElement,
+    TTextColor,
+    TTextWeight,
+    TTextMargin,
+} from './Text.types';
 
 type PText = {
     /**

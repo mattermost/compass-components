@@ -8,7 +8,7 @@ import type {
 import { Utils } from '../../shared';
 import { applyShape } from '../../foundations/shape';
 import Spacing, { applyPadding } from '../../utilities/spacing';
-import { TTheme } from '../../utilities/theme';
+import type { TTheme } from '../../utilities/theme';
 import { applyTextMargin, applyTextStyles } from '../text';
 
 import {
@@ -16,7 +16,7 @@ import {
     MENTIONBADGE_PADDING_SIZE_MAP,
     MENTIONBADGE_TEXT_SIZE_MAP,
 } from './MentionBadge.constants';
-import { PMentionBadgeRoot } from './MentionBadge.props';
+import type { PMentionBadgeRoot } from './MentionBadge.props';
 
 const getBadgeColors = ({
     inverted,

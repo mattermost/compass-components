@@ -1,4 +1,4 @@
-import { TStatusBadgeSizeToken, TStatusBadgeStatus } from './StatusBadge.types';
+import type { TStatusBadgeSizeToken, TStatusBadgeStatus } from './StatusBadge.types';
 
 type PStatusBadge = {
     /**

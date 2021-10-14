@@ -1,6 +1,6 @@
 import { normal } from 'color-blend';
 
-import { TBaseColorShade } from '../foundations/colors/colors.types';
+import type { TBaseColorShade } from '../foundations/colors/colors.types';
 
 import Utils from './utils';
 

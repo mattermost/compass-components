@@ -1,4 +1,4 @@
-import { TFlexAlignment, TFlexElement, TFlexFlex, TFlexJustify } from './Flex.types';
+import type { TFlexAlignment, TFlexElement, TFlexFlex, TFlexJustify } from './Flex.types';
 
 const FLEX_ELEMENTS: TFlexElement[] = [
     'div',

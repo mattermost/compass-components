@@ -2,9 +2,9 @@ import styled, { css } from 'styled-components';
 import type { FlattenSimpleInterpolation, ThemedStyledProps } from 'styled-components';
 
 import Spacing, { applyPadding } from '../../utilities/spacing';
-import { TTheme } from '../../utilities/theme';
+import type { TTheme } from '../../utilities/theme';
 
-import { PInputRoot } from './TextInput.props';
+import type { PInputRoot } from './TextInput.props';
 
 const InputRoot = styled.input<PInputRoot>(
     ({

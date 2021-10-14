@@ -1,4 +1,4 @@
-import { TIconColor, TIconGlyph, TIconSize } from './Icon.types';
+import type { TIconColor, TIconGlyph, TIconSize } from './Icon.types';
 
 type PIcon = {
     /**

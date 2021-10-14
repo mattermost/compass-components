@@ -11,7 +11,7 @@ import {
     DEFAULT_BUTTON_VARIANT,
     DEFAULT_BUTTON_WIDTH,
 } from './Button.constants';
-import PButton from './Button.props';
+import type PButton from './Button.props';
 import ButtonRoot, { ButtonIconRoot } from './Button.root';
 
 const Button: React.FC<PButton> = ({

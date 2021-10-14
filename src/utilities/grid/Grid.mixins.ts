@@ -14,7 +14,7 @@ import {
     DEFAULT_GRID_PLACE_ITEMS,
     DEFAULT_GRID_ROWS_TEMPLATE,
 } from './Grid.constants';
-import { PApplyGrid, PApplyGridItem } from './Grid.props';
+import type { PApplyGrid, PApplyGridItem } from './Grid.props';
 
 /**
  * applies `display: grid` alongside all definitions passed to this mixin.

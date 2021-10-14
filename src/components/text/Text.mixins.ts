@@ -9,7 +9,7 @@ import {
     DEFAULT_TEXT_WEIGHT,
     TEXT_DEFINITIONS,
 } from './Text.constants';
-import { PApplyTextColor, PApplyTextMargin, PApplyTextStyles } from './Text.props';
+import type { PApplyTextColor, PApplyTextMargin, PApplyTextStyles } from './Text.props';
 
 const applyTextStyles = ({
     inheritLineHeight = false,

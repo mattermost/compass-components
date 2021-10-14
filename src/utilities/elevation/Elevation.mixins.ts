@@ -2,7 +2,7 @@ import { css } from 'styled-components';
 import type { FlattenSimpleInterpolation } from 'styled-components';
 
 import { ELEVATION_DEFINITIONS } from './Elevation.constants';
-import PElevation from './Elevation.props';
+import type PElevation from './Elevation.props';
 
 /**
  * Apply elevation styles to a styled component.

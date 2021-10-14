@@ -1,4 +1,4 @@
-import { TTagVariant, TTagSizeToken } from './Tag.types';
+import type { TTagVariant, TTagSizeToken } from './Tag.types';
 
 const TAG_VARIANTS: TTagVariant[] = [
     'highlight',

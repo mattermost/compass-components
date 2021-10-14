@@ -2,9 +2,9 @@ import styled, { css } from 'styled-components';
 import type { FlattenSimpleInterpolation, ThemedStyledProps } from 'styled-components';
 
 import { Utils } from '../../shared';
-import { TTheme } from '../../utilities/theme';
+import type { TTheme } from '../../utilities/theme';
 
-import { PHeadingRoot } from './Heading.props';
+import type { PHeadingRoot } from './Heading.props';
 import { applyHeadingColor, applyHeadingMargin, applyHeadingStyles } from './Heading.mixins';
 
 const HeadingRoot = styled.h6.withConfig<PHeadingRoot>({

@@ -1,4 +1,9 @@
-import { TAvatarElement, TAvatarSizeToken, TAvatarStatus, TAvatarVariant } from './Avatar.types';
+import type {
+    TAvatarElement,
+    TAvatarSizeToken,
+    TAvatarStatus,
+    TAvatarVariant,
+} from './Avatar.types';
 
 type PAvatar = {
     /**

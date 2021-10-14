@@ -1,4 +1,4 @@
-import { TContainerElement } from '../../shared';
+import type { TContainerElement } from '../../shared';
 
 type TFlexAlignment =
     | 'initial'

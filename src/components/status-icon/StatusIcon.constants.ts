@@ -1,4 +1,8 @@
-import { TStatusIconSizeToken, TStatusIconSizeMap, TStatusIconStatus } from './StatusIcon.types';
+import type {
+    TStatusIconSizeToken,
+    TStatusIconSizeMap,
+    TStatusIconStatus,
+} from './StatusIcon.types';
 
 const STATUSICON_SIZES: TStatusIconSizeToken[] = ['xs', 'sm', 'md', 'lg', 'xl'];
 

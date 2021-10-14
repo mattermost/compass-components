@@ -1,4 +1,4 @@
-import { TElevationLevel, TElevationDefinitions } from './Elevation.types';
+import type { TElevationLevel, TElevationDefinitions } from './Elevation.types';
 
 const ELEVATION_LEVELS: TElevationLevel[] = [0, 1, 2, 3, 4, 5, 6];
 

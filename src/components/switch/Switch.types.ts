@@ -1,4 +1,4 @@
-import { TTextSizeToken } from '../text';
+import type { TTextSizeToken } from '../text';
 
 type TSwitchSizeToken = 'sm' | 'md' | 'lg';
 

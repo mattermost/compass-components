@@ -2,14 +2,14 @@ import styled, { css } from 'styled-components';
 import type { FlattenSimpleInterpolation, ThemedStyledProps } from 'styled-components';
 
 import { setAlpha, Utils } from '../../shared';
-import { TTheme } from '../../utilities/theme';
+import type { TTheme } from '../../utilities/theme';
 import { resetButton } from '../../utilities/theme/global-styles/reset-styles';
 import Spacing, { applyMargin, applyPadding } from '../../utilities/spacing';
 import { applyShape } from '../../foundations/shape';
 import { applyTextStyles } from '../text';
 
 import { ICON_BUTTON_DEFINITIONS } from './IconButton.constants';
-import { PIconButtonRoot } from './IconButton.props';
+import type { PIconButtonRoot } from './IconButton.props';
 
 const IconButtonRoot = styled.button.withConfig<PIconButtonRoot>({
     shouldForwardProp: (property, validator) =>
