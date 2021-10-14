@@ -1,5 +1,5 @@
 import { ReactNode, ReactNodeArray, CSSProperties } from 'react';
-import { TransitionStatus } from 'react-transition-group';
+import type { TransitionStatus } from 'react-transition-group';
 
 import { TTheme } from '../theme';
 

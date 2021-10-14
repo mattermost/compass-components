@@ -1,11 +1,9 @@
 import { createGlobalStyle } from 'styled-components';
-// eslint-disable-next-line import/no-unassigned-import
-import '@mattermost/compass-icons/css/compass-icons.css';
-import {
+import type {
     FlattenSimpleInterpolation,
     FlattenInterpolation,
     ThemeProps,
-} from 'styled-components/ts3.6';
+} from 'styled-components';
 
 import { setAlpha } from '../../../shared';
 import { TTheme } from '../themes';
@@ -13,6 +11,9 @@ import { TTheme } from '../themes';
 import fontFaces from './font-faces';
 import reset from './reset-styles';
 import defaultStyles from './default-styles';
+
+// eslint-disable-next-line import/no-unassigned-import
+import '@mattermost/compass-icons/css/compass-icons.css';
 
 type PGlobalStyles = {
     theme: TTheme;

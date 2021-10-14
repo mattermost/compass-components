@@ -1,6 +1,6 @@
 import random from 'lodash.random';
 import styled, { css } from 'styled-components';
-import { FlattenSimpleInterpolation, ThemedStyledProps } from 'styled-components/ts3.6';
+import type { FlattenSimpleInterpolation, ThemedStyledProps } from 'styled-components';
 
 import { applyHeadingStyles } from '../heading';
 import { applyShape } from '../../foundations/shape';

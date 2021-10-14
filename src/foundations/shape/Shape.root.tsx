@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { FlattenSimpleInterpolation, ThemedStyledProps } from 'styled-components/ts3.6';
+import type { FlattenSimpleInterpolation, ThemedStyledProps } from 'styled-components';
 
 import applyElevation from '../../utilities/elevation';
 import { applyMargin, applyPadding } from '../../utilities/spacing';

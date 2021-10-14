@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { FlattenSimpleInterpolation, ThemedStyledProps } from 'styled-components/ts3.6';
+import type { FlattenSimpleInterpolation, ThemedStyledProps } from 'styled-components';
 
 import Spacing, { applyPadding } from '../../utilities/spacing';
 import { TTheme } from '../../utilities/theme';

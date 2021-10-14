@@ -1,9 +1,9 @@
 import styled, { css } from 'styled-components';
-import {
+import type {
     FlattenInterpolation,
     FlattenSimpleInterpolation,
     ThemedStyledProps,
-} from 'styled-components/ts3.6';
+} from 'styled-components';
 
 import { Utils } from '../../shared';
 import { applyShape } from '../../foundations/shape';

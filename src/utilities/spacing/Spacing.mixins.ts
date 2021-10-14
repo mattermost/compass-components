@@ -1,5 +1,5 @@
 import { css } from 'styled-components';
-import { FlattenSimpleInterpolation } from 'styled-components/ts3.6';
+import type { FlattenSimpleInterpolation } from 'styled-components';
 
 import { TSpacingDefinition } from './Spacing.types';
 import { parseSpacing } from './Spacing';

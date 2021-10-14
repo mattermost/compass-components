@@ -1,5 +1,5 @@
-import { TransitionStatus } from 'react-transition-group';
-import { FlattenSimpleInterpolation } from 'styled-components/ts3.6';
+import type { TransitionStatus } from 'react-transition-group';
+import type { FlattenSimpleInterpolation } from 'styled-components';
 
 import { TThemeAnimationSpeed } from '../theme';
 

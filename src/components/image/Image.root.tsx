@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { ThemedStyledProps } from 'styled-components/ts3.6';
+import type { ThemedStyledProps } from 'styled-components';
 
 import { Utils } from '../../shared';
 import { TTheme } from '../../utilities/theme';

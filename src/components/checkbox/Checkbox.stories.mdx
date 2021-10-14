@@ -1,13 +1,15 @@
 import { useState } from 'react';
 import { Meta, Story, Canvas, Title, Subtitle, ArgsTable } from '@storybook/addon-docs/blocks';
-import { DEFAULT_CHECKBOX_SIZE, CHECKBOX_SIZES } from './Checkbox.constants';
-import { Utils } from '../../shared';
-import Flex, { Spacing } from '../../utilities/layout';
+
+import Flex from '../../utilities/layout';
 import Text from '../text';
+import { Utils, DEFAULT_ARGUMENTS_TABLE_EXCLUSION } from '../../shared';
+
 import CheckboxAnatomyImg from '../../assets/images/example-checkbox-anatomy.png';
 import CheckboxAnimationGif from '../../assets/images/example-checkbox-animation.gif';
 import CheckboxImg from '../../assets/images/example-checkbox.png';
-import { DEFAULT_ARGUMENTS_TABLE_EXCLUSION } from '../../shared/constants';
+
+import { DEFAULT_CHECKBOX_SIZE, CHECKBOX_SIZES } from './Checkbox.constants';
 import Checkbox from './index';
 
 <Meta component={Checkbox} title="Components/Checkbox" />

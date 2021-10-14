@@ -29,7 +29,7 @@ export default ${names.pascal};
 
 // component.root.tsx
 const componentRoot = (names) => `import styled, { css } from 'styled-components';
-import { FlattenSimpleInterpolation, ThemedStyledProps } from 'styled-components/ts3.6';
+import type { FlattenSimpleInterpolation, ThemedStyledProps } from 'styled-components';
 
 import { TTheme } from '../../utilities/theme';
 

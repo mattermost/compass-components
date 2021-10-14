@@ -95,4 +95,6 @@ async function run() {
     }
 }
 
-run();
+run()
+    .then(() => console.log('### copying files was successful'))
+    .catch((error) => console.log('### an error occured during copy files script:', error));
