@@ -1,6 +1,6 @@
 import { Utils, FONT_COLORS, FONT_MARGINS, FONT_WEIGHTS } from '../../shared';
 
-import {
+import type {
     THeadingColor,
     THeadingDefinitions,
     THeadingElement,

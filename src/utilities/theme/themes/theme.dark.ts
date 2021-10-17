@@ -1,7 +1,7 @@
 import { setAlpha } from '../../../shared';
 import { indigo, green, red, neutral, orange, purple, teal } from '../../../foundations/colors';
 
-import { TTheme } from './theme.types';
+import type { TTheme } from './theme.types';
 
 const darkTheme: TTheme = {
     type: 'dark',

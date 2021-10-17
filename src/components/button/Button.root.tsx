@@ -1,16 +1,16 @@
 import styled, { css } from 'styled-components';
-import { FlattenSimpleInterpolation, ThemedStyledProps } from 'styled-components/ts3.6';
+import type { FlattenSimpleInterpolation, ThemedStyledProps } from 'styled-components';
 
 import Icon from '../../foundations/icon';
 import Spacing, { applyPadding } from '../../utilities/spacing';
 import { applyShape } from '../../foundations/shape';
-import { TTheme } from '../../utilities/theme';
+import type { TTheme } from '../../utilities/theme';
 import { resetButton } from '../../utilities/theme/global-styles/reset-styles';
 import { setAlpha, blendColors, Utils } from '../../shared';
 import { applyTextMargin, applyTextStyles } from '../text';
 
 import { BUTTON_SIZE_MAP } from './Button.constants';
-import { PButtonIconRoot, PButtonRoot } from './Button.props';
+import type { PButtonIconRoot, PButtonRoot } from './Button.props';
 
 const ButtonIconRoot = styled(Icon).withConfig<PButtonIconRoot>({
     shouldForwardProp: (property, validator) =>

@@ -1,7 +1,7 @@
-import { TSpacingToken } from '../../utilities/spacing';
-import { TTextSizeToken } from '../text';
+import type { TSpacingToken } from '../../utilities/spacing';
+import type { TTextSizeToken } from '../text';
 
-import { TMentionBadgeSizeToken } from './MentionBadge.types';
+import type { TMentionBadgeSizeToken } from './MentionBadge.types';
 
 const MENTIONBADGE_SIZES: TMentionBadgeSizeToken[] = ['sm', 'md', 'lg'];
 

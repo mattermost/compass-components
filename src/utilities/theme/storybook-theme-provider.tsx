@@ -4,9 +4,11 @@ import { createGlobalStyle } from 'styled-components';
 
 import { setAlpha } from '../../shared';
 
-import ThemeProvider, { PThemeProvider } from './theme-provider';
-import { lightTheme, TTheme } from './themes';
-import { PGlobalStyles } from './global-styles';
+import ThemeProvider from './theme-provider';
+import type { PThemeProvider } from './theme-provider';
+import { lightTheme } from './themes';
+import type { TTheme } from './themes';
+import type { PGlobalStyles } from './global-styles';
 
 const CanvasGlobalStyles = createGlobalStyle`
     body.sb-show-main.sb-main-centered {

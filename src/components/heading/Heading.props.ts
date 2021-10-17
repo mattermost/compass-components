@@ -1,8 +1,8 @@
-import { ReactNode, ReactNodeArray } from 'react';
+import type { ReactNode, ReactNodeArray } from 'react';
 
-import { TTheme } from '../../utilities/theme';
+import type { TTheme } from '../../utilities/theme';
 
-import {
+import type {
     THeadingSizeToken,
     THeadingElement,
     THeadingColor,

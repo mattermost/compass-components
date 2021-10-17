@@ -11,7 +11,7 @@ import {
 } from './TextInput.constants';
 import TextInputRoot from './TextInput.root';
 import InputRoot from './Input.root';
-import PTextInput from './TextInput.props';
+import type PTextInput from './TextInput.props';
 
 const TextInput: React.FC<PTextInput> = ({
     label,

@@ -3,7 +3,7 @@ import React from 'react';
 import { Utils } from '../../shared';
 
 import ShapeRoot from './Shape.root';
-import PShape from './Shape.props';
+import type PShape from './Shape.props';
 import {
     DEFAULT_SHAPE_ELEVATION_LEVEL,
     DEFAULT_SHAPE_BORDER_RADIUS,

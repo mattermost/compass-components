@@ -1,5 +1,5 @@
-import { TComponentSizeToken, TComponentSizes } from '../../shared';
-import { TStatusBadgeStatus } from '../status-badge';
+import type { TComponentSizeToken, TComponentSizes } from '../../shared';
+import type { TStatusBadgeStatus } from '../status-badge';
 
 type TAvatarVariant = 'circle' | 'rounded';
 

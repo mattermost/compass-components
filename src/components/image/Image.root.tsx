@@ -1,12 +1,12 @@
 import styled, { css } from 'styled-components';
-import { ThemedStyledProps } from 'styled-components/ts3.6';
+import type { ThemedStyledProps } from 'styled-components';
 
 import { Utils } from '../../shared';
-import { TTheme } from '../../utilities/theme';
+import type { TTheme } from '../../utilities/theme';
 import Spacing, { applyPadding } from '../../utilities/spacing';
 import { applyShape } from '../../foundations/shape';
 
-import { PImageRoot } from './Image.props';
+import type { PImageRoot } from './Image.props';
 
 const ImageRoot = styled.img.withConfig<PImageRoot>({
     shouldForwardProp: (property, validator) =>

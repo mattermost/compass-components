@@ -1,6 +1,6 @@
 import IconGlyphs from '@mattermost/compass-icons/IconGlyphs';
 
-import { TIconColor, TIconGlyph, TIconSize } from './Icon.types';
+import type { TIconColor, TIconGlyph, TIconSize } from './Icon.types';
 
 const DEFAULT_ICON_SIZE = 20;
 

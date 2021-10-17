@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Utils } from '../../shared';
 
-import PIcon from './Icon.props';
+import type PIcon from './Icon.props';
 import IconRoot from './Icon.root';
 import {
     DEFAULT_ICON_COLOR,

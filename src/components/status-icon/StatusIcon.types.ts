@@ -1,5 +1,5 @@
-import { TComponentSizeToken, TUserStatus } from '../../shared';
-import { TIconSize } from '../../foundations/icon';
+import type { TComponentSizeToken, TUserStatus } from '../../shared';
+import type { TIconSize } from '../../foundations/icon';
 
 type TStatusIconSizeToken = Exclude<TComponentSizeToken, 'xxxs' | 'xxs' | 'xxl' | 'xxxl'>;
 

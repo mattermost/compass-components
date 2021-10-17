@@ -1,5 +1,5 @@
 import { css } from 'styled-components';
-import { FlattenSimpleInterpolation } from 'styled-components/ts3.6';
+import type { FlattenSimpleInterpolation } from 'styled-components';
 
 import { FONT_TYPE_FAMILIES, FONT_WEIGHT_MAP, Utils } from '../../shared';
 
@@ -9,7 +9,7 @@ import {
     DEFAULT_TEXT_WEIGHT,
     TEXT_DEFINITIONS,
 } from './Text.constants';
-import { PApplyTextColor, PApplyTextMargin, PApplyTextStyles } from './Text.props';
+import type { PApplyTextColor, PApplyTextMargin, PApplyTextStyles } from './Text.props';
 
 const applyTextStyles = ({
     inheritLineHeight = false,

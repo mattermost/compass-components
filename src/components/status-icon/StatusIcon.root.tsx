@@ -1,11 +1,11 @@
 import styled, { css } from 'styled-components';
-import { FlattenSimpleInterpolation, ThemedStyledProps } from 'styled-components/ts3.6';
+import type { FlattenSimpleInterpolation, ThemedStyledProps } from 'styled-components';
 
 import Icon from '../../foundations/icon';
-import { TTheme } from '../../utilities/theme';
+import type { TTheme } from '../../utilities/theme';
 import { Utils } from '../../shared';
 
-import { PStatusIconRoot } from './StatusIcon.props';
+import type { PStatusIconRoot } from './StatusIcon.props';
 
 const StatusIconRoot = styled(Icon).withConfig({
     shouldForwardProp: (property, validator) =>

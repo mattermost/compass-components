@@ -1,14 +1,14 @@
 import styled, { css } from 'styled-components';
-import { FlattenSimpleInterpolation, ThemedStyledProps } from 'styled-components/ts3.6';
+import type { FlattenSimpleInterpolation, ThemedStyledProps } from 'styled-components';
 
 import { applyShape } from '../../foundations/shape';
 import { setAlpha, blendColors, Utils } from '../../shared';
 import Spacing, { applyMargin, applyPadding } from '../../utilities/spacing';
-import { TTheme } from '../../utilities/theme';
+import type { TTheme } from '../../utilities/theme';
 import { applyTextStyles } from '../text';
 
 import { TEXT_INPUT_VALUES_MAPPING, LABEL_POSITIONS } from './TextInput.constants';
-import { PTextInputRoot } from './TextInput.props';
+import type { PTextInputRoot } from './TextInput.props';
 
 const TextInputRoot = styled.div<PTextInputRoot>(
     ({

@@ -1,18 +1,18 @@
 import { useState } from 'react';
 import { Meta, Story, Canvas, Title, Subtitle, ArgsTable } from '@storybook/addon-docs/blocks';
+
+import { BUTTON_WIDTHS } from '../button/Button.constants';
+import { Utils, DEFAULT_ARGUMENTS_TABLE_EXCLUSION } from '../../shared';
+import Flex from '../../utilities/layout';
+import Text from '../text';
+import textInputAnatomyImg from '../../assets/images/text-input-anatomy.png';
+
 import {
     DEFAULT_TEXT_INPUT_SIZE,
     TEXT_INPUT_SIZES,
     DEFAULT_LEADING_ICON,
     DEFAULT_TRAILING_ICON,
 } from './TextInput.constants';
-import { BUTTON_WIDTHS } from '../button/Button.constants';
-import { Utils } from '../../shared';
-import Flex from '../../utilities/layout';
-import Spacing from '../../utilities/spacing';
-import Text from '../text';
-import { DEFAULT_ARGUMENTS_TABLE_EXCLUSION } from '../../shared/constants';
-import textInputAnatomyImg from '../../assets/images/text-input-anatomy.png';
 import TextInput from './index';
 
 <Meta component={TextInput} title="Components/TextInput" />

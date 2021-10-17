@@ -5,7 +5,8 @@ import styled, { css, withTheme } from 'styled-components';
 import { Utils } from '../../shared';
 
 import { DEFAULT_TRANSITION_SPEED, TRANSITION_TYPE_DEFINITIONS } from './Transition.constants';
-import PTransition, { PAnimation } from './Transition.props';
+import type PTransition from './Transition.props';
+import type { PAnimation } from './Transition.props';
 
 const Animation = styled.div<PAnimation>(
     ({ duration, state, types, delay, customTransition }: PAnimation) => {

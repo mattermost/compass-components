@@ -1,5 +1,5 @@
 import { css } from 'styled-components';
-import { FlattenSimpleInterpolation } from 'styled-components/ts3.6';
+import type { FlattenSimpleInterpolation } from 'styled-components';
 
 import { Utils } from '../../shared';
 
@@ -14,7 +14,7 @@ import {
     DEFAULT_GRID_PLACE_ITEMS,
     DEFAULT_GRID_ROWS_TEMPLATE,
 } from './Grid.constants';
-import { PApplyGrid, PApplyGridItem } from './Grid.props';
+import type { PApplyGrid, PApplyGridItem } from './Grid.props';
 
 /**
  * applies `display: grid` alongside all definitions passed to this mixin.

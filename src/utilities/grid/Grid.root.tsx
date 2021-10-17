@@ -4,7 +4,7 @@ import { Utils } from '../../shared';
 import { applyMargin, applyPadding } from '../spacing';
 
 import { applyGrid, applyGridItem } from './Grid.mixins';
-import { PApplyGrid, PApplyGridItem } from './Grid.props';
+import type { PApplyGrid, PApplyGridItem } from './Grid.props';
 
 const GridRoot = styled.div.withConfig({
     shouldForwardProp: (property, validator) =>

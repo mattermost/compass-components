@@ -1,9 +1,13 @@
-import { ReactNode, ReactNodeArray, CSSProperties } from 'react';
-import { TransitionStatus } from 'react-transition-group';
+import type { ReactNode, ReactNodeArray, CSSProperties } from 'react';
+import type { TransitionStatus } from 'react-transition-group';
 
-import { TTheme } from '../theme';
+import type { TTheme } from '../theme';
 
-import { TTransitionSpeed, TTransitionType, TTransitionTypeDefinition } from './Transition.types';
+import type {
+    TTransitionSpeed,
+    TTransitionType,
+    TTransitionTypeDefinition,
+} from './Transition.types';
 
 type PTransition = {
     /**

@@ -1,13 +1,13 @@
 import styled, { css } from 'styled-components';
-import { FlattenSimpleInterpolation, ThemedStyledProps } from 'styled-components/ts3.6';
+import type { FlattenSimpleInterpolation, ThemedStyledProps } from 'styled-components';
 
 import { applyTextMargin, applyTextStyles } from '../text';
 import { applyShape } from '../../foundations/shape';
 import { setAlpha, blendColors, Utils } from '../../shared';
-import { TTheme } from '../../utilities/theme';
+import type { TTheme } from '../../utilities/theme';
 
 import { CHECKBOX_VALUES_MAPPING } from './Checkbox.constants';
-import { PCheckboxRoot } from './Checkbox.props';
+import type { PCheckboxRoot } from './Checkbox.props';
 
 const CheckboxRoot = styled.label.withConfig({
     shouldForwardProp: (property, validator) =>

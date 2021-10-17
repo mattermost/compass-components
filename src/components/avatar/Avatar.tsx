@@ -12,7 +12,7 @@ import {
     DEFAULT_AVATAR_SIZE,
     DEFAULT_AVATAR_VARIANT,
 } from './Avatar.constants';
-import PAvatar from './Avatar.props';
+import type PAvatar from './Avatar.props';
 import AvatarRoot, { AvatarMentionBadgeRoot, AvatarStatusBadgeRoot } from './Avatar.root';
 
 type PStyledAvatarImage = {

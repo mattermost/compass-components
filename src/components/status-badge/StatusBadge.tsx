@@ -2,7 +2,7 @@ import React from 'react';
 
 import StatusIcon from '../status-icon';
 
-import PStatusBadge from './StatusBadge.props';
+import type PStatusBadge from './StatusBadge.props';
 import { DEFAULT_STATUSBADGE_SIZE } from './StatusBadge.constants';
 import StatusBadgeRoot from './StatusBadge.root';
 

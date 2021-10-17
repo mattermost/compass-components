@@ -3,7 +3,7 @@ import React from 'react';
 import { Utils } from '../../shared';
 
 import { DEFAULT_RADIO_SIZE } from './Radio.constants';
-import PRadio from './Radio.props';
+import type PRadio from './Radio.props';
 import RadioRoot from './Radio.root';
 import RadioLabelRoot from './RadioLabel.root';
 

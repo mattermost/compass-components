@@ -1,5 +1,5 @@
 // shared types for `Heading` and `Text` component
-import { TTHemeTextColors } from '../utilities/theme';
+import type { TTHemeTextColors } from '../utilities/theme';
 
 type TAriaRoles =
     | 'alert'

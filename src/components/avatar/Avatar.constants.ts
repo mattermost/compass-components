@@ -1,9 +1,14 @@
 import { cyan, green, indigo, neutral, orange, purple, red, teal } from '../../foundations/colors';
-import { THeadingSizeToken } from '../heading';
-import { TStatusBadgeSizeToken } from '../status-badge';
-import { TShapeBorderRadius } from '../../foundations/shape';
+import type { THeadingSizeToken } from '../heading';
+import type { TStatusBadgeSizeToken } from '../status-badge';
+import type { TShapeBorderRadius } from '../../foundations/shape';
 
-import { TAvatarElement, TAvatarSizes, TAvatarSizeToken, TAvatarVariant } from './Avatar.types';
+import type {
+    TAvatarElement,
+    TAvatarSizes,
+    TAvatarSizeToken,
+    TAvatarVariant,
+} from './Avatar.types';
 
 // by usin a tuple as type we can guarantee that indexes are aways correct when checking for them
 const AVATAR_SIZES: TAvatarSizes = ['xxxs', 'xxs', 'xs', 'sm', 'md', 'lg', 'xl', 'xxl', 'xxxl'];

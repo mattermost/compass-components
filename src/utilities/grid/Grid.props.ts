@@ -1,9 +1,9 @@
-import React from 'react';
-import { Property } from 'csstype';
+import type React from 'react';
+import type { Property } from 'csstype';
 
-import { PGlobals, PGlobalsLayout } from '../../shared/props';
+import type { PGlobals, PGlobalsLayout } from '../../shared/props';
 
-import {
+import type {
     TGridGapProperty,
     TGridItemPlaceSelfProperty,
     TGridPlaceContentProperty,

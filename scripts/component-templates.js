@@ -8,7 +8,7 @@ const toUpper = require('lodash.toupper');
 const component = (names) => `import React from 'react';
 
 import { DEFAULT_${toUpper(snakeCase(names.kebab))}_SIZE } from './${names.pascal}.constants';
-import P${names.pascal} from './${names.pascal}.props';
+import type P${names.pascal} from './${names.pascal}.props';
 import ${names.pascal}Root from './${names.pascal}.root';
 
 const ${names.pascal} = ({ size = DEFAULT_${toUpper(snakeCase(names.kebab))}_SIZE, ...rest }: P${
@@ -29,14 +29,14 @@ export default ${names.pascal};
 
 // component.root.tsx
 const componentRoot = (names) => `import styled, { css } from 'styled-components';
-import { FlattenSimpleInterpolation, ThemedStyledProps } from 'styled-components/ts3.6';
+import type { FlattenSimpleInterpolation, ThemedStyledProps } from 'styled-components';
 
-import { TTheme } from '../../utilities/theme';
+import type { TTheme } from '../../utilities/theme';
 
 import {
     ${toUpper(snakeCase(names.kebab))}_DEFINITIONS,
 } from './${names.pascal}.constants';
-import { P${names.pascal}Root } from './${names.pascal}.props';
+import type { P${names.pascal}Root } from './${names.pascal}.props';
 
 const ${names.pascal} = styled.div<P${names.pascal}Root>(
     ({
@@ -99,7 +99,7 @@ export const ${lowerFirst(names.pascal)}ArgTypes = {
 `;
 
 // component.constants.ts
-const constants = (names) => `import { T${names.pascal}SizeToken, T${
+const constants = (names) => `import type { T${names.pascal}SizeToken, T${
     names.pascal
 }Number } from './${names.pascal}.types';
 
@@ -154,7 +154,7 @@ export {
 `;
 
 // component.types.ts
-const props = (names) => `import { T${names.pascal}SizeToken } from './${names.pascal}.types';
+const props = (names) => `import type { T${names.pascal}SizeToken } from './${names.pascal}.types';
 
 type P${names.pascal} = {
     /**
@@ -171,7 +171,7 @@ export default P${names.pascal};
 `;
 
 // component.types.ts
-const types = (names) => `import { TComponentSizeToken } from '../../shared';
+const types = (names) => `import type { TComponentSizeToken } from '../../shared';
 
 type T${names.pascal}Number = number;
 

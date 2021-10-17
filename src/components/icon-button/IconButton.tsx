@@ -1,4 +1,5 @@
-import React, { ForwardedRef } from 'react';
+import React from 'react';
+import type { ForwardedRef } from 'react';
 
 import Icon from '../../foundations/icon';
 import { Utils } from '../../shared';
@@ -8,7 +9,7 @@ import {
     DEFAULT_ICON_BUTTON_SIZE,
     ICON_BUTTON_DEFINITIONS,
 } from './IconButton.constants';
-import PIconButton from './IconButton.props';
+import type PIconButton from './IconButton.props';
 import IconButtonRoot from './IconButton.root';
 
 /**

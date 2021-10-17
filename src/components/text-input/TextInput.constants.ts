@@ -1,7 +1,7 @@
-import { TIconGlyph } from '../../foundations/icon';
-import { TButtonWidth } from '../button';
+import type { TIconGlyph } from '../../foundations/icon';
+import type { TButtonWidth } from '../button';
 
-import { TTextInputSizeToken, TTextInput } from './TextInput.types';
+import type { TTextInputSizeToken, TTextInput } from './TextInput.types';
 
 const DEFAULT_TEXT_INPUT_SIZE: TTextInputSizeToken = 'md';
 

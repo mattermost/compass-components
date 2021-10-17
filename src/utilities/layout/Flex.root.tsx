@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components';
 import { Utils } from '../../shared';
 import { parseSpacing } from '../spacing';
 
-import { PFlexRoot } from './Flex.props';
+import type { PFlexRoot } from './Flex.props';
 
 const FlexRoot = styled.div.withConfig<PFlexRoot>({
     shouldForwardProp: (property, validator) =>

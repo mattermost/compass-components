@@ -1,8 +1,8 @@
 import { css } from 'styled-components';
 
-import { TThemeAnimationSpeed } from '../theme';
+import type { TThemeAnimationSpeed } from '../theme';
 
-import { TTransitionTypeStatusMap } from './Transition.types';
+import type { TTransitionTypeStatusMap } from './Transition.types';
 
 const TRANSITION_SPEEDS: TThemeAnimationSpeed[] = [
     'instant',

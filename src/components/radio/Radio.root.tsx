@@ -1,12 +1,12 @@
 import styled, { css } from 'styled-components';
-import { FlattenSimpleInterpolation, ThemedStyledProps } from 'styled-components/ts3.6';
+import type { FlattenSimpleInterpolation, ThemedStyledProps } from 'styled-components';
 
 import { applyShape } from '../../foundations/shape';
 import { setAlpha, blendColors, Utils } from '../../shared';
-import { TTheme } from '../../utilities/theme';
+import type { TTheme } from '../../utilities/theme';
 
 import { RADIO_VALUES_MAPPING } from './Radio.constants';
-import { PRadioRoot } from './Radio.props';
+import type { PRadioRoot } from './Radio.props';
 
 const RadioRoot = styled.label.withConfig<PRadioRoot>({
     shouldForwardProp: (property, validator) =>

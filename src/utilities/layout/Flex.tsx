@@ -13,7 +13,7 @@ import {
     FLEX_ELEMENTS,
     FLEX_JUSTIFIES,
 } from './Flex.constants';
-import PFlex from './Flex.props';
+import type PFlex from './Flex.props';
 import FlexRoot from './Flex.root';
 
 const Flex = function <T>({

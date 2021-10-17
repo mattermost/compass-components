@@ -1,8 +1,8 @@
-import { MutableRefObject, ReactNode, ReactNodeArray } from 'react';
+import type { MutableRefObject, ReactNode, ReactNodeArray } from 'react';
 
-import { TonClickAwayCallback } from '../../shared';
+import type { TonClickAwayCallback } from '../../shared';
 
-import { TPopoverOffset, TPopoverPlacement } from './Popover.types';
+import type { TPopoverOffset, TPopoverPlacement } from './Popover.types';
 
 type PPopover = {
     /**

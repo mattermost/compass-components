@@ -4,7 +4,7 @@ import Text from '../text';
 import { Utils } from '../../shared';
 
 import { DEFAULT_SWITCH_SIZE } from './Switch.constants';
-import PSwitch from './Switch.props';
+import type PSwitch from './Switch.props';
 import SwitchRoot from './Switch.root';
 
 const Switch: React.FC<PSwitch> = ({

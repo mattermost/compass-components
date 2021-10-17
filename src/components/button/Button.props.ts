@@ -1,8 +1,8 @@
-import { MouseEventHandler } from 'react';
+import type { MouseEventHandler } from 'react';
 
-import { TIconGlyph } from '../../foundations/icon';
+import type { TIconGlyph } from '../../foundations/icon';
 
-import {
+import type {
     TButtonIconPosition,
     TButtonSizeToken,
     TButtonVariant,

@@ -1,6 +1,6 @@
-import { Placement } from '@popperjs/core';
+import type { Placement } from '@popperjs/core';
 
-import { TSpacingToken as TPopoverOffsetToken } from '../spacing';
+import type { TSpacingToken as TPopoverOffsetToken } from '../spacing';
 
 type TPopoverOffset = [TPopoverOffsetToken, TPopoverOffsetToken];
 

@@ -1,6 +1,6 @@
 import { SIZES } from '../spacing';
 
-import { TPopoverOffset, TPopoverOffsetToken, TPopoverPlacement } from './Popover.types';
+import type { TPopoverOffset, TPopoverOffsetToken, TPopoverPlacement } from './Popover.types';
 
 const POPOVER_OFFSET_TOKENS: TPopoverOffsetToken[] = [
     0, 25, 50, 75, 100, 125, 150, 175, 200, 250, 300, 350, 400, 450, 500, 600, 700, 800,

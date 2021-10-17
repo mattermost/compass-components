@@ -2,7 +2,7 @@ import kebabCase from 'lodash.kebabcase';
 import axios from 'axios';
 
 import { DEFAULT_PROPERTY_WHITELIST } from './constants';
-import { THiddenArgtypes } from './types';
+import type { THiddenArgtypes } from './types';
 
 /**
  * pass in a story(Parameters) and get the correct URL to directly link to it

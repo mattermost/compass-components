@@ -1,4 +1,4 @@
-import { TStatusIconSize, TStatusIconSizeToken, TStatusIconStatus } from './StatusIcon.types';
+import type { TStatusIconSize, TStatusIconSizeToken, TStatusIconStatus } from './StatusIcon.types';
 
 type PStatusIcon = {
     /**

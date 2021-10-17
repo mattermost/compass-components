@@ -14,7 +14,7 @@ import {
     TEXT_SIZES,
     TEXT_WEIGHTS,
 } from './Text.constants';
-import PText from './Text.props';
+import type PText from './Text.props';
 import TextRoot from './Text.root';
 
 const Text = ({

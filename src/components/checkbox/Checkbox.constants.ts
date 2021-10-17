@@ -1,4 +1,4 @@
-import { TCheckboxSizeToken, TCheckboxDefinition } from './Checkbox.types';
+import type { TCheckboxSizeToken, TCheckboxDefinition } from './Checkbox.types';
 
 const DEFAULT_CHECKBOX_SIZE: TCheckboxSizeToken = 'md';
 

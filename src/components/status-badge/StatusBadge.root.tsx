@@ -1,12 +1,12 @@
 import styled, { css } from 'styled-components';
-import { FlattenSimpleInterpolation, ThemedStyledProps } from 'styled-components/ts3.6';
+import type { FlattenSimpleInterpolation, ThemedStyledProps } from 'styled-components';
 
 import { STATUSICON_SIZE_MAP } from '../status-icon';
 import { applyShape } from '../../foundations/shape';
-import { TTheme } from '../../utilities/theme';
+import type { TTheme } from '../../utilities/theme';
 import { Utils } from '../../shared';
 
-import { PStatusBadgeRoot } from './StatusBadge.props';
+import type { PStatusBadgeRoot } from './StatusBadge.props';
 
 const StatusBadgeRoot = styled.div.withConfig({
     shouldForwardProp: (property, validator) =>

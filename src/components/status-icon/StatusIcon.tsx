@@ -1,8 +1,8 @@
 import React from 'react';
 
-import { TIconGlyph } from '../../foundations/icon';
+import type { TIconGlyph } from '../../foundations/icon';
 
-import PStatusIcon from './StatusIcon.props';
+import type PStatusIcon from './StatusIcon.props';
 import { DEFAULT_STATUSICON_SIZE, STATUSICON_SIZE_MAP } from './StatusIcon.constants';
 import StatusIconRoot from './StatusIcon.root';
 

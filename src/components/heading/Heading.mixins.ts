@@ -1,10 +1,10 @@
 import { css } from 'styled-components';
-import { FlattenSimpleInterpolation } from 'styled-components/ts3.6';
+import type { FlattenSimpleInterpolation } from 'styled-components';
 
 import { FONT_TYPE_FAMILIES, FONT_WEIGHT_MAP, Utils } from '../../shared';
 
 import { HEADING_DEFINITIONS } from './Heading.constants';
-import { PApplyHeadingColor, PApplyHeadingMargin, PApplyHeadingStyles } from './Heading.props';
+import type { PApplyHeadingColor, PApplyHeadingMargin, PApplyHeadingStyles } from './Heading.props';
 
 const applyHeadingStyles = ({
     inheritLineHeight,
