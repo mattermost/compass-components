@@ -1,0 +1,90 @@
+import { Description, Meta, Subtitle, Title } from '@storybook/addon-docs/blocks';
+import forkImg from './assets/images/contribute_guide/step-1_fork_button.png';
+
+<Meta title={'Contribute'} />
+
+<Title>Contribute to Compass Components</Title>
+
+<Subtitle>
+    If you read this you show interest in contributing to the Compass Component library built by
+    Mattermost. You are very welcome to do so and this is where we will get you started.
+
+</Subtitle>
+
+## Introduction
+
+**Compass Components** is a shared or common component library to build appealing UIs from scratch with ease.
+It is based upon the Mattermost design style guide called **Compass Design System**.
+
+## First steps
+
+When you are viewing this guide on our deployed setup start with [step 1 (checkout)](#Step 1), otherwise you can skip
+the first few steps and directly start from [step 4](#step-4)
+
+### Step 1 - Checkout
+
+To start contributing to the Compass Component library you need to first fork and checkout the codebase from the git
+repository. This can be in one of 2 ways:
+
+-   via the GitHub CLI (`gh`)
+-   via github.com
+
+There is a very sophisticated step-by-step guide on the github docs on [how to fork and clone a repository](https://docs.github.com/en/get-started/quickstart/fork-a-repo),
+but we all have way too many tabs open too manage another one, right? So here is a very brief guide as well.
+
+### Step 1.1 - `gh`
+
+1. [install the CLI](https://github.com/cli/cli#installation) tools following the setup steps in the README.
+2. follow [these steps](https://cli.github.com/manual/) from the CLI manual to authorize it with your GitHub account.
+3. move to the folder where you want the repository to be cloned into (we will use `~/github` as an example):
+
+```bash
+cd ~/github
+```
+
+4. If everything is set up we can start by forking the Compass Components repository by running this command in your
+   terminal:
+
+```bash
+gh repo fork mattermost/compass-components --remote --clone
+```
+
+5. the repository is now being forked to your account and cloned into the subdirectory `compass-components`.A really
+   convenient feature of the github CLI is, that it automaatically creates a remote `upstream` for you to update your fork
+   from the current state of the official repository.
+
+### Step 1.2 - using github.com
+
+1. got to the [Compass Component Repository](https://github.com/mattermost/compass-components) and click the fork button
+   in the upper right corner of the screen:
+
+    {' '}
+    <img src={forkImg} alt={'fork button on github UI'} />
+
+2. on GitHub, navigate to your fork of the Compass Components repository.
+3. Above the list of files, click the green Code button and select either **HTTPS** or **SSH** and copy the string from
+   the field.
+4. move to the folder where you want the repository to be cloned into (we will use `~/github` as an example):
+
+```bash
+cd ~/github
+```
+
+4. now you can clone the repository into this folder:
+
+```bash
+git clone <COPIED_STRING_FROM_STEP_3>
+```
+
+5. the repository is now being cloned into the subdirectory `compass-components`.
+6. add the official repository as an `upstream` remote to keep it up to date:
+
+```bash
+git remote add upstream https://github.com/mattermost/compass-components
+```
+
+### Step 2
+
+### Step 3
+
+### Step 4
