@@ -61,6 +61,8 @@ gh repo fork mattermost/compass-components --remote --clone
     {' '}
 
     {' '}
+
+    {' '}
     <img src={forkImg} alt={'fork button on github UI'} />
 
 2. In GitHub, navigate to your fork of the Compass Components repository.
@@ -100,13 +102,13 @@ npm install --legacy-peer-deps
 > **NOTE:** adding the flag `--legacy-peer-deps` is curently needed when there is no valid `package-lock.json` in
 > place, since `peerDependencies` differ and cannot be resolved for storybook and other packages.
 
-3. Run storybook
+2. Run storybook
 
 ```shell
 npm run storybook
 ```
 
-4. When storybook is up and running you can access it by navigating in your browser to `localhost:6006`
+3. When storybook is up and running you can access it by navigating in your browser to `localhost:6006`
 
 #### Requirements
 
