@@ -85,7 +85,7 @@ const DocumentationThemeProvider = ({
     const [selectedTheme, setSelectedTheme] = useState<TTheme>(theme);
 
     useEffect(() => {
-        setSelectedTheme(theme);
+        setSelectedTheme({ ...theme, noStyleReset: true });
     }, [theme]);
 
     return (

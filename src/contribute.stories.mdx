@@ -6,9 +6,8 @@ import forkImg from './assets/images/contribute_guide/step-1_fork_button.png';
 <Title>Contribute to Compass Components</Title>
 
 <Subtitle>
-    If you're interested in contributing to the Compass Component library built by Mattermost, we welcome your involvement. This information will help you get started.
-   
-
+    If you're interested in contributing to the Compass Component library built by Mattermost, we
+    welcome your involvement. This information will help you get started.
 </Subtitle>
 
 ## Introduction
@@ -18,10 +17,10 @@ It's based on the Mattermost Design style guide called the **Compass Design Syst
 
 ## First steps
 
-When you are viewing this guide on our deployed setup start with [step 1 (checkout)](#Step 1), otherwise you can skip
-the first few steps and directly start from [step 4](#step-4)
+When you are viewing this guide on our deployed setup start with [step 1 (clone)](#Step 1), otherwise you can skip
+the first few steps and directly start from [step 2](#step-2)
 
-### Step 1 - Checkout
+### Step 1 - Clone
 
 To start contributing to the Compass Component library you need to first fork and checkout the codebase from the git
 repository. This can be done in one of two ways:
@@ -29,10 +28,11 @@ repository. This can be done in one of two ways:
 -   via the GitHub CLI (`gh`)
 -   via github.com
 
-There is a very sophisticated step-by-step guide on the GitHub docs on [how to fork and clone a repository](https://docs.github.com/en/get-started/quickstart/fork-a-repo),
+There is a very sophisticated step-by-step guide on the GitHub docs on
+[how to fork and clone a repository](https://docs.github.com/en/get-started/quickstart/fork-a-repo).
 Here are two abbreviated ways to fork and clone the repository.
 
-### Step 1.1 - `gh`
+#### Option A: `gh` CLI
 
 1. [Install the CLI](https://github.com/cli/cli#installation) tools following the setup steps in the README.
 2. Follow [these steps](https://cli.github.com/manual/) to authorize it with your GitHub account.
@@ -49,18 +49,21 @@ cd ~/github
 gh repo fork mattermost/compass-components --remote --clone
 ```
 
-5. The repository is now being forked to your GitHub account and cloned into the subdirectory `compass-components`. GitHub offers a convenient feature to automatically create a remote `upstream` repository
-   for you to update your fork from the current state of the official repository.
+5. The repository is now being forked to your GitHub account and cloned into the subdirectory `compass-components`.
+   GitHub offers a convenient feature to automatically create a remote `upstream` repository for you to update your fork
+   from the current state of the official repository.
 
-### Step 1.2 - using github.com
+#### Option B: using github.com
 
-1. Go to the [Compass Component Repository](https://github.com/mattermost/compass-components) and select the **Fork** option in the top right corner of the screen:
+1. Go to the [Compass Component Repository](https://github.com/mattermost/compass-components) and select the **Fork**
+   option in the top right corner of the screen:
 
     {' '}
     <img src={forkImg} alt={'fork button on github UI'} />
 
 2. In GitHub, navigate to your fork of the Compass Components repository.
-3. Above the list of files, select the green **Code** option, then select either **HTTPS** or **SSH** and copy the string from that field.
+3. Above the list of files, select the green **Code** option, then select either **HTTPS** or **SSH** and copy the
+   string from that field.
 4. Navigate to the folder where you want the repository to be cloned (we will use `~/github` as an example):
 
 ```bash
@@ -73,7 +76,8 @@ cd ~/github
 git clone <COPIED_STRING_FROM_STEP_3>
 ```
 
-5. Once the repository is cloned into the subdirectory `compass-components`, add the official repository as an `upstream` remote to keep it up-to-date:
+5. Once the repository is cloned into the subdirectory `compass-components`, add the official repository as an
+   `upstream` remote to keep it up-to-date:
 
 ```bash
 git remote add upstream https://github.com/mattermost/compass-components
