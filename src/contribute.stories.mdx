@@ -20,7 +20,7 @@ It's based on the Mattermost Design style guide called the **Compass Design Syst
 When you are viewing this guide on our deployed setup start with [step 1 (clone)](#Step 1), otherwise you can skip
 the first few steps and directly start from [step 2](#step-2)
 
-### Step 1 - Clone
+### Step 1: Clone
 
 To start contributing to the Compass Component library you need to first fork and checkout the codebase from the git
 repository. This can be done in one of two ways:
@@ -38,14 +38,14 @@ Here are two abbreviated ways to fork and clone the repository.
 2. Follow [these steps](https://cli.github.com/manual/) to authorize it with your GitHub account.
 3. Move to the folder where you want the repository to be cloned into (we will use `~/github` as an example):
 
-```bash
+```shell
 cd ~/github
 ```
 
 4. Fork the Compass Components repository by running the following command in your
    terminal:
 
-```bash
+```shell
 gh repo fork mattermost/compass-components --remote --clone
 ```
 
@@ -59,6 +59,8 @@ gh repo fork mattermost/compass-components --remote --clone
    option in the top right corner of the screen:
 
     {' '}
+
+    {' '}
     <img src={forkImg} alt={'fork button on github UI'} />
 
 2. In GitHub, navigate to your fork of the Compass Components repository.
@@ -66,25 +68,117 @@ gh repo fork mattermost/compass-components --remote --clone
    string from that field.
 4. Navigate to the folder where you want the repository to be cloned (we will use `~/github` as an example):
 
-```bash
+```shell
 cd ~/github
 ```
 
 4. Clone the repository into this folder:
 
-```bash
+```shell
 git clone <COPIED_STRING_FROM_STEP_3>
 ```
 
 5. Once the repository is cloned into the subdirectory `compass-components`, add the official repository as an
    `upstream` remote to keep it up-to-date:
 
-```bash
+```shell
 git remote add upstream https://github.com/mattermost/compass-components
 ```
 
-### Step 2
+### Step 2: Run storybook for development
 
-### Step 3
+1. Navigate to your project folder and install all dependencies
 
-### Step 4
+```shell
+cd ~/github/compass-components
+```
+
+```shell
+npm install --legacy-peer-deps
+```
+
+> **NOTE:** adding the flag `--legacy-peer-deps` is curently needed when there is no valid `package-lock.json` in
+> place, since `peerDependencies` differ and cannot be resolved for storybook and other packages.
+
+3. Run storybook
+
+```shell
+npm run storybook
+```
+
+4. When storybook is up and running you can access it by navigating in your browser to `localhost:6006`
+
+#### Requirements
+
+-   `node` version **^16.x**
+-   `npm` version **^7.x**
+
+### Step 3: find something to work on
+
+The best place to start looking for tickets we accept contributions from the wider community for, is by going through
+[this list]() on GitHub.
+
+---
+
+### Creating a new component
+
+For ease of use we created a convenience `generate component` function to create a boilerplate template for new
+components.
+
+Simply run
+
+```shell
+npm run gc
+```
+
+You will be asked which kind of component you would like to create:
+
+-   `Foundation`
+    (_Atomic component_) - will go into the `src/foundations` folder
+-   `Component`
+    (_Molecule component_) - will go into the `src/components` folder
+-   `Utility`
+    (_Utility component_) - will go into the `src/utilities` folder
+
+The script will create a component structure, that looks like this:
+
+```
+ComponentName/
+├── ComponentName.constants.ts
+├── ComponentName.props.ts
+├── ComponentName.root.ts
+├── ComponentName.stories.mdx
+├── ComponentName.tsx
+├── ComponentName.types.ts
+└── index.ts
+```
+
+### Naming convention
+
+we mainly use 3 different types of namings and each one has their own use-case:
+
+| naming style | used for          | example                                 |
+| ------------ | ----------------- | --------------------------------------- |
+| `PascalCase` | component names   | `MenuItem`                              |
+|              | props definitions | `type PMenuItem = { ... }`              |
+|              | types definitions | `type TMenuItemSize = { ... }`          |
+| `UPPER_CASE` | constants         | `const MENU_ITEM_SIZES = ...`           |
+| `camelCase`  | everything else   | `const setMenuItemSize = () => { ... }` |
+
+### Testing the package in your local project
+
+For an easier way to test this package in your local project we added a script to build, pack and install it.
+
+Simply run the following command in the **Compass Component** package root and it will perform all the actions, except
+for installing it in your project:
+
+```shell
+npm run pack
+```
+
+After the library has been packed you can install it locally by referencing the generated tarball inside the library
+folder. Navigate to the project where you want to implement **Compass Components** and install it from the local folder:
+
+```shell
+npm install -S ~/github/compass-components/packed.tgz
+```
