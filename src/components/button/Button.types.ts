@@ -1,7 +1,7 @@
-import { TIconSize } from '../../foundations/icon';
-import { TComponentSizeToken } from '../../shared';
-import { TSpacingTokensSymmetric } from '../../utilities/spacing';
-import { TTextSizeToken } from '../text';
+import type { TIconSize } from '../../foundations/icon';
+import type { TComponentSizeToken } from '../../shared';
+import type { TSpacingTokensSymmetric } from '../../utilities/spacing';
+import type { TTextSizeToken } from '../text';
 
 type TButtonSizeToken = Exclude<TComponentSizeToken, 'xxxs' | 'xxs' | 'xl' | 'xxl' | 'xxxl'>;
 

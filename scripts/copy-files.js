@@ -58,6 +58,7 @@ async function createPackageFile() {
         nyc,
         scripts,
         devDependencies,
+        dependencies,
         husky,
         workspaces,
         'lint-staged': lintStaged,
@@ -65,8 +66,12 @@ async function createPackageFile() {
         ...packageDataOther
     } = JSON.parse(packageData);
 
+    delete dependencies.react;
+    delete dependencies['react-dom'];
+
     const newPackageData = {
         ...packageDataOther,
+        dependencies,
         private: false,
     };
 
@@ -90,4 +95,6 @@ async function run() {
     }
 }
 
-run();
+run()
+    .then(() => console.log('### copying files was successful'))
+    .catch((error) => console.log('### an error occured during copy files script:', error));

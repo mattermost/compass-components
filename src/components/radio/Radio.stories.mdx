@@ -1,22 +1,16 @@
 import { useState } from 'react';
 import { Meta, Story, Canvas, Title, Subtitle, ArgsTable } from '@storybook/addon-docs/blocks';
-import { DEFAULT_RADIO_SIZE, RADIO_SIZES } from './Radio.constants';
-import { Utils } from '../../shared';
-import Grid from '../../utilities/layout';
+
+import { Utils, DEFAULT_ARGUMENTS_TABLE_EXCLUSION } from '../../shared';
+import Flex from '../../utilities/layout';
 import Text from '../text';
+
 import radioAnatomyImg from '../../assets/images/example-radio-anatomy.png';
 import radioAnimationGif from '../../assets/images/example-radio-animation.gif';
 import radioImg from '../../assets/images/example-radio.png';
-import { DEFAULT_ARGUMENTS_TABLE_EXCLUSION } from '../../shared/constants';
-import Radio from './index';
 
-export const defaultArgs = {
-    label: 'Label',
-    size: DEFAULT_RADIO_SIZE,
-    checked: false,
-    disabled: false,
-    hasError: false,
-};
+import { DEFAULT_RADIO_SIZE, RADIO_SIZES } from './Radio.constants';
+import Radio from './index';
 
 <Meta component={Radio} title="Components/Radio" />
 
@@ -39,36 +33,36 @@ Radio buttons are comprised of:
 
 ## States
 
-<Grid row justifyItems={'space-between'}>
-    <Grid justifyItems={'center'}>
+<Flex row justify={'space-between'}>
+    <Flex justify={'center'}>
         <Radio {...defaultArgs} disabled={true} />
         <br />
         <Text element={'p'} size={200} margin={'none'}>
             <strong>Disabled</strong>
         </Text>
-    </Grid>
-    <Grid justifyItems={'center'}>
+    </Flex>
+    <Flex justify={'center'}>
         <Radio {...defaultArgs} hasError={true} />
         <br />
         <Text element={'p'} size={200} margin={'none'}>
             <strong>Error</strong>
         </Text>
-    </Grid>
-    <Grid justifyItems={'center'}>
+    </Flex>
+    <Flex justify={'center'}>
         <Radio {...defaultArgs} />
         <br />
         <Text element={'p'} size={200} margin={'none'}>
             <strong>Off</strong>
         </Text>
-    </Grid>
-    <Grid justifyItems={'center'}>
-        <Radio {...defaultArgs} checked={true} />
+    </Flex>
+    <Flex justify={'center'}>
+        <Radio {...defaultArgs} />
         <br />
         <Text element={'p'} size={200} margin={'none'}>
             <strong>On</strong>
         </Text>
-    </Grid>
-</Grid>
+    </Flex>
+</Flex>
 
 Once an item is selected, if the user clicks to select a different item, this automatically deselects the initial selection.
 
@@ -78,29 +72,29 @@ Once an item is selected, if the user clicks to select a different item, this au
 
 ## Sizes
 
-<Grid row justifyItems={'space-between'}>
-    <Grid justifyItems={'center'}>
-        <Radio label={'Label'} size={'sm'} checked={true} />
+<Flex row justify={'space-between'}>
+    <Flex justify={'center'}>
+        <Radio label={'Label'} size={'sm'} />
         <br />
         <Text element={'p'} size={200} margin={'none'}>
             <strong>Small</strong>
         </Text>
-    </Grid>
-    <Grid justifyItems={'center'}>
-        <Radio label={'Label'} size={'md'} checked={true} />
+    </Flex>
+    <Flex justify={'center'}>
+        <Radio label={'Label'} size={'md'} />
         <br />
         <Text element={'p'} size={200} margin={'none'}>
             <strong>Medium</strong>
         </Text>
-    </Grid>
-    <Grid justifyItems={'center'}>
-        <Radio label={'Label'} size={'lg'} checked={true} />
+    </Flex>
+    <Flex justify={'center'}>
+        <Radio label={'Label'} size={'lg'} />
         <br />
         <Text element={'p'} size={200} margin={'none'}>
             <strong>Large</strong>
         </Text>
-    </Grid>
-</Grid>
+    </Flex>
+</Flex>
 
 ## Example
 
@@ -110,6 +104,28 @@ Once an item is selected, if the user clicks to select a different item, this au
 
 <ArgsTable of={Radio} exclude={[...DEFAULT_ARGUMENTS_TABLE_EXCLUSION]} />
 
+export const defaultArgs = {
+    label: 'Label',
+    size: DEFAULT_RADIO_SIZE,
+    checked: false,
+    disabled: false,
+    hasError: false,
+};
+
+export const ControlledRadio = (args) => {
+    const [checked, setChecked] = useState(false);
+    return (
+        <Radio
+            {...args}
+            onChange={(event) => {
+                console.log('#### EVENT:', event);
+                setChecked(!checked);
+            }}
+            checked={checked}
+        />
+    );
+};
+
 <Canvas hidden>
     <Story
         name="Default"
@@ -118,14 +134,10 @@ Once an item is selected, if the user clicks to select a different item, this au
             size: { control: { type: 'radio', options: RADIO_SIZES } },
             hasError: { control: { type: 'boolean' } },
             disabled: { control: { type: 'boolean' } },
-            checked: { control: { type: 'boolean' } },
-            ...Utils.hideComponentProperties(['onClick', 'className']),
+            ...Utils.hideComponentProperties(['onClick', 'className', 'checked']),
         }}
-        args={{
-            label: 'Default Radio',
-            size: DEFAULT_RADIO_SIZE,
-        }}
+        args={defaultArgs}
     >
-        {(args) => <Radio {...args} />}
+        {(args) => <ControlledRadio {...args} />}
     </Story>
 </Canvas>

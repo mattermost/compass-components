@@ -1,4 +1,6 @@
-import { TCheckboxSizeToken } from './Checkbox.types';
+import type { MouseEventHandler } from 'react';
+
+import type { TCheckboxSizeToken } from './Checkbox.types';
 
 type PCheckbox = {
     /**
@@ -28,7 +30,11 @@ type PCheckbox = {
     /**
      * onClick event handler
      * */
-    onClick?: () => void;
+    onClick?: MouseEventHandler<HTMLLabelElement>;
+    /**
+     * onChange event handler
+     * */
+    onChange?: () => void;
     /**
      * custom classname
      * */

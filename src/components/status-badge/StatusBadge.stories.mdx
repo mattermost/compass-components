@@ -10,7 +10,7 @@ import {
 
 import { Utils } from '../../shared';
 import ThemeProvider from '../../utilities/theme';
-import Grid from '../../utilities/layout';
+import Flex from '../../utilities/layout';
 import Spacing from '../../utilities/spacing';
 import ShapeRoot from '../../foundations/shape';
 import Text from '../text';
@@ -27,101 +27,101 @@ import Text from '../text';
 ### StatusBadge variations
 
 <ThemeProvider>
-    <Grid padding={Spacing.symmetric({ vertical: 150 })} justifyItems={'stretch'}>
-        <Grid
+    <Flex padding={Spacing.symmetric({ vertical: 150 })} justify={'stretch'}>
+        <Flex
             row
             padding={Spacing.symmetric({ vertical: 150, horizontal: 25 })}
             alignItems={'center'}
             justifyItems={'space-around'}
         >
-            <Grid justifyItems={'center'} alignItems={'center'} flex={1}>
+            <Flex justify={'center'} alignment={'center'} flex={1}>
                 <ShapeRoot width={200} height={200}>
-                    <Grid justifyItems={'center'} alignItems={'center'} flex={1}>
+                    <Flex justify={'center'} alignment={'center'} flex={1}>
                         <StatusBadge status={'online'} size={'xl'} />
-                    </Grid>
+                    </Flex>
                 </ShapeRoot>
                 <Text weight={'bold'}>online</Text>
-            </Grid>
-            <Grid justifyItems={'center'} alignItems={'center'} flex={1}>
+            </Flex>
+            <Flex justify={'center'} alignment={'center'} flex={1}>
                 <ShapeRoot width={200} height={200}>
-                    <Grid justifyItems={'center'} alignItems={'center'} flex={1}>
+                    <Flex justify={'center'} alignment={'center'} flex={1}>
                         <StatusBadge status={'away'} size={'xl'} />
-                    </Grid>
+                    </Flex>
                 </ShapeRoot>
                 <Text weight={'bold'}>away</Text>
-            </Grid>
-            <Grid justifyItems={'center'} alignItems={'center'} flex={1}>
+            </Flex>
+            <Flex justify={'center'} alignment={'center'} flex={1}>
                 <ShapeRoot width={200} height={200}>
-                    <Grid justifyItems={'center'} alignItems={'center'} flex={1}>
+                    <Flex justify={'center'} alignment={'center'} flex={1}>
                         <StatusBadge status={'dnd'} size={'xl'} />
-                    </Grid>
+                    </Flex>
                 </ShapeRoot>
                 <Text weight={'bold'}>do not disturb ('dnd')</Text>
-            </Grid>
-            <Grid justifyItems={'center'} alignItems={'center'} flex={1}>
+            </Flex>
+            <Flex justify={'center'} alignment={'center'} flex={1}>
                 <ShapeRoot width={200} height={200}>
-                    <Grid justifyItems={'center'} alignItems={'center'} flex={1}>
+                    <Flex justify={'center'} alignment={'center'} flex={1}>
                         <StatusBadge status={'offline'} size={'xl'} />
-                    </Grid>
+                    </Flex>
                 </ShapeRoot>
                 <Text weight={'bold'}>offline</Text>
-            </Grid>
-        </Grid>
-    </Grid>
+            </Flex>
+        </Flex>
+    </Flex>
 </ThemeProvider>
 
 ### StatusBadge sizes
 
 <ThemeProvider>
-    <Grid padding={Spacing.symmetric({ vertical: 150 })} justifyItems={'stretch'}>
-        <Grid
+    <Flex padding={Spacing.symmetric({ vertical: 150 })} justify={'stretch'}>
+        <Flex
             row
             padding={Spacing.symmetric({ vertical: 150, horizontal: 25 })}
             alignItems={'center'}
             justifyItems={'space-around'}
         >
-            <Grid justifyItems={'center'} alignItems={'center'} flex={1}>
+            <Flex justify={'center'} alignment={'center'} flex={1}>
                 <ShapeRoot width={150} height={150}>
-                    <Grid justifyItems={'center'} alignItems={'center'} flex={1}>
+                    <Flex justify={'center'} alignment={'center'} flex={1}>
                         <StatusBadge status={'online'} size={'xs'} />
-                    </Grid>
+                    </Flex>
                 </ShapeRoot>
                 <Text weight={'bold'}>x-small ('xs')</Text>
-            </Grid>
-            <Grid justifyItems={'center'} alignItems={'center'} flex={1}>
+            </Flex>
+            <Flex justify={'center'} alignment={'center'} flex={1}>
                 <ShapeRoot width={150} height={150}>
-                    <Grid justifyItems={'center'} alignItems={'center'} flex={1}>
+                    <Flex justify={'center'} alignment={'center'} flex={1}>
                         <StatusBadge status={'online'} size={'sm'} />
-                    </Grid>
+                    </Flex>
                 </ShapeRoot>
                 <Text weight={'bold'}>small ('sm')</Text>
-            </Grid>
-            <Grid justifyItems={'center'} alignItems={'center'} flex={1}>
+            </Flex>
+            <Flex justify={'center'} alignment={'center'} flex={1}>
                 <ShapeRoot width={150} height={150}>
-                    <Grid justifyItems={'center'} alignItems={'center'} flex={1}>
+                    <Flex justify={'center'} alignment={'center'} flex={1}>
                         <StatusBadge status={'online'} size={'md'} />
-                    </Grid>
+                    </Flex>
                 </ShapeRoot>
                 <Text weight={'bold'}>medium ('md')</Text>
-            </Grid>
-            <Grid justifyItems={'center'} alignItems={'center'} flex={1}>
+            </Flex>
+            <Flex justify={'center'} alignment={'center'} flex={1}>
                 <ShapeRoot width={150} height={150}>
-                    <Grid justifyItems={'center'} alignItems={'center'} flex={1}>
+                    <Flex justify={'center'} alignment={'center'} flex={1}>
                         <StatusBadge status={'online'} size={'lg'} />
-                    </Grid>
+                    </Flex>
                 </ShapeRoot>
                 <Text weight={'bold'}>large ('lg')</Text>
-            </Grid>
-            <Grid justifyItems={'center'} alignItems={'center'} flex={1}>
+            </Flex>
+            <Flex justify={'center'} alignment={'center'} flex={1}>
                 <ShapeRoot width={150} height={150}>
-                    <Grid justifyItems={'center'} alignItems={'center'} flex={1}>
+                    <Flex justify={'center'} alignment={'center'} flex={1}>
                         <StatusBadge status={'online'} size={'xl'} />
-                    </Grid>
+                    </Flex>
                 </ShapeRoot>
                 <Text weight={'bold'}>x-large ('xl')</Text>
-            </Grid>
-        </Grid>
-    </Grid>
+            </Flex>
+        </Flex>
+    </Flex>
 </ThemeProvider>
 
 export const argTypes = {
@@ -140,7 +140,7 @@ export const argTypes = {
     background: {
         control: 'color',
     },
-    ...Utils.hideComponentProperties(),
+    ...Utils.hideComponentProperties(['className']),
 };
 
 <Canvas hidden>

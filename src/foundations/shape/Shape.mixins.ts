@@ -1,11 +1,11 @@
 import { css } from 'styled-components';
-import { FlattenSimpleInterpolation } from 'styled-components/ts3.6';
+import type { FlattenSimpleInterpolation } from 'styled-components';
 
 import { Utils } from '../../shared';
 
 import { DEFAULT_SHAPE_BORDER_RADIUS, SHAPE_BORDER_RADII } from './Shape.constants';
-import { PApplyShape } from './Shape.props';
-import { TShapeVariant } from './Shape.types';
+import type { PApplyShape } from './Shape.props';
+import type { TShapeVariant } from './Shape.types';
 
 /**
  * apply a shape to a given element without the use of an additional wrapping Shape component.
@@ -50,14 +50,23 @@ function applyShape({
     if (variant === 'circle' && Utils.isNumber(width) && width >= 0) {
         return css`
             border-radius: ${RADII[variant]};
+
             width: ${Utils.getPxValue(width)};
             height: ${Utils.getPxValue(width)};
+
+            flex-basis: ${Utils.getPxValue(width)}; // adding this in for flex: 0 elements
         `;
     }
 
     return css`
         border-radius: ${RADII[variant]};
-        width: ${width ? Utils.getPxValue(width) : null};
+
+        ${width
+            ? css`
+                  width: ${Utils.getPxValue(width)};
+                  flex-basis: ${Utils.getPxValue(width)};
+              `
+            : null};
         height: ${height ? Utils.getPxValue(height) : null};
     `;
 }

@@ -1,8 +1,9 @@
-import { TElevationLevel } from '../../utilities/elevation';
+import type { PGlobals } from '../../shared/props';
+import type { TElevationLevel } from '../../utilities/elevation';
 
-import { TShapeBorderRadius, TShapeElement } from './Shape.types';
+import type { TShapeBorderRadius, TShapeElement } from './Shape.types';
 
-type PShape = {
+type PShape = PGlobals & {
     /**
      * The border-radius size
      * @default 0
@@ -47,10 +48,6 @@ type PShape = {
      * @default theme.background.shape
      */
     backgroundColor?: string;
-    /**
-     * custom className
-     */
-    className?: string;
 };
 
 type PShapeRoot = Omit<PShape, 'className'>;

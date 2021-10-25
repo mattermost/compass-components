@@ -147,7 +147,7 @@
         "no-useless-constructor": "error",
         "no-useless-escape": "error",
         "max-statements-per-line": "error",
-        "no-duplicate-imports": "error",
+        "no-duplicate-imports": "off",
         "no-unsafe-finally": "error",
         "no-useless-computed-key": "error",
         "no-useless-rename": "error",
@@ -300,7 +300,7 @@
         "import/no-duplicates": "error",
         "import/no-namespace": "error",
         "import/newline-after-import": "error",
-        "import/prefer-default-export": "warn",
+        "import/prefer-default-export": "off",
         "import/max-dependencies": ["error", { "max": 15 }],
         "import/no-unassigned-import": "error",
         "import/no-named-default": "error",
@@ -392,7 +392,11 @@
 
         "unicorn/filename-case": [
             "error",
-            { "cases": { "kebabCase": true, "camelCase": true, "pascalCase": true } }
+            { "cases": { "kebabCase": true, "camelCase": true, "pascalCase": true },
+                "ignore": [
+                    "(README|CHANGELOG)\\.md"
+                ]
+            }
         ],
         "unicorn/import-index": ["error", { "ignoreImports": true }],
         "unicorn/prevent-abbreviations": [

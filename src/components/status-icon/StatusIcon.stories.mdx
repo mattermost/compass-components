@@ -1,0 +1,164 @@
+import { Meta, Story, Canvas, Title, Subtitle } from '@storybook/addon-docs/blocks';
+
+import StatusIcon, { STATUSICON_SIZE_LABELS, STATUSICON_STATUS_LABELS } from './index';
+import {
+    DEFAULT_STATUSICON_SIZE,
+    DEFAULT_STATUSICON_STATUS,
+    STATUSICON_SIZES,
+    STATUSICON_STATUSES,
+} from './StatusIcon.constants';
+
+import { Utils } from '../../shared';
+import ThemeProvider from '../../utilities/theme';
+import Flex from '../../utilities/layout';
+import Spacing from '../../utilities/spacing';
+import ShapeRoot from '../../foundations/shape';
+import Text from '../text';
+
+<Meta component={StatusIcon} title="Components/StatusIcon" parameters={{ status: 'stable' }} />
+
+<Title>Status Icon</Title>
+
+<Subtitle>
+    Status Badges are used to indicate the status of a particular user and are usually paired with
+    an avatar or username.
+</Subtitle>
+
+### StatusIcon variations
+
+<ThemeProvider>
+    <Flex padding={Spacing.symmetric({ vertical: 150 })} justify={'stretch'}>
+        <Flex
+            row
+            padding={Spacing.symmetric({ vertical: 150, horizontal: 25 })}
+            alignment={'center'}
+            justify={'space-around'}
+        >
+            <Flex justify={'center'} alignment={'center'} flex={1}>
+                <ShapeRoot width={200} height={200}>
+                    <Flex justify={'center'} alignment={'center'} flex={1}>
+                        <StatusIcon status={'online'} size={'xl'} />
+                    </Flex>
+                </ShapeRoot>
+                <Text weight={'bold'}>online</Text>
+            </Flex>
+            <Flex justify={'center'} alignment={'center'} flex={1}>
+                <ShapeRoot width={200} height={200}>
+                    <Flex justify={'center'} alignment={'center'} flex={1}>
+                        <StatusIcon status={'away'} size={'xl'} />
+                    </Flex>
+                </ShapeRoot>
+                <Text weight={'bold'}>away</Text>
+            </Flex>
+            <Flex justify={'center'} alignment={'center'} flex={1}>
+                <ShapeRoot width={200} height={200}>
+                    <Flex justify={'center'} alignment={'center'} flex={1}>
+                        <StatusIcon status={'dnd'} size={'xl'} />
+                    </Flex>
+                </ShapeRoot>
+                <Text weight={'bold'}>do not disturb ('dnd')</Text>
+            </Flex>
+            <Flex justify={'center'} alignment={'center'} flex={1}>
+                <ShapeRoot width={200} height={200}>
+                    <Flex justify={'center'} alignment={'center'} flex={1}>
+                        <StatusIcon status={'offline'} size={'xl'} />
+                    </Flex>
+                </ShapeRoot>
+                <Text weight={'bold'}>offline</Text>
+            </Flex>
+        </Flex>
+    </Flex>
+</ThemeProvider>
+
+### StatusIcon sizes
+
+<ThemeProvider>
+    <Flex padding={Spacing.symmetric({ vertical: 150 })} justify={'stretch'}>
+        <Flex
+            row
+            padding={Spacing.symmetric({ vertical: 150, horizontal: 25 })}
+            alignment={'center'}
+            justify={'space-around'}
+        >
+            <Flex justify={'center'} alignment={'center'} flex={1}>
+                <ShapeRoot width={150} height={150}>
+                    <Flex justify={'center'} alignment={'center'} flex={1}>
+                        <StatusIcon status={'online'} size={8} />
+                    </Flex>
+                </ShapeRoot>
+                <Text weight={'bold'}>x-small (8)</Text>
+            </Flex>
+            <Flex justify={'center'} alignment={'center'} flex={1}>
+                <ShapeRoot width={150} height={150}>
+                    <Flex justify={'center'} alignment={'center'} flex={1}>
+                        <StatusIcon status={'online'} size={10} />
+                    </Flex>
+                </ShapeRoot>
+                <Text weight={'bold'}>small (10)</Text>
+            </Flex>
+            <Flex justify={'center'} alignment={'center'} flex={1}>
+                <ShapeRoot width={150} height={150}>
+                    <Flex justify={'center'} alignment={'center'} flex={1}>
+                        <StatusIcon status={'online'} size={12} />
+                    </Flex>
+                </ShapeRoot>
+                <Text weight={'bold'}>medium (12)</Text>
+            </Flex>
+            <Flex justify={'center'} alignment={'center'} flex={1}>
+                <ShapeRoot width={150} height={150}>
+                    <Flex justify={'center'} alignment={'center'} flex={1}>
+                        <StatusIcon status={'online'} />
+                    </Flex>
+                </ShapeRoot>
+                <Text weight={'bold'}>large (16)</Text>
+            </Flex>
+            <Flex justify={'center'} alignment={'center'} flex={1}>
+                <ShapeRoot width={150} height={150}>
+                    <Flex justify={'center'} alignment={'center'} flex={1}>
+                        <StatusIcon status={'online'} size={20} />
+                    </Flex>
+                </ShapeRoot>
+                <Text weight={'bold'}>x-large (20)</Text>
+            </Flex>
+            <Flex justify={'center'} alignment={'center'} flex={1}>
+                <ShapeRoot width={150} height={150}>
+                    <Flex justify={'center'} alignment={'center'} flex={1}>
+                        <StatusIcon status={'online'} size={32} />
+                    </Flex>
+                </ShapeRoot>
+                <Text weight={'bold'}>xx-large (32)</Text>
+            </Flex>
+        </Flex>
+    </Flex>
+</ThemeProvider>
+
+export const argTypes = {
+    status: {
+        options: STATUSICON_STATUSES,
+        control: {
+            type: 'select',
+            labels: STATUSICON_STATUS_LABELS,
+        },
+    },
+    size: {
+        options: STATUSICON_SIZES,
+        control: {
+            type: 'select',
+            labels: STATUSICON_SIZE_LABELS,
+        },
+    },
+    ...Utils.hideComponentProperties(['className']),
+};
+
+<Canvas hidden>
+    <Story
+        name="Status Icon"
+        argTypes={argTypes}
+        args={{
+            status: DEFAULT_STATUSICON_STATUS,
+            size: DEFAULT_STATUSICON_SIZE,
+        }}
+    >
+        {(args) => <StatusIcon {...args} />}
+    </Story>
+</Canvas>

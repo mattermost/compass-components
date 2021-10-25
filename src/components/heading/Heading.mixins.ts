@@ -1,10 +1,10 @@
 import { css } from 'styled-components';
-import { FlattenSimpleInterpolation } from 'styled-components/ts3.6';
+import type { FlattenSimpleInterpolation } from 'styled-components';
 
 import { FONT_TYPE_FAMILIES, FONT_WEIGHT_MAP, Utils } from '../../shared';
 
 import { HEADING_DEFINITIONS } from './Heading.constants';
-import { PApplyHeadingColor, PApplyHeadingMargin, PApplyHeadingStyles } from './Heading.props';
+import type { PApplyHeadingColor, PApplyHeadingMargin, PApplyHeadingStyles } from './Heading.props';
 
 const applyHeadingStyles = ({
     inheritLineHeight,
@@ -55,8 +55,22 @@ const applyHeadingMargin = ({
     `;
 };
 
-const applyHeadingColor = ({ color, theme }: PApplyHeadingColor): FlattenSimpleInterpolation => css`
-    color: ${color && color !== 'inherit' ? theme.text[color] : color};
-`;
+const applyHeadingColor = ({ color, theme }: PApplyHeadingColor): FlattenSimpleInterpolation => {
+    if (color === 'inherit') {
+        return css`
+            color: inherit;
+        `;
+    }
+
+    if (Utils.isColor(color)) {
+        return css`
+            color: ${color};
+        `;
+    }
+
+    return css`
+        color: ${theme?.text[color] || 'inherit'};
+    `;
+};
 
 export { applyHeadingStyles, applyHeadingColor, applyHeadingMargin };

@@ -1,15 +1,14 @@
 import styled, { css } from 'styled-components';
-import { FlattenSimpleInterpolation, ThemedStyledProps } from 'styled-components/ts3.6';
+import type { FlattenSimpleInterpolation, ThemedStyledProps } from 'styled-components';
 
 import Text, { applyTextMargin, applyTextStyles } from '../text';
 import { applyShape } from '../../foundations/shape';
 import { Utils } from '../../shared';
-import { applyPadding } from '../../utilities/layout';
-import Spacing from '../../utilities/spacing';
-import { TTheme } from '../../utilities/theme';
+import Spacing, { applyPadding } from '../../utilities/spacing';
+import type { TTheme } from '../../utilities/theme';
 
-import { PTagRoot } from './Tag.props';
-import { TTagVariant } from './Tag.types';
+import type { PTagRoot } from './Tag.props';
+import type { TTagVariant } from './Tag.types';
 
 const TagRoot = styled(Text).withConfig<PTagRoot>({
     shouldForwardProp: (property, validator) =>

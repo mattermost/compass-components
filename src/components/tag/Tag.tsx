@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Utils } from '../../shared';
 
-import PTag from './Tag.props';
+import type PTag from './Tag.props';
 import TagRoot from './Tag.root';
 import { DEFAULT_TAG_VARIANT, DEFAULT_TAG_SIZE } from './Tag.constants';
 
@@ -16,7 +16,7 @@ const Tag = ({
 
     Utils.assert(
         hasText,
-        'Compass Components - Tag: This component is intended to be used with text. Please provide a string to it for correct usage.'
+        'Tag: This component is intended to be used with text. Please provide a string to it for correct usage.'
     );
 
     return (

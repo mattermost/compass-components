@@ -1,4 +1,4 @@
-import { TSpacingToken } from './Spacing.types';
+import type { TSpacingToken } from './Spacing.types';
 
 const SIZES: Record<TSpacingToken, number> = {
     0: 0,
@@ -21,5 +21,9 @@ const SIZES: Record<TSpacingToken, number> = {
     800: 80,
 };
 
-export { SIZES };
+const SPACING_TOKENS: TSpacingToken[] = [
+    0, 25, 50, 75, 100, 125, 150, 175, 200, 250, 300, 350, 400, 450, 500, 600, 700, 800,
+];
+
+export { SIZES, SPACING_TOKENS };
 export default SIZES;

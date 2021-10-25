@@ -1,5 +1,5 @@
 // shared types for `Heading` and `Text` component
-import { TTHemeTextColors } from '../utilities/theme';
+import type { TTHemeTextColors } from '../utilities/theme';
 
 type TAriaRoles =
     | 'alert'
@@ -97,6 +97,8 @@ type TComponentSizeToken = 'xxxs' | 'xxs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '
 
 type TComponentSizes = ['xxxs', 'xxs', 'xs', 'sm', 'md', 'lg', 'xl', 'xxl', 'xxxl'];
 
+type TUserStatus = 'online' | 'away' | 'dnd' | 'offline';
+
 type THiddenArgtypes = {
     [x: string]: { table: { disable: boolean } };
 };
@@ -110,5 +112,6 @@ export type {
     TComponentSizes,
     TComponentSizeToken,
     THiddenArgtypes,
+    TUserStatus,
     TAriaRoles,
 };

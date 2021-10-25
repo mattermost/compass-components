@@ -1,4 +1,4 @@
-import { TFontColor, TFontMargin, TFontWeight } from '../../shared';
+import type { TFontColor, TFontMargin, TFontWeight } from '../../shared';
 
 type THeadingSizeToken =
     | 0

@@ -1,30 +1,33 @@
 import styled, { css } from 'styled-components';
-import { FlattenSimpleInterpolation, ThemedStyledProps } from 'styled-components/ts3.6';
+import type { FlattenSimpleInterpolation, ThemedStyledProps } from 'styled-components';
 
 import { setAlpha, Utils } from '../../shared';
-import { TTheme } from '../../utilities/theme';
-import Spacing from '../../utilities/spacing';
-import { applyMargin, applyPadding } from '../../utilities/layout';
+import type { TTheme } from '../../utilities/theme';
+import { resetButton } from '../../utilities/theme/global-styles/reset-styles';
+import Spacing, { applyMargin, applyPadding } from '../../utilities/spacing';
 import { applyShape } from '../../foundations/shape';
 import { applyTextStyles } from '../text';
 
-import { DEFAULT_ICON_BUTTON_SIZE, ICON_BUTTON_DEFINITIONS } from './IconButton.constants';
-import { PIconButtonRoot } from './IconButton.props';
+import { ICON_BUTTON_DEFINITIONS } from './IconButton.constants';
+import type { PIconButtonRoot } from './IconButton.props';
 
 const IconButtonRoot = styled.button.withConfig<PIconButtonRoot>({
     shouldForwardProp: (property, validator) =>
         Utils.blockProperty(property) && validator(property),
 })(
     ({
-        size = DEFAULT_ICON_BUTTON_SIZE,
-        inverted = false,
-        toggled = false,
-        destructive = false,
-        disabled = false,
-        theme: { palette, action, text },
+        size,
+        compact,
+        inverted,
+        toggled,
+        active,
+        destructive,
+        disabled,
+        theme: { palette, action, text, animation, noStyleReset },
     }: ThemedStyledProps<PIconButtonRoot, TTheme>): FlattenSimpleInterpolation => {
         const isDefault = !inverted && !destructive && !toggled;
         const { main, contrast } = destructive && !toggled ? palette.alert : palette.primary;
+        const { spacing, compactSpacing, fontSize } = ICON_BUTTON_DEFINITIONS[size];
 
         const colors: Record<string, string> = {
             background: main,
@@ -66,6 +69,11 @@ const IconButtonRoot = styled.button.withConfig<PIconButtonRoot>({
             opacities.text.default = 0.32;
         }
 
+        const activeStyles = css`
+            background: ${setAlpha(colors.background, opacities.background.active)};
+            color: ${setAlpha(inverted ? contrast : main, opacities.text.active)};
+        `;
+
         const actionStyles = disabled
             ? css`
                   cursor: not-allowed;
@@ -80,8 +88,7 @@ const IconButtonRoot = styled.button.withConfig<PIconButtonRoot>({
                   }
 
                   :active {
-                      background: ${setAlpha(colors.background, opacities.background.active)};
-                      color: ${setAlpha(inverted ? contrast : main, opacities.text.active)};
+                      ${activeStyles};
                   }
 
                   &:focus {
@@ -100,20 +107,24 @@ const IconButtonRoot = styled.button.withConfig<PIconButtonRoot>({
               `;
 
         return css`
+            ${noStyleReset && resetButton}
+
             display: flex;
             align-items: center;
             justify-content: center;
+
+            cursor: pointer;
 
             color: ${setAlpha(colors.text, opacities.text.default)};
             background: ${setAlpha(colors.background, opacities.background.default)};
 
             ${applyShape({ radius: 4 })};
-            ${applyPadding(Spacing.all(ICON_BUTTON_DEFINITIONS[size].spacing))};
+            ${applyPadding(Spacing.all(compact ? compactSpacing : spacing))};
 
             span {
                 ${applyMargin(Spacing.only('left', 75))};
                 ${applyTextStyles({
-                    size: ICON_BUTTON_DEFINITIONS[size].fontSize,
+                    size: fontSize,
                     weight: 'bold',
                     inheritLineHeight: true,
                 })};
@@ -121,8 +132,10 @@ const IconButtonRoot = styled.button.withConfig<PIconButtonRoot>({
 
             ${actionStyles};
 
-            transition: background 250ms ease-in-out, color 250ms ease-in-out,
-                box-shadow 250ms ease-in-out;
+            ${active && activeStyles}
+
+            transition: background ${animation.fast} ease-in-out,
+                color ${animation.fast} ease-in-out, box-shadow ${animation.fast} ease-in-out;
         `;
     }
 );

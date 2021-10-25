@@ -1,14 +1,13 @@
+import type { FlattenSimpleInterpolation, ThemedStyledProps } from 'styled-components';
 import styled, { css } from 'styled-components';
-import { FlattenSimpleInterpolation, ThemedStyledProps } from 'styled-components/ts3.6';
 
 import { setAlpha, blendColors } from '../../shared';
-import Spacing from '../../utilities/spacing';
-import { applyMargin, applyPadding } from '../../utilities/layout';
-import { TTheme } from '../../utilities/theme';
+import Spacing, { applyMargin, applyPadding } from '../../utilities/spacing';
+import type { TTheme } from '../../utilities/theme';
 import { applyShape } from '../../foundations/shape';
 import { applyTextStyles } from '../text';
 
-import { PMenuItemRoot, PMenuItemTextRoot } from './MenuItem.props';
+import type { PMenuItemRoot, PMenuItemTextRoot } from './MenuItem.props';
 
 const MenuItemLabelRoot = styled.span<PMenuItemTextRoot>(
     (): FlattenSimpleInterpolation => css`

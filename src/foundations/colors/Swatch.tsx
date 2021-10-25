@@ -2,7 +2,7 @@ import React from 'react';
 
 import Heading from '../../components/heading';
 import Text from '../../components/text';
-import Grid from '../../utilities/layout';
+import Flex from '../../utilities/layout';
 import Spacing from '../../utilities/spacing';
 import Shape from '../shape';
 import { convertToRgb, rgbToHex, rgbToHsl } from '../../shared';
@@ -27,13 +27,13 @@ const Swatch: React.FC<PSwatch> = ({
     const hasText = variant !== 'noText';
 
     return (
-        <Grid
+        <Flex
             row={isRow}
             alignItems={'stretch'}
             padding={isRow ? Spacing.symmetric({ vertical: 50 }) : Spacing.all(50)}
             flex={0}
         >
-            <Grid alignItems={'flex-end'}>
+            <Flex alignment={'flex-end'}>
                 <Shape
                     className={'swatch_color'}
                     radius={4}
@@ -43,15 +43,15 @@ const Swatch: React.FC<PSwatch> = ({
                     height={100}
                     backgroundColor={rgbString}
                 />
-            </Grid>
+            </Flex>
             {hasText && (
-                <Grid flex={2} padding={Spacing.trbl({ top: 50, right: 0, bottom: 50, left: 75 })}>
-                    <Grid>
+                <Flex flex={2} padding={Spacing.trbl({ top: 50, right: 0, bottom: 50, left: 75 })}>
+                    <Flex>
                         <Heading element={'h6'} size={200} margin={isRow ? 'none' : 'bottom'}>
                             {`${colorName || ''} ${shade}`.trim()}
                         </Heading>
-                    </Grid>
-                    <Grid>
+                    </Flex>
+                    <Flex>
                         <Text element={'p'} size={75} margin={'none'} color={'secondary'}>
                             {hexString.toUpperCase?.()}
                         </Text>
@@ -61,10 +61,10 @@ const Swatch: React.FC<PSwatch> = ({
                         <Text element={'p'} size={75} margin={'none'} color={'secondary'}>
                             {hslString}
                         </Text>
-                    </Grid>
-                </Grid>
+                    </Flex>
+                </Flex>
             )}
-        </Grid>
+        </Flex>
     );
 };
 

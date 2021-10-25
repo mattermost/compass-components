@@ -1,16 +1,16 @@
 import styled, { css } from 'styled-components';
-import { FlattenSimpleInterpolation, ThemedStyledProps } from 'styled-components/ts3.6';
+import type { FlattenSimpleInterpolation, ThemedStyledProps } from 'styled-components';
 
 import Icon from '../../foundations/icon';
-import Spacing from '../../utilities/spacing';
-import { applyPadding } from '../../utilities/layout';
+import Spacing, { applyPadding } from '../../utilities/spacing';
 import { applyShape } from '../../foundations/shape';
-import { TTheme } from '../../utilities/theme';
+import type { TTheme } from '../../utilities/theme';
+import { resetButton } from '../../utilities/theme/global-styles/reset-styles';
 import { setAlpha, blendColors, Utils } from '../../shared';
 import { applyTextMargin, applyTextStyles } from '../text';
 
 import { BUTTON_SIZE_MAP } from './Button.constants';
-import { PButtonIconRoot, PButtonRoot } from './Button.props';
+import type { PButtonIconRoot, PButtonRoot } from './Button.props';
 
 const ButtonIconRoot = styled(Icon).withConfig<PButtonIconRoot>({
     shouldForwardProp: (property, validator) =>
@@ -27,10 +27,11 @@ const ButtonRoot = styled.button.withConfig<PButtonRoot>({
         Utils.blockProperty(property, ['width']) && validator(property),
 })(
     ({
-        theme: { palette, action, background },
+        theme: { palette, action, background, noStyleReset },
         size,
         width,
         variant,
+        active,
         destructive,
         inverted,
         disabled,
@@ -98,6 +99,13 @@ const ButtonRoot = styled.button.withConfig<PButtonRoot>({
 
         colors.background = setAlpha(colors.main, opacities.background);
 
+        const activeStyles = css`
+            background: ${blendColors(
+                colors.background,
+                setAlpha(colors.action, opacities.active)
+            )};
+        `;
+
         // disabled buttons do not have interactional states
         const actionStyles = disabled
             ? css`
@@ -111,10 +119,7 @@ const ButtonRoot = styled.button.withConfig<PButtonRoot>({
                       )};
                   }
                   &:active {
-                      background: ${blendColors(
-                          colors.background,
-                          setAlpha(colors.action, opacities.active)
-                      )};
+                      ${activeStyles};
                   }
                   &:focus {
                       box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.32),
@@ -132,6 +137,8 @@ const ButtonRoot = styled.button.withConfig<PButtonRoot>({
               `;
 
         return css`
+            ${noStyleReset && resetButton}
+
             display: flex;
             align-items: center;
             justify-content: center;
@@ -153,6 +160,8 @@ const ButtonRoot = styled.button.withConfig<PButtonRoot>({
             `};
 
             ${actionStyles};
+
+            ${active && activeStyles}
 
             transition-property: box-shadow, background-color, color;
             transition-duration: 150ms;

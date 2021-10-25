@@ -1,3 +1,7 @@
+import type { ReactNode, ReactNodeArray } from 'react';
+
+import type { TSpacingDefinition } from '../utilities/spacing';
+
 /**
  * This section contains attributes specific to common user interface elements
  * found on GUI systems or in rich internet applications which receive user
@@ -243,7 +247,46 @@ type PAriaAllAttributes = PAriaWidgetAttributes &
     PAriaDragAndDropAttributes &
     PAriaRelationshipAttributes;
 
+/**
+ * implements padding and margin spacing properties to a components properties
+ * definition, where they are needed.
+ *
+ * Is part of the type PGlobals, but can be used separately.
+ */
+type PGlobalsLayout = {
+    /**
+     * padding according to `TSpacingDefinition` type
+     */
+    padding?: TSpacingDefinition;
+    /**
+     * margin according to `TSpacingDefinition` type
+     */
+    margin?: TSpacingDefinition;
+};
+
+/**
+ * implements className and children properties to a components properties
+ * definition, where they are needed.
+ *
+ * Is part of the type PGlobals, but can be used separately.
+ */
+type PGlobalsMisc = {
+    /**
+     * custom className
+     */
+    className?: string;
+    /**
+     * component children
+     */
+    children?: ReactNode | ReactNodeArray;
+};
+
+type PGlobals = PGlobalsMisc & PGlobalsLayout;
+
 export type {
+    PGlobals,
+    PGlobalsMisc,
+    PGlobalsLayout,
     PAriaWidgetAttributes,
     PAriaLiveRegionAttributes,
     PAriaDragAndDropAttributes,

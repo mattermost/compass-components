@@ -1,6 +1,11 @@
-import { MouseEventHandler } from 'react';
+import type { MouseEventHandler } from 'react';
 
-import { TSwitchSizeToken, TSwitchWidth, TSwitchHeight, TSwitchInnerWidth } from './Switch.types';
+import type {
+    TSwitchSizeToken,
+    TSwitchWidth,
+    TSwitchHeight,
+    TSwitchInnerWidth,
+} from './Switch.types';
 
 type PSwitch = {
     /**
@@ -51,6 +56,6 @@ type PSwitch = {
     className?: string;
 };
 
-export type PSwitchRoot = Required<Pick<PSwitch, 'disabled' | 'size' | 'onClick'>>;
+export type PSwitchRoot = Required<Pick<PSwitch, 'disabled' | 'toggled' | 'size' | 'onClick'>>;
 
 export default PSwitch;

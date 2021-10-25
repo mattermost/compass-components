@@ -1,4 +1,4 @@
-import { TRadioSizeToken, TRadioDefinition } from './Radio.types';
+import type { TRadioSizeToken, TRadioDefinition } from './Radio.types';
 
 const DEFAULT_RADIO_SIZE: TRadioSizeToken = 'md';
 

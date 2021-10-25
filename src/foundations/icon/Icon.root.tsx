@@ -1,10 +1,10 @@
 import styled, { css } from 'styled-components';
-import { FlattenSimpleInterpolation, ThemedStyledProps } from 'styled-components/ts3.6';
+import type { FlattenSimpleInterpolation, ThemedStyledProps } from 'styled-components';
 
-import { TTheme } from '../../utilities/theme';
+import type { TTheme } from '../../utilities/theme';
 import { Utils } from '../../shared';
 
-import { PIconRoot } from './Icon.props';
+import type { PIconRoot } from './Icon.props';
 import { DEFAULT_ICON_SIZE, ICON_FONT_SIZES } from './Icon.constants';
 
 function getIconSizes({ size }: PIconRoot): FlattenSimpleInterpolation {

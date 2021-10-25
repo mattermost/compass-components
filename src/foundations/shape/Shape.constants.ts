@@ -1,6 +1,6 @@
 import { DEFAULT_ELEVATION_LEVEL } from '../../utilities/elevation';
 
-import { TShapeBorderRadius, TShapeElement } from './Shape.types';
+import type { TShapeBorderRadius, TShapeElement } from './Shape.types';
 
 const SHAPE_BORDER_RADII: TShapeBorderRadius[] = [0, 2, 4, 8, 12, 16, 20, 24, 'circle', 'pill'];
 

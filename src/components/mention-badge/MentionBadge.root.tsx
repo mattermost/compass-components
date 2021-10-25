@@ -1,15 +1,14 @@
 import styled, { css } from 'styled-components';
-import {
+import type {
     FlattenInterpolation,
     FlattenSimpleInterpolation,
     ThemedStyledProps,
-} from 'styled-components/ts3.6';
+} from 'styled-components';
 
 import { Utils } from '../../shared';
 import { applyShape } from '../../foundations/shape';
-import { applyPadding } from '../../utilities/layout';
-import Spacing from '../../utilities/spacing';
-import { TTheme } from '../../utilities/theme';
+import Spacing, { applyPadding } from '../../utilities/spacing';
+import type { TTheme } from '../../utilities/theme';
 import { applyTextMargin, applyTextStyles } from '../text';
 
 import {
@@ -17,7 +16,7 @@ import {
     MENTIONBADGE_PADDING_SIZE_MAP,
     MENTIONBADGE_TEXT_SIZE_MAP,
 } from './MentionBadge.constants';
-import { PMentionBadgeRoot } from './MentionBadge.props';
+import type { PMentionBadgeRoot } from './MentionBadge.props';
 
 const getBadgeColors = ({
     inverted,

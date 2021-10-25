@@ -1,5 +1,5 @@
-import { TIconSize } from '../../foundations/icon';
-import { TTextSizeToken } from '../text';
+import type { TIconSize } from '../../foundations/icon';
+import type { TTextSizeToken } from '../text';
 
 type TRadioSizeToken = 'sm' | 'md' | 'lg';
 

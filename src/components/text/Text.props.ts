@@ -1,8 +1,14 @@
-import { ReactNode, ReactNodeArray } from 'react';
+import type { ReactNode, ReactNodeArray } from 'react';
 
-import { TTheme } from '../../utilities/theme';
+import type { TTheme } from '../../utilities/theme';
 
-import { TTextSizeToken, TTextElement, TTextColor, TTextWeight, TTextMargin } from './Text.types';
+import type {
+    TTextSizeToken,
+    TTextElement,
+    TTextColor,
+    TTextWeight,
+    TTextMargin,
+} from './Text.types';
 
 type PText = {
     /**
@@ -16,13 +22,14 @@ type PText = {
      */
     weight?: TTextWeight;
     /**
-     * Every text-element has its own margin.
-     * With this you can choose which one to render.
+     * by default every text element is rendered with a margin on top and on
+     * bottom. by using this property it is possible to either add a margin to
+     * only one side, or to remove the margins completely
      * @default 'both'
      */
     margin?: TTextMargin;
     /**
-     * the size-token used to render the text size.
+     * the size-token used to render
      * @default 100
      */
     size?: TTextSizeToken;
@@ -36,6 +43,9 @@ type PText = {
      * @default 'p'
      */
     element?: TTextElement;
+    /**
+     * custom className
+     */
     className?: string;
     children: ReactNode | ReactNodeArray;
 };

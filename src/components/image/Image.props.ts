@@ -1,4 +1,4 @@
-import { TImageBorderRadius } from './Image.types';
+import type { TImageBorderRadius } from './Image.types';
 
 type PImage = {
     /**

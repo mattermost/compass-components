@@ -1,6 +1,6 @@
 {
     "name": "@mattermost/compass-components",
-    "version": "0.1.0",
+    "version": "0.2.12",
     "description": "components aligning to the compass design system",
     "homepage": "https://github.com/mattermost/compass-components#readme",
     "author": "Mattermost",
@@ -10,7 +10,8 @@
         "build": "node -v && rimraf ./lib && npm run build:compile && npm run build:copy-files",
         "build:compile": "tsc --extendedDiagnostics -p \"./tsconfig.build.json\"",
         "build:copy-files": "node ./scripts/copy-files.js",
-        "lint": "eslint \"./src\"",
+        "pack": "node ./scripts/pack.js",
+        "lint": "eslint ./src",
         "lint:fix": "eslint --fix --cache ./src",
         "nuke": "rm -rf node_modules package-lock.json",
         "storybook": "start-storybook -s ./ -p 6006",
@@ -29,32 +30,39 @@
     "files": [
         "lib"
     ],
+    "publishConfig": {
+        "access": "public"
+    },
     "dependencies": {
-        "@mattermost/compass-icons": "^0.1.1-2",
+        "@mattermost/compass-icons": "^0.1.11",
         "@popperjs/core": "^2.9.2",
         "axios": "^0.21.1",
         "clsx": "^1.1.1",
         "color-blend": "^3.0.1",
+        "csstype": "^3.0.8",
         "lodash.kebabcase": "^4.1.1",
         "lodash.random": "^3.2.0",
         "lodash.upperfirst": "^4.3.1",
-        "react": "^17.0.1",
-        "react-dom": "^17.0.1",
+        "react": "16.13.1 || ^17.0.1",
+        "react-dom": "16.13.1 || ^17.0.1",
         "react-popper": "^2.2.5",
         "react-transition-group": "^4.4.2",
-        "styled-components": "^5.2.1"
+        "styled-components": "^5.3.1"
+    },
+    "peerDependencies": {
+        "react": "16.13.1 || ^17.0.1",
+        "react-dom": "16.13.1 || ^17.0.1"
     },
     "devDependencies": {
         "@babel/core": "^7.13.8",
         "@etchteam/storybook-addon-status": "^4.0.0",
-        "@storybook/addon-a11y": "^6.3.2",
-        "@storybook/addon-actions": "^6.3.2",
-        "@storybook/addon-docs": "^6.3.2",
-        "@storybook/addon-essentials": "^6.3.2",
-        "@storybook/addon-links": "^6.3.2",
-        "@storybook/addon-viewport": "^6.3.2",
-        "@storybook/react": "^6.3.2",
-        "@types/axios": "^0.14.0",
+        "@storybook/addon-a11y": "^6.3.12",
+        "@storybook/addon-actions": "^6.3.12",
+        "@storybook/addon-docs": "^6.3.12",
+        "@storybook/addon-essentials": "^6.3.12",
+        "@storybook/addon-links": "^6.3.12",
+        "@storybook/addon-viewport": "^6.3.12",
+        "@storybook/react": "^6.3.12",
         "@types/lodash.kebabcase": "^4.1.6",
         "@types/lodash.lowerfirst": "^4.3.6",
         "@types/lodash.random": "^3.2.6",
@@ -112,7 +120,7 @@
             "tsc-files --noEmit"
         ],
         "*.{js,jsx,ts,tsx,md,mdx}": [
-            "eslint --cache --fix",
+            "eslint --cache --fix ./src",
             "prettier --write"
         ]
     }

@@ -1,4 +1,4 @@
-import { TStatusBadgeStatus } from '../../../components/status-badge';
+import type { TStatusBadgeStatus } from '../../../components/status-badge';
 
 type TThemeColorDefinition = {
     lighter: string;
@@ -59,11 +59,14 @@ type TThemeBadges = {
 type TThemeAnimationSpeed = 'instant' | 'fastest' | 'fast' | 'normal' | 'slow' | 'slowest';
 
 type TThemeAnimations = {
-    [key in TThemeAnimationSpeed]: string;
+    [key in TThemeAnimationSpeed]: number;
 };
 
 type TTheme = {
     type: 'light' | 'dark';
+    noStyleReset: boolean;
+    noFontFaces: boolean;
+    noDefaultStyle: boolean;
     elevationOpacity: number;
     palette: TTHemeColors;
     badges: TThemeBadges;

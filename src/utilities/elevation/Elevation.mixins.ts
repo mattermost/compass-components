@@ -1,8 +1,8 @@
 import { css } from 'styled-components';
-import { FlattenSimpleInterpolation } from 'styled-components/ts3.6';
+import type { FlattenSimpleInterpolation } from 'styled-components';
 
 import { ELEVATION_DEFINITIONS } from './Elevation.constants';
-import PElevation from './Elevation.props';
+import type PElevation from './Elevation.props';
 
 /**
  * Apply elevation styles to a styled component.

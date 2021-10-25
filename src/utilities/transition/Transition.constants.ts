@@ -1,8 +1,8 @@
 import { css } from 'styled-components';
 
-import { TThemeAnimationSpeed } from '../theme';
+import type { TThemeAnimationSpeed } from '../theme';
 
-import { TTransitionType, TTransitionTypeStatusMap } from './Transition.types';
+import type { TTransitionTypeStatusMap } from './Transition.types';
 
 const TRANSITION_SPEEDS: TThemeAnimationSpeed[] = [
     'instant',
@@ -15,13 +15,9 @@ const TRANSITION_SPEEDS: TThemeAnimationSpeed[] = [
 
 const DEFAULT_TRANSITION_SPEED: TThemeAnimationSpeed = 'normal';
 
-const TRANSITION_TYPE_PROPERTY_MAP: Record<TTransitionType, string> = {
-    fade: 'opacity',
-    scale: 'transform',
-};
-
 const TRANSITION_TYPE_DEFINITIONS: TTransitionTypeStatusMap = {
     fade: {
+        properties: ['opacity'],
         entering: css`
             opacity: 1;
         `,
@@ -39,6 +35,7 @@ const TRANSITION_TYPE_DEFINITIONS: TTransitionTypeStatusMap = {
         `,
     },
     scale: {
+        properties: ['transform'],
         entering: css`
             transform: scale(1);
         `,
@@ -57,9 +54,4 @@ const TRANSITION_TYPE_DEFINITIONS: TTransitionTypeStatusMap = {
     },
 };
 
-export {
-    TRANSITION_SPEEDS,
-    DEFAULT_TRANSITION_SPEED,
-    TRANSITION_TYPE_PROPERTY_MAP,
-    TRANSITION_TYPE_DEFINITIONS,
-};
+export { TRANSITION_SPEEDS, DEFAULT_TRANSITION_SPEED, TRANSITION_TYPE_DEFINITIONS };

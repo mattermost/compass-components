@@ -11,7 +11,7 @@ import {
     DEFAULT_BUTTON_VARIANT,
     DEFAULT_BUTTON_WIDTH,
 } from './Button.constants';
-import PButton from './Button.props';
+import type PButton from './Button.props';
 import ButtonRoot, { ButtonIconRoot } from './Button.root';
 
 const Button: React.FC<PButton> = ({
@@ -22,6 +22,7 @@ const Button: React.FC<PButton> = ({
     size = DEFAULT_BUTTON_SIZE,
     variant = DEFAULT_BUTTON_VARIANT,
     width = DEFAULT_BUTTON_WIDTH,
+    active = false,
     destructive = false,
     inverted = false,
     disabled = false,
@@ -29,7 +30,7 @@ const Button: React.FC<PButton> = ({
 }: PButton) => {
     Utils.assert(
         BUTTON_VARIANTS.includes(variant),
-        `Compass Components - Button: The Button component was used with an invalid 'variant' property. Please choose from the following options: ${BUTTON_VARIANTS.join(
+        `Button: The Button component was used with an invalid 'variant' property. Please choose from the following options: ${BUTTON_VARIANTS.join(
             ', '
         )}`,
         true
@@ -37,7 +38,7 @@ const Button: React.FC<PButton> = ({
 
     Utils.assert(
         BUTTON_SIZES.includes(size),
-        `Compass Components - Button: The Button component was used with an invalid 'size' property. Please choose from the following options: ${BUTTON_SIZES.join(
+        `Button: The Button component was used with an invalid 'size' property. Please choose from the following options: ${BUTTON_SIZES.join(
             ', '
         )}`,
         true
@@ -46,6 +47,7 @@ const Button: React.FC<PButton> = ({
     const rootProperties = {
         disabled: disabled || !Utils.isFunction(onClick),
         width,
+        active,
         destructive,
         inverted,
         size,

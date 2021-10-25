@@ -1,4 +1,4 @@
-import { TComponentSizeToken } from '../../shared';
+import type { TComponentSizeToken } from '../../shared';
 
 export type TMentionBadgeSizeToken = Exclude<
     TComponentSizeToken,

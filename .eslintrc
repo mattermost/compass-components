@@ -115,7 +115,13 @@
                 "node/shebang": "off",
                 "no-dupe-class-members": "off",
                 "no-case-declarations": "warn",
-                "require-atomic-updates": "off"
+                "require-atomic-updates": "off",
+                "@typescript-eslint/consistent-type-imports": ["error",
+                    {
+                        "prefer": "type-imports",
+                        "disallowTypeAnnotations": true
+                    }
+                ]
             },
             "env": { "es6": true },
             "parserOptions": {

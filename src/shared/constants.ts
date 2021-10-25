@@ -1,4 +1,4 @@
-import { TComponentSizes, TFontColor, TFontMargin, TFontWeight } from './types';
+import type { TComponentSizes, TFontColor, TFontMargin, TFontWeight } from './types';
 
 const FONT_TYPE_FAMILIES: Record<'heading' | 'body', string> = {
     body: 'Open Sans, sans-serif',

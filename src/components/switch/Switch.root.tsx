@@ -1,12 +1,12 @@
 import styled, { css } from 'styled-components';
-import { FlattenSimpleInterpolation, ThemedStyledProps } from 'styled-components/ts3.6';
+import type { FlattenSimpleInterpolation, ThemedStyledProps } from 'styled-components';
 
 import { applyTextMargin, applyTextStyles } from '../text';
 import { applyShape } from '../../foundations/shape';
 import { setAlpha, blendColors, Utils } from '../../shared';
-import { TTheme } from '../../utilities/theme';
+import type { TTheme } from '../../utilities/theme';
 
-import { PSwitchRoot } from './Switch.props';
+import type { PSwitchRoot } from './Switch.props';
 import { SWITCH_VALUES_MAPPING } from './Switch.constants';
 
 const SwitchRoot = styled.label.withConfig({
@@ -44,10 +44,10 @@ const SwitchRoot = styled.label.withConfig({
         const actionStyles = disabled
             ? css`
                   .container,
-                  .label {
+                  span {
                       cursor: not-allowed;
                       opacity: 0.5;
-                      &:checked ~ .background {
+                      input:checked ~ .background {
                           background: ${blendColors(
                               mainColor,
                               setAlpha(toggledColor, opacities.background)
@@ -71,18 +71,18 @@ const SwitchRoot = styled.label.withConfig({
                   .container {
                       cursor: pointer;
                   }
-                  .input:focus-visible {
+                  input:focus-visible {
                       .container {
                           outline-color: transparent;
                           border-color: ${focusColor};
                       }
                   }
-                  .input:checked ~ .container {
+                  input:checked ~ .container {
                       background: ${toggledColor};
                       border-color: ${toggledColor};
                   }
 
-                  .input:checked ~ .container .toggle {
+                  input:checked ~ .container .toggle {
                       transform: translateX(80%);
                   }
               `;
@@ -94,7 +94,7 @@ const SwitchRoot = styled.label.withConfig({
             justify-content: center;
             align-items: center;
 
-            .input {
+            input {
                 display: none;
             }
 
@@ -123,7 +123,7 @@ const SwitchRoot = styled.label.withConfig({
                 transition: transform 0.2s ease-in;
             }
 
-            .label {
+            span {
                 ${applyTextStyles({
                     inheritLineHeight: true,
                     size: SWITCH_VALUES_MAPPING[size].labelSize,

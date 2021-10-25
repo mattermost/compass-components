@@ -1,8 +1,7 @@
 import { ArgsTable, Meta, Story, Canvas, Title, Subtitle } from '@storybook/addon-docs/blocks';
 
 import Text from '../../components/text';
-import { Utils } from '../../shared';
-import Grid from '../../utilities/layout';
+import Flex from '../../utilities/layout';
 import Spacing from '../../utilities/spacing';
 
 import Shape from './index';
@@ -51,27 +50,27 @@ export const argTypes = {
 
 There are 4 core shapes used throughout the Mattermost interface:
 
-<Grid padding={Spacing.symmetric({ vertical: 150 })} justifyItems={'stretch'}>
-    <Grid
+<Flex padding={Spacing.symmetric({ vertical: 150 })} justify={'stretch'}>
+    <Flex
         row
         padding={Spacing.symmetric({ vertical: 150, horizontal: 25 })}
         alignItems={'center'}
         justifyItems={'space-around'}
     >
-        <Grid justifyItems={'center'}>
+        <Flex justify={'center'}>
             <Shape {...defaultArgs} radius={0} />
-        </Grid>
-        <Grid justifyItems={'center'}>
+        </Flex>
+        <Flex justify={'center'}>
             <Shape {...defaultArgs} radius={12} />
-        </Grid>
-        <Grid justifyItems={'center'}>
+        </Flex>
+        <Flex justify={'center'}>
             <Shape {...defaultArgs} radius={'pill'} />
-        </Grid>
-        <Grid justifyItems={'center'}>
+        </Flex>
+        <Flex justify={'center'}>
             <Shape {...defaultArgs} radius={'circle'} />
-        </Grid>
-    </Grid>
-</Grid>
+        </Flex>
+    </Flex>
+</Flex>
 
 ## Rectangle
 
@@ -94,73 +93,73 @@ export const radiusExampleArgs = {
     height: 120,
 };
 
-<Grid padding={Spacing.symmetric({ vertical: 150 })} justifyItems={'stretch'}>
-    <Grid row alignItems={'center'}>
-        <Grid justifyItems={'center'} flex={0}>
-            <Grid padding={Spacing.all(150)}>
+<Flex padding={Spacing.symmetric({ vertical: 150 })} justify={'stretch'}>
+    <Flex row alignment={'center'}>
+        <Flex justify={'center'} flex={0}>
+            <Flex padding={Spacing.all(150)}>
                 <Shape {...radiusExampleArgs} width={156} height={156} radius={4} />
-            </Grid>
+            </Flex>
             <br />
             <Text element={'p'} size={200} margin={'none'}>
                 <strong>4px</strong>
             </Text>
-        </Grid>
-    </Grid>
-</Grid>
+        </Flex>
+    </Flex>
+</Flex>
 
 ###### Other Corner Radiuses
 
 ---
 
-<Grid padding={Spacing.symmetric({ vertical: 150 })} justifyItems={'stretch'}>
-    <Grid row justifyItems={'space-between'}>
-        <Grid justifyItems={'center'} flex={0}>
-            <Grid padding={Spacing.all(150)}>
+<Flex padding={Spacing.symmetric({ vertical: 150 })} justify={'stretch'}>
+    <Flex row justify={'space-between'}>
+        <Flex justify={'center'} flex={0}>
+            <Flex padding={Spacing.all(150)}>
                 <Shape {...radiusExampleArgs} radius={8} />
-            </Grid>
+            </Flex>
             <br />
             <Text element={'p'} size={200} margin={'none'}>
                 <strong>8px</strong>
             </Text>
-        </Grid>
-        <Grid justifyItems={'center'} flex={0}>
-            <Grid padding={Spacing.all(150)}>
+        </Flex>
+        <Flex justify={'center'} flex={0}>
+            <Flex padding={Spacing.all(150)}>
                 <Shape {...radiusExampleArgs} radius={12} />
-            </Grid>
+            </Flex>
             <br />
             <Text element={'p'} size={200} margin={'none'}>
                 <strong>12px</strong>
             </Text>
-        </Grid>
-        <Grid justifyItems={'center'} flex={0}>
-            <Grid padding={Spacing.all(150)}>
+        </Flex>
+        <Flex justify={'center'} flex={0}>
+            <Flex padding={Spacing.all(150)}>
                 <Shape {...radiusExampleArgs} radius={16} />
-            </Grid>
+            </Flex>
             <br />
             <Text element={'p'} size={200} margin={'none'}>
                 <strong>16px</strong>
             </Text>
-        </Grid>
-        <Grid justifyItems={'center'} flex={0}>
-            <Grid padding={Spacing.all(150)}>
+        </Flex>
+        <Flex justify={'center'} flex={0}>
+            <Flex padding={Spacing.all(150)}>
                 <Shape {...radiusExampleArgs} radius={20} />
-            </Grid>
+            </Flex>
             <br />
             <Text element={'p'} size={200} margin={'none'}>
                 <strong>20px</strong>
             </Text>
-        </Grid>
-        <Grid justifyItems={'center'} flex={0}>
-            <Grid padding={Spacing.all(150)}>
+        </Flex>
+        <Flex justify={'center'} flex={0}>
+            <Flex padding={Spacing.all(150)}>
                 <Shape {...radiusExampleArgs} radius={24} />
-            </Grid>
+            </Flex>
             <br />
             <Text element={'p'} size={200} margin={'none'}>
                 <strong>24px</strong>
             </Text>
-        </Grid>
-    </Grid>
-</Grid>
+        </Flex>
+    </Flex>
+</Flex>
 
 ## Pill Shape
 

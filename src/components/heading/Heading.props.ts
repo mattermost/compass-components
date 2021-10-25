@@ -1,8 +1,8 @@
-import { ReactNode, ReactNodeArray } from 'react';
+import type { ReactNode, ReactNodeArray } from 'react';
 
-import { TTheme } from '../../utilities/theme';
+import type { TTheme } from '../../utilities/theme';
 
-import {
+import type {
     THeadingSizeToken,
     THeadingElement,
     THeadingColor,
@@ -11,29 +11,41 @@ import {
 } from './Heading.types';
 
 type PHeading = {
-    /** in some cases it is needed to inherit the parents line-height */
-    inheritLineHeight?: boolean;
     /**
-     * which color is the text rendered with */
+     * which color is the heading rendered with
+     * @default 'primary'
+     */
     color?: THeadingColor;
-    /** define the weight of the rendered font */
+    /**
+     * define the weight of the rendered font
+     * @default 'bold'
+     */
     weight?: THeadingWeight;
     /**
-     * Every text-element has its own margin.
-     * With this you can choose which one to render.
-     * */
+     * by default every heading element is rendered with a margin on top and on
+     * bottom. by using this property it is possible to either add margin only
+     * one side, or to remove the margins completely
+     * @default 'both'
+     */
     margin?: THeadingMargin;
     /**
-     * the size-token used to render the text size.
-     *
-     * There is a default for a case where `element` is not manually set as well
-     * */
+     * the size-token used to render the heading
+     * @default 100
+     */
     size?: THeadingSizeToken;
     /**
-     * for heading components the range is `h1` - `h6`.
-     * If not set manually set it derives the element from the size
-     * */
+     * in some cases it is needed to inherit the parents line-height
+     * @default false
+     */
+    inheritLineHeight?: boolean;
+    /**
+     * which HTML element should be used for rendering
+     * @default 'h6'
+     */
     element?: THeadingElement;
+    /**
+     * custom className
+     */
     className?: string;
     children: ReactNode | ReactNodeArray;
 };

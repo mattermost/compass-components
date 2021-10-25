@@ -1,11 +1,11 @@
-import { ArgsTable, Meta, Title, Subtitle } from '@storybook/addon-docs/blocks';
+import { Meta, Title, Subtitle } from '@storybook/addon-docs/blocks';
 
 import Text from '../../components/text';
 import Shape from '../../foundations/shape';
 import { Utils } from '../../shared';
 
 import Spacing from '../spacing';
-import Grid from '../layout';
+import Flex from '../layout';
 
 import elevationExampleImg from '../../assets/images/elevation-example.png';
 import elevationMenuExampleImg from '../../assets/images/elevation-menu-example.png';
@@ -58,50 +58,50 @@ export const argTypes = {
 Elevation refers to the z-index depth that an element sits on. The base Elevation is 0 and has no depth.
 Subsequent layers increment this Elevation value. In total, there are 6 Elevation levels, not including the base level 0.
 
-<Grid row justifyItems={'space-between'} padding={Spacing.all(400)}>
-    <Grid justifyItems={'center'}>
+<Flex row justify={'space-between'} padding={Spacing.all(400)}>
+    <Flex justify={'center'}>
         <Shape {...defaultArgs} elevation={1} />
         <br />
         <Text element={'p'} margin={'none'}>
             <strong>Elevation 1</strong>
         </Text>
-    </Grid>
-    <Grid justifyItems={'center'}>
+    </Flex>
+    <Flex justify={'center'}>
         <Shape {...defaultArgs} elevation={2} />
         <br />
         <Text element={'p'} margin={'none'}>
             <strong>Elevation 2</strong>
         </Text>
-    </Grid>
-    <Grid justifyItems={'center'}>
+    </Flex>
+    <Flex justify={'center'}>
         <Shape {...defaultArgs} elevation={3} />
         <br />
         <Text element={'p'} margin={'none'}>
             <strong>Elevation 3</strong>
         </Text>
-    </Grid>
-    <Grid justifyItems={'center'}>
+    </Flex>
+    <Flex justify={'center'}>
         <Shape {...defaultArgs} elevation={4} />
         <br />
         <Text element={'p'} margin={'none'}>
             <strong>Elevation 4</strong>
         </Text>
-    </Grid>
-    <Grid justifyItems={'center'}>
+    </Flex>
+    <Flex justify={'center'}>
         <Shape {...defaultArgs} elevation={5} />
         <br />
         <Text element={'p'} margin={'none'}>
             <strong>Elevation 5</strong>
         </Text>
-    </Grid>
-    <Grid justifyItems={'center'}>
+    </Flex>
+    <Flex justify={'center'}>
         <Shape {...defaultArgs} elevation={6} />
         <br />
         <Text element={'p'} margin={'none'}>
             <strong>Elevation 6</strong>
         </Text>
-    </Grid>
-</Grid>
+    </Flex>
+</Flex>
 
 ### Elevation Examples
 

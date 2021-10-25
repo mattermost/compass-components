@@ -1,18 +1,18 @@
 import { useState } from 'react';
 import { Meta, Story, Canvas, Title, Subtitle, ArgsTable } from '@storybook/addon-docs/blocks';
+
+import { BUTTON_WIDTHS } from '../button/Button.constants';
+import { Utils, DEFAULT_ARGUMENTS_TABLE_EXCLUSION } from '../../shared';
+import Flex from '../../utilities/layout';
+import Text from '../text';
+import textInputAnatomyImg from '../../assets/images/text-input-anatomy.png';
+
 import {
     DEFAULT_TEXT_INPUT_SIZE,
     TEXT_INPUT_SIZES,
     DEFAULT_LEADING_ICON,
     DEFAULT_TRAILING_ICON,
 } from './TextInput.constants';
-import { BUTTON_WIDTHS } from '../button/Button.constants';
-import { Utils } from '../../shared';
-import Grid from '../../utilities/layout';
-import Spacing from '../../utilities/spacing';
-import Text from '../text';
-import { DEFAULT_ARGUMENTS_TABLE_EXCLUSION } from '../../shared/constants';
-import textInputAnatomyImg from '../../assets/images/text-input-anatomy.png';
 import TextInput from './index';
 
 <Meta component={TextInput} title="Components/TextInput" />
@@ -65,29 +65,29 @@ Value is the text the user has entered into a text field. Its position sits to t
 
 Text inputs come in 3 sizes: Small, Medium, and Large. These sizes match the sizes of Buttons as well.
 
-<Grid row={false} justifyItems={'space-between'}>
-    <Grid justifyItems={'center'}>
+<Flex row={false} justify={'space-between'}>
+    <Flex justify={'center'}>
         <TextInput label={'Label'} size={'sm'} width={300} />
         <br />
         <Text element={'p'} size={200} margin={'none'}>
             <strong>Small</strong>
         </Text>
-    </Grid>
-    <Grid justifyItems={'center'}>
+    </Flex>
+    <Flex justify={'center'}>
         <TextInput label={'Label'} size={'md'} width={300} />
         <br />
         <Text element={'p'} size={200} margin={'none'}>
             <strong>Medium</strong>
         </Text>
-    </Grid>
-    <Grid justifyItems={'center'}>
+    </Flex>
+    <Flex justify={'center'}>
         <TextInput label={'Label'} size={'lg'} width={300} />
         <br />
         <Text element={'p'} size={200} margin={'none'}>
             <strong>Large</strong>
         </Text>
-    </Grid>
-</Grid>
+    </Flex>
+</Flex>
 
 ## Text Input States
 
@@ -95,43 +95,43 @@ Text inputs come in 3 sizes: Small, Medium, and Large. These sizes match the siz
 
 Text Inputs have 5 standard states: Default, Hover, Active, Focus, and Read-only.
 
-<Grid row={false} justifyItems={'space-between'}>
-    <Grid justifyItems={'center'}>
+<Flex row={false} justify={'space-between'}>
+    <Flex justify={'center'}>
         <TextInput {...defaultArgs} />
         <br />
         <Text element={'p'} size={200} margin={'none'}>
             <strong>Default</strong>
         </Text>
-    </Grid>
-    <Grid justifyItems={'center'}>
+    </Flex>
+    <Flex justify={'center'}>
         <TextInput {...defaultArgs} active={true} />
         <br />
         <Text element={'p'} size={200} margin={'none'}>
             <strong>Active</strong>
         </Text>
-    </Grid>
-    <Grid justifyItems={'center'}>
+    </Flex>
+    <Flex justify={'center'}>
         <TextInput {...defaultArgs} disabled={true} />
         <br />
         <Text element={'p'} size={200} margin={'none'}>
             <strong>Read-only</strong>
         </Text>
-    </Grid>
-</Grid>
+    </Flex>
+</Flex>
 
 ### Invalid States
 
 The invalid states are used when text inputs return an error as part of the form field validation. The red style provides user feedback on an issue that needs to be addressed. This treatment is coupled with other common elements like help text.
 
-<Grid row={false} justifyItems={'space-between'}>
-    <Grid justifyItems={'center'}>
+<Flex row={false} justify={'space-between'}>
+    <Flex justify={'center'}>
         <TextInput {...defaultArgs} hasError={true} />
         <br />
         <Text element={'p'} size={200} margin={'none'}>
             <strong>Invalid</strong>
         </Text>
-    </Grid>
-</Grid>
+    </Flex>
+</Flex>
 
 ## Dependencies
 
@@ -144,7 +144,6 @@ export const argTypes = {
     hasError: { control: { type: 'boolean' } },
     animatedLabel: { control: { type: 'boolean' } },
     disabled: { control: { type: 'boolean' } },
-    active: { control: { type: 'boolean' } },
     width: { options: [...BUTTON_WIDTHS, 100, 200, 300, 400], control: { type: 'select' } },
     backgroundColor: { control: { type: 'color' } },
     ...Utils.hideComponentProperties([
@@ -155,6 +154,7 @@ export const argTypes = {
         'onFocus',
         'onBlur',
         'value',
+        'active',
     ]),
 };
 
@@ -188,18 +188,18 @@ export const ControlledTextInput = (args) => {
 
 export const noTrailingIconArgs = {
     ...defaultArgs,
-    trailingIcon: 'none',
+    trailingIcon: '',
 };
 
 export const noLeadingIconArgs = {
     ...defaultArgs,
-    leadingIcon: 'none',
+    leadingIcon: '',
 };
 
 export const noIconArgs = {
     ...defaultArgs,
-    leadingIcon: 'none',
-    trailingIcon: 'none',
+    leadingIcon: '',
+    trailingIcon: '',
 };
 
 <Canvas hidden>

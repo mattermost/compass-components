@@ -1,7 +1,9 @@
-import { TContainerElement, TInteractionElement } from '../../shared';
+import type React from 'react';
+
+import type { TContainerElement, TInteractionElement } from '../../shared';
 
 // TODO: maybe move the hard-coded ones to a separate union type (`TActionElement` maybe?)
-type TShapeElement = TContainerElement | TInteractionElement;
+type TShapeElement = TContainerElement | TInteractionElement | React.FC;
 
 type TShapeVariant = 'rectangle' | 'circle' | 'pill';
 

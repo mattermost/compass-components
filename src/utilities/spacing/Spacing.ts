@@ -1,6 +1,6 @@
 import { Utils } from '../../shared';
 
-import {
+import type {
     TSpacing,
     TSpacingDefinition,
     TSpacingSides,

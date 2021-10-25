@@ -1,7 +1,7 @@
 import { css } from 'styled-components';
-import { FlattenSimpleInterpolation } from 'styled-components/ts3.6';
+import type { FlattenSimpleInterpolation } from 'styled-components';
 
-import { FONT_TYPE_FAMILIES, FONT_WEIGHT_MAP } from '../../shared';
+import { FONT_TYPE_FAMILIES, FONT_WEIGHT_MAP, Utils } from '../../shared';
 
 import {
     DEFAULT_TEXT_MARGIN,
@@ -9,7 +9,7 @@ import {
     DEFAULT_TEXT_WEIGHT,
     TEXT_DEFINITIONS,
 } from './Text.constants';
-import { PApplyTextColor, PApplyTextMargin, PApplyTextStyles } from './Text.props';
+import type { PApplyTextColor, PApplyTextMargin, PApplyTextStyles } from './Text.props';
 
 const applyTextStyles = ({
     inheritLineHeight = false,
@@ -54,14 +54,20 @@ const applyTextMargin = ({
 };
 
 const applyTextColor = ({ color, theme }: PApplyTextColor): FlattenSimpleInterpolation => {
-    if (color === 'inherit' || !theme) {
+    if (color === 'inherit') {
         return css`
             color: inherit;
         `;
     }
 
+    if (Utils.isColor(color)) {
+        return css`
+            color: ${color};
+        `;
+    }
+
     return css`
-        color: ${theme.text[color] || color};
+        color: ${theme?.text[color] || 'inherit'};
     `;
 };
 

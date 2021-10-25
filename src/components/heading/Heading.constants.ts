@@ -1,6 +1,6 @@
 import { Utils, FONT_COLORS, FONT_MARGINS, FONT_WEIGHTS } from '../../shared';
 
-import {
+import type {
     THeadingColor,
     THeadingDefinitions,
     THeadingElement,
@@ -22,7 +22,7 @@ const DEFAULT_HEADING_ELEMENT_SIZES: Record<THeadingElement, THeadingSizeToken> 
     h6: 300,
 };
 
-const HEADING_SIZE_TOKENS: THeadingSizeToken[] = [
+const HEADING_SIZES: THeadingSizeToken[] = [
     0, 25, 50, 75, 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000,
 ];
 
@@ -85,7 +85,7 @@ const HEADING_DEFINITIONS: THeadingDefinitions = {
     },
 };
 
-HEADING_SIZE_TOKENS.forEach((sizeToken) => {
+HEADING_SIZES.forEach((sizeToken) => {
     HEADING_DEFINITIONS[sizeToken].marginTop = Utils.getFontMargin(
         HEADING_DEFINITIONS[sizeToken].size,
         8 / 9
@@ -106,7 +106,7 @@ const DEFAULT_HEADING_COLOR: THeadingColor = 'inherit';
 
 export {
     HEADING_DEFINITIONS,
-    HEADING_SIZE_TOKENS,
+    HEADING_SIZES,
     DEFAULT_HEADING_SIZE,
     HEADING_ELEMENTS,
     DEFAULT_HEADING_ELEMENT,

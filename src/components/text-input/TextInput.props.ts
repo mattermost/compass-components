@@ -1,9 +1,9 @@
-import { ChangeEventHandler, FocusEventHandler, ReactNode, ReactNodeArray } from 'react';
+import type { ChangeEventHandler, FocusEventHandler, ReactNode, ReactNodeArray } from 'react';
 
-import { TIconGlyph } from '../../foundations/icon';
-import { TButtonWidth } from '../button';
+import type { TIconGlyph } from '../../foundations/icon';
+import type { TButtonWidth } from '../button';
 
-import { TTextInputSizeToken } from './TextInput.types';
+import type { TTextInputSizeToken } from './TextInput.types';
 
 type PTextInput = {
     /**
@@ -88,14 +88,11 @@ type PTextInput = {
 };
 
 type PTextInputRoot = Required<
-    Pick<PTextInput, 'hasError' | 'disabled' | 'active' | 'width' | 'size'>
+    Pick<PTextInput, 'hasError' | 'disabled' | 'active' | 'width' | 'size' | 'onClear'>
 > &
-    Pick<PTextInput, 'backgroundColor'>;
-
-type PLabelRoot = Required<Pick<PTextInput, 'size' | 'value' | 'animatedLabel'>> &
-    Pick<PTextInput, 'backgroundColor' | 'leadingIcon' | 'children'>;
+    Pick<PTextInput, 'backgroundColor' | 'animatedLabel' | 'value' | 'leadingIcon'>;
 
 type PInputRoot = Required<Pick<PTextInput, 'placeholder' | 'value' | 'onChange'>>;
 
 export default PTextInput;
-export type { PTextInputRoot, PLabelRoot, PInputRoot };
+export type { PTextInputRoot, PInputRoot };

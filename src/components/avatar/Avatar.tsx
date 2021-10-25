@@ -12,7 +12,7 @@ import {
     DEFAULT_AVATAR_SIZE,
     DEFAULT_AVATAR_VARIANT,
 } from './Avatar.constants';
-import PAvatar from './Avatar.props';
+import type PAvatar from './Avatar.props';
 import AvatarRoot, { AvatarMentionBadgeRoot, AvatarStatusBadgeRoot } from './Avatar.root';
 
 type PStyledAvatarImage = {
@@ -69,7 +69,7 @@ const Avatar = ({
 }: PAvatar): JSX.Element => {
     Utils.assert(
         AVATAR_ELEMENTS.includes(element),
-        `Compass Components: Avatar component was used with an unsupported element '${element}'.
+        `Avatar: component was used with an unsupported element '${element}'.
                 Please provide one from these available options: ${AVATAR_ELEMENTS.join(', ')}.`
     );
 

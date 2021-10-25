@@ -1,9 +1,9 @@
 import React from 'react';
 
-import Icon, { TIconGlyph } from '../../foundations/icon';
+import StatusIcon from '../status-icon';
 
-import PStatusBadge from './StatusBadge.props';
-import { DEFAULT_STATUSBADGE_SIZE, STATUSBADGE_SIZE_MAP } from './StatusBadge.constants';
+import type PStatusBadge from './StatusBadge.props';
+import { DEFAULT_STATUSBADGE_SIZE } from './StatusBadge.constants';
 import StatusBadgeRoot from './StatusBadge.root';
 
 const StatusBadge: React.FC<PStatusBadge> = ({
@@ -11,22 +11,6 @@ const StatusBadge: React.FC<PStatusBadge> = ({
     size = DEFAULT_STATUSBADGE_SIZE,
     ...rest
 }: PStatusBadge): JSX.Element => {
-    let glyph: TIconGlyph = 'circle-outline';
-
-    switch (status) {
-        case 'away':
-            glyph = 'clock';
-            break;
-        case 'dnd':
-            glyph = 'minus-circle';
-            break;
-        case 'online':
-            glyph = 'check-circle';
-            break;
-        case 'offline':
-        default:
-    }
-
     const rootProperties = {
         size,
         status,
@@ -35,7 +19,7 @@ const StatusBadge: React.FC<PStatusBadge> = ({
 
     return (
         <StatusBadgeRoot {...rootProperties}>
-            <Icon glyph={glyph} size={STATUSBADGE_SIZE_MAP[size]} />
+            <StatusIcon status={status} size={size} />
         </StatusBadgeRoot>
     );
 };

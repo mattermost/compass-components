@@ -3,7 +3,7 @@ import React from 'react';
 import { Utils } from '../../shared';
 
 import ShapeRoot from './Shape.root';
-import PShape from './Shape.props';
+import type PShape from './Shape.props';
 import {
     DEFAULT_SHAPE_ELEVATION_LEVEL,
     DEFAULT_SHAPE_BORDER_RADIUS,
@@ -19,8 +19,8 @@ const Shape = ({
     ...rest
 }: PShape): JSX.Element => {
     Utils.assert(
-        SHAPE_ELEMENTS.includes(element),
-        `Compass Components - Shape: used element is unsupported. Please use one supported by the component from this list: ${SHAPE_ELEMENTS.join(
+        SHAPE_ELEMENTS.includes(element) || Utils.isFunctionalComponent(element),
+        `Shape: used element ${element} is unsupported. Please use one supported by the component from this list: ${SHAPE_ELEMENTS.join(
             ', '
         )}`,
         true

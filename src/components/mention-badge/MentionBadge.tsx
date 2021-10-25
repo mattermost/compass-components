@@ -5,7 +5,7 @@ import {
     DEFAULT_MENTIONBAGDE_MENTION_LIMIT,
     DEFAULT_MENTIONBAGDE_MENTIONS,
 } from './MentionBadge.constants';
-import PMentionBadge from './MentionBadge.props';
+import type PMentionBadge from './MentionBadge.props';
 import MentionBadgeRoot from './MentionBadge.root';
 
 const MentionBadge: React.FC<PMentionBadge> = ({

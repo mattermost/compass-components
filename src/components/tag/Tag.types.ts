@@ -1,4 +1,4 @@
-import { TTextSizeToken } from '../text';
+import type { TTextSizeToken } from '../text';
 
 type TLabelTagVariant = 'general' | 'info' | 'warning' | 'success';
 

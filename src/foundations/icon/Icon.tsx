@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Utils } from '../../shared';
 
-import PIcon from './Icon.props';
+import type PIcon from './Icon.props';
 import IconRoot from './Icon.root';
 import {
     DEFAULT_ICON_COLOR,
@@ -20,7 +20,7 @@ const Icon = ({
 }: PIcon): JSX.Element => {
     Utils.assert(
         ICON_GLYPHS.includes(glyph),
-        `Compass Components - Icon: please provide a valid option for the \`iconGlyph\` property. Choose from the following: ${ICON_GLYPHS.join(
+        `Icon: please provide a valid option for the \`iconGlyph\` property. Choose from the following: ${ICON_GLYPHS.join(
             ', '
         )}.`
     );

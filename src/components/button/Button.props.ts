@@ -1,8 +1,8 @@
-import { MouseEventHandler } from 'react';
+import type { MouseEventHandler } from 'react';
 
-import { TIconGlyph } from '../../foundations/icon';
+import type { TIconGlyph } from '../../foundations/icon';
 
-import {
+import type {
     TButtonIconPosition,
     TButtonSizeToken,
     TButtonVariant,
@@ -16,9 +16,10 @@ type PButton = {
      */
     label: string;
     /**
-     * click-event handler
+     * define if the icon is in (forced) active state
+     * @default false
      */
-    onClick: MouseEventHandler<HTMLButtonElement | HTMLAnchorElement>;
+    active?: boolean;
     /**
      * when pushing a button is potentially harmful use this property to show a
      * visual hint to that (button turns red/to the defined alert color)
@@ -67,13 +68,17 @@ type PButton = {
      */
     icon?: TIconGlyph;
     /**
+     * click-event handler
+     */
+    onClick?: MouseEventHandler<HTMLButtonElement | HTMLAnchorElement>;
+    /**
      * custom className
      */
     className?: string;
 };
 
 type PButtonRoot = Required<
-    Pick<PButton, 'destructive' | 'inverted' | 'disabled' | 'variant' | 'width' | 'size'>
+    Pick<PButton, 'active' | 'destructive' | 'inverted' | 'disabled' | 'variant' | 'width' | 'size'>
 >;
 
 type PButtonIconRoot = {
