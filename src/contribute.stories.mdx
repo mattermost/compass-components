@@ -20,7 +20,7 @@ It's based on the Mattermost Design style guide called the **Compass Design Syst
 When you are viewing this guide on our deployed setup start with [step 1 (clone)](#Step 1), otherwise you can skip
 the first few steps and directly start from [step 2](#step-2)
 
-### Step 1: Clone
+### Step 1: Clone the repository
 
 To start contributing to the Compass Component library you need to first fork and checkout the codebase from the git
 repository. This can be done in one of two ways:
@@ -32,7 +32,7 @@ There is a very sophisticated step-by-step guide on the GitHub docs on
 [how to fork and clone a repository](https://docs.github.com/en/get-started/quickstart/fork-a-repo).
 Here are two abbreviated ways to fork and clone the repository.
 
-#### Option A: `gh` CLI
+#### Option A: using `gh` CLI
 
 1. [Install the CLI](https://github.com/cli/cli#installation) tools following the setup steps in the README.
 2. Follow [these steps](https://cli.github.com/manual/) to authorize it with your GitHub account.
@@ -58,11 +58,6 @@ gh repo fork mattermost/compass-components --remote --clone
 1. Go to the [Compass Component Repository](https://github.com/mattermost/compass-components) and select the **Fork**
    option in the top right corner of the screen:
 
-    {' '}
-
-    {' '}
-
-    {' '}
     <img src={forkImg} alt={'fork button on github UI'} />
 
 2. In GitHub, navigate to your fork of the Compass Components repository.
@@ -118,7 +113,7 @@ npm run storybook
 ### Step 3: find something to work on
 
 The best place to start looking for tickets we accept contributions from the wider community for, is by going through
-[this list]() on GitHub.
+[this list](https://github.com/mattermost/compass-components/labels/help%20wanted) on GitHub.
 
 ---
 
@@ -126,8 +121,6 @@ The best place to start looking for tickets we accept contributions from the wid
 
 For ease of use we created a convenience `generate component` function to create a boilerplate template for new
 components.
-
-Simply run
 
 ```shell
 npm run gc
@@ -142,7 +135,7 @@ You will be asked which kind of component you would like to create:
 -   `Utility`
     (_Utility component_) - will go into the `src/utilities` folder
 
-The script will create a component structure, that looks like this:
+The script will then create a component structure, that looks like this:
 
 ```
 ComponentName/
