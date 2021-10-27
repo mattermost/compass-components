@@ -11,16 +11,16 @@ import { DEFAULT_${toUpper(snakeCase(names.kebab))}_SIZE } from './${names.pasca
 import type P${names.pascal} from './${names.pascal}.props';
 import ${names.pascal}Root from './${names.pascal}.root';
 
-const ${names.pascal} = ({ size = DEFAULT_${toUpper(snakeCase(names.kebab))}_SIZE, ...rest }: P${
-    names.pascal
-}): JSX.Element => {
+const ${names.pascal}: React.FC<P${names.pascal}> = (props: P${names.pascal}): JSX.Element => {
+    const { size = DEFAULT_${toUpper(snakeCase(names.kebab))}_SIZE, ...rest } = props;
+
     const rootProperties = {
         size,
         ...rest,
     };
 
     return (
-        <${names.pascal}Root {...rootProperties}>Hello 👋, I am a IconButton component with a default size of '{size}'.</${names.pascal}Root>
+        <${names.pascal}Root {...rootProperties}>Hello 👋, I am a ${names.pascal} component.</${names.pascal}Root>
     );
 };
 
@@ -39,19 +39,20 @@ import {
 import type { P${names.pascal}Root } from './${names.pascal}.props';
 
 const ${names.pascal} = styled.div<P${names.pascal}Root>(
-    ({
-        size,
-        theme,
-    }: ThemedStyledProps<P${names.pascal}Root, TTheme>): FlattenSimpleInterpolation => css\`
-        display: flex;
-        align-items: center;
-        justify-content: center;
+    (props: ThemedStyledProps<P${names.pascal}Root, TTheme>): FlattenSimpleInterpolation => {
+        const { size, theme } = props;
 
-        color: $\{theme.text.primary};
-
-        width: $\{${toUpper(snakeCase(names.kebab))}_DEFINITIONS[size]}px;
-        height: $\{${toUpper(snakeCase(names.kebab))}_DEFINITIONS[size]}px;
-    \`
+        return css\`
+            display: flex;
+            align-items: center;
+            justify-content: center;
+    
+            color: $\{theme.text.primary};
+    
+            width: $\{${toUpper(snakeCase(names.kebab))}_DEFINITIONS[size]}px;
+            height: $\{${toUpper(snakeCase(names.kebab))}_DEFINITIONS[size]}px;
+        \`
+    }
 );
 
 export default ${names.pascal};
@@ -153,7 +154,7 @@ export {
 };
 `;
 
-// component.types.ts
+// component.props.ts
 const props = (names) => `import type { T${names.pascal}SizeToken } from './${names.pascal}.types';
 
 type P${names.pascal} = {
@@ -179,13 +180,11 @@ export type { T${names.pascal}Number, TComponentSizeToken as T${names.pascal}Siz
 `;
 
 // index.ts
-const barrel = (names) => `import ${names.pascal} from './${names.pascal}';
-
-export * from './${names.pascal}.constants';
+const barrel = (names) => `export * from './${names.pascal}.constants';
 export * from './${names.pascal}.props';
 export * from './${names.pascal}.types';
 
-export default ${names.pascal};
+export { default } from './${names.pascal}';
 `;
 
 module.exports = {
