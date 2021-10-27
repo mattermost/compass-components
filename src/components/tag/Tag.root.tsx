@@ -13,48 +13,43 @@ import type { TTagVariant } from './Tag.types';
 const TagRoot = styled(Text).withConfig<PTagRoot>({
     shouldForwardProp: (property, validator) =>
         Utils.blockProperty(property) && validator(property),
-})(
-    ({
-        variant,
-        size,
-        onClick,
-        theme,
-    }: ThemedStyledProps<PTagRoot, TTheme>): FlattenSimpleInterpolation => {
-        const TAG_BACKGROUND_COLOR_MAP: Record<TTagVariant, string> = {
-            general: theme.background.skeleton,
-            info: theme.palette.primary.light,
-            warning: theme.palette.alert.light,
-            success: theme.palette.success.light,
-            highlight: theme.highlight.mention,
-            shortcut: theme.background.skeleton,
-        };
+})((props: ThemedStyledProps<PTagRoot, TTheme>): FlattenSimpleInterpolation => {
+    const { variant, size, onClick, theme } = props;
 
-        return css`
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-color: ${TAG_BACKGROUND_COLOR_MAP[variant]};
-            color: ${variant === 'highlight' ? theme.palette.primary.main : theme.text.primary};
-            text-transform: ${variant === 'highlight' ? 'none' : 'uppercase'};
-            cursor: ${Utils.isFunction(onClick) ? 'pointer' : 'inherit'};
+    const TAG_BACKGROUND_COLOR_MAP: Record<TTagVariant, string> = {
+        general: theme.background.skeleton,
+        info: theme.palette.primary.light,
+        warning: theme.palette.alert.light,
+        success: theme.palette.success.light,
+        highlight: theme.highlight.mention,
+        shortcut: theme.background.skeleton,
+    };
 
-            ${applyPadding(
-                Spacing.symmetric({
-                    vertical: 0,
-                    horizontal: 50,
-                })
-            )};
+    return css`
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: ${TAG_BACKGROUND_COLOR_MAP[variant]};
+        color: ${variant === 'highlight' ? theme.palette.primary.main : theme.text.primary};
+        text-transform: ${variant === 'highlight' ? 'none' : 'uppercase'};
+        cursor: ${Utils.isFunction(onClick) ? 'pointer' : 'inherit'};
 
-            ${applyShape({
-                radius: 4,
-                width: 'auto',
-                height: 'auto',
-            })};
+        ${applyPadding(
+            Spacing.symmetric({
+                vertical: 0,
+                horizontal: 50,
+            })
+        )};
 
-            ${applyTextMargin({ margin: 'none' })};
-            ${applyTextStyles({ size, weight: variant === 'highlight' ? 'regular' : 'bold' })};
-        `;
-    }
-);
+        ${applyShape({
+            radius: 4,
+            width: 'auto',
+            height: 'auto',
+        })};
+
+        ${applyTextMargin({ margin: 'none' })};
+        ${applyTextStyles({ size, weight: variant === 'highlight' ? 'regular' : 'bold' })};
+    `;
+});
 
 export default TagRoot;
