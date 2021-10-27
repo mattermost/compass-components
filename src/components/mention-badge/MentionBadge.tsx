@@ -8,14 +8,16 @@ import {
 import type PMentionBadge from './MentionBadge.props';
 import MentionBadgeRoot from './MentionBadge.root';
 
-const MentionBadge: React.FC<PMentionBadge> = ({
-    mentions = DEFAULT_MENTIONBAGDE_MENTIONS,
-    mentionLimit = DEFAULT_MENTIONBAGDE_MENTION_LIMIT,
-    size = DEFAULT_MENTIONBADGE_SIZE,
-    inverted = false,
-    className,
-    ...rest
-}: PMentionBadge): JSX.Element => {
+const MentionBadge: React.FC<PMentionBadge> = (props: PMentionBadge): JSX.Element => {
+    const {
+        mentions = DEFAULT_MENTIONBAGDE_MENTIONS,
+        mentionLimit = DEFAULT_MENTIONBAGDE_MENTION_LIMIT,
+        size = DEFAULT_MENTIONBADGE_SIZE,
+        inverted = false,
+        className,
+        ...rest
+    } = props;
+
     const isUnreadBadge = mentions === 0;
 
     const rootProperties = {
