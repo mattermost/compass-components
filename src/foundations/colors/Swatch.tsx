@@ -14,15 +14,13 @@ type PSwatch = {
     variant?: 'noText' | 'bottom' | 'right';
 };
 
-const Swatch: React.FC<PSwatch> = ({
-    color,
-    shade,
-    colorName,
-    variant = 'right',
-}: PSwatch): JSX.Element => {
+const Swatch: React.FC<PSwatch> = (props: PSwatch): JSX.Element => {
+    const { color, shade, colorName, variant = 'right' } = props;
+
     const rgbString = convertToRgb(color);
     const hexString = rgbToHex(rgbString);
     const hslString = rgbToHsl(rgbString);
+
     const isRow = variant === 'right';
     const hasText = variant !== 'noText';
 
