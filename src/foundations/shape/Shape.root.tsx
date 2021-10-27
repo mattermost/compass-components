@@ -1,9 +1,9 @@
 import styled, { css } from 'styled-components';
 import type { FlattenSimpleInterpolation, ThemedStyledProps } from 'styled-components';
 
+import type { TTheme } from '../../utilities/theme';
 import applyElevation from '../../utilities/elevation';
 import { applyMargin, applyPadding } from '../../utilities/spacing';
-import type { TTheme } from '../../utilities/theme';
 import { Utils } from '../../shared';
 
 import applyShape from './Shape.mixins';
