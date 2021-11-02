@@ -220,5 +220,5 @@ lib
 docs
 
 # vrt testing folders
-visual-test/backstop_data/bitmaps-test
+visual-test/backstop_data/bitmaps_test
 visual-test/backstop_data/html_report
