@@ -1,7 +1,5 @@
 'use strict';
 
-const kebabCase = require('lodash.kebabcase');
-
 const { stories } = require('./stories.json');
 
 const projectId = 'Visual testing';
