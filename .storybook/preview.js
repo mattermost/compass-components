@@ -29,7 +29,9 @@ const themes = [
 ];
 
 const CustomDecorator = ({ theme, children }) => (
-    <CanvasThemeProvider theme={theme.definition} children={children} />
+    <CanvasThemeProvider theme={theme.definition}>
+        <div id={'testWrapper'}>{children}</div>
+    </CanvasThemeProvider>
 );
 
 addParameters({

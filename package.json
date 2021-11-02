@@ -15,7 +15,13 @@
         "lint:fix": "eslint --fix --cache ./src",
         "nuke": "rm -rf node_modules package-lock.json",
         "storybook": "start-storybook -s ./ -p 6006",
-        "gc": "node ./scripts/generate-component.js"
+        "sb": "start-storybook -s ./ -p 6006",
+        "gc": "node ./scripts/generate-component.js",
+        "vrt:fetch-story-data": "node ./scripts/fetch-stories.js",
+        "vrt:reference": "export VRT_ENV=docker && backstop reference --config=\"visual-test/backstop.config.js\" --docker",
+        "vrt:test": "export VRT_ENV=docker && backstop test --config=\"visual-test/backstop.config.js\" --docker",
+        "vrt:approve": "export VRT_ENV=docker && backstop approve --config=\"visual-test/backstop.config.js\" --docker",
+        "vrt:open-report": "backstop openReport --config=\"visual-test/backstop.config.js\""
     },
     "repository": {
         "type": "git",
@@ -77,6 +83,7 @@
         "@typescript-eslint/eslint-plugin": "^4.16.1",
         "@typescript-eslint/parser": "^4.16.1",
         "babel-loader": "^8.2.2",
+        "backstopjs": "^5.4.4",
         "eslint": "^7.21.0",
         "eslint-config-prettier": "^8.1.0",
         "eslint-plugin-array-func": "^3.1.7",
@@ -105,6 +112,7 @@
         "lodash.toupper": "^4.1.2",
         "prettier": "^2.2.1",
         "prompts": "^2.4.1",
+        "puppeteer-core": "^10.4.0",
         "react-docgen-typescript": "^2.0.0",
         "storybook-addon-themes": "^6.1.0",
         "tsc-files": "^1.1.2",

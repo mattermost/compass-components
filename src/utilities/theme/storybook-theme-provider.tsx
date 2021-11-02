@@ -20,6 +20,10 @@ const CanvasGlobalStyles = createGlobalStyle`
             display: flex;
             justify-content: center;
             align-items: center;
+
+            #testWrapper {
+                padding: 12px;
+            }
         }
     }
 `;

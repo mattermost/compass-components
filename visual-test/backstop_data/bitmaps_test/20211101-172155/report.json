@@ -1,0 +1,1058 @@
+{
+  "testSuite": "BackstopJS",
+  "tests": [
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/Visualtesting_iframehtmlidcomponents-avatar--user-avatarviewModestory_0_testWrapper_0_desktop.png",
+        "test": "../bitmaps_test/20211101-172155/Visualtesting_iframehtmlidcomponents-avatar--user-avatarviewModestory_0_testWrapper_0_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "Visualtesting_iframehtmlidcomponents-avatar--user-avatarviewModestory_0_testWrapper_0_desktop.png",
+        "label": "iframe.html?id=components-avatar--user-avatar&viewMode=story",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://localhost:6006/iframe.html?id=components-avatar--user-avatar&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "diff": {
+          "isSameDimensions": true,
+          "dimensionDifference": {
+            "width": 0,
+            "height": 0
+          },
+          "rawMisMatchPercentage": 30.029296875,
+          "misMatchPercentage": "30.03",
+          "analysisTime": 18
+        },
+        "diffImage": "../bitmaps_test/20211101-172155/failed_diff_Visualtesting_iframehtmlidcomponents-avatar--user-avatarviewModestory_0_testWrapper_0_desktop.png"
+      },
+      "status": "fail"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/Visualtesting_iframehtmlidcomponents-avatar--user-avatar-with-statusviewModestory_0_testWrapper_0_desktop.png",
+        "test": "../bitmaps_test/20211101-172155/Visualtesting_iframehtmlidcomponents-avatar--user-avatar-with-statusviewModestory_0_testWrapper_0_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "Visualtesting_iframehtmlidcomponents-avatar--user-avatar-with-statusviewModestory_0_testWrapper_0_desktop.png",
+        "label": "iframe.html?id=components-avatar--user-avatar-with-status&viewMode=story",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://localhost:6006/iframe.html?id=components-avatar--user-avatar-with-status&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "diff": {
+          "isSameDimensions": true,
+          "dimensionDifference": {
+            "width": 0,
+            "height": 0
+          },
+          "rawMisMatchPercentage": 27.6611328125,
+          "misMatchPercentage": "27.66",
+          "analysisTime": 10
+        },
+        "diffImage": "../bitmaps_test/20211101-172155/failed_diff_Visualtesting_iframehtmlidcomponents-avatar--user-avatar-with-statusviewModestory_0_testWrapper_0_desktop.png"
+      },
+      "status": "fail"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/Visualtesting_iframehtmlidcomponents-avatar--team-avatarviewModestory_0_testWrapper_0_desktop.png",
+        "test": "../bitmaps_test/20211101-172155/Visualtesting_iframehtmlidcomponents-avatar--team-avatarviewModestory_0_testWrapper_0_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "Visualtesting_iframehtmlidcomponents-avatar--team-avatarviewModestory_0_testWrapper_0_desktop.png",
+        "label": "iframe.html?id=components-avatar--team-avatar&viewMode=story",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://localhost:6006/iframe.html?id=components-avatar--team-avatar&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "diff": {
+          "isSameDimensions": true,
+          "dimensionDifference": {
+            "width": 0,
+            "height": 0
+          },
+          "rawMisMatchPercentage": 37.3779296875,
+          "misMatchPercentage": "37.38",
+          "analysisTime": 16
+        },
+        "diffImage": "../bitmaps_test/20211101-172155/failed_diff_Visualtesting_iframehtmlidcomponents-avatar--team-avatarviewModestory_0_testWrapper_0_desktop.png"
+      },
+      "status": "fail"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/Visualtesting_iframehtmlidcomponents-avatar--team-avatar-with-mentionsviewModestory_0_testWrapper_0_desktop.png",
+        "test": "../bitmaps_test/20211101-172155/Visualtesting_iframehtmlidcomponents-avatar--team-avatar-with-mentionsviewModestory_0_testWrapper_0_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "Visualtesting_iframehtmlidcomponents-avatar--team-avatar-with-mentionsviewModestory_0_testWrapper_0_desktop.png",
+        "label": "iframe.html?id=components-avatar--team-avatar-with-mentions&viewMode=story",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://localhost:6006/iframe.html?id=components-avatar--team-avatar-with-mentions&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "diff": {
+          "isSameDimensions": true,
+          "dimensionDifference": {
+            "width": 0,
+            "height": 0
+          },
+          "rawMisMatchPercentage": 27.6123046875,
+          "misMatchPercentage": "27.61",
+          "analysisTime": 29
+        },
+        "diffImage": "../bitmaps_test/20211101-172155/failed_diff_Visualtesting_iframehtmlidcomponents-avatar--team-avatar-with-mentionsviewModestory_0_testWrapper_0_desktop.png"
+      },
+      "status": "fail"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/Visualtesting_iframehtmlidcomponents-button--default-storyviewModestory_0_testWrapper_0_desktop.png",
+        "test": "../bitmaps_test/20211101-172155/Visualtesting_iframehtmlidcomponents-button--default-storyviewModestory_0_testWrapper_0_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "Visualtesting_iframehtmlidcomponents-button--default-storyviewModestory_0_testWrapper_0_desktop.png",
+        "label": "iframe.html?id=components-button--default-story&viewMode=story",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://localhost:6006/iframe.html?id=components-button--default-story&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "diff": {
+          "isSameDimensions": true,
+          "dimensionDifference": {
+            "width": 0,
+            "height": 0
+          },
+          "misMatchPercentage": "0.00"
+        }
+      },
+      "status": "pass"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/Visualtesting_iframehtmlidcomponents-button--button-with-iconviewModestory_0_testWrapper_0_desktop.png",
+        "test": "../bitmaps_test/20211101-172155/Visualtesting_iframehtmlidcomponents-button--button-with-iconviewModestory_0_testWrapper_0_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "Visualtesting_iframehtmlidcomponents-button--button-with-iconviewModestory_0_testWrapper_0_desktop.png",
+        "label": "iframe.html?id=components-button--button-with-icon&viewMode=story",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://localhost:6006/iframe.html?id=components-button--button-with-icon&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "diff": {
+          "isSameDimensions": true,
+          "dimensionDifference": {
+            "width": 0,
+            "height": 0
+          },
+          "misMatchPercentage": "0.00"
+        }
+      },
+      "status": "pass"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/Visualtesting_iframehtmlidcomponents-checkbox--default-storyviewModestory_0_testWrapper_0_desktop.png",
+        "test": "../bitmaps_test/20211101-172155/Visualtesting_iframehtmlidcomponents-checkbox--default-storyviewModestory_0_testWrapper_0_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "Visualtesting_iframehtmlidcomponents-checkbox--default-storyviewModestory_0_testWrapper_0_desktop.png",
+        "label": "iframe.html?id=components-checkbox--default-story&viewMode=story",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://localhost:6006/iframe.html?id=components-checkbox--default-story&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "diff": {
+          "isSameDimensions": true,
+          "dimensionDifference": {
+            "width": 0,
+            "height": 0
+          },
+          "misMatchPercentage": "0.00"
+        }
+      },
+      "status": "pass"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/Visualtesting_iframehtmlidcomponents-heading--default-storyviewModestory_0_testWrapper_0_desktop.png",
+        "test": "../bitmaps_test/20211101-172155/Visualtesting_iframehtmlidcomponents-heading--default-storyviewModestory_0_testWrapper_0_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "Visualtesting_iframehtmlidcomponents-heading--default-storyviewModestory_0_testWrapper_0_desktop.png",
+        "label": "iframe.html?id=components-heading--default-story&viewMode=story",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://localhost:6006/iframe.html?id=components-heading--default-story&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "diff": {
+          "isSameDimensions": true,
+          "dimensionDifference": {
+            "width": 0,
+            "height": 0
+          },
+          "misMatchPercentage": "0.00"
+        }
+      },
+      "status": "pass"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/Visualtesting_iframehtmlidcomponents-iconbutton--default-storyviewModestory_0_testWrapper_0_desktop.png",
+        "test": "../bitmaps_test/20211101-172155/Visualtesting_iframehtmlidcomponents-iconbutton--default-storyviewModestory_0_testWrapper_0_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "Visualtesting_iframehtmlidcomponents-iconbutton--default-storyviewModestory_0_testWrapper_0_desktop.png",
+        "label": "iframe.html?id=components-iconbutton--default-story&viewMode=story",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://localhost:6006/iframe.html?id=components-iconbutton--default-story&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "diff": {
+          "isSameDimensions": true,
+          "dimensionDifference": {
+            "width": 0,
+            "height": 0
+          },
+          "misMatchPercentage": "0.00"
+        }
+      },
+      "status": "pass"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/Visualtesting_iframehtmlidcomponents-image--default-storyviewModestory_0_testWrapper_0_desktop.png",
+        "test": "../bitmaps_test/20211101-172155/Visualtesting_iframehtmlidcomponents-image--default-storyviewModestory_0_testWrapper_0_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "Visualtesting_iframehtmlidcomponents-image--default-storyviewModestory_0_testWrapper_0_desktop.png",
+        "label": "iframe.html?id=components-image--default-story&viewMode=story",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://localhost:6006/iframe.html?id=components-image--default-story&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "diff": {
+          "isSameDimensions": true,
+          "dimensionDifference": {
+            "width": 0,
+            "height": 0
+          },
+          "rawMisMatchPercentage": 61.25039859693877,
+          "misMatchPercentage": "61.25",
+          "analysisTime": 64
+        },
+        "diffImage": "../bitmaps_test/20211101-172155/failed_diff_Visualtesting_iframehtmlidcomponents-image--default-storyviewModestory_0_testWrapper_0_desktop.png"
+      },
+      "status": "fail"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/Visualtesting_iframehtmlidcomponents-mentionbadge--mention-badgesviewModestory_0_testWrapper_0_desktop.png",
+        "test": "../bitmaps_test/20211101-172155/Visualtesting_iframehtmlidcomponents-mentionbadge--mention-badgesviewModestory_0_testWrapper_0_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "Visualtesting_iframehtmlidcomponents-mentionbadge--mention-badgesviewModestory_0_testWrapper_0_desktop.png",
+        "label": "iframe.html?id=components-mentionbadge--mention-badges&viewMode=story",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://localhost:6006/iframe.html?id=components-mentionbadge--mention-badges&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "diff": {
+          "isSameDimensions": true,
+          "dimensionDifference": {
+            "width": 0,
+            "height": 0
+          },
+          "misMatchPercentage": "0.00"
+        }
+      },
+      "status": "pass"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/Visualtesting_iframehtmlidcomponents-mentionbadge--unread-badgesviewModestory_0_testWrapper_0_desktop.png",
+        "test": "../bitmaps_test/20211101-172155/Visualtesting_iframehtmlidcomponents-mentionbadge--unread-badgesviewModestory_0_testWrapper_0_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "Visualtesting_iframehtmlidcomponents-mentionbadge--unread-badgesviewModestory_0_testWrapper_0_desktop.png",
+        "label": "iframe.html?id=components-mentionbadge--unread-badges&viewMode=story",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://localhost:6006/iframe.html?id=components-mentionbadge--unread-badges&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "diff": {
+          "isSameDimensions": true,
+          "dimensionDifference": {
+            "width": 0,
+            "height": 0
+          },
+          "misMatchPercentage": "0.00"
+        }
+      },
+      "status": "pass"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/Visualtesting_iframehtmlidcomponents-radio--default-storyviewModestory_0_testWrapper_0_desktop.png",
+        "test": "../bitmaps_test/20211101-172155/Visualtesting_iframehtmlidcomponents-radio--default-storyviewModestory_0_testWrapper_0_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "Visualtesting_iframehtmlidcomponents-radio--default-storyviewModestory_0_testWrapper_0_desktop.png",
+        "label": "iframe.html?id=components-radio--default-story&viewMode=story",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://localhost:6006/iframe.html?id=components-radio--default-story&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "diff": {
+          "isSameDimensions": true,
+          "dimensionDifference": {
+            "width": 0,
+            "height": 0
+          },
+          "rawMisMatchPercentage": 0,
+          "misMatchPercentage": "0.00",
+          "analysisTime": 54
+        }
+      },
+      "status": "pass"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/Visualtesting_iframehtmlidcomponents-statusbadge--status-badgeviewModestory_0_testWrapper_0_desktop.png",
+        "test": "../bitmaps_test/20211101-172155/Visualtesting_iframehtmlidcomponents-statusbadge--status-badgeviewModestory_0_testWrapper_0_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "Visualtesting_iframehtmlidcomponents-statusbadge--status-badgeviewModestory_0_testWrapper_0_desktop.png",
+        "label": "iframe.html?id=components-statusbadge--status-badge&viewMode=story",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://localhost:6006/iframe.html?id=components-statusbadge--status-badge&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "diff": {
+          "isSameDimensions": true,
+          "dimensionDifference": {
+            "width": 0,
+            "height": 0
+          },
+          "misMatchPercentage": "0.00"
+        }
+      },
+      "status": "pass"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/Visualtesting_iframehtmlidcomponents-statusicon--status-iconviewModestory_0_testWrapper_0_desktop.png",
+        "test": "../bitmaps_test/20211101-172155/Visualtesting_iframehtmlidcomponents-statusicon--status-iconviewModestory_0_testWrapper_0_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "Visualtesting_iframehtmlidcomponents-statusicon--status-iconviewModestory_0_testWrapper_0_desktop.png",
+        "label": "iframe.html?id=components-statusicon--status-icon&viewMode=story",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://localhost:6006/iframe.html?id=components-statusicon--status-icon&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "diff": {
+          "isSameDimensions": true,
+          "dimensionDifference": {
+            "width": 0,
+            "height": 0
+          },
+          "misMatchPercentage": "0.00"
+        }
+      },
+      "status": "pass"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/Visualtesting_iframehtmlidcomponents-switch--default-storyviewModestory_0_testWrapper_0_desktop.png",
+        "test": "../bitmaps_test/20211101-172155/Visualtesting_iframehtmlidcomponents-switch--default-storyviewModestory_0_testWrapper_0_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "Visualtesting_iframehtmlidcomponents-switch--default-storyviewModestory_0_testWrapper_0_desktop.png",
+        "label": "iframe.html?id=components-switch--default-story&viewMode=story",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://localhost:6006/iframe.html?id=components-switch--default-story&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "diff": {
+          "isSameDimensions": true,
+          "dimensionDifference": {
+            "width": 0,
+            "height": 0
+          },
+          "misMatchPercentage": "0.00"
+        }
+      },
+      "status": "pass"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/Visualtesting_iframehtmlidcomponents-tag--default-storyviewModestory_0_testWrapper_0_desktop.png",
+        "test": "../bitmaps_test/20211101-172155/Visualtesting_iframehtmlidcomponents-tag--default-storyviewModestory_0_testWrapper_0_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "Visualtesting_iframehtmlidcomponents-tag--default-storyviewModestory_0_testWrapper_0_desktop.png",
+        "label": "iframe.html?id=components-tag--default-story&viewMode=story",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://localhost:6006/iframe.html?id=components-tag--default-story&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "diff": {
+          "isSameDimensions": true,
+          "dimensionDifference": {
+            "width": 0,
+            "height": 0
+          },
+          "misMatchPercentage": "0.00"
+        }
+      },
+      "status": "pass"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/Visualtesting_iframehtmlidcomponents-textinput--default-storyviewModestory_0_testWrapper_0_desktop.png",
+        "test": "../bitmaps_test/20211101-172155/Visualtesting_iframehtmlidcomponents-textinput--default-storyviewModestory_0_testWrapper_0_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "Visualtesting_iframehtmlidcomponents-textinput--default-storyviewModestory_0_testWrapper_0_desktop.png",
+        "label": "iframe.html?id=components-textinput--default-story&viewMode=story",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://localhost:6006/iframe.html?id=components-textinput--default-story&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "diff": {
+          "isSameDimensions": true,
+          "dimensionDifference": {
+            "width": 0,
+            "height": 0
+          },
+          "misMatchPercentage": "0.00"
+        }
+      },
+      "status": "pass"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/Visualtesting_iframehtmlidcomponents-textinput--no-trailing-iconviewModestory_0_testWrapper_0_desktop.png",
+        "test": "../bitmaps_test/20211101-172155/Visualtesting_iframehtmlidcomponents-textinput--no-trailing-iconviewModestory_0_testWrapper_0_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "Visualtesting_iframehtmlidcomponents-textinput--no-trailing-iconviewModestory_0_testWrapper_0_desktop.png",
+        "label": "iframe.html?id=components-textinput--no-trailing-icon&viewMode=story",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://localhost:6006/iframe.html?id=components-textinput--no-trailing-icon&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "diff": {
+          "isSameDimensions": true,
+          "dimensionDifference": {
+            "width": 0,
+            "height": 0
+          },
+          "misMatchPercentage": "0.00"
+        }
+      },
+      "status": "pass"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/Visualtesting_iframehtmlidcomponents-textinput--no-leading-iconviewModestory_0_testWrapper_0_desktop.png",
+        "test": "../bitmaps_test/20211101-172155/Visualtesting_iframehtmlidcomponents-textinput--no-leading-iconviewModestory_0_testWrapper_0_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "Visualtesting_iframehtmlidcomponents-textinput--no-leading-iconviewModestory_0_testWrapper_0_desktop.png",
+        "label": "iframe.html?id=components-textinput--no-leading-icon&viewMode=story",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://localhost:6006/iframe.html?id=components-textinput--no-leading-icon&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "diff": {
+          "isSameDimensions": true,
+          "dimensionDifference": {
+            "width": 0,
+            "height": 0
+          },
+          "misMatchPercentage": "0.00"
+        }
+      },
+      "status": "pass"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/Visualtesting_iframehtmlidcomponents-textinput--no-iconsviewModestory_0_testWrapper_0_desktop.png",
+        "test": "../bitmaps_test/20211101-172155/Visualtesting_iframehtmlidcomponents-textinput--no-iconsviewModestory_0_testWrapper_0_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "Visualtesting_iframehtmlidcomponents-textinput--no-iconsviewModestory_0_testWrapper_0_desktop.png",
+        "label": "iframe.html?id=components-textinput--no-icons&viewMode=story",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://localhost:6006/iframe.html?id=components-textinput--no-icons&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "diff": {
+          "isSameDimensions": true,
+          "dimensionDifference": {
+            "width": 0,
+            "height": 0
+          },
+          "misMatchPercentage": "0.00"
+        }
+      },
+      "status": "pass"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/Visualtesting_iframehtmlidcomponents-text--default-storyviewModestory_0_testWrapper_0_desktop.png",
+        "test": "../bitmaps_test/20211101-172155/Visualtesting_iframehtmlidcomponents-text--default-storyviewModestory_0_testWrapper_0_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "Visualtesting_iframehtmlidcomponents-text--default-storyviewModestory_0_testWrapper_0_desktop.png",
+        "label": "iframe.html?id=components-text--default-story&viewMode=story",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://localhost:6006/iframe.html?id=components-text--default-story&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "diff": {
+          "isSameDimensions": true,
+          "dimensionDifference": {
+            "width": 0,
+            "height": 0
+          },
+          "misMatchPercentage": "0.00"
+        }
+      },
+      "status": "pass"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/Visualtesting_iframehtmlidfoundations-colors--neutralviewModestory_0_testWrapper_0_desktop.png",
+        "test": "../bitmaps_test/20211101-172155/Visualtesting_iframehtmlidfoundations-colors--neutralviewModestory_0_testWrapper_0_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "Visualtesting_iframehtmlidfoundations-colors--neutralviewModestory_0_testWrapper_0_desktop.png",
+        "label": "iframe.html?id=foundations-colors--neutral&viewMode=story",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://localhost:6006/iframe.html?id=foundations-colors--neutral&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "diff": {
+          "isSameDimensions": true,
+          "dimensionDifference": {
+            "width": 0,
+            "height": 0
+          },
+          "misMatchPercentage": "0.00"
+        }
+      },
+      "status": "pass"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/Visualtesting_iframehtmlidfoundations-colors--blueviewModestory_0_testWrapper_0_desktop.png",
+        "test": "../bitmaps_test/20211101-172155/Visualtesting_iframehtmlidfoundations-colors--blueviewModestory_0_testWrapper_0_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "Visualtesting_iframehtmlidfoundations-colors--blueviewModestory_0_testWrapper_0_desktop.png",
+        "label": "iframe.html?id=foundations-colors--blue&viewMode=story",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://localhost:6006/iframe.html?id=foundations-colors--blue&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "diff": {
+          "isSameDimensions": true,
+          "dimensionDifference": {
+            "width": 0,
+            "height": 0
+          },
+          "misMatchPercentage": "0.00"
+        }
+      },
+      "status": "pass"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/Visualtesting_iframehtmlidfoundations-colors--cyanviewModestory_0_testWrapper_0_desktop.png",
+        "test": "../bitmaps_test/20211101-172155/Visualtesting_iframehtmlidfoundations-colors--cyanviewModestory_0_testWrapper_0_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "Visualtesting_iframehtmlidfoundations-colors--cyanviewModestory_0_testWrapper_0_desktop.png",
+        "label": "iframe.html?id=foundations-colors--cyan&viewMode=story",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://localhost:6006/iframe.html?id=foundations-colors--cyan&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "diff": {
+          "isSameDimensions": true,
+          "dimensionDifference": {
+            "width": 0,
+            "height": 0
+          },
+          "misMatchPercentage": "0.00"
+        }
+      },
+      "status": "pass"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/Visualtesting_iframehtmlidfoundations-colors--indigoviewModestory_0_testWrapper_0_desktop.png",
+        "test": "../bitmaps_test/20211101-172155/Visualtesting_iframehtmlidfoundations-colors--indigoviewModestory_0_testWrapper_0_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "Visualtesting_iframehtmlidfoundations-colors--indigoviewModestory_0_testWrapper_0_desktop.png",
+        "label": "iframe.html?id=foundations-colors--indigo&viewMode=story",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://localhost:6006/iframe.html?id=foundations-colors--indigo&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "diff": {
+          "isSameDimensions": true,
+          "dimensionDifference": {
+            "width": 0,
+            "height": 0
+          },
+          "misMatchPercentage": "0.00"
+        }
+      },
+      "status": "pass"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/Visualtesting_iframehtmlidfoundations-colors--purpleviewModestory_0_testWrapper_0_desktop.png",
+        "test": "../bitmaps_test/20211101-172155/Visualtesting_iframehtmlidfoundations-colors--purpleviewModestory_0_testWrapper_0_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "Visualtesting_iframehtmlidfoundations-colors--purpleviewModestory_0_testWrapper_0_desktop.png",
+        "label": "iframe.html?id=foundations-colors--purple&viewMode=story",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://localhost:6006/iframe.html?id=foundations-colors--purple&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "diff": {
+          "isSameDimensions": true,
+          "dimensionDifference": {
+            "width": 0,
+            "height": 0
+          },
+          "misMatchPercentage": "0.00"
+        }
+      },
+      "status": "pass"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/Visualtesting_iframehtmlidfoundations-colors--tealviewModestory_0_testWrapper_0_desktop.png",
+        "test": "../bitmaps_test/20211101-172155/Visualtesting_iframehtmlidfoundations-colors--tealviewModestory_0_testWrapper_0_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "Visualtesting_iframehtmlidfoundations-colors--tealviewModestory_0_testWrapper_0_desktop.png",
+        "label": "iframe.html?id=foundations-colors--teal&viewMode=story",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://localhost:6006/iframe.html?id=foundations-colors--teal&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "diff": {
+          "isSameDimensions": true,
+          "dimensionDifference": {
+            "width": 0,
+            "height": 0
+          },
+          "misMatchPercentage": "0.00"
+        }
+      },
+      "status": "pass"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/Visualtesting_iframehtmlidfoundations-colors--greenviewModestory_0_testWrapper_0_desktop.png",
+        "test": "../bitmaps_test/20211101-172155/Visualtesting_iframehtmlidfoundations-colors--greenviewModestory_0_testWrapper_0_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "Visualtesting_iframehtmlidfoundations-colors--greenviewModestory_0_testWrapper_0_desktop.png",
+        "label": "iframe.html?id=foundations-colors--green&viewMode=story",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://localhost:6006/iframe.html?id=foundations-colors--green&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "diff": {
+          "isSameDimensions": true,
+          "dimensionDifference": {
+            "width": 0,
+            "height": 0
+          },
+          "misMatchPercentage": "0.00"
+        }
+      },
+      "status": "pass"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/Visualtesting_iframehtmlidfoundations-colors--redviewModestory_0_testWrapper_0_desktop.png",
+        "test": "../bitmaps_test/20211101-172155/Visualtesting_iframehtmlidfoundations-colors--redviewModestory_0_testWrapper_0_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "Visualtesting_iframehtmlidfoundations-colors--redviewModestory_0_testWrapper_0_desktop.png",
+        "label": "iframe.html?id=foundations-colors--red&viewMode=story",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://localhost:6006/iframe.html?id=foundations-colors--red&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "diff": {
+          "isSameDimensions": true,
+          "dimensionDifference": {
+            "width": 0,
+            "height": 0
+          },
+          "misMatchPercentage": "0.00"
+        }
+      },
+      "status": "pass"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/Visualtesting_iframehtmlidfoundations-colors--orangeviewModestory_0_testWrapper_0_desktop.png",
+        "test": "../bitmaps_test/20211101-172155/Visualtesting_iframehtmlidfoundations-colors--orangeviewModestory_0_testWrapper_0_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "Visualtesting_iframehtmlidfoundations-colors--orangeviewModestory_0_testWrapper_0_desktop.png",
+        "label": "iframe.html?id=foundations-colors--orange&viewMode=story",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://localhost:6006/iframe.html?id=foundations-colors--orange&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "diff": {
+          "isSameDimensions": true,
+          "dimensionDifference": {
+            "width": 0,
+            "height": 0
+          },
+          "misMatchPercentage": "0.00"
+        }
+      },
+      "status": "pass"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/Visualtesting_iframehtmlidfoundations-colors--yellowviewModestory_0_testWrapper_0_desktop.png",
+        "test": "../bitmaps_test/20211101-172155/Visualtesting_iframehtmlidfoundations-colors--yellowviewModestory_0_testWrapper_0_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "Visualtesting_iframehtmlidfoundations-colors--yellowviewModestory_0_testWrapper_0_desktop.png",
+        "label": "iframe.html?id=foundations-colors--yellow&viewMode=story",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://localhost:6006/iframe.html?id=foundations-colors--yellow&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "diff": {
+          "isSameDimensions": true,
+          "dimensionDifference": {
+            "width": 0,
+            "height": 0
+          },
+          "misMatchPercentage": "0.00"
+        }
+      },
+      "status": "pass"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/Visualtesting_iframehtmlidfoundations-colors--custom-colorviewModestory_0_testWrapper_0_desktop.png",
+        "test": "../bitmaps_test/20211101-172155/Visualtesting_iframehtmlidfoundations-colors--custom-colorviewModestory_0_testWrapper_0_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "Visualtesting_iframehtmlidfoundations-colors--custom-colorviewModestory_0_testWrapper_0_desktop.png",
+        "label": "iframe.html?id=foundations-colors--custom-color&viewMode=story",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://localhost:6006/iframe.html?id=foundations-colors--custom-color&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "diff": {
+          "isSameDimensions": true,
+          "dimensionDifference": {
+            "width": 0,
+            "height": 0
+          },
+          "misMatchPercentage": "0.00"
+        }
+      },
+      "status": "pass"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/Visualtesting_iframehtmlidfoundations-icon--default-storyviewModestory_0_testWrapper_0_desktop.png",
+        "test": "../bitmaps_test/20211101-172155/Visualtesting_iframehtmlidfoundations-icon--default-storyviewModestory_0_testWrapper_0_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "Visualtesting_iframehtmlidfoundations-icon--default-storyviewModestory_0_testWrapper_0_desktop.png",
+        "label": "iframe.html?id=foundations-icon--default-story&viewMode=story",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://localhost:6006/iframe.html?id=foundations-icon--default-story&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "diff": {
+          "isSameDimensions": true,
+          "dimensionDifference": {
+            "width": 0,
+            "height": 0
+          },
+          "misMatchPercentage": "0.00"
+        }
+      },
+      "status": "pass"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/Visualtesting_iframehtmlidfoundations-shape--rectangleviewModestory_0_testWrapper_0_desktop.png",
+        "test": "../bitmaps_test/20211101-172155/Visualtesting_iframehtmlidfoundations-shape--rectangleviewModestory_0_testWrapper_0_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "Visualtesting_iframehtmlidfoundations-shape--rectangleviewModestory_0_testWrapper_0_desktop.png",
+        "label": "iframe.html?id=foundations-shape--rectangle&viewMode=story",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://localhost:6006/iframe.html?id=foundations-shape--rectangle&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "diff": {
+          "isSameDimensions": true,
+          "dimensionDifference": {
+            "width": 0,
+            "height": 0
+          },
+          "misMatchPercentage": "0.00"
+        }
+      },
+      "status": "pass"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/Visualtesting_iframehtmlidfoundations-shape--rounded-rectangleviewModestory_0_testWrapper_0_desktop.png",
+        "test": "../bitmaps_test/20211101-172155/Visualtesting_iframehtmlidfoundations-shape--rounded-rectangleviewModestory_0_testWrapper_0_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "Visualtesting_iframehtmlidfoundations-shape--rounded-rectangleviewModestory_0_testWrapper_0_desktop.png",
+        "label": "iframe.html?id=foundations-shape--rounded-rectangle&viewMode=story",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://localhost:6006/iframe.html?id=foundations-shape--rounded-rectangle&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "diff": {
+          "isSameDimensions": true,
+          "dimensionDifference": {
+            "width": 0,
+            "height": 0
+          },
+          "misMatchPercentage": "0.00"
+        }
+      },
+      "status": "pass"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/Visualtesting_iframehtmlidfoundations-shape--pillviewModestory_0_testWrapper_0_desktop.png",
+        "test": "../bitmaps_test/20211101-172155/Visualtesting_iframehtmlidfoundations-shape--pillviewModestory_0_testWrapper_0_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "Visualtesting_iframehtmlidfoundations-shape--pillviewModestory_0_testWrapper_0_desktop.png",
+        "label": "iframe.html?id=foundations-shape--pill&viewMode=story",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://localhost:6006/iframe.html?id=foundations-shape--pill&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "diff": {
+          "isSameDimensions": true,
+          "dimensionDifference": {
+            "width": 0,
+            "height": 0
+          },
+          "misMatchPercentage": "0.00"
+        }
+      },
+      "status": "pass"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/Visualtesting_iframehtmlidfoundations-shape--circleviewModestory_0_testWrapper_0_desktop.png",
+        "test": "../bitmaps_test/20211101-172155/Visualtesting_iframehtmlidfoundations-shape--circleviewModestory_0_testWrapper_0_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "Visualtesting_iframehtmlidfoundations-shape--circleviewModestory_0_testWrapper_0_desktop.png",
+        "label": "iframe.html?id=foundations-shape--circle&viewMode=story",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://localhost:6006/iframe.html?id=foundations-shape--circle&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "diff": {
+          "isSameDimensions": true,
+          "dimensionDifference": {
+            "width": 0,
+            "height": 0
+          },
+          "misMatchPercentage": "0.00"
+        }
+      },
+      "status": "pass"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/Visualtesting_iframehtmlidutilities-elevation--default-storyviewModestory_0_testWrapper_0_desktop.png",
+        "test": "../bitmaps_test/20211101-172155/Visualtesting_iframehtmlidutilities-elevation--default-storyviewModestory_0_testWrapper_0_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "Visualtesting_iframehtmlidutilities-elevation--default-storyviewModestory_0_testWrapper_0_desktop.png",
+        "label": "iframe.html?id=utilities-elevation--default-story&viewMode=story",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://localhost:6006/iframe.html?id=utilities-elevation--default-story&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "diff": {
+          "isSameDimensions": true,
+          "dimensionDifference": {
+            "width": 0,
+            "height": 0
+          },
+          "misMatchPercentage": "0.00"
+        }
+      },
+      "status": "pass"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/Visualtesting_iframehtmlidutilities-layout-grid--default-storyviewModestory_0_testWrapper_0_desktop.png",
+        "test": "../bitmaps_test/20211101-172155/Visualtesting_iframehtmlidutilities-layout-grid--default-storyviewModestory_0_testWrapper_0_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "Visualtesting_iframehtmlidutilities-layout-grid--default-storyviewModestory_0_testWrapper_0_desktop.png",
+        "label": "iframe.html?id=utilities-layout-grid--default-story&viewMode=story",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://localhost:6006/iframe.html?id=utilities-layout-grid--default-story&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "diff": {
+          "isSameDimensions": true,
+          "dimensionDifference": {
+            "width": 0,
+            "height": 0
+          },
+          "misMatchPercentage": "0.00"
+        }
+      },
+      "status": "pass"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/Visualtesting_iframehtmlidutilities-popover--default-storyviewModestory_0_testWrapper_0_desktop.png",
+        "test": "../bitmaps_test/20211101-172155/Visualtesting_iframehtmlidutilities-popover--default-storyviewModestory_0_testWrapper_0_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "Visualtesting_iframehtmlidutilities-popover--default-storyviewModestory_0_testWrapper_0_desktop.png",
+        "label": "iframe.html?id=utilities-popover--default-story&viewMode=story",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://localhost:6006/iframe.html?id=utilities-popover--default-story&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "diff": {
+          "isSameDimensions": true,
+          "dimensionDifference": {
+            "width": 0,
+            "height": 0
+          },
+          "misMatchPercentage": "0.00"
+        }
+      },
+      "status": "pass"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/Visualtesting_iframehtmlidutilities-popover--hoverviewModestory_0_testWrapper_0_desktop.png",
+        "test": "../bitmaps_test/20211101-172155/Visualtesting_iframehtmlidutilities-popover--hoverviewModestory_0_testWrapper_0_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "Visualtesting_iframehtmlidutilities-popover--hoverviewModestory_0_testWrapper_0_desktop.png",
+        "label": "iframe.html?id=utilities-popover--hover&viewMode=story",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://localhost:6006/iframe.html?id=utilities-popover--hover&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "diff": {
+          "isSameDimensions": true,
+          "dimensionDifference": {
+            "width": 0,
+            "height": 0
+          },
+          "misMatchPercentage": "0.00"
+        }
+      },
+      "status": "pass"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/Visualtesting_iframehtmlidutilities-popover--w-animationviewModestory_0_testWrapper_0_desktop.png",
+        "test": "../bitmaps_test/20211101-172155/Visualtesting_iframehtmlidutilities-popover--w-animationviewModestory_0_testWrapper_0_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "Visualtesting_iframehtmlidutilities-popover--w-animationviewModestory_0_testWrapper_0_desktop.png",
+        "label": "iframe.html?id=utilities-popover--w-animation&viewMode=story",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://localhost:6006/iframe.html?id=utilities-popover--w-animation&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "diff": {
+          "isSameDimensions": true,
+          "dimensionDifference": {
+            "width": 0,
+            "height": 0
+          },
+          "misMatchPercentage": "0.00"
+        }
+      },
+      "status": "pass"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/Visualtesting_iframehtmlidutilities-theming--default-storyviewModestory_0_testWrapper_0_desktop.png",
+        "test": "../bitmaps_test/20211101-172155/Visualtesting_iframehtmlidutilities-theming--default-storyviewModestory_0_testWrapper_0_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "Visualtesting_iframehtmlidutilities-theming--default-storyviewModestory_0_testWrapper_0_desktop.png",
+        "label": "iframe.html?id=utilities-theming--default-story&viewMode=story",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://localhost:6006/iframe.html?id=utilities-theming--default-story&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "diff": {
+          "isSameDimensions": true,
+          "dimensionDifference": {
+            "width": 0,
+            "height": 0
+          },
+          "misMatchPercentage": "0.00"
+        }
+      },
+      "status": "pass"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/Visualtesting_iframehtmlidutilities-theming--default-colorviewModestory_0_testWrapper_0_desktop.png",
+        "test": "../bitmaps_test/20211101-172155/Visualtesting_iframehtmlidutilities-theming--default-colorviewModestory_0_testWrapper_0_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "Visualtesting_iframehtmlidutilities-theming--default-colorviewModestory_0_testWrapper_0_desktop.png",
+        "label": "iframe.html?id=utilities-theming--default-color&viewMode=story",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://localhost:6006/iframe.html?id=utilities-theming--default-color&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "diff": {
+          "isSameDimensions": true,
+          "dimensionDifference": {
+            "width": 0,
+            "height": 0
+          },
+          "misMatchPercentage": "0.00"
+        }
+      },
+      "status": "pass"
+    }
+  ],
+  "id": "Visual testing"
+}

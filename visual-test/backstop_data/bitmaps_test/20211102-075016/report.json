@@ -1,0 +1,726 @@
+{
+  "testSuite": "BackstopJS",
+  "tests": [
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/0_iframehtmlidcomponents-avatar--user-avatarviewModestory_0_testWrapper_0_desktop.png",
+        "test": "../bitmaps_test/20211102-075016/0_iframehtmlidcomponents-avatar--user-avatarviewModestory_0_testWrapper_0_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "0_iframehtmlidcomponents-avatar--user-avatarviewModestory_0_testWrapper_0_desktop.png",
+        "label": "iframe.html?id=components-avatar--user-avatar&viewMode=story",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://host.docker.internal:6006/iframe.html?id=components-avatar--user-avatar&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "error": "Reference file not found /src/visual-test/backstop_data/bitmaps_reference/0_iframehtmlidcomponents-avatar--user-avatarviewModestory_0_testWrapper_0_desktop.png"
+      },
+      "status": "fail"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/1_iframehtmlidcomponents-avatar--user-avatar-with-statusviewModestory_0_testWrapper_0_desktop.png",
+        "test": "../bitmaps_test/20211102-075016/1_iframehtmlidcomponents-avatar--user-avatar-with-statusviewModestory_0_testWrapper_0_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "1_iframehtmlidcomponents-avatar--user-avatar-with-statusviewModestory_0_testWrapper_0_desktop.png",
+        "label": "iframe.html?id=components-avatar--user-avatar-with-status&viewMode=story",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://host.docker.internal:6006/iframe.html?id=components-avatar--user-avatar-with-status&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "error": "Reference file not found /src/visual-test/backstop_data/bitmaps_reference/1_iframehtmlidcomponents-avatar--user-avatar-with-statusviewModestory_0_testWrapper_0_desktop.png"
+      },
+      "status": "fail"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/2_iframehtmlidcomponents-avatar--team-avatarviewModestory_0_testWrapper_0_desktop.png",
+        "test": "../bitmaps_test/20211102-075016/2_iframehtmlidcomponents-avatar--team-avatarviewModestory_0_testWrapper_0_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "2_iframehtmlidcomponents-avatar--team-avatarviewModestory_0_testWrapper_0_desktop.png",
+        "label": "iframe.html?id=components-avatar--team-avatar&viewMode=story",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://host.docker.internal:6006/iframe.html?id=components-avatar--team-avatar&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "error": "Reference file not found /src/visual-test/backstop_data/bitmaps_reference/2_iframehtmlidcomponents-avatar--team-avatarviewModestory_0_testWrapper_0_desktop.png"
+      },
+      "status": "fail"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/3_iframehtmlidcomponents-avatar--team-avatar-with-mentionsviewModestory_0_testWrapper_0_desktop.png",
+        "test": "../bitmaps_test/20211102-075016/3_iframehtmlidcomponents-avatar--team-avatar-with-mentionsviewModestory_0_testWrapper_0_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "3_iframehtmlidcomponents-avatar--team-avatar-with-mentionsviewModestory_0_testWrapper_0_desktop.png",
+        "label": "iframe.html?id=components-avatar--team-avatar-with-mentions&viewMode=story",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://host.docker.internal:6006/iframe.html?id=components-avatar--team-avatar-with-mentions&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "error": "Reference file not found /src/visual-test/backstop_data/bitmaps_reference/3_iframehtmlidcomponents-avatar--team-avatar-with-mentionsviewModestory_0_testWrapper_0_desktop.png"
+      },
+      "status": "fail"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/4_iframehtmlidcomponents-button--default-storyviewModestory_0_testWrapper_0_desktop.png",
+        "test": "../bitmaps_test/20211102-075016/4_iframehtmlidcomponents-button--default-storyviewModestory_0_testWrapper_0_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "4_iframehtmlidcomponents-button--default-storyviewModestory_0_testWrapper_0_desktop.png",
+        "label": "iframe.html?id=components-button--default-story&viewMode=story",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://host.docker.internal:6006/iframe.html?id=components-button--default-story&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "error": "Reference file not found /src/visual-test/backstop_data/bitmaps_reference/4_iframehtmlidcomponents-button--default-storyviewModestory_0_testWrapper_0_desktop.png"
+      },
+      "status": "fail"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/5_iframehtmlidcomponents-button--button-with-iconviewModestory_0_testWrapper_0_desktop.png",
+        "test": "../bitmaps_test/20211102-075016/5_iframehtmlidcomponents-button--button-with-iconviewModestory_0_testWrapper_0_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "5_iframehtmlidcomponents-button--button-with-iconviewModestory_0_testWrapper_0_desktop.png",
+        "label": "iframe.html?id=components-button--button-with-icon&viewMode=story",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://host.docker.internal:6006/iframe.html?id=components-button--button-with-icon&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "error": "Reference file not found /src/visual-test/backstop_data/bitmaps_reference/5_iframehtmlidcomponents-button--button-with-iconviewModestory_0_testWrapper_0_desktop.png"
+      },
+      "status": "fail"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/6_iframehtmlidcomponents-checkbox--default-storyviewModestory_0_testWrapper_0_desktop.png",
+        "test": "../bitmaps_test/20211102-075016/6_iframehtmlidcomponents-checkbox--default-storyviewModestory_0_testWrapper_0_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "6_iframehtmlidcomponents-checkbox--default-storyviewModestory_0_testWrapper_0_desktop.png",
+        "label": "iframe.html?id=components-checkbox--default-story&viewMode=story",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://host.docker.internal:6006/iframe.html?id=components-checkbox--default-story&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "error": "Reference file not found /src/visual-test/backstop_data/bitmaps_reference/6_iframehtmlidcomponents-checkbox--default-storyviewModestory_0_testWrapper_0_desktop.png"
+      },
+      "status": "fail"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/7_iframehtmlidcomponents-heading--default-storyviewModestory_0_testWrapper_0_desktop.png",
+        "test": "../bitmaps_test/20211102-075016/7_iframehtmlidcomponents-heading--default-storyviewModestory_0_testWrapper_0_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "7_iframehtmlidcomponents-heading--default-storyviewModestory_0_testWrapper_0_desktop.png",
+        "label": "iframe.html?id=components-heading--default-story&viewMode=story",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://host.docker.internal:6006/iframe.html?id=components-heading--default-story&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "error": "Reference file not found /src/visual-test/backstop_data/bitmaps_reference/7_iframehtmlidcomponents-heading--default-storyviewModestory_0_testWrapper_0_desktop.png"
+      },
+      "status": "fail"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/8_iframehtmlidcomponents-iconbutton--default-storyviewModestory_0_testWrapper_0_desktop.png",
+        "test": "../bitmaps_test/20211102-075016/8_iframehtmlidcomponents-iconbutton--default-storyviewModestory_0_testWrapper_0_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "8_iframehtmlidcomponents-iconbutton--default-storyviewModestory_0_testWrapper_0_desktop.png",
+        "label": "iframe.html?id=components-iconbutton--default-story&viewMode=story",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://host.docker.internal:6006/iframe.html?id=components-iconbutton--default-story&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "error": "Reference file not found /src/visual-test/backstop_data/bitmaps_reference/8_iframehtmlidcomponents-iconbutton--default-storyviewModestory_0_testWrapper_0_desktop.png"
+      },
+      "status": "fail"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/9_iframehtmlidcomponents-image--default-storyviewModestory_0_testWrapper_0_desktop.png",
+        "test": "../bitmaps_test/20211102-075016/9_iframehtmlidcomponents-image--default-storyviewModestory_0_testWrapper_0_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "9_iframehtmlidcomponents-image--default-storyviewModestory_0_testWrapper_0_desktop.png",
+        "label": "iframe.html?id=components-image--default-story&viewMode=story",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://host.docker.internal:6006/iframe.html?id=components-image--default-story&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "error": "Reference file not found /src/visual-test/backstop_data/bitmaps_reference/9_iframehtmlidcomponents-image--default-storyviewModestory_0_testWrapper_0_desktop.png"
+      },
+      "status": "fail"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/10_iframehtmlidcomponents-mentionbadge--mention-badgesviewModestory_0_testWrapper_0_desktop.png",
+        "test": "../bitmaps_test/20211102-075016/10_iframehtmlidcomponents-mentionbadge--mention-badgesviewModestory_0_testWrapper_0_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "10_iframehtmlidcomponents-mentionbadge--mention-badgesviewModestory_0_testWrapper_0_desktop.png",
+        "label": "iframe.html?id=components-mentionbadge--mention-badges&viewMode=story",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://host.docker.internal:6006/iframe.html?id=components-mentionbadge--mention-badges&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "error": "Reference file not found /src/visual-test/backstop_data/bitmaps_reference/10_iframehtmlidcomponents-mentionbadge--mention-badgesviewModestory_0_testWrapper_0_desktop.png"
+      },
+      "status": "fail"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/11_iframehtmlidcomponents-mentionbadge--unread-badgesviewModestory_0_testWrapper_0_desktop.png",
+        "test": "../bitmaps_test/20211102-075016/11_iframehtmlidcomponents-mentionbadge--unread-badgesviewModestory_0_testWrapper_0_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "11_iframehtmlidcomponents-mentionbadge--unread-badgesviewModestory_0_testWrapper_0_desktop.png",
+        "label": "iframe.html?id=components-mentionbadge--unread-badges&viewMode=story",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://host.docker.internal:6006/iframe.html?id=components-mentionbadge--unread-badges&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "error": "Reference file not found /src/visual-test/backstop_data/bitmaps_reference/11_iframehtmlidcomponents-mentionbadge--unread-badgesviewModestory_0_testWrapper_0_desktop.png"
+      },
+      "status": "fail"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/12_iframehtmlidcomponents-radio--default-storyviewModestory_0_testWrapper_0_desktop.png",
+        "test": "../bitmaps_test/20211102-075016/12_iframehtmlidcomponents-radio--default-storyviewModestory_0_testWrapper_0_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "12_iframehtmlidcomponents-radio--default-storyviewModestory_0_testWrapper_0_desktop.png",
+        "label": "iframe.html?id=components-radio--default-story&viewMode=story",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://host.docker.internal:6006/iframe.html?id=components-radio--default-story&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "error": "Reference file not found /src/visual-test/backstop_data/bitmaps_reference/12_iframehtmlidcomponents-radio--default-storyviewModestory_0_testWrapper_0_desktop.png"
+      },
+      "status": "fail"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/13_iframehtmlidcomponents-statusbadge--status-badgeviewModestory_0_testWrapper_0_desktop.png",
+        "test": "../bitmaps_test/20211102-075016/13_iframehtmlidcomponents-statusbadge--status-badgeviewModestory_0_testWrapper_0_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "13_iframehtmlidcomponents-statusbadge--status-badgeviewModestory_0_testWrapper_0_desktop.png",
+        "label": "iframe.html?id=components-statusbadge--status-badge&viewMode=story",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://host.docker.internal:6006/iframe.html?id=components-statusbadge--status-badge&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "error": "Reference file not found /src/visual-test/backstop_data/bitmaps_reference/13_iframehtmlidcomponents-statusbadge--status-badgeviewModestory_0_testWrapper_0_desktop.png"
+      },
+      "status": "fail"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/14_iframehtmlidcomponents-statusicon--status-iconviewModestory_0_testWrapper_0_desktop.png",
+        "test": "../bitmaps_test/20211102-075016/14_iframehtmlidcomponents-statusicon--status-iconviewModestory_0_testWrapper_0_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "14_iframehtmlidcomponents-statusicon--status-iconviewModestory_0_testWrapper_0_desktop.png",
+        "label": "iframe.html?id=components-statusicon--status-icon&viewMode=story",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://host.docker.internal:6006/iframe.html?id=components-statusicon--status-icon&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "error": "Reference file not found /src/visual-test/backstop_data/bitmaps_reference/14_iframehtmlidcomponents-statusicon--status-iconviewModestory_0_testWrapper_0_desktop.png"
+      },
+      "status": "fail"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/15_iframehtmlidcomponents-switch--default-storyviewModestory_0_testWrapper_0_desktop.png",
+        "test": "../bitmaps_test/20211102-075016/15_iframehtmlidcomponents-switch--default-storyviewModestory_0_testWrapper_0_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "15_iframehtmlidcomponents-switch--default-storyviewModestory_0_testWrapper_0_desktop.png",
+        "label": "iframe.html?id=components-switch--default-story&viewMode=story",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://host.docker.internal:6006/iframe.html?id=components-switch--default-story&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "error": "Reference file not found /src/visual-test/backstop_data/bitmaps_reference/15_iframehtmlidcomponents-switch--default-storyviewModestory_0_testWrapper_0_desktop.png"
+      },
+      "status": "fail"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/16_iframehtmlidcomponents-tag--default-storyviewModestory_0_testWrapper_0_desktop.png",
+        "test": "../bitmaps_test/20211102-075016/16_iframehtmlidcomponents-tag--default-storyviewModestory_0_testWrapper_0_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "16_iframehtmlidcomponents-tag--default-storyviewModestory_0_testWrapper_0_desktop.png",
+        "label": "iframe.html?id=components-tag--default-story&viewMode=story",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://host.docker.internal:6006/iframe.html?id=components-tag--default-story&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "error": "Reference file not found /src/visual-test/backstop_data/bitmaps_reference/16_iframehtmlidcomponents-tag--default-storyviewModestory_0_testWrapper_0_desktop.png"
+      },
+      "status": "fail"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/17_iframehtmlidcomponents-textinput--default-storyviewModestory_0_testWrapper_0_desktop.png",
+        "test": "../bitmaps_test/20211102-075016/17_iframehtmlidcomponents-textinput--default-storyviewModestory_0_testWrapper_0_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "17_iframehtmlidcomponents-textinput--default-storyviewModestory_0_testWrapper_0_desktop.png",
+        "label": "iframe.html?id=components-textinput--default-story&viewMode=story",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://host.docker.internal:6006/iframe.html?id=components-textinput--default-story&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "error": "Reference file not found /src/visual-test/backstop_data/bitmaps_reference/17_iframehtmlidcomponents-textinput--default-storyviewModestory_0_testWrapper_0_desktop.png"
+      },
+      "status": "fail"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/18_iframehtmlidcomponents-textinput--no-trailing-iconviewModestory_0_testWrapper_0_desktop.png",
+        "test": "../bitmaps_test/20211102-075016/18_iframehtmlidcomponents-textinput--no-trailing-iconviewModestory_0_testWrapper_0_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "18_iframehtmlidcomponents-textinput--no-trailing-iconviewModestory_0_testWrapper_0_desktop.png",
+        "label": "iframe.html?id=components-textinput--no-trailing-icon&viewMode=story",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://host.docker.internal:6006/iframe.html?id=components-textinput--no-trailing-icon&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "error": "Reference file not found /src/visual-test/backstop_data/bitmaps_reference/18_iframehtmlidcomponents-textinput--no-trailing-iconviewModestory_0_testWrapper_0_desktop.png"
+      },
+      "status": "fail"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/19_iframehtmlidcomponents-textinput--no-leading-iconviewModestory_0_testWrapper_0_desktop.png",
+        "test": "../bitmaps_test/20211102-075016/19_iframehtmlidcomponents-textinput--no-leading-iconviewModestory_0_testWrapper_0_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "19_iframehtmlidcomponents-textinput--no-leading-iconviewModestory_0_testWrapper_0_desktop.png",
+        "label": "iframe.html?id=components-textinput--no-leading-icon&viewMode=story",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://host.docker.internal:6006/iframe.html?id=components-textinput--no-leading-icon&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "error": "Reference file not found /src/visual-test/backstop_data/bitmaps_reference/19_iframehtmlidcomponents-textinput--no-leading-iconviewModestory_0_testWrapper_0_desktop.png"
+      },
+      "status": "fail"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/20_iframehtmlidcomponents-textinput--no-iconsviewModestory_0_testWrapper_0_desktop.png",
+        "test": "../bitmaps_test/20211102-075016/20_iframehtmlidcomponents-textinput--no-iconsviewModestory_0_testWrapper_0_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "20_iframehtmlidcomponents-textinput--no-iconsviewModestory_0_testWrapper_0_desktop.png",
+        "label": "iframe.html?id=components-textinput--no-icons&viewMode=story",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://host.docker.internal:6006/iframe.html?id=components-textinput--no-icons&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "error": "Reference file not found /src/visual-test/backstop_data/bitmaps_reference/20_iframehtmlidcomponents-textinput--no-iconsviewModestory_0_testWrapper_0_desktop.png"
+      },
+      "status": "fail"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/21_iframehtmlidcomponents-text--default-storyviewModestory_0_testWrapper_0_desktop.png",
+        "test": "../bitmaps_test/20211102-075016/21_iframehtmlidcomponents-text--default-storyviewModestory_0_testWrapper_0_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "21_iframehtmlidcomponents-text--default-storyviewModestory_0_testWrapper_0_desktop.png",
+        "label": "iframe.html?id=components-text--default-story&viewMode=story",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://host.docker.internal:6006/iframe.html?id=components-text--default-story&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "error": "Reference file not found /src/visual-test/backstop_data/bitmaps_reference/21_iframehtmlidcomponents-text--default-storyviewModestory_0_testWrapper_0_desktop.png"
+      },
+      "status": "fail"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/22_iframehtmlidfoundations-colors--neutralviewModestory_0_testWrapper_0_desktop.png",
+        "test": "../bitmaps_test/20211102-075016/22_iframehtmlidfoundations-colors--neutralviewModestory_0_testWrapper_0_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "22_iframehtmlidfoundations-colors--neutralviewModestory_0_testWrapper_0_desktop.png",
+        "label": "iframe.html?id=foundations-colors--neutral&viewMode=story",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://host.docker.internal:6006/iframe.html?id=foundations-colors--neutral&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "error": "Reference file not found /src/visual-test/backstop_data/bitmaps_reference/22_iframehtmlidfoundations-colors--neutralviewModestory_0_testWrapper_0_desktop.png"
+      },
+      "status": "fail"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/23_iframehtmlidfoundations-colors--blueviewModestory_0_testWrapper_0_desktop.png",
+        "test": "../bitmaps_test/20211102-075016/23_iframehtmlidfoundations-colors--blueviewModestory_0_testWrapper_0_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "23_iframehtmlidfoundations-colors--blueviewModestory_0_testWrapper_0_desktop.png",
+        "label": "iframe.html?id=foundations-colors--blue&viewMode=story",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://host.docker.internal:6006/iframe.html?id=foundations-colors--blue&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "error": "Reference file not found /src/visual-test/backstop_data/bitmaps_reference/23_iframehtmlidfoundations-colors--blueviewModestory_0_testWrapper_0_desktop.png"
+      },
+      "status": "fail"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/24_iframehtmlidfoundations-colors--cyanviewModestory_0_testWrapper_0_desktop.png",
+        "test": "../bitmaps_test/20211102-075016/24_iframehtmlidfoundations-colors--cyanviewModestory_0_testWrapper_0_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "24_iframehtmlidfoundations-colors--cyanviewModestory_0_testWrapper_0_desktop.png",
+        "label": "iframe.html?id=foundations-colors--cyan&viewMode=story",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://host.docker.internal:6006/iframe.html?id=foundations-colors--cyan&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "error": "Reference file not found /src/visual-test/backstop_data/bitmaps_reference/24_iframehtmlidfoundations-colors--cyanviewModestory_0_testWrapper_0_desktop.png"
+      },
+      "status": "fail"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/25_iframehtmlidfoundations-colors--indigoviewModestory_0_testWrapper_0_desktop.png",
+        "test": "../bitmaps_test/20211102-075016/25_iframehtmlidfoundations-colors--indigoviewModestory_0_testWrapper_0_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "25_iframehtmlidfoundations-colors--indigoviewModestory_0_testWrapper_0_desktop.png",
+        "label": "iframe.html?id=foundations-colors--indigo&viewMode=story",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://host.docker.internal:6006/iframe.html?id=foundations-colors--indigo&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "error": "Reference file not found /src/visual-test/backstop_data/bitmaps_reference/25_iframehtmlidfoundations-colors--indigoviewModestory_0_testWrapper_0_desktop.png"
+      },
+      "status": "fail"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/26_iframehtmlidfoundations-colors--purpleviewModestory_0_testWrapper_0_desktop.png",
+        "test": "../bitmaps_test/20211102-075016/26_iframehtmlidfoundations-colors--purpleviewModestory_0_testWrapper_0_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "26_iframehtmlidfoundations-colors--purpleviewModestory_0_testWrapper_0_desktop.png",
+        "label": "iframe.html?id=foundations-colors--purple&viewMode=story",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://host.docker.internal:6006/iframe.html?id=foundations-colors--purple&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "error": "Reference file not found /src/visual-test/backstop_data/bitmaps_reference/26_iframehtmlidfoundations-colors--purpleviewModestory_0_testWrapper_0_desktop.png"
+      },
+      "status": "fail"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/27_iframehtmlidfoundations-colors--tealviewModestory_0_testWrapper_0_desktop.png",
+        "test": "../bitmaps_test/20211102-075016/27_iframehtmlidfoundations-colors--tealviewModestory_0_testWrapper_0_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "27_iframehtmlidfoundations-colors--tealviewModestory_0_testWrapper_0_desktop.png",
+        "label": "iframe.html?id=foundations-colors--teal&viewMode=story",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://host.docker.internal:6006/iframe.html?id=foundations-colors--teal&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "error": "Reference file not found /src/visual-test/backstop_data/bitmaps_reference/27_iframehtmlidfoundations-colors--tealviewModestory_0_testWrapper_0_desktop.png"
+      },
+      "status": "fail"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/28_iframehtmlidfoundations-colors--greenviewModestory_0_testWrapper_0_desktop.png",
+        "test": "../bitmaps_test/20211102-075016/28_iframehtmlidfoundations-colors--greenviewModestory_0_testWrapper_0_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "28_iframehtmlidfoundations-colors--greenviewModestory_0_testWrapper_0_desktop.png",
+        "label": "iframe.html?id=foundations-colors--green&viewMode=story",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://host.docker.internal:6006/iframe.html?id=foundations-colors--green&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "error": "Reference file not found /src/visual-test/backstop_data/bitmaps_reference/28_iframehtmlidfoundations-colors--greenviewModestory_0_testWrapper_0_desktop.png"
+      },
+      "status": "fail"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/29_iframehtmlidfoundations-colors--redviewModestory_0_testWrapper_0_desktop.png",
+        "test": "../bitmaps_test/20211102-075016/29_iframehtmlidfoundations-colors--redviewModestory_0_testWrapper_0_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "29_iframehtmlidfoundations-colors--redviewModestory_0_testWrapper_0_desktop.png",
+        "label": "iframe.html?id=foundations-colors--red&viewMode=story",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://host.docker.internal:6006/iframe.html?id=foundations-colors--red&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "error": "Reference file not found /src/visual-test/backstop_data/bitmaps_reference/29_iframehtmlidfoundations-colors--redviewModestory_0_testWrapper_0_desktop.png"
+      },
+      "status": "fail"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/30_iframehtmlidfoundations-colors--orangeviewModestory_0_testWrapper_0_desktop.png",
+        "test": "../bitmaps_test/20211102-075016/30_iframehtmlidfoundations-colors--orangeviewModestory_0_testWrapper_0_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "30_iframehtmlidfoundations-colors--orangeviewModestory_0_testWrapper_0_desktop.png",
+        "label": "iframe.html?id=foundations-colors--orange&viewMode=story",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://host.docker.internal:6006/iframe.html?id=foundations-colors--orange&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "error": "Reference file not found /src/visual-test/backstop_data/bitmaps_reference/30_iframehtmlidfoundations-colors--orangeviewModestory_0_testWrapper_0_desktop.png"
+      },
+      "status": "fail"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/31_iframehtmlidfoundations-colors--yellowviewModestory_0_testWrapper_0_desktop.png",
+        "test": "../bitmaps_test/20211102-075016/31_iframehtmlidfoundations-colors--yellowviewModestory_0_testWrapper_0_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "31_iframehtmlidfoundations-colors--yellowviewModestory_0_testWrapper_0_desktop.png",
+        "label": "iframe.html?id=foundations-colors--yellow&viewMode=story",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://host.docker.internal:6006/iframe.html?id=foundations-colors--yellow&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "error": "Reference file not found /src/visual-test/backstop_data/bitmaps_reference/31_iframehtmlidfoundations-colors--yellowviewModestory_0_testWrapper_0_desktop.png"
+      },
+      "status": "fail"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/32_iframehtmlidfoundations-colors--custom-colorviewModestory_0_testWrapper_0_desktop.png",
+        "test": "../bitmaps_test/20211102-075016/32_iframehtmlidfoundations-colors--custom-colorviewModestory_0_testWrapper_0_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "32_iframehtmlidfoundations-colors--custom-colorviewModestory_0_testWrapper_0_desktop.png",
+        "label": "iframe.html?id=foundations-colors--custom-color&viewMode=story",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://host.docker.internal:6006/iframe.html?id=foundations-colors--custom-color&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "error": "Reference file not found /src/visual-test/backstop_data/bitmaps_reference/32_iframehtmlidfoundations-colors--custom-colorviewModestory_0_testWrapper_0_desktop.png"
+      },
+      "status": "fail"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/33_iframehtmlidfoundations-icon--default-storyviewModestory_0_testWrapper_0_desktop.png",
+        "test": "../bitmaps_test/20211102-075016/33_iframehtmlidfoundations-icon--default-storyviewModestory_0_testWrapper_0_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "33_iframehtmlidfoundations-icon--default-storyviewModestory_0_testWrapper_0_desktop.png",
+        "label": "iframe.html?id=foundations-icon--default-story&viewMode=story",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://host.docker.internal:6006/iframe.html?id=foundations-icon--default-story&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "error": "Reference file not found /src/visual-test/backstop_data/bitmaps_reference/33_iframehtmlidfoundations-icon--default-storyviewModestory_0_testWrapper_0_desktop.png"
+      },
+      "status": "fail"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/34_iframehtmlidfoundations-shape--rectangleviewModestory_0_testWrapper_0_desktop.png",
+        "test": "../bitmaps_test/20211102-075016/34_iframehtmlidfoundations-shape--rectangleviewModestory_0_testWrapper_0_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "34_iframehtmlidfoundations-shape--rectangleviewModestory_0_testWrapper_0_desktop.png",
+        "label": "iframe.html?id=foundations-shape--rectangle&viewMode=story",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://host.docker.internal:6006/iframe.html?id=foundations-shape--rectangle&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "error": "Reference file not found /src/visual-test/backstop_data/bitmaps_reference/34_iframehtmlidfoundations-shape--rectangleviewModestory_0_testWrapper_0_desktop.png"
+      },
+      "status": "fail"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/35_iframehtmlidfoundations-shape--rounded-rectangleviewModestory_0_testWrapper_0_desktop.png",
+        "test": "../bitmaps_test/20211102-075016/35_iframehtmlidfoundations-shape--rounded-rectangleviewModestory_0_testWrapper_0_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "35_iframehtmlidfoundations-shape--rounded-rectangleviewModestory_0_testWrapper_0_desktop.png",
+        "label": "iframe.html?id=foundations-shape--rounded-rectangle&viewMode=story",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://host.docker.internal:6006/iframe.html?id=foundations-shape--rounded-rectangle&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "error": "Reference file not found /src/visual-test/backstop_data/bitmaps_reference/35_iframehtmlidfoundations-shape--rounded-rectangleviewModestory_0_testWrapper_0_desktop.png"
+      },
+      "status": "fail"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/36_iframehtmlidfoundations-shape--pillviewModestory_0_testWrapper_0_desktop.png",
+        "test": "../bitmaps_test/20211102-075016/36_iframehtmlidfoundations-shape--pillviewModestory_0_testWrapper_0_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "36_iframehtmlidfoundations-shape--pillviewModestory_0_testWrapper_0_desktop.png",
+        "label": "iframe.html?id=foundations-shape--pill&viewMode=story",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://host.docker.internal:6006/iframe.html?id=foundations-shape--pill&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "error": "Reference file not found /src/visual-test/backstop_data/bitmaps_reference/36_iframehtmlidfoundations-shape--pillviewModestory_0_testWrapper_0_desktop.png"
+      },
+      "status": "fail"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/37_iframehtmlidfoundations-shape--circleviewModestory_0_testWrapper_0_desktop.png",
+        "test": "../bitmaps_test/20211102-075016/37_iframehtmlidfoundations-shape--circleviewModestory_0_testWrapper_0_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "37_iframehtmlidfoundations-shape--circleviewModestory_0_testWrapper_0_desktop.png",
+        "label": "iframe.html?id=foundations-shape--circle&viewMode=story",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://host.docker.internal:6006/iframe.html?id=foundations-shape--circle&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "error": "Reference file not found /src/visual-test/backstop_data/bitmaps_reference/37_iframehtmlidfoundations-shape--circleviewModestory_0_testWrapper_0_desktop.png"
+      },
+      "status": "fail"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/38_iframehtmlidutilities-elevation--default-storyviewModestory_0_testWrapper_0_desktop.png",
+        "test": "../bitmaps_test/20211102-075016/38_iframehtmlidutilities-elevation--default-storyviewModestory_0_testWrapper_0_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "38_iframehtmlidutilities-elevation--default-storyviewModestory_0_testWrapper_0_desktop.png",
+        "label": "iframe.html?id=utilities-elevation--default-story&viewMode=story",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://host.docker.internal:6006/iframe.html?id=utilities-elevation--default-story&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "error": "Reference file not found /src/visual-test/backstop_data/bitmaps_reference/38_iframehtmlidutilities-elevation--default-storyviewModestory_0_testWrapper_0_desktop.png"
+      },
+      "status": "fail"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/39_iframehtmlidutilities-layout-grid--default-storyviewModestory_0_testWrapper_0_desktop.png",
+        "test": "../bitmaps_test/20211102-075016/39_iframehtmlidutilities-layout-grid--default-storyviewModestory_0_testWrapper_0_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "39_iframehtmlidutilities-layout-grid--default-storyviewModestory_0_testWrapper_0_desktop.png",
+        "label": "iframe.html?id=utilities-layout-grid--default-story&viewMode=story",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://host.docker.internal:6006/iframe.html?id=utilities-layout-grid--default-story&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "error": "Reference file not found /src/visual-test/backstop_data/bitmaps_reference/39_iframehtmlidutilities-layout-grid--default-storyviewModestory_0_testWrapper_0_desktop.png"
+      },
+      "status": "fail"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/40_iframehtmlidutilities-popover--default-storyviewModestory_0_testWrapper_0_desktop.png",
+        "test": "../bitmaps_test/20211102-075016/40_iframehtmlidutilities-popover--default-storyviewModestory_0_testWrapper_0_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "40_iframehtmlidutilities-popover--default-storyviewModestory_0_testWrapper_0_desktop.png",
+        "label": "iframe.html?id=utilities-popover--default-story&viewMode=story",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://host.docker.internal:6006/iframe.html?id=utilities-popover--default-story&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "error": "Reference file not found /src/visual-test/backstop_data/bitmaps_reference/40_iframehtmlidutilities-popover--default-storyviewModestory_0_testWrapper_0_desktop.png"
+      },
+      "status": "fail"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/41_iframehtmlidutilities-popover--hoverviewModestory_0_testWrapper_0_desktop.png",
+        "test": "../bitmaps_test/20211102-075016/41_iframehtmlidutilities-popover--hoverviewModestory_0_testWrapper_0_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "41_iframehtmlidutilities-popover--hoverviewModestory_0_testWrapper_0_desktop.png",
+        "label": "iframe.html?id=utilities-popover--hover&viewMode=story",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://host.docker.internal:6006/iframe.html?id=utilities-popover--hover&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "error": "Reference file not found /src/visual-test/backstop_data/bitmaps_reference/41_iframehtmlidutilities-popover--hoverviewModestory_0_testWrapper_0_desktop.png"
+      },
+      "status": "fail"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/42_iframehtmlidutilities-popover--w-animationviewModestory_0_testWrapper_0_desktop.png",
+        "test": "../bitmaps_test/20211102-075016/42_iframehtmlidutilities-popover--w-animationviewModestory_0_testWrapper_0_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "42_iframehtmlidutilities-popover--w-animationviewModestory_0_testWrapper_0_desktop.png",
+        "label": "iframe.html?id=utilities-popover--w-animation&viewMode=story",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://host.docker.internal:6006/iframe.html?id=utilities-popover--w-animation&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "error": "Reference file not found /src/visual-test/backstop_data/bitmaps_reference/42_iframehtmlidutilities-popover--w-animationviewModestory_0_testWrapper_0_desktop.png"
+      },
+      "status": "fail"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/43_iframehtmlidutilities-theming--default-storyviewModestory_0_testWrapper_0_desktop.png",
+        "test": "../bitmaps_test/20211102-075016/43_iframehtmlidutilities-theming--default-storyviewModestory_0_testWrapper_0_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "43_iframehtmlidutilities-theming--default-storyviewModestory_0_testWrapper_0_desktop.png",
+        "label": "iframe.html?id=utilities-theming--default-story&viewMode=story",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://host.docker.internal:6006/iframe.html?id=utilities-theming--default-story&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "error": "Reference file not found /src/visual-test/backstop_data/bitmaps_reference/43_iframehtmlidutilities-theming--default-storyviewModestory_0_testWrapper_0_desktop.png"
+      },
+      "status": "fail"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/44_iframehtmlidutilities-theming--default-colorviewModestory_0_testWrapper_0_desktop.png",
+        "test": "../bitmaps_test/20211102-075016/44_iframehtmlidutilities-theming--default-colorviewModestory_0_testWrapper_0_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "44_iframehtmlidutilities-theming--default-colorviewModestory_0_testWrapper_0_desktop.png",
+        "label": "iframe.html?id=utilities-theming--default-color&viewMode=story",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://host.docker.internal:6006/iframe.html?id=utilities-theming--default-color&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "error": "Reference file not found /src/visual-test/backstop_data/bitmaps_reference/44_iframehtmlidutilities-theming--default-colorviewModestory_0_testWrapper_0_desktop.png"
+      },
+      "status": "fail"
+    }
+  ],
+  "id": "Visual testing"
+}

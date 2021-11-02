@@ -1,0 +1,1053 @@
+{
+  "testSuite": "BackstopJS",
+  "tests": [
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/VRT_0_user-avatar_desktop.png",
+        "test": "../bitmaps_test/20211102-083808/VRT_0_user-avatar_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "VRT_0_user-avatar_desktop.png",
+        "label": "user-avatar",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://host.docker.internal:6006/iframe.html?id=components-avatar--user-avatar&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "diff": {
+          "isSameDimensions": true,
+          "dimensionDifference": {
+            "width": 0,
+            "height": 0
+          },
+          "rawMisMatchPercentage": 30.17578125,
+          "misMatchPercentage": "30.18",
+          "analysisTime": 31
+        },
+        "diffImage": "../bitmaps_test/20211102-083808/failed_diff_VRT_0_user-avatar_desktop.png"
+      },
+      "status": "fail"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/VRT_1_user-avatar-with-status_desktop.png",
+        "test": "../bitmaps_test/20211102-083808/VRT_1_user-avatar-with-status_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "VRT_1_user-avatar-with-status_desktop.png",
+        "label": "user-avatar-with-status",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://host.docker.internal:6006/iframe.html?id=components-avatar--user-avatar-with-status&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "diff": {
+          "isSameDimensions": true,
+          "dimensionDifference": {
+            "width": 0,
+            "height": 0
+          },
+          "rawMisMatchPercentage": 27.83203125,
+          "misMatchPercentage": "27.83",
+          "analysisTime": 16
+        },
+        "diffImage": "../bitmaps_test/20211102-083808/failed_diff_VRT_1_user-avatar-with-status_desktop.png"
+      },
+      "status": "fail"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/VRT_2_team-avatar_desktop.png",
+        "test": "../bitmaps_test/20211102-083808/VRT_2_team-avatar_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "VRT_2_team-avatar_desktop.png",
+        "label": "team-avatar",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://host.docker.internal:6006/iframe.html?id=components-avatar--team-avatar&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "diff": {
+          "isSameDimensions": true,
+          "dimensionDifference": {
+            "width": 0,
+            "height": 0
+          },
+          "rawMisMatchPercentage": 37.841796875,
+          "misMatchPercentage": "37.84",
+          "analysisTime": 32
+        },
+        "diffImage": "../bitmaps_test/20211102-083808/failed_diff_VRT_2_team-avatar_desktop.png"
+      },
+      "status": "fail"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/VRT_3_team-avatar-with-mentions_desktop.png",
+        "test": "../bitmaps_test/20211102-083808/VRT_3_team-avatar-with-mentions_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "VRT_3_team-avatar-with-mentions_desktop.png",
+        "label": "team-avatar-with-mentions",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://host.docker.internal:6006/iframe.html?id=components-avatar--team-avatar-with-mentions&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "diff": {
+          "isSameDimensions": true,
+          "dimensionDifference": {
+            "width": 0,
+            "height": 0
+          },
+          "rawMisMatchPercentage": 28.90625,
+          "misMatchPercentage": "28.91",
+          "analysisTime": 24
+        },
+        "diffImage": "../bitmaps_test/20211102-083808/failed_diff_VRT_3_team-avatar-with-mentions_desktop.png"
+      },
+      "status": "fail"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/VRT_4_default_desktop.png",
+        "test": "../bitmaps_test/20211102-083808/VRT_4_default_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "VRT_4_default_desktop.png",
+        "label": "default",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://host.docker.internal:6006/iframe.html?id=components-button--default-story&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "diff": {
+          "isSameDimensions": true,
+          "dimensionDifference": {
+            "width": 0,
+            "height": 0
+          },
+          "misMatchPercentage": "0.00"
+        }
+      },
+      "status": "pass"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/VRT_5_button-with-icon_desktop.png",
+        "test": "../bitmaps_test/20211102-083808/VRT_5_button-with-icon_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "VRT_5_button-with-icon_desktop.png",
+        "label": "button-with-icon",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://host.docker.internal:6006/iframe.html?id=components-button--button-with-icon&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "diff": {
+          "isSameDimensions": true,
+          "dimensionDifference": {
+            "width": 0,
+            "height": 0
+          },
+          "misMatchPercentage": "0.00"
+        }
+      },
+      "status": "pass"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/VRT_6_default_desktop.png",
+        "test": "../bitmaps_test/20211102-083808/VRT_6_default_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "VRT_6_default_desktop.png",
+        "label": "default",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://host.docker.internal:6006/iframe.html?id=components-checkbox--default-story&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "diff": {
+          "isSameDimensions": true,
+          "dimensionDifference": {
+            "width": 0,
+            "height": 0
+          },
+          "misMatchPercentage": "0.00"
+        }
+      },
+      "status": "pass"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/VRT_7_default_desktop.png",
+        "test": "../bitmaps_test/20211102-083808/VRT_7_default_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "VRT_7_default_desktop.png",
+        "label": "default",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://host.docker.internal:6006/iframe.html?id=components-heading--default-story&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "diff": {
+          "isSameDimensions": true,
+          "dimensionDifference": {
+            "width": 0,
+            "height": 0
+          },
+          "misMatchPercentage": "0.00"
+        }
+      },
+      "status": "pass"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/VRT_8_default_desktop.png",
+        "test": "../bitmaps_test/20211102-083808/VRT_8_default_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "VRT_8_default_desktop.png",
+        "label": "default",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://host.docker.internal:6006/iframe.html?id=components-iconbutton--default-story&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "diff": {
+          "isSameDimensions": true,
+          "dimensionDifference": {
+            "width": 0,
+            "height": 0
+          },
+          "misMatchPercentage": "0.00"
+        }
+      },
+      "status": "pass"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/VRT_9_default_desktop.png",
+        "test": "../bitmaps_test/20211102-083808/VRT_9_default_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "VRT_9_default_desktop.png",
+        "label": "default",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://host.docker.internal:6006/iframe.html?id=components-image--default-story&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "diff": {
+          "isSameDimensions": true,
+          "dimensionDifference": {
+            "width": 0,
+            "height": 0
+          },
+          "misMatchPercentage": "0.00"
+        }
+      },
+      "status": "pass"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/VRT_10_mention-badges_desktop.png",
+        "test": "../bitmaps_test/20211102-083808/VRT_10_mention-badges_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "VRT_10_mention-badges_desktop.png",
+        "label": "mention-badges",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://host.docker.internal:6006/iframe.html?id=components-mentionbadge--mention-badges&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "diff": {
+          "isSameDimensions": true,
+          "dimensionDifference": {
+            "width": 0,
+            "height": 0
+          },
+          "misMatchPercentage": "0.00"
+        }
+      },
+      "status": "pass"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/VRT_11_unread-badges_desktop.png",
+        "test": "../bitmaps_test/20211102-083808/VRT_11_unread-badges_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "VRT_11_unread-badges_desktop.png",
+        "label": "unread-badges",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://host.docker.internal:6006/iframe.html?id=components-mentionbadge--unread-badges&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "diff": {
+          "isSameDimensions": true,
+          "dimensionDifference": {
+            "width": 0,
+            "height": 0
+          },
+          "misMatchPercentage": "0.00"
+        }
+      },
+      "status": "pass"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/VRT_12_default_desktop.png",
+        "test": "../bitmaps_test/20211102-083808/VRT_12_default_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "VRT_12_default_desktop.png",
+        "label": "default",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://host.docker.internal:6006/iframe.html?id=components-radio--default-story&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "diff": {
+          "isSameDimensions": true,
+          "dimensionDifference": {
+            "width": 0,
+            "height": 0
+          },
+          "misMatchPercentage": "0.00"
+        }
+      },
+      "status": "pass"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/VRT_13_status-badge_desktop.png",
+        "test": "../bitmaps_test/20211102-083808/VRT_13_status-badge_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "VRT_13_status-badge_desktop.png",
+        "label": "status-badge",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://host.docker.internal:6006/iframe.html?id=components-statusbadge--status-badge&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "diff": {
+          "isSameDimensions": true,
+          "dimensionDifference": {
+            "width": 0,
+            "height": 0
+          },
+          "misMatchPercentage": "0.00"
+        }
+      },
+      "status": "pass"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/VRT_14_status-icon_desktop.png",
+        "test": "../bitmaps_test/20211102-083808/VRT_14_status-icon_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "VRT_14_status-icon_desktop.png",
+        "label": "status-icon",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://host.docker.internal:6006/iframe.html?id=components-statusicon--status-icon&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "diff": {
+          "isSameDimensions": true,
+          "dimensionDifference": {
+            "width": 0,
+            "height": 0
+          },
+          "misMatchPercentage": "0.00"
+        }
+      },
+      "status": "pass"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/VRT_15_default_desktop.png",
+        "test": "../bitmaps_test/20211102-083808/VRT_15_default_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "VRT_15_default_desktop.png",
+        "label": "default",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://host.docker.internal:6006/iframe.html?id=components-switch--default-story&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "diff": {
+          "isSameDimensions": true,
+          "dimensionDifference": {
+            "width": 0,
+            "height": 0
+          },
+          "misMatchPercentage": "0.00"
+        }
+      },
+      "status": "pass"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/VRT_16_default_desktop.png",
+        "test": "../bitmaps_test/20211102-083808/VRT_16_default_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "VRT_16_default_desktop.png",
+        "label": "default",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://host.docker.internal:6006/iframe.html?id=components-tag--default-story&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "diff": {
+          "isSameDimensions": true,
+          "dimensionDifference": {
+            "width": 0,
+            "height": 0
+          },
+          "misMatchPercentage": "0.00"
+        }
+      },
+      "status": "pass"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/VRT_17_default_desktop.png",
+        "test": "../bitmaps_test/20211102-083808/VRT_17_default_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "VRT_17_default_desktop.png",
+        "label": "default",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://host.docker.internal:6006/iframe.html?id=components-textinput--default-story&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "diff": {
+          "isSameDimensions": true,
+          "dimensionDifference": {
+            "width": 0,
+            "height": 0
+          },
+          "misMatchPercentage": "0.00"
+        }
+      },
+      "status": "pass"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/VRT_18_no-trailing-icon_desktop.png",
+        "test": "../bitmaps_test/20211102-083808/VRT_18_no-trailing-icon_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "VRT_18_no-trailing-icon_desktop.png",
+        "label": "no-trailing-icon",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://host.docker.internal:6006/iframe.html?id=components-textinput--no-trailing-icon&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "diff": {
+          "isSameDimensions": true,
+          "dimensionDifference": {
+            "width": 0,
+            "height": 0
+          },
+          "misMatchPercentage": "0.00"
+        }
+      },
+      "status": "pass"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/VRT_19_no-leading-icon_desktop.png",
+        "test": "../bitmaps_test/20211102-083808/VRT_19_no-leading-icon_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "VRT_19_no-leading-icon_desktop.png",
+        "label": "no-leading-icon",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://host.docker.internal:6006/iframe.html?id=components-textinput--no-leading-icon&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "diff": {
+          "isSameDimensions": true,
+          "dimensionDifference": {
+            "width": 0,
+            "height": 0
+          },
+          "misMatchPercentage": "0.00"
+        }
+      },
+      "status": "pass"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/VRT_20_no-icons_desktop.png",
+        "test": "../bitmaps_test/20211102-083808/VRT_20_no-icons_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "VRT_20_no-icons_desktop.png",
+        "label": "no-icons",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://host.docker.internal:6006/iframe.html?id=components-textinput--no-icons&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "diff": {
+          "isSameDimensions": true,
+          "dimensionDifference": {
+            "width": 0,
+            "height": 0
+          },
+          "misMatchPercentage": "0.00"
+        }
+      },
+      "status": "pass"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/VRT_21_default_desktop.png",
+        "test": "../bitmaps_test/20211102-083808/VRT_21_default_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "VRT_21_default_desktop.png",
+        "label": "default",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://host.docker.internal:6006/iframe.html?id=components-text--default-story&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "diff": {
+          "isSameDimensions": true,
+          "dimensionDifference": {
+            "width": 0,
+            "height": 0
+          },
+          "misMatchPercentage": "0.00"
+        }
+      },
+      "status": "pass"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/VRT_22_neutral_desktop.png",
+        "test": "../bitmaps_test/20211102-083808/VRT_22_neutral_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "VRT_22_neutral_desktop.png",
+        "label": "neutral",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://host.docker.internal:6006/iframe.html?id=foundations-colors--neutral&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "diff": {
+          "isSameDimensions": true,
+          "dimensionDifference": {
+            "width": 0,
+            "height": 0
+          },
+          "misMatchPercentage": "0.00"
+        }
+      },
+      "status": "pass"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/VRT_23_blue_desktop.png",
+        "test": "../bitmaps_test/20211102-083808/VRT_23_blue_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "VRT_23_blue_desktop.png",
+        "label": "blue",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://host.docker.internal:6006/iframe.html?id=foundations-colors--blue&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "diff": {
+          "isSameDimensions": true,
+          "dimensionDifference": {
+            "width": 0,
+            "height": 0
+          },
+          "misMatchPercentage": "0.00"
+        }
+      },
+      "status": "pass"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/VRT_24_cyan_desktop.png",
+        "test": "../bitmaps_test/20211102-083808/VRT_24_cyan_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "VRT_24_cyan_desktop.png",
+        "label": "cyan",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://host.docker.internal:6006/iframe.html?id=foundations-colors--cyan&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "diff": {
+          "isSameDimensions": true,
+          "dimensionDifference": {
+            "width": 0,
+            "height": 0
+          },
+          "misMatchPercentage": "0.00"
+        }
+      },
+      "status": "pass"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/VRT_25_indigo_desktop.png",
+        "test": "../bitmaps_test/20211102-083808/VRT_25_indigo_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "VRT_25_indigo_desktop.png",
+        "label": "indigo",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://host.docker.internal:6006/iframe.html?id=foundations-colors--indigo&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "diff": {
+          "isSameDimensions": true,
+          "dimensionDifference": {
+            "width": 0,
+            "height": 0
+          },
+          "misMatchPercentage": "0.00"
+        }
+      },
+      "status": "pass"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/VRT_26_purple_desktop.png",
+        "test": "../bitmaps_test/20211102-083808/VRT_26_purple_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "VRT_26_purple_desktop.png",
+        "label": "purple",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://host.docker.internal:6006/iframe.html?id=foundations-colors--purple&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "diff": {
+          "isSameDimensions": true,
+          "dimensionDifference": {
+            "width": 0,
+            "height": 0
+          },
+          "misMatchPercentage": "0.00"
+        }
+      },
+      "status": "pass"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/VRT_27_teal_desktop.png",
+        "test": "../bitmaps_test/20211102-083808/VRT_27_teal_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "VRT_27_teal_desktop.png",
+        "label": "teal",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://host.docker.internal:6006/iframe.html?id=foundations-colors--teal&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "diff": {
+          "isSameDimensions": true,
+          "dimensionDifference": {
+            "width": 0,
+            "height": 0
+          },
+          "misMatchPercentage": "0.00"
+        }
+      },
+      "status": "pass"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/VRT_28_green_desktop.png",
+        "test": "../bitmaps_test/20211102-083808/VRT_28_green_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "VRT_28_green_desktop.png",
+        "label": "green",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://host.docker.internal:6006/iframe.html?id=foundations-colors--green&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "diff": {
+          "isSameDimensions": true,
+          "dimensionDifference": {
+            "width": 0,
+            "height": 0
+          },
+          "misMatchPercentage": "0.00"
+        }
+      },
+      "status": "pass"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/VRT_29_red_desktop.png",
+        "test": "../bitmaps_test/20211102-083808/VRT_29_red_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "VRT_29_red_desktop.png",
+        "label": "red",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://host.docker.internal:6006/iframe.html?id=foundations-colors--red&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "diff": {
+          "isSameDimensions": true,
+          "dimensionDifference": {
+            "width": 0,
+            "height": 0
+          },
+          "misMatchPercentage": "0.00"
+        }
+      },
+      "status": "pass"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/VRT_30_orange_desktop.png",
+        "test": "../bitmaps_test/20211102-083808/VRT_30_orange_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "VRT_30_orange_desktop.png",
+        "label": "orange",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://host.docker.internal:6006/iframe.html?id=foundations-colors--orange&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "diff": {
+          "isSameDimensions": true,
+          "dimensionDifference": {
+            "width": 0,
+            "height": 0
+          },
+          "misMatchPercentage": "0.00"
+        }
+      },
+      "status": "pass"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/VRT_31_yellow_desktop.png",
+        "test": "../bitmaps_test/20211102-083808/VRT_31_yellow_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "VRT_31_yellow_desktop.png",
+        "label": "yellow",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://host.docker.internal:6006/iframe.html?id=foundations-colors--yellow&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "diff": {
+          "isSameDimensions": true,
+          "dimensionDifference": {
+            "width": 0,
+            "height": 0
+          },
+          "misMatchPercentage": "0.00"
+        }
+      },
+      "status": "pass"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/VRT_32_custom-color_desktop.png",
+        "test": "../bitmaps_test/20211102-083808/VRT_32_custom-color_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "VRT_32_custom-color_desktop.png",
+        "label": "custom-color",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://host.docker.internal:6006/iframe.html?id=foundations-colors--custom-color&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "diff": {
+          "isSameDimensions": true,
+          "dimensionDifference": {
+            "width": 0,
+            "height": 0
+          },
+          "misMatchPercentage": "0.00"
+        }
+      },
+      "status": "pass"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/VRT_33_default_desktop.png",
+        "test": "../bitmaps_test/20211102-083808/VRT_33_default_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "VRT_33_default_desktop.png",
+        "label": "default",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://host.docker.internal:6006/iframe.html?id=foundations-icon--default-story&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "diff": {
+          "isSameDimensions": true,
+          "dimensionDifference": {
+            "width": 0,
+            "height": 0
+          },
+          "misMatchPercentage": "0.00"
+        }
+      },
+      "status": "pass"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/VRT_34_rectangle_desktop.png",
+        "test": "../bitmaps_test/20211102-083808/VRT_34_rectangle_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "VRT_34_rectangle_desktop.png",
+        "label": "rectangle",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://host.docker.internal:6006/iframe.html?id=foundations-shape--rectangle&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "diff": {
+          "isSameDimensions": true,
+          "dimensionDifference": {
+            "width": 0,
+            "height": 0
+          },
+          "misMatchPercentage": "0.00"
+        }
+      },
+      "status": "pass"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/VRT_35_rounded-rectangle_desktop.png",
+        "test": "../bitmaps_test/20211102-083808/VRT_35_rounded-rectangle_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "VRT_35_rounded-rectangle_desktop.png",
+        "label": "rounded-rectangle",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://host.docker.internal:6006/iframe.html?id=foundations-shape--rounded-rectangle&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "diff": {
+          "isSameDimensions": true,
+          "dimensionDifference": {
+            "width": 0,
+            "height": 0
+          },
+          "misMatchPercentage": "0.00"
+        }
+      },
+      "status": "pass"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/VRT_36_pill_desktop.png",
+        "test": "../bitmaps_test/20211102-083808/VRT_36_pill_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "VRT_36_pill_desktop.png",
+        "label": "pill",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://host.docker.internal:6006/iframe.html?id=foundations-shape--pill&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "diff": {
+          "isSameDimensions": true,
+          "dimensionDifference": {
+            "width": 0,
+            "height": 0
+          },
+          "misMatchPercentage": "0.00"
+        }
+      },
+      "status": "pass"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/VRT_37_circle_desktop.png",
+        "test": "../bitmaps_test/20211102-083808/VRT_37_circle_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "VRT_37_circle_desktop.png",
+        "label": "circle",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://host.docker.internal:6006/iframe.html?id=foundations-shape--circle&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "diff": {
+          "isSameDimensions": true,
+          "dimensionDifference": {
+            "width": 0,
+            "height": 0
+          },
+          "misMatchPercentage": "0.00"
+        }
+      },
+      "status": "pass"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/VRT_38_default_desktop.png",
+        "test": "../bitmaps_test/20211102-083808/VRT_38_default_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "VRT_38_default_desktop.png",
+        "label": "default",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://host.docker.internal:6006/iframe.html?id=utilities-elevation--default-story&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "diff": {
+          "isSameDimensions": true,
+          "dimensionDifference": {
+            "width": 0,
+            "height": 0
+          },
+          "misMatchPercentage": "0.00"
+        }
+      },
+      "status": "pass"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/VRT_39_default_desktop.png",
+        "test": "../bitmaps_test/20211102-083808/VRT_39_default_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "VRT_39_default_desktop.png",
+        "label": "default",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://host.docker.internal:6006/iframe.html?id=utilities-layout-grid--default-story&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "diff": {
+          "isSameDimensions": true,
+          "dimensionDifference": {
+            "width": 0,
+            "height": 0
+          },
+          "misMatchPercentage": "0.00"
+        }
+      },
+      "status": "pass"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/VRT_40_default_desktop.png",
+        "test": "../bitmaps_test/20211102-083808/VRT_40_default_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "VRT_40_default_desktop.png",
+        "label": "default",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://host.docker.internal:6006/iframe.html?id=utilities-popover--default-story&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "diff": {
+          "isSameDimensions": true,
+          "dimensionDifference": {
+            "width": 0,
+            "height": 0
+          },
+          "misMatchPercentage": "0.00"
+        }
+      },
+      "status": "pass"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/VRT_41_hover_desktop.png",
+        "test": "../bitmaps_test/20211102-083808/VRT_41_hover_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "VRT_41_hover_desktop.png",
+        "label": "hover",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://host.docker.internal:6006/iframe.html?id=utilities-popover--hover&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "diff": {
+          "isSameDimensions": true,
+          "dimensionDifference": {
+            "width": 0,
+            "height": 0
+          },
+          "misMatchPercentage": "0.00"
+        }
+      },
+      "status": "pass"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/VRT_42_w-animation_desktop.png",
+        "test": "../bitmaps_test/20211102-083808/VRT_42_w-animation_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "VRT_42_w-animation_desktop.png",
+        "label": "w-animation",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://host.docker.internal:6006/iframe.html?id=utilities-popover--w-animation&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "diff": {
+          "isSameDimensions": true,
+          "dimensionDifference": {
+            "width": 0,
+            "height": 0
+          },
+          "misMatchPercentage": "0.00"
+        }
+      },
+      "status": "pass"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/VRT_43_default_desktop.png",
+        "test": "../bitmaps_test/20211102-083808/VRT_43_default_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "VRT_43_default_desktop.png",
+        "label": "default",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://host.docker.internal:6006/iframe.html?id=utilities-theming--default-story&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "diff": {
+          "isSameDimensions": true,
+          "dimensionDifference": {
+            "width": 0,
+            "height": 0
+          },
+          "misMatchPercentage": "0.00"
+        }
+      },
+      "status": "pass"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/VRT_44_default-color_desktop.png",
+        "test": "../bitmaps_test/20211102-083808/VRT_44_default-color_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "VRT_44_default-color_desktop.png",
+        "label": "default-color",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://host.docker.internal:6006/iframe.html?id=utilities-theming--default-color&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "diff": {
+          "isSameDimensions": true,
+          "dimensionDifference": {
+            "width": 0,
+            "height": 0
+          },
+          "misMatchPercentage": "0.00"
+        }
+      },
+      "status": "pass"
+    }
+  ],
+  "id": "Visual testing"
+}

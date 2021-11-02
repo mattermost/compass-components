@@ -218,3 +218,7 @@ storybook-static
 # build folder (should be build via CI)
 lib
 docs
+
+# vrt testing folders
+visual-test/backstop_data/bitmaps-test
+visual-test/backstop_data/html_report

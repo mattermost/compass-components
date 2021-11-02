@@ -54,7 +54,7 @@ export const avatarArgtypes = {
 <ArgsTable of={Avatar} />
 
 <Canvas hidden>
-    <Story name="user avatar" args={userAvatarArgs} argTypes={avatarArgtypes}>
+    <Story hidden={true} name="user avatar" args={userAvatarArgs} argTypes={avatarArgtypes}>
         {(args) => <Avatar {...args} />}
     </Story>
     <Story

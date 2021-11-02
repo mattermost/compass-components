@@ -1,0 +1,572 @@
+{
+  "v": 2,
+  "globalParameters": {},
+  "kindParameters": {
+    "Components/Avatar": {
+      "fileName": "./src/components/avatar/Avatar.stories.mdx",
+      "framework": "react"
+    },
+    "Components/Button": {
+      "fileName": "./src/components/button/Button.stories.mdx",
+      "framework": "react"
+    },
+    "Components/Checkbox": {
+      "fileName": "./src/components/checkbox/Checkbox.stories.mdx",
+      "framework": "react"
+    },
+    "Components/Heading": {
+      "fileName": "./src/components/heading/Heading.stories.mdx",
+      "framework": "react"
+    },
+    "Components/IconButton": {
+      "fileName": "./src/components/icon-button/IconButton.stories.mdx",
+      "framework": "react"
+    },
+    "Components/Image": {
+      "fileName": "./src/components/image/Image.stories.mdx",
+      "framework": "react"
+    },
+    "Components/MentionBadge": {
+      "fileName": "./src/components/mention-badge/MentionBadge.stories.mdx",
+      "framework": "react"
+    },
+    "Components/Radio": {
+      "fileName": "./src/components/radio/Radio.stories.mdx",
+      "framework": "react"
+    },
+    "Components/StatusBadge": {
+      "fileName": "./src/components/status-badge/StatusBadge.stories.mdx",
+      "framework": "react"
+    },
+    "Components/StatusIcon": {
+      "fileName": "./src/components/status-icon/StatusIcon.stories.mdx",
+      "framework": "react"
+    },
+    "Components/Switch": {
+      "fileName": "./src/components/switch/Switch.stories.mdx",
+      "framework": "react"
+    },
+    "Components/Tag": {
+      "fileName": "./src/components/tag/Tag.stories.mdx",
+      "framework": "react"
+    },
+    "Components/TextInput": {
+      "fileName": "./src/components/text-input/TextInput.stories.mdx",
+      "framework": "react"
+    },
+    "Components/Text": {
+      "fileName": "./src/components/text/Text.stories.mdx",
+      "framework": "react"
+    },
+    "Foundations/Colors": {
+      "fileName": "./src/foundations/colors/colors.stories.mdx",
+      "framework": "react"
+    },
+    "Foundations/Overview": {
+      "fileName": "./src/foundations/foundations.stories.mdx",
+      "framework": "react"
+    },
+    "Foundations/Icon": {
+      "fileName": "./src/foundations/icon/Icon.stories.mdx",
+      "framework": "react"
+    },
+    "Foundations/Shape": {
+      "fileName": "./src/foundations/shape/Shape.stories.mdx",
+      "framework": "react"
+    },
+    "Utilities/Elevation": {
+      "fileName": "./src/utilities/elevation/Elevation.stories.mdx",
+      "framework": "react"
+    },
+    "Utilities/Layout/Grid": {
+      "fileName": "./src/utilities/grid/Grid.stories.mdx",
+      "framework": "react"
+    },
+    "Utilities/Layout/Flex": {
+      "fileName": "./src/utilities/layout/Flex.stories.mdx",
+      "framework": "react"
+    },
+    "Utilities/Popover": {
+      "fileName": "./src/utilities/popover/Popover.stories.mdx",
+      "framework": "react"
+    },
+    "Utilities/Theming": {
+      "fileName": "./src/utilities/theme/theme.stories.mdx",
+      "framework": "react"
+    }
+  },
+  "stories": {
+    "foundations-overview--page": {
+      "id": "foundations-overview--page",
+      "name": "Page",
+      "kind": "Foundations/Overview",
+      "story": "Page",
+      "parameters": {
+        "docsOnly": true,
+        "__id": "foundations-overview--page",
+        "__isArgsStory": false
+      }
+    },
+    "components-avatar--user-avatar": {
+      "id": "components-avatar--user-avatar",
+      "name": "user avatar",
+      "kind": "Components/Avatar",
+      "story": "user avatar",
+      "parameters": {
+        "__id": "components-avatar--user-avatar",
+        "__isArgsStory": true
+      }
+    },
+    "components-avatar--user-avatar-with-status": {
+      "id": "components-avatar--user-avatar-with-status",
+      "name": "user avatar with status",
+      "kind": "Components/Avatar",
+      "story": "user avatar with status",
+      "parameters": {
+        "__id": "components-avatar--user-avatar-with-status",
+        "__isArgsStory": true
+      }
+    },
+    "components-avatar--team-avatar": {
+      "id": "components-avatar--team-avatar",
+      "name": "team avatar",
+      "kind": "Components/Avatar",
+      "story": "team avatar",
+      "parameters": {
+        "__id": "components-avatar--team-avatar",
+        "__isArgsStory": true
+      }
+    },
+    "components-avatar--team-avatar-with-mentions": {
+      "id": "components-avatar--team-avatar-with-mentions",
+      "name": "team avatar with mentions",
+      "kind": "Components/Avatar",
+      "story": "team avatar with mentions",
+      "parameters": {
+        "__id": "components-avatar--team-avatar-with-mentions",
+        "__isArgsStory": true
+      }
+    },
+    "components-button--default-story": {
+      "id": "components-button--default-story",
+      "name": "Default",
+      "kind": "Components/Button",
+      "story": "Default",
+      "parameters": {
+        "__id": "components-button--default-story",
+        "__isArgsStory": true
+      }
+    },
+    "components-button--button-with-icon": {
+      "id": "components-button--button-with-icon",
+      "name": "Button with icon",
+      "kind": "Components/Button",
+      "story": "Button with icon",
+      "parameters": {
+        "__id": "components-button--button-with-icon",
+        "__isArgsStory": true
+      }
+    },
+    "components-checkbox--default-story": {
+      "id": "components-checkbox--default-story",
+      "name": "Default",
+      "kind": "Components/Checkbox",
+      "story": "Default",
+      "parameters": {
+        "__id": "components-checkbox--default-story",
+        "__isArgsStory": true
+      }
+    },
+    "components-heading--default-story": {
+      "id": "components-heading--default-story",
+      "name": "Default",
+      "kind": "Components/Heading",
+      "story": "Default",
+      "parameters": {
+        "__id": "components-heading--default-story",
+        "__isArgsStory": true
+      }
+    },
+    "components-iconbutton--default-story": {
+      "id": "components-iconbutton--default-story",
+      "name": "default",
+      "kind": "Components/IconButton",
+      "story": "default",
+      "parameters": {
+        "__id": "components-iconbutton--default-story",
+        "__isArgsStory": true
+      }
+    },
+    "components-image--default-story": {
+      "id": "components-image--default-story",
+      "name": "Default",
+      "kind": "Components/Image",
+      "story": "Default",
+      "parameters": {
+        "__id": "components-image--default-story",
+        "__isArgsStory": true
+      }
+    },
+    "components-mentionbadge--mention-badges": {
+      "id": "components-mentionbadge--mention-badges",
+      "name": "Mention Badges",
+      "kind": "Components/MentionBadge",
+      "story": "Mention Badges",
+      "parameters": {
+        "__id": "components-mentionbadge--mention-badges",
+        "__isArgsStory": true
+      }
+    },
+    "components-mentionbadge--unread-badges": {
+      "id": "components-mentionbadge--unread-badges",
+      "name": "Unread Badges",
+      "kind": "Components/MentionBadge",
+      "story": "Unread Badges",
+      "parameters": {
+        "__id": "components-mentionbadge--unread-badges",
+        "__isArgsStory": true
+      }
+    },
+    "components-radio--default-story": {
+      "id": "components-radio--default-story",
+      "name": "Default",
+      "kind": "Components/Radio",
+      "story": "Default",
+      "parameters": {
+        "__id": "components-radio--default-story",
+        "__isArgsStory": true
+      }
+    },
+    "components-statusbadge--status-badge": {
+      "id": "components-statusbadge--status-badge",
+      "name": "Status Badge",
+      "kind": "Components/StatusBadge",
+      "story": "Status Badge",
+      "parameters": {
+        "__id": "components-statusbadge--status-badge",
+        "__isArgsStory": true
+      }
+    },
+    "components-statusicon--status-icon": {
+      "id": "components-statusicon--status-icon",
+      "name": "Status Icon",
+      "kind": "Components/StatusIcon",
+      "story": "Status Icon",
+      "parameters": {
+        "__id": "components-statusicon--status-icon",
+        "__isArgsStory": true
+      }
+    },
+    "components-switch--default-story": {
+      "id": "components-switch--default-story",
+      "name": "Default",
+      "kind": "Components/Switch",
+      "story": "Default",
+      "parameters": {
+        "__id": "components-switch--default-story",
+        "__isArgsStory": true
+      }
+    },
+    "components-tag--default-story": {
+      "id": "components-tag--default-story",
+      "name": "default",
+      "kind": "Components/Tag",
+      "story": "default",
+      "parameters": {
+        "__id": "components-tag--default-story",
+        "__isArgsStory": true
+      }
+    },
+    "components-textinput--default-story": {
+      "id": "components-textinput--default-story",
+      "name": "Default",
+      "kind": "Components/TextInput",
+      "story": "Default",
+      "parameters": {
+        "__id": "components-textinput--default-story",
+        "__isArgsStory": true
+      }
+    },
+    "components-textinput--no-trailing-icon": {
+      "id": "components-textinput--no-trailing-icon",
+      "name": "No trailing icon",
+      "kind": "Components/TextInput",
+      "story": "No trailing icon",
+      "parameters": {
+        "__id": "components-textinput--no-trailing-icon",
+        "__isArgsStory": true
+      }
+    },
+    "components-textinput--no-leading-icon": {
+      "id": "components-textinput--no-leading-icon",
+      "name": "No leading icon",
+      "kind": "Components/TextInput",
+      "story": "No leading icon",
+      "parameters": {
+        "__id": "components-textinput--no-leading-icon",
+        "__isArgsStory": true
+      }
+    },
+    "components-textinput--no-icons": {
+      "id": "components-textinput--no-icons",
+      "name": "No icons",
+      "kind": "Components/TextInput",
+      "story": "No icons",
+      "parameters": {
+        "__id": "components-textinput--no-icons",
+        "__isArgsStory": true
+      }
+    },
+    "components-text--default-story": {
+      "id": "components-text--default-story",
+      "name": "Default",
+      "kind": "Components/Text",
+      "story": "Default",
+      "parameters": {
+        "__id": "components-text--default-story",
+        "__isArgsStory": true
+      }
+    },
+    "foundations-colors--neutral": {
+      "id": "foundations-colors--neutral",
+      "name": "Neutral",
+      "kind": "Foundations/Colors",
+      "story": "Neutral",
+      "parameters": {
+        "__id": "foundations-colors--neutral",
+        "__isArgsStory": true
+      }
+    },
+    "foundations-colors--blue": {
+      "id": "foundations-colors--blue",
+      "name": "Blue",
+      "kind": "Foundations/Colors",
+      "story": "Blue",
+      "parameters": {
+        "__id": "foundations-colors--blue",
+        "__isArgsStory": true
+      }
+    },
+    "foundations-colors--cyan": {
+      "id": "foundations-colors--cyan",
+      "name": "Cyan",
+      "kind": "Foundations/Colors",
+      "story": "Cyan",
+      "parameters": {
+        "__id": "foundations-colors--cyan",
+        "__isArgsStory": true
+      }
+    },
+    "foundations-colors--indigo": {
+      "id": "foundations-colors--indigo",
+      "name": "Indigo",
+      "kind": "Foundations/Colors",
+      "story": "Indigo",
+      "parameters": {
+        "__id": "foundations-colors--indigo",
+        "__isArgsStory": true
+      }
+    },
+    "foundations-colors--purple": {
+      "id": "foundations-colors--purple",
+      "name": "Purple",
+      "kind": "Foundations/Colors",
+      "story": "Purple",
+      "parameters": {
+        "__id": "foundations-colors--purple",
+        "__isArgsStory": true
+      }
+    },
+    "foundations-colors--teal": {
+      "id": "foundations-colors--teal",
+      "name": "Teal",
+      "kind": "Foundations/Colors",
+      "story": "Teal",
+      "parameters": {
+        "__id": "foundations-colors--teal",
+        "__isArgsStory": true
+      }
+    },
+    "foundations-colors--green": {
+      "id": "foundations-colors--green",
+      "name": "Green",
+      "kind": "Foundations/Colors",
+      "story": "Green",
+      "parameters": {
+        "__id": "foundations-colors--green",
+        "__isArgsStory": true
+      }
+    },
+    "foundations-colors--red": {
+      "id": "foundations-colors--red",
+      "name": "Red",
+      "kind": "Foundations/Colors",
+      "story": "Red",
+      "parameters": {
+        "__id": "foundations-colors--red",
+        "__isArgsStory": true
+      }
+    },
+    "foundations-colors--orange": {
+      "id": "foundations-colors--orange",
+      "name": "Orange",
+      "kind": "Foundations/Colors",
+      "story": "Orange",
+      "parameters": {
+        "__id": "foundations-colors--orange",
+        "__isArgsStory": true
+      }
+    },
+    "foundations-colors--yellow": {
+      "id": "foundations-colors--yellow",
+      "name": "Yellow",
+      "kind": "Foundations/Colors",
+      "story": "Yellow",
+      "parameters": {
+        "__id": "foundations-colors--yellow",
+        "__isArgsStory": true
+      }
+    },
+    "foundations-colors--custom-color": {
+      "id": "foundations-colors--custom-color",
+      "name": "Custom Color",
+      "kind": "Foundations/Colors",
+      "story": "Custom Color",
+      "parameters": {
+        "__id": "foundations-colors--custom-color",
+        "__isArgsStory": true
+      }
+    },
+    "foundations-icon--default-story": {
+      "id": "foundations-icon--default-story",
+      "name": "default",
+      "kind": "Foundations/Icon",
+      "story": "default",
+      "parameters": {
+        "__id": "foundations-icon--default-story",
+        "__isArgsStory": true
+      }
+    },
+    "foundations-shape--rectangle": {
+      "id": "foundations-shape--rectangle",
+      "name": "Rectangle",
+      "kind": "Foundations/Shape",
+      "story": "Rectangle",
+      "parameters": {
+        "__id": "foundations-shape--rectangle",
+        "__isArgsStory": true
+      }
+    },
+    "foundations-shape--rounded-rectangle": {
+      "id": "foundations-shape--rounded-rectangle",
+      "name": "Rounded Rectangle",
+      "kind": "Foundations/Shape",
+      "story": "Rounded Rectangle",
+      "parameters": {
+        "__id": "foundations-shape--rounded-rectangle",
+        "__isArgsStory": true
+      }
+    },
+    "foundations-shape--pill": {
+      "id": "foundations-shape--pill",
+      "name": "Pill",
+      "kind": "Foundations/Shape",
+      "story": "Pill",
+      "parameters": {
+        "__id": "foundations-shape--pill",
+        "__isArgsStory": true
+      }
+    },
+    "foundations-shape--circle": {
+      "id": "foundations-shape--circle",
+      "name": "Circle",
+      "kind": "Foundations/Shape",
+      "story": "Circle",
+      "parameters": {
+        "__id": "foundations-shape--circle",
+        "__isArgsStory": true
+      }
+    },
+    "utilities-elevation--default-story": {
+      "id": "utilities-elevation--default-story",
+      "name": "Default",
+      "kind": "Utilities/Elevation",
+      "story": "Default",
+      "parameters": {
+        "__id": "utilities-elevation--default-story",
+        "__isArgsStory": true
+      }
+    },
+    "utilities-layout-grid--default-story": {
+      "id": "utilities-layout-grid--default-story",
+      "name": "default",
+      "kind": "Utilities/Layout/Grid",
+      "story": "default",
+      "parameters": {
+        "__id": "utilities-layout-grid--default-story",
+        "__isArgsStory": true
+      }
+    },
+    "utilities-layout-flex--page": {
+      "id": "utilities-layout-flex--page",
+      "name": "Page",
+      "kind": "Utilities/Layout/Flex",
+      "story": "Page",
+      "parameters": {
+        "docsOnly": true,
+        "__id": "utilities-layout-flex--page",
+        "__isArgsStory": false
+      }
+    },
+    "utilities-popover--default-story": {
+      "id": "utilities-popover--default-story",
+      "name": "default",
+      "kind": "Utilities/Popover",
+      "story": "default",
+      "parameters": {
+        "__id": "utilities-popover--default-story",
+        "__isArgsStory": true
+      }
+    },
+    "utilities-popover--hover": {
+      "id": "utilities-popover--hover",
+      "name": "hover",
+      "kind": "Utilities/Popover",
+      "story": "hover",
+      "parameters": {
+        "__id": "utilities-popover--hover",
+        "__isArgsStory": true
+      }
+    },
+    "utilities-popover--w-animation": {
+      "id": "utilities-popover--w-animation",
+      "name": "w/ animation",
+      "kind": "Utilities/Popover",
+      "story": "w/ animation",
+      "parameters": {
+        "__id": "utilities-popover--w-animation",
+        "__isArgsStory": true
+      }
+    },
+    "utilities-theming--default-story": {
+      "id": "utilities-theming--default-story",
+      "name": "Default",
+      "kind": "Utilities/Theming",
+      "story": "Default",
+      "parameters": {
+        "__id": "utilities-theming--default-story",
+        "__isArgsStory": true
+      }
+    },
+    "utilities-theming--default-color": {
+      "id": "utilities-theming--default-color",
+      "name": "Default Color",
+      "kind": "Utilities/Theming",
+      "story": "Default Color",
+      "parameters": {
+        "__id": "utilities-theming--default-color",
+        "__isArgsStory": true
+      }
+    }
+  }
+}

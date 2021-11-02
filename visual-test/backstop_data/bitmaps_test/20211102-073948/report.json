@@ -1,0 +1,1153 @@
+{
+  "testSuite": "BackstopJS",
+  "tests": [
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/Visualtesting_iframehtmlidcomponents-avatar--user-avatarviewModestory_0_testWrapper_0_desktop.png",
+        "test": "../bitmaps_test/20211102-073948/Visualtesting_iframehtmlidcomponents-avatar--user-avatarviewModestory_0_testWrapper_0_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "Visualtesting_iframehtmlidcomponents-avatar--user-avatarviewModestory_0_testWrapper_0_desktop.png",
+        "label": "iframe.html?id=components-avatar--user-avatar&viewMode=story",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://host.docker.internal:6006/iframe.html?id=components-avatar--user-avatar&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "diff": {
+          "isSameDimensions": true,
+          "dimensionDifference": {
+            "width": 0,
+            "height": 0
+          },
+          "rawMisMatchPercentage": 30.9814453125,
+          "misMatchPercentage": "30.98",
+          "analysisTime": 19
+        },
+        "diffImage": "../bitmaps_test/20211102-073948/failed_diff_Visualtesting_iframehtmlidcomponents-avatar--user-avatarviewModestory_0_testWrapper_0_desktop.png"
+      },
+      "status": "fail"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/Visualtesting_iframehtmlidcomponents-avatar--user-avatar-with-statusviewModestory_0_testWrapper_0_desktop.png",
+        "test": "../bitmaps_test/20211102-073948/Visualtesting_iframehtmlidcomponents-avatar--user-avatar-with-statusviewModestory_0_testWrapper_0_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "Visualtesting_iframehtmlidcomponents-avatar--user-avatar-with-statusviewModestory_0_testWrapper_0_desktop.png",
+        "label": "iframe.html?id=components-avatar--user-avatar-with-status&viewMode=story",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://host.docker.internal:6006/iframe.html?id=components-avatar--user-avatar-with-status&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "diff": {
+          "isSameDimensions": true,
+          "dimensionDifference": {
+            "width": 0,
+            "height": 0
+          },
+          "rawMisMatchPercentage": 29.248046875,
+          "misMatchPercentage": "29.25",
+          "analysisTime": 8
+        },
+        "diffImage": "../bitmaps_test/20211102-073948/failed_diff_Visualtesting_iframehtmlidcomponents-avatar--user-avatar-with-statusviewModestory_0_testWrapper_0_desktop.png"
+      },
+      "status": "fail"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/Visualtesting_iframehtmlidcomponents-avatar--team-avatarviewModestory_0_testWrapper_0_desktop.png",
+        "test": "../bitmaps_test/20211102-073948/Visualtesting_iframehtmlidcomponents-avatar--team-avatarviewModestory_0_testWrapper_0_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "Visualtesting_iframehtmlidcomponents-avatar--team-avatarviewModestory_0_testWrapper_0_desktop.png",
+        "label": "iframe.html?id=components-avatar--team-avatar&viewMode=story",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://host.docker.internal:6006/iframe.html?id=components-avatar--team-avatar&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "diff": {
+          "isSameDimensions": true,
+          "dimensionDifference": {
+            "width": 0,
+            "height": 0
+          },
+          "rawMisMatchPercentage": 36.669921875,
+          "misMatchPercentage": "36.67",
+          "analysisTime": 22
+        },
+        "diffImage": "../bitmaps_test/20211102-073948/failed_diff_Visualtesting_iframehtmlidcomponents-avatar--team-avatarviewModestory_0_testWrapper_0_desktop.png"
+      },
+      "status": "fail"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/Visualtesting_iframehtmlidcomponents-avatar--team-avatar-with-mentionsviewModestory_0_testWrapper_0_desktop.png",
+        "test": "../bitmaps_test/20211102-073948/Visualtesting_iframehtmlidcomponents-avatar--team-avatar-with-mentionsviewModestory_0_testWrapper_0_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "Visualtesting_iframehtmlidcomponents-avatar--team-avatar-with-mentionsviewModestory_0_testWrapper_0_desktop.png",
+        "label": "iframe.html?id=components-avatar--team-avatar-with-mentions&viewMode=story",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://host.docker.internal:6006/iframe.html?id=components-avatar--team-avatar-with-mentions&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "diff": {
+          "isSameDimensions": true,
+          "dimensionDifference": {
+            "width": 0,
+            "height": 0
+          },
+          "rawMisMatchPercentage": 30.6640625,
+          "misMatchPercentage": "30.66",
+          "analysisTime": 21
+        },
+        "diffImage": "../bitmaps_test/20211102-073948/failed_diff_Visualtesting_iframehtmlidcomponents-avatar--team-avatar-with-mentionsviewModestory_0_testWrapper_0_desktop.png"
+      },
+      "status": "fail"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/Visualtesting_iframehtmlidcomponents-button--default-storyviewModestory_0_testWrapper_0_desktop.png",
+        "test": "../bitmaps_test/20211102-073948/Visualtesting_iframehtmlidcomponents-button--default-storyviewModestory_0_testWrapper_0_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "Visualtesting_iframehtmlidcomponents-button--default-storyviewModestory_0_testWrapper_0_desktop.png",
+        "label": "iframe.html?id=components-button--default-story&viewMode=story",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://host.docker.internal:6006/iframe.html?id=components-button--default-story&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "diff": {
+          "isSameDimensions": false,
+          "dimensionDifference": {
+            "width": -3,
+            "height": 0
+          },
+          "rawMisMatchPercentage": 24.0625,
+          "misMatchPercentage": "24.06",
+          "analysisTime": 31
+        },
+        "diffImage": "../bitmaps_test/20211102-073948/failed_diff_Visualtesting_iframehtmlidcomponents-button--default-storyviewModestory_0_testWrapper_0_desktop.png"
+      },
+      "status": "fail"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/Visualtesting_iframehtmlidcomponents-button--button-with-iconviewModestory_0_testWrapper_0_desktop.png",
+        "test": "../bitmaps_test/20211102-073948/Visualtesting_iframehtmlidcomponents-button--button-with-iconviewModestory_0_testWrapper_0_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "Visualtesting_iframehtmlidcomponents-button--button-with-iconviewModestory_0_testWrapper_0_desktop.png",
+        "label": "iframe.html?id=components-button--button-with-icon&viewMode=story",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://host.docker.internal:6006/iframe.html?id=components-button--button-with-icon&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "diff": {
+          "isSameDimensions": false,
+          "dimensionDifference": {
+            "width": -4,
+            "height": 0
+          },
+          "rawMisMatchPercentage": 21.372215346534652,
+          "misMatchPercentage": "21.37",
+          "analysisTime": 49
+        },
+        "diffImage": "../bitmaps_test/20211102-073948/failed_diff_Visualtesting_iframehtmlidcomponents-button--button-with-iconviewModestory_0_testWrapper_0_desktop.png"
+      },
+      "status": "fail"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/Visualtesting_iframehtmlidcomponents-checkbox--default-storyviewModestory_0_testWrapper_0_desktop.png",
+        "test": "../bitmaps_test/20211102-073948/Visualtesting_iframehtmlidcomponents-checkbox--default-storyviewModestory_0_testWrapper_0_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "Visualtesting_iframehtmlidcomponents-checkbox--default-storyviewModestory_0_testWrapper_0_desktop.png",
+        "label": "iframe.html?id=components-checkbox--default-story&viewMode=story",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://host.docker.internal:6006/iframe.html?id=components-checkbox--default-story&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "diff": {
+          "isSameDimensions": true,
+          "dimensionDifference": {
+            "width": 0,
+            "height": 0
+          },
+          "misMatchPercentage": "0.00"
+        }
+      },
+      "status": "pass"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/Visualtesting_iframehtmlidcomponents-heading--default-storyviewModestory_0_testWrapper_0_desktop.png",
+        "test": "../bitmaps_test/20211102-073948/Visualtesting_iframehtmlidcomponents-heading--default-storyviewModestory_0_testWrapper_0_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "Visualtesting_iframehtmlidcomponents-heading--default-storyviewModestory_0_testWrapper_0_desktop.png",
+        "label": "iframe.html?id=components-heading--default-story&viewMode=story",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://host.docker.internal:6006/iframe.html?id=components-heading--default-story&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "diff": {
+          "isSameDimensions": true,
+          "dimensionDifference": {
+            "width": 0,
+            "height": 0
+          },
+          "rawMisMatchPercentage": 5.635416666666666,
+          "misMatchPercentage": "5.64",
+          "analysisTime": 21
+        },
+        "diffImage": "../bitmaps_test/20211102-073948/failed_diff_Visualtesting_iframehtmlidcomponents-heading--default-storyviewModestory_0_testWrapper_0_desktop.png"
+      },
+      "status": "fail"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/Visualtesting_iframehtmlidcomponents-iconbutton--default-storyviewModestory_0_testWrapper_0_desktop.png",
+        "test": "../bitmaps_test/20211102-073948/Visualtesting_iframehtmlidcomponents-iconbutton--default-storyviewModestory_0_testWrapper_0_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "Visualtesting_iframehtmlidcomponents-iconbutton--default-storyviewModestory_0_testWrapper_0_desktop.png",
+        "label": "iframe.html?id=components-iconbutton--default-story&viewMode=story",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://host.docker.internal:6006/iframe.html?id=components-iconbutton--default-story&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "diff": {
+          "isSameDimensions": true,
+          "dimensionDifference": {
+            "width": 0,
+            "height": 0
+          },
+          "rawMisMatchPercentage": 3.564453125,
+          "misMatchPercentage": "3.56",
+          "analysisTime": 20
+        },
+        "diffImage": "../bitmaps_test/20211102-073948/failed_diff_Visualtesting_iframehtmlidcomponents-iconbutton--default-storyviewModestory_0_testWrapper_0_desktop.png"
+      },
+      "status": "fail"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/Visualtesting_iframehtmlidcomponents-image--default-storyviewModestory_0_testWrapper_0_desktop.png",
+        "test": "../bitmaps_test/20211102-073948/Visualtesting_iframehtmlidcomponents-image--default-storyviewModestory_0_testWrapper_0_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "Visualtesting_iframehtmlidcomponents-image--default-storyviewModestory_0_testWrapper_0_desktop.png",
+        "label": "iframe.html?id=components-image--default-story&viewMode=story",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://host.docker.internal:6006/iframe.html?id=components-image--default-story&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "diff": {
+          "isSameDimensions": true,
+          "dimensionDifference": {
+            "width": 0,
+            "height": 0
+          },
+          "rawMisMatchPercentage": 61.08697385204081,
+          "misMatchPercentage": "61.09",
+          "analysisTime": 51
+        },
+        "diffImage": "../bitmaps_test/20211102-073948/failed_diff_Visualtesting_iframehtmlidcomponents-image--default-storyviewModestory_0_testWrapper_0_desktop.png"
+      },
+      "status": "fail"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/Visualtesting_iframehtmlidcomponents-mentionbadge--mention-badgesviewModestory_0_testWrapper_0_desktop.png",
+        "test": "../bitmaps_test/20211102-073948/Visualtesting_iframehtmlidcomponents-mentionbadge--mention-badgesviewModestory_0_testWrapper_0_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "Visualtesting_iframehtmlidcomponents-mentionbadge--mention-badgesviewModestory_0_testWrapper_0_desktop.png",
+        "label": "iframe.html?id=components-mentionbadge--mention-badges&viewMode=story",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://host.docker.internal:6006/iframe.html?id=components-mentionbadge--mention-badges&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "diff": {
+          "isSameDimensions": true,
+          "dimensionDifference": {
+            "width": 0,
+            "height": 0
+          },
+          "rawMisMatchPercentage": 1.0869565217391304,
+          "misMatchPercentage": "1.09",
+          "analysisTime": 4
+        },
+        "diffImage": "../bitmaps_test/20211102-073948/failed_diff_Visualtesting_iframehtmlidcomponents-mentionbadge--mention-badgesviewModestory_0_testWrapper_0_desktop.png"
+      },
+      "status": "fail"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/Visualtesting_iframehtmlidcomponents-mentionbadge--unread-badgesviewModestory_0_testWrapper_0_desktop.png",
+        "test": "../bitmaps_test/20211102-073948/Visualtesting_iframehtmlidcomponents-mentionbadge--unread-badgesviewModestory_0_testWrapper_0_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "Visualtesting_iframehtmlidcomponents-mentionbadge--unread-badgesviewModestory_0_testWrapper_0_desktop.png",
+        "label": "iframe.html?id=components-mentionbadge--unread-badges&viewMode=story",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://host.docker.internal:6006/iframe.html?id=components-mentionbadge--unread-badges&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "diff": {
+          "isSameDimensions": true,
+          "dimensionDifference": {
+            "width": 0,
+            "height": 0
+          },
+          "rawMisMatchPercentage": 1.0869565217391304,
+          "misMatchPercentage": "1.09",
+          "analysisTime": 3
+        },
+        "diffImage": "../bitmaps_test/20211102-073948/failed_diff_Visualtesting_iframehtmlidcomponents-mentionbadge--unread-badgesviewModestory_0_testWrapper_0_desktop.png"
+      },
+      "status": "fail"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/Visualtesting_iframehtmlidcomponents-radio--default-storyviewModestory_0_testWrapper_0_desktop.png",
+        "test": "../bitmaps_test/20211102-073948/Visualtesting_iframehtmlidcomponents-radio--default-storyviewModestory_0_testWrapper_0_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "Visualtesting_iframehtmlidcomponents-radio--default-storyviewModestory_0_testWrapper_0_desktop.png",
+        "label": "iframe.html?id=components-radio--default-story&viewMode=story",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://host.docker.internal:6006/iframe.html?id=components-radio--default-story&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "diff": {
+          "isSameDimensions": true,
+          "dimensionDifference": {
+            "width": 0,
+            "height": 0
+          },
+          "rawMisMatchPercentage": 0,
+          "misMatchPercentage": "0.00",
+          "analysisTime": 4
+        }
+      },
+      "status": "pass"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/Visualtesting_iframehtmlidcomponents-statusbadge--status-badgeviewModestory_0_testWrapper_0_desktop.png",
+        "test": "../bitmaps_test/20211102-073948/Visualtesting_iframehtmlidcomponents-statusbadge--status-badgeviewModestory_0_testWrapper_0_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "Visualtesting_iframehtmlidcomponents-statusbadge--status-badgeviewModestory_0_testWrapper_0_desktop.png",
+        "label": "iframe.html?id=components-statusbadge--status-badge&viewMode=story",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://host.docker.internal:6006/iframe.html?id=components-statusbadge--status-badge&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "diff": {
+          "isSameDimensions": true,
+          "dimensionDifference": {
+            "width": 0,
+            "height": 0
+          },
+          "rawMisMatchPercentage": 3.6157024793388426,
+          "misMatchPercentage": "3.62",
+          "analysisTime": 3
+        },
+        "diffImage": "../bitmaps_test/20211102-073948/failed_diff_Visualtesting_iframehtmlidcomponents-statusbadge--status-badgeviewModestory_0_testWrapper_0_desktop.png"
+      },
+      "status": "fail"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/Visualtesting_iframehtmlidcomponents-statusicon--status-iconviewModestory_0_testWrapper_0_desktop.png",
+        "test": "../bitmaps_test/20211102-073948/Visualtesting_iframehtmlidcomponents-statusicon--status-iconviewModestory_0_testWrapper_0_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "Visualtesting_iframehtmlidcomponents-statusicon--status-iconviewModestory_0_testWrapper_0_desktop.png",
+        "label": "iframe.html?id=components-statusicon--status-icon&viewMode=story",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://host.docker.internal:6006/iframe.html?id=components-statusicon--status-icon&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "diff": {
+          "isSameDimensions": true,
+          "dimensionDifference": {
+            "width": 0,
+            "height": 0
+          },
+          "rawMisMatchPercentage": 0,
+          "misMatchPercentage": "0.00",
+          "analysisTime": 10
+        }
+      },
+      "status": "pass"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/Visualtesting_iframehtmlidcomponents-switch--default-storyviewModestory_0_testWrapper_0_desktop.png",
+        "test": "../bitmaps_test/20211102-073948/Visualtesting_iframehtmlidcomponents-switch--default-storyviewModestory_0_testWrapper_0_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "Visualtesting_iframehtmlidcomponents-switch--default-storyviewModestory_0_testWrapper_0_desktop.png",
+        "label": "iframe.html?id=components-switch--default-story&viewMode=story",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://host.docker.internal:6006/iframe.html?id=components-switch--default-story&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "diff": {
+          "isSameDimensions": true,
+          "dimensionDifference": {
+            "width": 0,
+            "height": 0
+          },
+          "rawMisMatchPercentage": 0.13020833333333331,
+          "misMatchPercentage": "0.13",
+          "analysisTime": 38
+        },
+        "diffImage": "../bitmaps_test/20211102-073948/failed_diff_Visualtesting_iframehtmlidcomponents-switch--default-storyviewModestory_0_testWrapper_0_desktop.png"
+      },
+      "status": "fail"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/Visualtesting_iframehtmlidcomponents-tag--default-storyviewModestory_0_testWrapper_0_desktop.png",
+        "test": "../bitmaps_test/20211102-073948/Visualtesting_iframehtmlidcomponents-tag--default-storyviewModestory_0_testWrapper_0_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "Visualtesting_iframehtmlidcomponents-tag--default-storyviewModestory_0_testWrapper_0_desktop.png",
+        "label": "iframe.html?id=components-tag--default-story&viewMode=story",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://host.docker.internal:6006/iframe.html?id=components-tag--default-story&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "diff": {
+          "isSameDimensions": false,
+          "dimensionDifference": {
+            "width": -2,
+            "height": 0
+          },
+          "rawMisMatchPercentage": 15.996503496503497,
+          "misMatchPercentage": "16.00",
+          "analysisTime": 20
+        },
+        "diffImage": "../bitmaps_test/20211102-073948/failed_diff_Visualtesting_iframehtmlidcomponents-tag--default-storyviewModestory_0_testWrapper_0_desktop.png"
+      },
+      "status": "fail"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/Visualtesting_iframehtmlidcomponents-textinput--default-storyviewModestory_0_testWrapper_0_desktop.png",
+        "test": "../bitmaps_test/20211102-073948/Visualtesting_iframehtmlidcomponents-textinput--default-storyviewModestory_0_testWrapper_0_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "Visualtesting_iframehtmlidcomponents-textinput--default-storyviewModestory_0_testWrapper_0_desktop.png",
+        "label": "iframe.html?id=components-textinput--default-story&viewMode=story",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://host.docker.internal:6006/iframe.html?id=components-textinput--default-story&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "diff": {
+          "isSameDimensions": true,
+          "dimensionDifference": {
+            "width": 0,
+            "height": 0
+          },
+          "rawMisMatchPercentage": 0.9870129870129871,
+          "misMatchPercentage": "0.99",
+          "analysisTime": 91
+        },
+        "diffImage": "../bitmaps_test/20211102-073948/failed_diff_Visualtesting_iframehtmlidcomponents-textinput--default-storyviewModestory_0_testWrapper_0_desktop.png"
+      },
+      "status": "fail"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/Visualtesting_iframehtmlidcomponents-textinput--no-trailing-iconviewModestory_0_testWrapper_0_desktop.png",
+        "test": "../bitmaps_test/20211102-073948/Visualtesting_iframehtmlidcomponents-textinput--no-trailing-iconviewModestory_0_testWrapper_0_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "Visualtesting_iframehtmlidcomponents-textinput--no-trailing-iconviewModestory_0_testWrapper_0_desktop.png",
+        "label": "iframe.html?id=components-textinput--no-trailing-icon&viewMode=story",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://host.docker.internal:6006/iframe.html?id=components-textinput--no-trailing-icon&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "diff": {
+          "isSameDimensions": true,
+          "dimensionDifference": {
+            "width": 0,
+            "height": 0
+          },
+          "rawMisMatchPercentage": 0.4242424242424243,
+          "misMatchPercentage": "0.42",
+          "analysisTime": 69
+        },
+        "diffImage": "../bitmaps_test/20211102-073948/failed_diff_Visualtesting_iframehtmlidcomponents-textinput--no-trailing-iconviewModestory_0_testWrapper_0_desktop.png"
+      },
+      "status": "fail"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/Visualtesting_iframehtmlidcomponents-textinput--no-leading-iconviewModestory_0_testWrapper_0_desktop.png",
+        "test": "../bitmaps_test/20211102-073948/Visualtesting_iframehtmlidcomponents-textinput--no-leading-iconviewModestory_0_testWrapper_0_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "Visualtesting_iframehtmlidcomponents-textinput--no-leading-iconviewModestory_0_testWrapper_0_desktop.png",
+        "label": "iframe.html?id=components-textinput--no-leading-icon&viewMode=story",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://host.docker.internal:6006/iframe.html?id=components-textinput--no-leading-icon&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "diff": {
+          "isSameDimensions": true,
+          "dimensionDifference": {
+            "width": 0,
+            "height": 0
+          },
+          "rawMisMatchPercentage": 0.5627705627705628,
+          "misMatchPercentage": "0.56",
+          "analysisTime": 45
+        },
+        "diffImage": "../bitmaps_test/20211102-073948/failed_diff_Visualtesting_iframehtmlidcomponents-textinput--no-leading-iconviewModestory_0_testWrapper_0_desktop.png"
+      },
+      "status": "fail"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/Visualtesting_iframehtmlidcomponents-textinput--no-iconsviewModestory_0_testWrapper_0_desktop.png",
+        "test": "../bitmaps_test/20211102-073948/Visualtesting_iframehtmlidcomponents-textinput--no-iconsviewModestory_0_testWrapper_0_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "Visualtesting_iframehtmlidcomponents-textinput--no-iconsviewModestory_0_testWrapper_0_desktop.png",
+        "label": "iframe.html?id=components-textinput--no-icons&viewMode=story",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://host.docker.internal:6006/iframe.html?id=components-textinput--no-icons&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "diff": {
+          "isSameDimensions": true,
+          "dimensionDifference": {
+            "width": 0,
+            "height": 0
+          },
+          "misMatchPercentage": "0.00"
+        }
+      },
+      "status": "pass"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/Visualtesting_iframehtmlidcomponents-text--default-storyviewModestory_0_testWrapper_0_desktop.png",
+        "test": "../bitmaps_test/20211102-073948/Visualtesting_iframehtmlidcomponents-text--default-storyviewModestory_0_testWrapper_0_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "Visualtesting_iframehtmlidcomponents-text--default-storyviewModestory_0_testWrapper_0_desktop.png",
+        "label": "iframe.html?id=components-text--default-story&viewMode=story",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://host.docker.internal:6006/iframe.html?id=components-text--default-story&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "diff": {
+          "isSameDimensions": false,
+          "dimensionDifference": {
+            "width": 2,
+            "height": 0
+          },
+          "rawMisMatchPercentage": 8.736455108359133,
+          "misMatchPercentage": "8.74",
+          "analysisTime": 44
+        },
+        "diffImage": "../bitmaps_test/20211102-073948/failed_diff_Visualtesting_iframehtmlidcomponents-text--default-storyviewModestory_0_testWrapper_0_desktop.png"
+      },
+      "status": "fail"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/Visualtesting_iframehtmlidfoundations-colors--neutralviewModestory_0_testWrapper_0_desktop.png",
+        "test": "../bitmaps_test/20211102-073948/Visualtesting_iframehtmlidfoundations-colors--neutralviewModestory_0_testWrapper_0_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "Visualtesting_iframehtmlidfoundations-colors--neutralviewModestory_0_testWrapper_0_desktop.png",
+        "label": "iframe.html?id=foundations-colors--neutral&viewMode=story",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://host.docker.internal:6006/iframe.html?id=foundations-colors--neutral&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "diff": {
+          "isSameDimensions": false,
+          "dimensionDifference": {
+            "width": 1,
+            "height": 0
+          },
+          "rawMisMatchPercentage": 47.28690833959429,
+          "misMatchPercentage": "47.29",
+          "analysisTime": 111
+        },
+        "diffImage": "../bitmaps_test/20211102-073948/failed_diff_Visualtesting_iframehtmlidfoundations-colors--neutralviewModestory_0_testWrapper_0_desktop.png"
+      },
+      "status": "fail"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/Visualtesting_iframehtmlidfoundations-colors--blueviewModestory_0_testWrapper_0_desktop.png",
+        "test": "../bitmaps_test/20211102-073948/Visualtesting_iframehtmlidfoundations-colors--blueviewModestory_0_testWrapper_0_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "Visualtesting_iframehtmlidfoundations-colors--blueviewModestory_0_testWrapper_0_desktop.png",
+        "label": "iframe.html?id=foundations-colors--blue&viewMode=story",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://host.docker.internal:6006/iframe.html?id=foundations-colors--blue&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "diff": {
+          "isSameDimensions": false,
+          "dimensionDifference": {
+            "width": 1,
+            "height": 0
+          },
+          "rawMisMatchPercentage": 50.163756773028304,
+          "misMatchPercentage": "50.16",
+          "analysisTime": 95
+        },
+        "diffImage": "../bitmaps_test/20211102-073948/failed_diff_Visualtesting_iframehtmlidfoundations-colors--blueviewModestory_0_testWrapper_0_desktop.png"
+      },
+      "status": "fail"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/Visualtesting_iframehtmlidfoundations-colors--cyanviewModestory_0_testWrapper_0_desktop.png",
+        "test": "../bitmaps_test/20211102-073948/Visualtesting_iframehtmlidfoundations-colors--cyanviewModestory_0_testWrapper_0_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "Visualtesting_iframehtmlidfoundations-colors--cyanviewModestory_0_testWrapper_0_desktop.png",
+        "label": "iframe.html?id=foundations-colors--cyan&viewMode=story",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://host.docker.internal:6006/iframe.html?id=foundations-colors--cyan&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "diff": {
+          "isSameDimensions": false,
+          "dimensionDifference": {
+            "width": 1,
+            "height": 0
+          },
+          "rawMisMatchPercentage": 50.24111980734497,
+          "misMatchPercentage": "50.24",
+          "analysisTime": 110
+        },
+        "diffImage": "../bitmaps_test/20211102-073948/failed_diff_Visualtesting_iframehtmlidfoundations-colors--cyanviewModestory_0_testWrapper_0_desktop.png"
+      },
+      "status": "fail"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/Visualtesting_iframehtmlidfoundations-colors--indigoviewModestory_0_testWrapper_0_desktop.png",
+        "test": "../bitmaps_test/20211102-073948/Visualtesting_iframehtmlidfoundations-colors--indigoviewModestory_0_testWrapper_0_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "Visualtesting_iframehtmlidfoundations-colors--indigoviewModestory_0_testWrapper_0_desktop.png",
+        "label": "iframe.html?id=foundations-colors--indigo&viewMode=story",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://host.docker.internal:6006/iframe.html?id=foundations-colors--indigo&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "diff": {
+          "isSameDimensions": false,
+          "dimensionDifference": {
+            "width": -1,
+            "height": 0
+          },
+          "rawMisMatchPercentage": 50.27001806140879,
+          "misMatchPercentage": "50.27",
+          "analysisTime": 96
+        },
+        "diffImage": "../bitmaps_test/20211102-073948/failed_diff_Visualtesting_iframehtmlidfoundations-colors--indigoviewModestory_0_testWrapper_0_desktop.png"
+      },
+      "status": "fail"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/Visualtesting_iframehtmlidfoundations-colors--purpleviewModestory_0_testWrapper_0_desktop.png",
+        "test": "../bitmaps_test/20211102-073948/Visualtesting_iframehtmlidfoundations-colors--purpleviewModestory_0_testWrapper_0_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "Visualtesting_iframehtmlidfoundations-colors--purpleviewModestory_0_testWrapper_0_desktop.png",
+        "label": "iframe.html?id=foundations-colors--purple&viewMode=story",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://host.docker.internal:6006/iframe.html?id=foundations-colors--purple&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "diff": {
+          "isSameDimensions": false,
+          "dimensionDifference": {
+            "width": -1,
+            "height": 0
+          },
+          "rawMisMatchPercentage": 50.35490668272126,
+          "misMatchPercentage": "50.35",
+          "analysisTime": 60
+        },
+        "diffImage": "../bitmaps_test/20211102-073948/failed_diff_Visualtesting_iframehtmlidfoundations-colors--purpleviewModestory_0_testWrapper_0_desktop.png"
+      },
+      "status": "fail"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/Visualtesting_iframehtmlidfoundations-colors--tealviewModestory_0_testWrapper_0_desktop.png",
+        "test": "../bitmaps_test/20211102-073948/Visualtesting_iframehtmlidfoundations-colors--tealviewModestory_0_testWrapper_0_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "Visualtesting_iframehtmlidfoundations-colors--tealviewModestory_0_testWrapper_0_desktop.png",
+        "label": "iframe.html?id=foundations-colors--teal&viewMode=story",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://host.docker.internal:6006/iframe.html?id=foundations-colors--teal&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "diff": {
+          "isSameDimensions": false,
+          "dimensionDifference": {
+            "width": 1,
+            "height": 0
+          },
+          "rawMisMatchPercentage": 50.11770018061409,
+          "misMatchPercentage": "50.12",
+          "analysisTime": 121
+        },
+        "diffImage": "../bitmaps_test/20211102-073948/failed_diff_Visualtesting_iframehtmlidfoundations-colors--tealviewModestory_0_testWrapper_0_desktop.png"
+      },
+      "status": "fail"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/Visualtesting_iframehtmlidfoundations-colors--greenviewModestory_0_testWrapper_0_desktop.png",
+        "test": "../bitmaps_test/20211102-073948/Visualtesting_iframehtmlidfoundations-colors--greenviewModestory_0_testWrapper_0_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "Visualtesting_iframehtmlidfoundations-colors--greenviewModestory_0_testWrapper_0_desktop.png",
+        "label": "iframe.html?id=foundations-colors--green&viewMode=story",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://host.docker.internal:6006/iframe.html?id=foundations-colors--green&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "diff": {
+          "isSameDimensions": false,
+          "dimensionDifference": {
+            "width": 1,
+            "height": 0
+          },
+          "rawMisMatchPercentage": 50.29891631547261,
+          "misMatchPercentage": "50.30",
+          "analysisTime": 66
+        },
+        "diffImage": "../bitmaps_test/20211102-073948/failed_diff_Visualtesting_iframehtmlidfoundations-colors--greenviewModestory_0_testWrapper_0_desktop.png"
+      },
+      "status": "fail"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/Visualtesting_iframehtmlidfoundations-colors--redviewModestory_0_testWrapper_0_desktop.png",
+        "test": "../bitmaps_test/20211102-073948/Visualtesting_iframehtmlidfoundations-colors--redviewModestory_0_testWrapper_0_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "Visualtesting_iframehtmlidfoundations-colors--redviewModestory_0_testWrapper_0_desktop.png",
+        "label": "iframe.html?id=foundations-colors--red&viewMode=story",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://host.docker.internal:6006/iframe.html?id=foundations-colors--red&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "diff": {
+          "isSameDimensions": false,
+          "dimensionDifference": {
+            "width": 1,
+            "height": 0
+          },
+          "rawMisMatchPercentage": 50.15352197471403,
+          "misMatchPercentage": "50.15",
+          "analysisTime": 46
+        },
+        "diffImage": "../bitmaps_test/20211102-073948/failed_diff_Visualtesting_iframehtmlidfoundations-colors--redviewModestory_0_testWrapper_0_desktop.png"
+      },
+      "status": "fail"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/Visualtesting_iframehtmlidfoundations-colors--orangeviewModestory_0_testWrapper_0_desktop.png",
+        "test": "../bitmaps_test/20211102-073948/Visualtesting_iframehtmlidfoundations-colors--orangeviewModestory_0_testWrapper_0_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "Visualtesting_iframehtmlidfoundations-colors--orangeviewModestory_0_testWrapper_0_desktop.png",
+        "label": "iframe.html?id=foundations-colors--orange&viewMode=story",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://host.docker.internal:6006/iframe.html?id=foundations-colors--orange&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "diff": {
+          "isSameDimensions": false,
+          "dimensionDifference": {
+            "width": 2,
+            "height": 0
+          },
+          "rawMisMatchPercentage": 51.38902415270744,
+          "misMatchPercentage": "51.39",
+          "analysisTime": 104
+        },
+        "diffImage": "../bitmaps_test/20211102-073948/failed_diff_Visualtesting_iframehtmlidfoundations-colors--orangeviewModestory_0_testWrapper_0_desktop.png"
+      },
+      "status": "fail"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/Visualtesting_iframehtmlidfoundations-colors--yellowviewModestory_0_testWrapper_0_desktop.png",
+        "test": "../bitmaps_test/20211102-073948/Visualtesting_iframehtmlidfoundations-colors--yellowviewModestory_0_testWrapper_0_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "Visualtesting_iframehtmlidfoundations-colors--yellowviewModestory_0_testWrapper_0_desktop.png",
+        "label": "iframe.html?id=foundations-colors--yellow&viewMode=story",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://host.docker.internal:6006/iframe.html?id=foundations-colors--yellow&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "diff": {
+          "isSameDimensions": false,
+          "dimensionDifference": {
+            "width": 1,
+            "height": 0
+          },
+          "rawMisMatchPercentage": 50.289885611077665,
+          "misMatchPercentage": "50.29",
+          "analysisTime": 60
+        },
+        "diffImage": "../bitmaps_test/20211102-073948/failed_diff_Visualtesting_iframehtmlidfoundations-colors--yellowviewModestory_0_testWrapper_0_desktop.png"
+      },
+      "status": "fail"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/Visualtesting_iframehtmlidfoundations-colors--custom-colorviewModestory_0_testWrapper_0_desktop.png",
+        "test": "../bitmaps_test/20211102-073948/Visualtesting_iframehtmlidfoundations-colors--custom-colorviewModestory_0_testWrapper_0_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "Visualtesting_iframehtmlidfoundations-colors--custom-colorviewModestory_0_testWrapper_0_desktop.png",
+        "label": "iframe.html?id=foundations-colors--custom-color&viewMode=story",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://host.docker.internal:6006/iframe.html?id=foundations-colors--custom-color&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "diff": {
+          "isSameDimensions": false,
+          "dimensionDifference": {
+            "width": 1,
+            "height": 0
+          },
+          "rawMisMatchPercentage": 49.69717037928959,
+          "misMatchPercentage": "49.70",
+          "analysisTime": 108
+        },
+        "diffImage": "../bitmaps_test/20211102-073948/failed_diff_Visualtesting_iframehtmlidfoundations-colors--custom-colorviewModestory_0_testWrapper_0_desktop.png"
+      },
+      "status": "fail"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/Visualtesting_iframehtmlidfoundations-icon--default-storyviewModestory_0_testWrapper_0_desktop.png",
+        "test": "../bitmaps_test/20211102-073948/Visualtesting_iframehtmlidfoundations-icon--default-storyviewModestory_0_testWrapper_0_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "Visualtesting_iframehtmlidfoundations-icon--default-storyviewModestory_0_testWrapper_0_desktop.png",
+        "label": "iframe.html?id=foundations-icon--default-story&viewMode=story",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://host.docker.internal:6006/iframe.html?id=foundations-icon--default-story&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "diff": {
+          "isSameDimensions": true,
+          "dimensionDifference": {
+            "width": 0,
+            "height": 0
+          },
+          "rawMisMatchPercentage": 0.6060606060606061,
+          "misMatchPercentage": "0.61",
+          "analysisTime": 6
+        },
+        "diffImage": "../bitmaps_test/20211102-073948/failed_diff_Visualtesting_iframehtmlidfoundations-icon--default-storyviewModestory_0_testWrapper_0_desktop.png"
+      },
+      "status": "fail"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/Visualtesting_iframehtmlidfoundations-shape--rectangleviewModestory_0_testWrapper_0_desktop.png",
+        "test": "../bitmaps_test/20211102-073948/Visualtesting_iframehtmlidfoundations-shape--rectangleviewModestory_0_testWrapper_0_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "Visualtesting_iframehtmlidfoundations-shape--rectangleviewModestory_0_testWrapper_0_desktop.png",
+        "label": "iframe.html?id=foundations-shape--rectangle&viewMode=story",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://host.docker.internal:6006/iframe.html?id=foundations-shape--rectangle&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "diff": {
+          "isSameDimensions": true,
+          "dimensionDifference": {
+            "width": 0,
+            "height": 0
+          },
+          "misMatchPercentage": "0.00"
+        }
+      },
+      "status": "pass"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/Visualtesting_iframehtmlidfoundations-shape--rounded-rectangleviewModestory_0_testWrapper_0_desktop.png",
+        "test": "../bitmaps_test/20211102-073948/Visualtesting_iframehtmlidfoundations-shape--rounded-rectangleviewModestory_0_testWrapper_0_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "Visualtesting_iframehtmlidfoundations-shape--rounded-rectangleviewModestory_0_testWrapper_0_desktop.png",
+        "label": "iframe.html?id=foundations-shape--rounded-rectangle&viewMode=story",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://host.docker.internal:6006/iframe.html?id=foundations-shape--rounded-rectangle&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "diff": {
+          "isSameDimensions": true,
+          "dimensionDifference": {
+            "width": 0,
+            "height": 0
+          },
+          "misMatchPercentage": "0.00"
+        }
+      },
+      "status": "pass"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/Visualtesting_iframehtmlidfoundations-shape--pillviewModestory_0_testWrapper_0_desktop.png",
+        "test": "../bitmaps_test/20211102-073948/Visualtesting_iframehtmlidfoundations-shape--pillviewModestory_0_testWrapper_0_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "Visualtesting_iframehtmlidfoundations-shape--pillviewModestory_0_testWrapper_0_desktop.png",
+        "label": "iframe.html?id=foundations-shape--pill&viewMode=story",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://host.docker.internal:6006/iframe.html?id=foundations-shape--pill&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "diff": {
+          "isSameDimensions": true,
+          "dimensionDifference": {
+            "width": 0,
+            "height": 0
+          },
+          "misMatchPercentage": "0.00"
+        }
+      },
+      "status": "pass"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/Visualtesting_iframehtmlidfoundations-shape--circleviewModestory_0_testWrapper_0_desktop.png",
+        "test": "../bitmaps_test/20211102-073948/Visualtesting_iframehtmlidfoundations-shape--circleviewModestory_0_testWrapper_0_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "Visualtesting_iframehtmlidfoundations-shape--circleviewModestory_0_testWrapper_0_desktop.png",
+        "label": "iframe.html?id=foundations-shape--circle&viewMode=story",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://host.docker.internal:6006/iframe.html?id=foundations-shape--circle&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "diff": {
+          "isSameDimensions": true,
+          "dimensionDifference": {
+            "width": 0,
+            "height": 0
+          },
+          "misMatchPercentage": "0.00"
+        }
+      },
+      "status": "pass"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/Visualtesting_iframehtmlidutilities-elevation--default-storyviewModestory_0_testWrapper_0_desktop.png",
+        "test": "../bitmaps_test/20211102-073948/Visualtesting_iframehtmlidutilities-elevation--default-storyviewModestory_0_testWrapper_0_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "Visualtesting_iframehtmlidutilities-elevation--default-storyviewModestory_0_testWrapper_0_desktop.png",
+        "label": "iframe.html?id=utilities-elevation--default-story&viewMode=story",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://host.docker.internal:6006/iframe.html?id=utilities-elevation--default-story&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "diff": {
+          "isSameDimensions": true,
+          "dimensionDifference": {
+            "width": 0,
+            "height": 0
+          },
+          "misMatchPercentage": "0.00"
+        }
+      },
+      "status": "pass"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/Visualtesting_iframehtmlidutilities-layout-grid--default-storyviewModestory_0_testWrapper_0_desktop.png",
+        "test": "../bitmaps_test/20211102-073948/Visualtesting_iframehtmlidutilities-layout-grid--default-storyviewModestory_0_testWrapper_0_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "Visualtesting_iframehtmlidutilities-layout-grid--default-storyviewModestory_0_testWrapper_0_desktop.png",
+        "label": "iframe.html?id=utilities-layout-grid--default-story&viewMode=story",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://host.docker.internal:6006/iframe.html?id=utilities-layout-grid--default-story&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "diff": {
+          "isSameDimensions": true,
+          "dimensionDifference": {
+            "width": 0,
+            "height": 0
+          },
+          "rawMisMatchPercentage": 0.40327963688145246,
+          "misMatchPercentage": "0.40",
+          "analysisTime": 48
+        },
+        "diffImage": "../bitmaps_test/20211102-073948/failed_diff_Visualtesting_iframehtmlidutilities-layout-grid--default-storyviewModestory_0_testWrapper_0_desktop.png"
+      },
+      "status": "fail"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/Visualtesting_iframehtmlidutilities-popover--default-storyviewModestory_0_testWrapper_0_desktop.png",
+        "test": "../bitmaps_test/20211102-073948/Visualtesting_iframehtmlidutilities-popover--default-storyviewModestory_0_testWrapper_0_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "Visualtesting_iframehtmlidutilities-popover--default-storyviewModestory_0_testWrapper_0_desktop.png",
+        "label": "iframe.html?id=utilities-popover--default-story&viewMode=story",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://host.docker.internal:6006/iframe.html?id=utilities-popover--default-story&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "diff": {
+          "isSameDimensions": true,
+          "dimensionDifference": {
+            "width": 0,
+            "height": 0
+          },
+          "rawMisMatchPercentage": 2.63671875,
+          "misMatchPercentage": "2.64",
+          "analysisTime": 21
+        },
+        "diffImage": "../bitmaps_test/20211102-073948/failed_diff_Visualtesting_iframehtmlidutilities-popover--default-storyviewModestory_0_testWrapper_0_desktop.png"
+      },
+      "status": "fail"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/Visualtesting_iframehtmlidutilities-popover--hoverviewModestory_0_testWrapper_0_desktop.png",
+        "test": "../bitmaps_test/20211102-073948/Visualtesting_iframehtmlidutilities-popover--hoverviewModestory_0_testWrapper_0_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "Visualtesting_iframehtmlidutilities-popover--hoverviewModestory_0_testWrapper_0_desktop.png",
+        "label": "iframe.html?id=utilities-popover--hover&viewMode=story",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://host.docker.internal:6006/iframe.html?id=utilities-popover--hover&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "diff": {
+          "isSameDimensions": true,
+          "dimensionDifference": {
+            "width": 0,
+            "height": 0
+          },
+          "rawMisMatchPercentage": 2.63671875,
+          "misMatchPercentage": "2.64",
+          "analysisTime": 10
+        },
+        "diffImage": "../bitmaps_test/20211102-073948/failed_diff_Visualtesting_iframehtmlidutilities-popover--hoverviewModestory_0_testWrapper_0_desktop.png"
+      },
+      "status": "fail"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/Visualtesting_iframehtmlidutilities-popover--w-animationviewModestory_0_testWrapper_0_desktop.png",
+        "test": "../bitmaps_test/20211102-073948/Visualtesting_iframehtmlidutilities-popover--w-animationviewModestory_0_testWrapper_0_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "Visualtesting_iframehtmlidutilities-popover--w-animationviewModestory_0_testWrapper_0_desktop.png",
+        "label": "iframe.html?id=utilities-popover--w-animation&viewMode=story",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://host.docker.internal:6006/iframe.html?id=utilities-popover--w-animation&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "diff": {
+          "isSameDimensions": true,
+          "dimensionDifference": {
+            "width": 0,
+            "height": 0
+          },
+          "rawMisMatchPercentage": 2.63671875,
+          "misMatchPercentage": "2.64",
+          "analysisTime": 10
+        },
+        "diffImage": "../bitmaps_test/20211102-073948/failed_diff_Visualtesting_iframehtmlidutilities-popover--w-animationviewModestory_0_testWrapper_0_desktop.png"
+      },
+      "status": "fail"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/Visualtesting_iframehtmlidutilities-theming--default-storyviewModestory_0_testWrapper_0_desktop.png",
+        "test": "../bitmaps_test/20211102-073948/Visualtesting_iframehtmlidutilities-theming--default-storyviewModestory_0_testWrapper_0_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "Visualtesting_iframehtmlidutilities-theming--default-storyviewModestory_0_testWrapper_0_desktop.png",
+        "label": "iframe.html?id=utilities-theming--default-story&viewMode=story",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://host.docker.internal:6006/iframe.html?id=utilities-theming--default-story&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "diff": {
+          "isSameDimensions": false,
+          "dimensionDifference": {
+            "width": 0,
+            "height": -20
+          },
+          "rawMisMatchPercentage": 24.78354629151609,
+          "misMatchPercentage": "24.78",
+          "analysisTime": 49
+        },
+        "diffImage": "../bitmaps_test/20211102-073948/failed_diff_Visualtesting_iframehtmlidutilities-theming--default-storyviewModestory_0_testWrapper_0_desktop.png"
+      },
+      "status": "fail"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/Visualtesting_iframehtmlidutilities-theming--default-colorviewModestory_0_testWrapper_0_desktop.png",
+        "test": "../bitmaps_test/20211102-073948/Visualtesting_iframehtmlidutilities-theming--default-colorviewModestory_0_testWrapper_0_desktop.png",
+        "selector": "#testWrapper",
+        "fileName": "Visualtesting_iframehtmlidutilities-theming--default-colorviewModestory_0_testWrapper_0_desktop.png",
+        "label": "iframe.html?id=utilities-theming--default-color&viewMode=story",
+        "requireSameDimensions": false,
+        "misMatchThreshold": 0.1,
+        "url": "http://host.docker.internal:6006/iframe.html?id=utilities-theming--default-color&viewMode=story",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "diff": {
+          "isSameDimensions": false,
+          "dimensionDifference": {
+            "width": 0,
+            "height": 20
+          },
+          "rawMisMatchPercentage": 23.92393274265002,
+          "misMatchPercentage": "23.92",
+          "analysisTime": 51
+        },
+        "diffImage": "../bitmaps_test/20211102-073948/failed_diff_Visualtesting_iframehtmlidutilities-theming--default-colorviewModestory_0_testWrapper_0_desktop.png"
+      },
+      "status": "fail"
+    }
+  ],
+  "id": "Visual testing"
+}
