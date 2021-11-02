@@ -15,6 +15,7 @@ const storyScenarios = storybookIds
             : {
                   relativeUrl: `iframe.html?id=${stories[storyKey].id}&viewMode=story`,
                   label: stories[storyKey].name,
+                  kind: stories[storyKey].kind,
               }
     )
     .filter(Boolean);

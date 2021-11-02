@@ -18,7 +18,7 @@ function pushViewport(viewport, width, height) {
 
 storybookConfig.storyScenarios.map((scenario) =>
     scenarios.push({
-        label: kebabCase(scenario.label),
+        label: `${scenario.kind}/${kebabCase(scenario.label)}`,
         url: `${storybookConfig.baseUrl}${scenario.relativeUrl}`,
         delay: THREE_SECONDS_IN_MS,
         requireSameDimensions: false,
@@ -46,7 +46,6 @@ module.exports = {
     id: storybookConfig.projectId,
     viewports,
     scenarios,
-    onReadyScript: 'onReady.js',
     onBeforeScript: 'onBefore.js',
     paths: {
         bitmaps_reference: 'visual-test/backstop_data/bitmaps_reference',

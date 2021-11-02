@@ -1,13 +1,10 @@
 /* eslint-disable no-console,no-empty-function */
 'use strict';
 
-((original) => {
-    console.enableLogging = () => {
-        console.log = original;
-    };
-    console.disableLogging = () => {
-        console.log = () => {};
-    };
-})(console.log);
-
-module.exports = () => console.disableLogging();
+module.exports = () => {
+    Object.keys(console).forEach((key) => {
+        if (key !== 'memory') {
+            console[key] = () => {};
+        }
+    });
+};
