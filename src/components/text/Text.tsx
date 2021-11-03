@@ -17,15 +17,17 @@ import {
 import type PText from './Text.props';
 import TextRoot from './Text.root';
 
-const Text = ({
-    inheritLineHeight = false,
-    color = DEFAULT_TEXT_COLOR,
-    element = DEFAULT_TEXT_ELEMENT,
-    margin = DEFAULT_TEXT_MARGIN,
-    size = DEFAULT_TEXT_SIZE,
-    weight = DEFAULT_TEXT_WEIGHT,
-    ...rest
-}: PText): JSX.Element => {
+const Text: React.FC<PText> = (props: PText) => {
+    const {
+        inheritLineHeight = false,
+        color = DEFAULT_TEXT_COLOR,
+        element = DEFAULT_TEXT_ELEMENT,
+        margin = DEFAULT_TEXT_MARGIN,
+        size = DEFAULT_TEXT_SIZE,
+        weight = DEFAULT_TEXT_WEIGHT,
+        ...rest
+    } = props;
+
     Utils.assert(
         TEXT_ELEMENTS.includes(element) || React.isValidElement(element),
         `Text: component was used with an unsupported element '${element}'.

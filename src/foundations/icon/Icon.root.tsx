@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import type { FlattenSimpleInterpolation, ThemedStyledProps } from 'styled-components';
+import type { ThemedStyledProps } from 'styled-components';
 
 import type { TTheme } from '../../utilities/theme';
 import { Utils } from '../../shared';
@@ -7,28 +7,20 @@ import { Utils } from '../../shared';
 import type { PIconRoot } from './Icon.props';
 import { DEFAULT_ICON_SIZE, ICON_FONT_SIZES } from './Icon.constants';
 
-function getIconSizes({ size }: PIconRoot): FlattenSimpleInterpolation {
-    return css`
-        height: ${size}px;
-        width: ${size}px;
-
-        &::before {
-            font-size: ${ICON_FONT_SIZES[size]}px;
-            letter-spacing: ${ICON_FONT_SIZES[size]}px;
-        }
-    `;
-}
-
 const IconRoot = styled.i.withConfig<PIconRoot>({
     shouldForwardProp: (property, validator) =>
-        Utils.blockProperty(property) && validator(property),
-})<ThemedStyledProps<PIconRoot, TTheme>>(
-    ({ theme, color }: ThemedStyledProps<PIconRoot, TTheme>) => css`
+        Utils.blockProperty(property, ['size', 'color']) && validator(property),
+})<ThemedStyledProps<PIconRoot, TTheme>>((props: ThemedStyledProps<PIconRoot, TTheme>) => {
+    const { theme, color, size } = props;
+
+    return css`
         // element container base styles
         position: relative;
         justify-content: center;
-        width: 20px;
-        height: 20px;
+
+        height: ${size}px;
+        width: ${size}px;
+
         padding: 0;
 
         display: inline-flex;
@@ -44,7 +36,10 @@ const IconRoot = styled.i.withConfig<PIconRoot>({
             margin: 0; // remove margins added by fontello
         }
 
-        ${getIconSizes};
+        &::before {
+            font-size: ${ICON_FONT_SIZES[size]}px;
+            letter-spacing: ${ICON_FONT_SIZES[size]}px;
+        }
 
         ${color &&
         color !== 'inherit' &&
@@ -53,10 +48,10 @@ const IconRoot = styled.i.withConfig<PIconRoot>({
         `}
 
         // animation
-        body.enable-animations & {
+          body.enable-animations & {
             transition: color ${theme.animation.fastest} 0s ease-in-out;
         }
-    `
-);
+    `;
+});
 
 export default IconRoot;

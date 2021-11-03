@@ -8,15 +8,17 @@ import type PCheckbox from './Checkbox.props';
 import { CHECKBOX_VALUES_MAPPING, DEFAULT_CHECKBOX_SIZE } from './Checkbox.constants';
 import CheckboxRoot from './Checkbox.root';
 
-const Checkbox: React.FC<PCheckbox> = ({
-    label,
-    size = DEFAULT_CHECKBOX_SIZE,
-    checked = false,
-    disabled = false,
-    hasError = false,
-    onChange = Utils.noop,
-    ...rest
-}: PCheckbox): JSX.Element => {
+const Checkbox: React.FC<PCheckbox> = (props: PCheckbox): JSX.Element => {
+    const {
+        label,
+        size = DEFAULT_CHECKBOX_SIZE,
+        checked = false,
+        disabled = false,
+        hasError = false,
+        onChange = Utils.noop,
+        ...rest
+    } = props;
+
     const hasLabel = Utils.isString(label) && label.length > 0;
 
     const rootProperties = {

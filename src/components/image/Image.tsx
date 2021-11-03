@@ -10,17 +10,19 @@ import {
 import type PImage from './Image.props';
 import ImageRoot from './Image.root';
 
-const Image: React.FC<PImage> = ({
-    source,
-    alt,
-    className,
-    fullWidth = false,
-    thumbnail = false,
-    radius = DEFAULT_IMAGE_BORDER_RADIUS,
-    width = DEFAULT_IMAGE_WIDTH,
-    height = DEFAULT_IMAGE_HEIGHT,
-    ...rest
-}: PImage) => {
+const Image: React.FC<PImage> = (props: PImage) => {
+    const {
+        source,
+        alt,
+        className,
+        fullWidth = false,
+        thumbnail = false,
+        radius = DEFAULT_IMAGE_BORDER_RADIUS,
+        width = DEFAULT_IMAGE_WIDTH,
+        height = DEFAULT_IMAGE_HEIGHT,
+        ...rest
+    } = props;
+
     Utils.assert(Boolean(source), 'Image: You need to provide a valid image source');
 
     const [loading, setLoading] = useState(true);

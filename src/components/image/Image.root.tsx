@@ -11,37 +11,37 @@ import type { PImageRoot } from './Image.props';
 const ImageRoot = styled.img.withConfig<PImageRoot>({
     shouldForwardProp: (property, validator) =>
         Utils.blockProperty(property) && validator(property),
-})(
-    ({
+})((props: ThemedStyledProps<PImageRoot, TTheme>) => {
+    const {
         theme: { background, border },
         width,
         height,
         radius,
         thumbnail,
-    }: ThemedStyledProps<PImageRoot, TTheme>) => {
-        const thumbnailStyles = thumbnail
-            ? css`
-                  background-color: ${background.default};
-                  border: 1px solid ${border.disabled};
+    } = props;
 
-                  ${applyPadding(Spacing.all(50))};
-                  ${applyShape({ radius })};
-              `
-            : null;
+    const thumbnailStyles = thumbnail
+        ? css`
+              background-color: ${background.default};
+              border: 1px solid ${border.disabled};
 
-        return css`
-            display: block;
-            margin: auto;
+              ${applyPadding(Spacing.all(50))};
+              ${applyShape({ radius })};
+          `
+        : null;
 
-            ${thumbnailStyles}
+    return css`
+        display: block;
+        margin: auto;
 
-            ${applyShape({
-                width,
-                height,
-                radius,
-            })};
-        `;
-    }
-);
+        ${thumbnailStyles}
+
+        ${applyShape({
+            width,
+            height,
+            radius,
+        })};
+    `;
+});
 
 export default ImageRoot;

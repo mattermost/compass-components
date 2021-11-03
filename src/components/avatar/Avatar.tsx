@@ -54,19 +54,21 @@ const LazyAvatarImage = ({ source }: PLazyAvatarImage): JSX.Element => {
     return <StyledAvatarImage image={image} />;
 };
 
-const Avatar = ({
-    element = DEFAULT_AVATAR_ELEMENT,
-    size = DEFAULT_AVATAR_SIZE,
-    variant = DEFAULT_AVATAR_VARIANT,
-    disableHover = false,
-    isActive = false,
-    onClick,
-    mentions,
-    name,
-    image,
-    status,
-    ...rest
-}: PAvatar): JSX.Element => {
+const Avatar = (props: PAvatar): JSX.Element => {
+    const {
+        element = DEFAULT_AVATAR_ELEMENT,
+        size = DEFAULT_AVATAR_SIZE,
+        variant = DEFAULT_AVATAR_VARIANT,
+        disableHover = false,
+        isActive = false,
+        onClick,
+        mentions,
+        name,
+        image,
+        status,
+        ...rest
+    } = props;
+
     Utils.assert(
         AVATAR_ELEMENTS.includes(element),
         `Avatar: component was used with an unsupported element '${element}'.
