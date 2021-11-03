@@ -1,10 +1,10 @@
-import React from 'react';
+import type React from 'react';
 
 type PMenuItem = {
     /**
-     * the main label to showon the menu item
+     * the main label to show on the menu item
      */
-    label: boolean;
+    label: string;
     /**
      * show the secondary label right to the main label when set to true
      * @default false

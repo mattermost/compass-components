@@ -1,0 +1,239 @@
+import { useState, useRef } from 'react';
+import { ArgsTable, Canvas, Meta, Story, Subtitle, Title } from '@storybook/addon-docs/blocks';
+import { Utils } from '../../shared';
+import menuAnatomyImg from '../../assets/images/menu-anatomy.png';
+import menuExampleImg from '../../assets/images/menu-example.png';
+import MenuItem from '../../components/menu-item';
+import IconButton from '../../components/icon-button';
+
+import Menu from './Menu';
+import Icon from '../../foundations/icon';
+import Grid from '../../utilities/layout';
+import Spacing from '../../utilities/spacing';
+import { DEFAULT_MENU_PLACEMENT, MENU_OFFSET_TOKENS, MENU_PLACEMENTS } from './Menu.constants';
+
+<Meta title={'Patterns/Menu'} />
+
+<Title>Popover Menu</Title>
+
+<Subtitle>
+    A Popover Menu is a way of displaying multiple choices overlayed on top of the current context.
+    It displays when interacting with a trigger (such as an icon or button).
+</Subtitle>
+
+<img src={menuExampleImg} alt={'menu example'} />
+
+## Anatomy
+
+A Popover Menu is essentially a container that holds the Menu Title, Menu Item, Menu Group Title, or Menu Divider Components.
+
+<img src={menuAnatomyImg} alt={'menu anatomy'} />
+
+### Container
+
+The Container uses a 1px border (16% Center Channel Color) with the Center Channel Background Color as the fill.
+It also has an Elevation applied to it that separates it from the background it covers. The default elevation of the container is Elevation 4.
+
+The Container has 8px of space above the first Menu Item, and 8px of space below the last.
+
+### Menu Title (optional)
+
+The Menu Item is the core interactive element of a Popover Menu. See the Menu Item Component for all of its variants.
+
+### Menu Divider (optional)
+
+Menu Dividers are used to separate groups of Menu Items, or to separate the Menu Title from the Menu Items.
+
+### Menu Group
+
+A Menu Group is simply a container that holds related Menu Items.
+
+### Menu Group Title (optional)
+
+Not all Menu Groups need to have a title. Often grouping related items together can be enough without the need for a title.
+
+export const menuArgTypes = {
+    trigger: {
+        options: ['Icon', 'MenuItem'],
+        control: {
+            type: 'select',
+        },
+    },
+    title: {
+        control: {
+            type: 'string',
+        },
+    },
+    width: { control: { type: 'range', min: 1, max: 1000, step: 1 } },
+    placement: {
+        options: MENU_PLACEMENTS,
+        control: {
+            type: 'select',
+        },
+    },
+    offsetX: {
+        name: 'cross-axis-offset',
+        description:
+            'adds an offset to the cross axis. e.g. adds offset to the left, when placement is `bottom`',
+        options: MENU_OFFSET_TOKENS,
+        control: {
+            type: 'select',
+        },
+    },
+    offsetY: {
+        name: 'main-axis-offset',
+        description:
+            'adds an offset to the main axis. e.g. adds offset to the top, when placement is `bottom`',
+        options: MENU_OFFSET_TOKENS,
+        control: {
+            type: 'select',
+        },
+    },
+};
+
+export const mainGroup = [
+    {
+        title: 'Main group',
+        menuItems: [
+            <MenuItem label="Hello Mattermost" leadingElement={<Icon glyph="globe" />} />,
+            <MenuItem label="Edit Mattermost" leadingElement={<Icon glyph="pencil-outline" />} />,
+        ],
+    },
+];
+
+export const secondGroup = [
+    {
+        title: 'First group',
+        menuItems: [
+            <MenuItem
+                label="Leave Mattermost"
+                leadingElement={<Icon glyph="sort-alphabetical-ascending" />}
+            />,
+            <MenuItem
+                label="Delete Mattermost"
+                leadingElement={<Icon glyph="trash-can-outline" />}
+            />,
+        ],
+    },
+    {
+        title: 'Second group',
+        menuItems: [
+            <MenuItem
+                label="Sort Mattermost"
+                leadingElement={<Icon glyph="folder-plus-outline" />}
+            />,
+            <MenuItem label="Create Mattermost" leadingElement={<Icon glyph="plus" />} />,
+        ],
+    },
+];
+
+export const menuArgs = {
+    title: 'Main Menu',
+    placement: DEFAULT_MENU_PLACEMENT,
+    offsetX: 0,
+    offsetY: 0,
+    groups: mainGroup,
+};
+
+<ArgsTable of={Menu} />
+
+<Canvas hidden>
+    <Story name="default" args={menuArgs} argTypes={menuArgTypes}>
+        {(args) => {
+            const [isVisible, setIsVisible] = useState(false);
+            const reference = useRef(null);
+            function toggleVisible() {
+                console.log('#### toggle visible');
+                setIsVisible(!isVisible);
+            }
+            const trigger = {
+                element: <IconButton
+                        icon={'menu'}
+                        onClick={toggleVisible}
+                        ref={reference}
+                        toggled={isVisible}
+                    />,
+                ref: reference,
+            }
+            return (
+                <Menu
+                    {...args}
+                    trigger={trigger}
+                    isVisible={isVisible}
+                />
+            );
+        }}
+    </Story>
+    <Story name="submenu" args={menuArgs} argTypes={menuArgTypes}>
+        {(args) => {
+            const [isMenuVisible, setMenuVisible] = useState(false);
+            const [isSubMenuVisible, setSubMenuVisible] = useState(false);
+            const buttonReference = useRef(null);
+            const menuItemReference = useRef(null);
+            function toggleMenu() {
+                console.log('#### toggle menu');
+                setMenuVisible(!isMenuVisible);
+            }
+            function toggleSubmenu() {
+                console.log('#### toggle submenu');
+                setSubMenuVisible(!isSubMenuVisible);
+            }
+            const menuTrigger = {
+                element: <IconButton
+                        icon={'menu'}
+                        onClick={toggleMenu}
+                        ref={buttonReference}
+                        toggled={isMenuVisible}
+                    />,
+                ref: buttonReference,
+            }
+            const subMenuTrigger = {
+                element: <MenuItem
+                        leadingElement={<Icon glyph='menu'/>}
+                        label='Open submenu'
+                        onMouseEnter={toggleSubmenu}
+                        onMouseLeave={toggleSubmenu}
+                        ref={menuItemReference}
+                    />,
+                ref: menuItemReference,
+            }
+            const menuGroup = [
+                {
+                    title: 'First group',
+                    menuItems: [
+                        <MenuItem label='Leave Mattermost' leadingElement={<Icon glyph='sort-alphabetical-ascending'/>}/>,
+                        <MenuItem label='Delete Mattermost' leadingElement={<Icon glyph='trash-can-outline'/>}/>,
+                        subMenuTrigger.element,
+                    ]
+                },
+            ]
+            const submenuGroup = [
+                {
+                    title: 'Second group',
+                    menuItems: [
+                        <MenuItem label='Sort Mattermost' leadingElement={<Icon glyph='folder-plus-outline'/>}/>,
+                        <MenuItem label='Create Mattermost' leadingElement={<Icon glyph='plus'/>}/>
+                    ]
+                },
+            ]
+
+            return (
+                <>
+                    <Menu
+                        {...args}
+                        trigger={menuTrigger}
+                        isVisible={isMenuVisible}
+                        groups={menuGroup}
+                    />
+                    <Menu
+                        {...args}
+                        trigger={subMenuTrigger}
+                        isVisible={isSubMenuVisible}
+                        groups={submenuGroup}
+                    />
+                </>
+            );
+        }}
+    </Story>
+
+</Canvas>

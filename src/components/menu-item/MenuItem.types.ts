@@ -1,4 +1,4 @@
-import { TComponentSizeToken } from '../../shared';
+import type { TComponentSizeToken } from '../../shared';
 
 type TMenuItemNumber = number;
 
