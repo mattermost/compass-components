@@ -14,6 +14,11 @@ type PMenu = {
      */
     trigger: TMenuTrigger;
     /**
+     * if the trigger should be rendered on the page
+     * @default true
+     */
+    renderTrigger?: boolean;
+    /**
      * menu title if provided
      */
     title?: string;

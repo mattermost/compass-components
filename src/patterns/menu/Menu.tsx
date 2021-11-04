@@ -9,6 +9,7 @@ import type PMenu from './Menu.props';
 
 const Menu = ({
     trigger,
+    renderTrigger = true,
     title,
     width,
     container,
@@ -20,10 +21,9 @@ const Menu = ({
     ...rest
 }: PMenu): JSX.Element => {
     const divider = <Shape height="1px" width={'auto'} backgroundColor={'#e0e0e0'}></Shape>;
-
     return (
         <>
-            {trigger.element}
+            {renderTrigger && trigger.element}
             <Popover
                 isVisible={isVisible}
                 anchorReference={trigger.ref}

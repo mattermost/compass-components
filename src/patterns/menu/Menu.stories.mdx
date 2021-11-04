@@ -10,7 +10,11 @@ import Menu from './Menu';
 import Icon from '../../foundations/icon';
 import Grid from '../../utilities/layout';
 import Spacing from '../../utilities/spacing';
-import { DEFAULT_MENU_PLACEMENT, MENU_OFFSET_TOKENS, MENU_PLACEMENTS } from './Menu.constants';
+import {
+    DEFAULT_MENU_PLACEMENT,
+    MENU_OFFSET_TOKENS,
+    MENU_PLACEMENTS,
+} from './Menu.constants';
 
 <Meta title={'Patterns/Menu'} />
 
@@ -24,32 +28,26 @@ import { DEFAULT_MENU_PLACEMENT, MENU_OFFSET_TOKENS, MENU_PLACEMENTS } from './M
 <img src={menuExampleImg} alt={'menu example'} />
 
 ## Anatomy
-
-A Popover Menu is essentially a container that holds the Menu Title, Menu Item, Menu Group Title, or Menu Divider Components.
+A Popover Menu is essentially a container that holds the Menu Title, Menu Item, Menu Group Title, or Menu Divider Components. 
 
 <img src={menuAnatomyImg} alt={'menu anatomy'} />
 
 ### Container
-
-The Container uses a 1px border (16% Center Channel Color) with the Center Channel Background Color as the fill.
+The Container uses a 1px border (16% Center Channel Color) with the Center Channel Background Color as the fill. 
 It also has an Elevation applied to it that separates it from the background it covers. The default elevation of the container is Elevation 4.
 
 The Container has 8px of space above the first Menu Item, and 8px of space below the last.
 
 ### Menu Title (optional)
-
 The Menu Item is the core interactive element of a Popover Menu. See the Menu Item Component for all of its variants.
 
 ### Menu Divider (optional)
-
 Menu Dividers are used to separate groups of Menu Items, or to separate the Menu Title from the Menu Items.
 
 ### Menu Group
-
 A Menu Group is simply a container that holds related Menu Items.
 
 ### Menu Group Title (optional)
-
 Not all Menu Groups need to have a title. Often grouping related items together can be enough without the need for a title.
 
 export const menuArgTypes = {
@@ -62,7 +60,7 @@ export const menuArgTypes = {
     title: {
         control: {
             type: 'string',
-        },
+        }
     },
     width: { control: { type: 'range', min: 1, max: 1000, step: 1 } },
     placement: {
@@ -91,39 +89,28 @@ export const menuArgTypes = {
     },
 };
 
-export const mainGroup = [
-    {
-        title: 'Main group',
-        menuItems: [
-            <MenuItem label="Hello Mattermost" leadingElement={<Icon glyph="globe" />} />,
-            <MenuItem label="Edit Mattermost" leadingElement={<Icon glyph="pencil-outline" />} />,
-        ],
-    },
-];
+export const mainGroup = [{
+    title: 'Main group',
+    menuItems: [
+        <MenuItem label='Hello Mattermost' leadingElement={<Icon glyph='globe'/>}/>,
+        <MenuItem label='Edit Mattermost' leadingElement={<Icon glyph='pencil-outline'/>}/>
+    ]
+}];
 
 export const secondGroup = [
     {
         title: 'First group',
         menuItems: [
-            <MenuItem
-                label="Leave Mattermost"
-                leadingElement={<Icon glyph="sort-alphabetical-ascending" />}
-            />,
-            <MenuItem
-                label="Delete Mattermost"
-                leadingElement={<Icon glyph="trash-can-outline" />}
-            />,
-        ],
+            <MenuItem label='Leave Mattermost' leadingElement={<Icon glyph='sort-alphabetical-ascending'/>}/>,
+            <MenuItem label='Delete Mattermost' leadingElement={<Icon glyph='trash-can-outline'/>}/>
+        ]
     },
     {
         title: 'Second group',
         menuItems: [
-            <MenuItem
-                label="Sort Mattermost"
-                leadingElement={<Icon glyph="folder-plus-outline" />}
-            />,
-            <MenuItem label="Create Mattermost" leadingElement={<Icon glyph="plus" />} />,
-        ],
+            <MenuItem label='Sort Mattermost' leadingElement={<Icon glyph='folder-plus-outline'/>}/>,
+            <MenuItem label='Create Mattermost' leadingElement={<Icon glyph='plus'/>}/>
+        ]
     },
 ];
 
@@ -173,11 +160,11 @@ export const menuArgs = {
             function toggleMenu() {
                 console.log('#### toggle menu');
                 setMenuVisible(!isMenuVisible);
-            }
+            };
             function toggleSubmenu() {
                 console.log('#### toggle submenu');
                 setSubMenuVisible(!isSubMenuVisible);
-            }
+            };
             const menuTrigger = {
                 element: <IconButton
                         icon={'menu'}
@@ -186,37 +173,37 @@ export const menuArgs = {
                         toggled={isMenuVisible}
                     />,
                 ref: buttonReference,
-            }
+            };
             const subMenuTrigger = {
                 element: <MenuItem
                         leadingElement={<Icon glyph='menu'/>}
+                        trailingElement={<Icon glyph='chevron'/>}
                         label='Open submenu'
                         onMouseEnter={toggleSubmenu}
                         onMouseLeave={toggleSubmenu}
                         ref={menuItemReference}
                     />,
                 ref: menuItemReference,
-            }
+            };
             const menuGroup = [
                 {
                     title: 'First group',
                     menuItems: [
-                        <MenuItem label='Leave Mattermost' leadingElement={<Icon glyph='sort-alphabetical-ascending'/>}/>,
+                        <MenuItem label='Sort Mattermost' leadingElement={<Icon glyph='sort-alphabetical-ascending'/>}/>,
                         <MenuItem label='Delete Mattermost' leadingElement={<Icon glyph='trash-can-outline'/>}/>,
                         subMenuTrigger.element,
                     ]
                 },
-            ]
+            ];
             const submenuGroup = [
                 {
                     title: 'Second group',
                     menuItems: [
-                        <MenuItem label='Sort Mattermost' leadingElement={<Icon glyph='folder-plus-outline'/>}/>,
-                        <MenuItem label='Create Mattermost' leadingElement={<Icon glyph='plus'/>}/>
+                        <MenuItem label='Leave Mattermost' leadingElement={<Icon glyph='sort-alphabetical-ascending'/>}/>,
+                        <MenuItem label='Open Mattermost' leadingElement={<Icon glyph='plus'/>}/>,
                     ]
                 },
-            ]
-
+            ];
             return (
                 <>
                     <Menu
@@ -230,10 +217,11 @@ export const menuArgs = {
                         trigger={subMenuTrigger}
                         isVisible={isSubMenuVisible}
                         groups={submenuGroup}
+                        renderTrigger={false}
+                        placement={'right'}
                     />
                 </>
             );
         }}
     </Story>
-
 </Canvas>

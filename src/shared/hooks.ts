@@ -42,4 +42,13 @@ export const useClickAway = (
     }, [onClickAway, references]);
 };
 
+export const useDeviceDetect = (): boolean => {
+    const userAgent = typeof window.navigator === 'undefined' ? '' : navigator.userAgent;
+    return Boolean(
+        userAgent.match(
+            /Android|BlackBerry|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i
+        )
+    );
+}
+
 export type { TonClickAwayCallback, TuseClickAwayReferences };
