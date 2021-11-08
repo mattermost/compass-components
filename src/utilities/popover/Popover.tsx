@@ -20,6 +20,7 @@ const Popover = ({
     placement = DEFAULT_POPOVER_PLACEMENT,
     offset = DEFAULT_POPOVER_OFFSET,
     zIndex = 1,
+    customTransition,
 }: PPopover): JSX.Element | null => {
     const popperReference = useRef(null);
     const isMobile = useDeviceDetect();
@@ -64,7 +65,8 @@ const Popover = ({
                 mountOnEnter
                 unmountOnExit
                 isVisible={isVisible}
-                type={isMobile ? ['slideUp'] : ['fade', 'scale']}
+                type={['fade', 'scale']}
+                customTransition={customTransition}
                 speed={noAnimation ? 'instant' : 'normal'}
             >
                 {children}

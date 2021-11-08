@@ -55,7 +55,7 @@ type PTransition = {
      */
     exit?: boolean;
     /**
-     * defiune a custom transition to be used with the Transition component.
+     * define a custom transition to be used with the Transition component.
      * It needs to follow the structure defined for transitions to work properly
      */
     customTransition?: TTransitionTypeDefinition;

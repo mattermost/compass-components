@@ -3,7 +3,7 @@ import type { FlattenSimpleInterpolation } from 'styled-components';
 
 import type { TThemeAnimationSpeed } from '../theme';
 
-type TTransitionType = 'fade' | 'scale' | 'slideUp';
+type TTransitionType = 'fade' | 'scale';
 
 type TTransitionTypeDefinition = {
     [key in TransitionStatus]: FlattenSimpleInterpolation;

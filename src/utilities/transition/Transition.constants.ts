@@ -52,24 +52,6 @@ const TRANSITION_TYPE_DEFINITIONS: TTransitionTypeStatusMap = {
             transform: scale(1);
         `,
     },
-    slideUp: {
-        properties: ['transform'],
-        entering: css`
-            transform: translate3d(0, 0, 0);
-        `,
-        entered: css`
-            transform: translate3d(0, 0, 0);
-        `,
-        exiting: css`
-            transform: translate3d(0, 150%, 0);
-        `,
-        exited: css`
-            transform: translate3d(0, 150%, 0);
-        `,
-        unmounted: css`
-            transform: translate3d(0, 150%, 0);
-        `,
-    },
 };
 
 export { TRANSITION_SPEEDS, DEFAULT_TRANSITION_SPEED, TRANSITION_TYPE_DEFINITIONS };

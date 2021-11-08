@@ -1,6 +1,7 @@
 import type { MutableRefObject, ReactNode, ReactNodeArray } from 'react';
 
 import type { TonClickAwayCallback } from '../../shared';
+import { TTransitionTypeDefinition } from '../transition/Transition.types';
 
 import type { TPopoverOffset, TPopoverPlacement } from './Popover.types';
 
@@ -38,6 +39,10 @@ type PPopover = {
      * @default 1
      */
     zIndex?: number;
+    /**
+     * apply custom transition
+     */
+    customTransition?: TTransitionTypeDefinition;
     /**
      * handle clicking away from the popover and anchor references (refs).
      * this is very useful for setting isVisible state, or perform other actions
