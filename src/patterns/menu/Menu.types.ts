@@ -12,7 +12,7 @@ type TMenuGroup = {
 };
 
 type TMenuTrigger = {
-    element: React.ReactElement;
+    element: ReactElement;
     ref: MutableRefObject<null>;
 };
 
