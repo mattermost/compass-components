@@ -1,19 +1,19 @@
-import type { Placement } from '@popperjs/core';
+import Placement from '../../utilities/popover';
 import type { MutableRefObject, ReactElement } from 'react';
 
-import type MenuItem from '../../components/menu-item';
+import MenuItem from '../../components/menu-item';
 import type { TSpacingToken as TMenuOffsetToken } from '../../utilities/spacing';
 
 type TMenuOffset = [TMenuOffsetToken, TMenuOffsetToken];
 
 type TMenuGroup = {
-    menuItems: MenuItem[];
+    menuItems: typeof MenuItem[];
     title?: string;
 };
 
 type TMenuTrigger = {
     element: ReactElement;
-    ref: MutableRefObject<null>;
+    ref: MutableRefObject<HTMLElement>;
 };
 
 export type {
