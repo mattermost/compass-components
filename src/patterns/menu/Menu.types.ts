@@ -1,6 +1,5 @@
 import type { Placement } from '@popperjs/core';
-import type { MutableRefObject } from 'react';
-import type React from 'react';
+import type { MutableRefObject, ReactElement } from 'react';
 
 import type MenuItem from '../../components/menu-item';
 import type { TSpacingToken as TMenuOffsetToken } from '../../utilities/spacing';
