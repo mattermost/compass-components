@@ -15,6 +15,7 @@ const Radio: React.FC<PRadio> = (props: PRadio) => {
         disabled = false,
         checked = false,
         onChange = Utils.noop,
+        children,
         ...rest
     } = props;
 
@@ -33,6 +34,7 @@ const Radio: React.FC<PRadio> = (props: PRadio) => {
             <input type={'checkbox'} checked={checked} onChange={onChange} />
             <div />
             {hasLabel && <RadioLabelRoot size={size}>{label}</RadioLabelRoot>}
+            {!hasLabel && children}
         </RadioRoot>
     );
 };
