@@ -126,6 +126,16 @@ export const ControlledRadio = (args) => {
     );
 };
 
+export const withChildren = (args) => {
+    const newArgs = { ...defaultArgs };
+    newArgs.label = (
+        <span>
+            main label <span style={{ color: 'gray' }}> - details</span>
+        </span>
+    );
+    return newArgs;
+};
+
 <Canvas hidden>
     <Story
         name="Default"
@@ -139,5 +149,18 @@ export const ControlledRadio = (args) => {
         args={defaultArgs}
     >
         {(args) => <ControlledRadio {...args} />}
+    </Story>
+    <Story
+        name="With ReactNode label"
+        argTypes={{
+            label: { control: { type: 'text' } },
+            size: { control: { type: 'radio', options: RADIO_SIZES } },
+            hasError: { control: { type: 'boolean' } },
+            disabled: { control: { type: 'boolean' } },
+            ...Utils.hideComponentProperties(['onClick', 'className', 'checked', 'children']),
+        }}
+        args={defaultArgs}
+    >
+        {(args) => <ControlledRadio {...withChildren(args)} />}
     </Story>
 </Canvas>

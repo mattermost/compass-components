@@ -1,4 +1,4 @@
-import type { ReactNode, ReactNodeArray, MouseEventHandler } from 'react';
+import type { MouseEventHandler } from 'react';
 
 import type { TRadioSizeToken } from './Radio.types';
 
@@ -6,7 +6,7 @@ type PRadio = {
     /**
      * whether the radio button is rendered with a label
      * */
-    label?: string;
+    label?: React.ReactNode | React.ReactNodeArray;
     /**
      * whether the radio button has an error
      * @default false
@@ -39,13 +39,9 @@ type PRadio = {
      * custom classname
      * */
     className?: string;
-    /**
-     * child nodes
-     * */
-    children: ReactNode | ReactNodeArray;
 };
 
-type PRadioRoot = Required<Pick<PRadio, 'hasError' | 'disabled' | 'size' | 'checked' | 'children'>>;
+type PRadioRoot = Required<Pick<PRadio, 'hasError' | 'disabled' | 'size' | 'checked'>>;
 
 type PRadioLabel = Required<Pick<PRadio, 'size'>>;
 
