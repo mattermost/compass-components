@@ -8,17 +8,18 @@ import Spacing from '../../utilities/spacing';
 
 import type PMenu from './Menu.props';
 
-const Menu = ({
-    trigger,
-    renderTrigger = true,
-    title,
-    width,
-    container,
-    groups,
-    hasSubmenu,
-    isVisible,
-    ...rest
-}: PMenu): JSX.Element => {
+const Menu = (props: PMenu): JSX.Element => {
+    const {
+        renderTrigger = true,
+        trigger,
+        title,
+        width,
+        container,
+        groups,
+        hasSubmenu,
+        isVisible,
+        ...rest
+    } = props;
     const divider = <Shape height="1px" width={'auto'} backgroundColor={'#e0e0e0'}></Shape>;
     return (
         <>
