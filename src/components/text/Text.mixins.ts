@@ -15,14 +15,17 @@ const applyTextStyles = ({
     inheritLineHeight = false,
     size = DEFAULT_TEXT_SIZE,
     weight = DEFAULT_TEXT_WEIGHT,
+    textTransform = '',
 }: PApplyTextStyles): FlattenSimpleInterpolation => {
     const lineHeight = inheritLineHeight ? 'inherit' : `${TEXT_DEFINITIONS[size].lineHeight}px`;
+    const transform = textTransform.length > 0 ? textTransform : 'none';
 
     return css`
         font-family: ${FONT_TYPE_FAMILIES.body};
         font-weight: ${FONT_WEIGHT_MAP[weight]};
         font-size: ${TEXT_DEFINITIONS[size].size}px;
         line-height: ${lineHeight};
+        text-transform: ${transform};
     `;
 };
 

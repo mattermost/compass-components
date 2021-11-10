@@ -48,11 +48,12 @@ type PText = {
      */
     className?: string;
     children: ReactNode | ReactNodeArray;
+    textTransform?: string;
 };
 
 type PTextRoot = Required<Omit<PText, 'element' | 'className'>>;
 
-type PApplyTextStyles = Pick<PText, 'size' | 'inheritLineHeight' | 'element' | 'weight'>;
+type PApplyTextStyles = Pick<PText, 'size' | 'inheritLineHeight' | 'element' | 'weight' | 'textTransform'>;
 
 type PApplyTextMargin = Pick<PText, 'size' | 'margin'>;
 

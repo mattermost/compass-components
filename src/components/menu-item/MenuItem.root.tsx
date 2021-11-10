@@ -11,7 +11,7 @@ import type { PMenuItemRoot, PMenuItemTextRoot } from './MenuItem.props';
 
 const MenuItemLabelRoot = styled.span<PMenuItemTextRoot>(
     (): FlattenSimpleInterpolation => css`
-        ${applyTextStyles({ size: 100, weight: 'bold' })};
+        ${applyTextStyles({ size: 100 })};
         ${applyMargin(Spacing.only('right', 100))};
     `
 );

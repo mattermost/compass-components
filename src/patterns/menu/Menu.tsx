@@ -1,12 +1,11 @@
 import React from 'react';
 
-import Text from '../../components/text';
 import Shape from '../../foundations/shape';
 import Grid from '../../utilities/layout';
 import Popover from '../../utilities/popover';
-import Spacing from '../../utilities/spacing';
 
 import type PMenu from './Menu.props';
+import MenuRoot, {MenuGroupLabelRoot, MenuLabelRoot} from './Menu.root';
 
 const Menu = (props: PMenu): JSX.Element => {
     const {
@@ -14,7 +13,7 @@ const Menu = (props: PMenu): JSX.Element => {
         trigger,
         title,
         width,
-        container,
+        height,
         groups,
         hasSubmenu,
         isVisible,
@@ -30,34 +29,20 @@ const Menu = (props: PMenu): JSX.Element => {
                 onClickAway={(): void => {}}
                 {...rest}
             >
-                <Shape element={container} width={width} elevation={hasSubmenu ? 5 : 4} radius={8}>
-                    <Grid flex={1} justifyItems={'left'} alignItems={'center'}>
-                        {title && <Grid
-                                    flex={1}
-                                    row
-                                    alignItems={'initial'}
-                                    padding={Spacing.only('left', 150)}
-                                >
-                                    <Text color="primary">{title}</Text>
-                                </Grid>}
-                        {groups.map(
-                            (group): React.ReactElement => (
-                                <Grid flex={1} alignItems={'center'}>
-                                    {group.title && <Grid
-                                    flex={1}
-                                    row
-                                    alignItems={'initial'}
-                                    padding={Spacing.only('left', 150)}
-                                >
-                                    <Text color="secondary">{group.title}</Text>
-                                </Grid>}
-                                    {group.menuItems}
-                                    {groups.length > 1 && divider}
-                                </Grid>
-                            )
-                        )}
-                    </Grid>
-                </Shape>
+                <MenuRoot width={width} height={height}>
+                    {title && (<><MenuLabelRoot>{title}</MenuLabelRoot>
+                    {divider}</>
+                    )}
+                    {groups.map(
+                        (group): React.ReactElement => (
+                            <Grid flex={1} alignItems={'center'}>
+                                {group.title && <MenuGroupLabelRoot>{group.title}</MenuGroupLabelRoot>}
+                                {group.menuItems}
+                                {groups.length > 1 && divider}
+                            </Grid>
+                        )
+                    )}
+                </MenuRoot>
             </Popover>
         </>
     );

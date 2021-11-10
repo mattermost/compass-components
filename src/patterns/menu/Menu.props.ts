@@ -19,15 +19,15 @@ type PMenu = {
      */
     title?: string;
     /**
-     * if a specific container is needed
-     * @default null
-     */
-    container?: TMenuContainer;
-    /**
      * if width is specified for the container
      * @default 'auto'
      */
     width?: number | string | 'auto';
+    /**
+     * if height is specified for the container
+     * @default 'auto'
+     */
+    height?: number | string | 'auto';
     /**
      * a container that holds related menu items
      */
@@ -46,5 +46,9 @@ type PMenu = {
      */
     className?: string;
 };
+
+type PMenuRoot = Pick<PMenu, 'width' | 'height'>
+
+export type { PMenuRoot };
 
 export default PMenu;
