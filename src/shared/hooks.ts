@@ -7,7 +7,7 @@ type TonClickAwayCallback = (event: Event) => void;
 
 type TuseClickAwayReferences = Array<RefObject<HTMLElement | null>>;
 
-export const useClickAway = (
+const useClickAway = (
     references: TuseClickAwayReferences,
     onClickAway?: TonClickAwayCallback
 ): void => {
@@ -42,13 +42,14 @@ export const useClickAway = (
     }, [onClickAway, references]);
 };
 
-export const useDeviceDetect = (): boolean => {
+const useDeviceDetect = (): boolean => {
     const userAgent = typeof window.navigator === 'undefined' ? '' : navigator.userAgent;
+
     return Boolean(
-        userAgent.match(
-            /Android|BlackBerry|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i
-        )
+        /android|blackberry|iphone|ipad|ipod|opera mini|iemobile|wpdesktop/iu.test(userAgent)
     );
-}
+};
+
+export { useClickAway, useDeviceDetect };
 
 export type { TonClickAwayCallback, TuseClickAwayReferences };

@@ -11,11 +11,7 @@ import Menu from './Menu';
 import Icon from '../../foundations/icon';
 import Grid from '../../utilities/layout';
 import Spacing from '../../utilities/spacing';
-import {
-    DEFAULT_MENU_PLACEMENT,
-    MENU_OFFSET_TOKENS,
-    MENU_PLACEMENTS,
-} from './Menu.constants';
+import { DEFAULT_MENU_PLACEMENT, MENU_OFFSET_TOKENS, MENU_PLACEMENTS } from './Menu.constants';
 import { useDeviceDetect } from '../../shared';
 
 <Meta title={'Patterns/Menu'} />
@@ -30,26 +26,32 @@ import { useDeviceDetect } from '../../shared';
 <img src={menuExampleImg} alt={'menu example'} />
 
 ## Anatomy
-A Popover Menu is essentially a container that holds the Menu Title, Menu Item, Menu Group Title, or Menu Divider Components. 
+
+A Popover Menu is essentially a container that holds the Menu Title, Menu Item, Menu Group Title, or Menu Divider Components.
 
 <img src={menuAnatomyImg} alt={'menu anatomy'} />
 
 ### Container
-The Container uses a 1px border (16% Center Channel Color) with the Center Channel Background Color as the fill. 
+
+The Container uses a 1px border (16% Center Channel Color) with the Center Channel Background Color as the fill.
 It also has an Elevation applied to it that separates it from the background it covers. The default elevation of the container is Elevation 4.
 
 The Container has 8px of space above the first Menu Item, and 8px of space below the last.
 
 ### Menu Title (optional)
+
 The Menu Item is the core interactive element of a Popover Menu. See the Menu Item Component for all of its variants.
 
 ### Menu Divider (optional)
+
 Menu Dividers are used to separate groups of Menu Items, or to separate the Menu Title from the Menu Items.
 
 ### Menu Group
+
 A Menu Group is simply a container that holds related Menu Items.
 
 ### Menu Group Title (optional)
+
 Not all Menu Groups need to have a title. Often grouping related items together can be enough without the need for a title.
 
 export const menuArgTypes = {
@@ -62,7 +64,7 @@ export const menuArgTypes = {
     title: {
         control: {
             type: 'string',
-        }
+        },
     },
     width: { control: { type: 'range', min: 1, max: 1000, step: 1 } },
     placement: {
@@ -91,28 +93,16 @@ export const menuArgTypes = {
     },
 };
 
-export const mainGroup = [{
-    title: 'Main group',
-    menuItems: [
-        <MenuItem label='Hello Mattermost' leadingElement={<Icon size={16} glyph='globe'/>}/>,
-        <MenuItem label='Edit Mattermost' leadingElement={<Icon size={16} glyph='pencil-outline'/>}/>
-    ]
-}];
-
-export const secondGroup = [
+export const mainGroup = [
     {
-        title: 'First group',
+        title: 'Main group',
         menuItems: [
-            <MenuItem label='Leave Mattermost' leadingElement={<Icon size={16} glyph='sort-alphabetical-ascending'/>}/>,
-            <MenuItem label='Delete Mattermost' leadingElement={<Icon size={16} glyph='trash-can-outline'/>}/>
-        ]
-    },
-    {
-        title: 'Second group',
-        menuItems: [
-            <MenuItem label='Sort Mattermost' leadingElement={<Icon size={18} glyph='folder-plus-outline'/>}/>,
-            <MenuItem label='Create Mattermost' leadingElement={<Icon size={18} glyph='plus'/>}/>
-        ]
+            <MenuItem label="Hello Mattermost" leadingElement={<Icon size={16} glyph="globe" />} />,
+            <MenuItem
+                label="Edit Mattermost"
+                leadingElement={<Icon size={16} glyph="pencil-outline" />}
+            />,
+        ],
     },
 ];
 
@@ -135,137 +125,15 @@ export const menuArgs = {
                 console.log('#### toggle visible');
                 setIsVisible(!isVisible);
             }
-            const trigger = {
-                element: <IconButton
+            return (
+                <>
+                    <IconButton
                         icon={'menu'}
                         onClick={toggleVisible}
                         ref={reference}
                         toggled={isVisible}
-                    />,
-                ref: reference,
-            }
-            return (
-                <Menu
-                    {...args}
-                    trigger={trigger}
-                    isVisible={isVisible}
-                    hasSubmenu={true}
-                />
-            );
-        }}
-    </Story>
-    <Story name="submenu" args={menuArgs} argTypes={menuArgTypes}>
-        {(args) => {
-            const [isMenuVisible, setMenuVisible] = useState(false);
-            const [isSubMenuVisible, setSubMenuVisible] = useState(false);
-            const buttonReference = useRef(null);
-            const menuItemReference = useRef(null);
-            const isMobile = useDeviceDetect();
-            function toggleMenu() {
-                console.log('#### toggle menu');
-                setMenuVisible(!isMenuVisible);
-            };
-            function toggleSubmenu() {
-                console.log('#### toggle submenu');
-                setSubMenuVisible(!isSubMenuVisible);
-            };
-            const menuTrigger = {
-                element: <IconButton
-                        icon={'menu'}
-                        onClick={toggleMenu}
-                        ref={buttonReference}
-                        toggled={isMenuVisible}
-                    />,
-                ref: buttonReference,
-            };
-            const subMenuTrigger = {
-                element: <MenuItem
-                        leadingElement={<Icon glyph=''/>}
-                        trailingElement={<Icon glyph='chevron-right'/>}
-                        label='Open Submenu'
-                        onMouseEnter={isMobile ? undefined : toggleSubmenu}
-                        onMouseLeave={isMobile ? undefined : toggleSubmenu}
-                        onClick={isMobile ? toggleSubmenu : undefined}
-                        ref={menuItemReference}
-                    />,
-                ref: menuItemReference,
-            };
-            const menuTransitions = {
-                mainMenu: {
-                    properties: ['transform'],
-                    entering: css`
-                        transform: translate3d(0, 0, 0);
-                    `,
-                    entered: css`
-                        transform: translate3d(0, 0, 0);
-                    `,
-                    exiting: css`
-                        transform: translate3d(0, 150%, 0);
-                    `,
-                    exited: css`
-                        transform: translate3d(0, 150%, 0);
-                    `,
-                    unmounted: css`
-                        transform: translate3d(0, 150%, 0);
-                    `,
-                },
-                subMenu: {
-                    properties: ['transform'],
-                    entering: css`
-                        transform: translate3d(0, 0, 0);
-                    `,
-                    entered: css`
-                        transform: translate3d(0, 0, 0);
-                    `,
-                    exiting: css`
-                        transform: translate3d(100%, 0, 0);
-                    `,
-                    exited: css`
-                        transform: translate3d(100%, 0, 0);
-                    `,
-                    unmounted: css`
-                        transform: translate3d(100%, 0, 0);
-                    `,
-                }
-            }
-            const menuGroup = [
-                {
-                    menuItems: [
-                        <MenuItem label='Sort Mattermost' leadingElement={<Icon size={16} glyph='sort-alphabetical-ascending'/>}/>,
-                        <MenuItem label='Delete Mattermost' leadingElement={<Icon size={16} glyph='trash-can-outline'/>}/>,
-                        subMenuTrigger.element,
-                    ]
-                },
-            ];
-            const submenuGroup = [
-                {
-                    menuItems: [
-                        subMenuTrigger.element,
-                        <MenuItem label='Leave Mattermost' leadingElement={<Icon size={16} glyph='sort-alphabetical-ascending'/>}/>,
-                        <MenuItem label='Open Mattermost' leadingElement={<Icon size={16} glyph='account-multiple-outline'/>}/>,
-                    ]
-                },
-            ];
-            return (
-                <>
-                    <Menu
-                        {...args}
-                        title='Channel Menu'
-                        trigger={menuTrigger}
-                        isVisible={isMenuVisible}
-                        groups={menuGroup}
-                        customTransition={isMobile ? menuTransitions.mainMenu : undefined}
                     />
-                    <Menu
-                        {...args}
-                        title={undefined}
-                        trigger={subMenuTrigger}
-                        isVisible={isSubMenuVisible}
-                        groups={submenuGroup}
-                        renderTrigger={false}
-                        placement={'right'}
-                        customTransition={isMobile ? menuTransitions.subMenu : undefined}
-                    />
+                    <Menu {...args} trigger={reference} isVisible={isVisible} hasSubmenu={false} />
                 </>
             );
         }}

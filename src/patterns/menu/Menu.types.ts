@@ -1,25 +1,13 @@
-import Placement from '../../utilities/popover';
-import type { MutableRefObject, ReactElement } from 'react';
+import type { ReactNode } from 'react';
 
-import MenuItem from '../../components/menu-item';
+import type { TPopoverPlacement } from '../../utilities/popover';
 import type { TSpacingToken as TMenuOffsetToken } from '../../utilities/spacing';
 
 type TMenuOffset = [TMenuOffsetToken, TMenuOffsetToken];
 
 type TMenuGroup = {
-    menuItems: typeof MenuItem[];
+    menuItems: ReactNode | ReactNode[];
     title?: string;
 };
 
-type TMenuTrigger = {
-    element: ReactElement;
-    ref: MutableRefObject<null>;
-};
-
-export type {
-    TMenuGroup,
-    TMenuTrigger,
-    TMenuOffset,
-    Placement as TMenuPlacement,
-    TMenuOffsetToken,
-};
+export type { TMenuOffset, TMenuGroup, TPopoverPlacement as TMenuPlacement, TMenuOffsetToken };

@@ -1,5 +1,6 @@
 import React, { useRef } from 'react';
 import { usePopper } from 'react-popper';
+import type { Property } from 'csstype';
 
 import { useClickAway, useDeviceDetect } from '../../shared';
 import Transition from '../transition/Transition';
@@ -47,7 +48,7 @@ const Popover = ({
     const style =
         isMobile && isVisible
             ? {
-                  position: 'fixed',
+                  position: 'fixed' as Property.Position,
                   bottom: 0,
                   left: 0,
                   right: 0,

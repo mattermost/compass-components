@@ -20,7 +20,7 @@ const MenuItem = React.forwardRef(
             trailingElement,
             ...rest
         }: PMenuItem,
-        reference: ForwardedRef<HTMLButtonElement>
+        reference: ForwardedRef<null>
     ): JSX.Element => {
         const rootProperties = {
             destructive,

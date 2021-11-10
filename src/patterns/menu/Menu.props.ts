@@ -1,14 +1,12 @@
 import type React from 'react';
 
-import type { TShapeElement as TMenuContainer } from '../../foundations/shape';
-
-import type { TMenuGroup, TMenuTrigger } from './Menu.types';
+import type { TMenuGroup } from './Menu.types';
 
 type PMenu = {
     /**
      * the element used to toggle the menu
      */
-    trigger: TMenuTrigger;
+    trigger: React.MutableRefObject<null>;
     /**
      * if the trigger should be rendered on the page
      * @default true
@@ -47,7 +45,7 @@ type PMenu = {
     className?: string;
 };
 
-type PMenuRoot = Pick<PMenu, 'width' | 'height'>
+type PMenuRoot = Pick<PMenu, 'width' | 'height'> & { isMobile: boolean };
 
 export type { PMenuRoot };
 

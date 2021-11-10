@@ -1,37 +1,32 @@
 import React from 'react';
 
 import Shape from '../../foundations/shape';
+import { useDeviceDetect } from '../../shared';
 import Grid from '../../utilities/layout';
 import Popover from '../../utilities/popover';
 
 import type PMenu from './Menu.props';
-import MenuRoot, {MenuLabelRoot} from './Menu.root';
+import MenuRoot, { MenuLabelRoot } from './Menu.root';
 
 const Menu = (props: PMenu): JSX.Element => {
-    const {
-        renderTrigger = true,
-        trigger,
-        title,
-        width,
-        height,
-        groups,
-        hasSubmenu,
-        isVisible,
-        ...rest
-    } = props;
-    const divider = <Shape height="1px" width={'auto'} backgroundColor={'#e0e0e0'}></Shape>;
+    const { trigger, title, width, height, groups, hasSubmenu: ignore, isVisible, ...rest } = props;
+    const isMobile = useDeviceDetect();
+    const divider = <Shape height="1px" width={'auto'} backgroundColor={'#e0e0e0'} />;
+
     return (
         <>
-            {renderTrigger && trigger.element}
             <Popover
                 isVisible={isVisible}
-                anchorReference={trigger.ref}
+                anchorReference={trigger}
                 onClickAway={(): void => {}}
                 {...rest}
             >
-                <MenuRoot width={width} height={height}>
-                    {title && (<><MenuLabelRoot>{title}</MenuLabelRoot>
-                    {divider}</>
+                <MenuRoot width={width} height={height} isMobile={isMobile}>
+                    {title && (
+                        <>
+                            <MenuLabelRoot>{title}</MenuLabelRoot>
+                            {divider}
+                        </>
                     )}
                     {groups.map(
                         (group): React.ReactElement => (
