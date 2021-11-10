@@ -51,6 +51,7 @@ const Popover = ({
                   bottom: 0,
                   left: 0,
                   right: 0,
+                  height: '356px',
               }
             : {
                   ...popper,

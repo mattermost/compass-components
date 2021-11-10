@@ -94,8 +94,8 @@ export const menuArgTypes = {
 export const mainGroup = [{
     title: 'Main group',
     menuItems: [
-        <MenuItem label='Hello Mattermost' leadingElement={<Icon glyph='globe'/>}/>,
-        <MenuItem label='Edit Mattermost' leadingElement={<Icon glyph='pencil-outline'/>}/>
+        <MenuItem label='Hello Mattermost' leadingElement={<Icon size={16} glyph='globe'/>}/>,
+        <MenuItem label='Edit Mattermost' leadingElement={<Icon size={16} glyph='pencil-outline'/>}/>
     ]
 }];
 
@@ -103,15 +103,15 @@ export const secondGroup = [
     {
         title: 'First group',
         menuItems: [
-            <MenuItem label='Leave Mattermost' leadingElement={<Icon glyph='sort-alphabetical-ascending'/>}/>,
-            <MenuItem label='Delete Mattermost' leadingElement={<Icon glyph='trash-can-outline'/>}/>
+            <MenuItem label='Leave Mattermost' leadingElement={<Icon size={16} glyph='sort-alphabetical-ascending'/>}/>,
+            <MenuItem label='Delete Mattermost' leadingElement={<Icon size={16} glyph='trash-can-outline'/>}/>
         ]
     },
     {
         title: 'Second group',
         menuItems: [
-            <MenuItem label='Sort Mattermost' leadingElement={<Icon glyph='folder-plus-outline'/>}/>,
-            <MenuItem label='Create Mattermost' leadingElement={<Icon glyph='plus'/>}/>
+            <MenuItem label='Sort Mattermost' leadingElement={<Icon size={18} glyph='folder-plus-outline'/>}/>,
+            <MenuItem label='Create Mattermost' leadingElement={<Icon size={18} glyph='plus'/>}/>
         ]
     },
 ];
@@ -182,7 +182,7 @@ export const menuArgs = {
                 element: <MenuItem
                         leadingElement={<Icon glyph=''/>}
                         trailingElement={<Icon glyph='chevron-right'/>}
-                        label='Open submenu'
+                        label='Open Submenu'
                         onMouseEnter={isMobile ? undefined : toggleSubmenu}
                         onMouseLeave={isMobile ? undefined : toggleSubmenu}
                         onClick={isMobile ? toggleSubmenu : undefined}
@@ -230,20 +230,19 @@ export const menuArgs = {
             }
             const menuGroup = [
                 {
-                    title: 'First group',
                     menuItems: [
-                        <MenuItem label='Sort Mattermost' leadingElement={<Icon glyph='sort-alphabetical-ascending'/>}/>,
-                        <MenuItem label='Delete Mattermost' leadingElement={<Icon glyph='trash-can-outline'/>}/>,
+                        <MenuItem label='Sort Mattermost' leadingElement={<Icon size={16} glyph='sort-alphabetical-ascending'/>}/>,
+                        <MenuItem label='Delete Mattermost' leadingElement={<Icon size={16} glyph='trash-can-outline'/>}/>,
                         subMenuTrigger.element,
                     ]
                 },
             ];
             const submenuGroup = [
                 {
-                    title: 'Second group',
                     menuItems: [
-                        <MenuItem label='Leave Mattermost' leadingElement={<Icon glyph='sort-alphabetical-ascending'/>}/>,
-                        <MenuItem label='Open Mattermost' leadingElement={<Icon glyph='account-multiple-outline'/>}/>,
+                        subMenuTrigger.element,
+                        <MenuItem label='Leave Mattermost' leadingElement={<Icon size={16} glyph='sort-alphabetical-ascending'/>}/>,
+                        <MenuItem label='Open Mattermost' leadingElement={<Icon size={16} glyph='account-multiple-outline'/>}/>,
                     ]
                 },
             ];
@@ -251,6 +250,7 @@ export const menuArgs = {
                 <>
                     <Menu
                         {...args}
+                        title='Channel Menu'
                         trigger={menuTrigger}
                         isVisible={isMenuVisible}
                         groups={menuGroup}
@@ -258,6 +258,7 @@ export const menuArgs = {
                     />
                     <Menu
                         {...args}
+                        title={undefined}
                         trigger={subMenuTrigger}
                         isVisible={isSubMenuVisible}
                         groups={submenuGroup}
