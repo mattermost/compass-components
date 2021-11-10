@@ -1,7 +1,7 @@
 import type { MutableRefObject, ReactNode, ReactNodeArray } from 'react';
 
 import type { TonClickAwayCallback } from '../../shared';
-import { TTransitionTypeDefinition } from '../transition/Transition.types';
+import type { TTransitionTypeDefinition } from '../transition/Transition.types';
 
 import type { TPopoverOffset, TPopoverPlacement } from './Popover.types';
 
