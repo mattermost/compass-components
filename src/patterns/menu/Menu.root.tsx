@@ -6,13 +6,25 @@ import type { TTheme } from '../../utilities/theme';
 import { applyShape } from '../../foundations/shape';
 import Text, { applyTextMargin, applyTextStyles } from '../../components/text';
 
-import type { PMenuRoot } from './Menu.props';
+import type { PMenuLabelRoot, PMenuRoot } from './Menu.props';
 
-const MenuLabelRoot = styled(Text)(
-    (): FlattenSimpleInterpolation => css`
-        ${applyTextStyles({ size: 100, weight: 'bold' })};
+const MenuLabelRoot = styled(Text)<PMenuLabelRoot>(
+    ({ isMobile }): FlattenSimpleInterpolation => css`
+        ${applyTextStyles({ size: 100, weight: 'bold'})};
+        ${applyTextMargin({ margin: 'none' })};
+        ${applyPadding(Spacing.symmetric({ vertical: 125, horizontal: 200 }))};
+
+        text-align: ${isMobile ? 'center': 'left'};
+    `
+);
+
+const MenuGroupLabelRoot = styled(Text)<PMenuLabelRoot>(
+    ({ isMobile }): FlattenSimpleInterpolation => css`
+        ${applyTextStyles({ size: 100, weight: 'regular', textTransform: 'uppercase'})};
         ${applyTextMargin({ margin: 'none' })};
         ${applyPadding(Spacing.symmetric({ vertical: 75, horizontal: 200 }))};
+
+        text-align: ${isMobile ? 'center': 'left'};
     `
 );
 
@@ -36,6 +48,6 @@ const MenuRoot = styled.div<PMenuRoot>(
     `
 );
 
-export { MenuLabelRoot };
+export { MenuLabelRoot, MenuGroupLabelRoot };
 
 export default MenuRoot;

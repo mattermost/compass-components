@@ -1,4 +1,5 @@
 import type React from 'react';
+import { ReactElement } from 'react';
 
 import type { TMenuGroup } from './Menu.types';
 
@@ -8,14 +9,9 @@ type PMenu = {
      */
     trigger: React.MutableRefObject<null>;
     /**
-     * if the trigger should be rendered on the page
-     * @default true
-     */
-    renderTrigger?: boolean;
-    /**
      * menu title if provided
      */
-    title?: string;
+    title?: string | ReactElement;
     /**
      * if width is specified for the container
      * @default 'auto'
@@ -34,7 +30,6 @@ type PMenu = {
      * optionally add a title to the group
      */
     isVisible: boolean;
-    hasSubmenu: boolean;
     /**
      * onClick event handler
      */
@@ -47,6 +42,8 @@ type PMenu = {
 
 type PMenuRoot = Pick<PMenu, 'width' | 'height'> & { isMobile: boolean };
 
-export type { PMenuRoot };
+type PMenuLabelRoot = Pick<PMenuRoot, 'isMobile'>;
+
+export type { PMenuRoot, PMenuLabelRoot };
 
 export default PMenu;

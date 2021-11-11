@@ -55,12 +55,6 @@ A Menu Group is simply a container that holds related Menu Items.
 Not all Menu Groups need to have a title. Often grouping related items together can be enough without the need for a title.
 
 export const menuArgTypes = {
-    trigger: {
-        options: ['Icon', 'MenuItem'],
-        control: {
-            type: 'select',
-        },
-    },
     title: {
         control: {
             type: 'string',
@@ -73,24 +67,7 @@ export const menuArgTypes = {
             type: 'select',
         },
     },
-    offsetX: {
-        name: 'cross-axis-offset',
-        description:
-            'adds an offset to the cross axis. e.g. adds offset to the left, when placement is `bottom`',
-        options: MENU_OFFSET_TOKENS,
-        control: {
-            type: 'select',
-        },
-    },
-    offsetY: {
-        name: 'main-axis-offset',
-        description:
-            'adds an offset to the main axis. e.g. adds offset to the top, when placement is `bottom`',
-        options: MENU_OFFSET_TOKENS,
-        control: {
-            type: 'select',
-        },
-    },
+    groups: { table: { disable: true } },
 };
 
 export const mainGroup = [
@@ -109,8 +86,6 @@ export const mainGroup = [
 export const menuArgs = {
     title: 'Main Menu',
     placement: DEFAULT_MENU_PLACEMENT,
-    offsetX: 0,
-    offsetY: 0,
     groups: mainGroup,
 };
 
@@ -134,6 +109,65 @@ export const menuArgs = {
                         toggled={isVisible}
                     />
                     <Menu {...args} trigger={reference} isVisible={isVisible} hasSubmenu={false} />
+                </>
+            );
+        }}
+    </Story>
+    <Story name="submenu" args={menuArgs} argTypes={menuArgTypes}>
+        {(args) => {
+            const [isMenuVisible, setMenuVisible] = useState(false);
+            const [isSubMenuVisible, setSubMenuVisible] = useState(false);
+            const buttonReference = useRef(null);
+            const menuItemReference = useRef(null);
+            const isMobile = useDeviceDetect();
+            function toggleMenu() {
+                console.log('#### toggle menu');
+                setMenuVisible(!isMenuVisible);
+            };
+            function toggleSubmenu() {
+                console.log('#### toggle submenu');
+                setSubMenuVisible(!isSubMenuVisible);
+            };
+            const menuGroup = [
+                {
+                    menuItems: [
+                        <MenuItem ref={menuItemReference} onMouseEnter={toggleSubmenu} label='Open Submenu' leadingElement={<Icon size={16} glyph='plus'/>} trailingElement={<Icon size={16} glyph='chevron-right'/>}/>,
+                        <MenuItem label='Leave Mattermost' leadingElement={<Icon size={16} glyph='sort-alphabetical-ascending'/>}/>,
+                        <MenuItem label='Open Mattermost' leadingElement={<Icon size={16} glyph='account-multiple-outline'/>}/>,
+                    ]
+                },
+            ];
+            const submenuGroup = [
+                {
+                    menuItems: [
+                        <MenuItem label='Leave Mattermost' leadingElement={<Icon size={16} glyph='sort-alphabetical-ascending'/>}/>,
+                        <MenuItem label='Open Mattermost' leadingElement={<Icon size={16} glyph='account-multiple-outline'/>}/>,
+                    ]
+                },
+            ];
+            return (
+                    <>
+                        <IconButton
+                            icon={'menu'}
+                            onClick={toggleMenu}
+                            ref={buttonReference}
+                            toggled={isMenuVisible}
+                        />
+                        <Menu {...args} onClickAway={() => setMenuVisible(false)} groups={menuGroup} trigger={buttonReference} isVisible={isMenuVisible} hasSubmenu={false} />
+                        <Menu
+                            {...args}
+                            title={isMobile ? <MenuItem
+                                                ref={menuItemReference}
+                                                    onMouseEnter={toggleSubmenu}
+                                                    label='Open Submenu'
+                                                    leadingElement={<Icon size={16} glyph='chevron-left'/>}
+                                                /> : undefined}
+                            onClickAway={() => setSubMenuVisible(false)} 
+                            trigger={menuItemReference}
+                            isVisible={isSubMenuVisible}
+                            groups={submenuGroup}
+                            placement={'right'}
+                        />
                 </>
             );
         }}
