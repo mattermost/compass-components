@@ -1,6 +1,7 @@
-import type { MutableRefObject, ReactNode, ReactNodeArray } from 'react';
+import type { MutableRefObject, ReactNode, CSSProperties } from 'react';
 
 import type { TonClickAwayCallback } from '../../shared';
+import type { TTransitionTypeDefinition } from '../transition/Transition.types';
 
 import type { TPopoverOffset, TPopoverPlacement } from './Popover.types';
 
@@ -8,7 +9,7 @@ type PPopover = {
     /**
      * children to render inside the Popover
      */
-    children: ReactNode | ReactNodeArray;
+    children: ReactNode | ReactNode[];
     /**
      * the reference (ref) to the element the Popover should be anchored to
      */
@@ -44,6 +45,11 @@ type PPopover = {
      * when clicking away.
      */
     onClickAway?: TonClickAwayCallback;
+    styles?: CSSProperties | null;
+    /**
+     * apply custom transition
+     */
+    customTransition?: TTransitionTypeDefinition;
     /**
      * custom className
      */

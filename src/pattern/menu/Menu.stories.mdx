@@ -1,0 +1,124 @@
+import { useState, useRef } from 'react';
+import { ArgsTable, Canvas, Meta, Story, Subtitle, Title } from '@storybook/addon-docs/blocks';
+
+import Menu from './Menu';
+import IconButton from '../../components/icon-button';
+
+<Meta title={'Patterns/Menu'} />
+
+export const menuData = {
+    title: 'menu with submenu',
+    items: [
+        {
+            label: 'item 1',
+            url: 'https://www.mattermost.com',
+        },
+        {
+            label: 'item 2',
+            url: 'https://www.mattermost.com',
+        },
+        {
+            label: 'item 3',
+            url: 'https://www.mattermost.com',
+        },
+        {
+            label: 'item 4',
+            url: 'https://www.mattermost.com',
+        },
+    ],
+};
+
+export const subMenuData = {
+    title: 'menu with submenu',
+    items: [
+        {
+            label: 'item 1',
+            url: 'https://www.mattermost.com',
+        },
+        {
+            label: 'item 2',
+            url: 'https://www.mattermost.com',
+        },
+        {
+            label: 'item 3',
+            url: 'https://www.mattermost.com',
+            items: [
+                {
+                    label: 'sub item 1',
+                    url: 'https://www.mattermost.com',
+                },
+                {
+                    label: 'sub item 2',
+                    url: 'https://www.mattermost.com',
+                },
+                {
+                    label: 'sub item 3',
+                    url: 'https://www.mattermost.com',
+                },
+            ],
+        },
+        {
+            label: 'item 4',
+            url: 'https://www.mattermost.com',
+        },
+    ],
+};
+
+export const menuArgs = {
+    isMobile: false,
+};
+
+export const menuArgTypes = {
+    isMobile: false,
+};
+
+<Canvas hidden>
+    <Story name="default" args={menuArgs}>
+        {(args) => {
+            const triggerReference = useRef(null);
+            const [isVisible, setIsVisible] = useState(false);
+            return (
+                <>
+                    <IconButton
+                        ref={triggerReference}
+                        icon={'menu'}
+                        toggled={isVisible}
+                        onClick={() => setIsVisible(!isVisible)}
+                    />
+                    <Menu
+                        data={menuData}
+                        title={'TEST-MENU'}
+                        isVisible={isVisible}
+                        isMobile={args.isMobile}
+                        trigger={triggerReference}
+                        onClickAway={() => setIsVisible(false)}
+                    />
+                </>
+            );
+        }}
+    </Story>
+    <Story name="with submenu" args={menuArgs}>
+        {(args) => {
+            const triggerReference = useRef(null);
+            const [isVisible, setIsVisible] = useState(false);
+            return (
+                <>
+                    <IconButton
+                        ref={triggerReference}
+                        icon={'menu'}
+                        toggled={isVisible}
+                        onClick={() => setIsVisible(!isVisible)}
+                    />
+                    <Menu
+                        data={subMenuData}
+                        title={'TEST-MENU'}
+                        isVisible={isVisible}
+                        trigger={triggerReference}
+                        isMobile={args.isMobile}
+                        onClickAway={() => setIsVisible(false)}
+                    />
+                </>
+            );
+        }}
+    </Story>
+</Canvas>

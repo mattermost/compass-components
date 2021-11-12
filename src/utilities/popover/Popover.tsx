@@ -16,6 +16,8 @@ const Popover = ({
     children,
     isVisible,
     onClickAway,
+    customTransition,
+    styles = null,
     noAnimation = false,
     placement = DEFAULT_POPOVER_PLACEMENT,
     offset = DEFAULT_POPOVER_OFFSET,
@@ -42,11 +44,12 @@ const Popover = ({
     useClickAway([popperReference, anchorReference], onClickAway);
 
     const style = {
-        ...popper,
         // when the Popover is not visible set zIndex to -1 to prevent it from
         // covering up the action element and make it unclickable
         zIndex: isVisible ? zIndex : -1,
     };
+
+    Object.assign(style, styles || popper);
 
     return (
         <div ref={popperReference} style={style} {...attributes.popper}>
@@ -55,6 +58,7 @@ const Popover = ({
                 unmountOnExit
                 isVisible={isVisible}
                 type={['fade', 'scale']}
+                customTransition={customTransition}
                 speed={noAnimation ? 'instant' : 'normal'}
             >
                 {children}

@@ -1,0 +1,164 @@
+import React, { useRef, useState } from 'react';
+import type { MutableRefObject } from 'react';
+import type { Property } from 'csstype';
+import { css } from 'styled-components';
+
+import Icon from '../../foundations/icon';
+import Shape from '../../foundations/shape';
+import Popover from '../../utilities/popover';
+import MenuItem from '../../components/menu-item';
+import type { TonClickAwayCallback } from '../../shared';
+
+import MenuRoot, { MenuLabelRoot } from './Menu.root';
+
+type MenuData = {
+    label: string;
+    items?: MenuData[];
+    onClick?: React.MouseEventHandler;
+    url?: string;
+};
+
+type Properties = {
+    title: string;
+    trigger: MutableRefObject<null>;
+    isVisible: boolean;
+    isMobile: boolean;
+    data: MenuData;
+    onClickAway: TonClickAwayCallback;
+};
+
+type SubProperties = {
+    data: MenuData;
+    isMobile: boolean;
+};
+
+const menuTransitions = {
+    mainMenu: {
+        properties: ['transform'],
+        entering: css`
+            transform: translate3d(0, 0, 0);
+        `,
+        entered: css`
+            transform: translate3d(0, 0, 0);
+        `,
+        exiting: css`
+            transform: translate3d(0, 150%, 0);
+        `,
+        exited: css`
+            transform: translate3d(0, 150%, 0);
+        `,
+        unmounted: css`
+            transform: translate3d(0, 150%, 0);
+        `,
+    },
+    subMenu: {
+        properties: ['transform'],
+        entering: css`
+            transform: translate3d(0, 0, 0);
+        `,
+        entered: css`
+            transform: translate3d(0, 0, 0);
+        `,
+        exiting: css`
+            transform: translate3d(100%, 0, 0);
+        `,
+        exited: css`
+            transform: translate3d(100%, 0, 0);
+        `,
+        unmounted: css`
+            transform: translate3d(100%, 0, 0);
+        `,
+    },
+};
+
+const Divider = (): JSX.Element => (
+    <Shape height="1px" width={'auto'} backgroundColor={'#e0e0e0'} />
+);
+
+const mobileMenuStyles = {
+    position: 'fixed' as Property.Position,
+    bottom: 0,
+    left: 0,
+    right: 0,
+    height: '356px',
+};
+
+const SubMenu = (props: SubProperties): JSX.Element => {
+    const subMenuTrigger = useRef(null);
+    const [isVisible, setIsVisible] = useState<boolean>(false);
+
+    const { data, isMobile } = props;
+
+    const handleClick = (): void => setIsVisible(!isVisible);
+
+    return (
+        <>
+            <MenuItem
+                label={data.label}
+                ref={subMenuTrigger}
+                trailingElement={<Icon glyph={'chevron-right'} />}
+                onClick={handleClick}
+            />
+            <Popover
+                anchorReference={subMenuTrigger}
+                isVisible={isVisible}
+                zIndex={1000}
+                placement={isMobile ? undefined : 'right'}
+                styles={isMobile ? mobileMenuStyles : undefined}
+                customTransition={isMobile ? menuTransitions.subMenu : undefined}
+            >
+                <MenuRoot isMobile={isMobile}>
+                    {data.label && (
+                        <>
+                            <MenuLabelRoot isMobile={isMobile}>{data.label}</MenuLabelRoot>
+                            <Divider />
+                        </>
+                    )}
+                    {data.items?.map((item, index) => {
+                        const key = `${item.label}_${index}`;
+
+                        if (item.items && item.items.length > 0) {
+                            return <SubMenu key={key} data={item} isMobile={isMobile} />;
+                        }
+
+                        return <MenuItem key={key} label={item.label} />;
+                    })}
+                </MenuRoot>
+            </Popover>
+        </>
+    );
+};
+
+const Menu = (props: Properties): JSX.Element => {
+    const { title, trigger, isVisible, data, onClickAway, isMobile } = props;
+
+    return (
+        <Popover
+            anchorReference={trigger}
+            isVisible={isVisible}
+            onClickAway={onClickAway}
+            styles={isMobile ? mobileMenuStyles : undefined}
+            customTransition={isMobile ? menuTransitions.mainMenu : undefined}
+        >
+            <MenuRoot isMobile={isMobile}>
+                {title && (
+                    <>
+                        <MenuLabelRoot isMobile={isMobile}>{title}</MenuLabelRoot>
+                        <Divider />
+                    </>
+                )}
+                {data.items?.map((item, index) => {
+                    const key = `${item.label}_${index}`;
+
+                    if (item.items && item.items.length > 0) {
+                        return <SubMenu key={key} data={item} isMobile={isMobile} />;
+                    }
+
+                    return <MenuItem key={key} label={item.label} />;
+                })}
+            </MenuRoot>
+        </Popover>
+    );
+};
+
+export default Menu;

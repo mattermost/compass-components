@@ -1,4 +1,4 @@
-import { TMenuItemSizeToken, TMenuItemNumber } from './MenuItem.types';
+import type { TMenuItemSizeToken, TMenuItemNumber } from './MenuItem.types';
 
 const MENU_ITEM_SIZES: TMenuItemSizeToken[] = [
     'xxxs',
