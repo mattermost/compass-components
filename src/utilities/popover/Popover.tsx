@@ -1,8 +1,7 @@
 import React, { useRef } from 'react';
 import { usePopper } from 'react-popper';
-import type { Property } from 'csstype';
 
-import { useClickAway, useDeviceDetect } from '../../shared';
+import { useClickAway } from '../../shared';
 import Transition from '../transition/Transition';
 
 import {
@@ -22,9 +21,9 @@ const Popover = ({
     offset = DEFAULT_POPOVER_OFFSET,
     zIndex = 1,
     customTransition,
+    styles = null,
 }: PPopover): JSX.Element | null => {
     const popperReference = useRef(null);
-    const isMobile = useDeviceDetect();
 
     const {
         styles: { popper },
@@ -45,21 +44,13 @@ const Popover = ({
     // away from the button or the popover (basically everything else)
     useClickAway([popperReference, anchorReference], onClickAway);
 
-    const style =
-        isMobile && isVisible
-            ? {
-                  position: 'fixed' as Property.Position,
-                  bottom: 0,
-                  left: 0,
-                  right: 0,
-                  height: '356px',
-              }
-            : {
-                  ...popper,
-                  // when the Popover is not visible set zIndex to -1 to prevent it from
-                  // covering up the action element and make it unclickable
-                  zIndex: isVisible ? zIndex : -1,
-              };
+    const style = {
+        // when the Popover is not visible set zIndex to -1 to prevent it from
+        // covering up the action element and make it unclickable
+        zIndex: isVisible ? zIndex : -1,
+    };
+
+    Object.assign(style, styles || popper);
 
     return (
         <div ref={popperReference} style={style} {...attributes.popper}>

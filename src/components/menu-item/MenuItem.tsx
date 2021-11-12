@@ -8,8 +8,8 @@ import type PMenuItem from './MenuItem.props';
 import MenuItemRoot, { MenuItemLabelRoot, MenuItemDescriptionRoot } from './MenuItem.root';
 
 const MenuItem = React.forwardRef(
-    (
-        {
+    (props: PMenuItem, reference: ForwardedRef<null>): JSX.Element => {
+        const {
             label,
             description,
             inlineDescription = false,
@@ -18,17 +18,19 @@ const MenuItem = React.forwardRef(
             leadingElement,
             trailingElementLabel,
             trailingElement,
-            ...rest
-        }: PMenuItem,
-        reference: ForwardedRef<null>
-    ): JSX.Element => {
+            onClick,
+            onHover,
+        } = props;
+
         const rootProperties = {
+            onMouseEnter: onHover,
+            onClick,
             destructive,
             disabled,
         };
 
         return (
-            <MenuItemRoot ref={reference} {...rootProperties} {...rest}>
+            <MenuItemRoot ref={reference} {...rootProperties}>
                 {leadingElement}
                 <Grid
                     flex={1}

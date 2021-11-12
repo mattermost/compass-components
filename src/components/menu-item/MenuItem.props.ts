@@ -43,6 +43,10 @@ type PMenuItem = {
      */
     onClick?: React.MouseEventHandler<HTMLElement>;
     /**
+     * onClick event handler
+     */
+    onHover?: React.MouseEventHandler<HTMLElement>;
+    /**
      * custom className
      */
     className?: string;

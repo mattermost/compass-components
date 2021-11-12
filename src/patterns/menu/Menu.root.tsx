@@ -10,21 +10,20 @@ import type { PMenuLabelRoot, PMenuRoot } from './Menu.props';
 
 const MenuLabelRoot = styled(Text)<PMenuLabelRoot>(
     ({ isMobile }): FlattenSimpleInterpolation => css`
-        ${applyTextStyles({ size: 100, weight: 'bold'})};
+        ${applyTextStyles({ size: 100, weight: 'bold' })};
         ${applyTextMargin({ margin: 'none' })};
         ${applyPadding(Spacing.symmetric({ vertical: 125, horizontal: 200 }))};
-
-        text-align: ${isMobile ? 'center': 'left'};
+        text-align: ${isMobile ? 'center' : 'left'};
     `
 );
 
 const MenuGroupLabelRoot = styled(Text)<PMenuLabelRoot>(
     ({ isMobile }): FlattenSimpleInterpolation => css`
-        ${applyTextStyles({ size: 100, weight: 'regular', textTransform: 'uppercase'})};
+        ${applyTextStyles({ size: 100, weight: 'regular' })};
         ${applyTextMargin({ margin: 'none' })};
         ${applyPadding(Spacing.symmetric({ vertical: 75, horizontal: 200 }))};
-
-        text-align: ${isMobile ? 'center': 'left'};
+        text-transform: uppercase;
+        text-align: ${isMobile ? 'center' : 'left'};
     `
 );
 
@@ -36,13 +35,11 @@ const MenuRoot = styled.div<PMenuRoot>(
         theme: { background },
     }: ThemedStyledProps<PMenuRoot, TTheme>): FlattenSimpleInterpolation => css`
         background-color: ${background.shape};
-
         ${applyShape({
             width,
             height: isMobile ? '356px' : height,
             radius: 8,
         })};
-
         transition: background 250ms ease-in-out, color 250ms ease-in-out,
             box-shadow 250ms ease-in-out;
     `

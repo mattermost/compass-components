@@ -20,8 +20,8 @@ import IconButtonRoot from './IconButton.root';
  * `trigger`-component (such as in the `Popover` component)
  */
 const IconButton = React.forwardRef(
-    (
-        {
+    (props: PIconButton, reference: ForwardedRef<HTMLButtonElement>): JSX.Element => {
+        const {
             icon,
             element = DEFAULT_ICON_BUTTON_ELEMENT,
             size = DEFAULT_ICON_BUTTON_SIZE,
@@ -34,9 +34,8 @@ const IconButton = React.forwardRef(
             label,
             onClick,
             ...rest
-        }: PIconButton,
-        reference: ForwardedRef<HTMLButtonElement>
-    ): JSX.Element => {
+        } = props;
+
         Utils.assert(
             (!destructive && !toggled) || (destructive && !toggled) || (toggled && !destructive),
             'IconButton: component was used with both `destructive` and `toggled` properties set to true. Please use only one of the options',

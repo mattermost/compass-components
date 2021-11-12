@@ -1,5 +1,4 @@
 import type React from 'react';
-import { ReactElement } from 'react';
 
 import type { TMenuGroup } from './Menu.types';
 
@@ -11,7 +10,7 @@ type PMenu = {
     /**
      * menu title if provided
      */
-    title?: string | ReactElement;
+    title?: string | React.ReactElement;
     /**
      * if width is specified for the container
      * @default 'auto'
