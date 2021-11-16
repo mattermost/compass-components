@@ -9,6 +9,7 @@ import Icon from '../../foundations/icon';
 import Shape from '../../foundations/shape';
 import Popover from '../../utilities/popover';
 import type { TonClickAwayCallback } from '../../shared';
+import Grid from '../../utilities/grid';
 
 import MenuRoot, { MenuLabelRoot } from './Menu.root';
 
@@ -88,7 +89,7 @@ const SubMenu = (props: SubProperties): JSX.Element => {
 
     const { data, isMobile } = props;
 
-    const handleClick = (): void => setIsVisible(!isVisible);
+    const handleToggle = (): void => setIsVisible(!isVisible);
 
     return (
         <>
@@ -97,7 +98,8 @@ const SubMenu = (props: SubProperties): JSX.Element => {
                 ref={subMenuTrigger}
                 leadingElement={data.leadingElement}
                 trailingElement={<Icon glyph={'chevron-right'} />}
-                onClick={handleClick}
+                onClick={isMobile ? handleToggle : undefined}
+                onHover={isMobile ? undefined : handleToggle}
             />
             <Popover
                 anchorReference={subMenuTrigger}
@@ -108,9 +110,16 @@ const SubMenu = (props: SubProperties): JSX.Element => {
                 customTransition={isMobile ? menuTransitions.subMenu : undefined}
             >
                 <MenuRoot isMobile={isMobile}>
-                    {data.label && (
+                    {data.label && isMobile && (
                         <>
-                            <MenuLabelRoot isMobile={isMobile}>{data.label}</MenuLabelRoot>
+                            <Grid
+                                columnsTemplate={'auto 1fr'}
+                                placeItems={'center'}
+                                onClick={handleToggle}
+                            >
+                                <Icon glyph="chevron-left" />
+                                <MenuLabelRoot isMobile={isMobile}>{data.label}</MenuLabelRoot>
+                            </Grid>
                             <Divider />
                         </>
                     )}

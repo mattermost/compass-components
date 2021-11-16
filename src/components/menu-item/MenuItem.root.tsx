@@ -108,6 +108,7 @@ const MenuItem = styled.div<PMenuItemRoot>(
 
             background-color: ${background.shape};
             color: ${colors.text};
+            cursor: pointer;
 
             ${applyShape({ radius: 0, width: '100%' })};
             ${applyPadding(Spacing.trbl({ top: 100, right: 175, bottom: 100, left: 200 }))};
