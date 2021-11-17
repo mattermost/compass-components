@@ -10,15 +10,10 @@ import { applyHeadingColor, applyHeadingMargin, applyHeadingStyles } from './Hea
 const HeadingRoot = styled.h6.withConfig<PHeadingRoot>({
     shouldForwardProp: (property, validator) =>
         Utils.blockProperty(property) && validator(property),
-})(
-    ({
-        theme,
-        inheritLineHeight,
-        color,
-        margin,
-        size,
-        weight,
-    }: ThemedStyledProps<PHeadingRoot, TTheme>): FlattenSimpleInterpolation => css`
+})((props: ThemedStyledProps<PHeadingRoot, TTheme>): FlattenSimpleInterpolation => {
+    const { theme, inheritLineHeight, color, margin, size, weight } = props;
+
+    return css`
         ${applyHeadingStyles({ inheritLineHeight, size, weight })};
         ${applyHeadingColor({ color, theme })};
         ${applyHeadingMargin({ margin, size })};
@@ -27,7 +22,7 @@ const HeadingRoot = styled.h6.withConfig<PHeadingRoot>({
         body.enable-animations & {
             transition: color ${theme.animation.fastest} 0s ease-in-out;
         }
-    `
-);
+    `;
+});
 
 export default HeadingRoot;

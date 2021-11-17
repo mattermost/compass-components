@@ -18,11 +18,11 @@ import {
 } from './MentionBadge.constants';
 import type { PMentionBadgeRoot } from './MentionBadge.props';
 
-const getBadgeColors = ({
-    inverted,
-    theme,
-    borderColor = theme.background.default,
-}: ThemedStyledProps<PMentionBadgeRoot, TTheme>): FlattenSimpleInterpolation => {
+const getBadgeColors = (
+    parameters: ThemedStyledProps<PMentionBadgeRoot, TTheme>
+): FlattenSimpleInterpolation => {
+    const { inverted, theme, borderColor = theme.background.default } = parameters;
+
     if (inverted) {
         return css`
             background-color: ${theme.palette.primary.contrast};
@@ -42,37 +42,37 @@ const MentionBadgeRoot = styled.div.withConfig<PMentionBadgeRoot>({
     shouldForwardProp: (property, validator) =>
         Utils.blockProperty(property) && validator(property),
 })(
-    ({
-        size,
-        isUnreadBadge,
-        mentionStringLength,
-    }: ThemedStyledProps<PMentionBadgeRoot, TTheme>): FlattenInterpolation<
-        ThemedStyledProps<PMentionBadgeRoot, TTheme>
-    > => css`
-        display: flex;
-        align-items: center;
-        justify-content: center;
+    (
+        props: ThemedStyledProps<PMentionBadgeRoot, TTheme>
+    ): FlattenInterpolation<ThemedStyledProps<PMentionBadgeRoot, TTheme>> => {
+        const { size, isUnreadBadge, mentionStringLength } = props;
 
-        ${getBadgeColors};
+        return css`
+            display: flex;
+            align-items: center;
+            justify-content: center;
 
-        ${applyPadding(
-            Spacing.symmetric({
-                vertical: 0,
-                horizontal: isUnreadBadge
-                    ? 0
-                    : MENTIONBADGE_PADDING_SIZE_MAP[size][mentionStringLength - 1],
-            })
-        )};
+            ${getBadgeColors};
 
-        ${applyShape({
-            radius: isUnreadBadge ? 'circle' : 'pill',
-            width: isUnreadBadge ? 12 : 'auto',
-            height: MENTIONBADGE_HEIGHT_SIZE_MAP[size],
-        })};
+            ${applyPadding(
+                Spacing.symmetric({
+                    vertical: 0,
+                    horizontal: isUnreadBadge
+                        ? 0
+                        : MENTIONBADGE_PADDING_SIZE_MAP[size][mentionStringLength - 1],
+                })
+            )};
 
-        ${applyTextStyles({ size: MENTIONBADGE_TEXT_SIZE_MAP[size], weight: 'bold' })};
-        ${applyTextMargin({ margin: 'none' })};
-    `
+            ${applyShape({
+                radius: isUnreadBadge ? 'circle' : 'pill',
+                width: isUnreadBadge ? 12 : 'auto',
+                height: MENTIONBADGE_HEIGHT_SIZE_MAP[size],
+            })};
+
+            ${applyTextStyles({ size: MENTIONBADGE_TEXT_SIZE_MAP[size], weight: 'bold' })};
+            ${applyTextMargin({ margin: 'none' })};
+        `;
+    }
 );
 
 export default MentionBadgeRoot;

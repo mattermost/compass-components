@@ -14,20 +14,22 @@ import {
 import type PButton from './Button.props';
 import ButtonRoot, { ButtonIconRoot } from './Button.root';
 
-const Button: React.FC<PButton> = ({
-    label,
-    onClick,
-    icon,
-    iconPosition = DEFAULT_BUTTON_ICON_POSITION,
-    size = DEFAULT_BUTTON_SIZE,
-    variant = DEFAULT_BUTTON_VARIANT,
-    width = DEFAULT_BUTTON_WIDTH,
-    active = false,
-    destructive = false,
-    inverted = false,
-    disabled = false,
-    ...rest
-}: PButton) => {
+const Button: React.FC<PButton> = (props: PButton) => {
+    const {
+        label,
+        onClick,
+        icon,
+        iconPosition = DEFAULT_BUTTON_ICON_POSITION,
+        size = DEFAULT_BUTTON_SIZE,
+        variant = DEFAULT_BUTTON_VARIANT,
+        width = DEFAULT_BUTTON_WIDTH,
+        active = false,
+        destructive = false,
+        inverted = false,
+        disabled = false,
+        ...rest
+    } = props;
+
     Utils.assert(
         BUTTON_VARIANTS.includes(variant),
         `Button: The Button component was used with an invalid 'variant' property. Please choose from the following options: ${BUTTON_VARIANTS.join(

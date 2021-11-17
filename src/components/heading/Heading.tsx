@@ -17,15 +17,17 @@ import {
 import type PHeading from './Heading.props';
 import HeadingRoot from './Heading.root';
 
-const Heading = ({
-    inheritLineHeight = false,
-    color = DEFAULT_HEADING_COLOR,
-    element = DEFAULT_HEADING_ELEMENT,
-    margin = DEFAULT_HEADING_MARGIN,
-    size = DEFAULT_HEADING_SIZE,
-    weight = DEFAULT_HEADING_WEIGHT,
-    ...rest
-}: PHeading): JSX.Element => {
+const Heading = (props: PHeading): JSX.Element => {
+    const {
+        inheritLineHeight = false,
+        color = DEFAULT_HEADING_COLOR,
+        element = DEFAULT_HEADING_ELEMENT,
+        margin = DEFAULT_HEADING_MARGIN,
+        size = DEFAULT_HEADING_SIZE,
+        weight = DEFAULT_HEADING_WEIGHT,
+        ...rest
+    } = props;
+
     // Whenever this component is used with an element that is not supported within the headings throw an error!
     Utils.assert(
         HEADING_ELEMENTS.includes(element) || React.isValidElement(element),

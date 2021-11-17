@@ -6,11 +6,9 @@ import type PStatusIcon from './StatusIcon.props';
 import { DEFAULT_STATUSICON_SIZE, STATUSICON_SIZE_MAP } from './StatusIcon.constants';
 import StatusIconRoot from './StatusIcon.root';
 
-const StatusIcon: React.FC<PStatusIcon> = ({
-    status,
-    size = DEFAULT_STATUSICON_SIZE,
-    ...rest
-}: PStatusIcon): JSX.Element => {
+const StatusIcon: React.FC<PStatusIcon> = (props: PStatusIcon) => {
+    const { status, size = DEFAULT_STATUSICON_SIZE, ...rest } = props;
+
     let glyph: TIconGlyph = 'circle-outline';
 
     switch (status) {

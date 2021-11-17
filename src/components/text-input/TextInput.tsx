@@ -13,24 +13,26 @@ import TextInputRoot from './TextInput.root';
 import InputRoot from './Input.root';
 import type PTextInput from './TextInput.props';
 
-const TextInput: React.FC<PTextInput> = ({
-    label,
-    placeholder,
-    value,
-    leadingIcon,
-    trailingIcon,
-    backgroundColor,
-    size = DEFAULT_TEXT_INPUT_SIZE,
-    width = DEFAULT_TEXT_INPUT_WIDTH,
-    active = false,
-    hasError = false,
-    disabled = false,
-    animatedLabel = true,
-    onClear = Utils.noop,
-    onFocus = Utils.noop,
-    onChange = Utils.noop,
-    ...rest
-}: PTextInput) => {
+const TextInput: React.FC<PTextInput> = (props: PTextInput) => {
+    const {
+        label,
+        placeholder,
+        value,
+        leadingIcon,
+        trailingIcon,
+        backgroundColor,
+        size = DEFAULT_TEXT_INPUT_SIZE,
+        width = DEFAULT_TEXT_INPUT_WIDTH,
+        active = false,
+        hasError = false,
+        disabled = false,
+        animatedLabel = true,
+        onClear = Utils.noop,
+        onFocus = Utils.noop,
+        onChange = Utils.noop,
+        ...rest
+    } = props;
+
     const { iconSize } = TEXT_INPUT_VALUES_MAPPING[size];
 
     const hasLabel = Utils.isString(label) && label.length > 0;
