@@ -88,6 +88,7 @@ const applyGrid = ({
     gap = DEFAULT_GRID_GAP,
     placeItems = DEFAULT_GRID_PLACE_ITEMS,
     placeContent = DEFAULT_GRID_PLACE_CONTENT,
+    onClick = undefined,
 }: PApplyGrid): FlattenSimpleInterpolation => css`
     display: grid;
 
@@ -117,6 +118,7 @@ const applyGrid = ({
               align-content: ${placeContent.alignContent || DEFAULT_GRID_PLACE_CONTENT};
               justify-content: ${placeContent.justifyContent || DEFAULT_GRID_PLACE_CONTENT};
           `};
+    ${Utils.isFunction(onClick) && 'cursor: pointer'};
 `;
 
 /**

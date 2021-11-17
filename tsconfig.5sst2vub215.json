@@ -1,0 +1,31 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "react"
+  },
+  "include": [
+    "./src/**/*"
+  ],
+  "files": [
+    "/Users/nevyangelova/Development/compass-components/src/components/text/Text.mixins.ts",
+    "/Users/nevyangelova/Development/compass-components/src/components/text/Text.props.ts",
+    "/Users/nevyangelova/Development/compass-components/src/patterns/menu/Menu.root.tsx",
+    "/Users/nevyangelova/Development/compass-components/src/patterns/menu/Menu.tsx"
+  ]
+}

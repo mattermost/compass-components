@@ -1,0 +1,184 @@
+import { useState, useRef } from 'react';
+import { ArgsTable, Canvas, Meta, Story, Subtitle, Title } from '@storybook/addon-docs/blocks';
+import Icon from '../../foundations/icon';
+import menuAnatomyImg from '../../assets/images/menu-anatomy.png';
+import menuExampleImg from '../../assets/images/menu-example.png';
+import IconButton from '../../components/icon-button';
+import { DEFAULT_MENU_PLACEMENT, MENU_PLACEMENTS } from './Menu.constants';
+
+import Menu from './Menu';
+
+<Meta title={'Patterns/Menu'} />
+
+<Title>Popover Menu</Title>
+
+<Subtitle>
+    A Popover Menu is a way of displaying multiple choices overlayed on top of the current context.
+    It displays when interacting with a trigger (such as an icon or button).
+</Subtitle>
+
+<img src={menuExampleImg} alt={'menu example'} />
+
+## Anatomy
+
+A Popover Menu is essentially a container that holds the Menu Title, Menu Item, Menu Group Title, or Menu Divider Components.
+
+<img src={menuAnatomyImg} alt={'menu anatomy'} />
+
+### Container
+
+The Container uses a 1px border (16% Center Channel Color) with the Center Channel Background Color as the fill.
+It also has an Elevation applied to it that separates it from the background it covers. The default elevation of the container is Elevation 4.
+
+The Container has 8px of space above the first Menu Item, and 8px of space below the last.
+
+### Menu Title (optional)
+
+The Menu Item is the core interactive element of a Popover Menu. See the Menu Item Component for all of its variants.
+
+### Menu Divider (optional)
+
+Menu Dividers are used to separate groups of Menu Items, or to separate the Menu Title from the Menu Items.
+
+### Menu Group
+
+A Menu Group is simply a container that holds related Menu Items.
+
+### Menu Group Title (optional)
+
+Not all Menu Groups need to have a title. Often grouping related items together can be enough without the need for a title.
+
+export const menuData = {
+    title: 'menu with submenu',
+    items: [
+        {
+            label: 'item 1',
+            url: 'https://www.mattermost.com',
+            leadingElement: <Icon size={16} glyph="sort-alphabetical-ascending" />,
+        },
+        {
+            label: 'item 2',
+            url: 'https://www.mattermost.com',
+            leadingElement: <Icon size={16} glyph="account-multiple-outline" />,
+        },
+        {
+            label: 'item 3',
+            url: 'https://www.mattermost.com',
+            leadingElement: <Icon size={16} glyph="plus" />,
+            divider: true,
+        },
+        {
+            label: 'item 4',
+            url: 'https://www.mattermost.com',
+        },
+    ],
+};
+
+export const subMenuData = {
+    title: 'menu with submenu',
+    items: [
+        {
+            label: 'item 1',
+            url: 'https://www.mattermost.com',
+            leadingElement: <Icon size={16} glyph="sort-alphabetical-ascending" />,
+        },
+        {
+            label: 'item 2',
+            url: 'https://www.mattermost.com',
+            leadingElement: <Icon size={16} glyph="account-multiple-outline" />,
+        },
+        {
+            label: 'Open submenu',
+            url: 'https://www.mattermost.com',
+            leadingElement: <Icon size={16} glyph="plus" />,
+            trailingElement: <Icon size={16} glyph="chevron-right" />,
+            items: [
+                {
+                    label: 'sub item 1',
+                    url: 'https://www.mattermost.com',
+                },
+                {
+                    label: 'sub item 2',
+                    url: 'https://www.mattermost.com',
+                },
+                {
+                    label: 'sub item 3',
+                    url: 'https://www.mattermost.com',
+                },
+            ],
+        },
+        {
+            label: 'item 4',
+            url: 'https://www.mattermost.com',
+        },
+    ],
+};
+
+export const menuArgs = {
+    isMobile: false,
+    placement: DEFAULT_MENU_PLACEMENT,
+};
+
+export const menuArgTypes = {
+    title: {
+        control: {
+            type: 'text',
+        },
+    },
+    isMobile: false,
+    placement: {
+        options: MENU_PLACEMENTS,
+        control: {
+            type: 'select',
+        },
+    },
+};
+
+<Canvas hidden>
+    <Story name="default" argTypes={menuArgTypes} args={menuArgs}>
+        {(args) => {
+            const triggerReference = useRef(null);
+            const [isVisible, setIsVisible] = useState(false);
+            return (
+                <>
+                    <IconButton
+                        ref={triggerReference}
+                        icon={'menu'}
+                        toggled={isVisible}
+                        onClick={() => setIsVisible(!isVisible)}
+                    />
+                    <Menu
+                        data={menuData}
+                        isVisible={isVisible}
+                        trigger={triggerReference}
+                        onClickAway={() => setIsVisible(false)}
+                        {...args}
+                    />
+                </>
+            );
+        }}
+    </Story>
+    <Story name="with submenu" argTypes={menuArgTypes} args={menuArgs}>
+        {(args) => {
+            const triggerReference = useRef(null);
+            const [isVisible, setIsVisible] = useState(false);
+            return (
+                <>
+                    <IconButton
+                        ref={triggerReference}
+                        icon={'menu'}
+                        toggled={isVisible}
+                        onClick={() => setIsVisible(!isVisible)}
+                    />
+                    <Menu
+                        data={subMenuData}
+                        isVisible={isVisible}
+                        trigger={triggerReference}
+                        onClickAway={() => setIsVisible(false)}
+                        {...args}
+                    />
+                </>
+            );
+        }}
+    </Story>
+</Canvas>

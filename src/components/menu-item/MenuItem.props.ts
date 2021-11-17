@@ -2,9 +2,9 @@ import type React from 'react';
 
 type PMenuItem = {
     /**
-     * the main label to showon the menu item
+     * the main label to show on the menu item
      */
-    label: boolean;
+    label: string;
     /**
      * show the secondary label right to the main label when set to true
      * @default false
@@ -39,9 +39,17 @@ type PMenuItem = {
      */
     description?: string;
     /**
+     * whether a divider should be rendered below
+     */
+    divider?: boolean;
+    /**
      * onClick event handler
      */
     onClick?: React.MouseEventHandler<HTMLElement>;
+    /**
+     * onClick event handler
+     */
+    onHover?: React.MouseEventHandler<HTMLElement>;
     /**
      * custom className
      */

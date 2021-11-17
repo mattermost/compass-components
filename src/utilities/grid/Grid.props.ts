@@ -78,6 +78,7 @@ type PApplyGrid = PGlobalsLayout & {
      * @default 'initial'
      */
     placeContent?: TGridPlaceContentProperty;
+    onClick?: React.MouseEventHandler;
 };
 
 type PApplyGridItem = PGlobalsLayout & {
