@@ -11,13 +11,15 @@ import {
     ICON_GLYPHS,
 } from './Icon.constants';
 
-const Icon = ({
-    glyph = DEFAULT_ICON_GLYPH,
-    size = DEFAULT_ICON_SIZE,
-    color = DEFAULT_ICON_COLOR,
-    className = '',
-    ...rest
-}: PIcon): JSX.Element => {
+const Icon = (props: PIcon): JSX.Element => {
+    const {
+        glyph = DEFAULT_ICON_GLYPH,
+        size = DEFAULT_ICON_SIZE,
+        color = DEFAULT_ICON_COLOR,
+        className = '',
+        ...rest
+    } = props;
+
     Utils.assert(
         ICON_GLYPHS.includes(glyph),
         `Icon: please provide a valid option for the \`iconGlyph\` property. Choose from the following: ${ICON_GLYPHS.join(

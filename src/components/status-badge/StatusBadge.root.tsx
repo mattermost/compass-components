@@ -11,12 +11,10 @@ import type { PStatusBadgeRoot } from './StatusBadge.props';
 const StatusBadgeRoot = styled.div.withConfig({
     shouldForwardProp: (property, validator) =>
         Utils.blockProperty(property) && validator(property),
-})(
-    ({
-        theme,
-        size,
-        background = theme.background.default,
-    }: ThemedStyledProps<PStatusBadgeRoot, TTheme>): FlattenSimpleInterpolation => css`
+})((props: ThemedStyledProps<PStatusBadgeRoot, TTheme>): FlattenSimpleInterpolation => {
+    const { theme, size, background = theme.background.default } = props;
+
+    return css`
         flex: 1;
         display: flex;
         align-items: center;
@@ -25,7 +23,7 @@ const StatusBadgeRoot = styled.div.withConfig({
         background-color: ${background};
 
         ${applyShape({ width: STATUSICON_SIZE_MAP[size] + 4, radius: 'circle' })};
-    `
-);
+    `;
+});
 
 export default StatusBadgeRoot;

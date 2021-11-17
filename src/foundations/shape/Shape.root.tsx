@@ -1,9 +1,9 @@
 import styled, { css } from 'styled-components';
 import type { FlattenSimpleInterpolation, ThemedStyledProps } from 'styled-components';
 
+import type { TTheme } from '../../utilities/theme';
 import applyElevation from '../../utilities/elevation';
 import { applyMargin, applyPadding } from '../../utilities/spacing';
-import type { TTheme } from '../../utilities/theme';
 import { Utils } from '../../shared';
 
 import applyShape from './Shape.mixins';
@@ -14,26 +14,30 @@ const ShapeRoot = styled.div.withConfig<PShapeRoot>({
         Utils.blockProperty(property, ['width', 'height', 'radius', 'elevation', 'element']) &&
         validator(property),
 })<ThemedStyledProps<PShapeRoot, TTheme>>(
-    ({
-        radius,
-        elevation,
-        elevationOnHover,
-        width,
-        height,
-        theme,
-        padding,
-        margin,
-        backgroundColor = theme.background.shape,
-    }: ThemedStyledProps<PShapeRoot, TTheme>): FlattenSimpleInterpolation => css`
-        display: flex;
-        background-color: ${backgroundColor};
+    (props: ThemedStyledProps<PShapeRoot, TTheme>): FlattenSimpleInterpolation => {
+        const {
+            radius,
+            elevation,
+            elevationOnHover,
+            width,
+            height,
+            theme,
+            padding,
+            margin,
+            backgroundColor = theme.background.shape,
+        } = props;
 
-        ${applyShape({ width, height, radius })};
-        ${applyElevation({ elevation, elevationOnHover }, theme.type === 'dark')};
+        return css`
+            display: flex;
+            background-color: ${backgroundColor};
 
-        ${padding && applyPadding(padding)};
-        ${margin && applyMargin(margin)};
-    `
+            ${applyShape({ width, height, radius })};
+            ${applyElevation({ elevation, elevationOnHover }, theme.type === 'dark')};
+
+            ${padding && applyPadding(padding)};
+            ${margin && applyMargin(margin)};
+        `;
+    }
 );
 
 export default ShapeRoot;

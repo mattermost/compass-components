@@ -42,8 +42,6 @@ const IconButton = React.forwardRef(
             true
         );
 
-        const isDisabled = disabled || !Utils.isFunction(onClick);
-
         const rootProperties = {
             size,
             compact,
@@ -51,7 +49,7 @@ const IconButton = React.forwardRef(
             toggled,
             active,
             destructive,
-            disabled: isDisabled,
+            disabled,
             onClick,
         };
 

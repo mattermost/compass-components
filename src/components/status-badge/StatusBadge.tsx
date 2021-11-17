@@ -6,11 +6,9 @@ import type PStatusBadge from './StatusBadge.props';
 import { DEFAULT_STATUSBADGE_SIZE } from './StatusBadge.constants';
 import StatusBadgeRoot from './StatusBadge.root';
 
-const StatusBadge: React.FC<PStatusBadge> = ({
-    status,
-    size = DEFAULT_STATUSBADGE_SIZE,
-    ...rest
-}: PStatusBadge): JSX.Element => {
+const StatusBadge: React.FC<PStatusBadge> = (props: PStatusBadge) => {
+    const { status, size = DEFAULT_STATUSBADGE_SIZE, ...rest } = props;
+
     const rootProperties = {
         size,
         status,

@@ -7,15 +7,17 @@ import type PRadio from './Radio.props';
 import RadioRoot from './Radio.root';
 import RadioLabelRoot from './RadioLabel.root';
 
-const Radio: React.FC<PRadio> = ({
-    label,
-    size = DEFAULT_RADIO_SIZE,
-    hasError = false,
-    disabled = false,
-    checked = false,
-    onChange = Utils.noop,
-    ...rest
-}: PRadio) => {
+const Radio: React.FC<PRadio> = (props: PRadio) => {
+    const {
+        label,
+        size = DEFAULT_RADIO_SIZE,
+        hasError = false,
+        disabled = false,
+        checked = false,
+        onChange = Utils.noop,
+        ...rest
+    } = props;
+
     const hasLabel = Utils.isString(label) && label.length > 0;
 
     const rootProperties = {

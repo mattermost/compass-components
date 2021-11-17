@@ -7,15 +7,17 @@ import { DEFAULT_SWITCH_SIZE } from './Switch.constants';
 import type PSwitch from './Switch.props';
 import SwitchRoot from './Switch.root';
 
-const Switch: React.FC<PSwitch> = ({
-    label,
-    size = DEFAULT_SWITCH_SIZE,
-    disabled = false,
-    toggled = false,
-    onChange = Utils.noop,
-    onClick = Utils.noop,
-    ...rest
-}: PSwitch) => {
+const Switch: React.FC<PSwitch> = (props: PSwitch) => {
+    const {
+        label,
+        size = DEFAULT_SWITCH_SIZE,
+        disabled = false,
+        toggled = false,
+        onChange = Utils.noop,
+        onClick = Utils.noop,
+        ...rest
+    } = props;
+
     const hasLabel = Utils.isString(label) && label.length > 0;
 
     const rootProperties = {
