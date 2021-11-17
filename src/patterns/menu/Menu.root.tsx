@@ -12,7 +12,7 @@ const MenuLabelRoot = styled(Text)<PMenuLabelRoot>(
     ({ isMobile }): FlattenSimpleInterpolation => css`
         ${applyTextStyles({ size: 100, weight: 'bold' })};
         ${applyTextMargin({ margin: 'none' })};
-        ${applyPadding(Spacing.symmetric({ vertical: 125, horizontal: 200 }))};
+        ${applyPadding(Spacing.trbl({ top: 0, right: 200, bottom: 100, left: 200 }))};
         text-align: ${isMobile ? 'center' : 'left'};
     `
 );
@@ -40,6 +40,7 @@ const MenuRoot = styled.div<PMenuRoot>(
             height: isMobile ? '356px' : height,
             radius: 8,
         })};
+        ${applyPadding(Spacing.symmetric({ vertical: 125, horizontal: 0 }))};
         transition: background 250ms ease-in-out, color 250ms ease-in-out,
             box-shadow 250ms ease-in-out;
     `

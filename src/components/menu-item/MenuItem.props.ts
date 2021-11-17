@@ -39,6 +39,10 @@ type PMenuItem = {
      */
     description?: string;
     /**
+     * whether a divider should be rendered below
+     */
+    divider?: boolean;
+    /**
      * onClick event handler
      */
     onClick?: React.MouseEventHandler<HTMLElement>;

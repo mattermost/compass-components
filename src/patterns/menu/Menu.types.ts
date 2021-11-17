@@ -1,13 +1,9 @@
-import type { ReactNode } from 'react';
-
+import type PMenuItem from '../../components/menu-item/MenuItem.props';
 import type { TPopoverPlacement } from '../../utilities/popover';
-import type { TSpacingToken as TMenuOffsetToken } from '../../utilities/spacing';
 
-type TMenuOffset = [TMenuOffsetToken, TMenuOffsetToken];
+type TMenuData = {
+    items?: TMenuData[];
+    url?: string;
+} & PMenuItem;
 
-type TMenuGroup = {
-    menuItems: ReactNode | ReactNode[];
-    title?: string;
-};
-
-export type { TMenuOffset, TMenuGroup, TPopoverPlacement as TMenuPlacement, TMenuOffsetToken };
+export type { TMenuData, TPopoverPlacement as TMenuPlacement };

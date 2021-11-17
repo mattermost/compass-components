@@ -1,75 +1,16 @@
 import React, { useRef, useState } from 'react';
-import type { MutableRefObject } from 'react';
 import type { Property } from 'csstype';
-import { css } from 'styled-components';
 
 import MenuItem from '../../components/menu-item';
-import type PMenuItem from '../../components/menu-item/MenuItem.props';
 import Icon from '../../foundations/icon';
 import Shape from '../../foundations/shape';
 import Popover from '../../utilities/popover';
-import type { TonClickAwayCallback } from '../../shared';
 import Grid from '../../utilities/grid';
 
 import MenuRoot, { MenuLabelRoot } from './Menu.root';
-
-type MenuData = {
-    items?: MenuData[];
-    url?: string;
-} & PMenuItem;
-
-type Properties = {
-    title: string;
-    trigger: MutableRefObject<null>;
-    isVisible: boolean;
-    isMobile: boolean;
-    data: MenuData;
-    onClickAway: TonClickAwayCallback;
-};
-
-type SubProperties = {
-    data: MenuData;
-    isMobile: boolean;
-};
-
-const menuTransitions = {
-    mainMenu: {
-        properties: ['transform'],
-        entering: css`
-            transform: translate3d(0, 0, 0);
-        `,
-        entered: css`
-            transform: translate3d(0, 0, 0);
-        `,
-        exiting: css`
-            transform: translate3d(0, 150%, 0);
-        `,
-        exited: css`
-            transform: translate3d(0, 150%, 0);
-        `,
-        unmounted: css`
-            transform: translate3d(0, 150%, 0);
-        `,
-    },
-    subMenu: {
-        properties: ['transform'],
-        entering: css`
-            transform: translate3d(0, 0, 0);
-        `,
-        entered: css`
-            transform: translate3d(0, 0, 0);
-        `,
-        exiting: css`
-            transform: translate3d(100%, 0, 0);
-        `,
-        exited: css`
-            transform: translate3d(100%, 0, 0);
-        `,
-        unmounted: css`
-            transform: translate3d(100%, 0, 0);
-        `,
-    },
-};
+import type { PSubmenu } from './Menu.props';
+import type PMenu from './Menu.props';
+import { MENU_TRANSITIONS_MAP } from './Menu.constants';
 
 const Divider = (): JSX.Element => (
     <Shape height="1px" width={'auto'} backgroundColor={'#e0e0e0'} />
@@ -83,7 +24,7 @@ const mobileMenuStyles = {
     height: '356px',
 };
 
-const SubMenu = (props: SubProperties): JSX.Element => {
+const SubMenu = (props: PSubmenu): JSX.Element => {
     const subMenuTrigger = useRef(null);
     const [isVisible, setIsVisible] = useState<boolean>(false);
 
@@ -107,7 +48,7 @@ const SubMenu = (props: SubProperties): JSX.Element => {
                 zIndex={1000}
                 placement={isMobile ? undefined : 'right'}
                 styles={isMobile ? mobileMenuStyles : undefined}
-                customTransition={isMobile ? menuTransitions.subMenu : undefined}
+                customTransition={isMobile ? MENU_TRANSITIONS_MAP.subMenu : undefined}
             >
                 <MenuRoot isMobile={isMobile}>
                     {data.label && isMobile && (
@@ -145,8 +86,8 @@ const SubMenu = (props: SubProperties): JSX.Element => {
     );
 };
 
-const Menu = (props: Properties): JSX.Element => {
-    const { title, trigger, isVisible, data, onClickAway, isMobile } = props;
+const Menu = (props: PMenu): JSX.Element => {
+    const { title, trigger, isVisible, data, onClickAway, isMobile, placement, ...rest } = props;
 
     return (
         <Popover
@@ -154,7 +95,9 @@ const Menu = (props: Properties): JSX.Element => {
             isVisible={isVisible}
             onClickAway={onClickAway}
             styles={isMobile ? mobileMenuStyles : undefined}
-            customTransition={isMobile ? menuTransitions.mainMenu : undefined}
+            customTransition={isMobile ? MENU_TRANSITIONS_MAP.mainMenu : undefined}
+            placement={placement}
+            {...rest}
         >
             <MenuRoot isMobile={isMobile}>
                 {title && (
@@ -171,12 +114,15 @@ const Menu = (props: Properties): JSX.Element => {
                     }
 
                     return (
-                        <MenuItem
-                            key={key}
-                            label={item.label}
-                            leadingElement={item.leadingElement}
-                            trailingElement={item.trailingElement}
-                        />
+                        <>
+                            <MenuItem
+                                key={key}
+                                label={item.label}
+                                leadingElement={item.leadingElement}
+                                trailingElement={item.trailingElement}
+                            />
+                            {item.divider && <Divider />}
+                        </>
                     );
                 })}
             </MenuRoot>

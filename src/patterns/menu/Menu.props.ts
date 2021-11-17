@@ -1,6 +1,8 @@
 import type React from 'react';
 
-import type { TMenuGroup } from './Menu.types';
+import type { TonClickAwayCallback } from '../../shared';
+
+import type { TMenuData, TMenuPlacement } from './Menu.types';
 
 type PMenu = {
     /**
@@ -22,13 +24,25 @@ type PMenu = {
      */
     height?: number | string | 'auto';
     /**
-     * a container that holds related menu items
-     */
-    groups: TMenuGroup[];
-    /**
      * optionally add a title to the group
      */
     isVisible: boolean;
+    /**
+     * optionally add a title to the group
+     */
+    isMobile: boolean;
+    /**
+     * data to be rendered by the menu
+     */
+    data: TMenuData;
+    /**
+     * optionally pass different placement
+     */
+    placement: TMenuPlacement;
+    /**
+     * onClickAway callback
+     */
+    onClickAway?: TonClickAwayCallback;
     /**
      * onClick event handler
      */
@@ -39,10 +53,12 @@ type PMenu = {
     className?: string;
 };
 
-type PMenuRoot = Pick<PMenu, 'width' | 'height'> & { isMobile: boolean };
+type PSubmenu = Pick<PMenu, 'data' | 'isMobile'>;
+
+type PMenuRoot = Pick<PMenu, 'width' | 'height' | 'isMobile'>;
 
 type PMenuLabelRoot = Pick<PMenuRoot, 'isMobile'>;
 
-export type { PMenuRoot, PMenuLabelRoot };
+export type { PSubmenu, PMenuRoot, PMenuLabelRoot };
 
 export default PMenu;
