@@ -3,7 +3,7 @@ import React from 'react';
 import Grid from '../../utilities/layout';
 import Spacing from '../../utilities/spacing';
 
-import PMenuItem from './MenuItem.props';
+import type PMenuItem from './MenuItem.props';
 import MenuItemRoot, { MenuItemLabelRoot, MenuItemDescriptionRoot } from './MenuItem.root';
 
 const MenuItem = ({
