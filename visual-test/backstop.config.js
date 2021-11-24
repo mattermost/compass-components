@@ -4,7 +4,7 @@ const kebabCase = require('lodash.kebabcase');
 
 const storybookConfig = require('./storybook-scenarios');
 
-const THREE_SECONDS_IN_MS = 1000;
+const THREE_SECONDS_IN_MS = 3000;
 const scenarios = [];
 const viewports = [];
 
