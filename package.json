@@ -36,7 +36,6 @@
     "dependencies": {
         "@mattermost/compass-icons": "^0.1.11",
         "@popperjs/core": "^2.9.2",
-        "axios": "^0.21.1",
         "clsx": "^1.1.1",
         "color-blend": "^3.0.1",
         "csstype": "^3.0.8",
