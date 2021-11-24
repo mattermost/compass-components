@@ -1,5 +1,4 @@
 import kebabCase from 'lodash.kebabcase';
-import axios from 'axios';
 
 import { DEFAULT_PROPERTY_WHITELIST } from './constants';
 import type { THiddenArgtypes } from './types';
@@ -166,17 +165,13 @@ function clamp(value: number, min = 0, max = 1): number {
  * will return a base64 value from a image endpoint or image source
  * @param {string} url
  */
-function getBase64(url: string): Promise<string> {
-    return axios
-        .get(url, {
-            responseType: 'arraybuffer',
-        })
-        .then((response) => {
-            const dataString = Buffer.from(response.data, 'binary').toString('base64');
-            const dataType = response.headers['content-type'];
+async function getBase64(url: string): Promise<string> {
+    const response = await fetch(url);
+    const buf = await response.arrayBuffer();
+    const dataString = Buffer.from(buf).toString('base64');
+    const dataType = response.headers.get('content-type');
 
-            return `data:${dataType};base64,${dataString}`;
-        });
+    return `data:${dataType};base64,${dataString}`;
 }
 
 /**
