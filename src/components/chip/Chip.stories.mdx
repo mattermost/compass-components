@@ -1,0 +1,195 @@
+import { ArgsTable, Canvas, Meta, Story, Subtitle, Title } from '@storybook/addon-docs/blocks';
+import { Utils } from '../../shared';
+import ChipAnatomyImg from '../../assets/images/chip-anatomy.png';
+
+import Chip from './Chip';
+import Icon from '../../foundations/icon';
+import Avatar from '../avatar';
+import colors, { green } from '../../foundations/colors';
+import Grid from '../../utilities/layout';
+import Spacing from '../../utilities/spacing';
+import Shape from '../../foundations/shape';
+import Text from '../text';
+import MentionBadge from '../mention-badge';
+import { DEFAULT_CHIP_SIZE, CHIP_SIZES } from './Chip.constants';
+
+export const leadingVisualOptions = {
+    icon: <Icon glyph={'check-circle'} />,
+    avatar: (
+        <Avatar
+            disableHover
+            name={'homer.simpson'}
+            onClick={Utils.noop}
+            size={'xs'}
+            image={'https://picsum.photos/200/300?random=1'}
+        />
+    ),
+    bigAvatar: (
+        <Avatar
+            disableHover
+            name={'homer.simpson'}
+            onClick={Utils.noop}
+            size={'lg'}
+            image={'https://picsum.photos/200/300?random=1'}
+        />
+    ),
+    none: null,
+};
+
+export const leadingVisualOptionTexts = {
+    icon: 'Icon',
+    avatar: 'Avatar',
+    bigAvatar: 'Big Avatar',
+    none: 'None',
+};
+
+export const trailingIconOptions = {
+    icon: <Icon glyph={'close'} color={'info'} />,
+    none: null,
+};
+
+export const trailingIconOptionTexts = {
+    icon: 'Icon',
+    none: 'None',
+};
+
+export const ChipArgs = {
+    text: 'Michel',
+    size: DEFAULT_CHIP_SIZE,
+    destructive: false,
+    disabled: false,
+    leadingVisual: null,
+    trailingIcon: null,
+};
+
+export const ChipArgTypes = {
+    leadingVisual: {
+        options: Object.keys(leadingVisualOptions),
+        mapping: leadingVisualOptions,
+        control: {
+            type: 'select',
+            labels: leadingVisualOptionTexts,
+        },
+    },
+    trailingIcon: {
+        options: Object.keys(trailingIconOptions),
+        mapping: trailingIconOptions,
+        control: {
+            type: 'select',
+            labels: trailingIconOptionTexts,
+        },
+    },
+    size: {
+        options: CHIP_SIZES,
+        control: {
+            type: 'select',
+        },
+    },
+};
+
+export const boxMargin = Spacing.symmetric({ vertical: 100, horizontal: 100 });
+export const boxPadding = Spacing.symmetric({ vertical: 150, horizontal: 150 });
+
+<Meta title={'Components/Chip'} />
+
+<Title>Chip</Title>
+
+<Subtitle>
+    Chips are compact elements that are typically used as inputs to show selected elements or
+    attributes.
+</Subtitle>
+
+## Anatomy
+
+<img src={ChipAnatomyImg} alt={'menu item anatomy'} />
+
+### Container
+
+The container holds all the chip elements, and its size is determined by those elements inside.
+
+### Supporting Visual [optional]
+
+Supporting Visuals can either be avatars or icons.
+
+### Text
+
+Chip text can be things like a name, description, tag or action.
+
+### Trailing icon [optional]
+
+Input chips can include a Remove icon.
+
+## Input Chips
+
+Input Chips are used when selections are made and added to an input field. Chips have the ability to be removed from the input field by clicking the 'x' icon within the Chip.
+
+### Supporting Visuals
+
+Chips must always have a text label, but have 3 options for supporting visuals: None, Avatar or Icon
+
+### Sizes
+
+There are three sizes that correspond with the three Text input sizes: Small, Medium, and Large.
+
+### States
+
+<Grid padding={Spacing.symmetric({ vertical: 25 })} alignItems={'flex-start'}>
+    <Grid row justifyItems={'center'} alignItems={'center'} margin={boxMargin}>
+        <Shape backgroundColor={colors.neutral[100]} width={500} height={100}>
+            <Grid flex={1} justifyItems={'center'} alignItems={'center'} padding={boxPadding}>
+                <Chip {...ChipArgs} leadingVisual={leadingVisualOptions.icon} />
+            </Grid>
+        </Shape>
+        <Grid flex={1} justifyItems={'center'} alignItems={'center'} padding={boxPadding}>
+            <Text weight={'bold'} size={200}>
+                Icon
+            </Text>
+        </Grid>
+    </Grid>
+    <Grid row justifyItems={'center'} alignItems={'center'} margin={boxMargin}>
+        <Shape backgroundColor={colors.neutral[100]} width={500} height={100}>
+            <Grid flex={1} justifyItems={'center'} alignItems={'center'} padding={boxPadding}>
+                <Chip {...ChipArgs} leadingVisual={leadingVisualOptions.channel} />
+            </Grid>
+        </Shape>
+        <Grid flex={1} justifyItems={'center'} alignItems={'center'} padding={boxPadding}>
+            <Text weight={'bold'} size={200}>
+                Channel
+            </Text>
+        </Grid>
+    </Grid>
+    <Grid row justifyItems={'center'} alignItems={'center'} margin={boxMargin}>
+        <Shape backgroundColor={colors.neutral[100]} width={500} height={100}>
+            <Grid flex={1} justifyItems={'center'} alignItems={'center'} padding={boxPadding}>
+                <Chip {...ChipArgs} leadingVisual={leadingVisualOptions.avatarWithStatus} />
+            </Grid>
+        </Shape>
+        <Grid flex={1} justifyItems={'center'} alignItems={'center'} padding={boxPadding}>
+            <Text weight={'bold'} size={200}>
+                Avatar
+            </Text>
+        </Grid>
+    </Grid>
+</Grid>
+
+## Choice Chips
+
+Choice Chips are used when selections are made, but NOT added to an input field. The chips themselves act as items that can be selected/desected. Choice Chips cannot be removed.
+
+### Supporting Visuals
+
+Choice Chips also have 3 options for supporting visuals: None, Avatar or Icon.
+
+### Sizes
+
+Choice Chips are offered in the same sizes as Input Chips
+
+### States
+
+<ArgsTable of={Chip} />
+
+<Canvas hidden>
+    <Story name="default" args={ChipArgs} argTypes={ChipArgTypes}>
+        {(args) => <Chip {...args} />}
+    </Story>
+</Canvas>
