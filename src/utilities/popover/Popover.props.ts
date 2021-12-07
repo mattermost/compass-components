@@ -1,4 +1,4 @@
-import type { MutableRefObject, ReactNode, ReactNodeArray } from 'react';
+import type { MutableRefObject, ReactNode } from 'react';
 
 import type { TonClickAwayCallback } from '../../shared';
 
@@ -8,7 +8,7 @@ type PPopover = {
     /**
      * children to render inside the Popover
      */
-    children: ReactNode | ReactNodeArray;
+    children: ReactNode | ReactNode[];
     /**
      * the reference (ref) to the element the Popover should be anchored to
      */

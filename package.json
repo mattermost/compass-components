@@ -34,7 +34,7 @@
         "access": "public"
     },
     "dependencies": {
-        "@mattermost/compass-icons": "^0.1.11",
+        "@mattermost/compass-icons": "^0.1.19",
         "@popperjs/core": "^2.9.2",
         "clsx": "^1.1.1",
         "color-blend": "^3.0.1",

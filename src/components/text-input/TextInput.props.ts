@@ -1,4 +1,4 @@
-import type { ChangeEventHandler, FocusEventHandler, ReactNode, ReactNodeArray } from 'react';
+import type { ChangeEventHandler, FocusEventHandler, ReactNode } from 'react';
 
 import type { TIconGlyph } from '../../foundations/icon';
 import type { TButtonWidth } from '../button';
@@ -84,7 +84,7 @@ type PTextInput = {
     /**
      * child components
      * */
-    children: ReactNode | ReactNodeArray;
+    children: ReactNode | ReactNode[];
 };
 
 type PTextInputRoot = Required<

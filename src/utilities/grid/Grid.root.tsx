@@ -6,17 +6,7 @@ import { applyMargin, applyPadding } from '../spacing';
 import { applyGrid, applyGridItem } from './Grid.mixins';
 import type { PApplyGrid, PApplyGridItem } from './Grid.props';
 
-const GridRoot = styled.div.withConfig({
-    shouldForwardProp: (property, validator) =>
-        Utils.blockProperty(property, [
-            'columnsTemplate',
-            'rowsTemplate',
-            'areasTemplate',
-            'gap',
-            'placeItems',
-            'placeContent',
-        ]) && validator(property),
-})(
+const GridRoot = styled.div(
     ({ padding, margin, ...rest }: PApplyGrid) => css`
         ${applyGrid(rest)};
         ${padding && applyPadding(padding)};

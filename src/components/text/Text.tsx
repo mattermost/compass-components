@@ -17,7 +17,7 @@ import {
 import type PText from './Text.props';
 import TextRoot from './Text.root';
 
-const Text: React.FC<PText> = (props: PText) => {
+const Text = (props: PText): JSX.Element => {
     const {
         inheritLineHeight = false,
         color = DEFAULT_TEXT_COLOR,

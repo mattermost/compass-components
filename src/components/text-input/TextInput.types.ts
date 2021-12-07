@@ -1,6 +1,6 @@
 import type { TSpacingToken } from '../../utilities/spacing';
 import type { TTextSizeToken } from '../text';
-import type { TIconSize } from '../../foundations/icon';
+import type { TIconSizeToken } from '../../foundations/icon';
 
 type TTextInputSizeToken = 'sm' | 'md' | 'lg';
 
@@ -8,7 +8,7 @@ type TTextInputHeight = 32 | 40 | 48;
 
 type TTextInput = {
     spacing: TSpacingToken;
-    iconSize: TIconSize;
+    iconSize: TIconSizeToken;
     height: TTextInputHeight;
     labelSize: TTextSizeToken;
     labelMargin: TSpacingToken;

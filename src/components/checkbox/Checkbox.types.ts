@@ -1,13 +1,13 @@
-import type { TIconSize } from '../../foundations/icon';
+import type { TIconSizeToken } from '../../foundations/icon';
 import type { TTextSizeToken } from '../text';
 
 type TCheckboxSizeToken = 'sm' | 'md' | 'lg';
 
-type TCheckboxSize = Extract<TIconSize, 12 | 16 | 20>;
+type TCheckboxSize = Extract<TIconSizeToken, 12 | 16 | 20>;
 
 type TCheckboxDefinition = {
     checkboxSize: TCheckboxSize;
-    iconSize: TIconSize;
+    iconSize: TIconSizeToken;
     labelSize: TTextSizeToken;
 };
 

@@ -1,0 +1,46 @@
+import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+import { Utils } from '../../shared';
+
+import { CHIP_SIZES, CHIP_SIZE_LABELS, DEFAULT_CHIP_SIZE } from './Chip.constants';
+import Chip from './Chip';
+import Avatar from '../avatar';
+import { ICON_GLYPHS } from '../../foundations/icon';
+
+export const chipArgs = {
+    size: DEFAULT_CHIP_SIZE,
+};
+
+export const chipArgTypes = {
+    size: {
+        options: CHIP_SIZES,
+        control: {
+            type: 'select',
+            labels: CHIP_SIZE_LABELS,
+        },
+    },
+    icon: {
+        options: ICON_GLYPHS,
+        control: {
+            type: 'select',
+        },
+    },
+};
+
+<Meta title={'Components/Chip'} />
+
+<ArgsTable of={Chip} />
+
+<Canvas hidden>
+    <Story name="default" args={chipArgs} argTypes={chipArgTypes}>
+        {(args) => <Chip {...args} />}
+    </Story>
+    <Story name="with delete" args={chipArgs} argTypes={chipArgTypes}>
+        {(args) => <Chip {...args} onDelete={() => console.log('##### ON DELETE! #####')} />}
+    </Story>
+    <Story name="with icon" args={chipArgs} argTypes={chipArgTypes}>
+        {(args) => <Chip {...args} />}
+    </Story>
+    <Story name="with avatar" args={chipArgs} argTypes={chipArgTypes}>
+        {(args) => <Chip {...args} avatar={<Avatar name={'Leonard Riley'} onClick={() => {}} />} />}
+    </Story>
+</Canvas>

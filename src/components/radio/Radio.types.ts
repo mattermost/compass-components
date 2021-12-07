@@ -1,9 +1,9 @@
-import type { TIconSize } from '../../foundations/icon';
+import type { TIconSizeToken } from '../../foundations/icon';
 import type { TTextSizeToken } from '../text';
 
 type TRadioSizeToken = 'sm' | 'md' | 'lg';
 
-type TRadioSize = Extract<TIconSize, 12 | 16 | 20>;
+type TRadioSize = Extract<TIconSizeToken, 12 | 16 | 20>;
 
 type TRadioDefinition = {
     radioSize: TRadioSize;

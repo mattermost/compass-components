@@ -1,5 +1,3 @@
-import type { ReactNode, ReactNodeArray } from 'react';
-
 import type { TTheme } from '../../utilities/theme';
 
 import type {
@@ -47,7 +45,6 @@ type PHeading = {
      * custom className
      */
     className?: string;
-    children: ReactNode | ReactNodeArray;
 };
 
 type PHeadingRoot = Required<Omit<PHeading, 'className' | 'element'>>;

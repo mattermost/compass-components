@@ -1,4 +1,4 @@
-import type { ReactNode, ReactNodeArray, CSSProperties } from 'react';
+import type { ReactNode, CSSProperties } from 'react';
 import type { TransitionStatus } from 'react-transition-group';
 
 import type { TTheme } from '../theme';
@@ -17,7 +17,7 @@ type PTransition = {
     /**
      * children to render the transition with
      */
-    children: ReactNode | ReactNodeArray;
+    children: ReactNode | ReactNode[];
     /**
      * the theme passed in to the transition
      */

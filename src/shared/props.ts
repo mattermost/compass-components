@@ -1,4 +1,4 @@
-import type { ReactNode, ReactNodeArray } from 'react';
+import type { ReactNode } from 'react';
 
 import type { TSpacingDefinition } from '../utilities/spacing';
 
@@ -278,7 +278,7 @@ type PGlobalsMisc = {
     /**
      * component children
      */
-    children?: ReactNode | ReactNodeArray;
+    children?: ReactNode | ReactNode[];
 };
 
 type PGlobals = PGlobalsMisc & PGlobalsLayout;

@@ -1,4 +1,4 @@
-import type { TIconSize } from '../../foundations/icon';
+import type { TIconSizeToken } from '../../foundations/icon';
 import type { TComponentSizeToken } from '../../shared';
 import type { TSpacingTokensSymmetric } from '../../utilities/spacing';
 import type { TTextSizeToken } from '../text';
@@ -14,7 +14,7 @@ type TButtonIconPosition = 'start' | 'end';
 type TButtonDefinition = {
     spacing: TSpacingTokensSymmetric;
     labelSize: TTextSizeToken;
-    iconSize: TIconSize;
+    iconSize: TIconSizeToken;
     iconMargin: number;
     height: number;
 };

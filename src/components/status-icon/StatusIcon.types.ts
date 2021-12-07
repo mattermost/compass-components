@@ -1,15 +1,15 @@
 import type { TComponentSizeToken, TUserStatus } from '../../shared';
-import type { TIconSize } from '../../foundations/icon';
+import type { TIconSizeToken } from '../../foundations/icon';
 
 type TStatusIconSizeToken = Exclude<TComponentSizeToken, 'xxxs' | 'xxs' | 'xxl' | 'xxxl'>;
 
 type TStatusIconSizeMap = {
-    [key in TStatusIconSizeToken]: TIconSize;
+    [key in TStatusIconSizeToken]: TIconSizeToken;
 };
 
 export type {
     TUserStatus as TStatusIconStatus,
-    TIconSize as TStatusIconSize,
+    TIconSizeToken as TStatusIconSize,
     TStatusIconSizeToken,
     TStatusIconSizeMap,
 };

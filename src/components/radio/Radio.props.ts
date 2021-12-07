@@ -1,4 +1,4 @@
-import type { ReactNode, ReactNodeArray, MouseEventHandler } from 'react';
+import type { ReactNode, MouseEventHandler } from 'react';
 
 import type { TRadioSizeToken } from './Radio.types';
 
@@ -42,7 +42,7 @@ type PRadio = {
     /**
      * child nodes
      * */
-    children: ReactNode | ReactNodeArray;
+    children: ReactNode | ReactNode[];
 };
 
 type PRadioRoot = Required<Pick<PRadio, 'hasError' | 'disabled' | 'size' | 'checked' | 'children'>>;

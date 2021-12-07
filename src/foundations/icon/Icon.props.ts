@@ -1,11 +1,13 @@
-import type { TIconColor, TIconGlyph, TIconSize } from './Icon.types';
+import type React from 'react';
+
+import type { TIconColor, TIconGlyph, TIconSizeToken } from './Icon.types';
 
 type PIcon = {
     /**
      * the size the icon is rendered with
      * @default 20
      */
-    size?: TIconSize;
+    size?: TIconSizeToken;
     /**
      * the color token the Icon should be rendered with.
      * when not passed a value it will inherit the color.
@@ -27,10 +29,10 @@ type PIcon = {
     /**
      * onClick handler
      */
-    onClick?: () => void;
+    onClick?: React.MouseEventHandler;
 };
 
-export type PIconRoot = Required<Pick<PIcon, 'size' | 'color' | 'glyph'>> &
+export type PIconRoot = Required<Pick<PIcon, 'size' | 'color'>> &
     Pick<PIcon, 'ariaLabel' | 'className'>;
 
 export default PIcon;
