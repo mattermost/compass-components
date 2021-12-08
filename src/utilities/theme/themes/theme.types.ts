@@ -78,6 +78,59 @@ type TTheme = {
     highlight: TThemeHighlightColors;
 };
 
+type TCustomThemeColors = {
+    navigation: string;
+    content: string;
+    mention: string;
+    primary: string;
+    secondary: string;
+    tertiary: string;
+};
+
+type TColorOpacities =
+    | 'a00'
+    | 'a04'
+    | 'a08'
+    | 'a12'
+    | 'a16'
+    | 'a20'
+    | 'a24'
+    | 'a28'
+    | 'a32'
+    | 'a36'
+    | 'a40'
+    | 'a44'
+    | 'a48'
+    | 'a52'
+    | 'a56'
+    | 'a60'
+    | 'a64'
+    | 'a68'
+    | 'a72';
+
+type TColorShades = '0' | '50' | '100' | '200' | '300' | '400' | '500' | '600' | '700';
+
+type TNewColorDefinition = {
+    [k in TColorOpacities | TColorShades]: string;
+};
+
+type TNewThemeColor = TNewColorDefinition & { contrast: TNewColorDefinition };
+
+type TNewTheme = TTheme & {
+    palettes: {
+        navigation: TNewThemeColor;
+        content: TNewThemeColor;
+        mention: TNewThemeColor;
+        primary: TNewThemeColor;
+        secondary: TNewThemeColor;
+        tertiary: TNewThemeColor;
+        alert: TNewThemeColor;
+        warning: TNewThemeColor;
+        success: TNewThemeColor;
+        info: TNewThemeColor;
+    };
+};
+
 export type {
     TTheme,
     TTHemeColors,
@@ -87,4 +140,10 @@ export type {
     TTHemeBackgroundColors,
     TThemeColorDefinition,
     TThemeAnimationSpeed,
+    TCustomThemeColors,
+    TNewTheme,
+    TNewThemeColor,
+    TNewColorDefinition,
+    TColorOpacities,
+    TColorShades,
 };

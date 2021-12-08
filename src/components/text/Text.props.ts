@@ -1,3 +1,5 @@
+import type { ReactNode } from 'react';
+
 import type { TTheme } from '../../utilities/theme';
 
 import type {
@@ -45,6 +47,7 @@ type PText = {
      * custom className
      */
     className?: string;
+    children: ReactNode | ReactNode[];
 };
 
 type PTextRoot = Required<Omit<PText, 'element' | 'className'>>;
