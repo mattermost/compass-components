@@ -1,39 +1,38 @@
 import styled, { css } from 'styled-components';
 import type { ThemedStyledProps } from 'styled-components';
 
-import type { TTheme } from '../../utilities/theme';
+import type { TNewTheme } from '../../utilities/theme';
 
-import type { PIconRoot } from './Icon.props';
-import { DEFAULT_ICON_SIZE } from './Icon.constants';
+import type { PIcon } from './Icon';
 
-const IconRoot = styled.div<ThemedStyledProps<PIconRoot, TTheme>>(
-    (props: ThemedStyledProps<PIconRoot, TTheme>) => {
-        const { theme, color, size = DEFAULT_ICON_SIZE } = props;
+type PIconRoot = Required<Pick<PIcon, 'size' | 'color'>>;
 
-        return css`
-            position: relative;
-            justify-content: center;
-            align-items: center;
+const IconRoot = styled.div<PIconRoot>((props: ThemedStyledProps<PIconRoot, TNewTheme>) => {
+    const { theme, color, size } = props;
 
-            height: ${size}px;
-            width: ${size}px;
+    return css`
+        position: relative;
+        justify-content: center;
+        align-items: center;
 
-            padding: 0;
+        height: ${size}px;
+        width: ${size}px;
 
-            display: inline-flex;
-            color: inherit;
+        padding: 0;
 
-            ${color &&
-            color !== 'inherit' &&
-            css`
-                color: ${theme.palette[color].main};
+        display: inline-flex;
+        color: inherit;
 
-                svg {
-                    fill: currentColor;
-                }
-            `}
-        `;
-    }
-);
+        ${color &&
+        color !== 'inherit' &&
+        css`
+            color: ${theme.palettes[color]['300']};
+
+            svg {
+                fill: currentColor;
+            }
+        `}
+    `;
+});
 
 export default IconRoot;
