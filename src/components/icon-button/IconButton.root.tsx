@@ -1,8 +1,8 @@
 import styled, { css } from 'styled-components';
 import type { FlattenSimpleInterpolation, ThemedStyledProps } from 'styled-components';
 
-import { setAlpha, Utils } from '../../shared';
-import type { TTheme } from '../../utilities/theme';
+import { Utils } from '../../shared';
+import type { TNewTheme } from '../../utilities/theme';
 import { resetButton } from '../../utilities/theme/global-styles/reset-styles';
 import Spacing, { applyMargin, applyPadding } from '../../utilities/spacing';
 import { applyShape } from '../../foundations/shape';
@@ -14,7 +14,7 @@ import type { PIconButtonRoot } from './IconButton.props';
 const IconButtonRoot = styled.button.withConfig<PIconButtonRoot>({
     shouldForwardProp: (property, validator) =>
         Utils.blockProperty(property) && validator(property),
-})((props: ThemedStyledProps<PIconButtonRoot, TTheme>): FlattenSimpleInterpolation => {
+})((props: ThemedStyledProps<PIconButtonRoot, TNewTheme>): FlattenSimpleInterpolation => {
     const {
         size,
         compact,
@@ -23,56 +23,67 @@ const IconButtonRoot = styled.button.withConfig<PIconButtonRoot>({
         active,
         destructive,
         disabled,
-        theme: { palette, action, text, animation, noStyleReset },
+        theme: { palettes, animation, noStyleReset },
     } = props;
 
-    const isDefault = !inverted && !destructive && !toggled;
-    const { main, contrast } = destructive && !toggled ? palette.alert : palette.primary;
+    const { content, navigation, alert, primary } = palettes;
     const { spacing, compactSpacing, fontSize } = ICON_BUTTON_DEFINITIONS[size];
 
-    const colors: Record<string, string> = {
-        background: main,
-        text: toggled ? contrast : text.primary,
-    };
-
-    const opacities: Record<string, Record<string, number>> = {
-        background: {
-            default: toggled ? 1 : 0,
-            hover: toggled ? 0.92 : 0.08,
-            active: inverted ? 0.16 : 0.08,
+    const colors: Record<string, Record<string, string>> = {
+        bg: {
+            normal: toggled ? primary['300'] : content.contrast.a00,
+            hover: toggled ? primary['400'] : content.contrast.a08,
+            active: primary.a16,
         },
         text: {
-            default: toggled ? 1 : 0.56,
-            hover: toggled ? 1 : 0.72,
-            active: 1,
+            normal: toggled ? primary.contrast['300'] : content.contrast.a56,
+            hover: toggled ? primary.contrast['300'] : content.contrast.a64,
+            active: primary['300'],
         },
     };
 
     if (inverted) {
-        colors.background = contrast;
-        colors.text = toggled ? main : contrast;
+        colors.bg = {
+            normal: toggled ? navigation.contrast['300'] : navigation.contrast.a00,
+            hover: toggled ? navigation.contrast['400'] : navigation.contrast.a08,
+            active: navigation.contrast.a08,
+        };
+        colors.text = {
+            normal: toggled ? navigation['300'] : navigation.contrast.a64,
+            hover: toggled ? navigation['300'] : navigation.contrast['300'],
+            active: toggled ? navigation['300'] : navigation.contrast['300'],
+        };
     }
 
-    if (destructive && !toggled) {
-        colors.background = main;
-        colors.text = inverted ? contrast : main;
-
-        opacities.background.hover = inverted ? 0.8 : 0.08;
-        opacities.background.active = inverted ? 1 : 0.16;
+    if (destructive) {
+        colors.bg = {
+            normal: alert.a00,
+            hover: inverted ? alert['400'] : alert.a08,
+            active: inverted ? alert['300'] : alert.a16,
+        };
+        colors.text = {
+            normal: inverted ? navigation.contrast.a64 : alert['300'],
+            hover: inverted ? alert.contrast['300'] : alert['300'],
+            active: inverted ? alert.contrast['300'] : alert['300'],
+        };
     }
 
-    // override some values for disabled icon-buttons
     if (disabled) {
-        // set colors to the 'disabled'-grey
-        colors.text = action.disabled;
-        // icon and text are slightly opaque with disabled buttons
-        opacities.background.default = 0;
-        opacities.text.default = 0.32;
+        colors.bg = {
+            normal: content.a00,
+            hover: content.a00,
+            active: content.a00,
+        };
+        colors.text = {
+            normal: inverted ? navigation.contrast.a32 : content.contrast.a32,
+            hover: inverted ? navigation.contrast.a32 : content.contrast.a32,
+            active: inverted ? navigation.contrast.a32 : content.contrast.a32,
+        };
     }
 
     const activeStyles = css`
-        background: ${setAlpha(colors.background, opacities.background.active)};
-        color: ${setAlpha(inverted ? contrast : main, opacities.text.active)};
+        background: ${colors.bg.active};
+        color: ${colors.text.active};
     `;
 
     const actionStyles = disabled
@@ -81,11 +92,8 @@ const IconButtonRoot = styled.button.withConfig<PIconButtonRoot>({
           `
         : css`
               :hover {
-                  background: ${setAlpha(
-                      isDefault ? action.hover : colors.background,
-                      opacities.background.hover
-                  )};
-                  color: ${setAlpha(colors.text, opacities.text.hover)};
+                  background: ${colors.bg.hover};
+                  color: ${colors.text.hover};
               }
 
               :active {
@@ -94,7 +102,7 @@ const IconButtonRoot = styled.button.withConfig<PIconButtonRoot>({
 
               &:focus {
                   box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.32),
-                      inset 0 0 0 2px ${destructive ? palette.alert.main : main};
+                      inset 0 0 0 2px ${destructive ? alert['0'] : primary['0']};
               }
 
               &:focus:not(:focus-visible) {
@@ -103,7 +111,7 @@ const IconButtonRoot = styled.button.withConfig<PIconButtonRoot>({
 
               &:focus-visible {
                   box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.32),
-                      inset 0 0 0 2px ${destructive ? palette.alert.main : main};
+                      inset 0 0 0 2px ${destructive ? alert['0'] : primary['0']};
               }
           `;
 
@@ -116,8 +124,8 @@ const IconButtonRoot = styled.button.withConfig<PIconButtonRoot>({
 
         cursor: pointer;
 
-        color: ${setAlpha(colors.text, opacities.text.default)};
-        background: ${setAlpha(colors.background, opacities.background.default)};
+        background: ${colors.bg.normal};
+        color: ${colors.text.normal};
 
         ${applyShape({ radius: 4 })};
         ${applyPadding(Spacing.all(compact ? compactSpacing : spacing))};
