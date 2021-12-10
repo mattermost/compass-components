@@ -58,7 +58,7 @@ const BUTTON_SIZE_MAP: Record<TButtonSizeToken, TButtonDefinition> = {
             vertical: 0,
             horizontal: 250,
         },
-        labelSize: 100,
+        labelSize: 200,
         iconSize: 20,
         iconMargin: 8,
         height: 48,

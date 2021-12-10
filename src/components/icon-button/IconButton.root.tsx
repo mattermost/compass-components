@@ -101,8 +101,7 @@ const IconButtonRoot = styled.button.withConfig<PIconButtonRoot>({
               }
 
               &:focus {
-                  box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.32),
-                      inset 0 0 0 2px ${destructive ? alert['0'] : primary['0']};
+                  box-shadow: inset 0 0 0 2px ${destructive ? alert['0'] : primary['0']};
               }
 
               &:focus:not(:focus-visible) {
@@ -110,8 +109,7 @@ const IconButtonRoot = styled.button.withConfig<PIconButtonRoot>({
               }
 
               &:focus-visible {
-                  box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.32),
-                      inset 0 0 0 2px ${destructive ? alert['0'] : primary['0']};
+                  box-shadow: inset 0 0 0 2px ${destructive ? alert['0'] : primary['0']};
               }
           `;
 

@@ -93,7 +93,9 @@ const ButtonRoot = styled.button.withConfig<PButtonRoot>({
             ? css`
                   box-shadow: inset 0 0 0 1px ${color[shades.text]};
               `
-            : null;
+            : css`
+                  box-shadow: none;
+              `;
 
     const activeStyles = css`
         background: ${color[shades.active]};
@@ -115,7 +117,7 @@ const ButtonRoot = styled.button.withConfig<PButtonRoot>({
                   box-shadow: inset 0 0 0 2px ${focusBorder};
               }
               &:focus:not(:focus-visible) {
-                  ${borderStyles};
+                  ${borderStyles}
               }
               &:focus-visible {
                   box-shadow: inset 0 0 0 2px ${focusBorder};

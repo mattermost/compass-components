@@ -116,7 +116,7 @@
     },
     "lint-staged": {
         "*.{ts,tsx}": [
-            "tsc-files --noEmit"
+            "tsc-files --noEmit --p tsconfig.json"
         ],
         "*.{js,jsx,ts,tsx,md,mdx}": [
             "eslint --cache --fix ./src",
