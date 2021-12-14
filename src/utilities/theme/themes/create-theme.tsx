@@ -1,3 +1,4 @@
+import { green, neutral, orange, red } from '../../../foundations/colors';
 import {
     setLuminance,
     getLuminance,
@@ -8,11 +9,12 @@ import {
     convertToHsl,
     darken,
     lighten,
+    setAlpha,
 } from '../../../shared';
 
 import type { TTheme, TCustomThemeColors, TThemeColor } from './theme.types';
 
-import { denim, lightTheme } from './index';
+import { denim } from './index';
 
 const CONTRAST_THRESHOLD = 3.2;
 
@@ -81,7 +83,11 @@ const createTheme = (colors: TCustomThemeColors): TTheme => {
     } = colors;
 
     return {
-        ...lightTheme,
+        type: 'dark',
+        elevationOpacity: 0.32,
+        noStyleReset: false,
+        noFontFaces: false,
+        noDefaultStyle: false,
         palette: {
             primary: createPaletteColor(primary),
             secondary: createPaletteColor(secondary),
@@ -101,6 +107,20 @@ const createTheme = (colors: TCustomThemeColors): TTheme => {
             secondary: setLuminance(background, getContrastLuminance(background) - 4),
         },
         mention: createPaletteColor(mention),
+        badges: {
+            online: green[600],
+            away: orange[400],
+            dnd: red[500],
+            offline: setAlpha(neutral[350], 0.64),
+        },
+        animation: {
+            instant: 0,
+            fastest: 100,
+            fast: 250,
+            normal: 300,
+            slow: 450,
+            slowest: 600,
+        },
     };
 };
 

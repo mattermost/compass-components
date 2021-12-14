@@ -1,7 +1,6 @@
-import darkTheme from './theme.dark';
-import lightTheme from './theme.light';
 import denim from './theme.denim';
+import quartz from './theme.quartz';
 
 export * from './theme.types';
 
-export { lightTheme, darkTheme, denim };
+export { denim, quartz };
