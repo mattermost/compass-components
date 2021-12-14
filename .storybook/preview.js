@@ -11,25 +11,27 @@ import {
     DocumentationThemeProvider,
 } from '../src/utilities/theme/storybook-theme-provider';
 import { DocsContainer } from '@storybook/addon-docs/blocks';
+import { denim } from '../src/utilities/theme';
+import quartz from '../src/utilities/theme/themes/theme.quartz';
 
 const themes = [
     {
-        name: 'light',
-        class: 'compass-light',
-        color: lightTheme.background.default,
-        definition: lightTheme,
+        name: 'denim',
+        class: 'compass-denim',
+        color: denim.background,
+        definition: denim,
         default: true,
     },
     {
-        name: 'dark',
-        class: 'compass-dark',
-        color: darkTheme.background.default,
-        definition: darkTheme,
+        name: 'quartz',
+        class: 'compass-quartz',
+        color: quartz.background,
+        definition: quartz,
     },
 ];
 
 const CustomDecorator = ({ theme, children }) => (
-    <CanvasThemeProvider theme={theme.definition} children={children} />
+    <CanvasThemeProvider themeColors={theme.definition} children={children} />
 );
 
 addParameters({

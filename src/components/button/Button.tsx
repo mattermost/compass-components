@@ -25,7 +25,6 @@ const Button: React.FC<PButton> = (props: PButton) => {
         width = DEFAULT_BUTTON_WIDTH,
         active = false,
         destructive = false,
-        inverted = false,
         disabled = false,
         ...rest
     } = props;
@@ -52,7 +51,6 @@ const Button: React.FC<PButton> = (props: PButton) => {
             width={width}
             active={active}
             destructive={destructive}
-            inverted={inverted}
             size={size}
             variant={variant}
             onClick={onClick}

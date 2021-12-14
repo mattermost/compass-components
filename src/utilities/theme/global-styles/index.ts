@@ -32,7 +32,7 @@ const GlobalStyle = createGlobalStyle`
         display: block;
         flex: 1;
         align-self: stretch;
-        background: ${({ theme }): string => theme.background.skeleton};
+        background: ${({ theme }): string => theme.background.light};
         overflow: hidden;
         position: relative;
 
@@ -45,10 +45,10 @@ const GlobalStyle = createGlobalStyle`
             transform: translateX(-100%);
             background: linear-gradient(
                     90deg,
-                    ${({ theme }): string => setAlpha(theme.background.shimmer, 0)} 0,
-                    ${({ theme }): string => setAlpha(theme.background.shimmer, 0.25)} 40%,
-                    ${({ theme }): string => setAlpha(theme.background.shimmer, 0.5)} 75%,
-                    ${({ theme }): string => setAlpha(theme.background.shimmer, 0)}
+                    ${({ theme }): string => setAlpha(theme.background.dark, 0)} 0,
+                    ${({ theme }): string => setAlpha(theme.background.dark, 0.25)} 40%,
+                    ${({ theme }): string => setAlpha(theme.background.dark, 0.5)} 75%,
+                    ${({ theme }): string => setAlpha(theme.background.dark, 0)}
             );
             animation: shimmer 1.5s infinite;
             content: '';

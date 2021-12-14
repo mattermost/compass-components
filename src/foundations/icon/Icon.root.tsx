@@ -1,13 +1,13 @@
 import styled, { css } from 'styled-components';
 import type { ThemedStyledProps } from 'styled-components';
 
-import type { TNewTheme } from '../../utilities/theme';
+import type { TTheme } from '../../utilities/theme';
 
 import type { PIcon } from './Icon';
 
 type PIconRoot = Required<Pick<PIcon, 'size' | 'color'>>;
 
-const IconRoot = styled.div<PIconRoot>((props: ThemedStyledProps<PIconRoot, TNewTheme>) => {
+const IconRoot = styled.div<PIconRoot>((props: ThemedStyledProps<PIconRoot, TTheme>) => {
     const { theme, color, size } = props;
 
     return css`
@@ -26,7 +26,7 @@ const IconRoot = styled.div<PIconRoot>((props: ThemedStyledProps<PIconRoot, TNew
         ${color &&
         color !== 'inherit' &&
         css`
-            color: ${theme.palettes[color]['300']};
+            color: ${theme.palette[color][300]};
 
             svg {
                 fill: currentColor;

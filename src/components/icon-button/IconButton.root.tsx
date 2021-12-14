@@ -1,8 +1,8 @@
 import styled, { css } from 'styled-components';
 import type { FlattenSimpleInterpolation, ThemedStyledProps } from 'styled-components';
 
-import { Utils } from '../../shared';
-import type { TNewTheme } from '../../utilities/theme';
+import { setAlpha, Utils } from '../../shared';
+import type { TTheme } from '../../utilities/theme';
 import { resetButton } from '../../utilities/theme/global-styles/reset-styles';
 import Spacing, { applyMargin, applyPadding } from '../../utilities/spacing';
 import { applyShape } from '../../foundations/shape';
@@ -14,71 +14,53 @@ import type { PIconButtonRoot } from './IconButton.props';
 const IconButtonRoot = styled.button.withConfig<PIconButtonRoot>({
     shouldForwardProp: (property, validator) =>
         Utils.blockProperty(property) && validator(property),
-})((props: ThemedStyledProps<PIconButtonRoot, TNewTheme>): FlattenSimpleInterpolation => {
+})((props: ThemedStyledProps<PIconButtonRoot, TTheme>): FlattenSimpleInterpolation => {
     const {
         size,
         compact,
-        inverted,
         toggled,
         active,
         destructive,
         disabled,
-        theme: { palettes, animation, noStyleReset },
+        theme: {
+            palette: { primary, alert },
+            text,
+            animation,
+            noStyleReset,
+        },
     } = props;
 
-    const { content, navigation, alert, primary } = palettes;
     const { spacing, compactSpacing, fontSize } = ICON_BUTTON_DEFINITIONS[size];
 
-    const colors: Record<string, Record<string, string>> = {
+    const colors: Record<'bg' | 'text', Record<string, string>> = {
         bg: {
-            normal: toggled ? primary['300'] : content.contrast.a00,
-            hover: toggled ? primary['400'] : content.contrast.a08,
-            active: primary.a16,
+            normal: toggled ? primary[300] : setAlpha(text.primary, 0),
+            hover: toggled ? primary[400] : setAlpha(text.primary, 0.08),
+            active: setAlpha(primary[300], 0.08),
         },
         text: {
-            normal: toggled ? primary.contrast['300'] : content.contrast.a56,
-            hover: toggled ? primary.contrast['300'] : content.contrast.a64,
-            active: primary['300'],
+            normal: toggled ? primary.contrast[300] : setAlpha(text.primary, 0.56),
+            hover: toggled ? primary.contrast[300] : setAlpha(text.primary, 0.72),
+            active: primary[300],
         },
     };
 
-    if (inverted) {
-        colors.bg = {
-            normal: toggled ? navigation.contrast['300'] : navigation.contrast.a00,
-            hover: toggled ? navigation.contrast['400'] : navigation.contrast.a08,
-            active: navigation.contrast.a08,
-        };
-        colors.text = {
-            normal: toggled ? navigation['300'] : navigation.contrast.a64,
-            hover: toggled ? navigation['300'] : navigation.contrast['300'],
-            active: toggled ? navigation['300'] : navigation.contrast['300'],
-        };
-    }
-
     if (destructive) {
         colors.bg = {
-            normal: alert.a00,
-            hover: inverted ? alert['400'] : alert.a08,
-            active: inverted ? alert['300'] : alert.a16,
+            normal: setAlpha(alert[300], 0),
+            hover: alert[300],
+            active: alert[400],
         };
         colors.text = {
-            normal: inverted ? navigation.contrast.a64 : alert['300'],
-            hover: inverted ? alert.contrast['300'] : alert['300'],
-            active: inverted ? alert.contrast['300'] : alert['300'],
+            normal: alert[300],
+            hover: alert.contrast[300],
+            active: alert.contrast[300],
         };
     }
 
     if (disabled) {
-        colors.bg = {
-            normal: content.a00,
-            hover: content.a00,
-            active: content.a00,
-        };
-        colors.text = {
-            normal: inverted ? navigation.contrast.a32 : content.contrast.a32,
-            hover: inverted ? navigation.contrast.a32 : content.contrast.a32,
-            active: inverted ? navigation.contrast.a32 : content.contrast.a32,
-        };
+        colors.bg.normal = setAlpha(text.primary, 0);
+        colors.text.normal = setAlpha(text.primary, 0.32);
     }
 
     const activeStyles = css`
@@ -91,17 +73,17 @@ const IconButtonRoot = styled.button.withConfig<PIconButtonRoot>({
               cursor: not-allowed;
           `
         : css`
-              :hover {
+              &:hover {
                   background: ${colors.bg.hover};
                   color: ${colors.text.hover};
               }
 
-              :active {
+              &:active {
                   ${activeStyles};
               }
 
               &:focus {
-                  box-shadow: inset 0 0 0 2px ${destructive ? alert['0'] : primary['0']};
+                  box-shadow: inset 0 0 0 2px ${destructive ? alert[0] : primary[0]};
               }
 
               &:focus:not(:focus-visible) {
@@ -109,7 +91,7 @@ const IconButtonRoot = styled.button.withConfig<PIconButtonRoot>({
               }
 
               &:focus-visible {
-                  box-shadow: inset 0 0 0 2px ${destructive ? alert['0'] : primary['0']};
+                  box-shadow: inset 0 0 0 2px ${destructive ? alert[0] : primary[0]};
               }
           `;
 
@@ -141,8 +123,9 @@ const IconButtonRoot = styled.button.withConfig<PIconButtonRoot>({
 
         ${active && activeStyles}
 
-        transition: background ${animation.fast} ease-in-out,
-                color ${animation.fast} ease-in-out, box-shadow ${animation.fast} ease-in-out;
+        transition-property: box-shadow, background-color, color;
+        transition-duration: ${animation.fast}ms;
+        transition-timing-function: linear;
     `;
 });
 

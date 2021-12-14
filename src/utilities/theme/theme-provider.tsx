@@ -3,19 +3,19 @@ import { ThemeProvider as StyledThemeProvider } from 'styled-components';
 
 import GlobalStyle from './global-styles';
 import { denim } from './themes';
-import type { TTheme } from './themes';
-import themeGenerator from './themes/theme-creator';
+import type { TCustomThemeColors } from './themes';
+import createTheme from './themes/create-theme';
 
 type PThemeProvider = {
-    theme?: TTheme;
+    themeColors?: TCustomThemeColors;
     children?: React.ReactNode | React.ReactNode[];
 };
 
-const ThemeProvider = ({ children = null }: PThemeProvider): JSX.Element => {
-    const newTheme = themeGenerator(denim);
+const ThemeProvider = ({ themeColors = denim, children = null }: PThemeProvider): JSX.Element => {
+    const theme = createTheme(themeColors);
 
     return (
-        <StyledThemeProvider theme={newTheme}>
+        <StyledThemeProvider theme={theme}>
             <GlobalStyle />
             {children}
         </StyledThemeProvider>

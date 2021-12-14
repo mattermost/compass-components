@@ -6,13 +6,13 @@ import { setAlpha } from '../../shared';
 
 import ThemeProvider from './theme-provider';
 import type { PThemeProvider } from './theme-provider';
-import { lightTheme } from './themes';
-import type { TTheme } from './themes';
+import { denim } from './themes';
+import type { TCustomThemeColors } from './themes';
 import type { PGlobalStyles } from './global-styles';
 
 const CanvasGlobalStyles = createGlobalStyle`
     body.sb-show-main.sb-main-centered {
-        background-color: ${(props: PGlobalStyles): string => props.theme.background.default};
+        background-color: ${(props: PGlobalStyles): string => props.theme.background.main};
         align-items: stretch;
 
         #root {
@@ -27,16 +27,16 @@ const CanvasGlobalStyles = createGlobalStyle`
 // storybook canvas- & docs-pages style overrides
 const DocumentationGlobalStyles = createGlobalStyle`
     body.sb-show-main {
-        background-color: ${({ theme }: PGlobalStyles): string => theme.background.default};
+        background-color: ${({ theme }: PGlobalStyles): string => theme.background.main};
         align-items: stretch;
 
         .sbdocs-wrapper {
             background-color: ${({ theme }: PGlobalStyles): string =>
-                theme.type === 'dark' ? 'transparent' : theme.background.default};
+                theme.type === 'dark' ? 'transparent' : theme.background.main};
 
             td {
                 background-color: ${({ theme }: PGlobalStyles): string =>
-                    theme.type === 'dark' ? theme.background.shape : '#FFF'};
+                    theme.type === 'dark' ? theme.background.light : '#FFF'};
             }
             
             h1, h2, h3, h4, h5, h6, p, th, td {
@@ -48,13 +48,13 @@ const DocumentationGlobalStyles = createGlobalStyle`
             
                 &:not(.sbdocs-subtitle) {
                     border-bottom: 1px solid ${({ theme }: PGlobalStyles): string =>
-                        setAlpha(theme.background.contrast, 0.25)};
+                        setAlpha(theme.background.dark, 0.25)};
                 }
             }
             
             hr {
                 border-top: 1px solid ${({ theme }: PGlobalStyles): string =>
-                    setAlpha(theme.background.contrast, 0.25)};
+                    setAlpha(theme.background.dark, 0.25)};
             }
         }
     }
@@ -62,16 +62,16 @@ const DocumentationGlobalStyles = createGlobalStyle`
 
 const CanvasThemeProvider = ({
     children = null,
-    theme = lightTheme,
+    themeColors = denim,
 }: PThemeProvider): JSX.Element => {
-    const [selectedTheme, setSelectedTheme] = useState<TTheme>(theme);
+    const [selectedThemeColors, setSelectedThemeColors] = useState<TCustomThemeColors>(themeColors);
 
     useEffect(() => {
-        setSelectedTheme(theme);
-    }, [theme]);
+        setSelectedThemeColors({ ...denim, ...themeColors });
+    }, [themeColors]);
 
     return (
-        <ThemeProvider theme={selectedTheme}>
+        <ThemeProvider themeColors={selectedThemeColors}>
             <CanvasGlobalStyles />
             {children}
         </ThemeProvider>
@@ -80,16 +80,16 @@ const CanvasThemeProvider = ({
 
 const DocumentationThemeProvider = ({
     children = null,
-    theme = lightTheme,
+    themeColors = denim,
 }: PThemeProvider): JSX.Element => {
-    const [selectedTheme, setSelectedTheme] = useState<TTheme>(theme);
+    const [selectedThemeColors, setSelectedThemeColors] = useState<TCustomThemeColors>(themeColors);
 
     useEffect(() => {
-        setSelectedTheme({ ...theme, noStyleReset: true });
-    }, [theme]);
+        setSelectedThemeColors(themeColors);
+    }, [themeColors]);
 
     return (
-        <ThemeProvider theme={selectedTheme}>
+        <ThemeProvider themeColors={selectedThemeColors}>
             <DocumentationGlobalStyles />
             {children}
         </ThemeProvider>

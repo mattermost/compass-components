@@ -161,7 +161,7 @@
         "no-return-await": "error",
         "require-await": "error",
         "no-await-in-loop": "error",
-        "prefer-destructuring": "error",
+        "prefer-destructuring": "off",
         "no-multi-assign": "error",
         "prefer-promise-reject-errors": "error",
         "no-compare-neg-zero": "error",

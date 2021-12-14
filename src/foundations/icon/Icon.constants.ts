@@ -17,9 +17,6 @@ const DEFAULT_ICON_GLYPH: TIconGlyph = 'mattermost';
 
 const ICON_COLORS: TIconColor[] = [
     'inherit',
-    'navigation',
-    'content',
-    'mention',
     'primary',
     'secondary',
     'tertiary',

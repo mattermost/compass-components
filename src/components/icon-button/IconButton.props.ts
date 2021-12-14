@@ -45,11 +45,6 @@ type PIconButton = {
      */
     disabled?: boolean;
     /**
-     * define if the icon is showing in an inverted style
-     * @default false
-     */
-    inverted?: boolean;
-    /**
      * show a label to the right of the Icon
      */
     label?: string;

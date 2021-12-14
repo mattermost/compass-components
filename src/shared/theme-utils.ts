@@ -1,6 +1,5 @@
 import colors from '../foundations/colors';
 import type { TBaseColorShade } from '../foundations/colors/colors.types';
-import type { TThemeColorDefinition } from '../utilities/theme';
 
 import { darken, getContrastRatio, lighten } from './color-utils';
 import Utils from './utils';
@@ -9,7 +8,7 @@ function getContrastText(background: string): string {
     return getContrastRatio('#000000', background) >= 7 ? '#000000' : '#FFFFFF';
 }
 
-function createThemeColor(color: string, shade: TBaseColorShade = 500): TThemeColorDefinition {
+function createThemeColor(color: string, shade: TBaseColorShade = 500): any {
     if (colors[color] && shade && colors[color][shade]) {
         if (shade <= 200) {
             Utils.warn(
@@ -34,7 +33,7 @@ function createThemeColor(color: string, shade: TBaseColorShade = 500): TThemeCo
         };
     }
 
-    const themeColor: TThemeColorDefinition = {
+    const themeColor: any = {
         lighter: '',
         light: lighten(color, 0.17),
         main: color,

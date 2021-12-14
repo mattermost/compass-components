@@ -1,6 +1,8 @@
 import React from 'react';
 
 import Icon from '../../foundations/icon';
+import Shape from '../../foundations/shape';
+import Grid from '../../utilities/grid';
 import Text from '../text';
 import { Utils } from '../../shared';
 
@@ -19,6 +21,12 @@ const Checkbox: React.FC<PCheckbox> = (props: PCheckbox): JSX.Element => {
         ...rest
     } = props;
 
+    Utils.assert(
+        hasError && disabled,
+        'A Checkbox cannot have props `disabled` and `hasError` enabled at the same time.',
+        true
+    );
+
     const hasLabel = Utils.isString(label) && label.length > 0;
 
     const rootProperties = {
@@ -28,13 +36,25 @@ const Checkbox: React.FC<PCheckbox> = (props: PCheckbox): JSX.Element => {
         checked,
     };
 
+    const { checkboxSize, iconSize, labelSize } = CHECKBOX_VALUES_MAPPING[size];
+
     return (
         <CheckboxRoot {...rootProperties} {...rest}>
             <input type={'checkbox'} checked={checked} onChange={onChange} />
-            <div>
-                <Icon glyph="check" size={CHECKBOX_VALUES_MAPPING[size].iconSize} />
-            </div>
-            {hasLabel && <Text element={'span'}>{label}</Text>}
+            <Grid
+                element={Shape}
+                placeItems={'center'}
+                width={checkboxSize}
+                height={checkboxSize}
+                radius={2}
+            >
+                <Icon glyph={checked ? 'check' : 'none'} size={iconSize} />
+            </Grid>
+            {hasLabel && (
+                <Text element={'span'} size={labelSize}>
+                    {label}
+                </Text>
+            )}
         </CheckboxRoot>
     );
 };

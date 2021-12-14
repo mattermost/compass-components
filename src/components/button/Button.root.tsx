@@ -4,9 +4,9 @@ import type { FlattenSimpleInterpolation, ThemedStyledProps } from 'styled-compo
 import Icon from '../../foundations/icon';
 import Spacing, { applyPadding } from '../../utilities/spacing';
 import { applyShape } from '../../foundations/shape';
-import type { TColorOpacities, TColorShades, TNewTheme } from '../../utilities/theme';
+import type { TTheme } from '../../utilities/theme';
 import { resetButton } from '../../utilities/theme/global-styles/reset-styles';
-import { Utils } from '../../shared';
+import { setAlpha, Utils } from '../../shared';
 import { applyTextMargin, applyTextStyles } from '../text';
 
 import { BUTTON_SIZE_MAP } from './Button.constants';
@@ -25,10 +25,12 @@ const ButtonIconRoot = styled(Icon).withConfig<PButtonIconRoot>({
 const ButtonRoot = styled.button.withConfig<PButtonRoot>({
     shouldForwardProp: (property, validator) =>
         Utils.blockProperty(property, ['width', 'disabled']) && validator(property),
-})((props: ThemedStyledProps<PButtonRoot, TNewTheme>): FlattenSimpleInterpolation => {
+})((props: ThemedStyledProps<PButtonRoot, TTheme>): FlattenSimpleInterpolation => {
     const {
         theme: {
-            palettes: { navigation, primary, content, secondary, alert },
+            palette: { primary, secondary, alert },
+            text,
+            animation,
             noStyleReset,
         },
         size,
@@ -36,70 +38,46 @@ const ButtonRoot = styled.button.withConfig<PButtonRoot>({
         variant,
         active,
         destructive,
-        inverted,
         disabled,
     } = props;
 
     const { height, spacing, labelSize } = BUTTON_SIZE_MAP[size];
-    const isInverted = inverted && !destructive;
     const isActive = active && !disabled;
 
-    let color = isInverted ? navigation.contrast : primary;
-    let text = isInverted ? navigation : primary.contrast;
+    const mainColor = destructive ? alert : primary;
 
-    const focusBorder = destructive ? alert['0'] : secondary['300'];
-
-    const shades: Record<string, TColorShades | TColorOpacities> = {
-        background: '300',
-        hover: '400',
-        active: '500',
-        text: disabled ? 'a32' : '300',
+    const colors: Record<string, string> = {
+        normal: mainColor[300],
+        hover: mainColor[400],
+        active: mainColor[500],
+        border: mainColor[300],
+        text: mainColor.contrast[300],
     };
-
-    // handle destructive here
-    if (destructive) {
-        color = alert;
-        text = alert.contrast;
-    }
 
     switch (variant) {
         case 'tertiary':
-            shades.background = isInverted ? 'a12' : 'a08';
-            shades.hover = isInverted ? 'a16' : 'a12';
-            shades.active = isInverted ? 'a24' : 'a16';
-
-            text = color;
+            colors.normal = setAlpha(mainColor[300], 0.08);
+            colors.hover = setAlpha(mainColor[300], 0.12);
+            colors.active = setAlpha(mainColor[300], 0.16);
+            colors.text = mainColor[300];
             break;
         case 'secondary':
-            shades.background = 'a00';
-            shades.hover = 'a08';
-            shades.active = 'a16';
-
-            text = color;
+            colors.normal = setAlpha(mainColor[300], 0);
+            colors.hover = setAlpha(mainColor[300], 0.08);
+            colors.active = setAlpha(mainColor[300], 0.16);
+            colors.text = mainColor[300];
             break;
         case 'primary':
         default:
+            break;
     }
 
-    // override values for disabled buttons
     if (disabled) {
-        color = isInverted ? navigation.contrast : content.contrast;
-        text = color;
-        shades.background = variant === 'secondary' ? 'a00' : 'a12';
+        colors.normal = setAlpha(text.primary, variant === 'secondary' ? 0 : 0.12);
+        colors.text = setAlpha(text.primary, 0.32);
     }
 
-    const borderStyles: FlattenSimpleInterpolation | null =
-        variant === 'secondary'
-            ? css`
-                  box-shadow: inset 0 0 0 1px ${color[shades.text]};
-              `
-            : css`
-                  box-shadow: none;
-              `;
-
-    const activeStyles = css`
-        background: ${color[shades.active]};
-    `;
+    const borderStyles = variant === 'secondary' ? `inset 0 0 0 1px ${colors.text}` : 'none';
 
     // disabled buttons do not have interactional states
     const actionStyles = disabled
@@ -108,19 +86,19 @@ const ButtonRoot = styled.button.withConfig<PButtonRoot>({
           `
         : css`
               &:hover {
-                  background: ${color[shades.hover]};
+                  background: ${colors.hover};
               }
               &:active {
-                  ${activeStyles};
+                  background: ${colors.active};
               }
               &:focus {
-                  box-shadow: inset 0 0 0 2px ${focusBorder};
+                  box-shadow: inset 0 0 0 2px ${destructive ? alert[0] : secondary[300]};
               }
               &:focus:not(:focus-visible) {
-                  ${borderStyles}
+                  box-shadow: ${borderStyles};
               }
               &:focus-visible {
-                  box-shadow: inset 0 0 0 2px ${focusBorder};
+                  box-shadow: inset 0 0 0 2px ${destructive ? alert[0] : secondary[300]};
               }
           `;
 
@@ -139,17 +117,20 @@ const ButtonRoot = styled.button.withConfig<PButtonRoot>({
         ${applyTextStyles({ inheritLineHeight: true, size: labelSize, weight: 'bold' })};
         ${applyTextMargin({ margin: 'none' })};
 
-        background-color: ${color[shades.background]};
-        color: ${text[shades.text]};
+        background-color: ${colors.normal};
+        color: ${colors.text};
 
-        ${borderStyles};
+        box-shadow: ${borderStyles};
 
         ${actionStyles};
 
-        ${isActive && activeStyles}
+        ${isActive &&
+        css`
+            background: ${colors.active};
+        `}
 
         transition-property: box-shadow, background-color, color;
-        transition-duration: 150ms;
+        transition-duration: ${animation.fast}ms;
         transition-timing-function: linear;
     `;
 });
