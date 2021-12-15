@@ -54,6 +54,6 @@ type PShapeRoot = Omit<PShape, 'className'>;
 
 type PApplyShape = Pick<PShape, 'width' | 'height' | 'radius'>;
 
-export type { PShapeRoot, PApplyShape };
+export type { PShapeRoot, PApplyShape, PShape };
 
 export default PShape;

@@ -11,7 +11,8 @@ type PThemeProvider = {
     children?: React.ReactNode | React.ReactNode[];
 };
 
-const ThemeProvider = ({ themeColors = denim, children = null }: PThemeProvider): JSX.Element => {
+const ThemeProvider = (props: PThemeProvider): JSX.Element => {
+    const { themeColors = denim, children = null } = props;
     const theme = createTheme(themeColors);
 
     return (
@@ -22,8 +23,15 @@ const ThemeProvider = ({ themeColors = denim, children = null }: PThemeProvider)
     );
 };
 
+const SectionThemeProvider = (props: PThemeProvider): JSX.Element => {
+    const { themeColors = denim, children = null } = props;
+    const theme = createTheme(themeColors);
+
+    return <StyledThemeProvider theme={theme}>{children}</StyledThemeProvider>;
+};
+
 export type { PThemeProvider };
 
-export { StyledThemeProvider as SectionThemeProvider };
+export { SectionThemeProvider };
 
 export default ThemeProvider;

@@ -109,16 +109,7 @@ Checkboxes are comprised of:
 
 export const ControlledCheckbox = (args) => {
     const [checked, setChecked] = useState(false);
-    return (
-        <Checkbox
-            {...args}
-            onChange={(event) => {
-                console.log('#### EVENT:', event);
-                setChecked(!checked);
-            }}
-            checked={checked}
-        />
-    );
+    return <Checkbox {...args} onChange={() => setChecked(!checked)} checked={checked} />;
 };
 
 <Canvas hidden>

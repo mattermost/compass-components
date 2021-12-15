@@ -82,8 +82,11 @@ const createTheme = (colors: TCustomThemeColors): TTheme => {
         mention = denim.mention,
     } = colors;
 
+    const backgroundContrastLuminance = getContrastLuminance(background);
+    const isDark = backgroundContrastLuminance > 50;
+
     return {
-        type: 'dark',
+        type: isDark ? 'dark' : 'light',
         elevationOpacity: 0.32,
         noStyleReset: false,
         noFontFaces: false,
@@ -103,8 +106,8 @@ const createTheme = (colors: TCustomThemeColors): TTheme => {
             dark: darken(background, 0.04),
         },
         text: {
-            primary: setLuminance(background, getContrastLuminance(background)),
-            secondary: setLuminance(background, getContrastLuminance(background) - 4),
+            primary: setLuminance(background, backgroundContrastLuminance),
+            secondary: setLuminance(background, backgroundContrastLuminance + (isDark ? -12 : 12)),
         },
         mention: createPaletteColor(mention),
         badges: {

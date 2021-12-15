@@ -20,7 +20,6 @@ import Shape from '../../foundations/shape';
 import { Utils } from '../../shared';
 import Text from '../text';
 import colors from '../../foundations/colors';
-import ThemeProvider, { darkTheme } from '../../utilities/theme';
 
 export const defaultArgs = {
     label: 'Button',
@@ -158,51 +157,6 @@ contained shape that is visible. In a group of Buttons, Tertiary Buttons should 
 Buttons have 6 different states: Default, Hover, Focus, Active, Disabled, and Loading.
 
 ## Button Variations
-
-### Inverted Style
-
-When buttons are used on backgrounds where contrast is compromised, the inverted style can be used.
-
-<ThemeProvider theme={darkTheme}>
-    <Flex padding={Spacing.symmetric({ vertical: 150 })} justify={'stretch'}>
-        <Flex
-            row
-            padding={Spacing.symmetric({ vertical: 150, horizontal: 25 })}
-            alignment={'center'}
-        >
-            <Flex justify={'center'} alignment={'center'} margin={boxMargin}>
-                <Shape backgroundColor={colors.blue[400]} width={150} height={150}>
-                    <Flex flex={1} justify={'center'} alignment={'center'} padding={boxPadding}>
-                        <Button {...defaultArgs} inverted />
-                    </Flex>
-                </Shape>
-                <Text weight={'bold'} size={200}>
-                    Primary
-                </Text>
-            </Flex>
-            <Flex justify={'center'} alignment={'center'} margin={boxMargin}>
-                <Shape backgroundColor={colors.blue[400]} width={150} height={150}>
-                    <Flex flex={1} justify={'center'} alignment={'center'} padding={boxPadding}>
-                        <Button {...defaultArgs} inverted variant={'secondary'} />
-                    </Flex>
-                </Shape>
-                <Text weight={'bold'} size={200}>
-                    Secondary
-                </Text>
-            </Flex>
-            <Flex justify={'center'} alignment={'center'} margin={boxMargin}>
-                <Shape backgroundColor={colors.blue[400]} width={150} height={150}>
-                    <Flex flex={1} justify={'center'} alignment={'center'} padding={boxPadding}>
-                        <Button {...defaultArgs} inverted variant={'tertiary'} />
-                    </Flex>
-                </Shape>
-                <Text weight={'bold'} size={200}>
-                    Tertiary
-                </Text>
-            </Flex>
-        </Flex>
-    </Flex>
-</ThemeProvider>
 
 ### Destructive Buttons
 

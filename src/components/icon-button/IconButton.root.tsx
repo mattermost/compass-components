@@ -101,6 +101,7 @@ const IconButtonRoot = styled.button.withConfig<PIconButtonRoot>({
         display: flex;
         align-items: center;
         justify-content: center;
+        place-self: flex-start;
 
         cursor: pointer;
 

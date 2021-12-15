@@ -14,17 +14,17 @@ import quartz from '../src/utilities/theme/themes/theme.quartz';
 
 const themes = [
     {
-        name: 'denim',
-        class: 'compass-denim',
-        color: denim.background,
-        definition: denim,
-        default: true,
-    },
-    {
         name: 'quartz',
         class: 'compass-quartz',
         color: quartz.background,
         definition: quartz,
+        default: true,
+    },
+    {
+        name: 'denim',
+        class: 'compass-denim',
+        color: denim.background,
+        definition: denim,
     },
 ];
 

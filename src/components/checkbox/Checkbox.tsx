@@ -51,7 +51,7 @@ const Checkbox: React.FC<PCheckbox> = (props: PCheckbox): JSX.Element => {
                 <Icon glyph={checked ? 'check' : 'none'} size={iconSize} />
             </Grid>
             {hasLabel && (
-                <Text element={'span'} size={labelSize}>
+                <Text element={'span'} size={labelSize} margin={'none'}>
                     {label}
                 </Text>
             )}
