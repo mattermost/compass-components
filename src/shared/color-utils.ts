@@ -521,6 +521,7 @@ export {
     setLuminance,
     getSaturation,
     setSaturation,
+    getHslValues,
     convertToRgb,
     convertToHsl,
     decomposeColor,

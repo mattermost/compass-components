@@ -57,7 +57,7 @@ const VDefaultStyles = css`
     ${generateDefaultHeadingStyles()}
 
     html, body {
-        background: ${({ theme }): string => theme.background.default};
+        background: ${({ theme }): string => theme.palette.background.default};
     }
 `;
 

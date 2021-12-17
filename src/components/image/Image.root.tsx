@@ -13,7 +13,9 @@ const ImageRoot = styled.img.withConfig<PImageRoot>({
         Utils.blockProperty(property) && validator(property),
 })((props: ThemedStyledProps<PImageRoot, TTheme>) => {
     const {
-        theme: { background, text },
+        theme: {
+            palette: { background, text },
+        },
         width,
         height,
         radius,

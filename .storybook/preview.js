@@ -2,34 +2,33 @@ import { addParameters, addDecorator } from '@storybook/react';
 import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport';
 import { withThemes } from 'storybook-addon-themes/react';
 
-addDecorator(withThemes);
-
 import {
     CanvasThemeProvider,
     DocumentationThemeProvider,
 } from '../src/utilities/theme/storybook-theme-provider';
 import { DocsContainer } from '@storybook/addon-docs/blocks';
-import { denim } from '../src/utilities/theme';
-import quartz from '../src/utilities/theme/themes/theme.quartz';
+import { denimTheme, quartzTheme } from '../src/utilities/theme';
+
+addDecorator(withThemes);
 
 const themes = [
     {
         name: 'quartz',
         class: 'compass-quartz',
-        color: quartz.background,
-        definition: quartz,
+        color: quartzTheme.palette.background.main,
+        definition: quartzTheme,
         default: true,
     },
     {
         name: 'denim',
         class: 'compass-denim',
-        color: denim.background,
-        definition: denim,
+        color: denimTheme.palette.background.main,
+        definition: denimTheme,
     },
 ];
 
 const CustomDecorator = ({ theme, children }) => (
-    <CanvasThemeProvider themeColors={theme.definition} children={children} />
+    <CanvasThemeProvider theme={theme.definition} children={children} />
 );
 
 addParameters({

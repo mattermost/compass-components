@@ -21,7 +21,7 @@ import type { PMentionBadgeRoot } from './MentionBadge.props';
 const getBadgeColors = (
     parameters: ThemedStyledProps<PMentionBadgeRoot, TTheme>
 ): FlattenSimpleInterpolation => {
-    const { inverted, theme, borderColor = theme.background.main } = parameters;
+    const { inverted, theme, borderColor = theme.palette.background.main } = parameters;
 
     if (inverted) {
         return css`
@@ -32,8 +32,8 @@ const getBadgeColors = (
     }
 
     return css`
-        color: ${theme.text.primary};
-        background-color: ${theme.background.dark};
+        color: ${theme.palette.text.primary};
+        background-color: ${theme.palette.background.dark};
         border: 2px solid ${borderColor};
     `;
 };

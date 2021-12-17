@@ -23,13 +23,14 @@ const IconButtonRoot = styled.button.withConfig<PIconButtonRoot>({
         destructive,
         disabled,
         theme: {
-            palette: { primary, alert },
-            text,
+            type,
+            palette: { primary, alert, text },
             animation,
             noStyleReset,
         },
     } = props;
 
+    const isDark = type === 'dark';
     const { spacing, compactSpacing, fontSize } = ICON_BUTTON_DEFINITIONS[size];
 
     const colors: Record<'bg' | 'text', Record<string, string>> = {
@@ -39,8 +40,8 @@ const IconButtonRoot = styled.button.withConfig<PIconButtonRoot>({
             active: setAlpha(primary[300], 0.08),
         },
         text: {
-            normal: toggled ? primary.contrast[300] : setAlpha(text.primary, 0.56),
-            hover: toggled ? primary.contrast[300] : setAlpha(text.primary, 0.72),
+            normal: toggled ? primary.contrast : setAlpha(text.primary, 0.56),
+            hover: toggled ? primary.contrast : setAlpha(text.primary, 0.72),
             active: primary[300],
         },
     };
@@ -48,13 +49,13 @@ const IconButtonRoot = styled.button.withConfig<PIconButtonRoot>({
     if (destructive) {
         colors.bg = {
             normal: setAlpha(alert[300], 0),
-            hover: alert[300],
-            active: alert[400],
+            hover: isDark ? alert[300] : setAlpha(alert[300], 0.08),
+            active: isDark ? alert[400] : setAlpha(alert[300], 0.16),
         };
         colors.text = {
             normal: alert[300],
-            hover: alert.contrast[300],
-            active: alert.contrast[300],
+            hover: isDark ? alert.contrast : alert[300],
+            active: isDark ? alert.contrast : alert[300],
         };
     }
 
@@ -83,7 +84,7 @@ const IconButtonRoot = styled.button.withConfig<PIconButtonRoot>({
               }
 
               &:focus {
-                  box-shadow: inset 0 0 0 2px ${destructive ? alert[0] : primary[0]};
+                  box-shadow: inset 0 0 0 2px ${destructive ? alert[100] : primary[100]};
               }
 
               &:focus:not(:focus-visible) {
@@ -91,7 +92,7 @@ const IconButtonRoot = styled.button.withConfig<PIconButtonRoot>({
               }
 
               &:focus-visible {
-                  box-shadow: inset 0 0 0 2px ${destructive ? alert[0] : primary[0]};
+                  box-shadow: inset 0 0 0 2px ${destructive ? alert[100] : primary[100]};
               }
           `;
 

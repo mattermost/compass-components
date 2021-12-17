@@ -23,20 +23,24 @@ type TThemeAnimations = {
 };
 
 type TCustomThemeColors = {
-    primary?: string;
-    secondary?: string;
-    tertiary?: string;
-    background?: string;
-    mention?: string;
+    primary?: string | TThemeColor;
+    secondary?: string | TThemeColor;
+    tertiary?: string | TThemeColor;
+    success?: string | TThemeColor;
+    warning?: string | TThemeColor;
+    alert?: string | TThemeColor;
+    info?: string | TThemeColor;
+    mention?: string | TThemeColor;
+    background?: string | TTHemeBackgroundColors;
 };
 
-type TColorShades = '0' | '50' | '100' | '200' | '300' | '400' | '500' | '600' | '700';
+type TColorShades = '100' | '200' | '300' | '400' | 'contrast';
 
 type TColorDefinition = {
     [k in TColorShades]: string;
 };
 
-type TThemeColor = TColorDefinition & { contrast: TColorDefinition };
+type TThemeColor = TColorDefinition & { contrast: string };
 
 type TTheme = {
     type: 'light' | 'dark';
@@ -54,10 +58,10 @@ type TTheme = {
         warning: TThemeColor;
         success: TThemeColor;
         info: TThemeColor;
+        background: TTHemeBackgroundColors;
+        text: TTHemeTextColors;
+        mention: TThemeColor;
     };
-    background: TTHemeBackgroundColors;
-    text: TTHemeTextColors;
-    mention: TThemeColor;
 };
 
 export type {

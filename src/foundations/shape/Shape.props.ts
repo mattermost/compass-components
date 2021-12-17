@@ -45,7 +45,7 @@ type PShape = PGlobals & {
     height?: number | string | 'auto';
     /**
      * custom background color
-     * @default theme.background.shape
+     * @default theme.palette.background.shape
      */
     backgroundColor?: string;
 };

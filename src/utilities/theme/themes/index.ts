@@ -1,6 +1,6 @@
-import denim from './theme.denim';
-import quartz from './theme.quartz';
+import denimTheme from './theme.denim';
+import quartzTheme from './theme.quartz';
 
 export * from './theme.types';
 
-export { denim, quartz };
+export { denimTheme, quartzTheme };

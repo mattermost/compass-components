@@ -15,8 +15,6 @@ const HeadingRoot = styled.h6<PHeadingRoot>(
             ${applyHeadingColor({ color, theme })};
             ${applyHeadingMargin({ margin, size })};
 
-            color: ${color};
-
             // animation
             body.enable-animations & {
                 transition: color ${theme.animation.fastest} 0s ease-in-out;

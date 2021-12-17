@@ -24,7 +24,7 @@ const ShapeRoot = styled.div.withConfig<PShapeRoot>({
             theme,
             padding,
             margin,
-            backgroundColor = theme.background.dark,
+            backgroundColor = theme.palette.background.dark,
         } = props;
 
         return css`

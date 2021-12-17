@@ -2,18 +2,19 @@ import React from 'react';
 import { ThemeProvider as StyledThemeProvider } from 'styled-components';
 
 import GlobalStyle from './global-styles';
-import { denim } from './themes';
-import type { TCustomThemeColors } from './themes';
-import createTheme from './themes/create-theme';
+import { denimTheme } from './themes';
+import type { TTheme } from './themes';
+
+// eslint-disable-next-line import/no-unassigned-import
+import '../../assets/fonts/fonts.css';
 
 type PThemeProvider = {
-    themeColors?: TCustomThemeColors;
+    theme?: TTheme;
     children?: React.ReactNode | React.ReactNode[];
 };
 
 const ThemeProvider = (props: PThemeProvider): JSX.Element => {
-    const { themeColors = denim, children = null } = props;
-    const theme = createTheme(themeColors);
+    const { theme = denimTheme, children = null } = props;
 
     return (
         <StyledThemeProvider theme={theme}>
@@ -24,8 +25,7 @@ const ThemeProvider = (props: PThemeProvider): JSX.Element => {
 };
 
 const SectionThemeProvider = (props: PThemeProvider): JSX.Element => {
-    const { themeColors = denim, children = null } = props;
-    const theme = createTheme(themeColors);
+    const { theme = denimTheme, children = null } = props;
 
     return <StyledThemeProvider theme={theme}>{children}</StyledThemeProvider>;
 };

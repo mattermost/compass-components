@@ -18,7 +18,7 @@ type PMentionBadge = {
     size?: TMentionBadgeSizeToken;
     /**
      * override the border color (to fake the transparent border/punch-out)
-     * @default theme.background.default
+     * @default theme.palette.background.default
      */
     borderColor?: string;
     /**

@@ -28,8 +28,7 @@ const ButtonRoot = styled.button.withConfig<PButtonRoot>({
 })((props: ThemedStyledProps<PButtonRoot, TTheme>): FlattenSimpleInterpolation => {
     const {
         theme: {
-            palette: { primary, secondary, alert },
-            text,
+            palette: { primary, secondary, alert, text },
             animation,
             noStyleReset,
         },
@@ -47,11 +46,11 @@ const ButtonRoot = styled.button.withConfig<PButtonRoot>({
     const mainColor = destructive ? alert : primary;
 
     const colors: Record<string, string> = {
-        normal: mainColor[300],
-        hover: mainColor[400],
-        active: mainColor[500],
+        normal: mainColor[200],
+        hover: mainColor[300],
+        active: mainColor[400],
         border: mainColor[300],
-        text: mainColor.contrast[300],
+        text: mainColor.contrast,
     };
 
     switch (variant) {
@@ -77,7 +76,7 @@ const ButtonRoot = styled.button.withConfig<PButtonRoot>({
         colors.text = setAlpha(text.primary, 0.32);
     }
 
-    const borderStyles = variant === 'secondary' ? `inset 0 0 0 1px ${colors.text}` : 'none';
+    const borderThickness = variant === 'secondary' ? 1 : 0;
 
     // disabled buttons do not have interactional states
     const actionStyles = disabled
@@ -92,13 +91,13 @@ const ButtonRoot = styled.button.withConfig<PButtonRoot>({
                   background: ${colors.active};
               }
               &:focus {
-                  box-shadow: inset 0 0 0 2px ${destructive ? alert[0] : secondary[300]};
+                  box-shadow: inset 0 0 0 2px ${destructive ? alert[100] : secondary[300]};
               }
               &:focus:not(:focus-visible) {
-                  box-shadow: ${borderStyles};
+                  box-shadow: inset 0 0 0 ${borderThickness}px ${colors.text};
               }
               &:focus-visible {
-                  box-shadow: inset 0 0 0 2px ${destructive ? alert[0] : secondary[300]};
+                  box-shadow: inset 0 0 0 2px ${destructive ? alert[100] : secondary[300]};
               }
           `;
 
@@ -120,7 +119,7 @@ const ButtonRoot = styled.button.withConfig<PButtonRoot>({
         background-color: ${colors.normal};
         color: ${colors.text};
 
-        box-shadow: ${borderStyles};
+        box-shadow: inset 0 0 0 ${borderThickness}px ${colors.text};
 
         ${actionStyles};
 

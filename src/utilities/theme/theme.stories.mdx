@@ -6,16 +6,17 @@ import Heading from '../../components/heading';
 import Button from '../../components/button';
 import Text from '../../components/text';
 
-import { denim, quartz } from './themes';
+import { denimTheme, quartzTheme } from './themes';
 import { SectionThemeProvider } from './theme-provider';
 import Grid from '../grid';
 import Checkbox from '../../components/checkbox';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import IconButton from '../../components/icon-button';
+import createTheme from './themes/create-theme';
 
 export const themes = {
-    denim,
-    quartz,
+    denimTheme,
+    quartzTheme,
 };
 
 <Meta title="Utilities/Theming" />
@@ -47,9 +48,23 @@ export const argTypes = {
     },
 };
 
+export const customColorArgTypes = {
+    primary: { control: 'color' },
+    secondary: { control: 'color' },
+    tertiary: { control: 'color' },
+    background: { control: 'color' },
+};
+
+export const customColorArgs = {
+    primary: denimTheme.palette.primary[300],
+    secondary: denimTheme.palette.secondary[300],
+    tertiary: denimTheme.palette.tertiary[300],
+    background: denimTheme.palette.background.main,
+};
+
 export const args = {
-    contentTheme: quartz,
-    leftTheme: denim,
+    contentTheme: quartzTheme,
+    leftTheme: denimTheme,
 };
 
 export const ControlledCheckbox = (args) => {
@@ -62,9 +77,9 @@ export const ControlledCheckbox = (args) => {
         {(args) => {
             return (
                 <Shape width={'100%'} height={'80vh'} backgroundColor={'#FFF'} elevation={4}>
-                    <SectionThemeProvider themeColors={args.contentTheme}>
+                    <SectionThemeProvider theme={args.contentTheme}>
                         <Grid columnsTemplate={'1fr 3fr'}>
-                            <SectionThemeProvider themeColors={args.leftTheme}>
+                            <SectionThemeProvider theme={args.leftTheme}>
                                 <Grid
                                     element={Shape}
                                     height={'100%'}
@@ -161,6 +176,171 @@ export const ControlledCheckbox = (args) => {
                                 >
                                     <IconButton onClick={() => {}} icon={'check-circle'} />
                                     <IconButton onClick={() => {}} icon={'check-circle'} toggled />
+                                    <IconButton onClick={() => {}} icon={'check-circle'} disabled />
+                                </Grid>
+                            </Grid>
+                        </Grid>
+                    </SectionThemeProvider>
+                </Shape>
+            );
+        }}
+    </Story>
+    <Story name="CutomColors" args={customColorArgs} argTypes={customColorArgTypes}>
+        {(args) => {
+            const [theme, setTheme] = useState(denimTheme);
+            useEffect(() => {
+                const timeOut = setTimeout(
+                    () => setTheme(createTheme({ primary: args.primary }, theme)),
+                    100
+                );
+                return () => clearTimeout(timeOut);
+            }, [args.primary]);
+            useEffect(() => {
+                const timeOut = setTimeout(
+                    () => setTheme(createTheme({ secondary: args.secondary }, theme)),
+                    100
+                );
+                return () => clearTimeout(timeOut);
+            }, [args.secondary]);
+            useEffect(() => {
+                const timeOut = setTimeout(
+                    () => setTheme(createTheme({ tertiary: args.tertiary }, theme)),
+                    100
+                );
+                return () => clearTimeout(timeOut);
+            }, [args.tertiary]);
+            useEffect(() => {
+                const timeOut = setTimeout(
+                    () => setTheme(createTheme({ background: args.background }, theme)),
+                    100
+                );
+                return () => clearTimeout(timeOut);
+            }, [args.background]);
+            return (
+                <Shape width={'100%'} height={'80vh'} backgroundColor={'#FFF'} elevation={4}>
+                    <SectionThemeProvider theme={quartzTheme}>
+                        <Grid columnsTemplate={'1fr 3fr'}>
+                            <SectionThemeProvider theme={theme}>
+                                <Grid
+                                    element={Shape}
+                                    height={'100%'}
+                                    padding={Spacing.all(200)}
+                                    placeContent={'start'}
+                                    radius={0}
+                                >
+                                    <Heading>Lorem ipsum</Heading>
+                                    <Text>
+                                        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
+                                        diam nonumy eirmod tempor invidunt ut labore et dolore magna
+                                        aliquyam erat, sed diam voluptua.
+                                    </Text>
+                                    <Button
+                                        label={'Lorem ipsum'}
+                                        onClick={() => {}}
+                                        icon={'check-circle'}
+                                    />
+                                    <Heading color={'secondary'} size={50}>
+                                        Lorem ipsum dolor
+                                    </Heading>
+                                    <Text color={'secondary'} size={50}>
+                                        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
+                                        diam nonumy eirmod tempor invidunt ut labore et dolore magna
+                                        aliquyam erat, sed diam voluptua.
+                                    </Text>
+                                    <Button
+                                        label={'Lorem ipsum'}
+                                        onClick={() => {}}
+                                        icon={'close-circle'}
+                                        variant={'secondary'}
+                                    />
+                                    <Heading color={'secondary'} size={50}>
+                                        Lorem ipsum dolor
+                                    </Heading>
+                                    <ControlledCheckbox onClick={() => {}} label={'Lorem'} />
+                                    <Grid
+                                        columnsTemplate={'1fr 1fr 1fr 1fr'}
+                                        placeContent={'space-between'}
+                                        gap={12}
+                                        padding={Spacing.all(50)}
+                                    >
+                                        <IconButton onClick={() => {}} icon={'check-circle'} />
+                                        <IconButton
+                                            onClick={() => {}}
+                                            icon={'check-circle'}
+                                            toggled
+                                        />
+                                        <IconButton
+                                            onClick={() => {}}
+                                            icon={'check-circle'}
+                                            destructive
+                                        />
+                                        <IconButton
+                                            onClick={() => {}}
+                                            icon={'check-circle'}
+                                            disabled
+                                        />
+                                    </Grid>
+                                </Grid>
+                            </SectionThemeProvider>
+                            <Grid
+                                element={Shape}
+                                height={'100%'}
+                                padding={Spacing.all(200)}
+                                placeContent={'start'}
+                                radius={0}
+                            >
+                                <Heading>This is a sub section heading</Heading>
+                                <Text>
+                                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
+                                    diam nonumy eirmod tempor invidunt ut labore et dolore magna
+                                    aliquyam erat, sed diam voluptua. At vero eos et accusam et
+                                    justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea
+                                    takimata sanctus est Lorem ipsum dolor sit amet.
+                                </Text>
+                                <Grid
+                                    columnsTemplate={'1fr 1fr 1fr'}
+                                    placeContent={'space-between'}
+                                    gap={'12px'}
+                                >
+                                    <Button
+                                        label={'Lorem ipsum'}
+                                        onClick={() => {}}
+                                        icon={'check-circle'}
+                                    />
+                                    <Button
+                                        label={'Lorem ipsum'}
+                                        onClick={() => {}}
+                                        icon={'minus-circle'}
+                                        variant={'secondary'}
+                                    />
+                                    <Button
+                                        label={'Lorem ipsum'}
+                                        onClick={() => {}}
+                                        icon={'close-circle'}
+                                        variant={'tertiary'}
+                                    />
+                                </Grid>
+                                <Heading color={'secondary'} size={50}>
+                                    Lorem ipsum dolor
+                                </Heading>
+                                <Text color={'secondary'} size={50}>
+                                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
+                                    diam nonumy eirmod tempor invidunt ut labore et dolore magna
+                                    aliquyam erat, sed diam voluptua.
+                                </Text>
+                                <Grid
+                                    columnsTemplate={'1fr 1fr 1fr 1fr'}
+                                    placeContent={'space-between'}
+                                    gap={12}
+                                    padding={Spacing.all(50)}
+                                >
+                                    <IconButton onClick={() => {}} icon={'check-circle'} />
+                                    <IconButton onClick={() => {}} icon={'check-circle'} toggled />
+                                    <IconButton
+                                        onClick={() => {}}
+                                        icon={'check-circle'}
+                                        destructive
+                                    />
                                     <IconButton onClick={() => {}} icon={'check-circle'} disabled />
                                 </Grid>
                             </Grid>

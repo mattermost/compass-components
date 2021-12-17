@@ -67,7 +67,7 @@ const applyTextColor = ({ color, theme }: PApplyTextColor): FlattenSimpleInterpo
     }
 
     return css`
-        color: ${theme?.text[color] || 'inherit'};
+        color: ${theme?.palette.text[color] || 'inherit'};
     `;
 };
 

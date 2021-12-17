@@ -15,8 +15,6 @@ const TextRoot = styled.p<PTextRoot>(
             ${applyTextColor({ color, theme })};
             ${applyTextMargin({ margin, size })};
 
-            color: ${color};
-
             body.enable-animations & {
                 transition: color ${theme.animation.fastest} 0s ease-in-out;
             }

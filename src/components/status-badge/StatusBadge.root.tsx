@@ -12,7 +12,7 @@ const StatusBadgeRoot = styled.div.withConfig({
     shouldForwardProp: (property, validator) =>
         Utils.blockProperty(property) && validator(property),
 })((props: ThemedStyledProps<PStatusBadgeRoot, TTheme>): FlattenSimpleInterpolation => {
-    const { theme, size, background = theme.background.main } = props;
+    const { theme, size, background = theme.palette.background.main } = props;
 
     return css`
         flex: 1;

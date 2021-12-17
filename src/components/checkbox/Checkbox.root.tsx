@@ -14,8 +14,7 @@ const CheckboxRoot = styled.label.withConfig({
 })<PCheckboxRoot>((props: ThemedStyledProps<PCheckboxRoot, TTheme>): FlattenSimpleInterpolation => {
     const {
         theme: {
-            palette: { primary, secondary, alert },
-            text,
+            palette: { primary, secondary, alert, text },
             animation,
         },
         hasError,
@@ -27,9 +26,9 @@ const CheckboxRoot = styled.label.withConfig({
 
     const backgroundColor = checked ? mainColor[300] : '#FFF';
     const borderColor = {
-        normal: hasError ? mainColor[0] : setAlpha(text.primary, 0.24),
-        hover: hasError ? mainColor[50] : setAlpha(text.primary, 0.48),
-        focus: hasError ? mainColor[100] : secondary[300],
+        normal: hasError ? mainColor[100] : setAlpha(text.primary, 0.24),
+        hover: hasError ? mainColor[200] : setAlpha(text.primary, 0.48),
+        focus: hasError ? mainColor[300] : secondary[300],
     };
 
     const activeStyles = disabled
@@ -66,7 +65,7 @@ const CheckboxRoot = styled.label.withConfig({
             + ${ShapeRoot} {
                 border: none;
                 background: ${backgroundColor};
-                color: ${mainColor.contrast[300]};
+                color: ${mainColor.contrast};
                 box-shadow: inset 0 0 0 1px ${borderColor.normal};
 
                 ${activeStyles};
