@@ -26,7 +26,7 @@ const IconRoot = styled.div<PIconRoot>((props: ThemedStyledProps<PIconRoot, TThe
         ${color &&
         color !== 'inherit' &&
         css`
-            color: ${theme.palette[color][300]};
+            color: ${theme.palette[color].dark};
 
             svg {
                 fill: currentColor;

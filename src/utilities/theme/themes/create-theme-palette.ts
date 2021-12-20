@@ -10,30 +10,30 @@ import type {
 
 function getDefaultPrimary(): TThemeColor {
     return {
-        '100': 'hsl(221, 77%, 56%)',
-        '200': 'hsl(221, 77%, 52%)',
-        '300': 'hsl(221, 77%, 48%)',
-        '400': 'hsl(221, 77%, 44%)',
+        light: 'hsl(221, 77%, 56%)',
+        main: 'hsl(221, 77%, 52%)',
+        dark: 'hsl(221, 77%, 48%)',
+        darker: 'hsl(221, 77%, 44%)',
         contrast: 'hsl(221, 77%, 100%)',
     };
 }
 
 function getDefaultSecondary(): TThemeColor {
     return {
-        '100': 'hsl(203, 83%, 64%)',
-        '200': 'hsl(203, 83%, 60%)',
-        '300': 'hsl(203, 83%, 56%)',
-        '400': 'hsl(203, 83%, 52%)',
+        light: 'hsl(203, 83%, 64%)',
+        main: 'hsl(203, 83%, 60%)',
+        dark: 'hsl(203, 83%, 56%)',
+        darker: 'hsl(203, 83%, 52%)',
         contrast: 'hsl(203, 83%, 0%)',
     };
 }
 
 function getDefaultTertiary(): TThemeColor {
     return {
-        '100': 'hsl(180, 79%, 64%)',
-        '200': 'hsl(180, 79%, 60%)',
-        '300': 'hsl(180, 79%, 56%)',
-        '400': 'hsl(180, 79%, 52%)',
+        light: 'hsl(180, 79%, 64%)',
+        main: 'hsl(180, 79%, 60%)',
+        dark: 'hsl(180, 79%, 56%)',
+        darker: 'hsl(180, 79%, 52%)',
         contrast: 'hsl(180, 79%, 0%)',
     };
 }
@@ -44,40 +44,40 @@ function getDefaultMention(): TThemeColor {
 
 function getDefaultSuccess(): TThemeColor {
     return {
-        '100': 'hsl(156, 50%, 56%)',
-        '200': 'hsl(156, 50%, 52%)',
-        '300': 'hsl(156, 50%, 48%)',
-        '400': 'hsl(156, 50%, 44%)',
+        light: 'hsl(156, 50%, 56%)',
+        main: 'hsl(156, 50%, 52%)',
+        dark: 'hsl(156, 50%, 48%)',
+        darker: 'hsl(156, 50%, 44%)',
         contrast: 'hsl(156, 50%, 100%)',
     };
 }
 
 function getDefaultWarning(): TThemeColor {
     return {
-        '100': 'hsl(42, 100%, 64%)',
-        '200': 'hsl(42, 100%, 60%)',
-        '300': 'hsl(42, 100%, 56%)',
-        '400': 'hsl(42, 100%, 52%)',
+        light: 'hsl(42, 100%, 64%)',
+        main: 'hsl(42, 100%, 60%)',
+        dark: 'hsl(42, 100%, 56%)',
+        darker: 'hsl(42, 100%, 52%)',
         contrast: 'hsl(42, 100%, 0%)',
     };
 }
 
 function getDefaultAlert(): TThemeColor {
     return {
-        '100': 'hsl(359, 60%, 64%)',
-        '200': 'hsl(359, 60%, 60%)',
-        '300': 'hsl(359, 60%, 56%)',
-        '400': 'hsl(359, 60%, 52%)',
+        light: 'hsl(359, 60%, 64%)',
+        main: 'hsl(359, 60%, 60%)',
+        dark: 'hsl(359, 60%, 56%)',
+        darker: 'hsl(359, 60%, 52%)',
         contrast: 'hsl(359, 60%, 100%)',
     };
 }
 
 function getDefaultInfo(): TThemeColor {
     return {
-        '100': 'hsl(221, 77%, 72%)',
-        '200': 'hsl(221, 77%, 68%)',
-        '300': 'hsl(221, 77%, 64%)',
-        '400': 'hsl(221, 77%, 60%)',
+        light: 'hsl(221, 77%, 72%)',
+        main: 'hsl(221, 77%, 68%)',
+        dark: 'hsl(221, 77%, 64%)',
+        darker: 'hsl(221, 77%, 60%)',
         contrast: 'hsl(221, 77%, 100%)',
     };
 }
@@ -121,10 +121,10 @@ const createPaletteColor = (color: string, saturation?: number): TThemeColor => 
     contrastValues[2] = getContrastLuminance(values);
 
     return {
-        100: recomposeHSLA([h, s, Utils.clamp(l + 4, 0, 100), a]),
-        200: color,
-        300: recomposeHSLA([h, s, Utils.clamp(l - 4, 0, 100), a]),
-        400: recomposeHSLA([h, s, Utils.clamp(l - 8, 0, 100), a]),
+        light: recomposeHSLA([h, s, Utils.clamp(l + 4, 0, 100), a]),
+        main: color,
+        dark: recomposeHSLA([h, s, Utils.clamp(l - 4, 0, 100), a]),
+        darker: recomposeHSLA([h, s, Utils.clamp(l - 8, 0, 100), a]),
         contrast: recomposeHSLA(contrastValues),
     };
 };
@@ -144,7 +144,7 @@ const createText = (color: string): TTHemeTextColors => {
 
     contrastValues[2] = getContrastLuminance(contrastValues);
 
-    const [h, sIgnore, l, a = 1] = contrastValues;
+    const [h, , l, a = 1] = contrastValues;
 
     return {
         primary: recomposeHSLA([h, 12, l, a]),

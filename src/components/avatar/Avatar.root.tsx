@@ -62,7 +62,7 @@ const AvatarRoot = styled.button.withConfig<PAvatarRoot>({
             ${isActive &&
             css`
                 box-shadow: 0 0 0 3px ${theme.palette.background.main},
-                    0 0 0 6px ${theme.palette.secondary[300]};
+                    0 0 0 6px ${theme.palette.secondary.dark};
 
                 transform: scale(${scaleFactor}, ${scaleFactor});
             `}
@@ -71,7 +71,7 @@ const AvatarRoot = styled.button.withConfig<PAvatarRoot>({
             css`
                 &:hover {
                     box-shadow: 0 0 0 ${borderSize}px ${theme.palette.background.main},
-                        0 0 0 ${borderSize * 2}px ${theme.palette.primary[300]};
+                        0 0 0 ${borderSize * 2}px ${theme.palette.primary.dark};
 
                     transform: scale(${scaleFactor}, ${scaleFactor});
                 }

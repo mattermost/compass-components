@@ -32,15 +32,15 @@ const TextInputRoot = styled.div.withConfig<PTextInputRoot>({
     const hasValue = Utils.isString(value) && value.length > 0;
     const isClearable = Utils.isFunction(onClear);
     const colors: Record<string, string> = {
-        active: hasError ? palette.alert[300] : palette.primary[300],
+        active: hasError ? palette.alert.dark : palette.primary.dark,
         text: palette.text.primary,
         background: backgroundColor,
         action: setAlpha(palette.text.primary, 0.24),
-        border: active ? palette.primary[300] : palette.text.secondary,
+        border: active ? palette.primary.dark : palette.text.secondary,
     };
 
     if (hasError) {
-        colors.border = palette.alert[300];
+        colors.border = palette.alert.dark;
     }
 
     if (disabled) {

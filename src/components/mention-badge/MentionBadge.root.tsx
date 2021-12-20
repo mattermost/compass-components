@@ -26,7 +26,7 @@ const getBadgeColors = (
     if (inverted) {
         return css`
             background-color: ${theme.palette.primary.contrast};
-            color: ${theme.palette.primary[300]};
+            color: ${theme.palette.primary.dark};
             border: 2px solid ${borderColor};
         `;
     }

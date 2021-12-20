@@ -34,7 +34,7 @@ type TCustomThemeColors = {
     background?: string | TTHemeBackgroundColors;
 };
 
-type TColorShades = '100' | '200' | '300' | '400' | 'contrast';
+type TColorShades = 'light' | 'main' | 'dark' | 'darker' | 'contrast';
 
 type TColorDefinition = {
     [k in TColorShades]: string;

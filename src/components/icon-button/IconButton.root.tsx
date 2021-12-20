@@ -35,27 +35,27 @@ const IconButtonRoot = styled.button.withConfig<PIconButtonRoot>({
 
     const colors: Record<'bg' | 'text', Record<string, string>> = {
         bg: {
-            normal: toggled ? primary[300] : setAlpha(text.primary, 0),
-            hover: toggled ? primary[400] : setAlpha(text.primary, 0.08),
-            active: setAlpha(primary[300], 0.08),
+            normal: toggled ? primary.dark : setAlpha(text.primary, 0),
+            hover: toggled ? primary.darker : setAlpha(text.primary, 0.08),
+            active: setAlpha(primary.dark, 0.08),
         },
         text: {
             normal: toggled ? primary.contrast : setAlpha(text.primary, 0.56),
             hover: toggled ? primary.contrast : setAlpha(text.primary, 0.72),
-            active: primary[300],
+            active: primary.dark,
         },
     };
 
     if (destructive) {
         colors.bg = {
-            normal: setAlpha(alert[300], 0),
-            hover: isDark ? alert[300] : setAlpha(alert[300], 0.08),
-            active: isDark ? alert[400] : setAlpha(alert[300], 0.16),
+            normal: setAlpha(alert.dark, 0),
+            hover: isDark ? alert.dark : setAlpha(alert.dark, 0.08),
+            active: isDark ? alert.darker : setAlpha(alert.dark, 0.16),
         };
         colors.text = {
-            normal: alert[300],
-            hover: isDark ? alert.contrast : alert[300],
-            active: isDark ? alert.contrast : alert[300],
+            normal: alert.dark,
+            hover: isDark ? alert.contrast : alert.dark,
+            active: isDark ? alert.contrast : alert.dark,
         };
     }
 
@@ -84,7 +84,7 @@ const IconButtonRoot = styled.button.withConfig<PIconButtonRoot>({
               }
 
               &:focus {
-                  box-shadow: inset 0 0 0 2px ${destructive ? alert[100] : primary[100]};
+                  box-shadow: inset 0 0 0 2px ${destructive ? alert.light : primary.light};
               }
 
               &:focus:not(:focus-visible) {
@@ -92,7 +92,7 @@ const IconButtonRoot = styled.button.withConfig<PIconButtonRoot>({
               }
 
               &:focus-visible {
-                  box-shadow: inset 0 0 0 2px ${destructive ? alert[100] : primary[100]};
+                  box-shadow: inset 0 0 0 2px ${destructive ? alert.light : primary.light};
               }
           `;
 

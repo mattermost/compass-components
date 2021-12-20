@@ -46,25 +46,25 @@ const ButtonRoot = styled.button.withConfig<PButtonRoot>({
     const mainColor = destructive ? alert : primary;
 
     const colors: Record<string, string> = {
-        normal: mainColor[200],
-        hover: mainColor[300],
-        active: mainColor[400],
-        border: mainColor[300],
+        normal: mainColor.main,
+        hover: mainColor.dark,
+        active: mainColor.darker,
+        border: mainColor.dark,
         text: mainColor.contrast,
     };
 
     switch (variant) {
         case 'tertiary':
-            colors.normal = setAlpha(mainColor[300], 0.08);
-            colors.hover = setAlpha(mainColor[300], 0.12);
-            colors.active = setAlpha(mainColor[300], 0.16);
-            colors.text = mainColor[300];
+            colors.normal = setAlpha(mainColor.dark, 0.08);
+            colors.hover = setAlpha(mainColor.dark, 0.12);
+            colors.active = setAlpha(mainColor.dark, 0.16);
+            colors.text = mainColor.dark;
             break;
         case 'secondary':
-            colors.normal = setAlpha(mainColor[300], 0);
-            colors.hover = setAlpha(mainColor[300], 0.08);
-            colors.active = setAlpha(mainColor[300], 0.16);
-            colors.text = mainColor[300];
+            colors.normal = setAlpha(mainColor.dark, 0);
+            colors.hover = setAlpha(mainColor.dark, 0.08);
+            colors.active = setAlpha(mainColor.dark, 0.16);
+            colors.text = mainColor.dark;
             break;
         case 'primary':
         default:
@@ -91,13 +91,13 @@ const ButtonRoot = styled.button.withConfig<PButtonRoot>({
                   background: ${colors.active};
               }
               &:focus {
-                  box-shadow: inset 0 0 0 2px ${destructive ? alert[100] : secondary[300]};
+                  box-shadow: inset 0 0 0 2px ${destructive ? alert.light : secondary.dark};
               }
               &:focus:not(:focus-visible) {
                   box-shadow: inset 0 0 0 ${borderThickness}px ${colors.text};
               }
               &:focus-visible {
-                  box-shadow: inset 0 0 0 2px ${destructive ? alert[100] : secondary[300]};
+                  box-shadow: inset 0 0 0 2px ${destructive ? alert.light : secondary.dark};
               }
           `;
 

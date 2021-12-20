@@ -24,11 +24,11 @@ const CheckboxRoot = styled.label.withConfig({
 
     const mainColor = hasError ? alert : primary;
 
-    const backgroundColor = checked ? mainColor[300] : '#FFF';
+    const backgroundColor = checked ? mainColor.dark : '#FFF';
     const borderColor = {
-        normal: hasError ? mainColor[100] : setAlpha(text.primary, 0.24),
-        hover: hasError ? mainColor[200] : setAlpha(text.primary, 0.48),
-        focus: hasError ? mainColor[300] : secondary[300],
+        normal: hasError ? mainColor.light : setAlpha(text.primary, 0.24),
+        hover: hasError ? mainColor.main : setAlpha(text.primary, 0.48),
+        focus: hasError ? mainColor.dark : secondary.dark,
     };
 
     const activeStyles = disabled
