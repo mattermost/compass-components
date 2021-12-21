@@ -49,10 +49,58 @@ export const argTypes = {
 };
 
 export const customColorArgTypes = {
-    primary: { control: 'color' },
-    secondary: { control: 'color' },
-    tertiary: { control: 'color' },
-    background: { control: 'color' },
+    primary: {
+        control: 'color',
+        table: {
+            category: 'Left Theme',
+        },
+    },
+    secondary: {
+        control: 'color',
+        description: 'currently not visible with the demo',
+        table: {
+            category: 'Left Theme',
+        },
+    },
+    tertiary: {
+        control: 'color',
+        table: {
+            category: 'Left Theme',
+            subcategory: 'not visible',
+        },
+    },
+    background: {
+        control: 'color',
+        table: {
+            category: 'Left Theme',
+        },
+    },
+    primaryRight: {
+        control: 'color',
+        table: {
+            category: 'Right Theme',
+        },
+    },
+    secondaryRight: {
+        control: 'color',
+        description: 'currently not visible with the demo',
+        table: {
+            category: 'Right Theme',
+        },
+    },
+    tertiaryRight: {
+        control: 'color',
+        table: {
+            category: 'Right Theme',
+            subcategory: 'not visible',
+        },
+    },
+    backgroundRight: {
+        control: 'color',
+        table: {
+            category: 'Right Theme',
+        },
+    },
 };
 
 export const customColorArgs = {
@@ -60,6 +108,10 @@ export const customColorArgs = {
     secondary: denimTheme.palette.secondary.dark,
     tertiary: denimTheme.palette.tertiary.dark,
     background: denimTheme.palette.background.main,
+    primaryRight: quartzTheme.palette.primary.dark,
+    secondaryRight: quartzTheme.palette.secondary.dark,
+    tertiaryRight: quartzTheme.palette.tertiary.dark,
+    backgroundRight: quartzTheme.palette.background.main,
 };
 
 export const args = {
@@ -187,40 +239,73 @@ export const ControlledCheckbox = (args) => {
     </Story>
     <Story name="CutomColors" args={customColorArgs} argTypes={customColorArgTypes}>
         {(args) => {
-            const [theme, setTheme] = useState(denimTheme);
+            const [leftTheme, setLeftTheme] = useState(denimTheme);
+            const [rightTheme, setRightTheme] = useState(quartzTheme);
             useEffect(() => {
                 const timeOut = setTimeout(
-                    () => setTheme(createTheme({ primary: args.primary }, theme)),
+                    () => setLeftTheme(createTheme({ primary: args.primary }, leftTheme)),
                     100
                 );
                 return () => clearTimeout(timeOut);
             }, [args.primary]);
             useEffect(() => {
                 const timeOut = setTimeout(
-                    () => setTheme(createTheme({ secondary: args.secondary }, theme)),
+                    () => setLeftTheme(createTheme({ secondary: args.secondary }, leftTheme)),
                     100
                 );
                 return () => clearTimeout(timeOut);
             }, [args.secondary]);
             useEffect(() => {
                 const timeOut = setTimeout(
-                    () => setTheme(createTheme({ tertiary: args.tertiary }, theme)),
+                    () => setLeftTheme(createTheme({ tertiary: args.tertiary }, leftTheme)),
                     100
                 );
                 return () => clearTimeout(timeOut);
             }, [args.tertiary]);
             useEffect(() => {
                 const timeOut = setTimeout(
-                    () => setTheme(createTheme({ background: args.background }, theme)),
+                    () => setLeftTheme(createTheme({ background: args.background }, leftTheme)),
                     100
                 );
                 return () => clearTimeout(timeOut);
             }, [args.background]);
+            useEffect(() => {
+                const timeOut = setTimeout(
+                    () => setRightTheme(createTheme({ primary: args.primaryRight }, rightTheme)),
+                    100
+                );
+                return () => clearTimeout(timeOut);
+            }, [args.primaryRight]);
+            useEffect(() => {
+                const timeOut = setTimeout(
+                    () =>
+                        setRightTheme(createTheme({ secondary: args.secondaryRight }, rightTheme)),
+                    100
+                );
+                return () => clearTimeout(timeOut);
+            }, [args.secondaryRight]);
+            useEffect(() => {
+                const timeOut = setTimeout(
+                    () => setRightTheme(createTheme({ tertiary: args.tertiaryRight }, rightTheme)),
+                    100
+                );
+                return () => clearTimeout(timeOut);
+            }, [args.tertiaryRight]);
+            useEffect(() => {
+                const timeOut = setTimeout(
+                    () =>
+                        setRightTheme(
+                            createTheme({ background: args.backgroundRight }, rightTheme)
+                        ),
+                    100
+                );
+                return () => clearTimeout(timeOut);
+            }, [args.backgroundRight]);
             return (
                 <Shape width={'100%'} height={'80vh'} backgroundColor={'#FFF'} elevation={4}>
-                    <SectionThemeProvider theme={quartzTheme}>
+                    <SectionThemeProvider theme={rightTheme}>
                         <Grid columnsTemplate={'1fr 3fr'}>
-                            <SectionThemeProvider theme={theme}>
+                            <SectionThemeProvider theme={leftTheme}>
                                 <Grid
                                     element={Shape}
                                     height={'100%'}
