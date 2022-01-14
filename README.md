@@ -3,7 +3,7 @@
 The compass components package is the implementation of the [compass design system](https://zeroheight.com/29be2c109/p/995619-compass-design-system)
 meant (but not limited) to be used in the mattermost products: Messaging, Playbooks and Focalboard.
 
-The intention behind the püackage is to create a unified look and feel across the products.
+The intention behind the package is to create a unified look and feel across the products.
 
 ## Use compass components in your project
 
@@ -17,7 +17,7 @@ The intention behind the püackage is to create a unified look and feel across t
 
 2. import `ThemeProvider` in your application root
 
-    In order for the compass components to be syled correctly you need to wrap your applcation in a `ThemeProvider`.
+    In order for the compass components to be styled correctly you need to wrap your application in a `ThemeProvider`.
 
     It also manages custom themes for your application (if you wish so).
 
@@ -33,7 +33,7 @@ The intention behind the püackage is to create a unified look and feel across t
 
 ### Example
 
-This is just a basic exmaple how the `ThemeProvider` can be used to provide a theme and toggle between two themes
+This is just a basic example how the `ThemeProvider` can be used to provide a theme and toggle between two themes
 
 ```typescript jsx
 import { useState } from 'react';
@@ -89,8 +89,8 @@ export default App;
     npm install --legacy-peer-deps
     ```
 
-    > **NOTE:** adding the flag `--legacy-peer-deps` is curently needed when there is no valid `package-lock.json` in
-    > place, since `peerDependencies` differ fand cannot be resolved for storybook and other packages.
+    > **NOTE:** adding the flag `--legacy-peer-deps` is currently needed when there is no valid `package-lock.json` in
+    > place, since `peerDependencies` differ and cannot be resolved for storybook and other packages.
 
 3. Run storybook
 
@@ -107,7 +107,7 @@ export default App;
 -   node version 16.x
 -   npm version 7.x
 
-## How to contriute
+## How to contribute
 
 As we are a company committed to open-source we welcome every contribution from the wider community.
 This section should outline the very basic steps to contribute to the project.
@@ -168,7 +168,7 @@ installing it in your project (but it will give you a command to do so :D)
 npm run pack
 ```
 
-after the scrpt finishes it gives you a command to run in your project root, that should look simething like this:
+after the script finishes it gives you a command to run in your project root, that should look something like this:
 
 ```shell
 npm install -S "$COMPASS_COMPONENTS_PACKAGE_PATH"
