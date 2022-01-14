@@ -28,8 +28,8 @@ const Icon = (props: PIcon): JSX.Element => {
     );
 
     const rootProperties = {
-        size,
-        color,
+        $size: size,
+        $color: color,
         glyph,
         className: `${className} icon-${glyph}`,
     };

@@ -1,3 +1,5 @@
+import type { TransientProperty } from '../../shared/type-utils';
+
 import type { TIconColor, TIconGlyph, TIconSize } from './Icon.types';
 
 type PIcon = {
@@ -30,7 +32,8 @@ type PIcon = {
     onClick?: () => void;
 };
 
-export type PIconRoot = Required<Pick<PIcon, 'size' | 'color' | 'glyph'>> &
+export type PIconRoot = TransientProperty<Required<Pick<PIcon, 'size' | 'color'>>> &
+    Required<Pick<PIcon, 'glyph'>> &
     Pick<PIcon, 'ariaLabel' | 'className'>;
 
 export default PIcon;
