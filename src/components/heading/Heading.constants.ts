@@ -102,7 +102,7 @@ const DEFAULT_HEADING_WEIGHT: THeadingWeight = 'bold';
 
 const DEFAULT_HEADING_MARGIN: THeadingMargin = 'both';
 
-const DEFAULT_HEADING_COLOR: THeadingColor = 'inherit';
+const DEFAULT_HEADING_COLOR: THeadingColor = 'primary';
 
 export {
     HEADING_DEFINITIONS,

@@ -26,7 +26,6 @@ const IconButton = React.forwardRef(
             element = DEFAULT_ICON_BUTTON_ELEMENT,
             size = DEFAULT_ICON_BUTTON_SIZE,
             compact = false,
-            inverted = false,
             toggled = false,
             active = false,
             destructive = false,
@@ -45,7 +44,6 @@ const IconButton = React.forwardRef(
         const rootProperties = {
             size,
             compact,
-            inverted,
             toggled,
             active,
             destructive,

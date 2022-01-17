@@ -12,6 +12,14 @@ import CheckboxImg from '../../assets/images/example-checkbox.png';
 import { DEFAULT_CHECKBOX_SIZE, CHECKBOX_SIZES } from './Checkbox.constants';
 import Checkbox from './index';
 
+export const defaultArgs = {
+    label: 'Default Label',
+    size: DEFAULT_CHECKBOX_SIZE,
+    checked: false,
+    disabled: false,
+    hasError: false,
+};
+
 <Meta component={Checkbox} title="Components/Checkbox" />
 
 <Title>Checkboxes</Title>
@@ -99,26 +107,9 @@ Checkboxes are comprised of:
 
 <ArgsTable of={Checkbox} exclude={[...DEFAULT_ARGUMENTS_TABLE_EXCLUSION]} />
 
-export const defaultArgs = {
-    label: 'Default Label',
-    size: DEFAULT_CHECKBOX_SIZE,
-    checked: false,
-    disabled: false,
-    hasError: false,
-};
-
 export const ControlledCheckbox = (args) => {
     const [checked, setChecked] = useState(false);
-    return (
-        <Checkbox
-            {...args}
-            onChange={(event) => {
-                console.log('#### EVENT:', event);
-                setChecked(!checked);
-            }}
-            checked={checked}
-        />
-    );
+    return <Checkbox {...args} onChange={() => setChecked(!checked)} checked={checked} />;
 };
 
 <Canvas hidden>

@@ -13,7 +13,9 @@ const ImageRoot = styled.img.withConfig<PImageRoot>({
         Utils.blockProperty(property) && validator(property),
 })((props: ThemedStyledProps<PImageRoot, TTheme>) => {
     const {
-        theme: { background, border },
+        theme: {
+            palette: { background, text },
+        },
         width,
         height,
         radius,
@@ -22,8 +24,8 @@ const ImageRoot = styled.img.withConfig<PImageRoot>({
 
     const thumbnailStyles = thumbnail
         ? css`
-              background-color: ${background.default};
-              border: 1px solid ${border.disabled};
+              background-color: ${background.main};
+              border: 1px solid ${text.secondary};
 
               ${applyPadding(Spacing.all(50))};
               ${applyShape({ radius })};

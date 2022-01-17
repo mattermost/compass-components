@@ -1,7 +1,5 @@
 import type { MutableRefObject, ReactNode } from 'react';
 
-import type { TonClickAwayCallback } from '../../shared';
-
 import type { TPopoverOffset, TPopoverPlacement } from './Popover.types';
 
 type PPopover = {
@@ -43,7 +41,7 @@ type PPopover = {
      * this is very useful for setting isVisible state, or perform other actions
      * when clicking away.
      */
-    onClickAway?: TonClickAwayCallback;
+    onClickAway?: (event: Event) => void;
     /**
      * custom className
      */

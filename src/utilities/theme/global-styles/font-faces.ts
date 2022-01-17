@@ -1,4 +1,4 @@
-import { css } from 'styled-components';
+import { createGlobalStyle } from 'styled-components';
 
 import MetropolisSemiBold from '../../../assets/fonts/Metropolis-SemiBold.woff2';
 import MetropolisSemiBoldItalic from '../../../assets/fonts/Metropolis-SemiBoldItalic.woff2';
@@ -13,7 +13,7 @@ import OpenSansItalic from '../../../assets/fonts/OpenSans-Italic.woff2';
 import OpenSansLight from '../../../assets/fonts/OpenSans-Light.woff2';
 import OpenSansLightItalic from '../../../assets/fonts/OpenSans-LightItalic.woff2';
 
-const VFontFaces = css`
+const GlobalFontFaces = createGlobalStyle`
     // Metropolis font definitions
     @font-face {
         font-family: 'Metropolis';
@@ -91,4 +91,4 @@ const VFontFaces = css`
     }
 `;
 
-export default VFontFaces;
+export default GlobalFontFaces;

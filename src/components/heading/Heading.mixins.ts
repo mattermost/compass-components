@@ -69,7 +69,7 @@ const applyHeadingColor = ({ color, theme }: PApplyHeadingColor): FlattenSimpleI
     }
 
     return css`
-        color: ${theme?.text[color] || 'inherit'};
+        color: ${theme?.palette.text[color] || 'inherit'};
     `;
 };
 

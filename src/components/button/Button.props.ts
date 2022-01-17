@@ -27,12 +27,6 @@ type PButton = {
      */
     destructive?: boolean;
     /**
-     * in some cases it is useful to show an inverted version of the button
-     * to increase visibility and readability
-     * @default false
-     */
-    inverted?: boolean;
-    /**
      * disable a button with this property. It won't be clickable and shows a
      * visual hint on the cursor, that interaction is not possible
      * @default false
@@ -78,7 +72,7 @@ type PButton = {
 };
 
 type PButtonRoot = Required<
-    Pick<PButton, 'active' | 'destructive' | 'inverted' | 'disabled' | 'variant' | 'width' | 'size'>
+    Pick<PButton, 'active' | 'destructive' | 'disabled' | 'variant' | 'width' | 'size'>
 >;
 
 type PButtonIconRoot = {

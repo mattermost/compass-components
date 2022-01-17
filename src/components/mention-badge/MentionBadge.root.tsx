@@ -21,19 +21,19 @@ import type { PMentionBadgeRoot } from './MentionBadge.props';
 const getBadgeColors = (
     parameters: ThemedStyledProps<PMentionBadgeRoot, TTheme>
 ): FlattenSimpleInterpolation => {
-    const { inverted, theme, borderColor = theme.background.default } = parameters;
+    const { inverted, theme, borderColor = theme.palette.background.main } = parameters;
 
     if (inverted) {
         return css`
             background-color: ${theme.palette.primary.contrast};
-            color: ${theme.palette.primary.main};
+            color: ${theme.palette.primary.dark};
             border: 2px solid ${borderColor};
         `;
     }
 
     return css`
-        color: ${theme.text.contrast};
-        background-color: ${theme.background.badge};
+        color: ${theme.palette.text.primary};
+        background-color: ${theme.palette.background.dark};
         border: 2px solid ${borderColor};
     `;
 };

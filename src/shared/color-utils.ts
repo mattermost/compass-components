@@ -1,3 +1,4 @@
+/* eslint-disable max-lines */
 import { normal } from 'color-blend';
 
 import type { TBaseColorShade } from '../foundations/colors/colors.types';
@@ -92,7 +93,7 @@ function rgbToHex(color: string): string {
 function rgbToHsl(color: string): string {
     const { values } = decomposeColor(color);
 
-    const hslValues = rgbToHslValues(values);
+    const hslValues = rgbValuesToHslValues(values);
     const type = `hsl${values.length > 3 ? 'a' : ''}`;
 
     return recomposeColor({ type, values: hslValues });
@@ -103,7 +104,7 @@ function rgbToHsl(color: string): string {
  * @param {number[]} rgbArray - RGB color-array
  * @returns {number[]} array that holds hsl values
  */
-function rgbToHslValues(rgbArray: number[]): number[] {
+function rgbValuesToHslValues(rgbArray: TColorDefinition['values']): number[] {
     const r = rgbArray[0] / 255;
     const g = rgbArray[1] / 255;
     const b = rgbArray[2] / 255;
@@ -144,7 +145,7 @@ function rgbToHslValues(rgbArray: number[]): number[] {
         h += 360;
     }
 
-    if (rgbArray[3] || rgbArray[3] === 0) {
+    if (Utils.isNumber(rgbArray[3])) {
         return [h, s, l, Utils.clamp(rgbArray[3])];
     }
 
@@ -209,7 +210,7 @@ function decomposeColor(color: string): TColorDefinition {
 /**
  * Converts a color object with typography and values to a string.
  * @param {object} color - Decomposed color
- * @param {string} color.typography - One of: 'rgb', 'rgba', 'hsl', 'hsla'
+ * @param {string} color.type - One of: 'rgb', 'rgba', 'hsl', 'hsla'
  * @param {array} color.values - [n,n,n] or [n,n,n,n]
  * @returns {string} A CSS color string
  */
@@ -232,7 +233,7 @@ function recomposeColor(color: TColorDefinition): string {
 /**
  * Converts a color object with typography and values to a string.
  * @param {object} color - Decomposed color
- * @param {string} color.typography - One of: 'rgb', 'rgba', 'hsl', 'hsla'
+ * @param {string} color.type - One of: 'rgb', 'rgba', 'hsl', 'hsla'
  * @param {array} color.values - [n,n,n] or [n,n,n,n]
  * @param {number} shade - 100 | 200 | ... | 800
  * @returns {string} A CSS color string
@@ -261,7 +262,7 @@ function createColorShades(color: string): Record<string, string> {
 
     if (!decomposedColor.type.includes('hsl')) {
         decomposedColor.type = 'hsl';
-        decomposedColor.values = rgbToHslValues(decomposedColor.values);
+        decomposedColor.values = rgbValuesToHslValues(decomposedColor.values);
     }
 
     for (const key of Object.keys(shadeLuminanceValues)) {
@@ -276,7 +277,7 @@ function createColorShades(color: string): Record<string, string> {
 
 /**
  * Converts any given valid and supported color string to rgb
- * @param {string} color - color string
+ * @param {string}  color - color string
  * @returns {string} rgb color string
  */
 function convertToRgb(color: string): string {
@@ -284,6 +285,29 @@ function convertToRgb(color: string): string {
     const decomposedColor = decomposeColor(colorString);
 
     return recomposeColor(decomposedColor);
+}
+
+/**
+ * Converts any given valid and supported color string to rgb
+ * @param {string}  color - color string
+ * @returns {string} rgb color string
+ */
+function convertToHsl(color: string): string {
+    let colorString = color;
+
+    switch (true) {
+        case color.startsWith('#'):
+            colorString = rgbToHsl(color);
+            break;
+        case color.startsWith('rgb'):
+            colorString = rgbToHsl(hexToRgb(color));
+            break;
+        case color.startsWith('hsl'):
+        default:
+            return colorString;
+    }
+
+    return recomposeColor(decomposeColor(colorString));
 }
 
 /**
@@ -307,6 +331,68 @@ function setAlpha(color: string, value: number): string {
     return recomposeColor(decomposedColor);
 }
 
+function getHslValues(color: string): number[] {
+    const decomposedColor = decomposeColor(color);
+
+    return decomposedColor.type.includes('rgb')
+        ? rgbValuesToHslValues(decomposedColor.values)
+        : decomposedColor.values;
+}
+
+/**
+ * Get the saturation (the S in HSL) of a color.
+ * @param {string} color - CSS color, i.e. one of: #nnn, #nnnnnn, rgb(), rgba(), hsl(), hsla()
+ * @returns {number} the saturation value (S) as used in HSL colors
+ */
+function getSaturation(color: string): number {
+    return getHslValues(color)[1];
+}
+
+/**
+ * Set the saturation (the S in HSL) of a color.
+ * Any existing saturation values are overwritten.
+ * @param {string} color - CSS color, i.e. one of: #nnn, #nnnnnn, rgb(), rgba(), hsl(), hsla()
+ * @param {number} value - value to set the saturation value to in the range 0 - 100
+ * @returns {string} A CSS color string. Hex input values are returned as rgb
+ */
+function setSaturation(color: string, value: number): string {
+    const hslValues = getHslValues(color);
+
+    // set new value for luminance
+    hslValues[1] = Utils.clamp(value, 0, 100);
+
+    const type = hslValues.length > 3 ? 'hsla' : 'hsl';
+
+    return recomposeColor({ type, values: hslValues });
+}
+
+/**
+ * Get the luminance (the L in HSL) of a color.
+ * @param {string} color - CSS color, i.e. one of: #nnn, #nnnnnn, rgb(), rgba(), hsl(), hsla()
+ * @returns {number} the luminance value (L) as used in HSL colors
+ */
+function getLuminance(color: string): number {
+    return getHslValues(color)[2];
+}
+
+/**
+ * Set the luminance (the L in HSL) of a color.
+ * Any existing luminance values are overwritten.
+ * @param {string} color - CSS color, i.e. one of: #nnn, #nnnnnn, rgb(), rgba(), hsl(), hsla()
+ * @param {number} value - value to set the luminance value to in the range 0 - 100
+ * @returns {string} A CSS color string. Hex input values are returned as rgb
+ */
+function setLuminance(color: string, value: number): string {
+    const hslValues = getHslValues(color);
+
+    // set new value for luminance
+    hslValues[2] = Utils.clamp(value, 0, 100);
+
+    const type = hslValues.length > 3 ? 'hsla' : 'hsl';
+
+    return recomposeColor({ type, values: hslValues });
+}
+
 /**
  * Calculates the contrast ratio between two colors.
  *
@@ -316,8 +402,8 @@ function setAlpha(color: string, value: number): string {
  * @returns {number} A contrast ratio value in the range 0 - 21.
  */
 function getContrastRatio(foreground: string, background: string): number {
-    const lumA = getLuminance(foreground);
-    const lumB = getLuminance(background);
+    const lumA = getRelativeLuminance(foreground);
+    const lumB = getRelativeLuminance(background);
 
     return (Math.max(lumA, lumB) + 0.05) / (Math.min(lumA, lumB) + 0.05);
 }
@@ -330,13 +416,12 @@ function getContrastRatio(foreground: string, background: string): number {
  * @param {string} color - CSS color, i.e. one of: #nnn, #nnnnnn, rgb(), rgba(), hsl(), hsla()
  * @returns {number} The relative brightness of the color in the range 0 - 1
  */
-function getLuminance(color: string): number {
+function getRelativeLuminance(color: string): number {
     const decomposedColor = decomposeColor(color);
 
-    let rgb =
-        decomposedColor.type === 'hsl'
-            ? decomposeColor(hslToRgb(color)).values
-            : decomposedColor.values;
+    let rgb = decomposedColor.type.includes('hsl')
+        ? decomposeColor(hslToRgb(color)).values
+        : decomposedColor.values;
 
     rgb = rgb.map((value) => {
         const normalizedValue = value / 255;
@@ -432,7 +517,13 @@ function blendColors(background: string, foreground: string): string {
 
 export {
     setAlpha,
+    getLuminance,
+    setLuminance,
+    getSaturation,
+    setSaturation,
+    getHslValues,
     convertToRgb,
+    convertToHsl,
     decomposeColor,
     recomposeColor,
     recomposeColorWithShade,

@@ -1,18 +1,17 @@
 // storybook canvas- & docs-pages style overrides
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { createGlobalStyle } from 'styled-components';
 
 import { setAlpha } from '../../shared';
 
 import ThemeProvider from './theme-provider';
 import type { PThemeProvider } from './theme-provider';
-import { lightTheme } from './themes';
-import type { TTheme } from './themes';
+import { quartzTheme } from './themes';
 import type { PGlobalStyles } from './global-styles';
 
 const CanvasGlobalStyles = createGlobalStyle`
     body.sb-show-main.sb-main-centered {
-        background-color: ${(props: PGlobalStyles): string => props.theme.background.default};
+        background-color: ${(props: PGlobalStyles): string => props.theme.palette.background.main};
         align-items: stretch;
 
         #root {
@@ -27,20 +26,20 @@ const CanvasGlobalStyles = createGlobalStyle`
 // storybook canvas- & docs-pages style overrides
 const DocumentationGlobalStyles = createGlobalStyle`
     body.sb-show-main {
-        background-color: ${({ theme }: PGlobalStyles): string => theme.background.default};
+        background-color: ${({ theme }: PGlobalStyles): string => theme.palette.background.main};
         align-items: stretch;
 
         .sbdocs-wrapper {
             background-color: ${({ theme }: PGlobalStyles): string =>
-                theme.type === 'dark' ? 'transparent' : theme.background.default};
+                theme.type === 'dark' ? 'transparent' : theme.palette.background.main};
 
             td {
                 background-color: ${({ theme }: PGlobalStyles): string =>
-                    theme.type === 'dark' ? theme.background.shape : '#FFF'};
+                    theme.type === 'dark' ? theme.palette.background.light : '#FFF'};
             }
             
             h1, h2, h3, h4, h5, h6, p, th, td {
-                color: ${({ theme }: PGlobalStyles): string => theme.text.primary};
+                color: ${({ theme }: PGlobalStyles): string => theme.palette.text.primary};
             }
             
             h2 {
@@ -48,13 +47,13 @@ const DocumentationGlobalStyles = createGlobalStyle`
             
                 &:not(.sbdocs-subtitle) {
                     border-bottom: 1px solid ${({ theme }: PGlobalStyles): string =>
-                        setAlpha(theme.background.contrast, 0.25)};
+                        setAlpha(theme.palette.background.dark, 0.25)};
                 }
             }
             
             hr {
                 border-top: 1px solid ${({ theme }: PGlobalStyles): string =>
-                    setAlpha(theme.background.contrast, 0.25)};
+                    setAlpha(theme.palette.background.dark, 0.25)};
             }
         }
     }
@@ -62,38 +61,22 @@ const DocumentationGlobalStyles = createGlobalStyle`
 
 const CanvasThemeProvider = ({
     children = null,
-    theme = lightTheme,
-}: PThemeProvider): JSX.Element => {
-    const [selectedTheme, setSelectedTheme] = useState<TTheme>(theme);
-
-    useEffect(() => {
-        setSelectedTheme(theme);
-    }, [theme]);
-
-    return (
-        <ThemeProvider theme={selectedTheme}>
-            <CanvasGlobalStyles />
-            {children}
-        </ThemeProvider>
-    );
-};
+    theme = quartzTheme,
+}: PThemeProvider): JSX.Element => (
+    <ThemeProvider theme={theme}>
+        <CanvasGlobalStyles />
+        {children}
+    </ThemeProvider>
+);
 
 const DocumentationThemeProvider = ({
     children = null,
-    theme = lightTheme,
-}: PThemeProvider): JSX.Element => {
-    const [selectedTheme, setSelectedTheme] = useState<TTheme>(theme);
-
-    useEffect(() => {
-        setSelectedTheme({ ...theme, noStyleReset: true });
-    }, [theme]);
-
-    return (
-        <ThemeProvider theme={selectedTheme}>
-            <DocumentationGlobalStyles />
-            {children}
-        </ThemeProvider>
-    );
-};
+    theme = quartzTheme,
+}: PThemeProvider): JSX.Element => (
+    <ThemeProvider theme={theme}>
+        <DocumentationGlobalStyles />
+        {children}
+    </ThemeProvider>
+);
 
 export { CanvasThemeProvider, DocumentationThemeProvider };

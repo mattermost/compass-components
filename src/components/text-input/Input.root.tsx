@@ -8,7 +8,10 @@ import type { PInputRoot } from './TextInput.props';
 
 const InputRoot = styled.input<PInputRoot>(
     ({
-        theme: { text, animation },
+        theme: {
+            palette: { text },
+            animation,
+        },
     }: ThemedStyledProps<PInputRoot, TTheme>): FlattenSimpleInterpolation => css`
         width: 100%;
         height: 100%;

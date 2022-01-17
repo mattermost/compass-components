@@ -1,296 +1,437 @@
 import { Meta, Story, Canvas, Title } from '@storybook/addon-docs/blocks';
 
-import Flex from '../layout';
 import Spacing from '../spacing';
-import { blue, COLOR_NAMES, COLOR_SHADES } from '../../foundations/colors';
 import Shape from '../../foundations/shape';
 import Heading from '../../components/heading';
-import ButtonRoot from '../../components/button';
+import Button from '../../components/button';
 import Text from '../../components/text';
-import { createThemeColor } from '../../shared';
 
+import { denimTheme, quartzTheme } from './themes';
 import { SectionThemeProvider } from './theme-provider';
-import { lightTheme, darkTheme, sidebarTheme } from './themes';
+import Grid from '../grid';
+import Checkbox from '../../components/checkbox';
+import { useEffect, useState } from 'react';
+import IconButton from '../../components/icon-button';
+import createTheme from './themes/create-theme';
+
+export const themes = {
+    denimTheme,
+    quartzTheme,
+};
 
 <Meta title="Utilities/Theming" />
 
 <Title>Theming</Title>
 
-export const themes = {
-    lightTheme,
-    darkTheme,
-    sidebarTheme,
+export const argTypes = {
+    contentTheme: {
+        options: Object.keys(themes),
+        mapping: themes,
+        control: {
+            type: 'select',
+            labels: {
+                denim: 'Denim (dark)',
+                quartz: 'Quartz (light)',
+            },
+        },
+    },
+    leftTheme: {
+        options: Object.keys(themes),
+        mapping: themes,
+        control: {
+            type: 'select',
+            labels: {
+                denim: 'Denim (dark)',
+                quartz: 'Quartz (light)',
+            },
+        },
+    },
+};
+
+export const customColorArgTypes = {
+    primary: {
+        control: 'color',
+        table: {
+            category: 'Left Theme',
+        },
+    },
+    secondary: {
+        control: 'color',
+        description: 'currently not visible with the demo',
+        table: {
+            category: 'Left Theme',
+        },
+    },
+    tertiary: {
+        control: 'color',
+        table: {
+            category: 'Left Theme',
+            subcategory: 'not visible',
+        },
+    },
+    background: {
+        control: 'color',
+        table: {
+            category: 'Left Theme',
+        },
+    },
+    primaryRight: {
+        control: 'color',
+        table: {
+            category: 'Right Theme',
+        },
+    },
+    secondaryRight: {
+        control: 'color',
+        description: 'currently not visible with the demo',
+        table: {
+            category: 'Right Theme',
+        },
+    },
+    tertiaryRight: {
+        control: 'color',
+        table: {
+            category: 'Right Theme',
+            subcategory: 'not visible',
+        },
+    },
+    backgroundRight: {
+        control: 'color',
+        table: {
+            category: 'Right Theme',
+        },
+    },
+};
+
+export const customColorArgs = {
+    primary: denimTheme.palette.primary.dark,
+    secondary: denimTheme.palette.secondary.dark,
+    tertiary: denimTheme.palette.tertiary.dark,
+    background: denimTheme.palette.background.main,
+    primaryRight: quartzTheme.palette.primary.dark,
+    secondaryRight: quartzTheme.palette.secondary.dark,
+    tertiaryRight: quartzTheme.palette.tertiary.dark,
+    backgroundRight: quartzTheme.palette.background.main,
+};
+
+export const args = {
+    contentTheme: quartzTheme,
+    leftTheme: denimTheme,
+};
+
+export const ControlledCheckbox = (args) => {
+    const [checked, setChecked] = useState(false);
+    return <Checkbox {...args} onChange={() => setChecked(!checked)} checked={checked} />;
 };
 
 <Canvas hidden>
-    <Story
-        name="Default"
-        args={{
-            sectionTheme: 'lightTheme',
-        }}
-        argTypes={{
-            sectionTheme: {
-                options: Object.keys(themes),
-                mapping: themes,
-                control: {
-                    type: 'select',
-                    labels: {
-                        lightTheme: 'light theme',
-                        darkTheme: 'dark theme',
-                        sidebarTheme: 'sidebar theme',
-                    },
-                },
-            },
-        }}
-    >
-        {(args) => (
-            <Flex row>
-                <SectionThemeProvider theme={args.sectionTheme || lightTheme}>
-                    <Flex width={300} padding={Spacing.all(100)}>
-                        <Shape borderRadius={16}>
-                            <Flex padding={Spacing.all(100)}>
-                                <Heading>This is a sub-section</Heading>
-                                <Text>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                                    eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                                    enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                                    nisi ut aliquip ex ea commodo consequat.
-                                </Text>
-                                <ButtonRoot
-                                    label={'PRIMARY BUTTON'}
-                                    onClick={() => console.log('THIS IS A BUTTON click')}
-                                />
-                                <br />
-                                <ButtonRoot
-                                    label={'SECONDARY BUTTON'}
-                                    onClick={() => console.log('THIS IS A BUTTON click')}
-                                    variant={'secondary'}
-                                />
-                                <br />
-                                <ButtonRoot
-                                    label={'TERTIARY BUTTON'}
-                                    onClick={() => console.log('THIS IS A BUTTON click')}
-                                    variant={'tertiary'}
-                                />
-                                <br />
-                                <ButtonRoot
-                                    inverted
-                                    label={'INV. PRIMARY BUTTON'}
-                                    onClick={() => console.log('THIS IS A BUTTON click')}
-                                />
-                                <br />
-                                <ButtonRoot
-                                    inverted
-                                    label={'INV. SECONDARY BUTTON'}
-                                    onClick={() => console.log('THIS IS A BUTTON click')}
-                                    variant={'secondary'}
-                                />
-                                <br />
-                                <ButtonRoot
-                                    inverted
-                                    label={'INV. TERTIARY BUTTON'}
-                                    onClick={() => console.log('THIS IS A BUTTON click')}
-                                    variant={'tertiary'}
-                                />
-                                <br />
-                            </Flex>
-                        </Shape>
-                    </Flex>
-                </SectionThemeProvider>
-                <Flex width={300} padding={Spacing.all(100)}>
-                    <Shape borderRadius={16}>
-                        <Flex padding={Spacing.all(100)}>
-                            <Heading>This is the main-section</Heading>
-                            <Text>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-                                ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                                aliquip ex ea commodo consequat.
-                            </Text>
-                            <ButtonRoot
-                                label={'PRIMARY BUTTON'}
-                                onClick={() => console.log('THIS IS A BUTTON click')}
-                            />
-                            <br />
-                            <ButtonRoot
-                                label={'SECONDARY BUTTON'}
-                                onClick={() => console.log('THIS IS A BUTTON click')}
-                                variant={'secondary'}
-                            />
-                            <br />
-                            <ButtonRoot
-                                label={'TERTIARY BUTTON'}
-                                onClick={() => console.log('THIS IS A BUTTON click')}
-                                variant={'tertiary'}
-                            />
-                        </Flex>
-                    </Shape>
-                </Flex>
-            </Flex>
-        )}
-    </Story>
-    <Story
-        name="Default Color"
-        args={{
-            sectionTheme: 'lightTheme',
-            primaryColor: 'blue',
-            primaryColorShade: 500,
-        }}
-        argTypes={{
-            sectionTheme: {
-                options: Object.keys(themes),
-                mapping: themes,
-                control: {
-                    type: 'select',
-                    labels: {
-                        lightTheme: 'light theme',
-                        darkTheme: 'dark theme',
-                        sidebarTheme: 'sidebar theme',
-                    },
-                },
-            },
-            primaryColor: {
-                options: COLOR_NAMES,
-                control: {
-                    type: 'select',
-                },
-            },
-            primaryColorShade: {
-                options: COLOR_SHADES,
-                control: {
-                    type: 'select',
-                },
-            },
-        }}
-    >
+    <Story name="Default" args={args} argTypes={argTypes}>
         {(args) => {
-            const theme = {
-                ...args.sectionTheme,
-                palette: {
-                    ...args.sectionTheme?.palette,
-                    primary: createThemeColor(args.primaryColor, args.primaryColorShade),
-                },
-            };
             return (
-                <Flex row>
-                    <SectionThemeProvider theme={theme}>
-                        <Flex width={300} padding={Spacing.all(100)}>
-                            <Shape borderRadius={16}>
-                                <Flex padding={Spacing.all(100)}>
-                                    <Heading>This is a sub-section</Heading>
+                <Shape width={'100%'} height={'80vh'} backgroundColor={'#FFF'} elevation={4}>
+                    <SectionThemeProvider theme={args.contentTheme}>
+                        <Grid columnsTemplate={'1fr 3fr'}>
+                            <SectionThemeProvider theme={args.leftTheme}>
+                                <Grid
+                                    element={Shape}
+                                    height={'100%'}
+                                    padding={Spacing.all(200)}
+                                    placeContent={'start'}
+                                    radius={0}
+                                >
+                                    <Heading>Lorem ipsum</Heading>
                                     <Text>
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                                        do eiusmod tempor incididunt ut labore et dolore magna
-                                        aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                                        ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                                        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
+                                        diam nonumy eirmod tempor invidunt ut labore et dolore magna
+                                        aliquyam erat, sed diam voluptua.
                                     </Text>
-                                    <ButtonRoot
-                                        label={'PRIMARY BUTTON'}
-                                        onClick={() =>
-                                            console.log('THIS IS A BUTTON click', blue[500])
-                                        }
-                                        inverted={theme.type === 'dark'}
-                                        destructive
-                                        disabled
+                                    <Button
+                                        label={'Lorem ipsum'}
+                                        onClick={() => {}}
+                                        icon={'check-circle'}
                                     />
-                                    <br />
-                                    <ButtonRoot
-                                        label={'PRIMARY BUTTON'}
-                                        onClick={() => console.log('THIS IS A BUTTON click')}
-                                        inverted={theme.type === 'dark'}
-                                        variant={'secondary'}
-                                        destructive
-                                        disabled
-                                    />
-                                    <br />
-                                    <ButtonRoot
-                                        label={'PRIMARY BUTTON'}
-                                        onClick={() => console.log('THIS IS A BUTTON click')}
-                                        inverted={theme.type === 'dark'}
-                                        variant={'tertiary'}
-                                        destructive
-                                        disabled
-                                    />
-                                    <br />
-                                    <ButtonRoot
-                                        label={'PRIMARY BUTTON'}
-                                        onClick={() => console.log('THIS IS A BUTTON click')}
-                                        inverted={theme.type === 'dark'}
-                                        destructive
-                                    />
-                                    <br />
-                                    <ButtonRoot
-                                        label={'PRIMARY BUTTON'}
-                                        onClick={() => console.log('THIS IS A BUTTON click')}
-                                        inverted={theme.type === 'dark'}
-                                        variant={'secondary'}
-                                        destructive
-                                    />
-                                    <br />
-                                    <ButtonRoot
-                                        label={'PRIMARY BUTTON'}
-                                        onClick={() => console.log('THIS IS A BUTTON click')}
-                                        inverted={theme.type === 'dark'}
-                                        variant={'tertiary'}
-                                        destructive
-                                    />
-                                    <br />
-                                    <ButtonRoot
-                                        label={'PRIMARY BUTTON'}
-                                        onClick={() =>
-                                            console.log('THIS IS A BUTTON click', blue[500])
-                                        }
-                                        inverted={theme.type === 'dark'}
-                                    />
-                                    <br />
-                                    <ButtonRoot
-                                        label={'PRIMARY BUTTON'}
-                                        onClick={() => console.log('THIS IS A BUTTON click')}
-                                        inverted={theme.type === 'dark'}
+                                    <Heading color={'secondary'} size={50}>
+                                        Lorem ipsum dolor
+                                    </Heading>
+                                    <Text color={'secondary'} size={50}>
+                                        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
+                                        diam nonumy eirmod tempor invidunt ut labore et dolore magna
+                                        aliquyam erat, sed diam voluptua.
+                                    </Text>
+                                    <Button
+                                        label={'Lorem ipsum'}
+                                        onClick={() => {}}
+                                        icon={'close-circle'}
                                         variant={'secondary'}
                                     />
-                                    <br />
-                                    <ButtonRoot
-                                        label={'PRIMARY BUTTON'}
-                                        onClick={() => console.log('THIS IS A BUTTON click')}
-                                        inverted={theme.type === 'dark'}
-                                        variant={'tertiary'}
+                                    <Heading color={'secondary'} size={50}>
+                                        Lorem ipsum dolor
+                                    </Heading>
+                                    <ControlledCheckbox onClick={() => {}} label={'Lorem'} />
+                                    <ControlledCheckbox
+                                        onClick={() => {}}
+                                        label={'ipsum'}
+                                        disabled
                                     />
-                                    <br />
-                                </Flex>
-                            </Shape>
-                        </Flex>
-                    </SectionThemeProvider>
-                    <Flex width={300} padding={Spacing.all(100)}>
-                        <Shape borderRadius={16}>
-                            <Flex padding={Spacing.all(100)}>
-                                <Heading>This is the main-section</Heading>
+                                </Grid>
+                            </SectionThemeProvider>
+                            <Grid
+                                element={Shape}
+                                height={'100%'}
+                                padding={Spacing.all(200)}
+                                placeContent={'start'}
+                                radius={0}
+                            >
+                                <Heading>This is a sub section heading</Heading>
                                 <Text>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                                    eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                                    enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                                    nisi ut aliquip ex ea commodo consequat.
+                                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
+                                    diam nonumy eirmod tempor invidunt ut labore et dolore magna
+                                    aliquyam erat, sed diam voluptua. At vero eos et accusam et
+                                    justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea
+                                    takimata sanctus est Lorem ipsum dolor sit amet.
                                 </Text>
-                                <ButtonRoot
-                                    label={'PRIMARY BUTTON'}
-                                    onClick={() => console.log('THIS IS A BUTTON click')}
-                                />
-                                <br />
-                                <ButtonRoot
-                                    label={'SECONDARY BUTTON'}
-                                    onClick={() => console.log('THIS IS A BUTTON click')}
-                                    variant={'secondary'}
-                                />
-                                <br />
-                                <ButtonRoot
-                                    label={'TERTIARY BUTTON'}
-                                    onClick={() => console.log('THIS IS A BUTTON click')}
-                                    variant={'tertiary'}
-                                />
-                            </Flex>
-                        </Shape>
-                    </Flex>
-                </Flex>
+                                <Grid
+                                    columnsTemplate={'1fr 1fr 1fr'}
+                                    placeContent={'space-between'}
+                                >
+                                    <Button
+                                        label={'Lorem ipsum'}
+                                        onClick={() => {}}
+                                        icon={'check-circle'}
+                                    />
+                                    <Button
+                                        label={'Lorem ipsum'}
+                                        onClick={() => {}}
+                                        icon={'minus-circle'}
+                                        variant={'secondary'}
+                                    />
+                                    <Button
+                                        label={'Lorem ipsum'}
+                                        onClick={() => {}}
+                                        icon={'close-circle'}
+                                        variant={'tertiary'}
+                                    />
+                                </Grid>
+                                <Heading color={'secondary'} size={50}>
+                                    Lorem ipsum dolor
+                                </Heading>
+                                <Text color={'secondary'} size={50}>
+                                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
+                                    diam nonumy eirmod tempor invidunt ut labore et dolore magna
+                                    aliquyam erat, sed diam voluptua.
+                                </Text>
+                                <Grid
+                                    columnsTemplate={'1fr 1fr 1fr'}
+                                    placeContent={'space-between'}
+                                    gap={12}
+                                    padding={Spacing.all(50)}
+                                >
+                                    <IconButton onClick={() => {}} icon={'check-circle'} />
+                                    <IconButton onClick={() => {}} icon={'check-circle'} toggled />
+                                    <IconButton onClick={() => {}} icon={'check-circle'} disabled />
+                                </Grid>
+                            </Grid>
+                        </Grid>
+                    </SectionThemeProvider>
+                </Shape>
+            );
+        }}
+    </Story>
+    <Story name="CutomColors" args={customColorArgs} argTypes={customColorArgTypes}>
+        {(args) => {
+            const [leftTheme, setLeftTheme] = useState(quartzTheme);
+            const [rightTheme, setRightTheme] = useState(quartzTheme);
+            useEffect(() => {
+                const timeOut = setTimeout(
+                    () => setLeftTheme(createTheme({ primary: args.primary }, leftTheme)),
+                    100
+                );
+                return () => clearTimeout(timeOut);
+            }, [args.primary]);
+            useEffect(() => {
+                const timeOut = setTimeout(
+                    () => setLeftTheme(createTheme({ secondary: args.secondary }, leftTheme)),
+                    100
+                );
+                return () => clearTimeout(timeOut);
+            }, [args.secondary]);
+            useEffect(() => {
+                const timeOut = setTimeout(
+                    () => setLeftTheme(createTheme({ tertiary: args.tertiary }, leftTheme)),
+                    100
+                );
+                return () => clearTimeout(timeOut);
+            }, [args.tertiary]);
+            useEffect(() => {
+                const timeOut = setTimeout(
+                    () => setLeftTheme(createTheme({ background: args.background }, leftTheme)),
+                    100
+                );
+                return () => clearTimeout(timeOut);
+            }, [args.background]);
+            useEffect(() => {
+                const timeOut = setTimeout(
+                    () => setRightTheme(createTheme({ primary: args.primaryRight }, rightTheme)),
+                    100
+                );
+                return () => clearTimeout(timeOut);
+            }, [args.primaryRight]);
+            useEffect(() => {
+                const timeOut = setTimeout(
+                    () =>
+                        setRightTheme(createTheme({ secondary: args.secondaryRight }, rightTheme)),
+                    100
+                );
+                return () => clearTimeout(timeOut);
+            }, [args.secondaryRight]);
+            useEffect(() => {
+                const timeOut = setTimeout(
+                    () => setRightTheme(createTheme({ tertiary: args.tertiaryRight }, rightTheme)),
+                    100
+                );
+                return () => clearTimeout(timeOut);
+            }, [args.tertiaryRight]);
+            useEffect(() => {
+                const timeOut = setTimeout(
+                    () =>
+                        setRightTheme(
+                            createTheme({ background: args.backgroundRight }, rightTheme)
+                        ),
+                    100
+                );
+                return () => clearTimeout(timeOut);
+            }, [args.backgroundRight]);
+            return (
+                <Shape width={'100%'} height={'80vh'} backgroundColor={'#FFF'} elevation={4}>
+                    <SectionThemeProvider theme={rightTheme}>
+                        <Grid columnsTemplate={'1fr 3fr'}>
+                            <SectionThemeProvider theme={leftTheme}>
+                                <Grid
+                                    element={Shape}
+                                    height={'100%'}
+                                    padding={Spacing.all(200)}
+                                    placeContent={'start'}
+                                    radius={0}
+                                >
+                                    <Heading>Lorem ipsum</Heading>
+                                    <Text>
+                                        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
+                                        diam nonumy eirmod tempor invidunt ut labore et dolore magna
+                                        aliquyam erat, sed diam voluptua.
+                                    </Text>
+                                    <Button
+                                        label={'Lorem ipsum'}
+                                        onClick={() => {}}
+                                        icon={'check-circle'}
+                                    />
+                                    <Heading color={'secondary'} size={50}>
+                                        Lorem ipsum dolor
+                                    </Heading>
+                                    <Text color={'secondary'} size={50}>
+                                        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
+                                        diam nonumy eirmod tempor invidunt ut labore et dolore magna
+                                        aliquyam erat, sed diam voluptua.
+                                    </Text>
+                                    <Button
+                                        label={'Lorem ipsum'}
+                                        onClick={() => {}}
+                                        icon={'close-circle'}
+                                        variant={'secondary'}
+                                    />
+                                    <Heading color={'secondary'} size={50}>
+                                        Lorem ipsum dolor
+                                    </Heading>
+                                    <ControlledCheckbox onClick={() => {}} label={'Lorem'} />
+                                    <Grid
+                                        columnsTemplate={'1fr 1fr 1fr 1fr'}
+                                        placeContent={'space-between'}
+                                        gap={12}
+                                        padding={Spacing.all(50)}
+                                    >
+                                        <IconButton onClick={() => {}} icon={'check-circle'} />
+                                        <IconButton
+                                            onClick={() => {}}
+                                            icon={'check-circle'}
+                                            toggled
+                                        />
+                                        <IconButton
+                                            onClick={() => {}}
+                                            icon={'check-circle'}
+                                            destructive
+                                        />
+                                        <IconButton
+                                            onClick={() => {}}
+                                            icon={'check-circle'}
+                                            disabled
+                                        />
+                                    </Grid>
+                                </Grid>
+                            </SectionThemeProvider>
+                            <Grid
+                                element={Shape}
+                                height={'100%'}
+                                padding={Spacing.all(200)}
+                                placeContent={'start'}
+                                radius={0}
+                            >
+                                <Heading>This is a sub section heading</Heading>
+                                <Text>
+                                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
+                                    diam nonumy eirmod tempor invidunt ut labore et dolore magna
+                                    aliquyam erat, sed diam voluptua. At vero eos et accusam et
+                                    justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea
+                                    takimata sanctus est Lorem ipsum dolor sit amet.
+                                </Text>
+                                <Grid
+                                    columnsTemplate={'1fr 1fr 1fr'}
+                                    placeContent={'space-between'}
+                                    gap={'12px'}
+                                >
+                                    <Button
+                                        label={'Lorem ipsum'}
+                                        onClick={() => {}}
+                                        icon={'check-circle'}
+                                    />
+                                    <Button
+                                        label={'Lorem ipsum'}
+                                        onClick={() => {}}
+                                        icon={'minus-circle'}
+                                        variant={'secondary'}
+                                    />
+                                    <Button
+                                        label={'Lorem ipsum'}
+                                        onClick={() => {}}
+                                        icon={'close-circle'}
+                                        variant={'tertiary'}
+                                    />
+                                </Grid>
+                                <Heading color={'secondary'} size={50}>
+                                    Lorem ipsum dolor
+                                </Heading>
+                                <Text color={'secondary'} size={50}>
+                                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
+                                    diam nonumy eirmod tempor invidunt ut labore et dolore magna
+                                    aliquyam erat, sed diam voluptua.
+                                </Text>
+                                <Grid
+                                    columnsTemplate={'1fr 1fr 1fr 1fr'}
+                                    placeContent={'space-between'}
+                                    gap={12}
+                                    padding={Spacing.all(50)}
+                                >
+                                    <IconButton onClick={() => {}} icon={'check-circle'} />
+                                    <IconButton onClick={() => {}} icon={'check-circle'} toggled />
+                                    <IconButton
+                                        onClick={() => {}}
+                                        icon={'check-circle'}
+                                        destructive
+                                    />
+                                    <IconButton onClick={() => {}} icon={'check-circle'} disabled />
+                                </Grid>
+                            </Grid>
+                        </Grid>
+                    </SectionThemeProvider>
+                </Shape>
             );
         }}
     </Story>

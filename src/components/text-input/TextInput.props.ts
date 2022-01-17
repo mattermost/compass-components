@@ -18,7 +18,7 @@ type PTextInput = {
     width?: TButtonWidth;
     /**
      * custom background color
-     * @default theme.background.default
+     * @default theme.palette.background.default
      * */
     backgroundColor?: string;
     /**

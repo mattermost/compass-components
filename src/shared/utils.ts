@@ -152,12 +152,6 @@ const getPxValue = (value: string | number): string => (isNumber(value) ? `${val
  * @returns {number} A number in the range [min, max]
  */
 function clamp(value: number, min = 0, max = 1): number {
-    if (value < min || value > max) {
-        throw new Error(
-            `Compass Components: The value provided ${value} is out of range [${min}, ${max}].`
-        );
-    }
-
     return Math.min(Math.max(min, value), max);
 }
 

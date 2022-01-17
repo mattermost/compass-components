@@ -45,7 +45,7 @@ type PShape = PGlobals & {
     height?: number | string | 'auto';
     /**
      * custom background color
-     * @default theme.background.shape
+     * @default theme.palette.background.shape
      */
     backgroundColor?: string;
 };
@@ -54,6 +54,6 @@ type PShapeRoot = Omit<PShape, 'className'>;
 
 type PApplyShape = Pick<PShape, 'width' | 'height' | 'radius'>;
 
-export type { PShapeRoot, PApplyShape };
+export type { PShapeRoot, PApplyShape, PShape };
 
 export default PShape;

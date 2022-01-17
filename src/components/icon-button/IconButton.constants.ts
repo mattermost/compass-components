@@ -27,24 +27,28 @@ const DEFAULT_ICON_BUTTON_ELEMENT: TIconButtonElement = 'button';
  */
 const ICON_BUTTON_DEFINITIONS: { [size in TIconButtonSizeToken]: TIconButtonDefinition } = {
     xs: {
+        width: 12,
         compactSpacing: 50,
         spacing: 75,
         iconSize: 12,
         fontSize: 75,
     },
     sm: {
+        width: 12,
         compactSpacing: 75,
         spacing: 100,
         iconSize: 16,
         fontSize: 100,
     },
     md: {
+        width: 12,
         compactSpacing: 100,
         spacing: 125,
         iconSize: 20,
         fontSize: 100,
     },
     lg: {
+        width: 12,
         compactSpacing: 100,
         spacing: 125,
         iconSize: 28,

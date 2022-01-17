@@ -25,7 +25,6 @@ const Button: React.FC<PButton> = (props: PButton) => {
         width = DEFAULT_BUTTON_WIDTH,
         active = false,
         destructive = false,
-        inverted = false,
         disabled = false,
         ...rest
     } = props;
@@ -46,20 +45,17 @@ const Button: React.FC<PButton> = (props: PButton) => {
         true
     );
 
-    const rootProperties = {
-        disabled: disabled || !Utils.isFunction(onClick),
-        width,
-        active,
-        destructive,
-        inverted,
-        size,
-        variant,
-        onClick,
-        ...rest,
-    };
-
     return (
-        <ButtonRoot {...rootProperties}>
+        <ButtonRoot
+            disabled={disabled}
+            width={width}
+            active={active}
+            destructive={destructive}
+            size={size}
+            variant={variant}
+            onClick={onClick}
+            {...rest}
+        >
             {icon && iconPosition === 'start' && (
                 <ButtonIconRoot
                     glyph={icon}

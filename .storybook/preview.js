@@ -2,29 +2,28 @@ import { addParameters, addDecorator } from '@storybook/react';
 import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport';
 import { withThemes } from 'storybook-addon-themes/react';
 
-addDecorator(withThemes);
-
-import lightTheme from '../src/utilities/theme/themes/theme.light';
-import darkTheme from '../src/utilities/theme/themes/theme.dark';
 import {
     CanvasThemeProvider,
     DocumentationThemeProvider,
 } from '../src/utilities/theme/storybook-theme-provider';
 import { DocsContainer } from '@storybook/addon-docs/blocks';
+import { denimTheme, quartzTheme } from '../src/utilities/theme';
+
+addDecorator(withThemes);
 
 const themes = [
     {
-        name: 'light',
-        class: 'compass-light',
-        color: lightTheme.background.default,
-        definition: lightTheme,
+        name: 'quartz',
+        class: 'compass-quartz',
+        color: quartzTheme.palette.background.main,
+        definition: quartzTheme,
         default: true,
     },
     {
-        name: 'dark',
-        class: 'compass-dark',
-        color: darkTheme.background.default,
-        definition: darkTheme,
+        name: 'denim',
+        class: 'compass-denim',
+        color: denimTheme.palette.background.main,
+        definition: denimTheme,
     },
 ];
 

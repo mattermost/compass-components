@@ -8,7 +8,7 @@ import type {
 import { setAlpha } from '../../../shared';
 import type { TTheme } from '../themes';
 
-import fontFaces from './font-faces';
+import GlobalFontStyles from './font-faces';
 import reset from './reset-styles';
 import defaultStyles from './default-styles';
 
@@ -22,8 +22,6 @@ type PGlobalStyles = {
 const GlobalStyle = createGlobalStyle`
     ${({ theme }: PGlobalStyles): FlattenSimpleInterpolation | null =>
         theme.noStyleReset ? null : reset};
-    ${({ theme }: PGlobalStyles): FlattenSimpleInterpolation | null =>
-        theme.noFontFaces ? null : fontFaces};
     ${({ theme }: PGlobalStyles): FlattenInterpolation<ThemeProps<TTheme>> | null =>
         theme.noDefaultStyle ? null : defaultStyles};
 
@@ -32,7 +30,7 @@ const GlobalStyle = createGlobalStyle`
         display: block;
         flex: 1;
         align-self: stretch;
-        background: ${({ theme }): string => theme.background.skeleton};
+        background: ${({ theme }): string => theme.palette.background.light};
         overflow: hidden;
         position: relative;
 
@@ -45,10 +43,10 @@ const GlobalStyle = createGlobalStyle`
             transform: translateX(-100%);
             background: linear-gradient(
                     90deg,
-                    ${({ theme }): string => setAlpha(theme.background.shimmer, 0)} 0,
-                    ${({ theme }): string => setAlpha(theme.background.shimmer, 0.25)} 40%,
-                    ${({ theme }): string => setAlpha(theme.background.shimmer, 0.5)} 75%,
-                    ${({ theme }): string => setAlpha(theme.background.shimmer, 0)}
+                    ${({ theme }): string => setAlpha(theme.palette.background.dark, 0)} 0,
+                    ${({ theme }): string => setAlpha(theme.palette.background.dark, 0.25)} 40%,
+                    ${({ theme }): string => setAlpha(theme.palette.background.dark, 0.5)} 75%,
+                    ${({ theme }): string => setAlpha(theme.palette.background.dark, 0)}
             );
             animation: shimmer 1.5s infinite;
             content: '';
@@ -63,4 +61,5 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 export type { PGlobalStyles };
+export { GlobalFontStyles };
 export default GlobalStyle;

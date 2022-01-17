@@ -16,7 +16,7 @@ const TextInputRoot = styled.div.withConfig<PTextInputRoot>({
         validator(property),
 })((props: ThemedStyledProps<PTextInputRoot, TTheme>): FlattenSimpleInterpolation => {
     const {
-        theme: { palette, action, text, background, animation },
+        theme: { palette, animation },
         hasError,
         disabled,
         active,
@@ -26,21 +26,21 @@ const TextInputRoot = styled.div.withConfig<PTextInputRoot>({
         size,
         leadingIcon,
         onClear,
-        backgroundColor = background.default,
+        backgroundColor = palette.background.main,
     } = props;
 
     const hasValue = Utils.isString(value) && value.length > 0;
     const isClearable = Utils.isFunction(onClear);
     const colors: Record<string, string> = {
-        active: hasError ? palette.alert.main : palette.primary.main,
-        text: text.primary,
+        active: hasError ? palette.alert.dark : palette.primary.dark,
+        text: palette.text.primary,
         background: backgroundColor,
-        action: action.hover,
-        border: active ? palette.primary.main : text.disabled,
+        action: setAlpha(palette.text.primary, 0.24),
+        border: active ? palette.primary.dark : palette.text.secondary,
     };
 
     if (hasError) {
-        colors.border = palette.alert.main;
+        colors.border = palette.alert.dark;
     }
 
     if (disabled) {

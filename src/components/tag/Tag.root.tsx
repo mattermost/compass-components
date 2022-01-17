@@ -17,12 +17,12 @@ const TagRoot = styled(Text).withConfig<PTagRoot>({
     const { variant, size, onClick, theme } = props;
 
     const TAG_BACKGROUND_COLOR_MAP: Record<TTagVariant, string> = {
-        general: theme.background.skeleton,
+        general: theme.palette.background.dark,
         info: theme.palette.primary.light,
         warning: theme.palette.alert.light,
         success: theme.palette.success.light,
-        highlight: theme.highlight.mention,
-        shortcut: theme.background.skeleton,
+        highlight: theme.palette.tertiary.main,
+        shortcut: theme.palette.background.dark,
     };
 
     return css`
@@ -30,7 +30,7 @@ const TagRoot = styled(Text).withConfig<PTagRoot>({
         align-items: center;
         justify-content: center;
         background-color: ${TAG_BACKGROUND_COLOR_MAP[variant]};
-        color: ${variant === 'highlight' ? theme.palette.primary.main : theme.text.primary};
+        color: ${variant === 'highlight' ? theme.palette.primary.dark : theme.palette.text.primary};
         text-transform: ${variant === 'highlight' ? 'none' : 'uppercase'};
         cursor: ${Utils.isFunction(onClick) ? 'pointer' : 'inherit'};
 

@@ -1,55 +1,15 @@
 import type { TStatusBadgeStatus } from '../../../components/status-badge';
 
-type TThemeColorDefinition = {
-    lighter: string;
-    light: string;
-    main: string;
-    dark: string;
-    darker: string;
-    contrast: string;
-};
-
-type TTHemeColors = {
-    primary: TThemeColorDefinition;
-    secondary: TThemeColorDefinition;
-    alert: TThemeColorDefinition;
-    warning: TThemeColorDefinition;
-    success: TThemeColorDefinition;
-    info: TThemeColorDefinition;
-};
-
-type TTHemeActionColors = {
-    hover: string;
-    disabled: string;
-};
-
 type TTHemeTextColors = {
     primary: string;
     secondary: string;
-    disabled: string;
-    contrast: string;
-    accent: string;
-};
-
-type TThemeBorderColors = {
-    primary: string;
-    secondary: string;
-    disabled: string;
-    contrast: string;
-    accent: string;
+    disabled?: string;
 };
 
 type TTHemeBackgroundColors = {
-    default: string;
-    badge: string;
-    shape: string;
-    skeleton: string;
-    shimmer: string;
-    contrast: string;
-};
-
-type TThemeHighlightColors = {
-    mention: string;
+    light: string;
+    main: string;
+    dark: string;
 };
 
 type TThemeBadges = {
@@ -62,29 +22,54 @@ type TThemeAnimations = {
     [key in TThemeAnimationSpeed]: number;
 };
 
+type TCustomThemeColors = {
+    primary?: string | TThemeColor;
+    secondary?: string | TThemeColor;
+    tertiary?: string | TThemeColor;
+    success?: string | TThemeColor;
+    warning?: string | TThemeColor;
+    alert?: string | TThemeColor;
+    info?: string | TThemeColor;
+    mention?: string | TThemeColor;
+    background?: string | TTHemeBackgroundColors;
+};
+
+type TColorShades = 'light' | 'main' | 'dark' | 'darker' | 'contrast';
+
+type TColorDefinition = {
+    [k in TColorShades]: string;
+};
+
+type TThemeColor = TColorDefinition & { contrast: string };
+
 type TTheme = {
     type: 'light' | 'dark';
     noStyleReset: boolean;
     noFontFaces: boolean;
     noDefaultStyle: boolean;
     elevationOpacity: number;
-    palette: TTHemeColors;
     badges: TThemeBadges;
-    action: TTHemeActionColors;
-    text: TTHemeTextColors;
-    border: TThemeBorderColors;
-    background: TTHemeBackgroundColors;
     animation: TThemeAnimations;
-    highlight: TThemeHighlightColors;
+    palette: {
+        primary: TThemeColor;
+        secondary: TThemeColor;
+        tertiary: TThemeColor;
+        alert: TThemeColor;
+        warning: TThemeColor;
+        success: TThemeColor;
+        info: TThemeColor;
+        background: TTHemeBackgroundColors;
+        text: TTHemeTextColors;
+        mention: TThemeColor;
+    };
 };
 
 export type {
     TTheme,
-    TTHemeColors,
-    TTHemeActionColors,
+    TThemeColor,
     TTHemeTextColors,
-    TThemeBorderColors,
     TTHemeBackgroundColors,
-    TThemeColorDefinition,
     TThemeAnimationSpeed,
+    TCustomThemeColors,
+    TColorShades,
 };
