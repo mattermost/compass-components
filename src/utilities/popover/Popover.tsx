@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import { usePopper } from 'react-popper';
 
-import { useClickAway } from '../../shared';
+import { useClickAway, Utils } from '../../shared';
 import Transition from '../transition/Transition';
 
 import {
@@ -39,7 +39,7 @@ const Popover = ({
 
     // when a onClickAway callback is provided it will fire when the user clicks
     // away from the button or the popover (basically everything else)
-    useClickAway([popperReference, anchorReference], onClickAway);
+    useClickAway([popperReference, anchorReference], onClickAway || Utils.noop);
 
     const style = {
         ...popper,
