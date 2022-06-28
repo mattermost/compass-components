@@ -8,8 +8,7 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-        if: github.event.pull_request.head.repo.full_name == github.repository
+      - uses: actions/checkout@v3.0.2
         with:
           submodules: true
           fetch-depth: 0
@@ -25,25 +24,17 @@ jobs:
         # @see https://github.com/storybookjs/storybook/issues/14119 for reference
         run: |
           npm install --legacy-peer-deps
+      
       - name: Build Storybook
         run: |
           npm run build-storybook
 
-      - uses: shallwefootball/s3-upload-action@master
-        name: Upload Preview Env
-        if: github.event.pull_request.head.repo.full_name == github.repository
+      # Private pipeline will deploy to preview environment 
+      # If pr is from local branch, it will deploy and add comment to PR.
+      # If pr is from forked repository, it will deploy when PR has a preview-environment label
+      - name: Archive artiacts
+        uses: actions/upload-artifact@v3
         with:
-          aws_key_id: ${{ secrets.AWS_KEY_ID }}
-          aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws_bucket: ${{ secrets.AWS_BUCKET }}
-          source_dir: ./storybook-static
-          destination_dir: ${{ github.event.number }}
+          name: storybook-static
+          path: storybook-static
 
-      - name: Add comment to PR
-        if: github.event.pull_request.head.repo.full_name == github.repository
-        uses: peter-evans/create-or-update-comment@v1
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          issue-number: ${{ github.event.number }}
-          body: |
-            Newest code from ${{ github.actor }} has been published to [preview environment](http://mattermost-compass-preview-pull.s3-website-us-east-1.amazonaws.com/${{ github.event.number }}) for Git SHA ${{ github.event.pull_request.head.sha }}
