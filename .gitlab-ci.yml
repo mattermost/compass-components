@@ -9,3 +9,4 @@ include:
     file: '${CI_PROJECT_NAME}/gitlab-ci.yml'
 
 ...
+
