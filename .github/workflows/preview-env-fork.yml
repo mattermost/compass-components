@@ -8,26 +8,25 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     steps:
       - name: Download PR number artifact
-        if: ${{ github.event.workflow_run.conclusion == 'success' }}
         uses: dawidd6/action-download-artifact@v2
         with:
           workflow: ${{ github.event.workflow_run.workflow_id }}
           name: pr.txt
       - name: Save PR number
-        if: ${{ github.event.workflow_run.conclusion == 'success' }}
         id: pr
         run: |
-          cat pr.txt
           echo "::set-output name=id::$(<pr.txt)"
       - name: Check label
-        if: ${{ github.event.workflow_run.conclusion == 'success' }}
         uses: actions/github-script@v4
         id: label-checker
         with:
           github-token: ${{secrets.GITHUB_TOKEN}}
           script: |
+            let fs = require('fs');
+            let issue_number = Number(fs.readFileSync('./pr.txt'));
             const query = `query($owner:String!, $name:String!, $pr:Int!) {
               repository(owner:$owner, name:$name){
                 pullRequest(number:$pr) {
@@ -41,8 +40,8 @@ jobs:
             }`;
             const variables = {
               owner: 'mattermost',
-              name: 'docs',
-              pr: ${{ steps.pr.outputs.id }}
+              name: 'compass-components',
+              pr: issue_number
             };
             const result = await github.graphql(query, variables);
             console.log(result.repository.pullRequest.labels.nodes);
@@ -56,7 +55,7 @@ jobs:
             return false;
 
       - uses: actions/checkout@v2
-        if: ${{ github.event.workflow_run.conclusion == 'success' && steps.label-checker.outputs.result == 'true' }}
+        if: ${{ steps.label-checker.outputs.result == 'true' }}
         with:
           ref: ${{ github.event.workflow_run.head_sha }}
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -64,27 +63,27 @@ jobs:
           fetch-depth: 0
 
       - name: Setup Node
-        if: ${{ github.event.workflow_run.conclusion == 'success' && steps.label-checker.outputs.result == 'true' }}
+        if: ${{ steps.label-checker.outputs.result == 'true' }}
         uses: actions/setup-node@v2
         with:
           node-version: '16'
           check-latest: true
 
       - name: Install
-        if: ${{ github.event.workflow_run.conclusion == 'success' && steps.label-checker.outputs.result == 'true' }}
+        if: ${{ steps.label-checker.outputs.result == 'true' }}
         # adding --legacy-peer-deps for now until issue in storybook is fixed
         # @see https://github.com/storybookjs/storybook/issues/14119 for reference
         run: |
           npm install --legacy-peer-deps
 
       - name: Build Storybook
-        if: ${{ github.event.workflow_run.conclusion == 'success' && steps.label-checker.outputs.result == 'true' }}
+        if: ${{ steps.label-checker.outputs.result == 'true' }}
         run: |
           npm run build-storybook
 
       - uses: shallwefootball/s3-upload-action@master
         name: Upload Preview Env
-        if: ${{ github.event.workflow_run.conclusion == 'success' && steps.label-checker.outputs.result == 'true' }}
+        if: ${{ steps.label-checker.outputs.result == 'true' }}
         with:
           aws_key_id: ${{ secrets.AWS_KEY_ID }}
           aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
@@ -94,7 +93,7 @@ jobs:
 
       - name: Add comment to PR
         uses: peter-evans/create-or-update-comment@v1
-        if: ${{ success() &&  github.event.workflow_run.conclusion == 'success' && steps.label-checker.outputs.result == 'true' }}
+        if: ${{ success() &&  steps.label-checker.outputs.result == 'true' }}
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           issue-number: ${{ steps.pr.outputs.id }}
@@ -102,7 +101,7 @@ jobs:
             Newest code from ${{ github.actor }} has been published to [preview environment](http://mattermost-compass-preview-pull.s3-website-us-east-1.amazonaws.com/${{ steps.pr.outputs.id }}) for Git SHA ${{ github.event.workflow_run.head_sha }}
 
       - name: The job has failed
-        if: ${{ failure() && github.event.workflow_run.conclusion == 'success' && steps.label-checker.outputs.result == 'true' }}
+        if: ${{ failure() && steps.label-checker.outputs.result == 'true' }}
         uses: peter-evans/create-or-update-comment@v1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
